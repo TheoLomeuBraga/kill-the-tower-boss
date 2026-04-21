@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cy1o6s4fa4vaf"]
+
+[ext_resource type="PackedScene" uid="uid://c0r50bboxsx0q" path="res://player/arms/arms.tscn" id="1_15fux"]
+[ext_resource type="Script" uid="uid://bphhxxguvjf8e" path="res://player/player_model/player_model.gd" id="1_r5r3n"]
+[ext_resource type="PackedScene" uid="uid://dqoy4sfpn04u4" path="res://player/guns/gun_animations.tscn" id="2_qfpg1"]
+[ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="4_qu0w5"]
+
+[node name="PlayerModel" type="Node3D" unique_id=83597824 node_paths=PackedStringArray("arms", "gun_animations", "gun")]
+script = ExtResource("1_r5r3n")
+arms = NodePath("arms")
+gun_animations = NodePath("gun_animations")
+gun = NodePath("pistol")
+
+[node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
+
+[node name="gun_animations" parent="." unique_id=1768392310 instance=ExtResource("2_qfpg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181618, -0.06737061, 0.39411506)
+walk_speed = 2.0
+
+[node name="pistol" parent="." unique_id=1690220103 instance=ExtResource("4_qu0w5")]
+transform = Transform3D(0.9999999, 0.00033356211, 4.188193e-05, -0.00033355242, 0.99999994, -0.00023083377, -4.1958916e-05, 0.00023081979, 1, -0.181618, 0.02827151, 0.16970591)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2001919995]
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, 0, 0.23324338, 0)
+fov = 90.0

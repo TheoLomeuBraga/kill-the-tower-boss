@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://1uip5jk8ugjy"]
+
+[ext_resource type="PackedScene" uid="uid://cr8fgn04t3eey" path="res://player/guns/pistol/pistol.glb" id="1_6becj"]
+[ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_xco6c"]
+
+[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_6becj")]
+script = ExtResource("2_xco6c")
+gun = NodePath("Armature/Skeleton3D")
+arm_l = NodePath("arm_l")
+pole_l = NodePath("pole_l")
+hand_l = NodePath("hand_l")
+arm_r = NodePath("arm_r")
+pole_r = NodePath("pole_r")
+hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(995797917) index="0" unique_id=1168768983]
+bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
+bones/1/position = Vector3(-2.9975933e-10, 0.08906293, 0.0012572818)
+
+[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=452569189]
+transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.9604638e-08, -0.9999998, -5.684342e-14, 0.9999998, -5.960467e-08, -6.661338e-16, 0.08906292, 0.0012572763)
+
+[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=1877465204]
+transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="6" unique_id=792201404]
+playback_default_blend_time = 0.1

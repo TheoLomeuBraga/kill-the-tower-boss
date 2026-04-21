@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://c0r50bboxsx0q"]
+
+[ext_resource type="PackedScene" uid="uid://do2hynpvdoav8" path="res://player/arms/arms.glb" id="1_t5sdq"]
+[ext_resource type="Texture2D" uid="uid://dvfndnmxh80tp" path="res://player/arms/arms_arms.png" id="2_26mws"]
+[ext_resource type="Script" uid="uid://bfg88r52dhtsq" path="res://player/arms/arms.gd" id="2_lu0cu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lu0cu"]
+resource_name = "arms"
+cull_mode = 2
+albedo_texture = ExtResource("2_26mws")
+metallic_specular = 0.0
+roughness = 0.0
+texture_filter = 2
+
+[node name="arms" unique_id=1183301295 instance=ExtResource("1_t5sdq")]
+script = ExtResource("2_lu0cu")
+
+[node name="Cube" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="0" unique_id=1976606373]
+surface_material_override/0 = SubResource("StandardMaterial3D_lu0cu")
+
+[node name="copy_arms" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="1" unique_id=1478431348]
+setting_count = 2
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "upper_arm.L"
+settings/0/apply_bone = 0
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../arm_l")
+settings/1/amount = 1.0
+settings/1/apply_bone_name = "upper_arm.R"
+settings/1/apply_bone = 3
+settings/1/reference_type = 1
+settings/1/reference_node = NodePath("../../../arm_r")
+settings/0/copy = 7
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+settings/1/copy = 7
+settings/1/axes = 7
+settings/1/invert = 0
+settings/1/additive = false
+
+[node name="arms" type="TwoBoneIK3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="2" unique_id=1475798260]
+setting_count = 2
+settings/0/target_node = NodePath("../../../hand_l")
+settings/0/pole_node = NodePath("../../../pole_l")
+settings/0/root_bone_name = "upper_arm.L"
+settings/0/root_bone = 0
+settings/0/middle_bone_name = "forearm.L"
+settings/0/middle_bone = 1
+settings/0/pole_direction = 6
+settings/0/end_bone_name = "hand.L"
+settings/0/end_bone = 2
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+settings/1/target_node = NodePath("../../../hand_r")
+settings/1/pole_node = NodePath("../../../pole_r")
+settings/1/root_bone_name = "upper_arm.R"
+settings/1/root_bone = 3
+settings/1/middle_bone_name = "forearm.R"
+settings/1/middle_bone = 4
+settings/1/pole_direction = 6
+settings/1/end_bone_name = "hand.R"
+settings/1/end_bone = 5
+settings/1/use_virtual_end = false
+settings/1/extend_end_bone = false
+
+[node name="copy_hands" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="3" unique_id=1995168006]
+setting_count = 2
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "hand.L"
+settings/0/apply_bone = 2
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../hand_l")
+settings/1/amount = 1.0
+settings/1/apply_bone_name = "hand.R"
+settings/1/apply_bone = 5
+settings/1/reference_type = 1
+settings/1/reference_node = NodePath("../../../hand_r")
+settings/0/copy = 7
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+settings/1/copy = 7
+settings/1/axes = 7
+settings/1/invert = 0
+settings/1/additive = false
+
+[node name="arm_l" type="Marker3D" parent="." index="1" unique_id=1944568470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18437883, 0, 0)
+
+[node name="pole_l" type="Marker3D" parent="." index="2" unique_id=160686591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50993204, 0, -0.26076)
+
+[node name="hand_l" type="Marker3D" parent="." index="3" unique_id=897268420]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.7270578, 0, 0)
+
+[node name="arm_r" type="Marker3D" parent="." index="4" unique_id=1314144981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184, 0, 0)
+
+[node name="pole_r" type="Marker3D" parent="." index="5" unique_id=1465053811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 0, -0.261)
+
+[node name="hand_r" type="Marker3D" parent="." index="6" unique_id=1139948335]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.727, 0, 0)

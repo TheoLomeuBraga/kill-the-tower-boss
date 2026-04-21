@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dqoy4sfpn04u4"]
+
+[ext_resource type="PackedScene" uid="uid://dvt2vf5xps1ef" path="res://player/guns/gun_animations.glb" id="1_48oxl"]
+[ext_resource type="Script" uid="uid://xxmk7o3vw7pm" path="res://player/guns/gun_animations.gd" id="2_11vt6"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_11vt6"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6g0na"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1avwm"]
+animation = &"drop_wepon"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8lve"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_11vt6"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1avwm"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6g0na"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5epvn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_11vt6"]
+graph_offset = Vector2(-231.16058, 16.322968)
+nodes/output/position = Vector2(1240, 100)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_e8lve")
+nodes/Animation/position = Vector2(-320, -60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_11vt6")
+"nodes/Animation 2/position" = Vector2(-420, 180)
+nodes/walk/node = SubResource("AnimationNodeBlend2_6g0na")
+nodes/walk/position = Vector2(20, 60)
+nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_5epvn")
+nodes/walk_speed/position = Vector2(-180, 220)
+nodes/fall/node = SubResource("AnimationNodeOneShot_1avwm")
+nodes/fall/position = Vector2(400, 60)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6g0na")
+"nodes/Animation 3/position" = Vector2(120, 320)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_1avwm")
+"nodes/Animation 4/position" = Vector2(500, 360)
+nodes/drop_wepon_estate/node = SubResource("AnimationNodeBlend2_11vt6")
+nodes/drop_wepon_estate/position = Vector2(848.29333, 179.49983)
+node_connections = [&"output", 0, &"drop_wepon_estate", &"walk", 0, &"Animation", &"walk", 1, &"walk_speed", &"walk_speed", 0, &"Animation 2", &"fall", 0, &"walk", &"fall", 1, &"Animation 3", &"drop_wepon_estate", 0, &"fall", &"drop_wepon_estate", 1, &"Animation 4"]
+
+[node name="gun_animations" unique_id=1748344616 instance=ExtResource("1_48oxl")]
+script = ExtResource("2_11vt6")
+walk_speed = 0.0
+
+[node name="gun" parent="." index="0" unique_id=1217684163]
+transform = Transform3D(0.9999999, 0.00041226667, 5.1796913e-05, -0.00041225186, 0.9999998, -0.00028531277, -5.191453e-05, 0.00028529135, 0.99999994, 0, -0.0055768476, 0)
+visible = false
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=676520534]
+tree_root = SubResource("AnimationNodeBlendTree_11vt6")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk/blend_amount = 0.0
+parameters/walk_speed/scale = 1.0
+parameters/fall/active = false
+parameters/fall/internal_active = false
+parameters/fall/request = 0
+parameters/drop_wepon_estate/blend_amount = 0.0
