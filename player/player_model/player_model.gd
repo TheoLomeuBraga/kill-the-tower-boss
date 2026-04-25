@@ -6,6 +6,12 @@ class_name PlayerModel
 @export var gun_animations : GunAnimations
 @export var gun : GunModel
 
+@export var gun_animator_rotation : Vector3 :
+	set(value):
+		gun_animator_rotation = value
+		if gun_animations != null:
+			gun_animations.rotation = value
+
 
 func _process(delta: float) -> void:
 	if arms != null and gun_animations != null and gun != null:

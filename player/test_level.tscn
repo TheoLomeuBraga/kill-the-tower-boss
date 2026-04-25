@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bnyv171ibdwx3"]
+
+[ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_o7vyq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tmcpo"]
+sky_material = SubResource("ProceduralSkyMaterial_3ala8")
+
+[sub_resource type="Environment" id="Environment_b2evb"]
+background_mode = 2
+sky = SubResource("Sky_tmcpo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7vyq"]
+albedo_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
+
+[node name="TestLevel" type="Node3D" unique_id=1204845559]
+
+[node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_o7vyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1458458533]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1713908811]
+environment = SubResource("Environment_b2evb")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=910861654]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=294618151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(100, 2, 100)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=857560388]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -0.25, 0, 1, -1.0927847e-08, 4, 0, 0)
+radius = 2.0
+material = SubResource("StandardMaterial3D_o7vyq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1328798231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+size = Vector3(7, 4, 1)
+material = SubResource("StandardMaterial3D_o7vyq")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=491666702]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -5, 1.5, -4)
+size = Vector3(7, 4, 1)
+material = SubResource("StandardMaterial3D_o7vyq")
