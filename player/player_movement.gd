@@ -25,6 +25,7 @@ func try_jump() -> void:
 @export_category("grapple estate")
 
 @export var grapple_length : float = 2.0
+@export var grapple_range : float = 10.0
 @export var grapple_stffness : float = 10.0
 @export var grapple_damping : float = 1.0
 @export var grapple_raycast : RayCast3D
@@ -39,8 +40,6 @@ func grapple_estate(delta : float) -> void:
 	
 	body.velocity.y -= gravity * delta
 	
-	# https://www.youtube.com/watch?v=yWRHMOqoxGM
-	
 	var t_dir : Vector3 = body.global_position.direction_to(grapple_place)
 	var t_dis : float = body.global_position.distance_to(grapple_place)
 	
@@ -48,7 +47,7 @@ func grapple_estate(delta : float) -> void:
 	
 	var force : Vector3 = Vector3.ZERO
 	
-	if displacement > 0.0:
+	if displacement > 0.0 and t_dis < grapple_range:
 		var sf_magnetude : float = grapple_stffness * displacement
 		var sf : Vector3 = t_dir * sf_magnetude
 		
@@ -56,7 +55,9 @@ func grapple_estate(delta : float) -> void:
 		var danping : Vector3 = -grapple_damping * vel_dot * t_dir
 		
 		force = sf + danping
-		
+	
+	
+	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	
 	body.velocity += force * delta
 	
@@ -136,6 +137,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#debug
-	
+	'''
 	if Input.is_action_just_pressed("shot"):
 		launch_grapple()
+	'''
