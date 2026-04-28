@@ -15,10 +15,11 @@ texture_filter = 2
 [node name="arms" unique_id=1183301295 instance=ExtResource("1_t5sdq")]
 script = ExtResource("2_lu0cu")
 
-[node name="Cube" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="0" unique_id=1976606373]
+[node name="Cube" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(247629277) index="0" unique_id=209603851]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_lu0cu")
 
-[node name="copy_arms" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="1" unique_id=1478431348]
+[node name="copy_arms" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(247629277) index="1" unique_id=1478431348]
 setting_count = 2
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "upper_arm.L"
@@ -39,7 +40,7 @@ settings/1/axes = 7
 settings/1/invert = 0
 settings/1/additive = false
 
-[node name="arms" type="TwoBoneIK3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="2" unique_id=1475798260]
+[node name="arms" type="TwoBoneIK3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(247629277) index="2" unique_id=1475798260]
 setting_count = 2
 settings/0/target_node = NodePath("../../../hand_l")
 settings/0/pole_node = NodePath("../../../pole_l")
@@ -64,7 +65,7 @@ settings/1/end_bone = 5
 settings/1/use_virtual_end = false
 settings/1/extend_end_bone = false
 
-[node name="copy_hands" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(1837075673) index="3" unique_id=1995168006]
+[node name="copy_hands" type="CopyTransformModifier3D" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(247629277) index="3" unique_id=1995168006]
 setting_count = 2
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "hand.L"

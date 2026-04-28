@@ -19,7 +19,3 @@ walk_speed = 2.0
 
 [node name="pistol" parent="." unique_id=1690220103 instance=ExtResource("4_qu0w5")]
 transform = Transform3D(0.9999999, 0.00033356211, 4.188193e-05, -0.00033355242, 0.99999994, -0.00023083377, -4.1958916e-05, 0.00023081979, 1, -0.181618, 0.02827151, 0.16970591)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2001919995]
-transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, 0, 0.23324338, 0)
-fov = 90.0

@@ -1,8 +1,26 @@
 [gd_scene format=3 uid="uid://cmovbyta1eiev"]
 
 [ext_resource type="Script" uid="uid://hird11mmihta" path="res://player/player_movement.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://cy1o6s4fa4vaf" path="res://player/player_model/player_model.tscn" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://player/gun_data/gun_info.gd" id="3_qjkh3"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://player/gun_data/bullet_info.gd" id="4_g6k8r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
+
+[sub_resource type="Resource" id="Resource_boad6"]
+script = ExtResource("4_g6k8r")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_rgyib"]
+script = ExtResource("3_qjkh3")
+bullet_info = SubResource("Resource_boad6")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_hg6s5"]
+script = ExtResource("3_qjkh3")
+special_type = "grapple"
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [node name="Player" type="CharacterBody3D" unique_id=696039800]
 
@@ -14,6 +32,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 fov = 90.0
 near = 0.001
 
-[node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera")]
+[node name="PlayerModel" parent="Camera3D" unique_id=83597824 instance=ExtResource("1_rkbax")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.23062402, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
+target_position = Vector3(0, 0, -100)
+
+[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "model")]
+script = ExtResource("2_g1dw6")
+body = NodePath("../..")
+model = NodePath("../PlayerModel")
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
+
+[node name="HUD" type="Control" parent="." unique_id=627942019]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD" unique_id=145619763]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cross" type="Label" parent="HUD/CenterContainer" unique_id=1363262926]
+layout_mode = 2
+text = "+"
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast")]
 script = ExtResource("1_oul6g")
 camera = NodePath("../Camera3D")
+model = NodePath("../Camera3D/PlayerModel")
+grapple_raycast = NodePath("../Camera3D/RayCast3D")

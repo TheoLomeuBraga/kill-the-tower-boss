@@ -4,6 +4,8 @@ class_name GunModel
 
 @export var gun : Node3D
 
+@export var muzle : Node3D
+
 @export var arm_l : Node3D
 @export var pole_l : Node3D
 @export var hand_l : Node3D

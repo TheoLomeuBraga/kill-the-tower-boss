@@ -12,6 +12,8 @@ var floor_recently : float = 0.0
 @export_category("geral")
 @export var camera : Camera3D
 
+@export var model : PlayerModel
+
 @export var forgiveness_time : float = 0.2
 
 @export var jump_power : float = 4.0
@@ -19,6 +21,47 @@ var floor_recently : float = 0.0
 func try_jump() -> void:
 	if jump_recently > 0.0 and floor_recently > 0.0:
 		body.velocity.y = jump_power
+
+@export_category("grapple estate")
+
+@export var grapple_length : float = 2.0
+@export var grapple_stffness : float = 10.0
+@export var grapple_damping : float = 1.0
+@export var grapple_raycast : RayCast3D
+var grapple_place : Vector3
+
+func launch_grapple() -> void:
+	if grapple_raycast.is_colliding():
+		grapple_place = grapple_raycast.get_collision_point()
+		estate = grapple_estate
+
+func grapple_estate(delta : float) -> void:
+	
+	body.velocity.y -= gravity * delta
+	
+	# https://www.youtube.com/watch?v=yWRHMOqoxGM
+	
+	var t_dir : Vector3 = body.global_position.direction_to(grapple_place)
+	var t_dis : float = body.global_position.distance_to(grapple_place)
+	
+	var displacement : float = t_dis - grapple_length
+	
+	var force : Vector3 = Vector3.ZERO
+	
+	if displacement > 0.0:
+		var sf_magnetude : float = grapple_stffness * displacement
+		var sf : Vector3 = t_dir * sf_magnetude
+		
+		var vel_dot : float = body.velocity.dot(t_dir)
+		var danping : Vector3 = -grapple_damping * vel_dot * t_dir
+		
+		force = sf + danping
+		
+	
+	body.velocity += force * delta
+	
+	if not Input.is_action_pressed("shot"):
+		estate = air_estate
 
 @export_category("air estate")
 
@@ -71,7 +114,8 @@ func camera_process(delta : float) -> void:
 
 
 func _ready() -> void:
-	pass
+	if grapple_raycast != null:
+		grapple_raycast.add_exception(body)
 
 
 
@@ -89,3 +133,9 @@ func _physics_process(delta: float) -> void:
 	
 	jump_recently -= delta
 	floor_recently -= delta
+	
+	
+	#debug
+	
+	if Input.is_action_just_pressed("shot"):
+		launch_grapple()
