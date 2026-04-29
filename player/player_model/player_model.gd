@@ -32,13 +32,26 @@ var drop_wepon_tween : Tween
 
 func set_gun( name : String ) -> void:
 	if guns_models.has(name):
+		
+		if drop_wepon_tween != null:
+			drop_wepon_tween.stop()
+		
+		gun_animations.drop_wepon_estate = 1.0
+		
 		gun.queue_free()
 		gun = guns_models[name].instantiate()
+		gun.visible = false
+		arms.visible = false
 		add_child(gun)
 		
 		drop_wepon_tween = create_tween()
 		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 0.0, 0.5)
-		#gun_animations.drop_wepon_estate = 0.0
+		
+		await get_tree().create_timer(0.1).timeout
+		gun.visible = true
+		arms.visible = true
+		
+		
 	else:
 		drop_wepon_tween = create_tween()
 		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 1.0, 0.5)

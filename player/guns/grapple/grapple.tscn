@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dgt6fy64slmks" path="res://player/guns/grapple/grapple.glb" id="1_ox12o"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_0cnga"]
 
-[node name="grapple" unique_id=381191971 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r") instance=ExtResource("1_ox12o")]
+[node name="grapple" unique_id=869399940 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_ox12o")]
 script = ExtResource("2_0cnga")
 gun = NodePath("Armature")
 muzle = NodePath("Armature/Skeleton3D/Bone/muzle")
@@ -13,12 +13,15 @@ hand_l = NodePath("hand_l")
 arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
+animation_player = NodePath("AnimationPlayer")
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1789606940) index="0" unique_id=2005046299]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="0" unique_id=1991105473]
 cast_shadow = 0
 
-[node name="Cylinder" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1789606940) index="1" unique_id=1645523518]
+[node name="Cylinder" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="1" unique_id=1976997781]
+visible = false
 cast_shadow = 0
 
-[node name="Plane" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1789606940) index="4" unique_id=1935118679]
+[node name="Plane" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="4" unique_id=1930461085]
+visible = false
 cast_shadow = 0

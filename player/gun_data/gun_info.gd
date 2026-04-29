@@ -1,6 +1,7 @@
 extends Resource
 class_name GunInfo
 
+@export var name : String
 @export var special_type : String = ""
 
 @export var bullets_per_shot : int = 1

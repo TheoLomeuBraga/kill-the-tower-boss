@@ -25,16 +25,20 @@ func try_jump() -> void:
 @export_category("grapple estate")
 
 @export var grapple_length : float = 2.0
-@export var grapple_range : float = 10.0
+@export var grapple_range : float = 20.0
 @export var grapple_stffness : float = 10.0
 @export var grapple_damping : float = 1.0
 @export var grapple_raycast : RayCast3D
+@export var grapple_hope : Node3D
 var grapple_place : Vector3
 
 func launch_grapple() -> void:
 	if grapple_raycast.is_colliding():
 		grapple_place = grapple_raycast.get_collision_point()
 		estate = grapple_estate
+		grapple_hope.visible = true
+		
+		body.motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
 
 func grapple_estate(delta : float) -> void:
 	
@@ -57,12 +61,19 @@ func grapple_estate(delta : float) -> void:
 		force = sf + danping
 	
 	
+	grapple_hope.global_position = model.gun.muzle.global_position
+	grapple_hope.look_at(grapple_place)
+	grapple_hope.scale.z = grapple_hope.global_position.distance_to(grapple_place)
+	
+	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	
 	body.velocity += force * delta
 	
 	if not Input.is_action_pressed("shot"):
 		estate = air_estate
+		grapple_hope.visible = false
+		body.motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED
 
 @export_category("air estate")
 
@@ -97,7 +108,7 @@ func floor_estate(delta : float) -> void:
 @export_category("camera")
 
 @export var mouse_sensitivity : float = 0.01
-@export var joystick_sensitivity : float = 12.0
+@export var joystick_sensitivity : float = 6.0
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -107,8 +118,8 @@ func _input(event: InputEvent) -> void:
 
 func camera_process(delta : float) -> void:
 	
-	body.rotation.y += delta * Input.get_axis("look_right","look_left")
-	camera.rotation.x += delta * Input.get_axis("look_down","look_up")
+	body.rotation.y += delta * Input.get_axis("look_right","look_left") * joystick_sensitivity
+	camera.rotation.x += delta * Input.get_axis("look_down","look_up") * joystick_sensitivity
 	
 	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x,-90,90)
 

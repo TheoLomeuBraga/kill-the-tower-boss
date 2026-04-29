@@ -14,13 +14,26 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
 script = ExtResource("3_qjkh3")
+name = "pistol"
 bullet_info = SubResource("Resource_boad6")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]
 script = ExtResource("3_qjkh3")
+name = "grapple"
 special_type = "grapple"
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]
+albedo_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qjkh3"]
+material = SubResource("StandardMaterial3D_qjkh3")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.0
+radial_segments = 4
+rings = 0
 
 [node name="Player" type="CharacterBody3D" unique_id=696039800]
 
@@ -38,10 +51,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
 target_position = Vector3(0, 0, -100)
 
-[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "model")]
+[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model")]
 script = ExtResource("2_g1dw6")
 body = NodePath("../..")
-model = NodePath("../PlayerModel")
+player_movement = NodePath("../../PlayerMovement")
+player_model = NodePath("../PlayerModel")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
 
 [node name="HUD" type="Control" parent="." unique_id=627942019]
@@ -64,8 +78,17 @@ grow_vertical = 2
 layout_mode = 2
 text = "+"
 
-[node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast")]
+[node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast", "grapple_hope")]
 script = ExtResource("1_oul6g")
 camera = NodePath("../Camera3D")
 model = NodePath("../Camera3D/PlayerModel")
 grapple_raycast = NodePath("../Camera3D/RayCast3D")
+grapple_hope = NodePath("../grapple_hope")
+
+[node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
+visible = false
+
+[node name="grapple_hope" type="MeshInstance3D" parent="grapple_hope" unique_id=1792813853]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.5)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_qjkh3")

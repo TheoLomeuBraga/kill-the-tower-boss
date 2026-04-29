@@ -30,13 +30,15 @@ var is_shoting : bool = false
 @export var shot : bool : 
 	set(value):
 		
-		if is_auto:
-			shot = value
-			if value:
-				animation_player.play(shot_animation)
+		if animation_player != null:
+		
+			if is_auto:
+				shot = value
+				if value:
+					animation_player.play(shot_animation)
+				else:
+					animation_player.stop()
 			else:
 				animation_player.stop()
-		else:
-			animation_player.stop()
-			animation_player.play(shot_animation)
+				animation_player.play(shot_animation)
 			
