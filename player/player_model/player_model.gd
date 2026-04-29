@@ -25,4 +25,21 @@ func _process(delta: float) -> void:
 		arms.pole_r.global_transform = gun.pole_r.global_transform
 		arms.hand_r.global_transform = gun.hand_r.global_transform
 		
+
+@export var guns_models : Dictionary[String,PackedScene]
+
+var drop_wepon_tween : Tween
+
+func set_gun( name : String ) -> void:
+	if guns_models.has(name):
+		gun.queue_free()
+		gun = guns_models[name].instantiate()
+		add_child(gun)
 		
+		drop_wepon_tween = create_tween()
+		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 0.0, 0.5)
+		#gun_animations.drop_wepon_estate = 0.0
+	else:
+		drop_wepon_tween = create_tween()
+		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 1.0, 0.5)
+	

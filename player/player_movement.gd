@@ -115,6 +115,7 @@ func camera_process(delta : float) -> void:
 
 
 func _ready() -> void:
+	model.set_gun("pistol")
 	if grapple_raycast != null:
 		grapple_raycast.add_exception(body)
 

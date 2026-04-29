@@ -11,6 +11,11 @@ animation = &"fall"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1avwm"]
 animation = &"drop_wepon"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8lve"]
 animation = &"idle"
@@ -18,15 +23,13 @@ animation = &"idle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_11vt6"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1avwm"]
-fadein_time = 0.1
-fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6g0na"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5epvn"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_11vt6"]
-graph_offset = Vector2(-231.16058, 16.322968)
+graph_offset = Vector2(361.14178, 149.85822)
 nodes/output/position = Vector2(1240, 100)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_e8lve")
 nodes/Animation/position = Vector2(-320, -60)
@@ -48,10 +51,9 @@ node_connections = [&"output", 0, &"drop_wepon_estate", &"walk", 0, &"Animation"
 
 [node name="gun_animations" unique_id=1748344616 instance=ExtResource("1_48oxl")]
 script = ExtResource("2_11vt6")
-walk_speed = 0.0
 
 [node name="gun" parent="." index="0" unique_id=1217684163]
-transform = Transform3D(0.9999999, 0.00041226667, 5.1796913e-05, -0.00041225186, 0.9999998, -0.00028531277, -5.191453e-05, 0.00028529135, 0.99999994, 0, -0.0055768476, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.49178916, -0.87071425, 0, 0.87071425, 0.49178916, 0, -0.22471148, -0.4540035)
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=676520534]
@@ -62,4 +64,4 @@ parameters/walk_speed/scale = 1.0
 parameters/fall/active = false
 parameters/fall/internal_active = false
 parameters/fall/request = 0
-parameters/drop_wepon_estate/blend_amount = 0.0
+parameters/drop_wepon_estate/blend_amount = 1.0

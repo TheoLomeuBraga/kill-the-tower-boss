@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0r50bboxsx0q" path="res://player/arms/arms.tscn" id="1_15fux"]
 [ext_resource type="Script" uid="uid://bphhxxguvjf8e" path="res://player/player_model/player_model.gd" id="1_r5r3n"]
+[ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="2_hk2sv"]
 [ext_resource type="PackedScene" uid="uid://dqoy4sfpn04u4" path="res://player/guns/gun_animations.tscn" id="2_qfpg1"]
 [ext_resource type="PackedScene" uid="uid://dalblk3e3mj8q" path="res://player/guns/grapple/grapple.tscn" id="4_qu0w5"]
 
@@ -10,6 +11,10 @@ script = ExtResource("1_r5r3n")
 arms = NodePath("arms")
 gun_animations = NodePath("gun_animations")
 gun = NodePath("grapple")
+guns_models = Dictionary[String, PackedScene]({
+"graple": ExtResource("4_qu0w5"),
+"pistol": ExtResource("2_hk2sv")
+})
 
 [node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
 
@@ -17,4 +22,4 @@ gun = NodePath("grapple")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181618, -0.06737061, 0.39411506)
 walk_speed = 2.0
 
-[node name="grapple" parent="." unique_id=423648041 instance=ExtResource("4_qu0w5")]
+[node name="grapple" parent="." unique_id=279339877 instance=ExtResource("4_qu0w5")]

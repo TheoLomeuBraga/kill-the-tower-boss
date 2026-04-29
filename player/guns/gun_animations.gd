@@ -18,7 +18,7 @@ class_name GunAnimations
 		if animation_tree != null:
 			animation_tree.set("parameters/walk_speed/scale",value)
 
-@export_range(0.0,1.0) var drop_wepon_estate : float = false:
+@export_range(0.0,1.0) var drop_wepon_estate : float = 1.0:
 	set(value):
 		drop_wepon_estate = value
 		if animation_tree != null:
