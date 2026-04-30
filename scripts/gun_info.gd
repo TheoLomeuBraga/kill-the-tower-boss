@@ -10,4 +10,4 @@ class_name GunInfo
 @export var reload_time : float = 2.0
 @export var spread : float = 0.2
 
-@export var bullet_info : BulletInfo = BulletInfo.new()
+@export var projectile_info : ProjectileInfo = ProjectileInfo.new()

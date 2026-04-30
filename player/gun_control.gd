@@ -8,7 +8,7 @@ class_name GunControl
 @export var inventory : Array[GunInfo]
 @export var current_wepon : int = 0
 
-
+@export var target_raycast : RayCast3D
 
 func set_gun(no : int) -> void:
 	if current_wepon == min(no,inventory.size() -1):
@@ -20,6 +20,17 @@ func shot() -> void:
 	player_model.gun.shot = true
 	if inventory[current_wepon].special_type == "grapple":
 		player_movement.launch_grapple()
+	else:
+		var projectile : ProjectBehavior = ProjectBehavior.new()
+		add_child(projectile)
+		projectile.global_position = player_model.gun.muzle.global_position
+		if target_raycast.is_colliding():
+			projectile.look_at(target_raycast.get_collision_point())
+		else:
+			projectile.global_basis = player_model.gun.muzle.global_basis
+		
+		projectile.data = inventory[current_wepon].projectile_info
+		projectile.start()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("wepon_1"):

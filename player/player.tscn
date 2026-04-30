@@ -3,19 +3,32 @@
 [ext_resource type="Script" uid="uid://hird11mmihta" path="res://player/player_movement.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cy1o6s4fa4vaf" path="res://player/player_model/player_model.tscn" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
-[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://player/gun_data/gun_info.gd" id="3_qjkh3"]
-[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://player/gun_data/bullet_info.gd" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6k8r"]
+shading_mode = 0
+albedo_color = Color(0.68235296, 0.6039216, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g6k8r"]
+material = SubResource("StandardMaterial3D_g6k8r")
+radius = 0.04
+height = 0.08
+radial_segments = 4
+rings = 1
+
 [sub_resource type="Resource" id="Resource_boad6"]
-script = ExtResource("4_g6k8r")
+script = ExtResource("4_qjkh3")
+speed = 10.0
+mesh = SubResource("SphereMesh_g6k8r")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
 script = ExtResource("3_qjkh3")
 name = "pistol"
-bullet_info = SubResource("Resource_boad6")
+projectile_info = SubResource("Resource_boad6")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]
@@ -51,12 +64,13 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
 target_position = Vector3(0, 0, -100)
 
-[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model")]
+[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model", "target_raycast")]
 script = ExtResource("2_g1dw6")
 body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
+target_raycast = NodePath("../RayCast3D")
 
 [node name="HUD" type="Control" parent="." unique_id=627942019]
 layout_mode = 3
