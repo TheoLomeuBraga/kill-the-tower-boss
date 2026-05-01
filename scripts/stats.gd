@@ -5,8 +5,10 @@ signal healed(int)
 signal damaged(int)
 signal dead()
 
-var max_health : int = 100
-var health : int = 100 : 
+@export var faction : GlobalEnums.Faction = GlobalEnums.Faction.ENEMY
+
+@export var max_health : int = 100
+@export var health : int = 100 : 
 	set(value):
 		
 		if value == health:

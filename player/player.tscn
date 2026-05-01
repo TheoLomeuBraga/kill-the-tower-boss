@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -64,11 +65,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
 target_position = Vector3(0, 0, -100)
 
-[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model", "target_raycast")]
+[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model", "camera", "target_raycast")]
 script = ExtResource("2_g1dw6")
 body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
+camera = NodePath("..")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 
@@ -98,6 +100,11 @@ camera = NodePath("../Camera3D")
 model = NodePath("../Camera3D/PlayerModel")
 grapple_raycast = NodePath("../Camera3D/RayCast3D")
 grapple_hope = NodePath("../grapple_hope")
+
+[node name="Stats" type="Node" parent="." unique_id=598903094]
+script = ExtResource("6_g6k8r")
+faction = 0
+metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
 visible = false

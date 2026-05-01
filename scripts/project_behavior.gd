@@ -19,6 +19,11 @@ func start() -> void:
 	else:
 		pass
 
+func check_colision() -> void:
+	if data.speed < 0.0:
+		pass
+	else:
+		pass
 
 func _physics_process(delta: float) -> void:
 	if data.speed < 0.0:

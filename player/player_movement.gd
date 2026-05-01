@@ -33,7 +33,7 @@ func try_jump() -> void:
 var grapple_place : Vector3
 
 func launch_grapple() -> void:
-	if grapple_raycast.is_colliding():
+	if grapple_raycast.is_colliding() and grapple_raycast.get_collision_point().distance_to(body.global_position) < grapple_range:
 		grapple_place = grapple_raycast.get_collision_point()
 		estate = grapple_estate
 		grapple_hope.visible = true
@@ -51,7 +51,7 @@ func grapple_estate(delta : float) -> void:
 	
 	var force : Vector3 = Vector3.ZERO
 	
-	if displacement > 0.0 and t_dis < grapple_range:
+	if displacement > 0.0:
 		var sf_magnetude : float = grapple_stffness * displacement
 		var sf : Vector3 = t_dir * sf_magnetude
 		
