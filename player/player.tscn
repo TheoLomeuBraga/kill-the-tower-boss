@@ -29,6 +29,8 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [sub_resource type="Resource" id="Resource_rgyib"]
 script = ExtResource("3_qjkh3")
 name = "pistol"
+fire_rate = 0.1
+spread = 0.01
 projectile_info = SubResource("Resource_boad6")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 

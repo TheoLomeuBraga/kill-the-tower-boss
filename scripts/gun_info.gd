@@ -9,6 +9,7 @@ class_name GunInfo
 @export var fire_rate : float = 0.25
 @export var reload_time : float = 2.0
 @export var spread : float = 0.2
+@export var is_automatic :  bool = false
 
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
 
