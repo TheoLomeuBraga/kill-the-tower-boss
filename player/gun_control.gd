@@ -26,7 +26,9 @@ func shot() -> void:
 	else:
 		var projectile : ProjectBehavior = ProjectBehavior.new()
 		add_child(projectile)
-		projectile.global_position = player_model.gun.muzle.global_position
+		#projectile.global_position = player_model.gun.muzle.global_position
+		projectile.global_position = camera.global_position
+		projectile.muzle_position = player_model.gun.muzle.global_position
 		if target_raycast.is_colliding():
 			projectile.look_at(target_raycast.get_collision_point())
 		else:

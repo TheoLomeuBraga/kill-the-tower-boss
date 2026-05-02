@@ -113,6 +113,7 @@ previous_wepon={
 
 [physics]
 
+common/physics_ticks_per_second=80
 3d/physics_engine="Jolt Physics"
 
 [rendering]

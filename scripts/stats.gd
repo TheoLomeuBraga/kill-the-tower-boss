@@ -16,13 +16,12 @@ signal dead()
 		
 		var new_health : int = clamp(value,0,max_health)
 		
-		if new_health > health:
-			damaged.emit(abs(new_health - health))
-		elif new_health < health:
-			healed.emit(abs(new_health - health))
+		if new_health < health:
+			damaged.emit(abs(value - health))
+		elif new_health > health:
+			healed.emit(abs(value - health))
 		if new_health == 0:
 			dead.emit()
-		
 		
 		health = new_health
 		

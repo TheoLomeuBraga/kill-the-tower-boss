@@ -47,7 +47,7 @@ func set_gun( name : String ) -> void:
 		drop_wepon_tween = create_tween()
 		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 0.0, 0.5)
 		
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().process_frame
 		gun.visible = true
 		arms.visible = true
 		

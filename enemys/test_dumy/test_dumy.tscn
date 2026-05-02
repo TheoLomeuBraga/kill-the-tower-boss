@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bm6p8wr7dadkh"]
+
+[ext_resource type="PackedScene" uid="uid://bxswmx2s7odpf" path="res://enemys/test_dumy/test_dumy.glb" id="1_dv2w2"]
+[ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="1_ec0n2"]
+[ext_resource type="Script" uid="uid://0kuh1v4sq7fx" path="res://enemys/test_dumy/test_dumy.gd" id="1_gx2jf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ec0n2"]
+radius = 0.23291016
+height = 0.810791
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dv2w2"]
+height = 0.65093994
+radius = 0.06689453
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gx2jf"]
+height = 0.1857605
+radius = 0.52490234
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7utr6"]
+radius = 0.20344642
+
+[node name="TestDumy" type="CharacterBody3D" unique_id=1462727494]
+script = ExtResource("1_gx2jf")
+
+[node name="test_dumy" parent="." unique_id=409390310 instance=ExtResource("1_dv2w2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="torso_col" type="CollisionShape3D" parent="." unique_id=1537930794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.023814917, 0)
+shape = SubResource("CapsuleShape3D_ec0n2")
+
+[node name="legs_col" type="CollisionShape3D" parent="." unique_id=194644593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67453, 0)
+shape = SubResource("CylinderShape3D_dv2w2")
+
+[node name="legs_col2" type="CollisionShape3D" parent="." unique_id=1888252745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99342954, 0)
+shape = SubResource("CylinderShape3D_gx2jf")
+
+[node name="head_col" type="CollisionShape3D" parent="." unique_id=289195537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6141288, 0)
+shape = SubResource("SphereShape3D_7utr6")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1592606525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "hello"
+
+[node name="Stats" type="Node" parent="." unique_id=176740351]
+script = ExtResource("1_ec0n2")
+metadata/_custom_type_script = "uid://u7trxdlheisb"
+
+[connection signal="damaged" from="Stats" to="." method="recive_damage"]

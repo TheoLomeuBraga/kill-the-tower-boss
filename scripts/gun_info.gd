@@ -11,3 +11,5 @@ class_name GunInfo
 @export var spread : float = 0.2
 
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
+
+@export var shot_sound : AudioStream

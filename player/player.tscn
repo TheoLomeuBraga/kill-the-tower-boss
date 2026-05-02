@@ -74,6 +74,8 @@ camera = NodePath("..")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 
+[node name="GunSound" type="AudioStreamPlayer" parent="Camera3D/GunControl" unique_id=1343777989]
+
 [node name="HUD" type="Control" parent="." unique_id=627942019]
 layout_mode = 3
 anchors_preset = 15

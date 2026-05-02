@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnyv171ibdwx3"]
 
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_o7vyq"]
+[ext_resource type="PackedScene" uid="uid://bm6p8wr7dadkh" path="res://enemys/test_dumy/test_dumy.tscn" id="2_3ala8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,6 +30,9 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1713908811]
 environment = SubResource("Environment_b2evb")
+
+[node name="TestDymy" parent="." unique_id=1462727494 instance=ExtResource("2_3ala8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=910861654]
 use_collision = true
