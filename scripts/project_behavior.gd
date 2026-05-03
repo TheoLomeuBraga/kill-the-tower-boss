@@ -21,12 +21,14 @@ func start() -> void:
 	else:
 		model = MeshInstance3D.new()
 		model.mesh = data.mesh
+		model.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(model)
 		
 		shape = ShapeCast3D.new()
 		add_child(shape)
 		shape.shape = SphereShape3D.new()
 		shape.shape.radius = data.radius
+		shape.target_position = Vector3.ZERO
 		
 		model.global_position = muzle_position
 
@@ -48,7 +50,12 @@ func check_colision() -> void:
 					break
 				else:
 					if data.faction != stats.faction:
-						stats.health -= data.damage
+						var target : Node3D = ray.get_collider()
+						var shape_id : int = ray.get_collider_shape()
+						var owner_id : int = target.shape_find_owner(shape_id)
+						var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
+
+						stats.health -= stats.calculate_damage_on(data.damage,col_shape)
 						queue_free()
 						break
 					else:
@@ -62,7 +69,13 @@ func check_colision() -> void:
 			var stats : Stats = get_stats_from_node(shape.get_collider(i))
 			if stats != null:
 				if data.faction != stats.faction:
-					stats.health -= data.damage
+					
+					var target : Node3D = shape.get_collider(i)
+					var shape_id : int = shape.get_collider_shape(i)
+					var owner_id : int = target.shape_find_owner(shape_id)
+					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
+					
+					stats.health -= stats.calculate_damage_on(data.damage,col_shape)
 					queue_free()
 					break
 				else:
@@ -85,4 +98,4 @@ func _process(delta: float) -> void:
 	if data.speed < 0.0:
 		pass
 	else:
-		model.position = model.position.move_toward(shape.position,delta * data.speed)
+		model.position = model.position.move_toward(shape.position,delta * (data.speed / 2.0))

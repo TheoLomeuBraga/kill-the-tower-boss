@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67453, 0)
 shape = SubResource("CylinderShape3D_dv2w2")
 
 [node name="legs_col2" type="CollisionShape3D" parent="." unique_id=1888252745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99342954, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9488269, 0)
 shape = SubResource("CylinderShape3D_gx2jf")
 
 [node name="head_col" type="CollisionShape3D" parent="." unique_id=289195537]
@@ -46,8 +46,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "hello"
 
-[node name="Stats" type="Node" parent="." unique_id=176740351]
+[node name="Stats" type="Node" parent="." unique_id=176740351 node_paths=PackedStringArray("multplyer_areas")]
 script = ExtResource("1_ec0n2")
+multplyer_areas = {
+NodePath("../head_col"): 2.0,
+NodePath("../legs_col"): 0.5,
+NodePath("../legs_col2"): 0.5
+}
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [connection signal="damaged" from="Stats" to="." method="recive_damage"]

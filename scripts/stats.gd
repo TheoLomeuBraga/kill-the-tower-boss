@@ -16,13 +16,22 @@ signal dead()
 		
 		var new_health : int = clamp(value,0,max_health)
 		
-		if new_health < health:
+		if value < health:
 			damaged.emit(abs(value - health))
-		elif new_health > health:
+		elif value > health:
 			healed.emit(abs(value - health))
-		if new_health == 0:
+		if value == 0:
 			dead.emit()
 		
 		health = new_health
 		
 		
+
+@export var multplyer_areas : Dictionary[CollisionShape3D,float]
+
+func calculate_damage_on(damage:int,area:CollisionShape3D) -> float:
+	
+	if multplyer_areas.has(area):
+		return int(float(damage) * multplyer_areas[area])
+	
+	return damage
