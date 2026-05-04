@@ -56,3 +56,6 @@ func set_gun( name : String ) -> void:
 		drop_wepon_tween = create_tween()
 		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 1.0, 0.5)
 	
+
+func reload() -> void:
+	gun.reload = true

@@ -7,25 +7,65 @@ class_name GunControl
 @export var camera : Camera3D
 
 @export var inventory : Array[GunInfo]
-@export var current_wepon : int = 0
+var current_wepon_id : int = 0
+var current_wepon : GunInfo
 
 @export var target_raycast : RayCast3D
+
+const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
+	GlobalEnums.AmmonType.PISTOL: 100,
+	GlobalEnums.AmmonType.RIFLE: 20,
+	GlobalEnums.AmmonType.SHOTGUN: 50,
+	GlobalEnums.AmmonType.ENERGY: 200,
+	GlobalEnums.AmmonType.EXPLOSIVE: 5,
+}
+
+var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
+	GlobalEnums.AmmonType.PISTOL: 100,
+	GlobalEnums.AmmonType.RIFLE: 20,
+	GlobalEnums.AmmonType.SHOTGUN: 50,
+	GlobalEnums.AmmonType.ENERGY: 200,
+	GlobalEnums.AmmonType.EXPLOSIVE: 5,
+}
+
+var ammon_on_mag : Dictionary[GunInfo,int]
+func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
+	ammon_on_mag[gun_info] = amount
+
+func get_ammon_on_mag(gun_info : GunInfo) -> int:
+	if not ammon_on_mag.has(gun_info):
+		set_ammon_on_mag(gun_info,gun_info.ammon_capacity)
+	return ammon_on_mag[gun_info]
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var time_last_shot : float = 0.0
 
 func set_gun(no : int) -> void:
-	if current_wepon == min(no,inventory.size() -1):
+	
+	current_wepon = inventory[current_wepon_id]
+	
+	if current_wepon_id == min(no,inventory.size() -1):
 		return
-	current_wepon = min(no,inventory.size() -1)
-	player_model.set_gun(inventory[current_wepon].name)
+	
+	player_model.visible = false
+	await get_tree().process_frame
+	player_model.visible = true
+	
+	current_wepon_id = min(no,inventory.size() -1)
+	player_model.set_gun(inventory[current_wepon_id].name)
+	
 	time_last_shot = 0.0
+	
+	
+
+func _ready() -> void:
+	set_gun(0)
 
 func shot() -> void:
-	for i : int in inventory[current_wepon].bullets_per_shot:
+	for i : int in inventory[current_wepon_id].bullets_per_shot:
 		player_model.gun.shot = true
-		if inventory[current_wepon].special_type == "grapple":
+		if inventory[current_wepon_id].special_type == "grapple":
 			player_movement.launch_grapple()
 		else:
 			var projectile : ProjectBehavior = ProjectBehavior.new()
@@ -38,7 +78,7 @@ func shot() -> void:
 			else:
 				projectile.global_basis = player_model.gun.muzle.global_basis
 			
-			var spread : float = inventory[current_wepon].spread
+			var spread : float = inventory[current_wepon_id].spread
 			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),0.0)
 			if abs(vec_spread.x) + abs(vec_spread.y) > 1.0:
 				vec_spread = vec_spread.normalized()
@@ -46,7 +86,7 @@ func shot() -> void:
 			
 			projectile.rotation += vec_spread * spread
 			
-			projectile.data = inventory[current_wepon].projectile_info
+			projectile.data = inventory[current_wepon_id].projectile_info
 			projectile.start()
 
 var camera_rots_last_frame : Vector3
@@ -61,7 +101,7 @@ func sway_gun(delta:float)->void:
 	
 	camera_rots_last_frame = Vector3(camera.rotation.x,body.rotation.y,0.0)
 
-
+var is_reloading : float = 0.0
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("wepon_1"):
@@ -75,16 +115,23 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("wepon_5"):
 		set_gun(4)
 	
-	var try_shot : bool = false
-	if inventory[current_wepon].is_automatic:
-		try_shot = Input.is_action_pressed("shot")
+	var can_shot : bool = false
+	if inventory[current_wepon_id].is_automatic:
+		can_shot = Input.is_action_pressed("shot")
 	else:
-		try_shot = Input.is_action_just_pressed("shot")
+		can_shot = Input.is_action_just_pressed("shot")
 	
 	time_last_shot -= delta
-	if try_shot and player_model.gun != null and time_last_shot < 0.0:
-		time_last_shot = inventory[current_wepon].fire_rate
+	if can_shot and player_model.gun != null and time_last_shot < 0.0 and is_reloading <= 0.0:
+		time_last_shot = inventory[current_wepon_id].fire_rate
 		shot()
 	
 	sway_gun(delta)
 	
+	var can_reload : bool = false
+	
+	if Input.is_action_just_pressed("reload") and can_reload:
+		player_model.reload()
+		is_reloading = current_wepon.reload_time
+	
+	is_reloading -= delta
