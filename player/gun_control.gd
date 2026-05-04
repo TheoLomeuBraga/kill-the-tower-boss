@@ -7,10 +7,12 @@ class_name GunControl
 @export var camera : Camera3D
 
 @export var inventory : Array[GunInfo]
-var current_wepon_id : int = 0
+var current_wepon_id : int = -1
 var current_wepon : GunInfo
 
 @export var target_raycast : RayCast3D
+
+@export var ammon_display : Label
 
 const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
@@ -21,6 +23,7 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 }
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
+	GlobalEnums.AmmonType.ANY: 0,
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
 	GlobalEnums.AmmonType.SHOTGUN: 50,
@@ -41,25 +44,38 @@ var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var time_last_shot : float = 0.0
 
+var is_reloading : bool = false
+var is_reloading_timer : Timer
 func set_gun(no : int) -> void:
 	
-	current_wepon = inventory[current_wepon_id]
-	
-	if current_wepon_id == min(no,inventory.size() -1):
+	if not no >= 0 or not no < inventory.size() or no == current_wepon_id:
 		return
 	
-	player_model.visible = false
-	await get_tree().process_frame
-	player_model.visible = true
+	is_reloading = false
+	is_reloading_timer.stop()
 	
 	current_wepon_id = min(no,inventory.size() -1)
-	player_model.set_gun(inventory[current_wepon_id].name)
+	current_wepon = inventory[current_wepon_id]
+	
+	player_model.visible = false
+	
+	await get_tree().process_frame
+	
+	player_model.visible = true
+	
+	player_model.set_gun(current_wepon.name)
 	
 	time_last_shot = 0.0
 	
 	
 
 func _ready() -> void:
+	
+	is_reloading_timer = Timer.new()
+	add_child(is_reloading_timer)
+	is_reloading_timer.timeout.connect(reload_ammon)
+	is_reloading_timer.one_shot = true
+	
 	set_gun(0)
 
 func shot() -> void:
@@ -101,7 +117,17 @@ func sway_gun(delta:float)->void:
 	
 	camera_rots_last_frame = Vector3(camera.rotation.x,body.rotation.y,0.0)
 
-var is_reloading : float = 0.0
+
+func reload_ammon() -> void:
+	var ammon_missing : int = current_wepon.ammon_capacity - get_ammon_on_mag(current_wepon)
+	
+	set_ammon_on_mag(current_wepon,current_wepon.ammon_capacity)
+	is_reloading = false
+
+func reload() -> void:
+	player_model.reload()
+	is_reloading = true
+	is_reloading_timer.start(current_wepon.reload_time)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("wepon_1"):
@@ -115,23 +141,38 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("wepon_5"):
 		set_gun(4)
 	
-	var can_shot : bool = false
-	if inventory[current_wepon_id].is_automatic:
-		can_shot = Input.is_action_pressed("shot")
+	if current_wepon == null:
+		return
+	
+	var input_shot : bool = false
+	if current_wepon.is_automatic:
+		input_shot = Input.is_action_pressed("shot")
 	else:
-		can_shot = Input.is_action_just_pressed("shot")
+		input_shot = Input.is_action_just_pressed("shot")
 	
 	time_last_shot -= delta
-	if can_shot and player_model.gun != null and time_last_shot < 0.0 and is_reloading <= 0.0:
-		time_last_shot = inventory[current_wepon_id].fire_rate
+	
+	var can_shot : bool = player_model.gun != null and time_last_shot < 0.0 and not is_reloading
+	var has_ammon : bool = get_ammon_on_mag(current_wepon) >= current_wepon.ammon_consumption
+	
+	if input_shot and can_shot and has_ammon:
+		time_last_shot = current_wepon.fire_rate
+		if current_wepon.ammon_type != GlobalEnums.AmmonType.ANY:
+			set_ammon_on_mag(current_wepon,get_ammon_on_mag(current_wepon)-current_wepon.ammon_consumption)
 		shot()
+	elif input_shot and can_shot and not has_ammon:
+		reload()
 	
 	sway_gun(delta)
 	
-	var can_reload : bool = false
+	var can_reload : bool = not is_reloading
+	can_reload = can_reload and get_ammon_on_mag(current_wepon) < current_wepon.ammon_capacity
+	
 	
 	if Input.is_action_just_pressed("reload") and can_reload:
-		player_model.reload()
-		is_reloading = current_wepon.reload_time
+		reload()
+		
 	
-	is_reloading -= delta
+	ammon_display.visible = current_wepon.ammon_type != GlobalEnums.AmmonType.ANY
+	
+	ammon_display.text = str(ammon_inventory[current_wepon.ammon_type]) + "/" + str(get_ammon_on_mag(current_wepon))
