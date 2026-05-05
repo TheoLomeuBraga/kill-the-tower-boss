@@ -121,10 +121,26 @@ func sway_gun(delta:float)->void:
 func reload_ammon() -> void:
 	var ammon_missing : int = current_wepon.ammon_capacity - get_ammon_on_mag(current_wepon)
 	
-	set_ammon_on_mag(current_wepon,current_wepon.ammon_capacity)
 	is_reloading = false
+	
+	if ammon_inventory[current_wepon.ammon_type] >= current_wepon.ammon_capacity:
+		ammon_inventory[current_wepon.ammon_type] -= current_wepon.ammon_capacity - get_ammon_on_mag(current_wepon)
+		set_ammon_on_mag(current_wepon,current_wepon.ammon_capacity)
+	else:
+		set_ammon_on_mag(current_wepon,get_ammon_on_mag(current_wepon) + ammon_inventory[current_wepon.ammon_type])
+		ammon_inventory[current_wepon.ammon_type] = 0
+	
+	
 
 func reload() -> void:
+	
+	var can_reload : bool = not is_reloading
+	can_reload = can_reload and get_ammon_on_mag(current_wepon) < current_wepon.ammon_capacity
+	can_reload = can_reload and ammon_inventory[current_wepon.ammon_type] > 0
+	
+	if not can_reload:
+		return
+	
 	player_model.reload()
 	is_reloading = true
 	is_reloading_timer.start(current_wepon.reload_time)
@@ -165,11 +181,10 @@ func _process(delta: float) -> void:
 	
 	sway_gun(delta)
 	
-	var can_reload : bool = not is_reloading
-	can_reload = can_reload and get_ammon_on_mag(current_wepon) < current_wepon.ammon_capacity
 	
 	
-	if Input.is_action_just_pressed("reload") and can_reload:
+	
+	if Input.is_action_just_pressed("reload"):
 		reload()
 		
 	

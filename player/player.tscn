@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -117,6 +118,8 @@ offset_left = 0.46392822
 offset_top = 0.31195068
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.18573517, 0.53868854, 5.7756904e-07, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 48
 text = "999/999"
 horizontal_alignment = 1
@@ -142,3 +145,5 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.5)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_qjkh3")
+
+[node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
