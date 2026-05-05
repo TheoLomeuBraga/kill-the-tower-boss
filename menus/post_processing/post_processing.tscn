@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://l0s57321gcc5"]
+
+[ext_resource type="Shader" uid="uid://bw3kxbsu4cv0e" path="res://menus/post_processing/post_processing.gdshader" id="1_xrcle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6v8h"]
+shader = ExtResource("1_xrcle")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="PostProcessing" type="ColorRect" unique_id=1946156224]
+z_index = 99
+texture_filter = 1
+material = SubResource("ShaderMaterial_v6v8h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

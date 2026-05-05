@@ -14,6 +14,17 @@ config/name="kill_the_tower_boss"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PostProcessing="*uid://l0s57321gcc5"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=300
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+
 [filesystem]
 
 import/blender/enabled=false

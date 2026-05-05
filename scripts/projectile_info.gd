@@ -7,3 +7,4 @@ class_name ProjectileInfo
 @export var faction : GlobalEnums.Faction
 @export var mesh : Mesh
 @export var radius : float = 0.1
+@export var spaw_on_colision : PackedScene

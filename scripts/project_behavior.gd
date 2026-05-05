@@ -11,6 +11,7 @@ var progression : float = 0.0
 
 var muzle_position : Vector3
 
+const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
 
 func start() -> void:
 	
@@ -47,6 +48,12 @@ func check_colision() -> void:
 			if ray.is_colliding():
 				var stats : Stats = get_stats_from_node(ray.get_collider())
 				if stats == null:
+					
+					if data.spaw_on_colision != null:
+						var o : Node3D = data.spaw_on_colision.instantiate()
+						get_parent().add_child(o)
+						o.global_position = ray.get_collision_point()
+					
 					break
 				else:
 					if data.faction != stats.faction:
@@ -56,6 +63,17 @@ func check_colision() -> void:
 						var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 
 						stats.health -= stats.calculate_damage_on(data.damage,col_shape)
+						
+						if data.spaw_on_colision != null:
+							var o : Node3D = data.spaw_on_colision.instantiate()
+							get_parent().add_child(o)
+							o.global_position = ray.get_collision_point()
+						
+						var o : Node3D = enemy_hit_particle.instantiate()
+						get_parent().add_child(o)
+						o.global_position = ray.get_collision_point()
+						
+						
 						queue_free()
 						break
 					else:
@@ -63,6 +81,7 @@ func check_colision() -> void:
 						continue
 				
 			else:
+				queue_free()
 				break
 	else:
 		for i : int in shape.get_collision_count():
@@ -76,11 +95,26 @@ func check_colision() -> void:
 					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 					
 					stats.health -= stats.calculate_damage_on(data.damage,col_shape)
+					
+					if data.spaw_on_colision != null:
+						var o : Node3D = data.spaw_on_colision.instantiate()
+						get_parent().add_child(o)
+						o.global_position = shape.get_collision_point(i)
+					
+					var o : Node3D = enemy_hit_particle.instantiate()
+					get_parent().add_child(o)
+					o.global_position = shape.get_collision_point(i)
+					
 					queue_free()
 					break
 				else:
 					continue
 			else:
+				if data.spaw_on_colision != null:
+					var o : Node3D = data.spaw_on_colision.instantiate()
+					get_parent().add_child(o)
+					o.global_position = model.global_position
+				
 				queue_free()
 
 func _physics_process(delta: float) -> void:
