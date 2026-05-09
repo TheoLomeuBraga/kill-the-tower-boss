@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpx1ptt8i0ybh" path="res://particles/hit_particle/hit_effect.png" id="1_2pv0q"]
 [ext_resource type="Script" uid="uid://btjwrydlhnj0y" path="res://particles/start_emiting.gd" id="2_sbw2j"]
 [ext_resource type="AudioStream" uid="uid://y7benc34y746" path="res://particles/hit_particle/hit.wav" id="3_wnubv"]
+[ext_resource type="Script" uid="uid://d4hxc6cumbvb5" path="res://scripts/randomize_pitch.gd" id="4_cumbm"]
 
 [sub_resource type="Curve" id="Curve_sbw2j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.087837845, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -49,5 +50,12 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2077805071]
 stream = ExtResource("3_wnubv")
+volume_db = -15.0
+autoplay = true
+
+[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=1530637360]
+script = ExtResource("4_cumbm")
+variation_range = Vector2(1, 2)
+metadata/_custom_type_script = "uid://d4hxc6cumbvb5"
 
 [connection signal="timeout" from="DeathTimer" to="." method="queue_free"]

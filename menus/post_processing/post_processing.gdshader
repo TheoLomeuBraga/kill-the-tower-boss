@@ -6,8 +6,7 @@ render_mode unshaded;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-uniform bool enabled = true;
-uniform bool dithering = true;
+uniform float enabled : hint_range(0.0, 1.0) = 1.0;
 uniform int colors : hint_range(1, MAXCOLORS) = 12;
 uniform int dither_size: hint_range(1, 8) = 1;
 
@@ -56,19 +55,13 @@ float reduce_color(float raw, float dither, int depth) {
 void fragment() {
 	vec4 raw = texture(screen_texture, SCREEN_UV);
 	ivec2 uv = ivec2(FRAGCOORD.xy / float(dither_size));
-
-	if (enabled == true){
-		float dithering_value = 1.0;
-		if (dithering)
-		{
-			dithering_value = dithering_pattern(uv);
-		}
-		
-		COLOR.r = reduce_color(raw.r, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
-		COLOR.g = reduce_color(raw.g, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
-		COLOR.b = reduce_color(raw.b, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
-
-	} else {
-		COLOR.rgb = raw.rgb;
-	}
+	
+	float dithering_value = dithering_pattern(uv);
+	
+	vec3 dithering_color;
+	dithering_color.r = reduce_color(raw.r, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+	dithering_color.g = reduce_color(raw.g, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+	dithering_color.b = reduce_color(raw.b, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+	
+	COLOR.rgb = mix(raw.rgb,dithering_color,enabled);
 }

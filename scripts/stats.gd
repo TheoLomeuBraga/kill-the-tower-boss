@@ -29,7 +29,7 @@ signal dead()
 
 @export var multplyer_areas : Dictionary[CollisionShape3D,float]
 
-func calculate_damage_on(damage:int,area:CollisionShape3D) -> float:
+func calculate_damage_on(damage:int,area:CollisionShape3D) -> int:
 	
 	if multplyer_areas.has(area):
 		return int(float(damage) * multplyer_areas[area])

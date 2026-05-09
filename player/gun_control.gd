@@ -79,6 +79,11 @@ func _ready() -> void:
 	set_gun(0)
 
 func shot() -> void:
+	
+	if inventory[current_wepon_id].spawn_effect != null:
+		var particle : Node = inventory[current_wepon_id].spawn_effect.instantiate()
+		player_model.gun.muzle.add_child(particle)
+	
 	for i : int in inventory[current_wepon_id].bullets_per_shot:
 		player_model.gun.shot = true
 		if inventory[current_wepon_id].special_type == "grapple":

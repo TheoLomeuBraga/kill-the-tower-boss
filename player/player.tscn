@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
 
@@ -26,6 +27,7 @@ script = ExtResource("4_qjkh3")
 damage = 10
 speed = 20.0
 mesh = SubResource("SphereMesh_g6k8r")
+ricochet = 1
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
@@ -35,6 +37,7 @@ reload_time = 0.8
 fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_boad6")
+spawn_effect = ExtResource("5_rgyib")
 ammon_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
@@ -102,7 +105,6 @@ grow_vertical = 2
 
 [node name="cross" type="Label" parent="HUD/CenterContainer" unique_id=1363262926]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -120,7 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.18573517, 0.53868854, 5.7756904e-07, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 16
 text = "999/999"
 horizontal_alignment = 1
 vertical_alignment = 1

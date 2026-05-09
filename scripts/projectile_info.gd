@@ -8,3 +8,6 @@ class_name ProjectileInfo
 @export var mesh : Mesh
 @export var radius : float = 0.1
 @export var spaw_on_colision : PackedScene
+
+@export var ricochet : int = 0
+@export var penetrations : int = 0 # TODO

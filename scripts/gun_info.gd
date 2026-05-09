@@ -15,6 +15,6 @@ class_name GunInfo
 @export var is_automatic :  bool = false
 
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
-@export var shot_sound : AudioStream
+@export var spawn_effect : PackedScene
 
 @export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.ANY

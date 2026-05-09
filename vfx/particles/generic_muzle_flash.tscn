@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ba1mcyj3x0ipw"]
+
+[ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_gs63p"]
+[ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="1_of12q"]
+[ext_resource type="AudioStream" uid="uid://bjmscm3l1lwti" path="res://sfx/pistol_shot.wav" id="2_4xu3i"]
+[ext_resource type="Script" uid="uid://d4hxc6cumbvb5" path="res://scripts/randomize_pitch.gd" id="2_nrpr2"]
+
+[sub_resource type="Curve" id="Curve_of12q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13609467, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gs63p"]
+curve = SubResource("Curve_of12q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrpr2"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gs63p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_of12q"]
+shading_mode = 0
+albedo_color = Color(1, 0.47058824, 0.05490196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gs63p"]
+material = SubResource("StandardMaterial3D_of12q")
+radius = 0.05
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[node name="GenericMuzleFlash" type="Node3D" unique_id=661750131]
+
+[node name="particle" type="GPUParticles3D" parent="." unique_id=1173496422]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nrpr2")
+draw_pass_1 = SubResource("SphereMesh_gs63p")
+script = ExtResource("1_gs63p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1421724278]
+stream = ExtResource("2_4xu3i")
+volume_db = -10.0
+autoplay = true
+
+[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=2144411668]
+script = ExtResource("2_nrpr2")
+metadata/_custom_type_script = "uid://d4hxc6cumbvb5"
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=813311489]
+autostart = true
+script = ExtResource("1_of12q")
+metadata/_custom_type_script = "uid://dsdgjeae30hcj"

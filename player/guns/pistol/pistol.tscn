@@ -15,21 +15,21 @@ pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1562912458) index="0" unique_id=176365909]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(100083490) index="0" unique_id=1639782785]
 bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
 bones/1/position = Vector3(-2.9975933e-10, 0.08906293, 0.0012572818)
 
-[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=936279133]
+[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=480469420]
 transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.9604638e-08, -0.9999998, -5.684342e-14, 0.9999998, -5.960467e-08, -6.661338e-16, 0.08906292, 0.0012572763)
 
-[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=724164339]
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1131753749]
 cast_shadow = 0
 
-[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=261911887]
+[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=882883412]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=362184067]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=1365054117]
 cast_shadow = 0
 
-[node name="AnimationPlayer" parent="." index="6" unique_id=1584791659]
+[node name="AnimationPlayer" parent="." index="6" unique_id=415054566]
 playback_default_blend_time = 0.1
