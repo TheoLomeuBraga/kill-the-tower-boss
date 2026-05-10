@@ -51,11 +51,15 @@ func set_gun(no : int) -> void:
 	if not no >= 0 or not no < inventory.size() or no == current_wepon_id:
 		return
 	
+	
 	is_reloading = false
 	is_reloading_timer.stop()
 	
 	current_wepon_id = min(no,inventory.size() -1)
 	current_wepon = inventory[current_wepon_id]
+	
+	reload_audio_player.stop()
+	reload_audio_player.stream = current_wepon.reload_audio
 	
 	player_model.visible = false
 	
@@ -67,9 +71,13 @@ func set_gun(no : int) -> void:
 	
 	time_last_shot = 0.0
 	
-	
+
+var reload_audio_player : AudioStreamPlayer
 
 func _ready() -> void:
+	
+	reload_audio_player = AudioStreamPlayer.new()
+	add_child(reload_audio_player)
 	
 	is_reloading_timer = Timer.new()
 	add_child(is_reloading_timer)
@@ -146,6 +154,7 @@ func reload() -> void:
 	if not can_reload:
 		return
 	
+	reload_audio_player.play()
 	player_model.reload()
 	is_reloading = true
 	is_reloading_timer.start(current_wepon.reload_time)

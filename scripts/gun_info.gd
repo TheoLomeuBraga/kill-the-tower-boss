@@ -7,6 +7,7 @@ class_name GunInfo
 @export var ammon_consumption : int = 1
 @export var ammon_capacity : int = 10
 @export var reload_time : float = 1.0
+@export var reload_audio : AudioStream
 
 @export var bullets_per_shot : int = 1
 @export var fire_rate : float = 0.25

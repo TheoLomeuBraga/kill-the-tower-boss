@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="5_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
@@ -34,6 +35,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 script = ExtResource("3_qjkh3")
 name = "pistol"
 reload_time = 0.8
+reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_boad6")
@@ -83,8 +85,6 @@ camera = NodePath("..")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 ammon_display = NodePath("../../HUD/ammon_display")
-
-[node name="GunSound" type="AudioStreamPlayer" parent="Camera3D/GunControl" unique_id=1343777989]
 
 [node name="HUD" type="Control" parent="." unique_id=627942019]
 texture_filter = 1
