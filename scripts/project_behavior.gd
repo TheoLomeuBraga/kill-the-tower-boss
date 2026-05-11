@@ -43,7 +43,13 @@ func start() -> void:
 	else:
 		start_shape()
 
-		
+func reset_bullet_position() -> void:
+	if shape != null:
+		shape.position = Vector3.ZERO
+	
+	if model != null:
+		model.position = Vector3.ZERO
+	
 
 func get_stats_from_node(node : Node) -> Stats:
 	
@@ -61,10 +67,36 @@ func check_collision_ray() -> void:
 			var stats : Stats = get_stats_from_node(ray.get_collider())
 			if stats == null:
 				
+				if ricochetes_left > 0:
+					print("recochete")
+					
+					var new_pos : Vector3 = ray.get_collision_point()
+				
+					var surface_normal : Vector3 = ray.get_collision_normal()
+					var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
+					
+					global_position = new_pos + (recochet_dir * data.radius * 0.1)
+					look_at(global_position+recochet_dir)
+					
+					ricochetes_left -= 1
+					reset_bullet_position()
+					
+					'''
+					var m : MeshInstance3D = MeshInstance3D.new()
+					m.mesh = BoxMesh.new()
+					get_parent().add_child(m)
+					m.global_position = global_position
+					'''
+					
+					return
+					
+				
 				if data.spaw_on_colision != null:
 					o = data.spaw_on_colision.instantiate()
 					get_parent().add_child(o)
 					o.global_position = ray.get_collision_point()
+				
+				queue_free()
 				
 				break
 			else:
@@ -124,6 +156,30 @@ func check_collision_shape() -> void:
 			else:
 				continue
 		else:
+			
+			if ricochetes_left > 0:
+				
+				var new_pos : Vector3 = shape.get_collision_point(i)
+				
+				var surface_normal : Vector3 = shape.get_collision_normal(i)
+				var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
+				
+				global_position = new_pos + (surface_normal * data.radius * 2.0)
+				look_at(global_position+recochet_dir)
+				
+				ricochetes_left -= 1
+				reset_bullet_position()
+				
+				'''
+				var m : MeshInstance3D = MeshInstance3D.new()
+				m.mesh = BoxMesh.new()
+				get_parent().add_child(m)
+				m.global_position = global_position
+				'''
+				
+				
+				return
+			
 			if data.spaw_on_colision != null:
 				o = data.spaw_on_colision.instantiate()
 				get_parent().add_child(o)

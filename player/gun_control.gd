@@ -10,6 +10,15 @@ class_name GunControl
 var current_wepon_id : int = -1
 var current_wepon : GunInfo
 
+var time_in_storage : Dictionary[GunInfo,float]
+func set_time_in_storage(gun_info : GunInfo,time:float) -> void:
+	time_in_storage[gun_info] = time
+
+func get_time_in_storage(gun_info : GunInfo) -> float:
+	if not time_in_storage.has(gun_info):
+		set_ammon_on_mag(gun_info,0)
+	return time_in_storage[gun_info]
+
 @export var target_raycast : RayCast3D
 
 @export var ammon_display : Label
