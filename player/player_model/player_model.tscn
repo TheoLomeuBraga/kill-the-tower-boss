@@ -20,6 +20,6 @@ guns_models = Dictionary[String, PackedScene]({
 
 [node name="gun_animations" parent="." unique_id=1768392310 instance=ExtResource("2_qfpg1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181618, -0.06737061, 0.39411506)
-walk_speed = 2.0
+walk_speed = 1.4
 
 [node name="grapple" parent="." unique_id=279339877 instance=ExtResource("4_qu0w5")]

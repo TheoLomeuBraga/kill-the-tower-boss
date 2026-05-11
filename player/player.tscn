@@ -46,7 +46,7 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 [sub_resource type="Resource" id="Resource_hg6s5"]
 script = ExtResource("3_qjkh3")
 name = "grapple"
-special_type = "grapple"
+special_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]

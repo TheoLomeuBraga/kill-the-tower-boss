@@ -10,14 +10,7 @@ class_name GunControl
 var current_wepon_id : int = -1
 var current_wepon : GunInfo
 
-var time_in_storage : Dictionary[GunInfo,float]
-func set_time_in_storage(gun_info : GunInfo,time:float) -> void:
-	time_in_storage[gun_info] = time
 
-func get_time_in_storage(gun_info : GunInfo) -> float:
-	if not time_in_storage.has(gun_info):
-		set_ammon_on_mag(gun_info,0)
-	return time_in_storage[gun_info]
 
 @export var target_raycast : RayCast3D
 
@@ -103,7 +96,7 @@ func shot() -> void:
 	
 	for i : int in inventory[current_wepon_id].bullets_per_shot:
 		player_model.gun.shot = true
-		if inventory[current_wepon_id].special_type == "grapple":
+		if inventory[current_wepon_id].special_type == GlobalEnums.WeponTime.GRAPPLE:
 			player_movement.launch_grapple()
 		else:
 			var projectile : ProjectBehavior = ProjectBehavior.new()
@@ -204,13 +197,13 @@ func _process(delta: float) -> void:
 	
 	sway_gun(delta)
 	
-	
-	
-	
 	if Input.is_action_just_pressed("reload"):
 		reload()
 		
 	
 	ammon_display.visible = current_wepon.ammon_type != GlobalEnums.AmmonType.ANY
-	
 	ammon_display.text = str(ammon_inventory[current_wepon.ammon_type]) + "/" + str(get_ammon_on_mag(current_wepon))
+	
+	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
+	player_model.gun_animations.walk = move_toward(player_model.gun_animations.walk , input_dir.length() , delta * 4.0)
+	

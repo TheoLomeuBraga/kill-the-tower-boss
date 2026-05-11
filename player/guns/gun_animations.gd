@@ -23,3 +23,6 @@ class_name GunAnimations
 		drop_wepon_estate = value
 		if animation_tree != null:
 			animation_tree.set("parameters/drop_wepon_estate/blend_amount",value)
+
+func _ready() -> void:
+	walk_speed = walk_speed
