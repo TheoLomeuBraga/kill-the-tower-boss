@@ -9,7 +9,7 @@ var estate : Callable = air_estate
 var jump_recently : float = 0.0
 var floor_recently : float = 0.0
 
-@export_category("geral")
+@export_group("geral")
 @export var camera : Camera3D
 
 @export var model : PlayerModel
@@ -22,7 +22,7 @@ func try_jump() -> void:
 	if jump_recently > 0.0 and floor_recently > 0.0:
 		body.velocity.y = jump_power
 
-@export_category("grapple estate")
+@export_group("grapple estate")
 
 @export var grapple_length : float = 2.0
 @export var grapple_range : float = 20.0
@@ -75,7 +75,7 @@ func grapple_estate(delta : float) -> void:
 		grapple_hope.visible = false
 		body.motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED
 
-@export_category("air estate")
+@export_group("air estate")
 
 @export var gravity : float = 12.0
 
@@ -88,7 +88,7 @@ func air_estate(delta : float) -> void:
 	
 	try_jump()
 
-@export_category("floor estate")
+@export_group("floor estate")
 
 @export var speed : float = 5.0
 @export var floor_friction : float = 100.0
@@ -105,7 +105,7 @@ func floor_estate(delta : float) -> void:
 	
 	try_jump()
 	
-@export_category("camera")
+@export_group("camera")
 
 @export var mouse_sensitivity : float = 0.01
 @export var joystick_sensitivity : float = 6.0
@@ -130,7 +130,16 @@ func _ready() -> void:
 	if grapple_raycast != null:
 		grapple_raycast.add_exception(body)
 
+@export_group("rigdbody_collision")
+@export var rigdbody_collision_power : float = 5.0
 
+func process_rigdbody_collision(delta:float)->void:
+	for i in body.get_slide_collision_count():
+		var collision : KinematicCollision3D = body.get_slide_collision(i)
+		var collider : Node3D = collision.get_collider()
+		
+		if collider is RigidBody3D:
+			collider.apply_central_impulse(-collision.get_normal() * rigdbody_collision_power)
 
 func _physics_process(delta: float) -> void:
 	
@@ -143,6 +152,7 @@ func _physics_process(delta: float) -> void:
 	camera_process(delta)
 	estate.call(delta)
 	body.move_and_slide()
+	process_rigdbody_collision(delta)
 	
 	jump_recently -= delta
 	floor_recently -= delta

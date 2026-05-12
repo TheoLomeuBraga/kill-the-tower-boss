@@ -14,6 +14,7 @@ var muzle_position : Vector3
 const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
 
 var ricochetes_left : int = 0
+var penetrations_left : int = 0
 
 func start_ray() -> void:
 	ray = RayCast3D.new()
@@ -37,6 +38,7 @@ func start_shape() -> void:
 func start() -> void:
 	
 	ricochetes_left = data.ricochet
+	penetrations_left = data.penetrations
 	
 	if data.speed < 0.0:
 		start_ray()

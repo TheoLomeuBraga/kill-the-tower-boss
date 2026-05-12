@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_o7vyq"]
 [ext_resource type="PackedScene" uid="uid://bm6p8wr7dadkh" path="res://enemys/test_dumy/test_dumy.tscn" id="2_3ala8"]
+[ext_resource type="PackedScene" uid="uid://bpmwrcsagnrvv" path="res://props/test_cube/test_cube.tscn" id="3_tmcpo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -79,3 +80,12 @@ size = Vector3(7, 4, 1)
 material = SubResource("StandardMaterial3D_o7vyq")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=840345381]
+
+[node name="TestCube" parent="." unique_id=589111855 instance=ExtResource("3_tmcpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 3.0533657)
+
+[node name="TestCube2" parent="." unique_id=1606988948 instance=ExtResource("3_tmcpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
+
+[node name="TestCube3" parent="." unique_id=208549177 instance=ExtResource("3_tmcpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)

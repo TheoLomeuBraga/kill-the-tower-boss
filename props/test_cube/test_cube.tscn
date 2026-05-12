@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bpmwrcsagnrvv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1dlw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sartg"]
+albedo_color = Color(0, 1, 0.049999952, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlcll"]
+material = SubResource("StandardMaterial3D_sartg")
+
+[node name="TestCube" type="RigidBody3D" unique_id=589111855]
+editor_description = "a perfectly generic object"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1428275011]
+shape = SubResource("BoxShape3D_i1dlw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=385825143]
+mesh = SubResource("BoxMesh_rlcll")

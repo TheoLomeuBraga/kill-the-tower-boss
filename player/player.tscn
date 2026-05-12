@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
+[ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -49,6 +50,27 @@ name = "grapple"
 special_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="Resource" id="Resource_8t03j"]
+script = ExtResource("4_qjkh3")
+damage = 10
+mesh = SubResource("SphereMesh_g6k8r")
+ricochet = 1
+penetrations = 2
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_2ieo8"]
+script = ExtResource("3_qjkh3")
+name = "pistol"
+ammon_capacity = -1
+reload_time = 0.8
+reload_audio = ExtResource("5_hg6s5")
+fire_rate = 0.1
+spread = 0.01
+projectile_info = SubResource("Resource_8t03j")
+spawn_effect = ExtResource("5_rgyib")
+ammon_type = 1
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]
 albedo_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
@@ -82,7 +104,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5"), SubResource("Resource_2ieo8")])
 target_raycast = NodePath("../RayCast3D")
 ammon_display = NodePath("../../HUD/ammon_display")
 
@@ -139,6 +161,10 @@ grapple_hope = NodePath("../grapple_hope")
 script = ExtResource("6_g6k8r")
 faction = 0
 metadata/_custom_type_script = "uid://u7trxdlheisb"
+
+[node name="InteractionManager" type="Node" parent="." unique_id=1023676887 node_paths=PackedStringArray("interaction_ray")]
+script = ExtResource("9_8t03j")
+interaction_ray = NodePath("../Camera3D/RayCast3D")
 
 [node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
 visible = false

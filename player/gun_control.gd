@@ -10,10 +10,7 @@ class_name GunControl
 var current_wepon_id : int = -1
 var current_wepon : GunInfo
 
-
-
 @export var target_raycast : RayCast3D
-
 @export var ammon_display : Label
 
 const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
@@ -149,6 +146,9 @@ func reload_ammon() -> void:
 
 func reload() -> void:
 	
+	if current_wepon.ammon_capacity < 0:
+		return
+	
 	var can_reload : bool = not is_reloading
 	can_reload = can_reload and get_ammon_on_mag(current_wepon) < current_wepon.ammon_capacity
 	can_reload = can_reload and ammon_inventory[current_wepon.ammon_type] > 0
@@ -185,12 +185,21 @@ func _process(delta: float) -> void:
 	time_last_shot -= delta
 	
 	var can_shot : bool = player_model.gun != null and time_last_shot < 0.0 and not is_reloading
-	var has_ammon : bool = get_ammon_on_mag(current_wepon) >= current_wepon.ammon_consumption
+	var has_ammon : bool = false
+	if current_wepon.ammon_capacity > 0:
+		has_ammon = get_ammon_on_mag(current_wepon) >= current_wepon.ammon_consumption
+	else:
+		has_ammon = ammon_inventory[current_wepon.ammon_type] >= current_wepon.ammon_consumption
+	
 	
 	if input_shot and can_shot and has_ammon:
 		time_last_shot = current_wepon.fire_rate
 		if current_wepon.ammon_type != GlobalEnums.AmmonType.ANY:
-			set_ammon_on_mag(current_wepon,get_ammon_on_mag(current_wepon)-current_wepon.ammon_consumption)
+			if current_wepon.ammon_capacity > 0:
+				set_ammon_on_mag(current_wepon,get_ammon_on_mag(current_wepon)-current_wepon.ammon_consumption)
+			else:
+				ammon_inventory[current_wepon.ammon_type] -= current_wepon.ammon_consumption
+			
 		shot()
 	elif input_shot and can_shot and not has_ammon:
 		reload()
@@ -202,7 +211,10 @@ func _process(delta: float) -> void:
 		
 	
 	ammon_display.visible = current_wepon.ammon_type != GlobalEnums.AmmonType.ANY
-	ammon_display.text = str(ammon_inventory[current_wepon.ammon_type]) + "/" + str(get_ammon_on_mag(current_wepon))
+	if current_wepon.ammon_capacity > 0:
+		ammon_display.text = str(ammon_inventory[current_wepon.ammon_type]) + "/" + str(get_ammon_on_mag(current_wepon))
+	else:
+		ammon_display.text = str(ammon_inventory[current_wepon.ammon_type])
 	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	player_model.gun_animations.walk = move_toward(player_model.gun_animations.walk , input_dir.length() , delta * 4.0)
