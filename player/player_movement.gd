@@ -79,9 +79,18 @@ func grapple_estate(delta : float) -> void:
 
 @export var gravity : float = 12.0
 
+@export var air_friction : float = 5.0
+
 func air_estate(delta : float) -> void:
 	
 	body.velocity.y -= gravity * delta
+	
+	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
+	var vec_speed : Vector3 = input_dir * speed
+	var velocity : Vector3 = body.velocity.move_toward(vec_speed,delta * air_friction)
+	
+	body.velocity.x = velocity.x
+	body.velocity.z = velocity.z
 	
 	if body.is_on_floor():
 		estate = floor_estate
