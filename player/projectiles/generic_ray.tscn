@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://1w3803e0ftg4"]
+
+[ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="1_3logi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8at3u"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rvoyk"]
+material = SubResource("StandardMaterial3D_8at3u")
+top_radius = 0.02
+bottom_radius = 0.0
+height = 4.0
+radial_segments = 4
+rings = 0
+
+[node name="GenericBullet" type="Node3D" unique_id=881148961]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1696321159]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_rvoyk")
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=56795353]
+wait_time = 0.1
+autostart = true
+script = ExtResource("1_3logi")
+metadata/_custom_type_script = "uid://dsdgjeae30hcj"

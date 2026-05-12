@@ -3,13 +3,14 @@ class_name ProjectBehavior
 
 @export var data : ProjectileInfo = ProjectileInfo.new()
 
-var model : MeshInstance3D
+var model : Node3D
 var ray : RayCast3D
 var shape : ShapeCast3D
 
 var progression : float = 0.0
 
 var muzle_position : Vector3
+var target_position : Vector3
 
 const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
 
@@ -17,15 +18,21 @@ var ricochetes_left : int = 0
 var penetrations_left : int = 0
 
 func start_ray() -> void:
+	
+	
+	
 	ray = RayCast3D.new()
 	ray.target_position = Vector3(0.0,0.0,-data.range)
 	add_child(ray)
+	
+	if data.model != null:
+		model = data.model.instantiate()
+		get_parent().add_child(model)
+		model.global_position = muzle_position
+		model.look_at(target_position)
 
 func start_shape() -> void:
-	model = MeshInstance3D.new()
-	model.mesh = data.mesh
-	model.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(model)
+	
 	
 	shape = ShapeCast3D.new()
 	add_child(shape)
@@ -33,7 +40,10 @@ func start_shape() -> void:
 	shape.shape.radius = data.radius
 	shape.target_position = Vector3.ZERO
 	
-	model.global_position = muzle_position
+	if data.model != null:
+		model = data.model.instantiate()
+		add_child(model)
+		model.global_position = muzle_position
 
 func start() -> void:
 	
@@ -49,8 +59,17 @@ func reset_bullet_position() -> void:
 	if shape != null:
 		shape.position = Vector3.ZERO
 	
-	if model != null:
+	if model != null and shape != null:
 		model.position = Vector3.ZERO
+	
+	muzle_position = Vector3.ZERO
+	
+	if ray != null and data.model != null:
+		model = data.model.instantiate()
+		get_parent().add_child(model)
+		if ray.is_colliding():
+			model.position = ray.get_collision_point()
+		model.look_at(global_basis.z * -100.0)
 	
 
 func get_stats_from_node(node : Node) -> Stats:
@@ -70,7 +89,6 @@ func check_collision_ray() -> void:
 			if stats == null:
 				
 				if ricochetes_left > 0:
-					print("recochete")
 					
 					var new_pos : Vector3 = ray.get_collision_point()
 				
@@ -185,7 +203,8 @@ func check_collision_shape() -> void:
 			if data.spaw_on_colision != null:
 				o = data.spaw_on_colision.instantiate()
 				get_parent().add_child(o)
-				o.global_position = model.global_position
+				if model != null:
+					o.global_position = model.global_position
 			
 			queue_free()
 	
@@ -204,11 +223,12 @@ func _physics_process(delta: float) -> void:
 		
 		check_colision()
 		
-		if data.range < model.position.length():
+		if model != null and data.range < model.position.length():
 			queue_free()
 
 func _process(delta: float) -> void:
 	if data.speed < 0.0:
 		pass
 	else:
-		model.position = model.position.move_toward(shape.position,delta * (data.speed / 2.0))
+		if model != null:
+			model.position = model.position.move_toward(shape.position,delta * (data.speed / 2.0))

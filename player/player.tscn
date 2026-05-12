@@ -4,31 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://cy1o6s4fa4vaf" path="res://player/player_model/player_model.tscn" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="3_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="4_2ieo8"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="5_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="8_ebec5"]
 [ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6k8r"]
-shading_mode = 0
-albedo_color = Color(0.68235296, 0.6039216, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_g6k8r"]
-material = SubResource("StandardMaterial3D_g6k8r")
-radius = 0.04
-height = 0.08
-radial_segments = 4
-rings = 1
 
 [sub_resource type="Resource" id="Resource_boad6"]
 script = ExtResource("4_qjkh3")
 damage = 10
 speed = 20.0
-mesh = SubResource("SphereMesh_g6k8r")
+model = ExtResource("4_2ieo8")
+radius = 0.2
 ricochet = 1
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -53,8 +45,8 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 [sub_resource type="Resource" id="Resource_8t03j"]
 script = ExtResource("4_qjkh3")
 damage = 10
-mesh = SubResource("SphereMesh_g6k8r")
-ricochet = 1
+model = ExtResource("8_ebec5")
+ricochet = 3
 penetrations = 2
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
