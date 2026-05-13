@@ -22,7 +22,7 @@ func start_ray() -> void:
 	
 	
 	ray = RayCast3D.new()
-	ray.target_position = Vector3(0.0,0.0,-data.range)
+	ray.target_position = Vector3(0.0,0.0,-data.distance)
 	add_child(ray)
 	
 	if data.model != null:
@@ -101,13 +101,6 @@ func check_collision_ray() -> void:
 					ricochetes_left -= 1
 					reset_bullet_position()
 					
-					'''
-					var m : MeshInstance3D = MeshInstance3D.new()
-					m.mesh = BoxMesh.new()
-					get_parent().add_child(m)
-					m.global_position = global_position
-					'''
-					
 					return
 					
 				
@@ -137,6 +130,10 @@ func check_collision_ray() -> void:
 					get_parent().add_child(o)
 					o.global_position = ray.get_collision_point()
 					
+					if penetrations_left > 0:
+						penetrations_left -= 1
+						ray.add_exception(ray.get_collider())
+						break
 					
 					queue_free()
 					break
@@ -171,6 +168,11 @@ func check_collision_shape() -> void:
 				get_parent().add_child(o)
 				o.global_position = shape.get_collision_point(i)
 				
+				if penetrations_left > 0:
+					penetrations_left -= 1
+					shape.add_exception(shape.get_collider(i))
+					break
+				
 				queue_free()
 				break
 			else:
@@ -189,13 +191,6 @@ func check_collision_shape() -> void:
 				
 				ricochetes_left -= 1
 				reset_bullet_position()
-				
-				'''
-				var m : MeshInstance3D = MeshInstance3D.new()
-				m.mesh = BoxMesh.new()
-				get_parent().add_child(m)
-				m.global_position = global_position
-				'''
 				
 				
 				return
@@ -223,7 +218,7 @@ func _physics_process(delta: float) -> void:
 		
 		check_colision()
 		
-		if model != null and data.range < model.position.length():
+		if model != null and data.distance < model.position.length():
 			queue_free()
 
 func _process(delta: float) -> void:

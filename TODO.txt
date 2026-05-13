@@ -1,3 +1,7 @@
-projectile drop
+add projectile drop
 
-projectile penetration
+add explosions
+
+add enemy basic path finding
+
+add enimy shot behaveor
