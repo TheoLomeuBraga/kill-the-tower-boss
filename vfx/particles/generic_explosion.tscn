@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bu0wypuyjrdwr"]
+
+[ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_fowg2"]
+[ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="2_0qgn1"]
+
+[sub_resource type="Curve" id="Curve_svaj3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05325444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7679194, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_co5r4"]
+curve = SubResource("Curve_svaj3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_305tb"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_co5r4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8oox"]
+shading_mode = 0
+albedo_color = Color(1, 0.5529412, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0qgn1"]
+material = SubResource("StandardMaterial3D_b8oox")
+radius = 2.0
+height = 4.0
+radial_segments = 8
+rings = 3
+
+[node name="GenericExplosion" type="GPUParticles3D" unique_id=1689394531]
+emitting = false
+amount = 1
+lifetime = 0.75
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_305tb")
+draw_pass_1 = SubResource("SphereMesh_0qgn1")
+script = ExtResource("1_fowg2")
+metadata/_custom_type_script = "uid://htqnd5ug1tb"
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=135609236]
+autostart = true
+script = ExtResource("2_0qgn1")
+metadata/_custom_type_script = "uid://dsdgjeae30hcj"

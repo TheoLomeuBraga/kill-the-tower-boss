@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
-[ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="8_ebec5"]
+[ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="8_kb6p2"]
 [ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
+[ext_resource type="Script" uid="uid://dy1nyorfgrxi1" path="res://scripts/explosion_info.gd" id="9_wodsf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -42,12 +43,17 @@ name = "grapple"
 special_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="Resource" id="Resource_32hag"]
+script = ExtResource("9_wodsf")
+model = ExtResource("8_kb6p2")
+metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
+
 [sub_resource type="Resource" id="Resource_8t03j"]
 script = ExtResource("4_qjkh3")
 damage = 10
-model = ExtResource("8_ebec5")
-ricochet = 3
-penetrations = 3
+speed = 10.0
+model = ExtResource("4_2ieo8")
+explosion_data = SubResource("Resource_32hag")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_2ieo8"]

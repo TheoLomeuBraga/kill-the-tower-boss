@@ -12,7 +12,7 @@ var progression : float = 0.0
 var muzle_position : Vector3
 var target_position : Vector3
 
-const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
+
 
 var ricochetes_left : int = 0
 var penetrations_left : int = 0
@@ -70,22 +70,41 @@ func reset_bullet_position() -> void:
 		if ray.is_colliding():
 			model.position = ray.get_collision_point()
 		model.look_at(global_basis.z * -100.0)
-	
 
-func get_stats_from_node(node : Node) -> Stats:
+func self_destruct() -> void:
 	
-	for n : Node in node.get_children():
-		if n is Stats:
-			return n
+	var eb : ExplosionBehavior = ExplosionBehavior.new()
+	eb.data = data.explosion_data
 	
-	return null
+	if data.explosion_data != null:
+		if data.speed < 0.0:
+			
+			if ray.is_colliding():
+				
+				get_parent().add_child(eb)
+				
+				eb.global_position = ray.get_collision_point()
+				
+				eb.start()
+			
+		else:
+			
+			get_parent().add_child(eb)
+			
+			eb.global_position = shape.global_position
+			
+			eb.start()
+	
+	
+	queue_free()
+
 
 func check_collision_ray() -> void:
 	while true:
 		var o : Node3D
 		ray.force_raycast_update()
 		if ray.is_colliding():
-			var stats : Stats = get_stats_from_node(ray.get_collider())
+			var stats : Stats = Stats.get_stats_from_node(ray.get_collider())
 			if stats == null:
 				
 				if ricochetes_left > 0:
@@ -109,7 +128,7 @@ func check_collision_ray() -> void:
 					get_parent().add_child(o)
 					o.global_position = ray.get_collision_point()
 				
-				queue_free()
+				self_destruct()
 				
 				break
 			else:
@@ -126,7 +145,7 @@ func check_collision_ray() -> void:
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
 					
-					o = enemy_hit_particle.instantiate()
+					o = Stats.enemy_hit_particle.instantiate()
 					get_parent().add_child(o)
 					o.global_position = ray.get_collision_point()
 					
@@ -135,20 +154,20 @@ func check_collision_ray() -> void:
 						ray.add_exception(ray.get_collider())
 						break
 					
-					queue_free()
+					self_destruct()
 					break
 				else:
 					ray.add_exception(ray.get_collider())
 					continue
 			
 		else:
-			queue_free()
+			self_destruct()
 			break
 
 func check_collision_shape() -> void:
 	var o : Node3D
 	for i : int in shape.get_collision_count():
-		var stats : Stats = get_stats_from_node(shape.get_collider(i))
+		var stats : Stats = Stats.get_stats_from_node(shape.get_collider(i))
 		if stats != null:
 			if data.faction != stats.faction:
 				
@@ -164,7 +183,7 @@ func check_collision_shape() -> void:
 					get_parent().add_child(o)
 					o.global_position = shape.get_collision_point(i)
 				
-				o = enemy_hit_particle.instantiate()
+				o = Stats.enemy_hit_particle.instantiate()
 				get_parent().add_child(o)
 				o.global_position = shape.get_collision_point(i)
 				
@@ -173,7 +192,7 @@ func check_collision_shape() -> void:
 					shape.add_exception(shape.get_collider(i))
 					break
 				
-				queue_free()
+				self_destruct()
 				break
 			else:
 				continue
@@ -201,7 +220,7 @@ func check_collision_shape() -> void:
 				if model != null:
 					o.global_position = model.global_position
 			
-			queue_free()
+			self_destruct()
 	
 
 func check_colision() -> void:

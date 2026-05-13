@@ -1,6 +1,8 @@
 extends Node
 class_name Stats
 
+const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
+
 signal healed(int)
 signal damaged(int)
 signal dead()
@@ -35,3 +37,11 @@ func calculate_damage_on(damage:int,area:CollisionShape3D) -> int:
 		return int(float(damage) * multplyer_areas[area])
 	
 	return damage
+
+static func get_stats_from_node(node : Node) -> Stats:
+	
+	for n : Node in node.get_children():
+		if n is Stats:
+			return n
+	
+	return null
