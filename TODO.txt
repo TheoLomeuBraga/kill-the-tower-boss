@@ -1,6 +1,8 @@
+add explosions
+
 add projectile drop
 
-add explosions
+add akimbo
 
 add enemy basic path finding
 
