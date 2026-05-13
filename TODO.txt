@@ -1,5 +1,3 @@
-off screen wepon reload
-
 projectile drop
 
 projectile penetration
