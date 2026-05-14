@@ -27,13 +27,21 @@ var is_shoting : bool = false
 	set(value):
 		animation_player.play(reload_animation)
 
+@export var case_ejector : GPUParticles3D
+
+
+
 @export var shot : bool : 
 	set(value):
 		
-		if animation_player != null:
+		shot = value
 		
+		if case_ejector != null:
+			case_ejector.emitting = shot
+		
+		if animation_player != null:
+			
 			if is_auto:
-				shot = value
 				if value:
 					animation_player.play(shot_animation)
 				else:
@@ -41,4 +49,9 @@ var is_shoting : bool = false
 			else:
 				animation_player.stop()
 				animation_player.play(shot_animation)
+				
+				if case_ejector != null:
+					await get_tree().create_timer(1.0 / case_ejector.amount).timeout
+					case_ejector.emitting = false
+				
 			

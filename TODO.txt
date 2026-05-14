@@ -1,5 +1,3 @@
-add explosion shock wave
-
 make granade launchers models
 
 add projectile drop

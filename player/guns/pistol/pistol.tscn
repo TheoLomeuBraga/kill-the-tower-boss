@@ -3,7 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://cr8fgn04t3eey" path="res://player/guns/pistol/pistol.glb" id="1_6becj"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_xco6c"]
 
-[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_6becj")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xco6c"]
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 0, -1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70rjn"]
+albedo_color = Color(1, 0.72156864, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dg4nr"]
+material = SubResource("StandardMaterial3D_70rjn")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.04
+radial_segments = 4
+rings = 0
+
+[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player", "case_ejector") instance=ExtResource("1_6becj")]
 script = ExtResource("2_xco6c")
 gun = NodePath("Armature/Skeleton3D")
 muzle = NodePath("Armature/Skeleton3D/Bone/Cube/muzle")
@@ -14,6 +32,7 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 animation_player = NodePath("AnimationPlayer")
+case_ejector = NodePath("Armature/Skeleton3D/Bone_001/GPUParticles3D")
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(100083490) index="0" unique_id=1639782785]
 bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
@@ -24,6 +43,14 @@ transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.96046
 
 [node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1131753749]
 cast_shadow = 0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone_001" index="1" unique_id=1415065494]
+transform = Transform3D(1, 4.2351647e-22, -1.4210855e-14, 2.3716923e-20, 0.9999997, 1.4210855e-14, 7.1054274e-14, -1.4210855e-14, 0.9999997, 8.881784e-16, 0.023, -0.010000005)
+emitting = false
+amount = 10
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xco6c")
+draw_pass_1 = SubResource("CylinderMesh_dg4nr")
 
 [node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=882883412]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)

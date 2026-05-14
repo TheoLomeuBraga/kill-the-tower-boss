@@ -22,8 +22,6 @@ func start() -> void:
 	
 	shape.force_shapecast_update()
 	
-	print(shape.get_collision_count())
-	
 	for i : int in shape.get_collision_count():
 		
 		var hit_particle : Node3D = Stats.enemy_hit_particle.instantiate()
