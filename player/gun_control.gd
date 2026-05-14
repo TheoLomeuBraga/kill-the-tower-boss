@@ -160,17 +160,15 @@ func shot() -> void:
 var camera_rots_last_frame : Vector3
 
 func sway_gun(delta:float)->void:
-	var rot_change : Vector3 = Vector3(camera.rotation.x,body.rotation.y,0.0) - camera_rots_last_frame
-	rot_change *= 2.0
-	rot_change.clamp(Vector3.ONE,-Vector3.ONE)
 	
-	player_model.gun_animator_rotation.x = rotate_toward(player_model.gun_animator_rotation.x,-rot_change.x,delta)
-	player_model.gun_animator_rotation.y = rotate_toward(player_model.gun_animator_rotation.y,rot_change.y,delta)
+	var rot_change : Vector3 = Vector3(camera.rotation.x,body.rotation.y,0.0) - camera_rots_last_frame
+	rot_change *= 1.5
+	
+	player_model.rotation.z = rotate_toward(player_model.rotation.z,rot_change.y,delta)
+	player_model.rotation.x = rotate_toward(player_model.rotation.x,-rot_change.x,delta)
+	
 	
 	camera_rots_last_frame = Vector3(camera.rotation.x,body.rotation.y,0.0)
-
-
-
 	
 	
 

@@ -65,9 +65,6 @@ func grapple_estate(delta : float) -> void:
 	grapple_hope.look_at(grapple_place)
 	grapple_hope.scale.z = grapple_hope.global_position.distance_to(grapple_place)
 	
-	
-	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
-	
 	body.velocity += force * delta
 	
 	if not Input.is_action_pressed("shot"):
