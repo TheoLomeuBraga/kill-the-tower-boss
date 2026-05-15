@@ -24,13 +24,17 @@ func start() -> void:
 	
 	for i : int in shape.get_collision_count():
 		
-		var hit_particle : Node3D = Stats.enemy_hit_particle.instantiate()
-		get_parent().add_child(hit_particle)
-		hit_particle.global_position = shape.get_collision_point(i)
-		
 		var stats : Stats = Stats.get_stats_from_node(shape.get_collider(i))
 		
 		if stats != null:
+			if stats.faction != GlobalEnums.Faction.FRIENDLY:
+				var hit_particle : Node3D = Stats.enemy_hit_particle.instantiate()
+				get_parent().add_child(hit_particle)
+				hit_particle.global_position = shape.get_collision_point(i)
+			
 			stats.health -= data.damage
+			
+		
+			
 	
 	queue_free()

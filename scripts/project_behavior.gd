@@ -145,9 +145,10 @@ func check_collision_ray() -> void:
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
 					
-					o = Stats.enemy_hit_particle.instantiate()
-					get_parent().add_child(o)
-					o.global_position = ray.get_collision_point()
+					if stats.faction != GlobalEnums.Faction.FRIENDLY:
+						o = Stats.enemy_hit_particle.instantiate()
+						get_parent().add_child(o)
+						o.global_position = ray.get_collision_point()
 					
 					if penetrations_left > 0:
 						penetrations_left -= 1

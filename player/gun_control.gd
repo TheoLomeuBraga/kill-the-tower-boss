@@ -203,7 +203,7 @@ func _process(delta: float) -> void:
 	
 	process_inventory_reload_time(delta)
 	
-	if current_gun == null:
+	if current_gun == null or player_model == null or player_model.gun == null:
 		return
 	
 	var input_shot : bool = false
@@ -247,6 +247,12 @@ func _process(delta: float) -> void:
 	else:
 		ammon_display.text = str(ammon_inventory[current_gun.ammon_type])
 	
+	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	player_model.gun_animations.walk = move_toward(player_model.gun_animations.walk , input_dir.length() , delta * 4.0)
+	
+	if get_ammon_on_mag(current_gun) > -1:
+		player_model.gun.display_text = str(get_ammon_on_mag(current_gun))
+	else:
+		player_model.gun.display_text = str(ammon_inventory[current_gun.ammon_type])
 	

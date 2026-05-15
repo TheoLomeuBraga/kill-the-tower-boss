@@ -1,8 +1,8 @@
 make granade launchers models
 
-add projectile drop
-
 add akimbo
+
+add projectile drop
 
 add enemy basic path finding
 

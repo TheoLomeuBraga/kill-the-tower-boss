@@ -21,7 +21,7 @@ height = 0.04
 radial_segments = 4
 rings = 0
 
-[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player", "case_ejector") instance=ExtResource("1_6becj")]
+[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player", "case_ejector", "label") instance=ExtResource("1_6becj")]
 script = ExtResource("2_xco6c")
 gun = NodePath("Armature/Skeleton3D")
 muzle = NodePath("Armature/Skeleton3D/Bone/Cube/muzle")
@@ -33,6 +33,8 @@ pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 animation_player = NodePath("AnimationPlayer")
 case_ejector = NodePath("Armature/Skeleton3D/Bone_001/GPUParticles3D")
+label = NodePath("Armature/Skeleton3D/Bone_001/Cube_001/Label3D")
+display_text = "22"
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(100083490) index="0" unique_id=1639782785]
 bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
@@ -43,6 +45,12 @@ transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.96046
 
 [node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1131753749]
 cast_shadow = 0
+
+[node name="Label3D" type="Label3D" parent="Armature/Skeleton3D/Bone_001/Cube_001" index="0" unique_id=1241511390]
+transform = Transform3D(-1, -2.6117693e-13, -8.742278e-08, -5.2200075e-09, 0.99821556, 0.05970695, 8.726676e-08, 0.05970695, -0.99821556, -1.2398048e-14, 0.08794971, -0.014123712)
+pixel_size = 0.0005
+texture_filter = 0
+text = "22"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone_001" index="1" unique_id=1415065494]
 transform = Transform3D(1, 4.2351647e-22, -1.4210855e-14, 2.3716923e-20, 0.9999997, 1.4210855e-14, 7.1054274e-14, -1.4210855e-14, 0.9999997, 8.881784e-16, 0.023, -0.010000005)

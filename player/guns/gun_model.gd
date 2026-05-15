@@ -29,8 +29,6 @@ var is_shoting : bool = false
 
 @export var case_ejector : GPUParticles3D
 
-
-
 @export var shot : bool : 
 	set(value):
 		
@@ -55,3 +53,11 @@ var is_shoting : bool = false
 					case_ejector.emitting = false
 				
 			
+
+@export var label : Label3D
+
+@export var display_text : String :
+	set(value):
+		display_text = value
+		if label != null:
+			label.text = display_text
