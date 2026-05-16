@@ -1,11 +1,11 @@
-make granade launchers models
-
-add explosions knock back
-
 add akimbo
 
 add projectile drop
 
+add explosions knock back
+
 add enemy basic path finding
 
 add enimy shot behaveor
+
+config menu

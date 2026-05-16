@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bnb75l7l4frap" path="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.glb" id="1_pg16n"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_tv3rg"]
 
-[node name="granade_launcers_akimbo" unique_id=1118275292 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r") instance=ExtResource("1_pg16n")]
+[node name="granade_launcers_akimbo" unique_id=467925332 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_pg16n")]
 script = ExtResource("2_tv3rg")
 gun = NodePath("Armature/Skeleton3D")
-muzle = NodePath("Armature/Skeleton3D/Bone/Cube/muzle")
+muzle = NodePath("Armature/Skeleton3D/gun_r/muzle_r")
 arm_l = NodePath("arm_l")
 pole_l = NodePath("pole_l")
-hand_l = NodePath("Armature/Skeleton3D/Bone_001/Cube_001/hand_l")
+hand_l = NodePath("Armature/Skeleton3D/gun_l/hand_l")
 arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
-hand_r = NodePath("Armature/Skeleton3D/Bone/Cube/hand_r")
+hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
+animation_player = NodePath("AnimationPlayer")

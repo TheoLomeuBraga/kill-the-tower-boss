@@ -83,7 +83,6 @@ func set_gun(no : int) -> void:
 	if not no >= 0 or not no < inventory.size() or no == current_gun_id:
 		return
 	
-	
 	is_reloading = false
 	is_reloading_timer.stop()
 	
@@ -145,6 +144,7 @@ func shot() -> void:
 				projectile.look_at(target_raycast.get_collision_point())
 			else:
 				projectile.global_basis = player_model.gun.muzle.global_basis
+				projectile.look_at(camera.global_basis.z * -100.0)
 			
 			var spread : float = inventory[current_gun_id].spread
 			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),0.0)
@@ -164,7 +164,7 @@ func sway_gun(delta:float)->void:
 	var rot_change : Vector3 = Vector3(camera.rotation.x,body.rotation.y,0.0) - camera_rots_last_frame
 	rot_change *= 1.5
 	
-	player_model.rotation.z = rotate_toward(player_model.rotation.z,rot_change.y,delta)
+	player_model.rotation.z = rotate_toward(player_model.rotation.z,-rot_change.y,delta)
 	player_model.rotation.x = rotate_toward(player_model.rotation.x,-rot_change.x,delta)
 	
 	

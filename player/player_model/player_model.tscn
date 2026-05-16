@@ -13,6 +13,7 @@ arms = NodePath("arms")
 gun_animations = NodePath("gun_animations")
 gun = NodePath("granade_launcers_akimbo")
 guns_models = Dictionary[String, PackedScene]({
+"granade_launcher": ExtResource("6_nu4ip"),
 "grapple": ExtResource("4_qu0w5"),
 "pistol": ExtResource("2_hk2sv")
 })
@@ -20,8 +21,8 @@ guns_models = Dictionary[String, PackedScene]({
 [node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
 
 [node name="gun_animations" parent="." unique_id=1768392310 instance=ExtResource("2_qfpg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181618, -0.06737061, 0.39411506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.067, 0.394)
 walk_speed = 1.4
 drop_wepon_estate = 0.0
 
-[node name="granade_launcers_akimbo" parent="." unique_id=1118275292 instance=ExtResource("6_nu4ip")]
+[node name="granade_launcers_akimbo" parent="." unique_id=467925332 instance=ExtResource("6_nu4ip")]
