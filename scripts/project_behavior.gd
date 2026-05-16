@@ -36,8 +36,7 @@ func start_shape() -> void:
 	
 	shape = ShapeCast3D.new()
 	add_child(shape)
-	shape.shape = SphereShape3D.new()
-	shape.shape.radius = data.radius
+	shape.shape = data.collision_shape
 	shape.target_position = Vector3.ZERO
 	
 	if data.model != null:
@@ -114,7 +113,7 @@ func check_collision_ray() -> void:
 					var surface_normal : Vector3 = ray.get_collision_normal()
 					var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
 					
-					global_position = new_pos + (recochet_dir * data.radius * 0.1)
+					global_position = new_pos + (recochet_dir * 0.1)
 					look_at(global_position+recochet_dir)
 					
 					ricochetes_left -= 1
@@ -206,7 +205,7 @@ func check_collision_shape() -> void:
 				var surface_normal : Vector3 = shape.get_collision_normal(i)
 				var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
 				
-				global_position = new_pos + (surface_normal * data.radius * 2.0)
+				global_position = new_pos + (surface_normal * 0.5)
 				look_at(global_position+recochet_dir)
 				
 				ricochetes_left -= 1

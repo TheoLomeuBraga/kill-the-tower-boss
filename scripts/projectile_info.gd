@@ -7,7 +7,7 @@ class_name ProjectileInfo
 @export var speed : float = -1
 @export var distance : float = 10.0
 @export var model : PackedScene
-@export var radius : float = 0.1
+@export var collision_shape : Shape3D
 @export var spaw_on_colision : PackedScene
 
 @export var ricochet : int = 0
