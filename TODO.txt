@@ -1,5 +1,7 @@
 add projectile drop
 
+add akimbo automatic wepon model
+
 add explosions knock back
 
 add enemy basic path finding
