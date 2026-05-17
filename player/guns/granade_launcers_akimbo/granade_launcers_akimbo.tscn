@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bnb75l7l4frap" path="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.glb" id="1_pg16n"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_tv3rg"]
 
-[node name="granade_launcers_akimbo" unique_id=467925332 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_pg16n")]
+[node name="granade_launcers_akimbo" unique_id=327965719 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player") instance=ExtResource("1_pg16n")]
 script = ExtResource("2_tv3rg")
 gun = NodePath("Armature/Skeleton3D")
 muzles = [NodePath("Armature/Skeleton3D/gun_r/muzle_r"), NodePath("Armature/Skeleton3D/gun_l/muzle_l")]
@@ -16,20 +16,32 @@ hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
 animation_player = NodePath("AnimationPlayer")
 shot_animations = Array[String](["shot", "shot_2"])
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(446226348) index="0" unique_id=528310509]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2083992733) index="0" unique_id=332869154]
 bones/0/position = Vector3(-0.41842175, -0.028514788, -0.07547614)
 bones/0/rotation = Quaternion(0.7071068, -6.43441e-07, -6.43441e-07, 0.7071068)
 bones/2/position = Vector3(0.41842175, -0.028514788, -0.07547614)
 bones/2/rotation = Quaternion(0.7071068, -8.1202853e-07, -8.1202853e-07, 0.7071068)
 
-[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=285024917]
+[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=753778420]
 transform = Transform3D(1, 0, -3.1868644e-06, -3.1868644e-06, 0, -1, 0, 1, 0, -0.41842175, 0.028514788, 0.017202526)
 
-[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1068904275]
+[node name="Cylinder" parent="Armature/Skeleton3D/cilinder_r" index="0" unique_id=1025783081]
+cast_shadow = 0
+
+[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1752738562]
 transform = Transform3D(1, 0, -1.819926e-06, -1.819926e-06, 0, -1, 0, 1, 0, -0.41842175, -0.028514788, -0.07547614)
 
-[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=289536796]
+[node name="Cube" parent="Armature/Skeleton3D/gun_r" index="0" unique_id=818781872]
+cast_shadow = 0
+
+[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=948679894]
 transform = Transform3D(1, 0, 1.7563525e-06, 1.7563525e-06, 0, -1, 0, 1, 0, 0.41842175, 0.028514788, 0.017202526)
 
-[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=1843580920]
+[node name="Cylinder_001" parent="Armature/Skeleton3D/cilinder_l" index="0" unique_id=827810438]
+cast_shadow = 0
+
+[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=616160378]
 transform = Transform3D(1, 0, -2.2967633e-06, -2.2967633e-06, 0, -1, 0, 1, 0, 0.41842175, -0.028514788, -0.07547614)
+
+[node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=2120772058]
+cast_shadow = 0
