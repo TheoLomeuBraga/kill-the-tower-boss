@@ -19,4 +19,4 @@ class_name GunInfo
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
 @export var spawn_effect : PackedScene
 
-@export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.ANY
+@export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.NONE

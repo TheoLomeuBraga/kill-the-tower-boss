@@ -14,3 +14,21 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
 animation_player = NodePath("AnimationPlayer")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(446226348) index="0" unique_id=528310509]
+bones/0/position = Vector3(-0.41842175, -0.028514788, -0.07547614)
+bones/0/rotation = Quaternion(0.7071068, -6.43441e-07, -6.43441e-07, 0.7071068)
+bones/2/position = Vector3(0.41842175, -0.028514788, -0.07547614)
+bones/2/rotation = Quaternion(0.7071068, -8.1202853e-07, -8.1202853e-07, 0.7071068)
+
+[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=285024917]
+transform = Transform3D(1, 0, -3.1868644e-06, -3.1868644e-06, 0, -1, 0, 1, 0, -0.41842175, 0.028514788, 0.017202526)
+
+[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1068904275]
+transform = Transform3D(1, 0, -1.819926e-06, -1.819926e-06, 0, -1, 0, 1, 0, -0.41842175, -0.028514788, -0.07547614)
+
+[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=289536796]
+transform = Transform3D(1, 0, 1.7563525e-06, 1.7563525e-06, 0, -1, 0, 1, 0, 0.41842175, 0.028514788, 0.017202526)
+
+[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=1843580920]
+transform = Transform3D(1, 0, -2.2967633e-06, -2.2967633e-06, 0, -1, 0, 1, 0, 0.41842175, -0.028514788, -0.07547614)

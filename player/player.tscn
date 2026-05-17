@@ -73,7 +73,7 @@ fire_rate = 0.5
 spread = 0.01
 projectile_info = SubResource("Resource_8t03j")
 spawn_effect = ExtResource("5_rgyib")
-ammon_type = 1
+ammon_type = 5
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]

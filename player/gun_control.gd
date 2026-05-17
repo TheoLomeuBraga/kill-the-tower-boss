@@ -22,12 +22,12 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 }
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
-	GlobalEnums.AmmonType.ANY: 0,
+	GlobalEnums.AmmonType.NONE: 0,
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
-	GlobalEnums.AmmonType.SHOTGUN: 50,
+	GlobalEnums.AmmonType.SHOTGUN: 24,
 	GlobalEnums.AmmonType.ENERGY: 200,
-	GlobalEnums.AmmonType.EXPLOSIVE: 5,
+	GlobalEnums.AmmonType.EXPLOSIVE: 20,
 }
 
 var ammon_on_mag : Dictionary[GunInfo,int]
@@ -224,7 +224,7 @@ func _process(delta: float) -> void:
 	
 	if input_shot and can_shot and has_ammon:
 		time_last_shot = current_gun.fire_rate
-		if current_gun.ammon_type != GlobalEnums.AmmonType.ANY:
+		if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
 			if current_gun.ammon_capacity > 0:
 				set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.ammon_consumption)
 			else:
@@ -241,7 +241,7 @@ func _process(delta: float) -> void:
 		reload()
 		
 	
-	ammon_display.visible = current_gun.ammon_type != GlobalEnums.AmmonType.ANY
+	ammon_display.visible = current_gun.ammon_type != GlobalEnums.AmmonType.NONE
 	if current_gun.ammon_capacity > 0:
 		ammon_display.text = str(ammon_inventory[current_gun.ammon_type]) + "/" + str(get_ammon_on_mag(current_gun))
 	else:

@@ -1,7 +1,7 @@
 extends Node
 class_name GlobalEnums
 
-enum Faction {FRIENDLY,ENEMY,ANY}
+enum Faction {FRIENDLY,ENEMY,NONE}
 
-enum AmmonType {ANY,PISTOL,RIFLE,SHOTGUN,ENERGY,EXPLOSIVE}
+enum AmmonType {NONE,PISTOL,RIFLE,SHOTGUN,ENERGY,EXPLOSIVE}
 enum WeponTime {NORMAL,GRAPPLE}
