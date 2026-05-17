@@ -171,6 +171,7 @@ faction = 0
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [node name="InteractionManager" type="Node" parent="." unique_id=1023676887 node_paths=PackedStringArray("interaction_ray")]
+process_mode = 4
 script = ExtResource("9_8t03j")
 interaction_ray = NodePath("../Camera3D/RayCast3D")
 

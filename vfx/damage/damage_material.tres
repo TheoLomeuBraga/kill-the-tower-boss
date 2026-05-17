@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dn5kwjkym3m5p"]
+
+[ext_resource type="Shader" uid="uid://co7trya00iiif" path="res://vfx/damage/damage_shader.gdshader" id="1_kdhqj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_kdhqj")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/fresnel_power = 0.0

@@ -73,6 +73,9 @@ func reset_bullet_position() -> void:
 		if ray.is_colliding():
 			model.position = ray.get_collision_point()
 		model.look_at(global_basis.z * -100.0)
+	
+	velocity_y = 0.0
+	
 
 func self_destruct() -> void:
 	

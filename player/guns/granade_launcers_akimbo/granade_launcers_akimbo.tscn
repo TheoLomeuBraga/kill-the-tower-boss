@@ -45,3 +45,6 @@ transform = Transform3D(1, 0, -2.2967633e-06, -2.2967633e-06, 0, -1, 0, 1, 0, 0.
 
 [node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=2120772058]
 cast_shadow = 0
+
+[node name="AnimationPlayer" parent="." index="5" unique_id=1117167848]
+speed_scale = 1.2

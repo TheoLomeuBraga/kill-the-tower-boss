@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bxswmx2s7odpf" path="res://enemys/test_dumy/test_dumy.glb" id="1_dv2w2"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="1_ec0n2"]
 [ext_resource type="Script" uid="uid://0kuh1v4sq7fx" path="res://enemys/test_dumy/test_dumy.gd" id="1_gx2jf"]
+[ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="4_n3byo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ec0n2"]
 radius = 0.23291016
@@ -54,5 +55,9 @@ NodePath("../legs_col"): 0.5,
 NodePath("../legs_col2"): 0.5
 }
 metadata/_custom_type_script = "uid://u7trxdlheisb"
+
+[node name="AplyDamageVfx" type="Node" parent="." unique_id=874664492]
+script = ExtResource("4_n3byo")
+metadata/_custom_type_script = "uid://b0dwxhhrp7gf"
 
 [connection signal="damaged" from="Stats" to="." method="recive_damage"]
