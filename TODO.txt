@@ -1,5 +1,3 @@
-add projectile drop
-
 add akimbo automatic wepon model
 
 double barrel shotgun pump action

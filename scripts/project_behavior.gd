@@ -17,6 +17,8 @@ var target_position : Vector3
 var ricochetes_left : int = 0
 var penetrations_left : int = 0
 
+var velocity_y : float = 0.0
+
 func start_ray() -> void:
 	
 	
@@ -43,6 +45,8 @@ func start_shape() -> void:
 		model = data.model.instantiate()
 		add_child(model)
 		model.global_position = muzle_position
+	
+	velocity_y = data.rise_and_drop.x
 
 func start() -> void:
 	
@@ -233,7 +237,11 @@ func _physics_process(delta: float) -> void:
 	if data.speed < 0.0:
 		check_colision()
 	else:
+		
 		shape.position.z -= data.speed * delta
+		
+		velocity_y -= delta * (data.rise_and_drop.y)
+		shape.global_position.y += velocity_y
 		
 		check_colision()
 		

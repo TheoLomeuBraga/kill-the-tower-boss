@@ -58,9 +58,10 @@ metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
 script = ExtResource("4_qjkh3")
 damage = 20
 speed = 20.0
+distance = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_kb6p2")
-bullet_rise_and_drop = Vector2(0.5, -8)
+rise_and_drop = Vector2(0.02, 0.1)
 explosion_data = SubResource("Resource_32hag")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
