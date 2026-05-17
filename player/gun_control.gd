@@ -18,7 +18,7 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.RIFLE: 20,
 	GlobalEnums.AmmonType.SHOTGUN: 50,
 	GlobalEnums.AmmonType.ENERGY: 200,
-	GlobalEnums.AmmonType.EXPLOSIVE: 5,
+	GlobalEnums.AmmonType.EXPLOSIVE: 20,
 }
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
@@ -57,7 +57,7 @@ func process_inventory_reload_time(delta:float) -> void:
 
 func get_inventory_reload_time(gun:GunInfo) -> float:
 	if not inventory_reload_time.has(gun):
-			inventory_reload_time[gun] = 0.0
+		inventory_reload_time[gun] = 0.0
 	return inventory_reload_time[gun]
 
 func set_inventory_reload_time(gun:GunInfo,value:float) -> void:
@@ -126,24 +126,24 @@ func shot() -> void:
 	
 	if inventory[current_gun_id].spawn_effect != null:
 		var particle : Node = inventory[current_gun_id].spawn_effect.instantiate()
-		player_model.gun.muzle.add_child(particle)
+		player_model.gun.get_muzle().add_child(particle)
 	
 	for i : int in inventory[current_gun_id].bullets_per_shot:
-		player_model.gun.shot = true
+		
 		if inventory[current_gun_id].special_type == GlobalEnums.WeponTime.GRAPPLE:
 			player_movement.launch_grapple()
 		else:
 			var projectile : ProjectBehavior = ProjectBehavior.new()
 			add_child(projectile)
 			projectile.global_position = camera.global_position
-			projectile.muzle_position = player_model.gun.muzle.global_position
+			projectile.muzle_position = player_model.gun.get_muzle().global_position
 			
 			projectile.target_position = target_raycast.global_basis.z * -100.0
 			
 			if target_raycast.is_colliding():
 				projectile.look_at(target_raycast.get_collision_point())
 			else:
-				projectile.global_basis = player_model.gun.muzle.global_basis
+				projectile.global_basis = player_model.gun.get_muzle().global_basis
 				projectile.look_at(camera.global_basis.z * -100.0)
 			
 			var spread : float = inventory[current_gun_id].spread
@@ -156,6 +156,9 @@ func shot() -> void:
 			
 			projectile.data = inventory[current_gun_id].projectile_info
 			projectile.start()
+		
+		player_model.gun.shot = true
+
 
 var camera_rots_last_frame : Vector3
 

@@ -1,5 +1,3 @@
-add akimbo
-
 add projectile drop
 
 add explosions knock back

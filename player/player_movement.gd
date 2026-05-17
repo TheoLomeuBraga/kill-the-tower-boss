@@ -61,7 +61,7 @@ func grapple_estate(delta : float) -> void:
 		force = sf + danping
 	
 	
-	grapple_hope.global_position = model.gun.muzle.global_position
+	grapple_hope.global_position = model.gun.get_muzle().global_position
 	grapple_hope.look_at(grapple_place)
 	grapple_hope.scale.z = grapple_hope.global_position.distance_to(grapple_place)
 	

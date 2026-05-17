@@ -21,10 +21,10 @@ height = 0.04
 radial_segments = 4
 rings = 0
 
-[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzle", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player", "case_ejector", "label") instance=ExtResource("1_6becj")]
+[node name="pistol" unique_id=356312967 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "animation_player", "labels") instance=ExtResource("1_6becj")]
 script = ExtResource("2_xco6c")
 gun = NodePath("Armature/Skeleton3D")
-muzle = NodePath("Armature/Skeleton3D/Bone/Cube/muzle")
+muzles = [NodePath("Armature/Skeleton3D/Bone/Cube/muzle")]
 arm_l = NodePath("arm_l")
 pole_l = NodePath("pole_l")
 hand_l = NodePath("hand_l")
@@ -32,8 +32,7 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 animation_player = NodePath("AnimationPlayer")
-case_ejector = NodePath("Armature/Skeleton3D/Bone_001/GPUParticles3D")
-label = NodePath("Armature/Skeleton3D/Bone_001/Cube_001/Label3D")
+labels = [NodePath("Armature/Skeleton3D/Bone_001/Cube_001/Label3D")]
 display_text = "22"
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(100083490) index="0" unique_id=1639782785]
