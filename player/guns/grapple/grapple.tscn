@@ -15,13 +15,13 @@ pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="0" unique_id=1991105473]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1760095697) index="0" unique_id=722397021]
 cast_shadow = 0
 
-[node name="Cylinder" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="1" unique_id=1976997781]
+[node name="Cylinder" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1760095697) index="1" unique_id=1725712706]
 visible = false
 cast_shadow = 0
 
-[node name="Plane" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1881121429) index="4" unique_id=1930461085]
+[node name="Plane" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1760095697) index="4" unique_id=1511490489]
 visible = false
 cast_shadow = 0

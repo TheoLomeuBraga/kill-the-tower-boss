@@ -1,0 +1,46 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://bcrpnapjoti11"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg4nr"]
+animation = &"shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5i0yt"]
+animation = &"shot_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dn23"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2n1q"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8g1my"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md8bu"]
+animation = &"reload"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4m1l7"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
+
+[resource]
+graph_offset = Vector2(-609.16077, 112.84544)
+nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
+nodes/idle/position = Vector2(-1240, 100)
+nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
+nodes/shot_1/position = Vector2(-920, 200)
+nodes/animation_shot_1/node = SubResource("AnimationNodeAnimation_dg4nr")
+nodes/animation_shot_1/position = Vector2(-1320, 360)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_70rjn")
+nodes/Add2/position = Vector2(-380, 140)
+nodes/idle_2/node = SubResource("AnimationNodeAnimation_y2n1q")
+nodes/idle_2/position = Vector2(-1320, 560)
+nodes/shot_2/node = SubResource("AnimationNodeOneShot_2kqyo")
+nodes/shot_2/position = Vector2(-920, 540)
+nodes/animation_shot_2/node = SubResource("AnimationNodeAnimation_5i0yt")
+nodes/animation_shot_2/position = Vector2(-1260, 760)
+nodes/reload/node = SubResource("AnimationNodeAnimation_md8bu")
+nodes/reload/position = Vector2(-200, 340)
+nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
+nodes/play_reload/position = Vector2(40, 180)
+node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]

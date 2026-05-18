@@ -1,3 +1,5 @@
+add blend tree to guns
+
 add explosions knock back
 
 add akimbo automatic wepon model
