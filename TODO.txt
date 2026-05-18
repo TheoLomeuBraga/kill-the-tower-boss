@@ -1,4 +1,4 @@
-add sniper rifle model
+add scoped assaut rifle model
 
 add alt shot and zoom capabilitys
 
