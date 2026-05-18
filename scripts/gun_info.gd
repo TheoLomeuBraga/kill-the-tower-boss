@@ -1,7 +1,7 @@
 extends Resource
 class_name GunInfo
 
-@export var name : String
+@export var model : PackedScene
 @export var special_type : GlobalEnums.WeponTime = GlobalEnums.WeponTime.NORMAL
 
 @export var ammon_consumption : int = 1

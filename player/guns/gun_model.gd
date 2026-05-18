@@ -37,7 +37,11 @@ func get_current_case_ejector() -> GPUParticles3D:
 
 func play_shot_animation() -> void:
 	if is_akimbo:
-		[gun_animation_tree.shot,gun_animation_tree.shot_2][shot_animation_id].call()
+		if is_auto:
+			gun_animation_tree.shot()
+			gun_animation_tree.shot_2()
+		else:
+			[gun_animation_tree.shot,gun_animation_tree.shot_2][shot_animation_id].call()
 	else:
 		gun_animation_tree.shot()
 
@@ -55,7 +59,8 @@ func play_shot_animation() -> void:
 					gp.emitting = value
 			else:
 				get_current_case_ejector().emitting = value
-			
+		
+		
 		if is_auto:
 			shot = value
 			if value:

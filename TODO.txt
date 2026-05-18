@@ -1,3 +1,5 @@
+add automatic akimbo SMGs
+
 add scoped assaut rifle model
 
 add alt shot and zoom capabilitys

@@ -101,7 +101,7 @@ func set_gun(no : int) -> void:
 	
 	player_model.visible = true
 	
-	player_model.set_gun(current_gun.name)
+	player_model.set_gun(current_gun.model)
 	
 	time_last_shot = 0.0
 	
@@ -223,7 +223,6 @@ func _process(delta: float) -> void:
 		has_ammon = get_ammon_on_mag(current_gun) >= current_gun.ammon_consumption
 	else:
 		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
-	
 	
 	if input_shot and can_shot and has_ammon:
 		time_last_shot = current_gun.fire_rate

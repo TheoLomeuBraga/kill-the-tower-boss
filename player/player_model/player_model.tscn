@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0r50bboxsx0q" path="res://player/arms/arms.tscn" id="1_15fux"]
 [ext_resource type="Script" uid="uid://bphhxxguvjf8e" path="res://player/player_model/player_model.gd" id="1_r5r3n"]
-[ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="2_hk2sv"]
 [ext_resource type="PackedScene" uid="uid://dqoy4sfpn04u4" path="res://player/guns/gun_animations.tscn" id="2_qfpg1"]
-[ext_resource type="PackedScene" uid="uid://dalblk3e3mj8q" path="res://player/guns/grapple/grapple.tscn" id="4_qu0w5"]
 [ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.tscn" id="6_nu4ip"]
 
 [node name="PlayerModel" type="Node3D" unique_id=83597824 node_paths=PackedStringArray("arms", "gun_animations", "gun")]
@@ -12,11 +10,6 @@ script = ExtResource("1_r5r3n")
 arms = NodePath("arms")
 gun_animations = NodePath("gun_animations")
 gun = NodePath("granade_launcers_akimbo")
-guns_models = Dictionary[String, PackedScene]({
-"granade_launcher": ExtResource("6_nu4ip"),
-"grapple": ExtResource("4_qu0w5"),
-"pistol": ExtResource("2_hk2sv")
-})
 
 [node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
 
