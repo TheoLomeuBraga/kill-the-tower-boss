@@ -1,8 +1,10 @@
-add explosions knock back
+add sniper rifle model
+
+add alt shot and zoom capabilitys
 
 add akimbo automatic wepon model
 
-double barrel shotgun pump action
+add double barrel pump action shotgun
 
 add enemy basic path finding
 

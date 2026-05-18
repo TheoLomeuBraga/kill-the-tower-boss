@@ -35,6 +35,12 @@ func start() -> void:
 			stats.health -= data.damage
 			
 		
-			
+		if shape.get_collider(i) is RigidBody3D:
+			var rb : RigidBody3D = shape.get_collider(i)
+			rb.linear_velocity += (rb.global_position - global_position).normalized() * (data.knock_back / rb.mass)
+		elif shape.get_collider(i) is CharacterBody3D:
+			var cb : CharacterBody3D = shape.get_collider(i)
+			cb.velocity += (cb.global_position - global_position).normalized() * data.knock_back
+		
 	
 	queue_free()
