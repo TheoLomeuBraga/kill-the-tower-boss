@@ -5,11 +5,11 @@ var ap_node : AnimationPlayer
 
 func _ready() -> void:
 	if anim_player == null:
-		anim_player = "../AnimationPlayer"
 		ap_node = get_node(anim_player)
-		print(anim_player)
 	
 	tree_root = load("res://player/guns/gun_animation_tree/gun_blend_tree.tres").duplicate()
+	tree_root.set("parameters/Add2/add_amount",1.0)
+	
 
 func shot() -> void:
 	set("parameters/shot_1/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

@@ -1,0 +1,5 @@
+evry gun shold have this animations:
+	none
+	shot
+	shot_2
+	reload

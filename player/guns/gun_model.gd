@@ -17,33 +17,34 @@ func get_muzle() -> Node3D:
 @export var pole_r : Node3D
 @export var hand_r : Node3D
 
-@export var animation_player : AnimationPlayer
+@export var gun_animation_tree : GunsAnimationTree
 
-@export var reload_animation : String = "reload"
+@export var is_akimbo : bool = false
 
 var is_shoting : bool = false
-@export var shot_animations : Array[String] = ["shot"]
 var shot_animation_id : int = 0
-func get_current_shot_animation() -> String:
-	return shot_animations[shot_animation_id]
 
 @export var is_auto : bool = false
 
 @export var reload : bool : 
 	set(value):
-		animation_player.play(reload_animation)
+		gun_animation_tree.reload()
 
 @export var case_ejectors : Array[GPUParticles3D]
 var case_ejector_id : int = 0
 func get_current_case_ejector() -> GPUParticles3D:
 	return case_ejectors[case_ejector_id]
 
+func play_shot_animation() -> void:
+	if is_akimbo:
+		[gun_animation_tree.shot,gun_animation_tree.shot_2][shot_animation_id].call()
+	else:
+		gun_animation_tree.shot()
+
 @export var shot : bool : 
 	set(value):
 		
-		shot = value
-		
-		
+
 		
 		if case_ejectors.size() > 0:
 			
@@ -51,30 +52,33 @@ func get_current_case_ejector() -> GPUParticles3D:
 			
 			if is_auto:
 				for gp : GPUParticles3D in case_ejectors:
-					gp.emitting = shot
+					gp.emitting = value
 			else:
-				get_current_case_ejector().emitting = shot
-		
-		if animation_player != null:
+				get_current_case_ejector().emitting = value
 			
-			if is_auto:
-				if value:
-					animation_player.play(get_current_shot_animation(),0.1)
-				else:
-					animation_player.stop()
+		if is_auto:
+			shot = value
+			if value:
+				play_shot_animation()
 			else:
-				animation_player.stop()
-				animation_player.play(get_current_shot_animation(),0.1)
-				
-				if case_ejectors.size() > 0:
-					if is_auto:
-						pass
-					else:
-						await get_tree().create_timer(1.0 / get_current_case_ejector().amount).timeout
-						get_current_case_ejector().emitting = false
+				gun_animation_tree.stop_shot()
+		else:
+			play_shot_animation()
+			
+			if case_ejectors.size() > 0:
+				if is_auto:
+					pass
+				else:
+					await get_tree().create_timer(1.0 / get_current_case_ejector().amount).timeout
+					get_current_case_ejector().emitting = false
 		
-		shot_animation_id = (shot_animation_id + 1) % shot_animations.size()
-		muzle_id = (muzle_id + 1) % shot_animations.size()
+		shot_animation_id = (shot_animation_id + 1) % 2
+		muzle_id = (muzle_id + 1) % muzles.size()
+
+@export var alt_shot : bool : 
+	set(value):
+		alt_shot = value
+		gun_animation_tree.shot_2()
 
 @export var labels : Array[Label3D]
 

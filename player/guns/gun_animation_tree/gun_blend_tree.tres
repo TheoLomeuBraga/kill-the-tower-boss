@@ -24,7 +24,7 @@ animation = &"reload"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
 
 [resource]
-graph_offset = Vector2(-609.16077, 112.84544)
+graph_offset = Vector2(-864.53516, 140.2692)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
