@@ -15,7 +15,9 @@
 [ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
 [ext_resource type="PackedScene" uid="uid://dalblk3e3mj8q" path="res://player/guns/grapple/grapple.tscn" id="9_tqiix"]
 [ext_resource type="Script" uid="uid://dy1nyorfgrxi1" path="res://scripts/explosion_info.gd" id="9_wodsf"]
-[ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.tscn" id="10_e7oew"]
+[ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.tscn" id="10_e7oew"]
+[ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="13_tqiix"]
+[ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="14_e7oew"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -81,6 +83,25 @@ spawn_effect = ExtResource("5_rgyib")
 ammon_type = 5
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="Resource" id="Resource_e7oew"]
+script = ExtResource("4_qjkh3")
+damage = 5
+model = ExtResource("14_e7oew")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_c35mf"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("13_tqiix")
+ammon_capacity = 40
+reload_audio = ExtResource("5_hg6s5")
+fire_rate = 0.05
+spread = 0.1
+is_automatic = true
+projectile_info = SubResource("Resource_e7oew")
+spawn_effect = ExtResource("5_rgyib")
+ammon_type = 1
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]
 albedo_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
@@ -115,7 +136,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5"), SubResource("Resource_2ieo8")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5"), SubResource("Resource_2ieo8"), SubResource("Resource_c35mf")])
 target_raycast = NodePath("../RayCast3D")
 ammon_display = NodePath("../../HUD/ammon_display")
 

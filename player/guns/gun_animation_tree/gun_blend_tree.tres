@@ -15,16 +15,22 @@ animation = &"none"
 animation = &"none"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8g1my"]
+fadein_time = 0.1
+fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md8bu"]
 animation = &"reload"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4m1l7"]
+fadein_time = 0.1
+fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
+fadein_time = 0.1
+fadeout_time = 0.1
 
 [resource]
-graph_offset = Vector2(-864.53516, 140.2692)
+graph_offset = Vector2(-827.1712, 76.69975)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")

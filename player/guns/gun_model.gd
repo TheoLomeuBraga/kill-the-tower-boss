@@ -60,13 +60,13 @@ func play_shot_animation() -> void:
 			else:
 				get_current_case_ejector().emitting = value
 		
-		
 		if is_auto:
-			shot = value
-			if value:
-				play_shot_animation()
-			else:
-				gun_animation_tree.stop_shot()
+			if shot != value:
+				shot = value
+				if value:
+					play_shot_animation()
+				else:
+					gun_animation_tree.stop_shot()
 		else:
 			play_shot_animation()
 			

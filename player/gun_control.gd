@@ -224,6 +224,9 @@ func _process(delta: float) -> void:
 	else:
 		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
 	
+	if not has_ammon or current_gun.is_automatic and Input.is_action_just_released("shot"):
+		player_model.gun.shot = false
+	
 	if input_shot and can_shot and has_ammon:
 		time_last_shot = current_gun.fire_rate
 		if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
@@ -233,6 +236,8 @@ func _process(delta: float) -> void:
 				ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
 			
 		shot()
+	
+	
 	
 	if input_shot and can_shot and not has_ammon:
 		reload()

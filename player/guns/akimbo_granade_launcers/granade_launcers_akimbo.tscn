@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpnd5h1twb3i1"]
 
-[ext_resource type="PackedScene" uid="uid://bnb75l7l4frap" path="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.glb" id="1_pg16n"]
+[ext_resource type="PackedScene" uid="uid://bnb75l7l4frap" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.glb" id="1_pg16n"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_tv3rg"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://bcrpnapjoti11" path="res://player/guns/gun_animation_tree/gun_blend_tree.tres" id="3_7bo66"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="3_u4jqj"]

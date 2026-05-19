@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnb75l7l4frap"
-path="res://.godot/imported/granade_launcers_akimbo.glb-2e8aac61e31bac6f59c2d3160ecea244.scn"
+uid="uid://c1b4qw8vqyrgy"
+path="res://.godot/imported/smg.glb-1dd903baa26817029c2fc59c584b645e.scn"
 
 [deps]
 
-source_file="res://player/guns/granade_launcers_akimbo/granade_launcers_akimbo.glb"
-dest_files=["res://.godot/imported/granade_launcers_akimbo.glb-2e8aac61e31bac6f59c2d3160ecea244.scn"]
+source_file="res://player/guns/akimbo_smg/smg.glb"
+dest_files=["res://.godot/imported/smg.glb-1dd903baa26817029c2fc59c584b645e.scn"]
 
 [params]
 
