@@ -31,7 +31,8 @@ func start_ray() -> void:
 		model = data.model.instantiate()
 		get_parent().add_child(model)
 		model.global_position = muzle_position
-		model.look_at(target_position)
+		#model.look_at(global_position - global_basis.z)
+		model.global_rotation = global_rotation
 
 func start_shape() -> void:
 	
