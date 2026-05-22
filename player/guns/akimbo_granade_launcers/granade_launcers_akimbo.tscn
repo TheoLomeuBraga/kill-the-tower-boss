@@ -2,8 +2,57 @@
 
 [ext_resource type="PackedScene" uid="uid://bnb75l7l4frap" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.glb" id="1_pg16n"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_tv3rg"]
-[ext_resource type="AnimationNodeBlendTree" uid="uid://bcrpnapjoti11" path="res://player/guns/gun_animation_tree/gun_blend_tree.tres" id="3_7bo66"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="3_u4jqj"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg4nr"]
+animation = &"shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5i0yt"]
+animation = &"shot_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dn23"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2n1q"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8g1my"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md8bu"]
+animation = &"reload"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4m1l7"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ogtrn"]
+nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
+nodes/idle/position = Vector2(-1240, 100)
+nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
+nodes/shot_1/position = Vector2(-920, 200)
+nodes/animation_shot_1/node = SubResource("AnimationNodeAnimation_dg4nr")
+nodes/animation_shot_1/position = Vector2(-1320, 360)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_70rjn")
+nodes/Add2/position = Vector2(-380, 140)
+nodes/idle_2/node = SubResource("AnimationNodeAnimation_y2n1q")
+nodes/idle_2/position = Vector2(-1320, 560)
+nodes/shot_2/node = SubResource("AnimationNodeOneShot_2kqyo")
+nodes/shot_2/position = Vector2(-920, 540)
+nodes/animation_shot_2/node = SubResource("AnimationNodeAnimation_5i0yt")
+nodes/animation_shot_2/position = Vector2(-1260, 760)
+nodes/reload/node = SubResource("AnimationNodeAnimation_md8bu")
+nodes/reload/position = Vector2(-200, 340)
+nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
+nodes/play_reload/position = Vector2(40, 180)
+node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
 [node name="granade_launcers_akimbo" unique_id=327965719 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree") instance=ExtResource("1_pg16n")]
 script = ExtResource("2_tv3rg")
@@ -18,43 +67,44 @@ hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
 is_akimbo = true
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2083992733) index="0" unique_id=332869154]
-bones/0/position = Vector3(-0.41842175, -0.028514788, -0.07547617)
-bones/0/rotation = Quaternion(0.7071068, -6.43441e-07, -6.43441e-07, 0.7071068)
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(597457417) index="0" unique_id=352069182]
+bones/0/position = Vector3(-0.41842175, -0.028514786, -0.07660336)
+bones/0/rotation = Quaternion(0.70796907, 7.816464e-05, 0.0006628291, 0.70624316)
+bones/1/rotation = Quaternion(6.4049455e-10, 0.24012047, -3.627575e-10, 0.9707432)
 bones/2/position = Vector3(0.41842175, -0.028514788, -0.07547617)
-bones/2/rotation = Quaternion(0.7071068, -8.120285e-07, -8.120285e-07, 0.7071068)
+bones/2/rotation = Quaternion(0.7071068, -8.120284e-07, -8.120284e-07, 0.7071068)
 
-[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=753778420]
-transform = Transform3D(1, 0, -3.1868644e-06, -3.1868644e-06, 0, -1, 0, 1, 0, -0.41842175, 0.028514788, 0.017202497)
+[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=1324811062]
+transform = Transform3D(0.88419455, -0.0008255597, 0.46711808, 0.46711507, -0.0024412882, -0.8841932, 0.0018703389, 0.9999967, -0.0017729707, -0.41855818, 0.028288333, 0.016214177)
 
-[node name="Cylinder" parent="Armature/Skeleton3D/cilinder_r" index="0" unique_id=1025783081]
+[node name="Cylinder" parent="Armature/Skeleton3D/cilinder_r" index="0" unique_id=866174810]
 cast_shadow = 0
 
-[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1752738562]
-transform = Transform3D(1, 0, -1.819926e-06, -1.819926e-06, 0, -1, 0, 1, 0, -0.41842175, -0.028514788, -0.07547617)
+[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1207625852]
+transform = Transform3D(0.9999991, -0.0008255607, 0.0010489314, 0.0010469133, -0.002441287, -0.9999965, 0.0008281185, 0.9999967, -0.0024404526, -0.41842175, -0.028514786, -0.07660336)
 
-[node name="Cube" parent="Armature/Skeleton3D/gun_r" index="0" unique_id=818781872]
+[node name="Cube" parent="Armature/Skeleton3D/gun_r" index="0" unique_id=992916827]
 cast_shadow = 0
 
-[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=948679894]
+[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=391305295]
 transform = Transform3D(1, 0, 1.7563527e-06, 1.7563527e-06, 0, -1, 0, 1, 0, 0.41842175, 0.028514788, 0.017202497)
 
-[node name="Cylinder_001" parent="Armature/Skeleton3D/cilinder_l" index="0" unique_id=827810438]
+[node name="Cylinder_001" parent="Armature/Skeleton3D/cilinder_l" index="0" unique_id=137614480]
 cast_shadow = 0
 
-[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=616160378]
+[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=795890067]
 transform = Transform3D(1, 0, -2.2967631e-06, -2.2967631e-06, 0, -1, 0, 1, 0, 0.41842175, -0.028514788, -0.07547617)
 
-[node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=2120772058]
+[node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=1636763598]
 cast_shadow = 0
 
-[node name="AnimationPlayer" parent="." index="5" unique_id=1117167848]
+[node name="AnimationPlayer" parent="." index="5" unique_id=173435725]
 speed_scale = 1.2
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=1886275062]
-tree_root = ExtResource("3_7bo66")
+tree_root = SubResource("AnimationNodeBlendTree_ogtrn")
 anim_player = NodePath("../AnimationPlayer")
-parameters/shot_1/active = false
+parameters/shot_1/active = true
 parameters/shot_1/internal_active = false
 parameters/shot_1/request = 0
 parameters/Add2/add_amount = 1.0

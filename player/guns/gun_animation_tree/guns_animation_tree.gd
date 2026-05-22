@@ -1,3 +1,4 @@
+@tool
 extends AnimationTree
 class_name GunsAnimationTree
 
@@ -16,6 +17,10 @@ func shot() -> void:
 
 func shot_2() -> void:
 	set("parameters/shot_2/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+func abort_shot() -> void:
+	set("parameters/shot_1/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+	set("parameters/shot_2/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 
 func stop_shot() -> void:
 	set("parameters/shot_1/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)

@@ -45,6 +45,10 @@ func play_shot_animation() -> void:
 	else:
 		gun_animation_tree.shot()
 
+func abort_shot() -> void:
+	gun_animation_tree.abort_shot()
+	
+
 @export var shot : bool : 
 	set(value):
 		

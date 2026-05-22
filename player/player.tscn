@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="4_2ieo8"]
 [ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="4_32hag"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://doeh3jwlr13lx" path="res://player/guns/shotgun/shotgun.tscn" id="4_tqiix"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="5_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
@@ -27,10 +28,8 @@ radius = 0.2
 [sub_resource type="Resource" id="Resource_boad6"]
 script = ExtResource("4_qjkh3")
 damage = 10
-speed = 20.0
-model = ExtResource("4_2ieo8")
+model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_yllr7")
-ricochet = 1
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
@@ -43,12 +42,6 @@ spread = 0.01
 projectile_info = SubResource("Resource_boad6")
 spawn_effect = ExtResource("5_rgyib")
 ammon_type = 1
-metadata/_custom_type_script = "uid://5ihhl4vr45q5"
-
-[sub_resource type="Resource" id="Resource_hg6s5"]
-script = ExtResource("3_qjkh3")
-model = ExtResource("9_tqiix")
-special_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6p2"]
@@ -103,6 +96,25 @@ spawn_effect = ExtResource("5_rgyib")
 ammon_type = 1
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="Resource" id="Resource_65viv"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("4_tqiix")
+ammon_capacity = 2
+reload_audio = ExtResource("5_hg6s5")
+bullets_per_shot = 10
+fire_rate = 0.1
+spread = 0.1
+projectile_info = SubResource("Resource_boad6")
+spawn_effect = ExtResource("5_rgyib")
+ammon_type = 3
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_hg6s5"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("9_tqiix")
+special_type = 1
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]
 albedo_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
@@ -137,7 +149,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_hg6s5"), SubResource("Resource_2ieo8"), SubResource("Resource_c35mf")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_2ieo8"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 ammon_display = NodePath("../../HUD/ammon_display")
 

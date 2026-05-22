@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://xvi58scs1mig"]
+
+[ext_resource type="PackedScene" uid="uid://inpkag02fk75" path="res://levels/test/light_test/light_test.glb" id="1_bukon"]
+[ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="2_khby8"]
+[ext_resource type="LightmapGIData" uid="uid://v2mxrdhprrs" path="res://levels/test/light_test/light_test.lmbake" id="3_gvt53"]
+[ext_resource type="ArrayOccluder3D" uid="uid://ccg1e2vwxcs8g" path="res://levels/test/light_test/light_test.occ" id="4_53cji"]
+[ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="5_ssg7o"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_53cji"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_khby8"]
+ground_energy_multiplier = 0.2
+
+[sub_resource type="Sky" id="Sky_gvt53"]
+sky_material = SubResource("ProceduralSkyMaterial_khby8")
+
+[sub_resource type="Environment" id="Environment_53cji"]
+background_mode = 2
+sky = SubResource("Sky_gvt53")
+
+[node name="light_test" unique_id=1477551872 instance=ExtResource("1_bukon")]
+
+[node name="Cube-col" parent="." index="0" unique_id=762072844]
+cast_shadow = 2
+
+[node name="Sun" parent="." index="1" unique_id=1280448586]
+light_energy = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="Point" parent="." index="2" unique_id=1060283614]
+light_energy = 1.0
+light_bake_mode = 1
+
+[node name="Point_001" parent="." index="3" unique_id=128378864]
+light_energy = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="Point_002" parent="." index="4" unique_id=280392421]
+light_energy = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="Player" parent="." index="5" unique_id=696039800 instance=ExtResource("2_khby8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="LightmapGI" type="LightmapGI" parent="." index="6" unique_id=609325395]
+camera_attributes = SubResource("CameraAttributesPractical_53cji")
+light_data = ExtResource("3_gvt53")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="7" unique_id=111792794]
+environment = SubResource("Environment_53cji")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="8" unique_id=29576085]
+occluder = ExtResource("4_53cji")
+
+[node name="Cube" parent="." index="9" unique_id=894942605]
+cast_shadow = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="10" unique_id=1406471891]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 2, -1)
+light_projector = ExtResource("5_ssg7o")
+shadow_enabled = true
+spot_angle = 20.0

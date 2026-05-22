@@ -1,10 +1,10 @@
+add test level ( to test textures and ilumination )
+
+add double barrel pump action shotgun
+
 add scoped assaut rifle model
 
 add alt shot and zoom capabilitys
-
-add akimbo automatic wepon model
-
-add double barrel pump action shotgun
 
 add enemy basic path finding
 

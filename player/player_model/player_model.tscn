@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c0r50bboxsx0q" path="res://player/arms/arms.tscn" id="1_15fux"]
 [ext_resource type="Script" uid="uid://bphhxxguvjf8e" path="res://player/player_model/player_model.gd" id="1_r5r3n"]
 [ext_resource type="PackedScene" uid="uid://dqoy4sfpn04u4" path="res://player/guns/gun_animations.tscn" id="2_qfpg1"]
-[ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="4_qu0w5"]
+[ext_resource type="PackedScene" uid="uid://doeh3jwlr13lx" path="res://player/guns/shotgun/shotgun.tscn" id="4_qu0w5"]
 
 [node name="PlayerModel" type="Node3D" unique_id=83597824 node_paths=PackedStringArray("arms", "gun_animations", "gun")]
 script = ExtResource("1_r5r3n")
 arms = NodePath("arms")
 gun_animations = NodePath("gun_animations")
-gun = NodePath("smg")
+gun = NodePath("shotgun")
 
 [node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
 
@@ -18,4 +18,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.067, 0.394)
 walk_speed = 1.4
 drop_wepon_estate = 0.0
 
-[node name="smg" parent="." unique_id=696736820 instance=ExtResource("4_qu0w5")]
+[node name="shotgun" parent="." unique_id=1989141545 instance=ExtResource("4_qu0w5")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=512827651]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+fov = 90.0

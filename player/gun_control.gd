@@ -69,6 +69,8 @@ func reload_ammon() -> void:
 	
 	is_reloading = false
 	
+	player_model.gun.abort_shot()
+	
 	if ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_capacity:
 		ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_capacity - get_ammon_on_mag(current_gun)
 		set_ammon_on_mag(current_gun,current_gun.ammon_capacity)
@@ -157,7 +159,7 @@ func shot() -> void:
 			projectile.data = inventory[current_gun_id].projectile_info
 			projectile.start()
 		
-		player_model.gun.shot = true
+	player_model.gun.shot = true
 
 
 var camera_rots_last_frame : Vector3
@@ -184,8 +186,11 @@ func reload() -> void:
 	can_reload = can_reload and get_ammon_on_mag(current_gun) < current_gun.ammon_capacity
 	can_reload = can_reload and ammon_inventory[current_gun.ammon_type] > 0
 	
+	
+	
 	if not can_reload:
 		return
+	
 	
 	reload_audio_player.play()
 	player_model.reload()
@@ -224,7 +229,10 @@ func _process(delta: float) -> void:
 	else:
 		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
 	
-	if not has_ammon or current_gun.is_automatic and Input.is_action_just_released("shot"):
+	#if  not has_ammon or current_gun.is_automatic and Input.is_action_just_released("shot") or is_reloading:
+	#	player_model.gun.shot = false
+	
+	if (current_gun.is_automatic and (not input_shot or not has_ammon)):
 		player_model.gun.shot = false
 	
 	if input_shot and can_shot and has_ammon:
@@ -236,6 +244,9 @@ func _process(delta: float) -> void:
 				ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
 			
 		shot()
+	
+	
+	
 	
 	
 	

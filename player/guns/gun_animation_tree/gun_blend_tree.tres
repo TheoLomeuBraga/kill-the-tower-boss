@@ -30,7 +30,6 @@ fadein_time = 0.1
 fadeout_time = 0.1
 
 [resource]
-graph_offset = Vector2(-827.1712, 76.69975)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
