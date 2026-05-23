@@ -2,6 +2,8 @@ add test level ( to test textures and ilumination )
 
 add double barrel pump action shotgun
 
+ammon pickups
+
 add scoped assaut rifle model
 
 add alt shot and zoom capabilitys

@@ -100,6 +100,7 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 script = ExtResource("3_qjkh3")
 model = ExtResource("4_tqiix")
 ammon_capacity = 2
+inventory_reload_time = 0.5
 reload_audio = ExtResource("5_hg6s5")
 bullets_per_shot = 10
 fire_rate = 0.1

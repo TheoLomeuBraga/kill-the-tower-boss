@@ -209,6 +209,11 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("wepon_5"):
 		set_gun(4)
 	
+	if Input.is_action_just_released("next_wepon"):
+		set_gun(wrap(current_gun_id+1,0,inventory.size()))
+	elif Input.is_action_just_released("previous_wepon"):
+		set_gun(wrap(current_gun_id-1,0,inventory.size()))
+	
 	process_inventory_reload_time(delta)
 	
 	if current_gun == null or player_model == null or player_model.gun == null:
@@ -255,7 +260,7 @@ func _process(delta: float) -> void:
 	
 	sway_gun(delta)
 	
-	if Input.is_action_just_pressed("reload"):
+	if Input.is_action_just_pressed("reload") or Input.is_action_just_released("shot") and not has_ammon:
 		reload()
 		
 	
