@@ -1,7 +1,5 @@
 ammon/health pickups
 
-change pistol reload animation
-
 add scoped gail gun model
 
 add alt shot and zoom capabilitys
