@@ -1,10 +1,8 @@
-add test level ( to test textures and ilumination )
+ammon/health pickups
 
-add double barrel pump action shotgun
+change pistol reload animation
 
-ammon pickups
-
-add scoped assaut rifle model
+add scoped gail gun model
 
 add alt shot and zoom capabilitys
 
