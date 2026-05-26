@@ -20,3 +20,5 @@ class_name GunInfo
 @export var spawn_effect : PackedScene
 
 @export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.NONE
+
+@export var knock_back : float = 0.0

@@ -2,6 +2,8 @@ ammon/health pickups
 
 add scoped gail gun model
 
+add charge shot
+
 add alt shot and zoom capabilitys
 
 add enemy basic path finding
