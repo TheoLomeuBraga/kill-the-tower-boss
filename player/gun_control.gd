@@ -30,6 +30,12 @@ var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.EXPLOSIVE: 20,
 }
 
+func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
+	return ammon_inventory[type] < max_ammon[type]
+
+func add_ammon(type:GlobalEnums.AmmonType , amount:int) -> void:
+	ammon_inventory[type] = min(ammon_inventory[type]+amount,max_ammon[type])
+
 var ammon_on_mag : Dictionary[GunInfo,int]
 func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
 	ammon_on_mag[gun_info] = amount

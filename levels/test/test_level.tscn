@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_o7vyq"]
 [ext_resource type="PackedScene" uid="uid://bm6p8wr7dadkh" path="res://enemys/test_dumy/test_dumy.tscn" id="2_3ala8"]
 [ext_resource type="PackedScene" uid="uid://bpmwrcsagnrvv" path="res://props/test_cube/test_cube.tscn" id="3_tmcpo"]
+[ext_resource type="PackedScene" uid="uid://eg6xpltvknpa" path="res://consumables/consumable.tscn" id="4_jwhgt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -89,3 +90,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 
 [node name="TestCube3" parent="." unique_id=208549177 instance=ExtResource("3_tmcpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
+
+[node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(-0.47369435, 0, -0.880689, 0, 1, 0, 0.880689, 0, -0.47369435, -3, 1, 3)
+
+[node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(0.027503384, 0, 0.99962157, 0, 1, 0, -0.99962157, 0, 0.027503384, -3, 1, 4)
+ammon = 10
+type = 1
+
+[node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(0.6060402, 0, -0.7954337, 0, 1, 0, 0.7954337, 0, 0.6060402, -3, 1, 5)
+ammon = 5
+type = 2
+
+[node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(-0.9854763, 0, -0.16981111, 0, 1, 0, 0.16981111, 0, -0.9854763, -3, 1, 6)
+ammon = 4
+type = 3
+
+[node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(0.44180185, 0, 0.8971123, 0, 1, 0, -0.8971123, 0, 0.44180185, -3, 1, 7)
+ammon = 25
+type = 4
+
+[node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
+transform = Transform3D(0.5733894, 0, -0.81928235, 0, 1, 0, 0.81928235, 0, 0.5733894, -3, 1, 8)
+ammon = 3
+type = 5

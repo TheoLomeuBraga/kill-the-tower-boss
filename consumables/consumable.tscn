@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://eg6xpltvknpa"]
+
+[ext_resource type="PackedScene" uid="uid://bglm3jqqp2vs5" path="res://consumables/ammon/ammon.glb" id="1_o4nrf"]
+[ext_resource type="Script" uid="uid://cs4lpp48lis67" path="res://consumables/consumable.gd" id="2_np3n4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_np3n4"]
+
+[node name="consumable" unique_id=1597481904 instance=ExtResource("1_o4nrf")]
+transform = Transform3D(0.99397886, 0, 0.10957204, 0, 1, 0, -0.10957204, 0, 0.99397886, 0, 0, 0)
+script = ExtResource("2_np3n4")
+
+[node name="pistol" parent="." index="0" unique_id=1988714235]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+cast_shadow = 0
+
+[node name="rifle" parent="." index="1" unique_id=861801899]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+cast_shadow = 0
+
+[node name="shotgun" parent="." index="2" unique_id=968926669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+
+[node name="Cylinder" parent="shotgun" index="0" unique_id=2040600140]
+cast_shadow = 0
+
+[node name="energy" parent="." index="3" unique_id=962188263]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+cast_shadow = 0
+
+[node name="explosive" parent="." index="4" unique_id=82585668]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+cast_shadow = 0
+
+[node name="health" parent="." index="5" unique_id=1930139172]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+cast_shadow = 0
+
+[node name="Area3D" type="Area3D" parent="." index="6" unique_id=1511546137]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1925784116]
+shape = SubResource("SphereShape3D_np3n4")

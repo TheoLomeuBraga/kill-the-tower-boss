@@ -67,44 +67,42 @@ hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
 is_akimbo = true
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(597457417) index="0" unique_id=352069182]
-bones/0/position = Vector3(-0.41842175, -0.028514786, -0.07660336)
-bones/0/rotation = Quaternion(0.70796907, 7.816464e-05, 0.0006628291, 0.70624316)
-bones/1/rotation = Quaternion(6.4049455e-10, 0.24012047, -3.627575e-10, 0.9707432)
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2055042222) index="0" unique_id=755410612]
+bones/0/position = Vector3(-0.41842175, -0.028514788, -0.07547617)
+bones/0/rotation = Quaternion(0.7071068, -6.43441e-07, -6.43441e-07, 0.7071068)
+bones/1/position = Vector3(-1.1443102e-07, 0.092678726, -0.057029575)
 bones/2/position = Vector3(0.41842175, -0.028514788, -0.07547617)
-bones/2/rotation = Quaternion(0.7071068, -8.120284e-07, -8.120284e-07, 0.7071068)
+bones/2/rotation = Quaternion(0.7071068, -8.120285e-07, -8.120285e-07, 0.7071068)
+bones/3/position = Vector3(-1.4414158e-07, 0.092678726, -0.057029575)
 
-[node name="cilinder_r" parent="Armature/Skeleton3D" index="0" unique_id=1324811062]
-transform = Transform3D(0.88419455, -0.0008255597, 0.46711808, 0.46711507, -0.0024412882, -0.8841932, 0.0018703389, 0.9999967, -0.0017729707, -0.41855818, 0.028288333, 0.016214177)
-
-[node name="Cylinder" parent="Armature/Skeleton3D/cilinder_r" index="0" unique_id=866174810]
+[node name="Cylinder" parent="Armature/Skeleton3D/cilinder_r" parent_id_path=PackedInt32Array(685856935) index="0" unique_id=80173703]
 cast_shadow = 0
 
-[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1207625852]
-transform = Transform3D(0.9999991, -0.0008255607, 0.0010489314, 0.0010469133, -0.002441287, -0.9999965, 0.0008281185, 0.9999967, -0.0024404526, -0.41842175, -0.028514786, -0.07660336)
+[node name="gun_r" parent="Armature/Skeleton3D" index="1" unique_id=1151776846]
+transform = Transform3D(1, 0, -1.819926e-06, -1.819926e-06, 0, -1, 0, 1, 0, -0.41842175, -0.028514788, -0.07547617)
 
-[node name="Cube" parent="Armature/Skeleton3D/gun_r" index="0" unique_id=992916827]
+[node name="Cube" parent="Armature/Skeleton3D/gun_r" index="0" unique_id=162581640]
 cast_shadow = 0
 
-[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=391305295]
-transform = Transform3D(1, 0, 1.7563527e-06, 1.7563527e-06, 0, -1, 0, 1, 0, 0.41842175, 0.028514788, 0.017202497)
+[node name="cilinder_l" parent="Armature/Skeleton3D" index="2" unique_id=369934140]
+transform = Transform3D(1, 0, 1.7563527e-06, 1.7563527e-06, 0, -1, 0, 1, 0, 0.41842175, 0.028514788, 0.017202556)
 
-[node name="Cylinder_001" parent="Armature/Skeleton3D/cilinder_l" index="0" unique_id=137614480]
+[node name="Cylinder_001" parent="Armature/Skeleton3D/cilinder_l" index="0" unique_id=85368198]
 cast_shadow = 0
 
-[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=795890067]
+[node name="gun_l" parent="Armature/Skeleton3D" index="3" unique_id=885087306]
 transform = Transform3D(1, 0, -2.2967631e-06, -2.2967631e-06, 0, -1, 0, 1, 0, 0.41842175, -0.028514788, -0.07547617)
 
-[node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=1636763598]
+[node name="Cube_001" parent="Armature/Skeleton3D/gun_l" index="0" unique_id=365934551]
 cast_shadow = 0
 
-[node name="AnimationPlayer" parent="." index="5" unique_id=173435725]
+[node name="AnimationPlayer" parent="." index="5" unique_id=1293533767]
 speed_scale = 1.2
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=1886275062]
 tree_root = SubResource("AnimationNodeBlendTree_ogtrn")
 anim_player = NodePath("../AnimationPlayer")
-parameters/shot_1/active = true
+parameters/shot_1/active = false
 parameters/shot_1/internal_active = false
 parameters/shot_1/request = 0
 parameters/Add2/add_amount = 1.0

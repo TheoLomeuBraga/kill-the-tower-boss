@@ -114,8 +114,14 @@ transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999
 [node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=777787032]
 cast_shadow = 0
 
+[node name="Cube_002" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1098847165]
+cast_shadow = 0
+
 [node name="Bone_002" parent="Armature/Skeleton3D" index="2" unique_id=314535346]
 transform = Transform3D(1, -7.105426e-15, 2.3841854e-07, -7.105428e-15, 0.99999994, 5.9604645e-08, -2.3841855e-07, -5.9604645e-08, 0.99999994, 2.1316283e-15, 8.8817837e-16, 0.1)
+
+[node name="Cube_003" parent="Armature/Skeleton3D/Bone_002" index="0" unique_id=623151382]
+cast_shadow = 0
 
 [node name="Bone_003" parent="Armature/Skeleton3D" index="3" unique_id=187024722]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0.50000006, -0.50000006, -1.0000001)

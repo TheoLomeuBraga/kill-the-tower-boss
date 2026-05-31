@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cmovbyta1eiev"]
 
+[ext_resource type="Script" uid="uid://bxdeemne5uvd5" path="res://player/player.gd" id="1_65viv"]
 [ext_resource type="Script" uid="uid://hird11mmihta" path="res://player/player_movement.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://cy1o6s4fa4vaf" path="res://player/player_model/player_model.tscn" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://sph487wn7ajs" path="res://player/gun_control.gd" id="2_g1dw6"]
@@ -129,6 +130,7 @@ radial_segments = 4
 rings = 0
 
 [node name="Player" type="CharacterBody3D" unique_id=696039800]
+script = ExtResource("1_65viv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=112577337]
 shape = SubResource("CapsuleShape3D_kqu6x")

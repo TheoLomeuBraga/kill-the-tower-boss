@@ -1,4 +1,4 @@
-ammon/health pickups
+add sound to ammon/health pickups
 
 add scoped gail gun model
 
