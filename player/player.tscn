@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="13_tqiix"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="14_e7oew"]
 [ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="16_x7c3f"]
+[ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -149,7 +150,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
 target_position = Vector3(0, 0, -100)
 
-[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model", "camera", "target_raycast", "ammon_display")]
+[node name="GunControl" type="Node" parent="Camera3D" unique_id=816634884 node_paths=PackedStringArray("body", "player_movement", "player_model", "camera", "target_raycast")]
 script = ExtResource("2_g1dw6")
 body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
@@ -157,7 +158,6 @@ player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
 inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
-ammon_display = NodePath("../../HUD/ammon_display")
 
 [node name="HUD" type="Control" parent="." unique_id=627942019]
 texture_filter = 1
@@ -167,6 +167,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("18_bjvpn")
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD" unique_id=145619763]
 layout_mode = 1
@@ -181,6 +182,24 @@ layout_mode = 2
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="health_display" type="Label" parent="HUD" unique_id=1631080697]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0007732137
+anchor_top = 0.85600007
+anchor_right = 0.19666667
+anchor_bottom = 1.0
+offset_left = 0.46392822
+offset_top = 0.31195068
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.18573517, 0.53868854, 5.7756904e-07, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ammon_display" type="Label" parent="HUD" unique_id=1709144416]
 layout_mode = 1

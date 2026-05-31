@@ -32,7 +32,10 @@ func start() -> void:
 				get_parent().add_child(hit_particle)
 				hit_particle.global_position = shape.get_collision_point(i)
 			
-			stats.health -= data.damage
+			if stats.faction != data.faction:
+				stats.health -= data.damage
+			else:
+				stats.health -= data.friendly_damage
 			
 		
 		if shape.get_collider(i) is RigidBody3D:

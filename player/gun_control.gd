@@ -11,7 +11,6 @@ var current_gun_id : int = -1
 var current_gun : GunInfo
 
 @export var target_raycast : RayCast3D
-@export var ammon_display : Label
 
 const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
@@ -274,11 +273,7 @@ func _process(delta: float) -> void:
 		reload()
 		
 	
-	ammon_display.visible = current_gun.ammon_type != GlobalEnums.AmmonType.NONE
-	if current_gun.ammon_capacity > 0:
-		ammon_display.text = str(ammon_inventory[current_gun.ammon_type]) + "/" + str(get_ammon_on_mag(current_gun))
-	else:
-		ammon_display.text = str(ammon_inventory[current_gun.ammon_type])
+	
 	
 	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
