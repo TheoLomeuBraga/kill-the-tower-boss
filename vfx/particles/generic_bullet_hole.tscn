@@ -12,7 +12,7 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_u1x1c"]
 material = SubResource("StandardMaterial3D_u1x1c")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.2, 0.2)
 
 [node name="GenericBulletHole" type="MeshInstance3D" unique_id=1314646712]
 mesh = SubResource("QuadMesh_u1x1c")

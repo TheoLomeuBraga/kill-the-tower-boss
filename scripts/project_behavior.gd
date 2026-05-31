@@ -19,6 +19,9 @@ var penetrations_left : int = 0
 
 var velocity_y : float = 0.0
 
+
+static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
 func start_ray() -> void:
 	
 	
@@ -114,6 +117,7 @@ func spaw_wall_effect(pos:Vector3,target:Vector3) -> void:
 	get_parent().add_child(effect)
 	effect.global_position = pos
 	effect.look_at(target)
+	effect.rotate(effect.global_basis.z,rng.randf_range(-PI,PI))
 
 func check_collision_ray() -> void:
 	while true:
