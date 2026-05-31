@@ -61,7 +61,25 @@ func update_model() -> void:
 
 @onready var triger : Area3D = $Area3D
 
+static var heal_audio : AudioStream = load("res://sfx/heal.wav")
+static var ammon_audio : AudioStream = load("res://sfx/ammon.wav")
+
 func self_destruct() -> void:
+	
+	var audio : AudioStreamPlayer = AudioStreamPlayer.new()
+	get_parent().add_child(audio)
+	audio.finished.connect(audio.queue_free)
+	
+	
+	if health > 0 and type == GlobalEnums.AmmonType.NONE:
+		audio.volume_db = -10
+		audio.stream = heal_audio
+	else:
+		audio.volume_db = 0
+		audio.stream = ammon_audio
+	
+	audio.play()
+	
 	queue_free()
 
 func interract_body(n:Node3D) -> void:

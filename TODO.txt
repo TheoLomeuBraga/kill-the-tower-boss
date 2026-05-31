@@ -1,6 +1,4 @@
-add sound to ammon/health pickups
-
-add scoped gail gun model
+add scoped sniper model
 
 add charge shot
 
