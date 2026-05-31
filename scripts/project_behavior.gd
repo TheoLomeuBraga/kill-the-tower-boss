@@ -81,9 +81,9 @@ func reset_bullet_position() -> void:
 func self_destruct() -> void:
 	
 	var eb : ExplosionBehavior = ExplosionBehavior.new()
-	eb.data = data.explosion_data
+	eb.data = data.explosion_info
 	
-	if data.explosion_data != null:
+	if data.explosion_info != null:
 		if data.speed < 0.0:
 			
 			if ray.is_colliding():
@@ -105,6 +105,15 @@ func self_destruct() -> void:
 	
 	queue_free()
 
+func spaw_wall_effect(pos:Vector3,target:Vector3) -> void:
+	
+	if data.hit_wall_effect == null:
+		return
+	
+	var effect : Node3D = data.hit_wall_effect.instantiate()
+	get_parent().add_child(effect)
+	effect.global_position = pos
+	effect.look_at(target)
 
 func check_collision_ray() -> void:
 	while true:
@@ -114,11 +123,14 @@ func check_collision_ray() -> void:
 			var stats : Stats = Stats.get_stats_from_node(ray.get_collider())
 			if stats == null:
 				
+				var new_pos : Vector3 = ray.get_collision_point()
+				var surface_normal : Vector3 = ray.get_collision_normal()
+				
+				spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal)
+				
 				if ricochetes_left > 0:
 					
-					var new_pos : Vector3 = ray.get_collision_point()
-				
-					var surface_normal : Vector3 = ray.get_collision_normal()
+					
 					var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
 					
 					global_position = new_pos + (recochet_dir * 0.1)
@@ -206,11 +218,14 @@ func check_collision_shape() -> void:
 				continue
 		else:
 			
+			var new_pos : Vector3 = shape.get_collision_point(i)
+			var surface_normal : Vector3 = shape.get_collision_normal(i)
+			
+			spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal)
+			
 			if ricochetes_left > 0:
 				
-				var new_pos : Vector3 = shape.get_collision_point(i)
 				
-				var surface_normal : Vector3 = shape.get_collision_normal(i)
 				var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
 				
 				global_position = new_pos + (surface_normal * 0.5)

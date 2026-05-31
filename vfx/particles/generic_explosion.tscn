@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_fowg2"]
 [ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="2_0qgn1"]
+[ext_resource type="AudioStream" uid="uid://bot80f0pkeg13" path="res://sfx/explosion.wav" id="2_svaj3"]
 
 [sub_resource type="Curve" id="Curve_svaj3"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05325444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7679194, 0.0, 0, 0]
@@ -35,6 +36,12 @@ process_material = SubResource("ParticleProcessMaterial_305tb")
 draw_pass_1 = SubResource("SphereMesh_0qgn1")
 script = ExtResource("1_fowg2")
 metadata/_custom_type_script = "uid://htqnd5ug1tb"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1696805997]
+stream = ExtResource("2_svaj3")
+volume_db = -10.0
+unit_size = 20.0
+autoplay = true
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=135609236]
 autostart = true

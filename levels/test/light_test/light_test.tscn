@@ -6,8 +6,6 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://ccg1e2vwxcs8g" path="res://levels/test/light_test/light_test.occ" id="4_53cji"]
 [ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="5_ssg7o"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_53cji"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_khby8"]
 ground_energy_multiplier = 0.2
 
@@ -46,7 +44,8 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="6" unique_id=609325395]
-camera_attributes = SubResource("CameraAttributesPractical_53cji")
+bounce_indirect_energy = 2.0
+interior = true
 light_data = ExtResource("3_gvt53")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="7" unique_id=111792794]

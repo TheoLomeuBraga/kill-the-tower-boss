@@ -4,6 +4,7 @@ class_name GunInfo
 @export var model : PackedScene
 @export var special_type : GlobalEnums.WeponTime = GlobalEnums.WeponTime.NORMAL
 
+@export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.NONE
 @export var ammon_consumption : int = 1
 @export var ammon_capacity : int = 10
 @export var reload_time : float = 1.0
@@ -17,8 +18,12 @@ class_name GunInfo
 @export var is_automatic :  bool = false
 
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
+@export var charge_shot_info : ChargeShotInfo = null
 @export var spawn_effect : PackedScene
 
-@export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.NONE
+
+
+
+
 
 @export var knock_back : float = 0.0

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://yv6fu5f1ggef"]
+
+[ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="1_8tr52"]
+[ext_resource type="Texture2D" uid="uid://iclvy3g1ff6j" path="res://vfx/particles/bullet_hole.png" id="1_i1v5c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1x1c"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_i1v5c")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_u1x1c"]
+material = SubResource("StandardMaterial3D_u1x1c")
+size = Vector2(0.1, 0.1)
+
+[node name="GenericBulletHole" type="MeshInstance3D" unique_id=1314646712]
+mesh = SubResource("QuadMesh_u1x1c")
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=319384567]
+wait_time = 5.0
+autostart = true
+script = ExtResource("1_8tr52")
+metadata/_custom_type_script = "uid://dsdgjeae30hcj"

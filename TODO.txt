@@ -1,6 +1,8 @@
-add scoped sniper model
+add plasma condesator model model
 
 add charge shot
+
+add scoped sniper model
 
 add alt shot and zoom capabilitys
 

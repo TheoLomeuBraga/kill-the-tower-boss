@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.tscn" id="10_e7oew"]
 [ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="13_tqiix"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="14_e7oew"]
+[ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="16_x7c3f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -36,19 +37,54 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [sub_resource type="Resource" id="Resource_rgyib"]
 script = ExtResource("3_qjkh3")
 model = ExtResource("4_32hag")
+ammon_type = 1
 reload_time = 0.8
 reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_boad6")
 spawn_effect = ExtResource("5_rgyib")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_e7oew"]
+script = ExtResource("4_qjkh3")
+damage = 5
+model = ExtResource("14_e7oew")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_c35mf"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("13_tqiix")
 ammon_type = 1
+ammon_capacity = 40
+reload_time = 2.0
+reload_audio = ExtResource("5_hg6s5")
+fire_rate = 0.05
+spread = 0.1
+is_automatic = true
+projectile_info = SubResource("Resource_e7oew")
+spawn_effect = ExtResource("5_rgyib")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_65viv"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("4_tqiix")
+ammon_type = 3
+ammon_capacity = 2
+inventory_reload_time = 0.5
+reload_audio = ExtResource("5_hg6s5")
+bullets_per_shot = 10
+fire_rate = 0.1
+spread = 0.1
+projectile_info = SubResource("Resource_boad6")
+spawn_effect = ExtResource("5_rgyib")
+knock_back = 5.0
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6p2"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_32hag"]
+[sub_resource type="Resource" id="Resource_x7c3f"]
 script = ExtResource("9_wodsf")
 model = ExtResource("8_kb6p2")
 metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
@@ -61,12 +97,14 @@ distance = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_kb6p2")
 rise_and_drop = Vector2(0.02, 0.1)
-explosion_data = SubResource("Resource_32hag")
+explosion_info = SubResource("Resource_x7c3f")
+hit_wall_effect = ExtResource("16_x7c3f")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_2ieo8"]
 script = ExtResource("3_qjkh3")
 model = ExtResource("10_e7oew")
+ammon_type = 5
 ammon_capacity = 12
 reload_time = 0.8
 reload_audio = ExtResource("5_hg6s5")
@@ -74,42 +112,6 @@ fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_8t03j")
 spawn_effect = ExtResource("5_rgyib")
-ammon_type = 5
-metadata/_custom_type_script = "uid://5ihhl4vr45q5"
-
-[sub_resource type="Resource" id="Resource_e7oew"]
-script = ExtResource("4_qjkh3")
-damage = 5
-model = ExtResource("14_e7oew")
-metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
-
-[sub_resource type="Resource" id="Resource_c35mf"]
-script = ExtResource("3_qjkh3")
-model = ExtResource("13_tqiix")
-ammon_capacity = 40
-reload_time = 2.0
-reload_audio = ExtResource("5_hg6s5")
-fire_rate = 0.05
-spread = 0.1
-is_automatic = true
-projectile_info = SubResource("Resource_e7oew")
-spawn_effect = ExtResource("5_rgyib")
-ammon_type = 1
-metadata/_custom_type_script = "uid://5ihhl4vr45q5"
-
-[sub_resource type="Resource" id="Resource_65viv"]
-script = ExtResource("3_qjkh3")
-model = ExtResource("4_tqiix")
-ammon_capacity = 2
-inventory_reload_time = 0.5
-reload_audio = ExtResource("5_hg6s5")
-bullets_per_shot = 10
-fire_rate = 0.1
-spread = 0.1
-projectile_info = SubResource("Resource_boad6")
-spawn_effect = ExtResource("5_rgyib")
-ammon_type = 3
-knock_back = 5.0
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]
@@ -153,7 +155,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_2ieo8"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_hg6s5")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 ammon_display = NodePath("../../HUD/ammon_display")
 

@@ -157,12 +157,14 @@ func shot() -> void:
 				projectile.look_at(camera.global_basis.z * -100.0)
 			
 			var spread : float = inventory[current_gun_id].spread
-			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),0.0)
-			if abs(vec_spread.x) + abs(vec_spread.y) > 1.0:
+			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
+			if vec_spread.length() > 1.0:
 				vec_spread = vec_spread.normalized()
 			vec_spread /= 1.0
-			
-			projectile.rotation += vec_spread * spread
+			var aditional_rot : Vector3 = vec_spread * spread
+			projectile.rotate_x(aditional_rot.x)
+			projectile.rotate_y(aditional_rot.y)
+			projectile.rotate_z(aditional_rot.z)
 			
 			projectile.data = inventory[current_gun_id].projectile_info
 			projectile.start()

@@ -98,19 +98,7 @@ func interract_body(n:Node3D) -> void:
 			player.gun_control.add_ammon(type,ammon)
 			
 			self_destruct()
-			return
-		
-			match type:
-				GlobalEnums.AmmonType.PISTOL:
-					pass
-				GlobalEnums.AmmonType.RIFLE:
-					pass
-				GlobalEnums.AmmonType.SHOTGUN:
-					pass
-				GlobalEnums.AmmonType.ENERGY:
-					pass
-				GlobalEnums.AmmonType.EXPLOSIVE:
-					pass
+			
 
 func _ready() -> void:
 	update_model()
