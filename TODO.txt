@@ -6,6 +6,8 @@ add scoped sniper model
 
 add alt shot and zoom capabilitys
 
+add slide
+
 add enemy basic path finding
 
 add enimy shot behaveor

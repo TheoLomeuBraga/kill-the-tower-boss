@@ -18,12 +18,20 @@ signal dead()
 		
 		var new_health : int = clamp(value,0,max_health)
 		
-		if value < health:
+		if value == 0:
+			dead.emit()
+		elif value < health:
 			damaged.emit(abs(value - health))
 		elif value > health:
 			healed.emit(abs(value - health))
-		if value == 0:
-			dead.emit()
+		
+		
+		if faction != GlobalEnums.Faction.FRIENDLY and Player.player != null:
+			if value == 0:
+				Player.player.kill_enemy.emit()
+			elif value < health:
+				Player.player.damage_enemy.emit()
+			
 		
 		health = new_health
 		

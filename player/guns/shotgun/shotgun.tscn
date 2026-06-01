@@ -34,7 +34,6 @@ fadein_time = 0.1
 fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tbi17"]
-graph_offset = Vector2(-955.09344, 45.08098)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -67,32 +66,32 @@ pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1045185307) index="0" unique_id=705818420]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(852716591) index="0" unique_id=378536638]
 bones/0/rotation = Quaternion(0.7071068, -8.9632215e-07, -8.9632215e-07, 0.7071068)
 bones/1/position = Vector3(1.6307048e-08, 0.3, 7.648827e-10)
 
-[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=1119037456]
+[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=1139296388]
 transform = Transform3D(-3.5763472e-07, 0.9999999, 9.094947e-13, -2.7100268e-06, 0, -1, -0.9999999, -3.5762784e-07, 2.710027e-06, -0.24999999, -0.109644085, 0.21999085)
 
-[node name="Cube_002" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1809182060]
+[node name="Cube_002" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=769112976]
 cast_shadow = 0
 
-[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=1463409397]
+[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=1400898563]
 transform = Transform3D(1, 0, -2.5351817e-06, -2.5351817e-06, 0, -1, 0, 1, 0, -0.25, -0.109644085, -0.08000916)
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=561083512]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=1104061150]
 cast_shadow = 0
 
-[node name="Cube_001" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1101760352]
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1752065255]
 cast_shadow = 0
 
-[node name="Cube_003" parent="Armature/Skeleton3D/Bone" index="2" unique_id=2119392461]
+[node name="Cube_003" parent="Armature/Skeleton3D/Bone" index="2" unique_id=153265829]
 cast_shadow = 0
 
-[node name="Cylinder" parent="Armature/Skeleton3D/Bone" index="3" unique_id=1269954421]
+[node name="Cylinder" parent="Armature/Skeleton3D/Bone" index="3" unique_id=1309276580]
 cast_shadow = 0
 
-[node name="Cylinder_001" parent="Armature/Skeleton3D/Bone" index="4" unique_id=1744141482]
+[node name="Cylinder_001" parent="Armature/Skeleton3D/Bone" index="4" unique_id=730730885]
 cast_shadow = 0
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=628239992]
@@ -110,3 +109,17 @@ parameters/play_reload/internal_active = false
 parameters/play_reload/request = 0
 script = ExtResource("3_tbi17")
 metadata/_custom_type_script = "uid://ckec3yq1gbw7l"
+
+[node name="CenterContainer" type="CenterContainer" parent="." index="7" unique_id=561436429]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cross" type="Label" parent="CenterContainer" index="0" unique_id=1232395437]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "(   )"
+horizontal_alignment = 1
+vertical_alignment = 1
