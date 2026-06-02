@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cvcvnti6hb0bw"]
+
+[ext_resource type="PackedScene" uid="uid://bplb37qdya3ds" path="res://player/guns/plama_condesator/plama_condesator.glb" id="1_dp1by"]
+[ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_otni8"]
+
+[node name="plama_condesator" unique_id=496359812 instance=ExtResource("1_dp1by")]
+script = ExtResource("2_otni8")

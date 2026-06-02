@@ -9,7 +9,6 @@ shader_parameter/colors = 12
 shader_parameter/dither_size = 1
 
 [node name="PostProcessing" type="ColorRect" unique_id=1946156224]
-z_index = 99
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6v8h")
 anchors_preset = 15

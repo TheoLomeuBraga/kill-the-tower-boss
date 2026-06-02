@@ -153,6 +153,7 @@ script = ExtResource("4_yrlok")
 metadata/_custom_type_script = "uid://ckec3yq1gbw7l"
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="7" unique_id=1505932296]
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

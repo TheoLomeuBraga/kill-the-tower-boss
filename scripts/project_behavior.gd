@@ -108,13 +108,13 @@ func self_destruct() -> void:
 	
 	queue_free()
 
-func spaw_wall_effect(pos:Vector3,target:Vector3) -> void:
+func spaw_wall_effect(pos:Vector3,target:Vector3,on:Node3D) -> void:
 	
 	if data.hit_wall_effect == null:
 		return
 	
 	var effect : Node3D = data.hit_wall_effect.instantiate()
-	get_parent().add_child(effect)
+	on.add_child(effect)
 	effect.global_position = pos
 	effect.look_at(target)
 	effect.rotate(effect.global_basis.z,rng.randf_range(-PI,PI))
@@ -130,7 +130,7 @@ func check_collision_ray() -> void:
 				var new_pos : Vector3 = ray.get_collision_point()
 				var surface_normal : Vector3 = ray.get_collision_normal()
 				
-				spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal)
+				spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal,ray.get_collider())
 				
 				if ricochetes_left > 0:
 					
@@ -225,7 +225,7 @@ func check_collision_shape() -> void:
 			var new_pos : Vector3 = shape.get_collision_point(i)
 			var surface_normal : Vector3 = shape.get_collision_normal(i)
 			
-			spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal)
+			spaw_wall_effect(new_pos+(surface_normal*0.05),new_pos-surface_normal,shape.get_collider(i))
 			
 			if ricochetes_left > 0:
 				
