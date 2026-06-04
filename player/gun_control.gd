@@ -133,8 +133,8 @@ func shot() -> void:
 	
 	body.velocity += camera.global_basis.z * current_gun.knock_back
 	
-	if inventory[current_gun_id].spawn_effect != null:
-		var particle : Node = inventory[current_gun_id].spawn_effect.instantiate()
+	if inventory[current_gun_id].projectile_info.spawn_effect != null:
+		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
 		player_model.gun.get_muzle().add_child(particle)
 	
 	for i : int in inventory[current_gun_id].bullets_per_shot:

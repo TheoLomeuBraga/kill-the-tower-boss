@@ -36,6 +36,7 @@ damage = 10
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_yllr7")
 hit_wall_effect = ExtResource("6_g4c7l")
+spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
@@ -47,13 +48,14 @@ reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_boad6")
-spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_e7oew"]
 script = ExtResource("4_qjkh3")
 damage = 5
 model = ExtResource("14_e7oew")
+hit_wall_effect = ExtResource("6_g4c7l")
+spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_c35mf"]
@@ -67,7 +69,6 @@ fire_rate = 0.05
 spread = 0.1
 is_automatic = true
 projectile_info = SubResource("Resource_e7oew")
-spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_65viv"]
@@ -81,7 +82,6 @@ bullets_per_shot = 10
 fire_rate = 0.1
 spread = 0.1
 projectile_info = SubResource("Resource_boad6")
-spawn_effect = ExtResource("5_rgyib")
 knock_back = 5.0
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
@@ -103,6 +103,7 @@ collision_shape = SubResource("SphereShape3D_kb6p2")
 rise_and_drop = Vector2(0.02, 0.1)
 explosion_info = SubResource("Resource_x7c3f")
 hit_wall_effect = ExtResource("16_x7c3f")
+spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_2ieo8"]
@@ -115,7 +116,6 @@ reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
 spread = 0.05
 projectile_info = SubResource("Resource_8t03j")
-spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
@@ -128,6 +128,7 @@ speed = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_g4c7l")
 hit_wall_effect = ExtResource("6_g4c7l")
+spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_g4c7l"]
@@ -141,7 +142,6 @@ reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
 spread = 0.01
 projectile_info = SubResource("Resource_knn7v")
-spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]

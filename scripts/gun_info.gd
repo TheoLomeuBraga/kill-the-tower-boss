@@ -19,11 +19,5 @@ class_name GunInfo
 
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
 @export var charge_shot_info : ChargeShotInfo = null
-@export var spawn_effect : PackedScene
-
-
-
-
-
 
 @export var knock_back : float = 0.0
