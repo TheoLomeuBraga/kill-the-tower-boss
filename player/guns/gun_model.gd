@@ -96,3 +96,19 @@ func abort_shot() -> void:
 		display_text = value
 		for l : Label3D in labels:
 			l.text = display_text
+
+@export var charge_particle : GPUParticles3D
+@export var charged_particle : GPUParticles3D
+
+@export var charge_estate : int = 0 : 
+	set(value):
+		charge_estate = value
+		
+		charge_particle.visible = false
+		charged_particle.visible = false
+		
+		match charge_estate:
+			1:
+				charge_particle.visible = true
+			2:
+				charged_particle.visible = true

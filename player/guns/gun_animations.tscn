@@ -57,7 +57,7 @@ node_connections = [&"output", 0, &"drop_wepon_estate", &"walk", 0, &"Animation"
 script = ExtResource("2_11vt6")
 
 [node name="gun" parent="." index="0" unique_id=1217684163]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.49178916, -0.87071425, 0, 0.87071425, 0.49178916, 0, -0.22471148, -0.4540035)
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=676520534]

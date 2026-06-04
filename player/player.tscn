@@ -24,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="16_x7c3f"]
 [ext_resource type="PackedScene" uid="uid://cvcvnti6hb0bw" path="res://player/guns/plama_condesator/plama_condesator.tscn" id="17_s7qer"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
+[ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="18_knn7v"]
+[ext_resource type="AudioStream" uid="uid://h6dgmyc0irwr" path="res://sfx/charge_shot-loop.wav" id="18_uw77l"]
+[ext_resource type="AudioStream" uid="uid://hh1qkfxdwwl3" path="res://sfx/charged_shot-loop.wav" id="19_rptt4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -118,12 +121,35 @@ spread = 0.05
 projectile_info = SubResource("Resource_8t03j")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_uw77l"]
+script = ExtResource("4_qjkh3")
+damage = 10
+speed = 20.0
+model = ExtResource("4_2ieo8")
+collision_shape = SubResource("SphereShape3D_7pqkx")
+hit_wall_effect = ExtResource("6_g4c7l")
+spawn_effect = ExtResource("5_rgyib")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_rptt4"]
+script = ExtResource("18_knn7v")
+ammon_type = 4
+ammon_consumption = 5
+spread = 0.01
+projectile_info = SubResource("Resource_uw77l")
+charge_sound = ExtResource("18_uw77l")
+charged_sound = ExtResource("19_rptt4")
+metadata/_custom_type_script = "uid://dc35ml5h2smv7"
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
 radius = 0.2
 
 [sub_resource type="Resource" id="Resource_knn7v"]
 script = ExtResource("4_qjkh3")
-damage = 10
+damage = 5
 speed = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_g4c7l")
@@ -135,13 +161,13 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 script = ExtResource("3_qjkh3")
 model = ExtResource("17_s7qer")
 ammon_type = 4
-ammon_consumption = 5
 ammon_capacity = -1
 reload_time = 0.8
 reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.1
-spread = 0.01
+spread = 0.05
 projectile_info = SubResource("Resource_knn7v")
+charge_shot_info = SubResource("Resource_rptt4")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]

@@ -9,5 +9,4 @@ class_name ChargeShotInfo
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
 
 @export var charge_sound : AudioStream
-@export var charge_ready_sound : AudioStream
 @export var charged_sound : AudioStream

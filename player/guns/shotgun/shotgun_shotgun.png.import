@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf2pmsstl704l"
-path.s3tc="res://.godot/imported/shotgun_shotgun.png-3d7001ae3194c7b229bb094e767c56ac.s3tc.ctex"
+path="res://.godot/imported/shotgun_shotgun.png-3d7001ae3194c7b229bb094e767c56ac.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "d97638087c528fd15d4c01ba531bca5c"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://player/guns/shotgun/shotgun_shotgun.png"
-dest_files=["res://.godot/imported/shotgun_shotgun.png-3d7001ae3194c7b229bb094e767c56ac.s3tc.ctex"]
+dest_files=["res://.godot/imported/shotgun_shotgun.png-3d7001ae3194c7b229bb094e767c56ac.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

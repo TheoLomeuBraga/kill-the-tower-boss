@@ -1,5 +1,7 @@
 add charge shot
 
+add charge shot visual feedbacke
+
 add scoped sniper model
 
 add alt shot and zoom capabilitys

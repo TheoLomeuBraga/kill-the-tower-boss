@@ -27,4 +27,6 @@ func stop_shot() -> void:
 	set("parameters/shot_2/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 func reload() -> void:
+	set("parameters/shot_1/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+	set("parameters/shot_2/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	set("parameters/play_reload/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
