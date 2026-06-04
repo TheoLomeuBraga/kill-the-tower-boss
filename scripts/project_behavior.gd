@@ -39,7 +39,6 @@ func start_ray() -> void:
 
 func start_shape() -> void:
 	
-	
 	shape = ShapeCast3D.new()
 	add_child(shape)
 	shape.shape = data.collision_shape
@@ -61,6 +60,7 @@ func start() -> void:
 		start_ray()
 	else:
 		start_shape()
+		
 
 func reset_bullet_position() -> void:
 	if shape != null:

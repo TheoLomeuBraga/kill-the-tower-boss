@@ -1,3 +1,5 @@
+make ProjectileInfo responsable for spawn_effect
+
 add plasma condesator model model
 
 add charge shot

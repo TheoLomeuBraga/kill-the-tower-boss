@@ -23,7 +23,7 @@ class_name Consumable
 			GlobalEnums.AmmonType.SHOTGUN:
 				ammon = 4
 			GlobalEnums.AmmonType.ENERGY:
-				ammon = 25
+				ammon = 50
 			GlobalEnums.AmmonType.EXPLOSIVE:
 				ammon = 3
 		

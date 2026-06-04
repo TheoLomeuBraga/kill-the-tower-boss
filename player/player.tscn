@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://doeh3jwlr13lx" path="res://player/guns/shotgun/shotgun.tscn" id="4_tqiix"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="5_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_rgyib"]
+[ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="6_g4c7l"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
 [ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="8_kb6p2"]
@@ -21,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="13_tqiix"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="14_e7oew"]
 [ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="16_x7c3f"]
+[ext_resource type="PackedScene" uid="uid://cvcvnti6hb0bw" path="res://player/guns/plama_condesator/plama_condesator.tscn" id="17_s7qer"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
@@ -33,6 +35,7 @@ script = ExtResource("4_qjkh3")
 damage = 10
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_yllr7")
+hit_wall_effect = ExtResource("6_g4c7l")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_rgyib"]
@@ -115,6 +118,32 @@ projectile_info = SubResource("Resource_8t03j")
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_knn7v"]
+script = ExtResource("4_qjkh3")
+damage = 10
+speed = 20.0
+model = ExtResource("4_2ieo8")
+collision_shape = SubResource("SphereShape3D_g4c7l")
+hit_wall_effect = ExtResource("6_g4c7l")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_g4c7l"]
+script = ExtResource("3_qjkh3")
+model = ExtResource("17_s7qer")
+ammon_type = 4
+ammon_consumption = 5
+ammon_capacity = -1
+reload_time = 0.8
+reload_audio = ExtResource("5_hg6s5")
+fire_rate = 0.1
+spread = 0.01
+projectile_info = SubResource("Resource_knn7v")
+spawn_effect = ExtResource("5_rgyib")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
 [sub_resource type="Resource" id="Resource_hg6s5"]
 script = ExtResource("3_qjkh3")
 model = ExtResource("9_tqiix")
@@ -156,7 +185,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_hg6s5")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_g4c7l"), SubResource("Resource_hg6s5")])
 target_raycast = NodePath("../RayCast3D")
 
 [node name="HUD" type="Control" parent="." unique_id=627942019]

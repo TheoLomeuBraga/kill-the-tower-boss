@@ -6,33 +6,38 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_np3n4"]
 
 [node name="consumable" unique_id=1597481904 instance=ExtResource("1_o4nrf")]
-transform = Transform3D(0.99397886, 0, 0.10957204, 0, 1, 0, -0.10957204, 0, 0.99397886, 0, 0, 0)
+transform = Transform3D(-0.3335083, 0, 0.9427472, 0, 1, 0, -0.9427472, 0, -0.3335083, 0, 0, 0)
 script = ExtResource("2_np3n4")
 
-[node name="pistol" parent="." index="0" unique_id=1988714235]
+[node name="pistol" parent="." index="0" unique_id=2049791382]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
-[node name="rifle" parent="." index="1" unique_id=861801899]
+[node name="rifle" parent="." index="1" unique_id=122074302]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
-[node name="shotgun" parent="." index="2" unique_id=968926669]
+[node name="shotgun" parent="." index="2" unique_id=803498954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
-[node name="Cylinder" parent="shotgun" index="0" unique_id=2040600140]
+[node name="Cylinder" parent="shotgun" index="0" unique_id=1387046136]
 cast_shadow = 0
 
-[node name="energy" parent="." index="3" unique_id=962188263]
+[node name="energy" parent="." index="3" unique_id=364438661]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
-[node name="explosive" parent="." index="4" unique_id=82585668]
+[node name="explosive" parent="." index="4" unique_id=1449366054]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
-[node name="health" parent="." index="5" unique_id=1930139172]
+[node name="health" parent="." index="5" unique_id=802746159]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 cast_shadow = 0
 

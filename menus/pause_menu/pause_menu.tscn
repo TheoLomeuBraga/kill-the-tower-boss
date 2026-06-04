@@ -4,6 +4,7 @@
 
 [node name="PauseMenu" type="Control" unique_id=242854174]
 process_mode = 3
+z_index = 11
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

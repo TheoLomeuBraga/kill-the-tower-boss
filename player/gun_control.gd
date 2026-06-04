@@ -207,16 +207,24 @@ func reload() -> void:
 	is_reloading_timer.start(current_gun.reload_time)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("wepon_1"):
+	if Input.is_action_just_pressed("wepon_1") and inventory.size() > 0:
 		set_gun(0)
-	elif Input.is_action_just_pressed("wepon_2"):
+	elif Input.is_action_just_pressed("wepon_2") and inventory.size() > 1:
 		set_gun(1)
-	elif Input.is_action_just_pressed("wepon_3"): 
+	elif Input.is_action_just_pressed("wepon_3") and inventory.size() > 2: 
 		set_gun(2)
-	elif Input.is_action_just_pressed("wepon_4"):
+	elif Input.is_action_just_pressed("wepon_4") and inventory.size() > 3:
 		set_gun(3)
-	elif Input.is_action_just_pressed("wepon_5"):
+	elif Input.is_action_just_pressed("wepon_5") and inventory.size() > 4:
 		set_gun(4)
+	elif Input.is_action_just_pressed("wepon_6") and inventory.size() > 5:
+		set_gun(5)
+	elif Input.is_action_just_pressed("wepon_7") and inventory.size() > 6:
+		set_gun(6)
+	elif Input.is_action_just_pressed("wepon_8") and inventory.size() > 7:
+		set_gun(7)
+	elif Input.is_action_just_pressed("wepon_9") and inventory.size() > 8:
+		set_gun(8)
 	
 	if Input.is_action_just_released("next_wepon"):
 		set_gun(wrap(current_gun_id+1,0,inventory.size()))

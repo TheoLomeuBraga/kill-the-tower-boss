@@ -3,25 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtbpj6mhr70bc"
-path.s3tc="res://.godot/imported/plama_condesator_plasma_condensator.png-8d8570d51a0d0bda40a9e16fa3f67a9f.s3tc.ctex"
+path="res://.godot/imported/plama_condesator_plasma_condensator.png-8d8570d51a0d0bda40a9e16fa3f67a9f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "0d21d1102bdd2cf2f54f911e6f56cda5"
+"md5": "f1b7e2fd846f59e270adf866cdba368a"
 }
 
 [deps]
 
 source_file="res://player/guns/plama_condesator/plama_condesator_plasma_condensator.png"
-dest_files=["res://.godot/imported/plama_condesator_plasma_condensator.png-8d8570d51a0d0bda40a9e16fa3f67a9f.s3tc.ctex"]
+dest_files=["res://.godot/imported/plama_condesator_plasma_condensator.png-8d8570d51a0d0bda40a9e16fa3f67a9f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.0
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
