@@ -86,7 +86,6 @@ func abort_shot() -> void:
 
 @export var alt_shot : bool : 
 	set(value):
-		alt_shot = value
 		gun_animation_tree.shot_2()
 
 @export var labels : Array[Label3D]
@@ -97,18 +96,29 @@ func abort_shot() -> void:
 		for l : Label3D in labels:
 			l.text = display_text
 
-@export var charge_particle : GPUParticles3D
-@export var charged_particle : GPUParticles3D
+@export var charge_object : Node3D
+
+@export var charging_material : Material
+@export var charged_material : Material
+
+func set_materials_override(n:Node,m:Material) -> void:
+	if n is GeometryInstance3D:
+		var g : GeometryInstance3D = n
+		g.material_override = m
+	for c : Node in n.get_children():
+		set_materials_override(c,m)
 
 @export var charge_estate : int = 0 : 
 	set(value):
 		charge_estate = value
 		
-		charge_particle.visible = false
-		charged_particle.visible = false
+		if charge_object == null or charging_material == null or charged_material == null:
+			return
+		
+		charge_object.visible = charge_estate > 0
 		
 		match charge_estate:
 			1:
-				charge_particle.visible = true
+				set_materials_override(charge_object,charging_material)
 			2:
-				charged_particle.visible = true
+				set_materials_override(charge_object,charged_material)

@@ -95,11 +95,13 @@ func set_gun(no : int) -> void:
 	
 	current_gun_id = min(no,inventory.size() -1)
 	current_gun = inventory[current_gun_id]
+		
 	
 	reload_audio_player.stop()
 	reload_audio_player.stream = current_gun.reload_audio
 	
 	player_model.visible = false
+	
 	
 	if get_inventory_reload_time(current_gun) >= current_gun.inventory_reload_time:
 		reload_ammon()
@@ -111,6 +113,7 @@ func set_gun(no : int) -> void:
 	player_model.set_gun(current_gun.model)
 	
 	time_last_shot = 0.0
+	
 	
 	
 	
@@ -179,6 +182,42 @@ func shot() -> void:
 		
 	player_model.gun.shot = true
 
+func alt_shot() -> void:
+	
+	body.velocity += camera.global_basis.z * inventory[current_gun_id].charge_shot_info.knock_back
+	
+	if inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect != null:
+		var particle : Node = inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect.instantiate()
+		player_model.gun.get_muzle().add_child(particle)
+	
+	for i : int in inventory[current_gun_id].charge_shot_info.bullets_per_shot:
+		var projectile : ProjectBehavior = ProjectBehavior.new()
+		add_child(projectile)
+		projectile.global_position = camera.global_position
+		projectile.muzle_position = player_model.gun.get_muzle().global_position
+		
+		projectile.target_position = target_raycast.global_basis.z * -100.0
+		
+		if target_raycast.is_colliding():
+			projectile.look_at(target_raycast.get_collision_point())
+		else:
+			projectile.global_basis = player_model.gun.get_muzle().global_basis
+			projectile.look_at(camera.global_basis.z * -100.0)
+		
+		var spread : float = inventory[current_gun_id].charge_shot_info.spread
+		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
+		if vec_spread.length() > 1.0:
+			vec_spread = vec_spread.normalized()
+		vec_spread /= 1.0
+		var aditional_rot : Vector3 = vec_spread * spread
+		projectile.rotate_x(aditional_rot.x)
+		projectile.rotate_y(aditional_rot.y)
+		projectile.rotate_z(aditional_rot.z)
+		
+		projectile.data = inventory[current_gun_id].charge_shot_info.projectile_info
+		projectile.start()
+		
+	player_model.gun.alt_shot = true
 
 var camera_rots_last_frame : Vector3
 
@@ -236,6 +275,9 @@ func manage_wepon_change() -> void:
 
 
 func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
+	
+	player_model.gun.charge_estate = 0
+	
 	if Input.is_action_pressed("shot") and current_gun.charge_shot_info != null and can_shot and has_ammon:
 		charge_shot_time += delta
 		
@@ -243,6 +285,7 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 		if start_play_chargin:
 			start_play_chargin = start_play_chargin and current_gun.charge_shot_info.charge_sound != null
 			start_play_chargin = start_play_chargin and charge_audio_player.stream != current_gun.charge_shot_info.charge_sound
+			player_model.gun.charge_estate = 1
 			if  start_play_chargin:
 				charge_audio_player.stream = current_gun.charge_shot_info.charge_sound
 				charge_audio_player.play()
@@ -251,6 +294,7 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 		if start_play_charged:
 			start_play_charged = start_play_charged and current_gun.charge_shot_info.charged_sound != null
 			start_play_charged = start_play_charged and charge_audio_player.stream != current_gun.charge_shot_info.charged_sound
+			player_model.gun.charge_estate = 2
 			if  start_play_charged:
 				charge_audio_player.stream = current_gun.charge_shot_info.charged_sound
 				charge_audio_player.play()
@@ -259,6 +303,10 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 		charge_shot_time = 0.0
 		charge_audio_player.stop()
 		charge_audio_player.stream = null
+		return
+	
+	
+	
 
 func process_shot(delta: float) -> void:
 	if current_gun == null or player_model == null or player_model.gun == null:
@@ -281,15 +329,30 @@ func process_shot(delta: float) -> void:
 	else:
 		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
 	
+	var has_alt_ammon : bool = false
+	if current_gun.charge_shot_info != null:
+		if current_gun.ammon_capacity > 0:
+			has_alt_ammon = get_ammon_on_mag(current_gun) >= current_gun.charge_shot_info.ammon_consumption
+		else:
+			has_alt_ammon = ammon_inventory[current_gun.charge_shot_info.ammon_type] >= current_gun.charge_shot_info.ammon_consumption
+	
 	if (current_gun.is_automatic and (not input_shot or not has_ammon)):
 		player_model.gun.shot = false
 	
-	if input_shot and can_shot and has_ammon:
+	if input_shot and can_shot and (has_ammon or has_alt_ammon):
 		time_last_shot = current_gun.fire_rate
 		
-		if current_gun.charge_shot_info != null and charge_shot_time > current_gun.charge_shot_info.charge_time:
-			pass
-		else:
+		if has_alt_ammon and current_gun.charge_shot_info != null and charge_shot_time > current_gun.charge_shot_info.charge_time:
+			
+			if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+				if current_gun.ammon_capacity > 0:
+					set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.charge_shot_info.ammon_consumption)
+				else:
+					ammon_inventory[current_gun.charge_shot_info.ammon_type] -= current_gun.charge_shot_info.ammon_consumption
+			
+			alt_shot()
+			
+		elif has_ammon:
 			
 			if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
 				if current_gun.ammon_capacity > 0:
@@ -298,6 +361,9 @@ func process_shot(delta: float) -> void:
 					ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
 			
 			shot()
+	
+	
+	
 	
 	if input_shot and can_shot and not has_ammon:
 		reload()
@@ -320,11 +386,7 @@ func _process(delta: float) -> void:
 	
 	process_shot(delta)
 	
-	
-	
 	sway_gun(delta)
-	
-	
 	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	player_model.gun_animations.walk = move_toward(player_model.gun_animations.walk , input_dir.length() , delta * 4.0)
