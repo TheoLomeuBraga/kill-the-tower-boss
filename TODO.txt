@@ -1,7 +1,3 @@
-add charge shot
-
-add charge shot visual feedbacke
-
 add audio categorys
 
 add scoped sniper model
