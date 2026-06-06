@@ -92,29 +92,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.66881096, 0, 0.74342984, 0, 1, 0, -0.74342984, 0, 0.66881096, -3, 1, 3)
+transform = Transform3D(0.9998992, 0, -0.0140423775, 0, 1, 0, 0.0140423775, 0, 0.9998992, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.26323202, 0, -0.9647307, 0, 1, 0, 0.9647307, 0, -0.26323202, -3, 1, 4)
+transform = Transform3D(-0.8989797, 0, -0.437986, 0, 1, 0, 0.437986, 0, -0.8989797, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.40250587, 0, 0.9154157, 0, 1, 0, -0.9154157, 0, -0.40250587, -3, 1, 5)
+transform = Transform3D(0.42427698, 0, 0.90553063, 0, 1, 0, -0.90553063, 0, 0.42427698, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.99749625, 0, -0.070690066, 0, 1, 0, 0.070690066, 0, 0.99749625, -3, 1, 6)
+transform = Transform3D(0.6038721, 0, -0.79707813, 0, 1, 0, 0.79707813, 0, 0.6038721, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.6410336, 0, -0.7675112, 0, 1, 0, 0.7675112, 0, -0.6410336, -3, 1, 7)
+transform = Transform3D(-0.99971324, 0, -0.023881821, 0, 1, 0, 0.023881821, 0, -0.99971324, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.36483034, 0, 0.9310721, 0, 1, 0, -0.9310721, 0, -0.36483034, -3, 1, 8)
+transform = Transform3D(0.4608339, 0, 0.88748425, 0, 1, 0, -0.88748425, 0, 0.4608339, -3, 1, 8)
 ammon = 3
 type = 5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=775096568]

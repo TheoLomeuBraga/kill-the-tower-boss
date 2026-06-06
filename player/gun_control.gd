@@ -340,16 +340,17 @@ func process_shot(delta: float) -> void:
 		player_model.gun.shot = false
 	
 	if input_shot and can_shot and (has_ammon or has_alt_ammon):
-		time_last_shot = current_gun.fire_rate
+		
 		
 		if has_alt_ammon and current_gun.charge_shot_info != null and charge_shot_time > current_gun.charge_shot_info.charge_time:
 			
-			if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+			if current_gun.charge_shot_info.ammon_type != GlobalEnums.AmmonType.NONE:
 				if current_gun.ammon_capacity > 0:
 					set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.charge_shot_info.ammon_consumption)
 				else:
 					ammon_inventory[current_gun.charge_shot_info.ammon_type] -= current_gun.charge_shot_info.ammon_consumption
 			
+			time_last_shot = current_gun.charge_shot_info.fire_rate
 			alt_shot()
 			
 		elif has_ammon:
@@ -360,6 +361,7 @@ func process_shot(delta: float) -> void:
 				else:
 					ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
 			
+			time_last_shot = current_gun.fire_rate
 			shot()
 	
 	
