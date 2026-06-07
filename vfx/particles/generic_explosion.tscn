@@ -27,6 +27,7 @@ radial_segments = 8
 rings = 3
 
 [node name="GenericExplosion" type="GPUParticles3D" unique_id=1689394531]
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.75
@@ -42,6 +43,7 @@ stream = ExtResource("2_svaj3")
 volume_db = -10.0
 unit_size = 20.0
 autoplay = true
+bus = &"SFX"
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=135609236]
 autostart = true

@@ -45,6 +45,7 @@ script = ExtResource("1_gs63p")
 stream = ExtResource("2_4xu3i")
 volume_db = -10.0
 autoplay = true
+bus = &"SFX"
 
 [node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=2144411668]
 script = ExtResource("2_nrpr2")

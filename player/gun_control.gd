@@ -127,10 +127,12 @@ func _ready() -> void:
 	
 	reload_audio_player = AudioStreamPlayer.new()
 	add_child(reload_audio_player)
+	reload_audio_player.bus = "SFX"
 	
 	charge_audio_player = AudioStreamPlayer.new()
 	add_child(charge_audio_player)
 	charge_audio_player.volume_db = -10.0
+	charge_audio_player.bus = "SFX"
 	
 	is_reloading_timer = Timer.new()
 	add_child(is_reloading_timer)

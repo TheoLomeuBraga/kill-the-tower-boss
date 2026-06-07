@@ -52,6 +52,7 @@ autostart = true
 stream = ExtResource("3_wnubv")
 volume_db = -15.0
 autoplay = true
+bus = &"SFX"
 
 [node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=1530637360]
 script = ExtResource("4_cumbm")

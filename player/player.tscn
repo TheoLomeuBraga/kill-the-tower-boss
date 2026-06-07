@@ -217,7 +217,6 @@ near = 0.001
 
 [node name="PlayerModel" parent="Camera3D" unique_id=83597824 instance=ExtResource("1_rkbax")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.23062402, 0)
-render_layers = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=220714997]
 target_position = Vector3(0, 0, -100)
