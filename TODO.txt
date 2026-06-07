@@ -1,5 +1,3 @@
-add projectile knock back
-
 add mele wepon
 
 add scoped sniper model

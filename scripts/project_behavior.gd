@@ -119,12 +119,24 @@ func spaw_wall_effect(pos:Vector3,target:Vector3,on:Node3D) -> void:
 	effect.look_at(target)
 	effect.rotate(effect.global_basis.z,rng.randf_range(-PI,PI))
 
+func add_knock_back(o:Object) -> void:
+	if o is RigidBody3D:
+		var rb : RigidBody3D = o
+		rb.linear_velocity -= global_basis.z * data.knock_back
+	if o is CharacterBody3D:
+		var cb : CharacterBody3D = o
+		cb.velocity -= global_basis.z * data.knock_back
+
 func check_collision_ray() -> void:
 	while true:
 		var o : Node3D
 		ray.force_raycast_update()
 		if ray.is_colliding():
 			var stats : Stats = Stats.get_stats_from_node(ray.get_collider())
+			
+			if stats == null or data.faction != stats.faction:
+				add_knock_back(ray.get_collider())
+			
 			if stats == null:
 				
 				var new_pos : Vector3 = ray.get_collision_point()
@@ -160,7 +172,8 @@ func check_collision_ray() -> void:
 					var shape_id : int = ray.get_collider_shape()
 					var owner_id : int = target.shape_find_owner(shape_id)
 					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
-
+					
+					
 					stats.health -= stats.calculate_damage_on(data.damage,col_shape)
 					
 					if data.spaw_on_colision != null:
@@ -191,7 +204,12 @@ func check_collision_ray() -> void:
 func check_collision_shape() -> void:
 	var o : Node3D
 	for i : int in shape.get_collision_count():
+		
 		var stats : Stats = Stats.get_stats_from_node(shape.get_collider(i))
+		
+		if stats == null or data.faction != stats.faction:
+			add_knock_back(shape.get_collider(i))
+		
 		if stats != null:
 			if data.faction != stats.faction:
 				
@@ -199,6 +217,7 @@ func check_collision_shape() -> void:
 				var shape_id : int = shape.get_collider_shape(i)
 				var owner_id : int = target.shape_find_owner(shape_id)
 				var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
+				
 				
 				stats.health -= stats.calculate_damage_on(data.damage,col_shape)
 				
