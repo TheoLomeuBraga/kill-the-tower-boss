@@ -1,5 +1,9 @@
 add mele wepon
 
+improve generic explosion
+
+improve generic muzle
+
 add scoped sniper model
 
 add alt shot and zoom capabilitys

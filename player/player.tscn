@@ -84,6 +84,7 @@ damage = 10
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_uw77l")
 hit_wall_effect = ExtResource("6_g4c7l")
+knock_back = 1.0
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 

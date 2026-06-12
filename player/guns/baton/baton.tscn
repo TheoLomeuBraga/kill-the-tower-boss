@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ffgnenf7m0at"]
+
+[ext_resource type="PackedScene" uid="uid://b7rnmr6u1uukm" path="res://player/guns/baton/baton.glb" id="1_pc5qw"]
+[ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_xnkye"]
+[ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="4_lvgvb"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg4nr"]
+animation = &"shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5i0yt"]
+animation = &"shot_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dn23"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2n1q"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8g1my"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md8bu"]
+animation = &"reload"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4m1l7"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_07yyr"]
+graph_offset = Vector2(-914.381, 113.908966)
+nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
+nodes/idle/position = Vector2(-1240, 100)
+nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
+nodes/shot_1/position = Vector2(-920, 200)
+nodes/animation_shot_1/node = SubResource("AnimationNodeAnimation_dg4nr")
+nodes/animation_shot_1/position = Vector2(-1320, 360)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_70rjn")
+nodes/Add2/position = Vector2(-380, 140)
+nodes/idle_2/node = SubResource("AnimationNodeAnimation_y2n1q")
+nodes/idle_2/position = Vector2(-1320, 560)
+nodes/shot_2/node = SubResource("AnimationNodeOneShot_2kqyo")
+nodes/shot_2/position = Vector2(-920, 540)
+nodes/animation_shot_2/node = SubResource("AnimationNodeAnimation_5i0yt")
+nodes/animation_shot_2/position = Vector2(-1260, 760)
+nodes/reload/node = SubResource("AnimationNodeAnimation_md8bu")
+nodes/reload/position = Vector2(-200, 340)
+nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
+nodes/play_reload/position = Vector2(40, 180)
+node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
+
+[node name="baton" unique_id=1362126432 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree") instance=ExtResource("1_pc5qw")]
+script = ExtResource("2_xnkye")
+gun = NodePath("Armature")
+muzles = [NodePath("Armature/Skeleton3D/Bone/muzle")]
+arm_l = NodePath("arm_l")
+pole_l = NodePath("pole_l")
+hand_l = NodePath("hand_l")
+arm_r = NodePath("arm_r")
+pole_r = NodePath("pole_r")
+hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
+gun_animation_tree = NodePath("GunsAnimationTree")
+
+[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1178530690) index="0" unique_id=1850133342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013040036, 0)
+
+[node name="GunsAnimationTree" type="AnimationTree" parent="." index="7" unique_id=2062389126]
+tree_root = SubResource("AnimationNodeBlendTree_07yyr")
+anim_player = NodePath("../AnimationPlayer")
+parameters/shot_1/active = false
+parameters/shot_1/internal_active = false
+parameters/shot_1/request = 0
+parameters/Add2/add_amount = 1.0
+parameters/shot_2/active = false
+parameters/shot_2/internal_active = false
+parameters/shot_2/request = 0
+parameters/play_reload/active = false
+parameters/play_reload/internal_active = false
+parameters/play_reload/request = 0
+script = ExtResource("4_lvgvb")
+metadata/_custom_type_script = "uid://ckec3yq1gbw7l"
