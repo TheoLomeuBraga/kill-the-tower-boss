@@ -4,6 +4,24 @@
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_xnkye"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="4_lvgvb"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07yyr"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hq45f"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07yyr"]
+emission_shape = 2
+emission_sphere_radius = 0.2
+radial_velocity_min = -0.50002235
+radial_velocity_max = -0.20002235
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hq45f"]
+size = Vector3(0.01, 0.01, 0.01)
+
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg4nr"]
@@ -34,7 +52,6 @@ fadein_time = 0.1
 fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_07yyr"]
-graph_offset = Vector2(-914.381, 113.908966)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -55,10 +72,10 @@ nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
 nodes/play_reload/position = Vector2(40, 180)
 node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
-[node name="baton" unique_id=1362126432 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree") instance=ExtResource("1_pc5qw")]
+[node name="baton" unique_id=1876042259 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "charge_objects") instance=ExtResource("1_pc5qw")]
 script = ExtResource("2_xnkye")
 gun = NodePath("Armature")
-muzles = [NodePath("Armature/Skeleton3D/Bone/muzle")]
+muzles = [NodePath("Armature/muzle")]
 arm_l = NodePath("arm_l")
 pole_l = NodePath("pole_l")
 hand_l = NodePath("hand_l")
@@ -66,9 +83,24 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
+charge_objects = [NodePath("Armature/Skeleton3D/Bone/Cube_001"), NodePath("Armature/Skeleton3D/Bone/charge")]
+charging_material = SubResource("StandardMaterial3D_07yyr")
+charged_material = SubResource("StandardMaterial3D_hq45f")
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1178530690) index="0" unique_id=1850133342]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="0" unique_id=1807410180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013040036, 0)
+cast_shadow = 0
+
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="1" unique_id=954099281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012983993, 0)
+
+[node name="charge" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="2" unique_id=648140938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2796031, 0)
+cast_shadow = 0
+amount = 16
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_07yyr")
+draw_pass_1 = SubResource("BoxMesh_hq45f")
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="7" unique_id=2062389126]
 tree_root = SubResource("AnimationNodeBlendTree_07yyr")

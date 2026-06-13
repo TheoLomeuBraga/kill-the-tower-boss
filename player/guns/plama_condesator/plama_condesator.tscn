@@ -97,7 +97,7 @@ nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
 nodes/play_reload/position = Vector2(40, 180)
 node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
-[node name="plama_condesator" unique_id=1657273594 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "labels", "charge_object") instance=ExtResource("1_dp1by")]
+[node name="plama_condesator" unique_id=1657273594 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "charge_objects") instance=ExtResource("1_dp1by")]
 script = ExtResource("2_otni8")
 gun = NodePath("Armature")
 muzles = [NodePath("Armature/Skeleton3D/Bone_001/muzle")]
@@ -108,8 +108,7 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
-labels = [NodePath("Armature/Skeleton3D/Bone/Label3D")]
-charge_object = NodePath("Armature/Skeleton3D/Bone/charge")
+charge_objects = [NodePath("Armature/Skeleton3D/Bone/charge")]
 charging_material = SubResource("StandardMaterial3D_itpqw")
 charged_material = SubResource("StandardMaterial3D_mg5x2")
 

@@ -96,7 +96,7 @@ func abort_shot() -> void:
 		for l : Label3D in labels:
 			l.text = display_text
 
-@export var charge_object : Node3D
+@export var charge_objects : Array[Node3D]
 
 @export var charging_material : Material
 @export var charged_material : Material
@@ -112,13 +112,15 @@ func set_materials_override(n:Node,m:Material) -> void:
 	set(value):
 		charge_estate = value
 		
-		if charge_object == null or charging_material == null or charged_material == null:
+		if charging_material == null or charged_material == null:
 			return
 		
-		charge_object.visible = charge_estate > 0
-		
-		match charge_estate:
-			1:
-				set_materials_override(charge_object,charging_material)
-			2:
-				set_materials_override(charge_object,charged_material)
+		for charge_object : Node3D in charge_objects:
+			
+			charge_object.visible = charge_estate > 0
+			
+			match charge_estate:
+				1:
+					set_materials_override(charge_object,charging_material)
+				2:
+					set_materials_override(charge_object,charged_material)

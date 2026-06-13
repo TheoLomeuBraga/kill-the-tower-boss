@@ -287,7 +287,7 @@ func _physics_process(delta: float) -> void:
 		
 		check_colision()
 		
-		if model != null and data.distance < model.position.length():
+		if data.distance < shape.position.length():
 			queue_free()
 
 func _process(delta: float) -> void:
