@@ -50,6 +50,9 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 script = ExtResource("18_knn7v")
 charge_time = 2.0
 projectile_info = SubResource("Resource_1s1yo")
+fire_rate = 0.0
+charge_sound = ExtResource("18_uw77l")
+charged_sound = ExtResource("19_rptt4")
 metadata/_custom_type_script = "uid://dc35ml5h2smv7"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rptt4"]

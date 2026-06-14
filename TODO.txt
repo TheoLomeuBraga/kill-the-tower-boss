@@ -1,14 +1,12 @@
-add batton sfx
+add scoped sniper model
+
+add alt shot and zoom capabilitys
 
 add diferent damage types
 
 improve generic explosion
 
 improve generic muzle
-
-add scoped sniper model
-
-add alt shot and zoom capabilitys
 
 add slide
 
