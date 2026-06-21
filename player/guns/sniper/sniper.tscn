@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cgie87f6gvs8x"]
+
+[ext_resource type="PackedScene" uid="uid://bjogfc6pm7su4" path="res://player/guns/sniper/sniper.glb" id="1_8q0c4"]
+[ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_rvt4m"]
+
+[node name="sniper" unique_id=545479782 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r") instance=ExtResource("1_8q0c4")]
+script = ExtResource("2_rvt4m")
+gun = NodePath("Armature")
+muzles = [null]
+arm_l = NodePath("arm_l")
+pole_l = NodePath("pole_l")
+hand_l = NodePath("Armature/Skeleton3D/hand_l_2/hand_l")
+arm_r = NodePath("arm_r")
+pole_r = NodePath("pole_r")
+hand_r = NodePath("Armature/Skeleton3D/gun/hand_r")

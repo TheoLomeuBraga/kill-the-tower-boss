@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c0r50bboxsx0q" path="res://player/arms/arms.tscn" id="1_15fux"]
 [ext_resource type="Script" uid="uid://bphhxxguvjf8e" path="res://player/player_model/player_model.gd" id="1_r5r3n"]
 [ext_resource type="PackedScene" uid="uid://dqoy4sfpn04u4" path="res://player/guns/gun_animations.tscn" id="2_qfpg1"]
-[ext_resource type="PackedScene" uid="uid://ffgnenf7m0at" path="res://player/guns/baton/baton.tscn" id="4_qu0w5"]
+[ext_resource type="PackedScene" uid="uid://cgie87f6gvs8x" path="res://player/guns/sniper/sniper.tscn" id="4_qu0w5"]
 
 [node name="PlayerModel" type="Node3D" unique_id=83597824 node_paths=PackedStringArray("arms", "gun_animations", "gun")]
 script = ExtResource("1_r5r3n")
 arms = NodePath("arms")
 gun_animations = NodePath("gun_animations")
-gun = NodePath("baton")
+gun = NodePath("sniper")
 
 [node name="arms" parent="." unique_id=1183301295 instance=ExtResource("1_15fux")]
 
@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.067, 0.394)
 walk_speed = 1.4
 drop_wepon_estate = 0.0
 
-[node name="baton" parent="." unique_id=1362126432 instance=ExtResource("4_qu0w5")]
+[node name="sniper" parent="." unique_id=545479782 instance=ExtResource("4_qu0w5")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1370228532]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
