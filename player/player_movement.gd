@@ -116,16 +116,18 @@ func floor_estate(delta : float) -> void:
 @export var mouse_sensitivity : float = 0.01
 @export var joystick_sensitivity : float = 6.0
 
+@export var sensitivity_multplyer : float = 1.0
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mm : InputEventMouseMotion = event
-		body.rotation.y -= mouse_sensitivity * mm.screen_relative.x
-		camera.rotation.x -= mouse_sensitivity * mm.screen_relative.y
+		body.rotation.y -= mouse_sensitivity * sensitivity_multplyer * mm.screen_relative.x
+		camera.rotation.x -= mouse_sensitivity * sensitivity_multplyer * mm.screen_relative.y
 
 func camera_process(delta : float) -> void:
 	
-	body.rotation.y += delta * Input.get_axis("look_right","look_left") * joystick_sensitivity
-	camera.rotation.x += delta * Input.get_axis("look_down","look_up") * joystick_sensitivity
+	body.rotation.y += delta * Input.get_axis("look_right","look_left") * joystick_sensitivity * sensitivity_multplyer
+	camera.rotation.x += delta * Input.get_axis("look_down","look_up") * joystick_sensitivity * sensitivity_multplyer
 	
 	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x,-90,90)
 

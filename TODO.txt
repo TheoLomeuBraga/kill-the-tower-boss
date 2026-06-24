@@ -1,5 +1,3 @@
-add alt shot and zoom capabilitys
-
 add diferent damage types
 
 improve generic explosion

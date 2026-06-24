@@ -308,11 +308,35 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 		return
 	
 	
+
+func process_aim() -> void:
 	
+	if current_gun.aim_info == null:
+		return
+	
+	if is_reloading:
+		camera.fov = 90.0
+		player_model.visible = true
+		player_model.gun.is_scoping = false
+		player_movement.sensitivity_multplyer = 1.0
+		return
+	
+	if Input.is_action_pressed("alt_shot"):
+		camera.fov = current_gun.aim_info.zoom
+		player_model.visible = not current_gun.aim_info.hide_gun_on_zoom
+		player_model.gun.is_scoping = true
+		player_movement.sensitivity_multplyer = 0.2
+	else:
+		camera.fov = 90.0
+		player_model.visible = true
+		player_model.gun.is_scoping = false
+		player_movement.sensitivity_multplyer = 1.0
 
 func process_shot(delta: float) -> void:
 	if current_gun == null or player_model == null or player_model.gun == null:
 		return
+	
+	process_aim()
 	
 	var input_shot : bool = false
 	if current_gun.is_automatic:
@@ -342,7 +366,6 @@ func process_shot(delta: float) -> void:
 		player_model.gun.shot = false
 	
 	if input_shot and can_shot and (has_ammon or has_alt_ammon):
-		
 		
 		if has_alt_ammon and current_gun.charge_shot_info != null and charge_shot_time > current_gun.charge_shot_info.charge_time:
 			

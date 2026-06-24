@@ -12,19 +12,14 @@ var progression : float = 0.0
 var muzle_position : Vector3
 var target_position : Vector3
 
-
-
 var ricochetes_left : int = 0
 var penetrations_left : int = 0
 
 var velocity_y : float = 0.0
 
-
 static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 func start_ray() -> void:
-	
-	
 	
 	ray = RayCast3D.new()
 	ray.target_position = Vector3(0.0,0.0,-data.distance)

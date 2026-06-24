@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="18_knn7v"]
 [ext_resource type="AudioStream" uid="uid://h6dgmyc0irwr" path="res://sfx/charge_shot-loop.wav" id="18_uw77l"]
 [ext_resource type="AudioStream" uid="uid://hh1qkfxdwwl3" path="res://sfx/charged_shot-loop.wav" id="19_rptt4"]
+[ext_resource type="Script" uid="uid://b7xuc41onhf0" path="res://scripts/aim_info.gd" id="23_b8hi5"]
 [ext_resource type="PackedScene" uid="uid://cgie87f6gvs8x" path="res://player/guns/sniper/sniper.tscn" id="23_r7pn3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
@@ -241,6 +242,11 @@ projectile_info = SubResource("Resource_knn7v")
 charge_shot_info = SubResource("Resource_rptt4")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="Resource" id="Resource_jwhgt"]
+script = ExtResource("23_b8hi5")
+hide_gun_on_zoom = true
+metadata/_custom_type_script = "uid://b7xuc41onhf0"
+
 [sub_resource type="Resource" id="Resource_jd2rm"]
 script = ExtResource("4_qjkh3")
 damage = 100
@@ -262,6 +268,7 @@ reload_audio = ExtResource("5_hg6s5")
 fire_rate = 0.5
 spread = 0.0
 projectile_info = SubResource("Resource_jd2rm")
+aim_info = SubResource("Resource_jwhgt")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_hg6s5"]

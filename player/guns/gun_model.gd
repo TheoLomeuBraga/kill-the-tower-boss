@@ -52,8 +52,6 @@ func abort_shot() -> void:
 @export var shot : bool : 
 	set(value):
 		
-
-		
 		if case_ejectors.size() > 0:
 			
 			case_ejector_id = (case_ejector_id + 1) % case_ejectors.size()
@@ -124,3 +122,14 @@ func set_materials_override(n:Node,m:Material) -> void:
 					set_materials_override(charge_object,charging_material)
 				2:
 					set_materials_override(charge_object,charged_material)
+
+@export var cross : Control
+@export var scope : Control
+
+@export var is_scoping : bool = false : 
+	set(value):
+		is_scoping = value
+		if scope != null:
+			scope.visible =  is_scoping
+		if cross != null:
+			cross.visible =  not is_scoping
