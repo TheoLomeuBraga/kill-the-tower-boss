@@ -325,7 +325,7 @@ func process_aim() -> void:
 		camera.fov = current_gun.aim_info.zoom
 		player_model.visible = not current_gun.aim_info.hide_gun_on_zoom
 		player_model.gun.is_scoping = true
-		player_movement.sensitivity_multplyer = 0.2
+		player_movement.sensitivity_multplyer = current_gun.aim_info.sensitivity_multplyer
 	else:
 		camera.fov = 90.0
 		player_model.visible = true
