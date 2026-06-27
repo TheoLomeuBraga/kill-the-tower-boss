@@ -88,7 +88,7 @@ func interract_body(n:Node3D) -> void:
 		if health > 0 and type == GlobalEnums.AmmonType.NONE:
 			
 			if player.stats.health < player.stats.max_health:
-				player.stats.health += health
+				player.stats.heal(health)
 				self_destruct()
 			
 			return

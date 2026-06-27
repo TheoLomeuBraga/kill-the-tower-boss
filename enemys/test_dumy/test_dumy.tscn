@@ -49,6 +49,8 @@ text = "hello"
 
 [node name="Stats" type="Node" parent="." unique_id=176740351 node_paths=PackedStringArray("multplyer_areas")]
 script = ExtResource("1_ec0n2")
+max_health = 10000
+health = 10000
 multplyer_areas = {
 NodePath("../head_col"): 2.0,
 NodePath("../legs_col"): 0.5,

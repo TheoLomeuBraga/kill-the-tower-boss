@@ -10,32 +10,7 @@ signal dead()
 @export var faction : GlobalEnums.Faction = GlobalEnums.Faction.ENEMY
 
 @export var max_health : int = 100
-@export var health : int = 100 : 
-	set(value):
-		
-		if value == health:
-			return
-		
-		var new_health : int = clamp(value,0,max_health)
-		
-		if value == 0:
-			dead.emit()
-		elif value < health:
-			damaged.emit(abs(value - health))
-		elif value > health:
-			healed.emit(abs(value - health))
-		
-		
-		if faction != GlobalEnums.Faction.FRIENDLY and Player.player != null:
-			if value == 0:
-				Player.player.kill_enemy.emit()
-			elif value < health:
-				Player.player.damage_enemy.emit()
-			
-		
-		health = new_health
-		
-		
+@export var health : int = 100
 
 @export var multplyer_areas : Dictionary[CollisionShape3D,float]
 @export var damage_type_multplyer : Dictionary[GlobalEnums.DamageTypes,float]
@@ -61,7 +36,16 @@ static func get_stats_from_node(node : Node) -> Stats:
 	return null
 
 func damage(amount:int,area:CollisionShape3D=null,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL) -> void:
-	pass
+	var damage : int = calculate_damage(amount,area,damage_type)
+	if (health - damage) <= 0:
+		health = 0
+		dead.emit()
+		return
+	
+	health -= damage
+	damaged.emit(damage)
+	
 
 func heal(amount:int) -> void:
-	pass
+	health += amount
+	healed.emit(amount)

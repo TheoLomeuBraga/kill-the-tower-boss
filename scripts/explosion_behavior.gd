@@ -33,9 +33,9 @@ func start() -> void:
 				hit_particle.global_position = shape.get_collision_point(i)
 			
 			if stats.faction != data.faction:
-				stats.health -= data.damage
+				stats.damage(data.damage)
 			else:
-				stats.health -= data.friendly_damage
+				stats.damage(data.friendly_damage)
 			
 		
 		if shape.get_collider(i) is RigidBody3D:

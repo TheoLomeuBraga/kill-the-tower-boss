@@ -4,6 +4,7 @@ class_name ProjectileInfo
 @export var faction : GlobalEnums.Faction
 
 @export var damage : int = 1
+@export var damage_type : GlobalEnums.DamageTypes
 @export var speed : float = -1
 @export var distance : float = 10.0
 @export var model : PackedScene

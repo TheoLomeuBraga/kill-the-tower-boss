@@ -169,7 +169,7 @@ func check_collision_ray() -> void:
 					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 					
 					
-					stats.health -= stats.calculate_damage(data.damage,col_shape)
+					stats.damage(data.damage,col_shape,data.damage_type)
 					
 					if data.spaw_on_colision != null:
 						o = data.spaw_on_colision.instantiate()
@@ -214,7 +214,7 @@ func check_collision_shape() -> void:
 				var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 				
 				
-				stats.health -= stats.calculate_damage(data.damage,col_shape)
+				stats.damage(data.damage,col_shape,data.damage_type)
 				
 				if data.spaw_on_colision != null:
 					o = data.spaw_on_colision.instantiate()
