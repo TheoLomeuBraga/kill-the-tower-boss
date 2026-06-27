@@ -45,10 +45,10 @@ func calculate_damage(damage:int,area:CollisionShape3D=null,damage_type:GlobalEn
 	var ret : int = damage
 	
 	if multplyer_areas.has(area):
-		ret *= multplyer_areas[area]
+		ret = int(float(ret) * multplyer_areas[area])
 	
 	if damage_type_multplyer.has(damage_type):
-		ret *= damage_type_multplyer[damage_type]
+		ret = int(float(ret) * damage_type_multplyer[damage_type])
 	
 	return ret
 
