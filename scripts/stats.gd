@@ -38,13 +38,19 @@ signal dead()
 		
 
 @export var multplyer_areas : Dictionary[CollisionShape3D,float]
+@export var damage_type_multplyer : Dictionary[GlobalEnums.DamageTypes,float]
 
-func calculate_damage_on(damage:int,area:CollisionShape3D) -> int:
+func calculate_damage(damage:int,area:CollisionShape3D=null,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL) -> int:
+	
+	var ret : int = damage
 	
 	if multplyer_areas.has(area):
-		return int(float(damage) * multplyer_areas[area])
+		ret *= multplyer_areas[area]
 	
-	return damage
+	if damage_type_multplyer.has(damage_type):
+		ret *= damage_type_multplyer[damage_type]
+	
+	return ret
 
 static func get_stats_from_node(node : Node) -> Stats:
 	
@@ -53,3 +59,9 @@ static func get_stats_from_node(node : Node) -> Stats:
 			return n
 	
 	return null
+
+func damage(amount:int,area:CollisionShape3D=null,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL) -> void:
+	pass
+
+func heal(amount:int) -> void:
+	pass
