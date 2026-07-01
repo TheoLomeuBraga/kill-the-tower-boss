@@ -1,13 +1,11 @@
-add diferent damage types
-
-improve generic explosion
-
-improve generic muzle
-
 add slide
+
+add enemy model
 
 add enemy basic path finding
 
-add enimy shot behaveor
+add enemy shot behaveor
 
-config menu
+settings menu
+
+add fail state

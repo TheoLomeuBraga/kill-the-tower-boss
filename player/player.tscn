@@ -29,7 +29,10 @@
 [ext_resource type="AudioStream" uid="uid://h6dgmyc0irwr" path="res://sfx/charge_shot-loop.wav" id="18_uw77l"]
 [ext_resource type="AudioStream" uid="uid://hh1qkfxdwwl3" path="res://sfx/charged_shot-loop.wav" id="19_rptt4"]
 [ext_resource type="Script" uid="uid://b7xuc41onhf0" path="res://scripts/aim_info.gd" id="23_b8hi5"]
-[ext_resource type="PackedScene" uid="uid://cgie87f6gvs8x" path="res://player/guns/sniper/sniper.tscn" id="23_r7pn3"]
+[ext_resource type="PackedScene" uid="uid://bjogfc6pm7su4" path="res://player/guns/sniper/sniper.glb" id="24_5ejfk"]
+[ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="25_jd2rm"]
+[ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="26_q28gw"]
+[ext_resource type="Texture2D" uid="uid://bpiw64vn88lr" path="res://player/guns/sniper/scope.png" id="27_ge24q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -45,7 +48,7 @@ collision_shape = SubResource("BoxShape3D_r7pn3")
 ricochet = 1
 penetrations = 20
 hit_wall_effect = ExtResource("6_g4c7l")
-knock_back = 20.0
+enemy_knock_back = 20.0
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_5ejfk"]
@@ -69,7 +72,7 @@ collision_shape = SubResource("BoxShape3D_rptt4")
 ricochet = 1
 penetrations = 20
 hit_wall_effect = ExtResource("6_g4c7l")
-knock_back = 15.0
+enemy_knock_back = 15.0
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_2uvqg"]
@@ -89,6 +92,7 @@ radius = 0.2
 [sub_resource type="Resource" id="Resource_boad6"]
 script = ExtResource("4_qjkh3")
 damage = 10
+distance = 20.0
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_yllr7")
 ricochet = 1
@@ -137,7 +141,8 @@ damage = 10
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_uw77l")
 hit_wall_effect = ExtResource("6_g4c7l")
-knock_back = 1.0
+knock_back = 5.0
+enemy_knock_back = 2.0
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -152,7 +157,6 @@ bullets_per_shot = 10
 fire_rate = 0.1
 spread = 0.1
 projectile_info = SubResource("Resource_r7pn3")
-knock_back = 5.0
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6p2"]
@@ -160,13 +164,15 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_x7c3f"]
 script = ExtResource("9_wodsf")
+damage_type = 1
 model = ExtResource("8_kb6p2")
 knock_back = 10.0
 metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
 
 [sub_resource type="Resource" id="Resource_8t03j"]
 script = ExtResource("4_qjkh3")
-damage = 20
+damage = 0
+damage_type = 1
 speed = 15.0
 distance = 20.0
 model = ExtResource("4_2ieo8")
@@ -201,6 +207,7 @@ collision_shape = SubResource("SphereShape3D_7pqkx")
 penetrations = 3
 hit_wall_effect = ExtResource("6_g4c7l")
 knock_back = 10.0
+enemy_knock_back = 15.0
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -210,7 +217,6 @@ ammon_type = 4
 ammon_consumption = 5
 spread = 0.01
 projectile_info = SubResource("Resource_uw77l")
-knock_back = 5.0
 charge_sound = ExtResource("18_uw77l")
 charged_sound = ExtResource("19_rptt4")
 metadata/_custom_type_script = "uid://dc35ml5h2smv7"
@@ -247,19 +253,106 @@ script = ExtResource("23_b8hi5")
 hide_gun_on_zoom = true
 metadata/_custom_type_script = "uid://b7xuc41onhf0"
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1bsc"]
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 1, 1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg4nr"]
+albedo_color = Color(1, 0.72156864, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_06var"]
+material = SubResource("StandardMaterial3D_dg4nr")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.04
+radial_segments = 4
+rings = 0
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dg4nr"]
+animation = &"shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5i0yt"]
+animation = &"shot_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dn23"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2n1q"]
+animation = &"none"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8g1my"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md8bu"]
+animation = &"reload"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4m1l7"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2kqyo"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_m1bsc"]
+nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
+nodes/idle/position = Vector2(-1240, 100)
+nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
+nodes/shot_1/position = Vector2(-920, 200)
+nodes/animation_shot_1/node = SubResource("AnimationNodeAnimation_dg4nr")
+nodes/animation_shot_1/position = Vector2(-1320, 360)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_70rjn")
+nodes/Add2/position = Vector2(-380, 140)
+nodes/idle_2/node = SubResource("AnimationNodeAnimation_y2n1q")
+nodes/idle_2/position = Vector2(-1320, 560)
+nodes/shot_2/node = SubResource("AnimationNodeOneShot_2kqyo")
+nodes/shot_2/position = Vector2(-920, 540)
+nodes/animation_shot_2/node = SubResource("AnimationNodeAnimation_5i0yt")
+nodes/animation_shot_2/position = Vector2(-1260, 760)
+nodes/reload/node = SubResource("AnimationNodeAnimation_md8bu")
+nodes/reload/position = Vector2(-200, 340)
+nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
+nodes/play_reload/position = Vector2(40, 180)
+node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
+
+[sub_resource type="PackedScene" id="PackedScene_pnw6m"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(1975500778), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("sniper", "script", "gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "case_ejectors", "cross", "scope", "is_scoping", "Skeleton3D", "bones/0/rotation", "bones/1/position", "bones/2/position", "bones/2/rotation", "bones/3/position", "bones/3/rotation", "handle", "transform", "Cube_001", "cast_shadow", "hand_l_2", "transform", "gun", "transform", "Cube", "cast_shadow", "Cube_003", "cast_shadow", "GPUParticles3D", "GPUParticles3D", "transform", "emitting", "amount", "fixed_fps", "process_material", "draw_pass_1", "mag", "transform", "Cube_002", "cast_shadow", "GunsAnimationTree", "AnimationTree", "tree_root", "anim_player", "parameters/shot_1/active", "parameters/shot_1/internal_active", "parameters/shot_1/request", "parameters/Add2/add_amount", "parameters/shot_2/active", "parameters/shot_2/internal_active", "parameters/shot_2/request", "parameters/play_reload/active", "parameters/play_reload/internal_active", "parameters/play_reload/request", "script", "metadata/_custom_type_script", "CenterContainer", "CenterContainer", "z_index", "texture_filter", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "cross", "Label", "layout_mode", "text", "horizontal_alignment", "vertical_alignment", "TextureRect", "TextureRect", "visible", "texture_filter", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "texture"),
+"node_count": 15,
+"node_ids": PackedInt32Array(545479782, 1264814603, 868198958, 1103996970, 749597357, 1699103686, 1205934737, 1448201801, 154003342, 714348344, 1660037140, 700149287, 1668273633, 1656129543, 1179184675),
+"node_paths": [NodePath("./Armature"), NodePath("./Armature/Skeleton3D"), NodePath("./Armature/Skeleton3D/handle"), NodePath("./Armature/Skeleton3D"), NodePath("./Armature/Skeleton3D"), NodePath("./Armature/Skeleton3D/gun"), NodePath("./Armature/Skeleton3D/gun"), NodePath("./Armature/Skeleton3D/gun"), NodePath("./Armature/Skeleton3D"), NodePath("./Armature/Skeleton3D/mag"), NodePath("."), NodePath("."), NodePath("./CenterContainer"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 14, 1, 1, 1073741826, 2, 1073741827, 3, 1073741828, 4, 1073741829, 5, 1073741830, 6, 1073741831, 7, 1073741832, 8, 1073741833, 9, 1073741834, 10, 1073741835, 11, 1073741836, 12, 1073741837, 13, 14, 14, 0, 1073741824, -1, 2147483647, 262159, -1, 6, 16, 15, 17, 16, 18, 17, 19, 18, 20, 19, 21, 20, 0, 1073741825, -1, 2147483647, 262166, -1, 1, 23, 21, 0, 1073741826, -1, 2147483647, 262168, -1, 1, 25, 22, 0, 1073741827, -1, 2147483647, 524314, -1, 1, 27, 23, 0, 1073741828, -1, 2147483647, 786460, -1, 1, 29, 24, 0, 1073741829, -1, 2147483647, 262174, -1, 1, 31, 25, 0, 1073741830, -1, 2147483647, 524320, -1, 1, 33, 26, 0, 1073741831, 0, 35, 1310754, -1, 6, 36, 27, 37, 28, 38, 29, 39, 30, 40, 31, 41, 32, 0, 1073741832, -1, 2147483647, 1048618, -1, 1, 43, 33, 0, 1073741833, -1, 2147483647, 262188, -1, 1, 45, 34, 0, 1073741834, 0, 47, 1835054, -1, 14, 48, 35, 49, 36, 50, 37, 51, 38, 52, 39, 53, 40, 54, 41, 55, 42, 56, 43, 57, 44, 58, 45, 59, 46, 60, 47, 61, 48, 0, 1073741835, 0, 63, 2097214, -1, 7, 64, 49, 65, 50, 66, 51, 67, 52, 68, 53, 69, 54, 70, 55, 0, 1073741836, 0, 72, 262215, -1, 4, 73, 56, 74, 57, 75, 58, 76, 59, 0, 1073741837, 0, 78, 2359373, -1, 8, 79, 60, 80, 61, 81, 62, 82, 63, 83, 64, 84, 65, 85, 66, 86, 67, 0),
+"variants": [ExtResource("24_5ejfk"), ExtResource("25_jd2rm"), NodePath("Armature"), [NodePath("Armature/Skeleton3D/gun/muzle")], NodePath("arm_l"), NodePath("pole_l"), NodePath("Armature/Skeleton3D/hand_l_2/hand_l"), NodePath("arm_r"), NodePath("pole_r"), NodePath("Armature/Skeleton3D/gun/hand_r"), NodePath("GunsAnimationTree"), [NodePath("Armature/Skeleton3D/gun/GPUParticles3D")], NodePath("CenterContainer"), NodePath("TextureRect"), null, Quaternion(0.7071068, -8.1202853e-07, -8.1202853e-07, 0.7071068), Vector3(0.022004243, 0.3074733, 0.029590752), Vector3(3.7593284e-07, 0.39119694, 0.16368838), Quaternion(-0.7071068, 8.120284e-07, 8.120286e-07, 0.7071068), Vector3(-0.29999998, -0.12182909, 0.0478676), Quaternion(-0.1494332, 0, 0, 0.9887719), Transform3D(9.536632e-07, 1, 3.891273e-09, -4.8557945e-06, 3.8962753e-09, -1, -1, 9.536743e-07, 4.8557945e-06, -0.27799582, 0.061248735, 0.057473302), 0, Transform3D(1, 0, -2.2737366e-13, 0, 0.99999994, 5.2222347e-19, 2.2737368e-13, 0, 0.99999994, -0.3, -0.07284884, 0.14119694), Transform3D(1, 0, -2.2967633e-06, -2.2967633e-06, 0, -1, 0, 1, 0, -0.3, 0.090839535, -0.25), 0, 0, Transform3D(1, -2.2967627e-06, -1.4210887e-14, 7.1054274e-14, -1.4210855e-14, 0.9999997, -2.2967633e-06, -0.9999997, -1.4210822e-14, -0.05667731, 0.26375717, 0.01995594), false, 2, 60, SubResource("ParticleProcessMaterial_m1bsc"), SubResource("CylinderMesh_06var"), Transform3D(1, 0, 0, 0, 0.9553394, 0.29551065, 0, -0.29551065, 0.9553394, -0.29999998, -0.12182909, 0.0478676), 0, SubResource("AnimationNodeBlendTree_m1bsc"), NodePath("../AnimationPlayer"), false, false, 0, 0.0, false, false, 0, false, false, 0, ExtResource("26_q28gw"), "uid://ckec3yq1gbw7l", 10, 1, 15, 1.0, 1.0, 2, 2, 2, "+", 1, 1, false, 1, 15, 1.0, 1.0, 2, 2, ExtResource("27_ge24q")],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_jd2rm"]
 script = ExtResource("4_qjkh3")
 damage = 100
+distance = 100.0
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_yllr7")
 penetrations = 5
 hit_wall_effect = ExtResource("6_g4c7l")
+knock_back = 10.0
+enemy_knock_back = 15.0
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_q28gw"]
 script = ExtResource("3_qjkh3")
-model = ExtResource("23_r7pn3")
+model = SubResource("PackedScene_pnw6m")
 ammon_type = 2
 ammon_capacity = 5
 reload_time = 2.0

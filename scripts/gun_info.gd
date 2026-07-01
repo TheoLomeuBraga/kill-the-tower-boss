@@ -20,5 +20,3 @@ class_name GunInfo
 @export var projectile_info : ProjectileInfo = ProjectileInfo.new()
 @export var charge_shot_info : ChargeShotInfo = null
 @export var aim_info : AimInfo
-
-@export var knock_back : float = 0.0

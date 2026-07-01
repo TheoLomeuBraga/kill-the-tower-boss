@@ -17,5 +17,6 @@ class_name ProjectileInfo
 @export var explosion_info : ExplosionInfo
 @export var hit_wall_effect : PackedScene = load("res://vfx/particles/generic_bullet_hole.tscn")
 @export var knock_back : float = 0
+@export var enemy_knock_back : float = 0
 
 @export var spawn_effect : PackedScene

@@ -145,7 +145,7 @@ func _ready() -> void:
 
 func shot() -> void:
 	
-	body.velocity += camera.global_basis.z * current_gun.knock_back
+	body.velocity += camera.global_basis.z * current_gun.projectile_info.knock_back
 	
 	if inventory[current_gun_id].projectile_info.spawn_effect != null:
 		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
@@ -163,11 +163,7 @@ func shot() -> void:
 			
 			projectile.target_position = target_raycast.global_basis.z * -100.0
 			
-			if target_raycast.is_colliding():
-				projectile.look_at(target_raycast.get_collision_point())
-			else:
-				projectile.global_basis = player_model.gun.get_muzle().global_basis
-				projectile.look_at(camera.global_basis.z * -100.0)
+			projectile.global_basis.z = camera.global_basis.z
 			
 			var spread : float = inventory[current_gun_id].spread
 			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
@@ -186,7 +182,7 @@ func shot() -> void:
 
 func alt_shot() -> void:
 	
-	body.velocity += camera.global_basis.z * inventory[current_gun_id].charge_shot_info.knock_back
+	body.velocity += camera.global_basis.z * inventory[current_gun_id].charge_shot_info.projectile_info.knock_back
 	
 	if inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect != null:
 		var particle : Node = inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect.instantiate()

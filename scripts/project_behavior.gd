@@ -28,9 +28,9 @@ func start_ray() -> void:
 	if data.model != null:
 		model = data.model.instantiate()
 		get_parent().add_child(model)
+		model.top_level = true
 		model.global_position = muzle_position
-		#model.look_at(global_position - global_basis.z)
-		model.global_rotation = global_rotation
+		model.look_at(global_position + (global_basis.z * -data.distance))
 
 func start_shape() -> void:
 	
@@ -117,10 +117,10 @@ func spaw_wall_effect(pos:Vector3,target:Vector3,on:Node3D) -> void:
 func add_knock_back(o:Object) -> void:
 	if o is RigidBody3D:
 		var rb : RigidBody3D = o
-		rb.linear_velocity -= global_basis.z * data.knock_back
+		rb.linear_velocity -= global_basis.z * data.enemy_knock_back
 	if o is CharacterBody3D:
 		var cb : CharacterBody3D = o
-		cb.velocity -= global_basis.z * data.knock_back
+		cb.velocity -= global_basis.z * data.enemy_knock_back
 
 func check_collision_ray() -> void:
 	while true:
@@ -128,6 +128,7 @@ func check_collision_ray() -> void:
 		ray.force_raycast_update()
 		if ray.is_colliding():
 			var stats : Stats = Stats.get_stats_from_node(ray.get_collider())
+			
 			
 			if stats == null or data.faction != stats.faction:
 				add_knock_back(ray.get_collider())
@@ -169,7 +170,7 @@ func check_collision_ray() -> void:
 					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 					
 					
-					stats.damage(data.damage,col_shape,data.damage_type)
+					stats.damage(data.damage,data.damage_type,col_shape)
 					
 					if data.spaw_on_colision != null:
 						o = data.spaw_on_colision.instantiate()
@@ -205,6 +206,8 @@ func check_collision_shape() -> void:
 		if stats == null or data.faction != stats.faction:
 			add_knock_back(shape.get_collider(i))
 		
+		
+		
 		if stats != null:
 			if data.faction != stats.faction:
 				
@@ -214,7 +217,7 @@ func check_collision_shape() -> void:
 				var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 				
 				
-				stats.damage(data.damage,col_shape,data.damage_type)
+				stats.damage(data.damage,data.damage_type,col_shape)
 				
 				if data.spaw_on_colision != null:
 					o = data.spaw_on_colision.instantiate()
