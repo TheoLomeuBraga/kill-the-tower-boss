@@ -1,5 +1,3 @@
-add explosion knock back
-
 add enemy model
 
 add enemy basic path finding

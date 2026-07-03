@@ -163,6 +163,7 @@ func check_collision_ray() -> void:
 				
 				break
 			else:
+				
 				if data.faction != stats.faction:
 					var target : Node3D = ray.get_collider()
 					var shape_id : int = ray.get_collider_shape()
@@ -228,12 +229,14 @@ func check_collision_shape() -> void:
 				get_parent().add_child(o)
 				o.global_position = shape.get_collision_point(i)
 				
+				self_destruct()
+				
 				if penetrations_left > 0:
 					penetrations_left -= 1
 					shape.add_exception(shape.get_collider(i))
+					
 					break
 				
-				self_destruct()
 				break
 			else:
 				continue
