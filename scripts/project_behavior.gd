@@ -33,7 +33,6 @@ func start_ray() -> void:
 		model.look_at(global_position + (global_basis.z * -data.distance))
 
 func start_shape() -> void:
-	
 	shape = ShapeCast3D.new()
 	add_child(shape)
 	shape.shape = data.collision_shape
@@ -77,6 +76,7 @@ func reset_bullet_position() -> void:
 	
 
 func self_destruct() -> void:
+	
 	
 	var eb : ExplosionBehavior = ExplosionBehavior.new()
 	eb.data = data.explosion_info
