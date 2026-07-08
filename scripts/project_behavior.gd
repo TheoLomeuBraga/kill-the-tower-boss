@@ -50,6 +50,7 @@ func start() -> void:
 	ricochetes_left = data.ricochet
 	penetrations_left = data.penetrations
 	
+	
 	if data.speed < 0.0:
 		start_ray()
 	else:
@@ -229,14 +230,16 @@ func check_collision_shape() -> void:
 				get_parent().add_child(o)
 				o.global_position = shape.get_collision_point(i)
 				
-				self_destruct()
+				
 				
 				if penetrations_left > 0:
+					print("A",penetrations_left)
 					penetrations_left -= 1
 					shape.add_exception(shape.get_collider(i))
-					
 					break
+					
 				
+				self_destruct()
 				break
 			else:
 				continue

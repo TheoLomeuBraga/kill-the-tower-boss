@@ -101,30 +101,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.8539703, 0, 0.5203145, 0, 1, 0, -0.5203145, 0, 0.8539703, -3, 1, 3)
+transform = Transform3D(-0.17651056, 0, 0.98429495, 0, 1, 0, -0.98429495, 0, -0.17651056, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.51873493, 0, -0.85493124, 0, 1, 0, 0.85493124, 0, -0.51873493, -3, 1, 4)
+transform = Transform3D(0.60942465, 0, -0.7928398, 0, 1, 0, 0.7928398, 0, 0.60942465, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.1200972, 0, 0.9927598, 0, 1, 0, -0.9927598, 0, -0.1200972, -3, 1, 5)
+transform = Transform3D(-0.96903485, 0, 0.24691463, 0, 1, 0, -0.24691463, 0, -0.96903485, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.93558925, 0, -0.3530789, 0, 1, 0, 0.3530789, 0, 0.93558925, -3, 1, 6)
+transform = Transform3D(0.66743475, 0, 0.7446628, 0, 1, 0, -0.7446628, 0, 0.66743475, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.82906336, 0, -0.55914956, 0, 1, 0, 0.55914956, 0, -0.82906336, -3, 1, 7)
+transform = Transform3D(0.22165646, 0, -0.9751218, 0, 1, 0, 0.9751218, 0, 0.22165646, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.07904455, 0, 0.9968679, 0, 1, 0, -0.9968679, 0, -0.07904455, -3, 1, 8)
+transform = Transform3D(-0.95800704, 0, 0.28673354, 0, 1, 0, -0.28673354, 0, -0.95800704, -3, 1, 8)
 ammon = 3
 type = 5
 

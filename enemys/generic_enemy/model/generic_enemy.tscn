@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cphjkxcxek3bc"]
+
+[ext_resource type="PackedScene" uid="uid://c35hgt6pug6n7" path="res://enemys/generic_enemy/model/generic_enemy.glb" id="1_0bvgo"]
+[ext_resource type="AnimationLibrary" uid="uid://bfqniusro05l3" path="res://enemys/template_psx_charter.glb" id="2_g4v7r"]
+
+[node name="generic_enemy" unique_id=2136028321 instance=ExtResource("1_0bvgo")]
+
+[node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(1910670074) index="0" unique_id=362470630]
+bones/1/position = Vector3(0, 1.0099, -0.05519999)
+bones/1/rotation = Quaternion(1.4901161e-08, 0, 0, 1)
+bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
+bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
+bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
+bones/9/rotation = Quaternion(-0.24017677, 0.7644504, -0.5962276, -0.04943028)
+bones/10/rotation = Quaternion(0.36734927, -0.6440323, 0.23543356, 0.6283694)
+bones/11/rotation = Quaternion(2.072418e-08, 0.70710677, -2.1422672e-08, 0.70710677)
+bones/13/rotation = Quaternion(-0.48719975, 0.586067, -0.50675786, -0.4029372)
+bones/14/rotation = Quaternion(0.017572958, 0.7073273, -0.011262522, 0.7065781)
+bones/15/rotation = Quaternion(2.3283059e-10, -0.70710677, -2.3283059e-10, 0.70710677)
+bones/18/rotation = Quaternion(2.5068541e-08, -6.258486e-07, 1, -3.871622e-09)
+bones/19/rotation = Quaternion(-6.482214e-17, 1, 1.8849967e-06, 9.119592e-17)
+bones/20/rotation = Quaternion(2.2800812e-15, 0.70710677, -0.70710677, 9.819372e-16)
+bones/23/rotation = Quaternion(1.8784318e-08, -6.258486e-07, 1, 3.7028132e-09)
+bones/24/rotation = Quaternion(2.6710978e-16, 1, 1.8849967e-06, 6.8192637e-16)
+bones/25/rotation = Quaternion(1.1150763e-15, 0.70710677, -0.70710677, 5.9914775e-16)
+
+[node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=251906876]
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, 1.7545923e-36, 0.99999994, 7.823109e-08, 3.1399652e-29, -7.8231096e-08, 0.9999999, 9.6707895e-15, 1.7812998, 0.024699882)
+
+[node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=1975218574]
+transform = Transform3D(0.16179572, 0.0037592007, 0.9868171, 0.9736867, -0.16323762, -0.15902102, 0.16048788, 0.98657954, -0.030071497, -0.19228755, 1.4626434, 0.49878457)
+
+[node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=305756084]
+transform = Transform3D(0.16268021, -0.011665881, 0.9866098, 0.9660809, -0.20136634, -0.16167617, 0.20055607, 0.9794465, -0.021488195, -0.19529998, 1.5846002, -0.026700057)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=828244533]
+libraries/template_psx_charter = ExtResource("2_g4v7r")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3" unique_id=111687981]
