@@ -233,7 +233,6 @@ func check_collision_shape() -> void:
 				
 				
 				if penetrations_left > 0:
-					print("A",penetrations_left)
 					penetrations_left -= 1
 					shape.add_exception(shape.get_collider(i))
 					break

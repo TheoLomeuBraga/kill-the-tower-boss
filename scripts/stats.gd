@@ -45,9 +45,11 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 		return
 	
 	health -= _damage
+	health = max(0,health)
 	damaged.emit(_damage)
 	
 
 func heal(amount:int) -> void:
 	health += amount
+	health = min(max_health,health)
 	healed.emit(amount)

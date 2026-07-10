@@ -113,7 +113,7 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_e7oew"]
 script = ExtResource("4_qjkh3")
-damage = 5
+damage = 20
 model = ExtResource("14_e7oew")
 hit_wall_effect = ExtResource("6_g4c7l")
 spawn_effect = ExtResource("5_rgyib")
@@ -200,7 +200,7 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_uw77l"]
 script = ExtResource("4_qjkh3")
-damage = 20
+damage = 100
 speed = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_7pqkx")
@@ -226,7 +226,7 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_knn7v"]
 script = ExtResource("4_qjkh3")
-damage = 5
+damage = 20
 speed = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_g4c7l")

@@ -77,6 +77,9 @@ cast_shadow = 0
 visible = false
 cast_shadow = 0
 
+[node name="Plane_001" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1760095697) index="5" unique_id=1783440178]
+cast_shadow = 0
+
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="7" unique_id=1465803248]
 tree_root = SubResource("AnimationNodeBlendTree_gvxyn")
 anim_player = NodePath("../AnimationPlayer")
