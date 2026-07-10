@@ -18,13 +18,13 @@ enum GunType {PISTOL,SMG,SHOTGUN,SNIPER}
 
 func set_handgun(on:bool)->void:
 	if on:
-		$ik_targets/hand_r.position = Vector3(-0.215,1.5,0.472)
-		$ik_targets/pole_r.position = Vector3(-0.209,0.0,1.0)
+		$ik_targets/hand_r.position = Vector3(0.1,-0.132,0.472)
+		$ik_targets/pole_r.position = Vector3(0.0,-1.632,0.1)
 		$metarig/GeneralSkeleton/arm_l.influence = 0.0
 		$metarig/GeneralSkeleton/hand_l.influence = 0.0
 	else:
-		$ik_targets/hand_r.position = Vector3(-0.11,1.5,0.18)
-		$ik_targets/pole_r.position = Vector3(-1.345,0.0,1.0)
+		$ik_targets/hand_r.position = Vector3(0.1,-0.132,0.18)
+		$ik_targets/pole_r.position = Vector3(0.0,-1.632,0.1)
 		$metarig/GeneralSkeleton/arm_l.influence = 1.0
 		$metarig/GeneralSkeleton/hand_l.influence = 1.0
 
