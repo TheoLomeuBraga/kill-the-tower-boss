@@ -163,9 +163,7 @@ func shot() -> void:
 			
 			projectile.target_position = target_raycast.global_basis.z * -100.0
 			
-			#projectile.global_basis.z = camera.global_basis.z
 			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
-			
 			
 			var spread : float = inventory[current_gun_id].spread
 			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))

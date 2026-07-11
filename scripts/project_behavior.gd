@@ -263,10 +263,10 @@ func check_collision_shape() -> void:
 				
 				return
 			
-			if data.spaw_on_colision != null:
+			if data.spaw_on_colision:
 				o = data.spaw_on_colision.instantiate()
 				get_parent().add_child(o)
-				if model != null:
+				if model:
 					o.global_position = model.global_position
 			
 			self_destruct()
@@ -297,5 +297,5 @@ func _process(delta: float) -> void:
 	if data.speed < 0.0:
 		pass
 	else:
-		if model != null:
-			model.position = model.position.move_toward(shape.position,delta * (data.speed / 2.0))
+		if model and shape:
+			model.global_position = shape.global_position
