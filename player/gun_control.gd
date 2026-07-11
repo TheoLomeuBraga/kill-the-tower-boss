@@ -147,7 +147,7 @@ func shot() -> void:
 	
 	body.velocity += camera.global_basis.z * current_gun.projectile_info.knock_back
 	
-	if inventory[current_gun_id].projectile_info.spawn_effect != null:
+	if inventory[current_gun_id].projectile_info.spawn_effect:
 		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
 		player_model.gun.get_muzle().add_child(particle)
 	
@@ -184,7 +184,7 @@ func alt_shot() -> void:
 	
 	body.velocity += camera.global_basis.z * inventory[current_gun_id].charge_shot_info.projectile_info.knock_back
 	
-	if inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect != null:
+	if inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect:
 		var particle : Node = inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect.instantiate()
 		player_model.gun.get_muzle().add_child(particle)
 	
@@ -276,12 +276,12 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 	
 	player_model.gun.charge_estate = 0
 	
-	if Input.is_action_pressed("shot") and current_gun.charge_shot_info != null and can_shot and has_ammon:
+	if Input.is_action_pressed("shot") and current_gun.charge_shot_info and can_shot and has_ammon:
 		charge_shot_time += delta
 		
 		var start_play_chargin : bool = charge_shot_time < current_gun.charge_shot_info.charge_time and charge_shot_time > 0.2
 		if start_play_chargin:
-			start_play_chargin = start_play_chargin and current_gun.charge_shot_info.charge_sound != null
+			start_play_chargin = start_play_chargin and current_gun.charge_shot_info.charge_sound
 			start_play_chargin = start_play_chargin and charge_audio_player.stream != current_gun.charge_shot_info.charge_sound
 			player_model.gun.charge_estate = 1
 			if  start_play_chargin:
@@ -290,7 +290,7 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 		
 		var start_play_charged : bool = charge_shot_time > current_gun.charge_shot_info.charge_time
 		if start_play_charged:
-			start_play_charged = start_play_charged and current_gun.charge_shot_info.charged_sound != null
+			start_play_charged = start_play_charged and current_gun.charge_shot_info.charged_sound
 			start_play_charged = start_play_charged and charge_audio_player.stream != current_gun.charge_shot_info.charged_sound
 			player_model.gun.charge_estate = 2
 			if  start_play_charged:
@@ -307,7 +307,7 @@ func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
 
 func process_aim() -> void:
 	
-	if current_gun.aim_info == null:
+	if not current_gun.aim_info:
 		return
 	
 	if is_reloading:
@@ -329,7 +329,7 @@ func process_aim() -> void:
 		player_movement.sensitivity_multplyer = 1.0
 
 func process_shot(delta: float) -> void:
-	if current_gun == null or player_model == null or player_model.gun == null:
+	if not current_gun or not player_model or not player_model.gun:
 		return
 	
 	process_aim()
@@ -337,14 +337,14 @@ func process_shot(delta: float) -> void:
 	var input_shot : bool = false
 	if current_gun.is_automatic:
 		input_shot = Input.is_action_pressed("shot")
-	elif current_gun.charge_shot_info != null:
+	elif current_gun.charge_shot_info:
 		input_shot = Input.is_action_just_released("shot")
 	else:
 		input_shot = Input.is_action_just_pressed("shot")
 	
 	time_last_shot -= delta
 	
-	var can_shot : bool = player_model.gun != null and time_last_shot < 0.0 and not is_reloading
+	var can_shot : bool = player_model.gun and time_last_shot < 0.0 and not is_reloading
 	var has_ammon : bool = false
 	if current_gun.ammon_capacity > 0:
 		has_ammon = get_ammon_on_mag(current_gun) >= current_gun.ammon_consumption
@@ -352,7 +352,7 @@ func process_shot(delta: float) -> void:
 		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
 	
 	var has_alt_ammon : bool = false
-	if current_gun.charge_shot_info != null:
+	if current_gun.charge_shot_info:
 		if current_gun.ammon_capacity > 0:
 			has_alt_ammon = get_ammon_on_mag(current_gun) >= current_gun.charge_shot_info.ammon_consumption
 		else:
@@ -363,7 +363,7 @@ func process_shot(delta: float) -> void:
 	
 	if input_shot and can_shot and (has_ammon or has_alt_ammon):
 		
-		if has_alt_ammon and current_gun.charge_shot_info != null and charge_shot_time > current_gun.charge_shot_info.charge_time:
+		if has_alt_ammon and current_gun.charge_shot_info and charge_shot_time > current_gun.charge_shot_info.charge_time:
 			
 			if current_gun.charge_shot_info.ammon_type != GlobalEnums.AmmonType.NONE:
 				if current_gun.ammon_capacity > 0:

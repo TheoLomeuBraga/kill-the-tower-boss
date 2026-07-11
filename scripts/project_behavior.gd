@@ -25,7 +25,7 @@ func start_ray() -> void:
 	ray.target_position = Vector3(0.0,0.0,-data.distance)
 	add_child(ray)
 	
-	if data.model != null:
+	if data.model:
 		model = data.model.instantiate()
 		get_parent().add_child(model)
 		model.top_level = true
@@ -38,10 +38,9 @@ func start_shape() -> void:
 	shape.shape = data.collision_shape
 	shape.target_position = Vector3.ZERO
 	
-	if data.model != null:
+	if data.model:
 		model = data.model.instantiate()
 		add_child(model)
-		model.global_position = muzle_position
 	
 	velocity_y = data.rise_and_drop.x
 
@@ -58,15 +57,15 @@ func start() -> void:
 		
 
 func reset_bullet_position() -> void:
-	if shape != null:
+	if shape:
 		shape.position = Vector3.ZERO
 	
-	if model != null and shape != null:
+	if model and shape:
 		model.position = Vector3.ZERO
 	
 	muzle_position = Vector3.ZERO
 	
-	if ray != null and data.model != null:
+	if ray and data.model:
 		model = data.model.instantiate()
 		get_parent().add_child(model)
 		if ray.is_colliding():
@@ -82,7 +81,7 @@ func self_destruct() -> void:
 	var eb : ExplosionBehavior = ExplosionBehavior.new()
 	eb.data = data.explosion_info
 	
-	if data.explosion_info != null:
+	if data.explosion_info:
 		if data.speed < 0.0:
 			
 			if ray.is_colliding():
@@ -106,7 +105,7 @@ func self_destruct() -> void:
 
 func spaw_wall_effect(pos:Vector3,target:Vector3,on:Node3D) -> void:
 	
-	if data.hit_wall_effect == null:
+	if not data.hit_wall_effect:
 		return
 	
 	var effect : Node3D = data.hit_wall_effect.instantiate()
@@ -131,10 +130,10 @@ func check_collision_ray() -> void:
 			var stats : Stats = Stats.get_stats_from_node(ray.get_collider())
 			
 			
-			if stats == null or data.faction != stats.faction:
+			if not stats or data.faction != stats.faction:
 				add_knock_back(ray.get_collider())
 			
-			if stats == null:
+			if not stats:
 				
 				var new_pos : Vector3 = ray.get_collision_point()
 				var surface_normal : Vector3 = ray.get_collision_normal()
@@ -155,7 +154,7 @@ func check_collision_ray() -> void:
 					return
 					
 				
-				if data.spaw_on_colision != null:
+				if data.spaw_on_colision:
 					o = data.spaw_on_colision.instantiate()
 					get_parent().add_child(o)
 					o.global_position = ray.get_collision_point()
@@ -174,7 +173,7 @@ func check_collision_ray() -> void:
 					
 					stats.damage(data.damage,data.damage_type,col_shape)
 					
-					if data.spaw_on_colision != null:
+					if data.spaw_on_colision:
 						o = data.spaw_on_colision.instantiate()
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
@@ -205,12 +204,12 @@ func check_collision_shape() -> void:
 		
 		var stats : Stats = Stats.get_stats_from_node(shape.get_collider(i))
 		
-		if stats == null or data.faction != stats.faction:
+		if not stats or data.faction != stats.faction:
 			add_knock_back(shape.get_collider(i))
 		
 		
 		
-		if stats != null:
+		if stats:
 			if data.faction != stats.faction:
 				
 				var target : Node3D = shape.get_collider(i)
@@ -221,7 +220,7 @@ func check_collision_shape() -> void:
 				
 				stats.damage(data.damage,data.damage_type,col_shape)
 				
-				if data.spaw_on_colision != null:
+				if data.spaw_on_colision:
 					o = data.spaw_on_colision.instantiate()
 					get_parent().add_child(o)
 					o.global_position = shape.get_collision_point(i)
@@ -293,9 +292,12 @@ func _physics_process(delta: float) -> void:
 		if data.distance < shape.position.length():
 			queue_free()
 
+var transition_to_bullet_pos : float = 0.0
 func _process(delta: float) -> void:
 	if data.speed < 0.0:
 		pass
 	else:
 		if model and shape:
-			model.global_position = shape.global_position
+			transition_to_bullet_pos += delta * data.speed
+			transition_to_bullet_pos = clamp(transition_to_bullet_pos,0.0,1.0)
+			model.global_position = muzle_position.lerp(shape.global_position,transition_to_bullet_pos)

@@ -13,7 +13,7 @@ func start() -> void:
 	shape.shape = sphere_shape
 	add_child(shape)
 	
-	if data.model != null:
+	if data.model:
 		var n : Node3D = data.model.instantiate()
 		get_parent().add_child(n)
 		n.global_position = global_position
@@ -26,7 +26,7 @@ func start() -> void:
 		
 		var stats : Stats = Stats.get_stats_from_node(shape.get_collider(i))
 		
-		if stats != null:
+		if stats:
 			if stats.faction != GlobalEnums.Faction.FRIENDLY:
 				var hit_particle : Node3D = Stats.enemy_hit_particle.instantiate()
 				get_parent().add_child(hit_particle)

@@ -5,7 +5,7 @@ class_name GunsAnimationTree
 var ap_node : AnimationPlayer
 
 func _ready() -> void:
-	if anim_player == null:
+	if not anim_player:
 		ap_node = get_node(anim_player)
 	
 	tree_root = load("res://player/guns/gun_animation_tree/gun_blend_tree.tres").duplicate()

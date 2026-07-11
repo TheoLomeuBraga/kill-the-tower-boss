@@ -110,7 +110,7 @@ func set_materials_override(n:Node,m:Material) -> void:
 	set(value):
 		charge_estate = value
 		
-		if charging_material == null or charged_material == null:
+		if not charging_material or not charged_material:
 			return
 		
 		for charge_object : Node3D in charge_objects:
@@ -129,7 +129,7 @@ func set_materials_override(n:Node,m:Material) -> void:
 @export var is_scoping : bool = false : 
 	set(value):
 		is_scoping = value
-		if scope != null:
+		if scope:
 			scope.visible =  is_scoping
-		if cross != null:
+		if cross:
 			cross.visible =  not is_scoping

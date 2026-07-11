@@ -136,7 +136,7 @@ func camera_process(delta : float) -> void:
 func _ready() -> void:
 	#model.set_gun(load("res://player/guns/pistol/pistol.tscn"))
 	model.set_gun(null)
-	if grapple_raycast != null:
+	if grapple_raycast:
 		grapple_raycast.add_exception(body)
 
 @export_group("rigdbody_collision")

@@ -8,7 +8,7 @@ class_name PlayerModel
 
 
 func _process(delta: float) -> void:
-	if arms != null and gun_animations != null and gun != null:
+	if arms and gun_animations and gun:
 		gun.gun.global_transform = gun_animations.gun.global_transform
 		
 		arms.arm_l.global_transform = gun.arm_l.global_transform
@@ -24,9 +24,9 @@ func _process(delta: float) -> void:
 var drop_wepon_tween : Tween
 
 func set_gun( model : PackedScene ) -> void:
-	if model != null:
+	if model:
 		
-		if drop_wepon_tween != null:
+		if drop_wepon_tween:
 			drop_wepon_tween.stop()
 		
 		gun_animations.drop_wepon_estate = 1.0
