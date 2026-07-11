@@ -77,7 +77,6 @@ func reset_bullet_position() -> void:
 
 func self_destruct() -> void:
 	
-	
 	var eb : ExplosionBehavior = ExplosionBehavior.new()
 	eb.data = data.explosion_info
 	
@@ -182,6 +181,10 @@ func check_collision_ray() -> void:
 						o = Stats.enemy_hit_particle.instantiate()
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
+					elif stats.faction == GlobalEnums.Faction.FRIENDLY:
+						o = Stats.player_hit_particle.instantiate()
+						get_parent().add_child(o)
+						o.global_position = ray.get_collision_point()
 					
 					if penetrations_left > 0:
 						penetrations_left -= 1
@@ -225,9 +228,14 @@ func check_collision_shape() -> void:
 					get_parent().add_child(o)
 					o.global_position = shape.get_collision_point(i)
 				
-				o = Stats.enemy_hit_particle.instantiate()
-				get_parent().add_child(o)
-				o.global_position = shape.get_collision_point(i)
+				if stats.faction != GlobalEnums.Faction.FRIENDLY:
+					o = Stats.enemy_hit_particle.instantiate()
+					get_parent().add_child(o)
+					o.global_position = shape.get_collision_point(i)
+				elif stats.faction == GlobalEnums.Faction.FRIENDLY:
+					o = Stats.player_hit_particle.instantiate()
+					get_parent().add_child(o)
+					o.global_position = shape.get_collision_point(i)
 				
 				
 				

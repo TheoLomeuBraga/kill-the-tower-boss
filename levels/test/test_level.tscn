@@ -109,30 +109,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.78497654, 0, -0.61951876, 0, 1, 0, 0.61951876, 0, -0.78497654, -3, 1, 3)
+transform = Transform3D(-0.21437679, 0, 0.9767466, 0, 1, 0, -0.9767466, 0, -0.21437679, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.3998197, 0, 0.91659, 0, 1, 0, -0.91659, 0, 0.3998197, -3, 1, 4)
+transform = Transform3D(0.6493675, 0, -0.7604697, 0, 1, 0, 0.7604697, 0, 0.6493675, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.2624387, 0, -0.96494603, 0, 1, 0, 0.96494603, 0, 0.2624387, -3, 1, 5)
+transform = Transform3D(-0.9829165, 0, 0.18403889, 0, 1, 0, -0.18403889, 0, -0.9829165, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.9729477, 0, 0.23100579, 0, 1, 0, -0.23100579, 0, -0.9729477, -3, 1, 6)
+transform = Transform3D(0.63377184, 0, 0.77351356, 0, 1, 0, -0.77351356, 0, 0.63377184, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.7448253, 0, 0.6672545, 0, 1, 0, -0.6672545, 0, 0.7448253, -3, 1, 7)
+transform = Transform3D(0.2745338, 0, -0.96157384, 0, 1, 0, 0.96157384, 0, 0.2745338, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.22265102, 0, -0.9748947, 0, 1, 0, 0.9748947, 0, 0.22265102, -3, 1, 8)
+transform = Transform3D(-0.97454906, 0, 0.2241577, 0, 1, 0, -0.2241577, 0, -0.97454906, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -140,62 +140,6 @@ type = 5
 
 [node name="enemys" type="Node" parent="." unique_id=257916750]
 
-[node name="generic_enemy" parent="enemys" unique_id=2136028321 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-current_gun_type = 0
-
-[node name="generic_enemy2" parent="enemys" unique_id=607079854 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-
-[node name="generic_enemy3" parent="enemys" unique_id=1660178523 instance=ExtResource("5_nuspp")]
+[node name="generic_enemy" parent="enemys" unique_id=1660178523 instance=ExtResource("5_nuspp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-current_gun_type = 2
-
-[node name="generic_enemy4" parent="enemys" unique_id=1741322695 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
-current_gun_type = 3
-
-[node name="generic_enemy5" parent="enemys" unique_id=1922136076 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
-current_gun_type = 0
-
-[node name="generic_enemy6" parent="enemys" unique_id=78734155 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
-
-[node name="generic_enemy7" parent="enemys" unique_id=2026774321 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
-current_gun_type = 2
-
-[node name="generic_enemy8" parent="enemys" unique_id=1625012935 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
-current_gun_type = 3
-
-[node name="generic_enemy9" parent="enemys" unique_id=552516276 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
-current_gun_type = 0
-
-[node name="generic_enemy10" parent="enemys" unique_id=1303420894 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
-
-[node name="generic_enemy11" parent="enemys" unique_id=627037028 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
-current_gun_type = 2
-
-[node name="generic_enemy12" parent="enemys" unique_id=146524546 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
-current_gun_type = 3
-
-[node name="generic_enemy13" parent="enemys" unique_id=161875184 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
-current_gun_type = 0
-
-[node name="generic_enemy14" parent="enemys" unique_id=231789235 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
-
-[node name="generic_enemy15" parent="enemys" unique_id=104193194 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
-current_gun_type = 2
-
-[node name="generic_enemy16" parent="enemys" unique_id=1189836429 instance=ExtResource("5_nuspp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
-current_gun_type = 3
+current_gun_type = 1

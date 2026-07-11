@@ -93,6 +93,7 @@ cast_shadow = 0
 
 [node name="Cube_001" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="1" unique_id=954099281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012983993, 0)
+cast_shadow = 0
 
 [node name="charge" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="2" unique_id=648140938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2796031, 0)

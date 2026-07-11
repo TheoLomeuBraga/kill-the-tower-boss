@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bd4eknp8wb1vf"]
+
+[ext_resource type="Texture2D" uid="uid://bpx1ptt8i0ybh" path="res://particles/hit_particle/hit_effect.png" id="1_a830k"]
+[ext_resource type="Script" uid="uid://btjwrydlhnj0y" path="res://particles/start_emiting.gd" id="2_wmpu8"]
+[ext_resource type="AudioStream" uid="uid://cvivbxjxbdrox" path="res://particles/hit_particle/player_hit.wav" id="3_a830k"]
+[ext_resource type="Script" uid="uid://d4hxc6cumbvb5" path="res://scripts/randomize_pitch.gd" id="4_oql2a"]
+
+[sub_resource type="Curve" id="Curve_sbw2j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.087837845, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wnubv"]
+curve = SubResource("Curve_sbw2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbw2j"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_wnubv")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnubv"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_a830k")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_cumbm"]
+material = SubResource("StandardMaterial3D_wnubv")
+
+[node name="HitParticle" type="GPUParticles3D" unique_id=142146666]
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_sbw2j")
+draw_pass_1 = SubResource("QuadMesh_cumbm")
+script = ExtResource("2_wmpu8")
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=959790308]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2077805071]
+stream = ExtResource("3_a830k")
+volume_db = -15.0
+autoplay = true
+bus = &"SFX"
+
+[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=1530637360]
+script = ExtResource("4_oql2a")
+variation_range = Vector2(1, 2)
+metadata/_custom_type_script = "uid://d4hxc6cumbvb5"
+
+[connection signal="timeout" from="DeathTimer" to="." method="queue_free"]

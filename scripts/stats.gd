@@ -2,6 +2,7 @@ extends Node
 class_name Stats
 
 const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
+const player_hit_particle : PackedScene = preload("res://particles/hit_particle/player_hit_particle.tscn")
 
 signal healed(int)
 signal damaged(int)

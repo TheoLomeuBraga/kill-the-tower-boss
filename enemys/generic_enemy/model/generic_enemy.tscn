@@ -42,12 +42,56 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [sub_resource type="Resource" id="Resource_p33kv"]
 script = ExtResource("6_4qta4")
 model = ExtResource("7_7l60r")
-ammon_type = 1
 ammon_consumption = -1
 ammon_capacity = -1
 fire_rate = 2.0
 spread = 0.01
 projectile_info = SubResource("Resource_0lqg2")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_7l60r"]
+script = ExtResource("10_0cgij")
+faction = 1
+damage = 2
+speed = 10.0
+distance = 50.0
+model = ExtResource("9_7l60r")
+collision_shape = SubResource("SphereShape3D_tgt1f")
+hit_wall_effect = ExtResource("8_a23fe")
+spawn_effect = ExtResource("11_b1tst")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_a23fe"]
+script = ExtResource("6_4qta4")
+model = ExtResource("7_7l60r")
+ammon_capacity = 15
+reload_time = 2.0
+fire_rate = 0.2
+spread = 0.05
+projectile_info = SubResource("Resource_7l60r")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
+[sub_resource type="Resource" id="Resource_1koiy"]
+script = ExtResource("10_0cgij")
+faction = 1
+damage = 5
+speed = 10.0
+distance = 50.0
+model = ExtResource("9_7l60r")
+collision_shape = SubResource("SphereShape3D_tgt1f")
+hit_wall_effect = ExtResource("8_a23fe")
+spawn_effect = ExtResource("11_b1tst")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_0cgij"]
+script = ExtResource("6_4qta4")
+model = ExtResource("7_7l60r")
+ammon_consumption = -1
+ammon_capacity = -1
+bullets_per_shot = 5
+fire_rate = 2.0
+spread = 0.1
+projectile_info = SubResource("Resource_1koiy")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vhdk8"]
@@ -82,49 +126,48 @@ node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation",
 
 [node name="generic_enemy" unique_id=2136028321 instance=ExtResource("1_0bvgo")]
 script = ExtResource("2_sq4vr")
-current_gun_type = 1
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(695824529) index="0" unique_id=69478514]
-bones/1/position = Vector3(0, 1.0089749, -0.055199984)
-bones/1/rotation = Quaternion(0.0025711544, 0, 0, 0.9999967)
+bones/1/position = Vector3(0, 1.008696, -0.055199984)
+bones/1/rotation = Quaternion(0.003928188, 0, 0, 0.9999924)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.07662075, 0.7417669, -0.6649628, 0.0416617)
-bones/10/rotation = Quaternion(-0.071762875, -0.70300186, -0.045992732, 0.7060617)
+bones/9/rotation = Quaternion(0.08067312, 0.7408466, -0.6652116, 0.046171002)
+bones/10/rotation = Quaternion(-0.07811198, -0.7023897, -0.050061878, 0.7057203)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.07662075, 0.74176705, -0.66496265, -0.04166175)
-bones/14/rotation = Quaternion(-0.071762875, 0.7030019, 0.04599274, 0.70606166)
+bones/13/rotation = Quaternion(-0.08067312, 0.7408465, -0.6652116, -0.046170995)
+bones/14/rotation = Quaternion(-0.07811202, 0.7023897, 0.050061867, 0.7057203)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.1926143e-08, 0.007373521, 0.9999728, -1.4088652e-10)
-bones/19/rotation = Quaternion(-6.8143595e-17, 0.9999411, -0.010852988, 5.20326e-16)
+bones/18/rotation = Quaternion(2.1925965e-08, 0.011097972, 0.9999385, -1.6647277e-10)
+bones/19/rotation = Quaternion(-2.8411076e-16, 0.9998689, -0.016195469, -4.124907e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(2.1926143e-08, 0.007373521, 0.9999728, -1.4088652e-10)
-bones/24/rotation = Quaternion(1.7755428e-16, 0.9999411, -0.010852988, 1.4313218e-15)
+bones/23/rotation = Quaternion(2.1925965e-08, 0.011097972, 0.9999385, -1.6647277e-10)
+bones/24/rotation = Quaternion(-2.862892e-16, 0.9998689, -0.016195469, -3.905119e-16)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=1545160471]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.6146348e-31, 0.9999867, -0.0051421835, 3.1399236e-29, 0.0051421835, 0.99998665, 9.6707895e-15, 1.7799536, 0.028665569)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -2.4668285e-31, 0.99996907, -0.007856206, 3.1398683e-29, 0.007856206, 0.999969, 9.6707895e-15, 1.7794441, 0.030757759)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=1967325470]
-transform = Transform3D(-1.1920929e-07, -2.9802322e-08, 0.99999976, 0.99999976, -1.3411045e-07, 1.7881393e-07, 1.0430813e-07, 0.9999999, 7.450581e-09, -0.09530005, 1.4515389, 0.1561793)
+transform = Transform3D(8.940697e-08, -5.2386895e-09, 1, 0.99999994, -5.7742e-08, -9.685755e-08, 7.450581e-09, 0.9999999, -4.4237822e-09, -0.09529996, 1.4511746, 0.44972703)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=1764332967]
 visible = false
 
-[node name="Cube_004" parent="metarig/GeneralSkeleton/hand_R" index="2" unique_id=534634257]
+[node name="Cube_003" parent="metarig/GeneralSkeleton/hand_R" index="1" unique_id=318596769]
 visible = false
 
 [node name="Cube_005" parent="metarig/GeneralSkeleton/hand_R" index="3" unique_id=1180477002]
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=207185085]
-transform = Transform3D(0.041427836, -0.005829394, 0.9991245, 0.21210599, -0.9771392, -0.014495937, 0.9763681, 0.21252082, -0.039244313, -0.19529998, 1.5835208, -0.023745172)
+transform = Transform3D(-0.01495859, 0.1780107, 0.98391485, 0.8895515, -0.4469768, 0.09439142, 0.4565898, 0.8766549, -0.1516636, -0.19529998, 1.5831542, -0.02218593)
 
-[node name="Cube_007" parent="metarig/GeneralSkeleton/upper_arm_R" index="0" unique_id=1583177108]
+[node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=231437063]
 visible = false
 
 [node name="Cube_009" parent="metarig/GeneralSkeleton/upper_arm_R" index="2" unique_id=481215082]
@@ -140,7 +183,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.99998677, -0.005142292, 0, 0.005142292, 0.99998677, 3.9013474e-15, 1.2916894, 0.0010545272)
+transform = Transform3D(1, 0, 0, 0, 0.9999691, -0.007856315, 0, 0.007856315, 0.9999691, 3.9013474e-15, 1.2912567, 0.0018216297)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -170,6 +213,7 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="arm_l" type="TwoBoneIK3D" parent="metarig/GeneralSkeleton" index="7" unique_id=1788349302]
+influence = 0.0
 setting_count = 1
 settings/0/target_node = NodePath("../../../ik_targets/hand_r/hand_l")
 settings/0/pole_node = NodePath("../../../ik_targets/pole_l")
@@ -196,6 +240,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="hand_l" type="CopyTransformModifier3D" parent="metarig/GeneralSkeleton" index="9" unique_id=358229802]
+influence = 0.0
 setting_count = 1
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "LeftHand"
@@ -208,7 +253,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5835208, -0.023745172)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5831542, -0.02218593)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -217,17 +262,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4068135, -1.6318793, 1)
 
 [node name="hand_r" type="Node3D" parent="ik_targets" index="2" unique_id=30923670]
-transform = Transform3D(-4.371139e-08, 0, 1, 1, -4.371139e-08, 4.371139e-08, 4.371139e-08, 1, 1.9106855e-15, 0.1, -0.132, 0.18)
+transform = Transform3D(-4.371139e-08, 0, 1, 1, -4.371139e-08, 4.371139e-08, 4.371139e-08, 1, 1.9106855e-15, 0.1, -0.132, 0.472)
 
 [node name="hand_l" type="Node3D" parent="ik_targets/hand_r" index="0" unique_id=2025398051]
 transform = Transform3D(-0.99990225, 0.0036188338, 0.013505422, -0.013982015, -0.25879374, -0.96583134, -8.126125e-08, -0.9659258, 0.25881904, 0.04555106, 0.27125227, 0.10642028)
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.6146348e-31, 0.9999867, -0.0051421835, 3.1399236e-29, 0.0051421835, 0.99998665, 9.6707895e-15, 1.7799536, 0.028665569)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -2.4668285e-31, 0.99996907, -0.007856206, 3.1398683e-29, 0.007856206, 0.999969, 9.6707895e-15, 1.7794441, 0.030757759)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.99998677, -0.005142292, 0, 0.005142292, 0.99998677, 3.9013474e-15, 1.2916894, 0.0010545272)
+transform = Transform3D(1, 0, 0, 0, 0.9999691, -0.007856315, 0, 0.007856315, 0.9999691, 3.9013474e-15, 1.2912567, 0.0018216297)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]
@@ -255,8 +300,8 @@ metadata/_custom_type_script = "uid://u7trxdlheisb"
 script = ExtResource("5_vhdk8")
 guns = Dictionary[int, ExtResource("6_4qta4")]({
 0: SubResource("Resource_p33kv"),
-1: null,
-2: null,
+1: SubResource("Resource_a23fe"),
+2: SubResource("Resource_0cgij"),
 3: null
 })
 

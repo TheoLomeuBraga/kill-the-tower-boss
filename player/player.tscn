@@ -41,7 +41,7 @@ size = Vector3(2, 1, 1)
 
 [sub_resource type="Resource" id="Resource_1s1yo"]
 script = ExtResource("4_qjkh3")
-damage = 20
+damage = 60
 speed = 10.0
 distance = 2.0
 collision_shape = SubResource("BoxShape3D_r7pn3")
@@ -65,7 +65,7 @@ size = Vector3(2, 1, 1)
 
 [sub_resource type="Resource" id="Resource_b8hi5"]
 script = ExtResource("4_qjkh3")
-damage = 10
+damage = 20
 speed = 10.0
 distance = 2.0
 collision_shape = SubResource("BoxShape3D_rptt4")
