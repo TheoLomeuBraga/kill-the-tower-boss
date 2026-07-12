@@ -1,4 +1,6 @@
-add enemy model
+make enemy behafiour more interesting
+
+add sniper brhaveor
 
 add enemy basic path finding
 

@@ -29,6 +29,23 @@ albedo_color = Color(0.3854925, 0.38549247, 0.38549247, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7vyq"]
 albedo_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
 
+[sub_resource type="Gradient" id="Gradient_r23pr"]
+colors = PackedColorArray(0, 0.007843138, 0.047058824, 1, 0.1317595, 0.17607293, 0.13186705, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p6j8j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3l36l"]
+noise = SubResource("FastNoiseLite_p6j8j")
+color_ramp = SubResource("Gradient_r23pr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuspp"]
+albedo_texture = SubResource("NoiseTexture2D_3l36l")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
+size = Vector3(6, 2.0463867, 5)
+
 [node name="TestLevel" type="Node3D" unique_id=1204845559]
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_o7vyq")]
@@ -97,6 +114,32 @@ transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -5, 1.5,
 size = Vector3(7, 4, 1)
 material = SubResource("StandardMaterial3D_o7vyq")
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1016241607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 17)
+size = Vector3(1, 1, 5)
+material = SubResource("StandardMaterial3D_nuspp")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1746906646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 17)
+size = Vector3(1, 2, 5)
+material = SubResource("StandardMaterial3D_nuspp")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1053699409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 17)
+size = Vector3(1, 3, 5)
+material = SubResource("StandardMaterial3D_nuspp")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=533264978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, 17)
+size = Vector3(6, 4, 5)
+material = SubResource("StandardMaterial3D_nuspp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1757300403]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGCombiner3D/StaticBody3D" unique_id=147560864]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 2.076, 1.1869752, 17)
+shape = SubResource("BoxShape3D_b2jhj")
+
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=840345381]
 
 [node name="TestCube" parent="." unique_id=589111855 instance=ExtResource("3_tmcpo")]
@@ -109,30 +152,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.21437679, 0, 0.9767466, 0, 1, 0, -0.9767466, 0, -0.21437679, -3, 1, 3)
+transform = Transform3D(0.6970004, 0, 0.71706456, 0, 1, 0, -0.71706456, 0, 0.6970004, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.6493675, 0, -0.7604697, 0, 1, 0, 0.7604697, 0, 0.6493675, -3, 1, 4)
+transform = Transform3D(-0.2765823, 0, -0.96098626, 0, 1, 0, 0.96098626, 0, -0.2765823, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.9829165, 0, 0.18403889, 0, 1, 0, -0.18403889, 0, -0.9829165, -3, 1, 5)
+transform = Transform3D(-0.38923573, 0, 0.9211355, 0, 1, 0, -0.9211355, 0, -0.38923573, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.63377184, 0, 0.77351356, 0, 1, 0, -0.77351356, 0, 0.63377184, -3, 1, 6)
+transform = Transform3D(0.99469423, 0, -0.1028267, 0, 1, 0, 0.1028267, 0, 0.99469423, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.2745338, 0, -0.96157384, 0, 1, 0, 0.96157384, 0, 0.2745338, -3, 1, 7)
+transform = Transform3D(-0.6508537, 0, -0.75919855, 0, 1, 0, 0.75919855, 0, -0.6508537, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.97454906, 0, 0.2241577, 0, 1, 0, -0.2241577, 0, -0.97454906, -3, 1, 8)
+transform = Transform3D(-0.35113755, 0, 0.9363198, 0, 1, 0, -0.9363198, 0, -0.35113755, -3, 1, 8)
 ammon = 3
 type = 5
 

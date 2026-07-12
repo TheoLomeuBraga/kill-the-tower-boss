@@ -28,7 +28,12 @@ func shot(info:GunInfo) -> void:
 	if not info:
 		return
 	
+	$"../ik_targets/AnimationPlayer".play("shot")
+	
 	cool_down = info.fire_rate
+	
+	$"../muzle".look_at(Player.player.global_position)
+	$"../muzle".rotation.y = PI
 	
 	for i : int in info.bullets_per_shot:
 		
