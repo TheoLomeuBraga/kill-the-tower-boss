@@ -160,8 +160,8 @@ interact={
 
 [physics]
 
-common/physics_ticks_per_second=80
 3d/physics_engine="Jolt Physics"
+jolt_physics_3d/simulation/position_steps=10
 
 [rendering]
 

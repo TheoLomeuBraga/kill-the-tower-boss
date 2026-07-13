@@ -1,4 +1,4 @@
-make enemy behafiour more interesting
+make enemy behaviour more interesting
 
 add sniper brhaveor
 

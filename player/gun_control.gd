@@ -151,34 +151,37 @@ func shot() -> void:
 		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
 		player_model.gun.get_muzle().add_child(particle)
 	
+	player_model.gun.shot = true
+	
+	if inventory[current_gun_id].special_type == GlobalEnums.WeponTime.GRAPPLE:
+		player_movement.launch_grapple()
+		return
+	
 	for i : int in inventory[current_gun_id].bullets_per_shot:
 		
-		if inventory[current_gun_id].special_type == GlobalEnums.WeponTime.GRAPPLE:
-			player_movement.launch_grapple()
-		else:
-			var projectile : ProjectBehavior = ProjectBehavior.new()
-			add_child(projectile)
-			projectile.global_position = camera.global_position
-			projectile.muzle_position = player_model.gun.get_muzle().global_position
-			
-			projectile.target_position = target_raycast.global_basis.z * -100.0
-			
-			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
-			
-			var spread : float = inventory[current_gun_id].spread
-			var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
-			if vec_spread.length() > 1.0:
-				vec_spread = vec_spread.normalized()
-			vec_spread /= 1.0
-			var aditional_rot : Vector3 = vec_spread * spread
-			projectile.rotate_x(aditional_rot.x)
-			projectile.rotate_y(aditional_rot.y)
-			projectile.rotate_z(aditional_rot.z)
-			
-			projectile.data = inventory[current_gun_id].projectile_info
-			projectile.start()
 		
-	player_model.gun.shot = true
+		var projectile : ProjectBehavior = ProjectBehavior.new()
+		add_child(projectile)
+		projectile.global_position = camera.global_position
+		projectile.muzle_position = player_model.gun.get_muzle().global_position
+		
+		projectile.target_position = target_raycast.global_basis.z * -100.0
+		
+		projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
+		
+		var spread : float = inventory[current_gun_id].spread
+		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
+		if vec_spread.length() > 1.0:
+			vec_spread = vec_spread.normalized()
+		vec_spread /= 1.0
+		var aditional_rot : Vector3 = vec_spread * spread
+		projectile.rotate_x(aditional_rot.x)
+		projectile.rotate_y(aditional_rot.y)
+		projectile.rotate_z(aditional_rot.z)
+		
+		projectile.data = inventory[current_gun_id].projectile_info
+		projectile.start()
+		
 
 func alt_shot() -> void:
 	

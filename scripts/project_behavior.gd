@@ -19,6 +19,8 @@ var velocity_y : float = 0.0
 
 static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
+
+
 func start_ray() -> void:
 	
 	ray = RayCast3D.new()
@@ -37,6 +39,7 @@ func start_shape() -> void:
 	add_child(shape)
 	shape.shape = data.collision_shape
 	shape.target_position = Vector3.ZERO
+	shape.margin = 0.2
 	
 	if data.model:
 		model = data.model.instantiate()
