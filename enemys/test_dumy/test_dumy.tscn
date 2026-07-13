@@ -61,7 +61,7 @@ damage_type_multplyer = Dictionary[int, float]({
 })
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
-[node name="AplyDamageVfx" type="Node" parent="." unique_id=874664492]
+[node name="ApplyDamageVfx" type="Node" parent="." unique_id=874664492]
 script = ExtResource("4_n3byo")
 metadata/_custom_type_script = "uid://b0dwxhhrp7gf"
 

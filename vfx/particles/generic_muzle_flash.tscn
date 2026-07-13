@@ -41,13 +41,13 @@ process_material = SubResource("ParticleProcessMaterial_nrpr2")
 draw_pass_1 = SubResource("SphereMesh_gs63p")
 script = ExtResource("1_gs63p")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1421724278]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1098683917]
 stream = ExtResource("2_4xu3i")
 volume_db = -10.0
 autoplay = true
-bus = &"SFX"
+max_distance = 50.0
 
-[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=2144411668]
+[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer3D" unique_id=2144411668]
 script = ExtResource("2_nrpr2")
 metadata/_custom_type_script = "uid://d4hxc6cumbvb5"
 

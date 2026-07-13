@@ -1,5 +1,5 @@
 extends Node
-class_name AplyDamageVfx
+class_name ApplyDamageVfx
 
 static var base_material : ShaderMaterial = load("res://vfx/damage/damage_material.tres")
 var material : ShaderMaterial
@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 	apply_overlay(get_parent())
 
-func play_hit_fx(i:int) -> void:
+func play_hit_fx(i:int=0) -> void:
 	material.set_shader_parameter("fresnel_power",1.0)
 
 func _process(delta: float) -> void:

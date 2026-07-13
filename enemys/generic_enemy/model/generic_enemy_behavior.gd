@@ -3,26 +3,16 @@ extends Node
 static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var body : GenericEnemyModel = $".."
-
 @onready var navegator : Navegator = $"../Navegator"
-
 @onready var animation_tree : AnimationTree = $"../AnimationTree"
-
 @export var guns : Dictionary[GenericEnemyModel.GunType,GunInfo]
-
-@export var Desired_distances : Dictionary[GenericEnemyModel.GunType,Vector2]
-
+@export var desired_distances : Dictionary[GenericEnemyModel.GunType,Vector2]
 @onready var muzle : Node3D = $"../muzle"
 
 var in_combat : bool = true
-
 var cool_down : float = 2.0
-
 var reload_time : float = 0.0
-
 var ammon_on_mag : int = -1
-
-
 
 func shot(info:GunInfo) -> void:
 	
@@ -35,6 +25,10 @@ func shot(info:GunInfo) -> void:
 	
 	$"../muzle".look_at(Player.player.global_position)
 	$"../muzle".rotation.y = PI
+	
+	var spwn_effect : Node3D = info.projectile_info.spawn_effect.instantiate()
+	muzle.add_child(spwn_effect)
+	spwn_effect.transform = muzle.transform
 	
 	for i : int in info.bullets_per_shot:
 		
@@ -67,7 +61,7 @@ func shot(info:GunInfo) -> void:
 			reload_time = info.reload_time
 			
 
-var state : Callable = process_movement
+var state : Callable = process_idle
 @onready var visualizer : RayCast3D = $"../muzle/player_visualizer"
 var is_player_visible : bool = false
 func check_player_visibility() -> bool:
@@ -95,9 +89,11 @@ func _ready() -> void:
 	view_timer.wait_time = rng.randf_range(0.4,0.8)
 	view_timer.timeout.connect(check_player_visibility)
 
-func process_movement(delta:float) -> void:
+func process_folow_player(delta:float) -> void:
 	
-	navegator.is_navegating = Player.player.global_position.distance_to(get_parent().global_position) > 5.0
+	navegator.is_navegating = true
+	
+	navegator.target_position = Player.player.global_position
 	
 	if navegator.is_navegating:
 		navegator.look_target =  Navegator.LookTarget.DIRECTION
@@ -106,12 +102,24 @@ func process_movement(delta:float) -> void:
 		navegator.look_target =  Navegator.LookTarget.TARGET
 		animation_tree.set("parameters/Transition/transition_request","idle")
 	
-	if is_player_visible:
-		state = process_shot
+	state = calculate_next_state()
+
+func process_run_away_from_player(delta:float) -> void:
+	
+	navegator.is_navegating = true
+	
+	navegator.target_position = body.global_position.direction_to(Player.player.global_position) * -100.0
+	
+	navegator.look_target =  Navegator.LookTarget.TARGET
+	animation_tree.set("parameters/Transition/transition_request","walk")
+	
+	state = calculate_next_state()
 
 func process_shot(delta:float) -> void:
 	
 	navegator.is_navegating = false
+	
+	navegator.target_position = Player.player.global_position
 	
 	navegator.look_target =  Navegator.LookTarget.TARGET
 	animation_tree.set("parameters/Transition/transition_request","idle")
@@ -119,10 +127,34 @@ func process_shot(delta:float) -> void:
 	if cool_down <= 0 and reload_time <= 0:
 		shot(guns[body.current_gun_type])
 	
-	if not is_player_visible:
-		state = process_movement
-	
+	state = calculate_next_state()
 
+func process_idle(delta:float) -> void:
+	
+	
+	navegator.look_target =  Navegator.LookTarget.NONE
+	animation_tree.set("parameters/Transition/transition_request","idle")
+	navegator.is_navegating = false
+	
+	if is_player_visible:
+		state = calculate_next_state()
+
+func calculate_next_state() -> Callable:
+	
+	if not Player.player:
+		return process_idle
+	
+	var distance : float = body.global_position.distance_to(Player.player.global_position)
+	
+	if distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].y:
+		return process_shot
+	elif distance < desired_distances[body.current_gun_type].x:
+		return process_run_away_from_player
+	elif distance > desired_distances[body.current_gun_type].y:
+		return process_folow_player
+	
+	
+	return process_idle
 
 
 func _physics_process(delta: float) -> void:
@@ -131,6 +163,6 @@ func _physics_process(delta: float) -> void:
 		reload_time -= delta
 		cool_down -= delta
 		
-		navegator.target_position = Player.player.global_position
+		
 		state.call(delta)
 		

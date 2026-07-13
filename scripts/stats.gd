@@ -32,6 +32,9 @@ func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums
 
 static func get_stats_from_node(node : Node) -> Stats:
 	
+	if not node:
+		return null
+	
 	for n : Node in node.get_children():
 		if n is Stats:
 			return n
