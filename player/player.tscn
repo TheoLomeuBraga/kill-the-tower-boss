@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
 [ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="8_kb6p2"]
 [ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
-[ext_resource type="PackedScene" uid="uid://dalblk3e3mj8q" path="res://player/guns/grapple/grapple.tscn" id="9_tqiix"]
 [ext_resource type="Script" uid="uid://dy1nyorfgrxi1" path="res://scripts/explosion_info.gd" id="9_wodsf"]
 [ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.tscn" id="10_e7oew"]
 [ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="13_tqiix"]
@@ -138,7 +137,7 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_r7pn3"]
 script = ExtResource("4_qjkh3")
-damage = 10
+damage = 20
 model = ExtResource("14_e7oew")
 collision_shape = SubResource("SphereShape3D_uw77l")
 hit_wall_effect = ExtResource("6_g4c7l")
@@ -166,6 +165,7 @@ radius = 0.2
 [sub_resource type="Resource" id="Resource_x7c3f"]
 script = ExtResource("9_wodsf")
 damage_type = 1
+damage = 60
 model = ExtResource("8_kb6p2")
 knock_back = 10.0
 metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
@@ -365,12 +365,6 @@ projectile_info = SubResource("Resource_jd2rm")
 aim_info = SubResource("Resource_jwhgt")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
-[sub_resource type="Resource" id="Resource_hg6s5"]
-script = ExtResource("3_qjkh3")
-model = ExtResource("9_tqiix")
-special_type = 1
-metadata/_custom_type_script = "uid://5ihhl4vr45q5"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjkh3"]
 albedo_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
@@ -407,7 +401,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_2uvqg"), SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_g4c7l"), SubResource("Resource_q28gw"), SubResource("Resource_hg6s5")])
+inventory = Array[ExtResource("3_qjkh3")]([SubResource("Resource_2uvqg"), SubResource("Resource_rgyib"), SubResource("Resource_c35mf"), SubResource("Resource_65viv"), SubResource("Resource_2ieo8"), SubResource("Resource_g4c7l"), SubResource("Resource_q28gw")])
 target_raycast = NodePath("../RayCast3D")
 
 [node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast", "grapple_hope")]
@@ -423,7 +417,6 @@ faction = 0
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [node name="InteractionManager" type="Node" parent="." unique_id=1023676887 node_paths=PackedStringArray("interaction_ray")]
-process_mode = 4
 script = ExtResource("9_8t03j")
 interaction_ray = NodePath("../Camera3D/RayCast3D")
 

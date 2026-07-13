@@ -153,10 +153,6 @@ func shot() -> void:
 	
 	player_model.gun.shot = true
 	
-	if inventory[current_gun_id].special_type == GlobalEnums.WeponTime.GRAPPLE:
-		player_movement.launch_grapple()
-		return
-	
 	for i : int in inventory[current_gun_id].bullets_per_shot:
 		
 		
@@ -167,7 +163,10 @@ func shot() -> void:
 		
 		projectile.target_position = target_raycast.global_basis.z * -100.0
 		
-		projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
+		if target_raycast.is_colliding():
+			projectile.look_at(target_raycast.get_collision_point())
+		else:
+			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
 		
 		var spread : float = inventory[current_gun_id].spread
 		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
@@ -202,8 +201,7 @@ func alt_shot() -> void:
 		if target_raycast.is_colliding():
 			projectile.look_at(target_raycast.get_collision_point())
 		else:
-			projectile.global_basis = player_model.gun.get_muzle().global_basis
-			projectile.look_at(camera.global_basis.z * -100.0)
+			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
 		
 		var spread : float = inventory[current_gun_id].charge_shot_info.spread
 		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))

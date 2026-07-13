@@ -1,10 +1,10 @@
-make enemy behaviour more interesting
-
 add sniper brhaveor
 
-add enemy basic path finding
+add drone enemy
 
-add enemy shot behaveor
+add big robot enemy
+
+improve ui and juice
 
 settings menu
 

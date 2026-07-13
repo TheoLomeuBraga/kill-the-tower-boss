@@ -67,7 +67,7 @@ func grapple_estate(delta : float) -> void:
 	
 	body.velocity += force * delta
 	
-	if not Input.is_action_pressed("shot"):
+	if not Input.is_action_pressed("interact"):
 		estate = air_estate
 		grapple_hope.visible = false
 		body.motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED

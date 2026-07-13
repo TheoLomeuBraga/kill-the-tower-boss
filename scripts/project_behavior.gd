@@ -110,6 +110,9 @@ func spaw_wall_effect(pos:Vector3,target:Vector3,on:Node3D) -> void:
 	if not data.hit_wall_effect:
 		return
 	
+	if not on:
+		return
+	
 	var effect : Node3D = data.hit_wall_effect.instantiate()
 	on.add_child(effect)
 	effect.global_position = pos

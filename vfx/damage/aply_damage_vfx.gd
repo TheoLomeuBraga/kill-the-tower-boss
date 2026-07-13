@@ -18,6 +18,8 @@ func _ready() -> void:
 	for c : Node in get_parent().get_children():
 		if c is Stats:
 			var s : Stats = c
+			if s.damaged.is_connected(play_hit_fx):
+				continue
 			s.damaged.connect(play_hit_fx)
 	
 	apply_overlay(get_parent())

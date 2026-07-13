@@ -4,7 +4,7 @@ extends Node
 
 var rb_on_foucus : RigidBody3D
 
-func _physics_process(delta: float) -> void:
+func grab_interaction(delta: float) -> void:
 	
 	if not interaction_ray:
 		return
@@ -22,3 +22,17 @@ func _physics_process(delta: float) -> void:
 		
 		rb_on_foucus.angular_velocity = (Vector3.ZERO - rb_on_foucus.global_rotation) * 10.0
 		
+
+@onready var player_movement : PlayerMovement = $"../PlayerMovement"
+func graple_interaction(delta: float) -> void:
+	
+	if not interaction_ray:
+		return
+	
+	if Input.is_action_just_pressed("interact"):
+		player_movement.launch_grapple()
+
+var current_interaction : Callable = graple_interaction
+
+func _physics_process(delta: float) -> void:
+	current_interaction.call(delta)
