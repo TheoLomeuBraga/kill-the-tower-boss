@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bxfxbf18aitn8"]
+
+[ext_resource type="PackedScene" uid="uid://c43il75bowj7f" path="res://enemys/drone/model/drone.glb" id="1_qu6x8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxkbx"]
+height = 1.5
+
+[node name="drone" unique_id=647379188 instance=ExtResource("1_qu6x8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1384537950]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qxkbx")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(960302731) index="0" unique_id=80690360]
+bones/1/position = Vector3(0.41446388, -0.25, 0)
+bones/2/position = Vector3(-0.41446388, -0.25, 0)
+
+[node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=1174294020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41446388, -0.25, 0)
+
+[node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1617150297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41446388, -0.25, 0)
