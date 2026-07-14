@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bglm3jqqp2vs5"
-path="res://.godot/imported/ammon.glb-b080c5b90f5ef8abf15e0f5830be4202.scn"
+uid="uid://c43il75bowj7f"
+path="res://.godot/imported/drone.glb-2bc30d3e5b36e3427999c4dbccc251de.scn"
 
 [deps]
 
-source_file="res://consumables/ammon/ammon.glb"
-dest_files=["res://.godot/imported/ammon.glb-b080c5b90f5ef8abf15e0f5830be4202.scn"]
+source_file="res://enemys/drone/model/drone.glb"
+dest_files=["res://.godot/imported/drone.glb-2bc30d3e5b36e3427999c4dbccc251de.scn"]
 
 [params]
 
@@ -19,7 +19,7 @@ nodes/root_script=null
 mesh_library/use_node_names_as_mesh_names=false
 array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
-nodes/root_scale=0.5
+nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true

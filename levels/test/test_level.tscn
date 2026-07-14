@@ -20,8 +20,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b2jhj"]
-vertices = PackedVector3Array(-49.5, 0.5, -2.75, -9, 0.5, -2.75, -7.75, 0.5, -4, -3.5, 0.5, -6.25, -3.5, 0.5, -49.5, -49.5, 0.5, -49.5, -1.75, 0.5, -6.75, -1.25, 0.5, -6, 2, 0.5, -6, 2, 0.5, -49.5, -3, 0.5, -6.75, 4, 0.5, -6, 4.25, 0.5, -5, 49.5, 0.5, -5, 49.5, 0.5, -49.5, -3.25, 4, -5.25, -2, 4, -5, -2.25, 4, -5.75, 3.75, 0.5, -3.75, 2.25, 0.5, -3.75, 2.5, 0.5, 14, 10, 0.5, 14, 10.25, 0.5, 15.75, 49.5, 0.5, 15.5, 0.75, 0.5, -3.75, -3.25, 0.5, -3.75, -7.25, 0.5, -1.25, -0.5, 0.5, 14.25, 1, 0.5, 14, -0.5, 0.75, 19, 1.5, 2.75, 19, 1.5, 2.75, 15, -0.5, 0.75, 15, -0.75, 0.5, 19.75, -8.25, 0.5, -1.25, -49.5, 0.5, 19.75, 9, 4.5, 19, 9, 4.5, 15, 2.75, 4, 19, 4, 4.5, 19, 4, 4.5, 15, 2.75, 4, 15, 10.25, 0.5, 18.25, 49.5, 0.5, 18.5, 9.75, 0.5, 20.25, 8.25, 0.5, 20.25, 8.5, 0.5, 49.5, 10.25, 0.5, 19.75, 49.5, 0.5, 49.5, 0.75, 0.5, 49.5, 1, 0.5, 20.25, -0.5, 0.5, 20.25, -49.5, 0.5, 49.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 4), PackedInt32Array(10, 3, 4), PackedInt32Array(6, 10, 4), PackedInt32Array(11, 8, 9), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 13), PackedInt32Array(13, 9, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(18, 12, 21), PackedInt32Array(21, 12, 13), PackedInt32Array(21, 13, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 28), PackedInt32Array(24, 19, 28), PackedInt32Array(28, 19, 20), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(34, 33, 1), PackedInt32Array(1, 33, 0), PackedInt32Array(0, 33, 35), PackedInt32Array(32, 29, 33), PackedInt32Array(32, 33, 27), PackedInt32Array(27, 33, 26), PackedInt32Array(26, 33, 34), PackedInt32Array(31, 41, 30), PackedInt32Array(30, 41, 38), PackedInt32Array(38, 41, 40), PackedInt32Array(38, 40, 39), PackedInt32Array(39, 40, 37), PackedInt32Array(39, 37, 36), PackedInt32Array(22, 23, 42), PackedInt32Array(42, 23, 43), PackedInt32Array(46, 45, 44), PackedInt32Array(44, 47, 46), PackedInt32Array(46, 47, 48), PackedInt32Array(48, 47, 43), PackedInt32Array(47, 42, 43), PackedInt32Array(51, 50, 49), PackedInt32Array(51, 49, 33), PackedInt32Array(33, 49, 35), PackedInt32Array(35, 49, 52), PackedInt32Array(50, 45, 49), PackedInt32Array(49, 45, 46)]
+vertices = PackedVector3Array(-15.25, 0.5, 0.25, -10.25, 0.5, -2.25, -5.25, 0.5, -5.5, -2.25, 0.5, -49.5, -49.5, 0.5, -49.5, -49.5, 0.5, 1, -15.5, 0.5, 1, -4.25, 0.5, -6, -2.25, 0.5, -6, 9, 0.5, -6, 9, 0.5, -49.5, 11, 0.5, -6, 11.25, 0.5, -5, 49.5, 0.5, -5, 49.5, 0.5, -49.5, 8.75, 0.5, -3.75, 8.5, 0.5, 14, 10, 0.5, 14, 10.75, 0.5, -3.75, 10.25, 0.5, 15.75, 49.5, 0.5, 15.5, 0.75, 0.5, -3.75, -3.25, 0.5, -3.75, -13, 0.5, 2, -0.5, 0.5, 14.25, 1, 0.5, 14, 1.5, 2.75, 19, 1.5, 2.75, 15, -0.5, 0.75, 15, -0.75, 0.5, 19.25, -0.5, 0.5, 20.25, -14.75, 0.5, 2.5, -49.5, 0.5, 49.5, 0.75, 0.5, 49.5, 1, 0.5, 20.25, 9, 4.5, 19, 9, 4.5, 15, 2.75, 4, 19, 4, 4.5, 19, 4, 4.5, 15, 2.75, 4, 15, 10.25, 0.5, 18.25, 49.5, 0.5, 18.5, 9.75, 0.5, 20.25, 8.25, 0.5, 20.25, 8.5, 0.5, 49.5, 10.25, 0.5, 19.75, 49.5, 0.5, 49.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(0, 6, 5), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 7, 2), PackedInt32Array(3, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 11, 10), PackedInt32Array(11, 9, 10), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 12, 17), PackedInt32Array(17, 12, 19), PackedInt32Array(19, 12, 13), PackedInt32Array(19, 13, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(24, 21, 25), PackedInt32Array(25, 21, 16), PackedInt32Array(16, 21, 15), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(29, 30, 31), PackedInt32Array(31, 30, 33), PackedInt32Array(31, 33, 5), PackedInt32Array(5, 33, 32), PackedInt32Array(28, 29, 24), PackedInt32Array(24, 29, 23), PackedInt32Array(23, 29, 31), PackedInt32Array(30, 34, 33), PackedInt32Array(5, 6, 31), PackedInt32Array(27, 40, 26), PackedInt32Array(26, 40, 37), PackedInt32Array(37, 40, 39), PackedInt32Array(37, 39, 38), PackedInt32Array(38, 39, 36), PackedInt32Array(38, 36, 35), PackedInt32Array(19, 20, 41), PackedInt32Array(41, 20, 42), PackedInt32Array(45, 44, 43), PackedInt32Array(43, 46, 45), PackedInt32Array(45, 46, 47), PackedInt32Array(47, 46, 42), PackedInt32Array(46, 41, 42), PackedInt32Array(34, 44, 33), PackedInt32Array(33, 44, 45)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ala8"]
 albedo_color = Color(0.3854925, 0.38549247, 0.38549247, 1)
@@ -110,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11, -3)
 material = SubResource("StandardMaterial3D_o7vyq")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=491666702]
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -7.598076, 1.5, -2.5)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -8.879166, 1.5, -1.816987)
 size = Vector3(13, 4, 1)
 material = SubResource("StandardMaterial3D_o7vyq")
 
@@ -152,30 +152,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.8132569, 0, 0.581896, 0, 1, 0, -0.581896, 0, -0.8132569, -3, 1, 3)
+transform = Transform3D(0.36808425, 0, 0.9297869, 0, 1, 0, -0.9297869, 0, 0.36808425, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.991708, 0, -0.12847815, 0, 1, 0, 0.12847815, 0, 0.991708, -3, 1, 4)
+transform = Transform3D(0.11341463, 0, -0.9935432, 0, 1, 0, 0.9935432, 0, 0.11341463, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.8582734, 0, -0.51318747, 0, 1, 0, 0.51318747, 0, -0.8582734, -3, 1, 5)
+transform = Transform3D(-0.7045145, 0, 0.7096857, 0, 1, 0, -0.7096857, 0, -0.7045145, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.05320187, 0, 0.9985781, 0, 1, 0, -0.9985781, 0, -0.05320187, -3, 1, 6)
+transform = Transform3D(0.95605356, 0, 0.29317254, 0, 1, 0, -0.29317254, 0, 0.95605356, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.84714895, 0, -0.53134763, 0, 1, 0, 0.53134763, 0, 0.84714895, -3, 1, 7)
+transform = Transform3D(-0.31230015, 0, -0.949979, 0, 1, 0, 0.949979, 0, -0.31230015, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.87846154, 0, -0.47780356, 0, 1, 0, 0.47780356, 0, -0.87846154, -3, 1, 8)
+transform = Transform3D(-0.6749558, 0, 0.7378518, 0, 1, 0, -0.7378518, 0, -0.6749558, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -184,5 +184,16 @@ type = 5
 [node name="enemys" type="Node" parent="." unique_id=257916750]
 
 [node name="generic_enemy" parent="enemys" unique_id=1660178523 instance=ExtResource("5_nuspp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+
+[node name="generic_enemy2" parent="enemys" unique_id=2136028321 instance=ExtResource("5_nuspp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
+current_gun_type = 1
+
+[node name="generic_enemy3" parent="enemys" unique_id=1871308424 instance=ExtResource("5_nuspp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+current_gun_type = 2
+
+[node name="generic_enemy4" parent="enemys" unique_id=217098118 instance=ExtResource("5_nuspp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
 current_gun_type = 3
