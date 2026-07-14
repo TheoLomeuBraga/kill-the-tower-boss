@@ -16,7 +16,7 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
 	GlobalEnums.AmmonType.SHOTGUN: 24,
-	GlobalEnums.AmmonType.ENERGY: 200,
+	GlobalEnums.AmmonType.ENERGY: 100,
 	GlobalEnums.AmmonType.EXPLOSIVE: 20,
 }
 
@@ -25,7 +25,7 @@ var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
 	GlobalEnums.AmmonType.SHOTGUN: 24,
-	GlobalEnums.AmmonType.ENERGY: 200,
+	GlobalEnums.AmmonType.ENERGY: 100,
 	GlobalEnums.AmmonType.EXPLOSIVE: 20,
 }
 

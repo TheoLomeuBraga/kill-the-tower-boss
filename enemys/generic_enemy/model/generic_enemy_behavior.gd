@@ -14,7 +14,12 @@ var cool_down : float = 2.0
 var reload_time : float = 0.0
 var ammon_on_mag : int = -1
 
-func shot(info:GunInfo) -> void:
+func calculate_target_future_point(target_pos:Vector3,target_vel:Vector3,target_dist:float,projectile_speed:float) -> Vector3:
+	return target_pos + target_vel * (target_dist/projectile_speed)
+
+func shot() -> void:
+	
+	var info:GunInfo=guns[body.current_gun_type]
 	
 	if not info:
 		return
@@ -75,6 +80,7 @@ func check_player_visibility() -> bool:
 	
 	return is_player_visible
 
+var sniper_timer : Timer
 var view_timer : Timer
 func _ready() -> void:
 	ammon_on_mag = guns[body.current_gun_type].ammon_capacity
@@ -88,6 +94,10 @@ func _ready() -> void:
 	view_timer.start()
 	view_timer.wait_time = rng.randf_range(0.4,0.8)
 	view_timer.timeout.connect(check_player_visibility)
+	
+	sniper_timer = Timer.new()
+	add_child(sniper_timer)
+	
 
 func process_folow_player(delta:float) -> void:
 	
@@ -115,6 +125,39 @@ func process_run_away_from_player(delta:float) -> void:
 	
 	state = calculate_next_state()
 
+
+var sniping : bool = false
+func process_sniper(delta:float) -> void:
+	if sniping:
+		return
+	sniping = true
+	
+	navegator.is_navegating = false
+	
+	navegator.target_position = calculate_target_future_point(Player.player.global_position,Player.player.velocity,1.0,1.0)
+	
+	navegator.look_target =  Navegator.LookTarget.TARGET
+	animation_tree.set("parameters/Transition/transition_request","idle")
+	
+	$"../muzle/lazer".visible = true
+	
+	sniper_timer.start(1.0)
+	await sniper_timer.timeout
+	
+	shot()
+	
+	$"../muzle/lazer".visible = false
+	
+	sniper_timer.start(1.0)
+	await sniper_timer.timeout
+	
+	sniping = false
+	
+	state = calculate_next_state()
+	
+	
+	
+
 func process_shot(delta:float) -> void:
 	
 	navegator.is_navegating = false
@@ -125,12 +168,11 @@ func process_shot(delta:float) -> void:
 	animation_tree.set("parameters/Transition/transition_request","idle")
 	
 	if cool_down <= 0 and reload_time <= 0:
-		shot(guns[body.current_gun_type])
+		shot()
 	
 	state = calculate_next_state()
 
 func process_idle(delta:float) -> void:
-	
 	
 	navegator.look_target =  Navegator.LookTarget.NONE
 	animation_tree.set("parameters/Transition/transition_request","idle")
@@ -147,7 +189,10 @@ func calculate_next_state() -> Callable:
 	var distance : float = body.global_position.distance_to(Player.player.global_position)
 	
 	if distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].y:
-		return process_shot
+		if body.current_gun_type != GenericEnemyModel.GunType.SNIPER:
+			return process_shot
+		else:
+			return process_sniper
 	elif distance < desired_distances[body.current_gun_type].x:
 		return process_run_away_from_player
 	elif distance > desired_distances[body.current_gun_type].y:
@@ -165,4 +210,5 @@ func _physics_process(delta: float) -> void:
 		
 		
 		state.call(delta)
+		
 		

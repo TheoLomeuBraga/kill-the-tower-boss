@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="9_7l60r"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="10_0cgij"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="11_b1tst"]
+[ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="12_1koiy"]
 [ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="13_a23fe"]
 
 [sub_resource type="Animation" id="Animation_7l60r"]
@@ -116,6 +117,40 @@ height = 0.7832031
 radius = 0.2
 height = 1.1313477
 
+[sub_resource type="Shader" id="Shader_1koiy"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+
+uniform sampler2D gradient : source_color, filter_nearest, repeat_enable;
+uniform float time_speed = 1.0;
+
+void fragment() {
+	ALBEDO = texture(gradient,vec2(TIME*time_speed,0.0)).xyz;
+	
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_1koiy"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1koiy"]
+gradient = SubResource("Gradient_1koiy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cgij"]
+render_priority = 0
+shader = SubResource("Shader_1koiy")
+shader_parameter/gradient = SubResource("GradientTexture1D_1koiy")
+shader_parameter/time_speed = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2jhj"]
+material = SubResource("ShaderMaterial_0cgij")
+size = Vector3(0.01, 0.01, 100)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_tgt1f"]
 radius = 0.1
 
@@ -186,6 +221,30 @@ spread = 0.5
 projectile_info = SubResource("Resource_1koiy")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_a23fe"]
+radius = 0.1
+
+[sub_resource type="Resource" id="Resource_b1tst"]
+script = ExtResource("10_0cgij")
+faction = 1
+damage = 20
+distance = 50.0
+model = ExtResource("12_1koiy")
+collision_shape = SubResource("SphereShape3D_a23fe")
+hit_wall_effect = ExtResource("8_a23fe")
+spawn_effect = ExtResource("11_b1tst")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_tgt1f"]
+script = ExtResource("6_4qta4")
+model = ExtResource("7_7l60r")
+ammon_consumption = -1
+ammon_capacity = -1
+fire_rate = 4.0
+spread = 0.01
+projectile_info = SubResource("Resource_b1tst")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vhdk8"]
 animation = &"template_psx_charter/walk"
 
@@ -220,32 +279,32 @@ node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation",
 script = ExtResource("2_sq4vr")
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(695824529) index="0" unique_id=69478514]
-bones/1/position = Vector3(0, 1.0096762, -0.05519999)
-bones/1/rotation = Quaternion(0.0014704439, 0, 0, 0.9999989)
+bones/1/position = Vector3(0, 1.0091026, -0.055199984)
+bones/1/rotation = Quaternion(0.0023229336, 0, 0, 0.9999974)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.07031174, 0.7431233, -0.6645553, 0.034503076)
-bones/10/rotation = Quaternion(-0.061798688, -0.70388055, -0.039606683, 0.70651567)
+bones/9/rotation = Quaternion(0.075903945, 0.741926, -0.6649174, 0.040857494)
+bones/10/rotation = Quaternion(-0.07066941, -0.7031032, -0.0452919, 0.70611656)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.07031174, 0.74312323, -0.6645554, -0.034503095)
-bones/14/rotation = Quaternion(-0.06179869, 0.70388055, 0.039606687, 0.70651567)
+bones/13/rotation = Quaternion(-0.075926624, 0.74192035, -0.6649197, -0.04088041)
+bones/14/rotation = Quaternion(-0.07066943, 0.7031032, 0.045291923, 0.70611656)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.2910598e-08, 0.0010148501, 0.9999995, -1.2791536e-09)
-bones/19/rotation = Quaternion(-2.047365e-16, 0.99999917, -0.0013121355, -1.1671416e-15)
+bones/18/rotation = Quaternion(2.2722233e-08, 0.006685654, 0.9999777, -1.1009867e-09)
+bones/19/rotation = Quaternion(3.096116e-16, 0.9999514, -0.009856123, -5.306765e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(2.0942212e-08, 0.0010148501, 0.9999995, 1.0938299e-09)
-bones/24/rotation = Quaternion(1.0892776e-16, 0.99999917, -0.0013121355, 4.7244136e-16)
+bones/23/rotation = Quaternion(2.1130129e-08, 0.006685654, 0.9999777, 8.2907503e-10)
+bones/24/rotation = Quaternion(9.2868666e-17, 0.9999514, -0.009856123, -8.223795e-16)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=1545160471]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -9.2340065e-32, 0.9999956, -0.002940776, 3.1399516e-29, 0.0029407763, 0.9999955, 9.6707895e-15, 1.7808377, 0.02696811)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.4587552e-31, 0.99998915, -0.004645746, 3.1399312e-29, 0.004645746, 0.9999891, 9.6707895e-15, 1.7801228, 0.028282814)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=1967325470]
-transform = Transform3D(9.685755e-08, 6.5308996e-08, 1, 0.99999976, -6.3329935e-08, -1.937151e-07, 5.401671e-08, 1, 3.2014214e-08, -0.09529999, 1.4523098, 0.4469725)
+transform = Transform3D(3.6507845e-07, 1.2223609e-08, 1, 1.0000001, -4.4703484e-08, -4.5448542e-07, 1.9557774e-08, 1, -1.6065314e-08, -0.09529999, 1.4516312, 0.44810772)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=1764332967]
 visible = false
@@ -257,7 +316,7 @@ visible = false
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=207185085]
-transform = Transform3D(-0.013373941, 0.178375, 0.98387176, 0.8898259, -0.44670525, 0.09308268, 0.45610434, 0.8767194, -0.15274842, -0.19529998, 1.5842898, -0.025010064)
+transform = Transform3D(-0.0143273175, 0.1782, 0.98389, 0.89003885, -0.44613817, 0.09376419, 0.45565966, 0.87704366, -0.15221292, -0.19529998, 1.583664, -0.024030402)
 
 [node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=231437063]
 visible = false
@@ -275,7 +334,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.99999565, -0.0029408846, 0, 0.0029408846, 0.99999565, 3.9013474e-15, 1.2925138, 0.0004320126)
+transform = Transform3D(1, 0, 0, 0, 0.9999892, -0.0046458547, 0, 0.0046458547, 0.9999892, 3.9013474e-15, 1.291845, 0.0009141695)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -345,7 +404,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5842898, -0.025010064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.583664, -0.024030402)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -364,11 +423,11 @@ libraries/ = SubResource("AnimationLibrary_0cgij")
 speed_scale = 2.0
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -9.2340065e-32, 0.9999956, -0.002940776, 3.1399516e-29, 0.0029407763, 0.9999955, 9.6707895e-15, 1.7808377, 0.02696811)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.4587552e-31, 0.99998915, -0.004645746, 3.1399312e-29, 0.004645746, 0.9999891, 9.6707895e-15, 1.7801228, 0.028282814)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.99999565, -0.0029408846, 0, 0.0029408846, 0.99999565, 3.9013474e-15, 1.2925138, 0.0004320126)
+transform = Transform3D(1, 0, 0, 0, 0.9999892, -0.0046458547, 0, 0.0046458547, 0.9999892, 3.9013474e-15, 1.291845, 0.0009141695)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]
@@ -380,6 +439,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 
 [node name="player_visualizer" type="RayCast3D" parent="muzle" index="0" unique_id=472269526]
 target_position = Vector3(0, 0, -100)
+
+[node name="lazer" type="MeshInstance3D" parent="muzle" index="1" unique_id=1233564420]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, -50)
+visible = false
+cast_shadow = 0
+mesh = SubResource("BoxMesh_b2jhj")
 
 [node name="Navegator" type="NavigationAgent3D" parent="." index="7" unique_id=2106074931]
 script = ExtResource("3_vhdk8")
@@ -402,10 +467,10 @@ guns = Dictionary[int, ExtResource("6_4qta4")]({
 0: SubResource("Resource_p33kv"),
 1: SubResource("Resource_a23fe"),
 2: SubResource("Resource_0cgij"),
-3: null
+3: SubResource("Resource_tgt1f")
 })
 desired_distances = Dictionary[int, Vector2]({
-0: Vector2(5, 20),
+0: Vector2(2, 20),
 1: Vector2(0, 10),
 2: Vector2(0, 5),
 3: Vector2(5, 30)
@@ -425,6 +490,8 @@ parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 0
 parameters/TimeScale/scale = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="13" unique_id=889256613]
 
 [connection signal="damaged" from="Stats" to="ApplyDamageVfx" method="play_hit_fx"]
 [connection signal="dead" from="Stats" to="." method="queue_free"]
