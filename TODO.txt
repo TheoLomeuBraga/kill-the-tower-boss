@@ -1,5 +1,3 @@
-fix muzle graple
-
 add drone enemy
 
 add big robot enemy
@@ -9,3 +7,13 @@ improve ui and juice
 settings menu
 
 add fail state
+
+add triger system
+
+add enemy spawn system
+
+add key card system
+
+add elevator system
+
+add level utilitys
