@@ -54,6 +54,7 @@ func process_look_dir(delta: float) -> void: #TODO
 		body.global_rotation.y = rotate_toward(body.global_rotation.y,look_reference.global_rotation.y,rotation_speed*delta)
 		
 
+
 func _physics_process(delta: float) -> void:
 	
 	if is_navegating:
@@ -61,11 +62,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		desired_velocity = Vector3.ZERO
 	
-	if not body.is_on_floor():
-		body.velocity.y += gravity * delta
+	if body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_GROUNDED:
+		
+		if not body.is_on_floor():
+			body.velocity.y += gravity * delta
+		
+		body.velocity.x = move_toward(body.velocity.x,desired_velocity.x,delta*friction)
+		body.velocity.z = move_toward(body.velocity.z,desired_velocity.z,delta*friction)
+		
+		
+	elif body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_FLOATING:
+		if not body.is_on_floor():
+			body.velocity.y += gravity * delta
+		
+		
+		body.velocity = body.velocity.move_toward(desired_velocity,delta*friction)
 	
-	body.velocity.x = move_toward(body.velocity.x,desired_velocity.x,delta*friction)
-	body.velocity.z = move_toward(body.velocity.z,desired_velocity.z,delta*friction)
 	body.move_and_slide()
 	
 	process_look_dir(delta)

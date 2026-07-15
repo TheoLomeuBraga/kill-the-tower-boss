@@ -1,12 +1,12 @@
 add drone enemy
 
-balance enemy speed
-
 add big robot enemy
 
 add big robot boss enemy
 
 improve ui and juice
+
+create lazy menu 3
 
 settings menu
 

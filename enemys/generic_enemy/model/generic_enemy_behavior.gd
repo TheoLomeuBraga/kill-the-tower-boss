@@ -80,6 +80,12 @@ func check_player_visibility() -> bool:
 	
 	return is_player_visible
 
+func on_death() -> void:
+	state = func(delta:float):return
+	body.queue_free()
+
+@onready var stats : Stats = $"../Stats"
+
 var sniper_timer : Timer
 var view_timer : Timer
 func _ready() -> void:
@@ -97,6 +103,8 @@ func _ready() -> void:
 	
 	sniper_timer = Timer.new()
 	add_child(sniper_timer)
+	
+	stats.dead.connect(on_death)
 	
 
 func process_folow_player(delta:float) -> void:

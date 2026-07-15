@@ -1,22 +1,75 @@
 [gd_scene format=3 uid="uid://bxfxbf18aitn8"]
 
 [ext_resource type="PackedScene" uid="uid://c43il75bowj7f" path="res://enemys/drone/model/drone.glb" id="1_qu6x8"]
+[ext_resource type="Script" uid="uid://i1x0urx8n8eq" path="res://enemys/drone/drone_behavior.gd" id="2_ytvpm"]
+[ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="3_fj1pu"]
+[ext_resource type="Script" uid="uid://8eq3m6bfvh5g" path="res://enemys/navegator.gd" id="4_6ljkj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxkbx"]
 height = 1.5
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu6x8"]
+animation = &"idel_guns"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ytvpm"]
+animation = &"idel"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_fj1pu"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b2jhj"]
+nodes/output/position = Vector2(600, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ytvpm")
+nodes/Animation/position = Vector2(0, 40)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_qu6x8")
+"nodes/Animation 2/position" = Vector2(0, 240)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_fj1pu")
+nodes/Blend2/position = Vector2(303.23874, 152.18193)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2"]
+
 [node name="drone" unique_id=647379188 instance=ExtResource("1_qu6x8")]
+motion_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1384537950]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_qxkbx")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(960302731) index="0" unique_id=80690360]
-bones/1/position = Vector3(0.41446388, -0.25, 0)
-bones/2/position = Vector3(-0.41446388, -0.25, 0)
+[node name="player_visualizer" type="RayCast3D" parent="." index="1" unique_id=1738686706]
+target_position = Vector3(0, 0, -100)
 
-[node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=1174294020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41446388, -0.25, 0)
+[node name="rotation_reference" type="Node3D" parent="." index="2" unique_id=518787407]
 
-[node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1617150297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41446388, -0.25, 0)
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
+bones/0/position = Vector3(0, 0.06445363, 0)
+
+[node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.18554637, 0)
+
+[node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.18554637, 0)
+
+[node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06445363, 0)
+
+[node name="DroneBehavior" type="Node" parent="." index="4" unique_id=1726034422]
+script = ExtResource("2_ytvpm")
+
+[node name="Stats" type="Node" parent="." index="5" unique_id=103828021]
+script = ExtResource("3_fj1pu")
+max_health = 50
+health = 50
+damage_type_multplyer = Dictionary[int, float]({
+1: 10.0
+})
+metadata/_custom_type_script = "uid://u7trxdlheisb"
+
+[node name="Navegator" type="NavigationAgent3D" parent="." index="6" unique_id=1024561993]
+path_height_offset = -3.0
+script = ExtResource("4_6ljkj")
+look_target = 0
+gravity = 0.0
+metadata/_custom_type_script = "uid://8eq3m6bfvh5g"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="8" unique_id=1932160045]
+tree_root = SubResource("AnimationNodeBlendTree_b2jhj")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 0.0
