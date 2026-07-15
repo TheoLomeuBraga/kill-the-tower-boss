@@ -6,7 +6,7 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var navegator : Navegator = $"../Navegator"
 @onready var animation_tree : AnimationTree = $"../AnimationTree"
 @export var guns : Dictionary[GenericEnemyModel.GunType,GunInfo]
-@export var desired_distances : Dictionary[GenericEnemyModel.GunType,Vector2]
+@export var desired_distances : Dictionary[GenericEnemyModel.GunType,Vector3]
 @onready var muzle : Node3D = $"../muzle"
 
 var in_combat : bool = true
@@ -196,14 +196,16 @@ func calculate_next_state() -> Callable:
 	
 	var distance : float = body.global_position.distance_to(Player.player.global_position)
 	
-	if distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].y:
+	if state == process_folow_player and distance > desired_distances[body.current_gun_type].y:
+		return process_folow_player
+	elif distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].z:
 		if body.current_gun_type != GenericEnemyModel.GunType.SNIPER:
 			return process_shot
 		else:
 			return process_sniper
-	elif distance < desired_distances[body.current_gun_type].x:
+	elif distance < desired_distances[body.current_gun_type].y:
 		return process_run_away_from_player
-	elif distance > desired_distances[body.current_gun_type].y:
+	elif distance > desired_distances[body.current_gun_type].z:
 		return process_folow_player
 	
 	
