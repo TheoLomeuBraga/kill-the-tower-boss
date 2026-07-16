@@ -25,6 +25,16 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @export var speed : float = 8.0
 @export var dash_speed : float = 20.0
 
+@export var shotgun_drone_material : Material
+
+func apply_shotgun_material_overwrride(n : Node) -> void:
+	if n is GeometryInstance3D:
+		var gi : GeometryInstance3D = n
+		gi.material_override = shotgun_drone_material
+	
+	for c : Node in n.get_children():
+		apply_shotgun_material_overwrride(c)
+
 var is_player_visible : bool = false
 func check_player_visibility() -> bool:
 	is_player_visible = false
@@ -169,6 +179,8 @@ func _ready() -> void:
 	view_timer.timeout.connect(check_player_visibility)
 	
 	stats.dead.connect(die_state)
+	
+	apply_shotgun_material_overwrride(body)
 
 func _physics_process(delta: float) -> void:
 	if Player.player:

@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="6_tc4l4"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="7_b34jr"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_06nsb"]
+[ext_resource type="Texture2D" uid="uid://c1bkck7l0kfda" path="res://enemys/drone/model/drone_texture_shotgun.png" id="10_tc4l4"]
+[ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="11_c0ans"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxkbx"]
 height = 1.5
@@ -65,6 +67,10 @@ fire_rate = 0.5
 projectile_info = SubResource("Resource_tc4l4")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0ans"]
+albedo_texture = ExtResource("10_tc4l4")
+texture_filter = 0
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu6x8"]
 animation = &"idel_guns"
 
@@ -107,6 +113,7 @@ script = ExtResource("2_ytvpm")
 desired_distances = Vector3(0, 6, 10)
 gun_info = SubResource("Resource_c0ans")
 shot_gun_info = SubResource("Resource_b34jr")
+shotgun_drone_material = SubResource("StandardMaterial3D_c0ans")
 
 [node name="Stats" type="Node" parent="." index="7" unique_id=103828021]
 script = ExtResource("3_fj1pu")
@@ -117,7 +124,11 @@ damage_type_multplyer = Dictionary[int, float]({
 })
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
-[node name="Navegator" type="NavigationAgent3D" parent="." index="8" unique_id=1024561993]
+[node name="ApplyDamageVfx" type="Node" parent="." index="8" unique_id=1096697393]
+script = ExtResource("11_c0ans")
+metadata/_custom_type_script = "uid://b0dwxhhrp7gf"
+
+[node name="Navegator" type="NavigationAgent3D" parent="." index="9" unique_id=1024561993]
 path_height_offset = -3.0
 script = ExtResource("4_6ljkj")
 look_target = 0
@@ -125,7 +136,9 @@ speed = 6.0
 gravity = 0.0
 metadata/_custom_type_script = "uid://8eq3m6bfvh5g"
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="10" unique_id=1932160045]
+[node name="AnimationTree" type="AnimationTree" parent="." index="11" unique_id=1932160045]
 tree_root = SubResource("AnimationNodeBlendTree_b2jhj")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
+
+[connection signal="damaged" from="Stats" to="ApplyDamageVfx" method="play_hit_fx"]
