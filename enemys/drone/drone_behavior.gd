@@ -180,7 +180,8 @@ func _ready() -> void:
 	
 	stats.dead.connect(die_state)
 	
-	apply_shotgun_material_overwrride(body)
+	if body.gun_type == DroneModel.GunType.SHOTGUN:
+		apply_shotgun_material_overwrride(body)
 
 func _physics_process(delta: float) -> void:
 	if Player.player:

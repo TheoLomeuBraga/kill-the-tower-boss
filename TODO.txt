@@ -1,8 +1,4 @@
-realocate spread and bullets_per_shot from gun_info to projectile_info
-
 add big robot enemy
-
-add big robot boss enemy
 
 improve ui and juice
 
@@ -21,3 +17,5 @@ add key card system
 add elevator system
 
 add level utilitys
+
+add big robot boss enemy

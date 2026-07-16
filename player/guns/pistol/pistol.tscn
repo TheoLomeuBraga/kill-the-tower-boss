@@ -86,7 +86,7 @@ gun_animation_tree = NodePath("GunsAnimationTree")
 case_ejectors = [NodePath("Armature/Skeleton3D/Bone_001/GPUParticles3D")]
 display_text = "22"
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(460269351) index="0" unique_id=1834921853]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(180370226) index="0" unique_id=1539412040]
 bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
 bones/1/position = Vector3(-2.9975933e-10, 0.08906293, 0.0012572818)
 bones/2/position = Vector3(2.1316283e-15, 8.8817837e-16, 0.1)
@@ -94,10 +94,10 @@ bones/2/rotation = Quaternion(-2.9802326e-08, 1.19209275e-07, -4.2351647e-22, 1)
 bones/3/position = Vector3(0.50000006, -0.50000006, -1.0000001)
 bones/3/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
 
-[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=230199429]
+[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=1728390838]
 transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.9604638e-08, -0.9999998, -5.684342e-14, 0.9999998, -5.960467e-08, -6.661338e-16, 0.08906292, 0.0012572763)
 
-[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=273348020]
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=2114999410]
 cast_shadow = 0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone_001" index="1" unique_id=1415065494]
@@ -108,25 +108,25 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xco6c")
 draw_pass_1 = SubResource("CylinderMesh_dg4nr")
 
-[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=169260581]
+[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=874705398]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=777787032]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=1217203735]
 cast_shadow = 0
 
-[node name="Cube_002" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1098847165]
+[node name="Cube_002" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1798326852]
 cast_shadow = 0
 
-[node name="Bone_002" parent="Armature/Skeleton3D" index="2" unique_id=314535346]
+[node name="Bone_002" parent="Armature/Skeleton3D" index="2" unique_id=1535909106]
 transform = Transform3D(1, -7.105426e-15, 2.3841854e-07, -7.105428e-15, 0.99999994, 5.9604645e-08, -2.3841855e-07, -5.9604645e-08, 0.99999994, 2.1316283e-15, 8.8817837e-16, 0.1)
 
-[node name="Cube_003" parent="Armature/Skeleton3D/Bone_002" index="0" unique_id=623151382]
+[node name="Cube_003" parent="Armature/Skeleton3D/Bone_002" index="0" unique_id=511360757]
 cast_shadow = 0
 
-[node name="Bone_003" parent="Armature/Skeleton3D" index="3" unique_id=187024722]
+[node name="Bone_003" parent="Armature/Skeleton3D" index="3" unique_id=842041839]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0.50000006, -0.50000006, -1.0000001)
 
-[node name="AnimationPlayer" parent="." index="5" unique_id=668460146]
+[node name="AnimationPlayer" parent="." index="5" unique_id=1311291132]
 playback_default_blend_time = 0.1
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=597042579]

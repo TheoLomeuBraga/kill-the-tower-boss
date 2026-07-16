@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://eg6xpltvknpa" path="res://consumables/consumable.tscn" id="4_jwhgt"]
 [ext_resource type="PackedScene" uid="uid://cphjkxcxek3bc" path="res://enemys/generic_enemy/model/generic_enemy.tscn" id="5_nuspp"]
 [ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="6_3l36l"]
+[ext_resource type="CompressedTexture3D" uid="uid://1rwdeqed8vhx" path="res://levels/test_level.GPUParticlesCollisionSDF3D_data.exr" id="7_p6j8j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -153,30 +154,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.99785113, 0, -0.065429814, 0, 1, 0, 0.065429814, 0, -0.99785113, -3, 1, 3)
+transform = Transform3D(0.9832185, 0, 0.18239865, 0, 1, 0, -0.18239865, 0, 0.9832185, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.8520183, 0, 0.5235024, 0, 1, 0, -0.5235024, 0, 0.8520183, -3, 1, 4)
+transform = Transform3D(-0.7855533, 0, -0.6187858, 0, 1, 0, 0.6187858, 0, -0.7855533, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.34033704, 0, -0.94030017, 0, 1, 0, 0.94030017, 0, -0.34033704, -3, 1, 5)
+transform = Transform3D(0.22775964, 0, 0.9737141, 0, 1, 0, -0.9737141, 0, 0.22775964, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.67307526, 0, 0.7395655, 0, 1, 0, -0.7395655, 0, -0.67307526, -3, 1, 6)
+transform = Transform3D(0.7532494, 0, -0.6577255, 0, 1, 0, 0.6577255, 0, 0.7532494, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9928214, 0, 0.119565636, 0, 1, 0, -0.119565636, 0, 0.9928214, -3, 1, 7)
+transform = Transform3D(-0.97220796, 0, -0.23409808, 0, 1, 0, 0.23409808, 0, -0.97220796, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.37826723, 0, -0.9256908, 0, 1, 0, 0.9256908, 0, -0.37826723, -3, 1, 8)
+transform = Transform3D(0.26714095, 0, 0.963652, 0, 1, 0, -0.963652, 0, 0.26714095, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -200,5 +201,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
 current_gun_type = 3
 
 [node name="drone" parent="enemys" unique_id=647379188 instance=ExtResource("6_3l36l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13)
+
+[node name="drone2" parent="enemys" unique_id=1898230313 instance=ExtResource("6_3l36l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -13)
 gun_type = 1
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." unique_id=1837528568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4779396, 0)
+size = Vector3(100, 10, 100)
+texture = ExtResource("7_p6j8j")
