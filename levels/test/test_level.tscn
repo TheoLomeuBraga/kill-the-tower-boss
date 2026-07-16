@@ -48,6 +48,68 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
 size = Vector3(6, 2.0463867, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6j8j"]
+albedo_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pa0au"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hmyvt"]
+noise = SubResource("FastNoiseLite_pa0au")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4skoa"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.58431375, 1, 1, 0.4)
+roughness = 0.0
+normal_enabled = true
+normal_scale = 0.2
+normal_texture = SubResource("NoiseTexture2D_hmyvt")
+refraction_enabled = true
+refraction_texture = SubResource("NoiseTexture2D_hmyvt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2jhj"]
+material = SubResource("StandardMaterial3D_4skoa")
+size = Vector3(10, 3, 9)
+
+[sub_resource type="Gradient" id="Gradient_pa0au"]
+offsets = PackedFloat32Array(0.44541484, 0.6681223)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hmyvt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4skoa"]
+noise = SubResource("FastNoiseLite_hmyvt")
+color_ramp = SubResource("Gradient_pa0au")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r23pr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eyywi"]
+noise = SubResource("FastNoiseLite_r23pr")
+color_ramp = SubResource("Gradient_pa0au")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxkbx"]
+transparency = 1
+albedo_texture = SubResource("NoiseTexture2D_4skoa")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.3
+normal_scale = 0.1
+normal_texture = SubResource("NoiseTexture2D_eyywi")
+uv1_scale = Vector3(0.005, 0.005, 0.005)
+uv1_triplanar = true
+distance_fade_mode = 1
+distance_fade_min_distance = 400.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b2jhj"]
+material = SubResource("StandardMaterial3D_qxkbx")
+size = Vector2(1000, 1000)
+
 [node name="TestLevel" type="Node3D" unique_id=1204845559]
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_o7vyq")]
@@ -79,6 +141,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 9.542824, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 12.542824, -3)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1370242809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058942795, -0.034074783, 0.03356552)
 navigation_mesh = SubResource("NavigationMesh_b2jhj")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=910861654]
@@ -142,6 +205,25 @@ material = SubResource("StandardMaterial3D_nuspp")
 transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 2.076, 1.1869752, 17)
 shape = SubResource("BoxShape3D_b2jhj")
 
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=640240788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -5.5, 21)
+size = Vector3(10, 10, 10)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=486864765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 21)
+operation = 2
+size = Vector3(9, 2, 9)
+material = SubResource("StandardMaterial3D_p6j8j")
+
+[node name="wather" type="MeshInstance3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1973248540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1.6348882, 21)
+mesh = SubResource("BoxMesh_b2jhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=884378685]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 67, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_b2jhj")
+
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=840345381]
 
 [node name="TestCube" parent="." unique_id=589111855 instance=ExtResource("3_tmcpo")]
@@ -154,30 +236,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9832185, 0, 0.18239865, 0, 1, 0, -0.18239865, 0, 0.9832185, -3, 1, 3)
+transform = Transform3D(-0.9756264, 0, -0.21941024, 0, 1, 0, 0.21941024, 0, -0.9756264, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.7855533, 0, -0.6187858, 0, 1, 0, 0.6187858, 0, -0.7855533, -3, 1, 4)
+transform = Transform3D(0.76173604, 0, 0.6478795, 0, 1, 0, -0.6478795, 0, 0.76173604, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.22775964, 0, 0.9737141, 0, 1, 0, -0.9737141, 0, 0.22775964, -3, 1, 5)
+transform = Transform3D(-0.1908742, 0, -0.98161125, 0, 1, 0, 0.98161125, 0, -0.1908742, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.7532494, 0, -0.6577255, 0, 1, 0, 0.6577255, 0, 0.7532494, -3, 1, 6)
+transform = Transform3D(-0.77758497, 0, 0.62876785, 0, 1, 0, -0.62876785, 0, -0.77758497, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.97220796, 0, -0.23409808, 0, 1, 0, 0.23409808, 0, -0.97220796, -3, 1, 7)
+transform = Transform3D(0.9626377, 0, 0.27077436, 0, 1, 0, -0.27077436, 0, 0.9626377, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.26714095, 0, 0.963652, 0, 1, 0, -0.963652, 0, 0.26714095, -3, 1, 8)
+transform = Transform3D(-0.2305179, 0, -0.97306263, 0, 1, 0, 0.97306263, 0, -0.2305179, -3, 1, 8)
 ammon = 3
 type = 5
 

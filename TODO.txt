@@ -1,6 +1,8 @@
 add big robot enemy
 
-improve ui and juice
+improve ui
+
+add mobile controls
 
 create lazy menu 3
 

@@ -61,7 +61,9 @@ func grapple_estate(delta : float) -> void:
 		force = sf + danping
 	
 	
-	grapple_hope.global_position = body.global_position
+	grapple_hope.global_position = camera.global_position
+	grapple_hope.global_position  += (camera.global_basis.x * -0.2)
+	grapple_hope.global_position  += (camera.global_basis.y * -0.2)
 	grapple_hope.look_at(grapple_place)
 	grapple_hope.scale.z = grapple_hope.global_position.distance_to(grapple_place)
 	
