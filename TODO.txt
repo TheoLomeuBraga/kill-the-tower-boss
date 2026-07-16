@@ -1,4 +1,8 @@
-add drone enemy
+make drone dash some times
+
+make drone variant that shot shotgun shels
+
+make drone projectiles red
 
 add big robot enemy
 

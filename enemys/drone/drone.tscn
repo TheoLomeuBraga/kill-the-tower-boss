@@ -2,11 +2,42 @@
 
 [ext_resource type="PackedScene" uid="uid://c43il75bowj7f" path="res://enemys/drone/model/drone.glb" id="1_qu6x8"]
 [ext_resource type="Script" uid="uid://i1x0urx8n8eq" path="res://enemys/drone/drone_behavior.gd" id="2_ytvpm"]
+[ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="3_fchea"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="3_fj1pu"]
 [ext_resource type="Script" uid="uid://8eq3m6bfvh5g" path="res://enemys/navegator.gd" id="4_6ljkj"]
+[ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="4_8wuix"]
+[ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="5_c0ans"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="6_tc4l4"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="7_b34jr"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_06nsb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxkbx"]
 height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fchea"]
+radius = 0.1
+
+[sub_resource type="Resource" id="Resource_8wuix"]
+script = ExtResource("6_tc4l4")
+faction = 1
+damage = 10
+speed = 10.0
+distance = 50.0
+model = ExtResource("5_c0ans")
+collision_shape = SubResource("SphereShape3D_fchea")
+hit_wall_effect = ExtResource("4_8wuix")
+spawn_effect = ExtResource("7_b34jr")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_c0ans"]
+script = ExtResource("8_06nsb")
+model = ExtResource("3_fchea")
+ammon_consumption = -1
+ammon_capacity = -1
+fire_rate = 0.5
+spread = 0.01
+projectile_info = SubResource("Resource_8wuix")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qu6x8"]
 animation = &"idel_guns"
@@ -38,22 +69,30 @@ target_position = Vector3(0, 0, -100)
 
 [node name="rotation_reference" type="Node3D" parent="." index="2" unique_id=518787407]
 
+[node name="muzle_r" type="Node3D" parent="." index="3" unique_id=1350067339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="muzle_l" type="Node3D" parent="." index="4" unique_id=1128095648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
-bones/0/position = Vector3(0, 0.06445363, 0)
+bones/0/position = Vector3(0, 0.050011463, 0)
 
 [node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.18554637, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.19998854, 0)
 
 [node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.18554637, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.19998854, 0)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06445363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050011463, 0)
 
-[node name="DroneBehavior" type="Node" parent="." index="4" unique_id=1726034422]
+[node name="DroneBehavior" type="Node" parent="." index="6" unique_id=1726034422]
 script = ExtResource("2_ytvpm")
+desired_distances = Vector3(0, 6, 10)
+gun_info = SubResource("Resource_c0ans")
 
-[node name="Stats" type="Node" parent="." index="5" unique_id=103828021]
+[node name="Stats" type="Node" parent="." index="7" unique_id=103828021]
 script = ExtResource("3_fj1pu")
 max_health = 50
 health = 50
@@ -62,14 +101,15 @@ damage_type_multplyer = Dictionary[int, float]({
 })
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
-[node name="Navegator" type="NavigationAgent3D" parent="." index="6" unique_id=1024561993]
+[node name="Navegator" type="NavigationAgent3D" parent="." index="8" unique_id=1024561993]
 path_height_offset = -3.0
 script = ExtResource("4_6ljkj")
 look_target = 0
+speed = 6.0
 gravity = 0.0
 metadata/_custom_type_script = "uid://8eq3m6bfvh5g"
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="8" unique_id=1932160045]
+[node name="AnimationTree" type="AnimationTree" parent="." index="10" unique_id=1932160045]
 tree_root = SubResource("AnimationNodeBlendTree_b2jhj")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
