@@ -17,6 +17,13 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var muzles : Array[Node3D] = [$"../muzle_r",$"../muzle_l"]
 
 @export var gun_info : GunInfo
+@export var shot_gun_info : GunInfo
+
+@export var time_betwen_dashes : float = 3.0
+@export var time_wile_dashes : float = 0.2
+
+@export var speed : float = 8.0
+@export var dash_speed : float = 20.0
 
 var is_player_visible : bool = false
 func check_player_visibility() -> bool:
@@ -52,6 +59,8 @@ func folow_state(delta:float) -> void:
 	navegator.target_position = Player.player.global_position + (Vector3.UP * 2.0)
 	navegator.is_navegating = true
 	
+	navegator.speed = speed
+	
 	if get_player_distance() < desired_distances.y:
 		state = atack_state
 	
@@ -65,19 +74,21 @@ func shot() -> void:
 	current_muzle = (current_muzle+1) % 2
 	var muzle : Node3D = muzles[current_muzle]
 	
-	if not gun_info:
+	var current_gun : GunInfo = gun_info
+	
+	if not current_gun:
 		return
 	
-	cool_down = gun_info.fire_rate
+	cool_down = current_gun.fire_rate
 	
 	muzle.look_at(Player.player.global_position)
 	muzle.rotation.y = PI
 	
-	var spwn_effect : Node3D = gun_info.projectile_info.spawn_effect.instantiate()
+	var spwn_effect : Node3D = current_gun.projectile_info.spawn_effect.instantiate()
 	muzle.add_child(spwn_effect)
 	spwn_effect.transform = muzle.transform
 	
-	for i : int in gun_info.bullets_per_shot:
+	for i : int in current_gun.bullets_per_shot:
 		
 		var projectile : ProjectBehavior = ProjectBehavior.new()
 		add_child(projectile)
@@ -88,7 +99,7 @@ func shot() -> void:
 		
 		projectile.global_rotation = muzle.global_rotation
 		
-		var spread : float = gun_info.spread
+		var spread : float = current_gun.spread
 		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
 		if vec_spread.length() > 1.0:
 			vec_spread = vec_spread.normalized()
@@ -98,11 +109,14 @@ func shot() -> void:
 		projectile.rotate_y(aditional_rot.y)
 		projectile.rotate_z(aditional_rot.z)
 		
-		projectile.data = gun_info.projectile_info
+		projectile.data = current_gun.projectile_info
 		projectile.start()
 	
 
+var time_to_dash : float = 3.0
+var time_to_stop_dash : float = 0.2
 
+var dash_desired_direction : Vector3
 
 func atack_state(delta:float) -> void:
 	navegator.is_navegating = false
@@ -114,9 +128,32 @@ func atack_state(delta:float) -> void:
 	
 	if cool_down < 0.0:
 		shot()
+	
+	time_to_dash -= delta
+	if time_to_dash <= 0:
+		state = dash_state
+		time_to_dash = time_betwen_dashes
+		time_to_stop_dash = time_wile_dashes
+		
+		var dash_desired_position : Vector3 = Vector3(rng.randf_range(-1.0,1.0),0.0,rng.randf_range(-1.0,1.0))
+		dash_desired_position = dash_desired_position.normalized() * 10
+		dash_desired_position += Player.player.global_position
+		
+		dash_desired_direction = (dash_desired_position - body.global_position)
+		dash_desired_direction.y = 0
+		dash_desired_direction = dash_desired_direction.normalized()
+		
 
 func dash_state(delta:float) -> void:
 	navegator.is_navegating = false
+	
+	time_to_stop_dash -= delta
+	
+	if time_to_stop_dash <= 0:
+		state = atack_state
+	
+	body.velocity = dash_desired_direction * dash_speed
+	
 
 var view_timer : Timer
 
