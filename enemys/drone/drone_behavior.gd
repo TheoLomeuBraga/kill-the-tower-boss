@@ -1,7 +1,7 @@
 extends Node
 class_name DroneBehavior
 
-@onready var body : CharacterBody3D = $".."
+@onready var body : DroneModel = $".."
 
 @onready var visualizer : RayCast3D = $"../player_visualizer"
 @onready var stats : Stats = $"../Stats"
@@ -75,6 +75,8 @@ func shot() -> void:
 	var muzle : Node3D = muzles[current_muzle]
 	
 	var current_gun : GunInfo = gun_info
+	if body.gun_type == DroneModel.GunType.SHOTGUN:
+		current_gun = shot_gun_info
 	
 	if not current_gun:
 		return

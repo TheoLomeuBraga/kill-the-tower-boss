@@ -1,4 +1,6 @@
-make drone variant that shot shotgun shels
+make drone texture variant for shotgun drone
+
+realocate spread and bullets_per_shot from gun_info to projectile_info
 
 add big robot enemy
 
