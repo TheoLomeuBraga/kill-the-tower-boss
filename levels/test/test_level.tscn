@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cphjkxcxek3bc" path="res://enemys/generic_enemy/model/generic_enemy.tscn" id="5_nuspp"]
 [ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="6_3l36l"]
 [ext_resource type="CompressedTexture3D" uid="uid://1rwdeqed8vhx" path="res://levels/test_level.GPUParticlesCollisionSDF3D_data.exr" id="7_p6j8j"]
+[ext_resource type="PackedScene" uid="uid://cs1f1pds0g6vt" path="res://enemys/robot/model/robot.glb" id="8_r23pr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -79,8 +80,11 @@ offsets = PackedFloat32Array(0.44541484, 0.6681223)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hmyvt"]
+frequency = 0.0164
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4skoa"]
+width = 128
+height = 128
 noise = SubResource("FastNoiseLite_hmyvt")
 color_ramp = SubResource("Gradient_pa0au")
 seamless = true
@@ -103,6 +107,7 @@ normal_scale = 0.1
 normal_texture = SubResource("NoiseTexture2D_eyywi")
 uv1_scale = Vector3(0.005, 0.005, 0.005)
 uv1_triplanar = true
+texture_filter = 0
 distance_fade_mode = 1
 distance_fade_min_distance = 400.0
 
@@ -236,30 +241,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.9756264, 0, -0.21941024, 0, 1, 0, 0.21941024, 0, -0.9756264, -3, 1, 3)
+transform = Transform3D(0.32380173, 0, 0.9461185, 0, 1, 0, -0.9461185, 0, 0.32380173, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.76173604, 0, 0.6478795, 0, 1, 0, -0.6478795, 0, 0.76173604, -3, 1, 4)
+transform = Transform3D(0.15212055, 0, -0.9883567, 0, 1, 0, 0.9883567, 0, 0.15212055, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.1908742, 0, -0.98161125, 0, 1, 0, 0.98161125, 0, -0.1908742, -3, 1, 5)
+transform = Transform3D(-0.73597777, 0, 0.67700094, 0, 1, 0, -0.67700094, 0, -0.73597777, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.77758497, 0, 0.62876785, 0, 1, 0, -0.62876785, 0, -0.77758497, -3, 1, 6)
+transform = Transform3D(0.9432303, 0, 0.33212042, 0, 1, 0, -0.33212042, 0, 0.9432303, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9626377, 0, 0.27077436, 0, 1, 0, -0.27077436, 0, 0.9626377, -3, 1, 7)
+transform = Transform3D(-0.27414858, 0, -0.9616822, 0, 1, 0, 0.9616822, 0, -0.27414858, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.2305179, 0, -0.97306263, 0, 1, 0, 0.97306263, 0, -0.2305179, -3, 1, 8)
+transform = Transform3D(-0.7079208, 0, 0.70628417, 0, 1, 0, -0.70628417, 0, -0.7079208, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -293,3 +298,6 @@ gun_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4779396, 0)
 size = Vector3(100, 10, 100)
 texture = ExtResource("7_p6j8j")
+
+[node name="robot" parent="." unique_id=1245613565 instance=ExtResource("8_r23pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)

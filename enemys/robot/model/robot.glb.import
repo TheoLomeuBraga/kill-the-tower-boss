@@ -1,0 +1,93 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cs1f1pds0g6vt"
+path="res://.godot/imported/robot.glb-55e107b8859c9073567f5090775f9b9e.scn"
+
+[deps]
+
+source_file="res://enemys/robot/model/robot.glb"
+dest_files=["res://.godot/imported/robot.glb-55e107b8859c9073567f5090775f9b9e.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Armature/Skeleton3D/body/Cube_004": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/cannon_l/Cube_006": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/cannon_l_001/Cube_007": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/cannon_l_001/Cylinder_002": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/cannon_r/Cube_005": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/hear_sink_l/Cylinder_001": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/hear_sink_r/Cylinder_003": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_l_001/Cube_002": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_l_002/Cube_001": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_l_003/Cube": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_r_001/Cube_010": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_r_002/Cube_009": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/leg_r_003/Cube_008": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/spine/Cube_003": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/spine_001/Cylinder": {
+"mesh_instance/cast_shadow": 0
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
+gltf/texture_map_mode=1

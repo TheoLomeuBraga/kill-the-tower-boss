@@ -1,5 +1,7 @@
 add big robot enemy
 
+improve enemys death animations
+
 improve ui
 
 add mobile controls
