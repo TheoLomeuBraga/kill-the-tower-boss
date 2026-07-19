@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/robot.glb-55e107b8859c9073567f5090775f9b9e.sc
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="CharacterBody3D"
 nodes/root_name=""
 nodes/root_script=null
 mesh_library/use_node_names_as_mesh_names=false

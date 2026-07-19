@@ -43,6 +43,10 @@ static func get_stats_from_node(node : Node) -> Stats:
 
 func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> void:
 	var _damage : int = calculate_damage(amount,damage_type,area)
+	
+	if _damage <= 0:
+		return
+	
 	if (health - _damage) <= 0:
 		health = 0
 		dead.emit()
@@ -54,6 +58,10 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	
 
 func heal(amount:int) -> void:
+	
+	if amount <= 0:
+		return
+	
 	health += amount
 	health = min(max_health,health)
 	healed.emit(amount)

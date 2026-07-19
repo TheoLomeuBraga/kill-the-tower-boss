@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cx6ocdaxw1byj"]
+
+[ext_resource type="PackedScene" uid="uid://cs1f1pds0g6vt" path="res://enemys/robot/model/robot.glb" id="1_oisd7"]
+
+[node name="robot" unique_id=1970358405 instance=ExtResource("1_oisd7")]
