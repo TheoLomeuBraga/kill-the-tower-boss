@@ -1,5 +1,7 @@
 add big robot enemy
 
+add robot sfx
+
 improve enemys death animations
 
 improve ui
@@ -10,8 +12,6 @@ create lazy menu 3
 
 settings menu
 
-add fail state
-
 add triger system
 
 add enemy spawn system
@@ -20,6 +20,8 @@ add key card system
 
 add elevator system
 
-add level utilitys
+add button system
+
+add fail state
 
 add big robot boss enemy
