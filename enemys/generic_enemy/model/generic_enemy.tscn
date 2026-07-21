@@ -248,8 +248,33 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vhdk8"]
 animation = &"template_psx_charter/walk"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b1tst"]
+animation = &"template_psx_charter/dash"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4qta4"]
 animation = &"template_psx_charter/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1koiy"]
+animation = &"template_psx_charter/damage_air"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0cgij"]
+animation = &"template_psx_charter/damage_air_fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b1tst"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tgt1f"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0lqg2"]
+states/Start/position = Vector2(13, 100)
+states/template_psx_charter_damage_air/node = SubResource("AnimationNodeAnimation_1koiy")
+states/template_psx_charter_damage_air/position = Vector2(279, 114)
+states/template_psx_charter_damage_air_fall/node = SubResource("AnimationNodeAnimation_0cgij")
+states/template_psx_charter_damage_air_fall/position = Vector2(675, 114)
+transitions = ["Start", "template_psx_charter_damage_air", SubResource("AnimationNodeStateMachineTransition_b1tst"), "template_psx_charter_damage_air", "template_psx_charter_damage_air_fall", SubResource("AnimationNodeStateMachineTransition_tgt1f")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_afoh3"]
 
@@ -264,7 +289,20 @@ input_1/auto_advance = false
 input_1/break_loop_at_end = false
 input_1/reset = true
 
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0cgij"]
+xfade_time = 0.2
+input_0/name = "alive"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "death"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nuspp"]
+graph_offset = Vector2(-511.48376, 143.94427)
+nodes/output/position = Vector2(520, 120)
 nodes/Transition/node = SubResource("AnimationNodeTransition_0ju12")
 nodes/Transition/position = Vector2(-44.85575, 135.11926)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_4qta4")
@@ -273,38 +311,44 @@ nodes/Animation/position = Vector2(-620, 60)
 "nodes/Animation 2/position" = Vector2(-940, 240)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_afoh3")
 nodes/TimeScale/position = Vector2(-420, 280)
-node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation", &"Transition", 1, &"TimeScale", &"TimeScale", 0, &"Animation 2"]
+nodes/death_state/node = SubResource("AnimationNodeTransition_0cgij")
+nodes/death_state/position = Vector2(320, 200)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0lqg2")
+nodes/StateMachine/position = Vector2(-200, 440)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_b1tst")
+"nodes/Animation 3/position" = Vector2(280.64084, 514.3691)
+node_connections = [&"output", 0, &"death_state", &"Transition", 0, &"Animation", &"Transition", 1, &"TimeScale", &"TimeScale", 0, &"Animation 2", &"death_state", 0, &"Transition", &"death_state", 1, &"StateMachine"]
 
 [node name="generic_enemy" unique_id=2136028321 instance=ExtResource("1_0bvgo")]
 script = ExtResource("2_sq4vr")
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(1785622252) index="0" unique_id=610111467]
-bones/1/position = Vector3(0, 1.0098127, -0.05519999)
-bones/1/rotation = Quaternion(0.0013593322, 0, 0, 0.9999991)
+bones/1/position = Vector3(0, 1.0085214, -0.055199984)
+bones/1/rotation = Quaternion(0.005127133, 0, 0, 0.9999869)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.07009644, 0.7431679, -0.664541, 0.034255795)
-bones/10/rotation = Quaternion(-0.061295975, -0.7039222, -0.039284483, 0.7065359)
+bones/9/rotation = Quaternion(0.0844338, 0.73995703, -0.6654359, 0.050296407)
+bones/10/rotation = Quaternion(-0.08413837, -0.7017709, -0.053924147, 0.7053585)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.070096485, 0.7431679, -0.66454095, -0.034255803)
-bones/14/rotation = Quaternion(-0.06129599, 0.7039222, 0.039284505, 0.7065359)
+bones/13/rotation = Quaternion(-0.0844233, 0.73995906, -0.66543597, -0.05028255)
+bones/14/rotation = Quaternion(-0.08413837, 0.7017709, 0.05392414, 0.7053585)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.379268e-08, 0.0007198371, 0.99999976, -2.3401474e-09)
-bones/19/rotation = Quaternion(-2.753595e-16, 0.9999996, -0.0009552258, -2.8343086e-16)
+bones/18/rotation = Quaternion(2.5060695e-08, 0.014283838, 0.9998981, -3.9964445e-09)
+bones/19/rotation = Quaternion(3.743797e-16, 0.999786, -0.020688133, -9.625592e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(2.006015e-08, 0.0007198371, 0.99999976, 2.1595978e-09)
-bones/24/rotation = Quaternion(2.5400988e-16, 0.9999996, -0.0009552258, 2.068836e-16)
+bones/23/rotation = Quaternion(1.8790907e-08, 0.014283838, 0.9998981, 3.6227235e-09)
+bones/24/rotation = Quaternion(-1.798072e-16, 0.999786, -0.020688133, 5.357106e-16)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=340790847]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -8.536235e-32, 0.99999624, -0.0027185536, 3.1399534e-29, 0.0027185536, 0.9999962, 9.6707895e-15, 1.7809924, 0.02679674)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -3.2197343e-31, 0.99994737, -0.010254022, 3.1398e-29, 0.010254022, 0.9999473, 9.6707895e-15, 1.7790613, 0.032605696)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=2139558610]
-transform = Transform3D(-8.940697e-08, 2.9685907e-08, 0.99999994, 0.99999994, 6.7055225e-08, 5.2154064e-08, 1.3038516e-08, 0.9999998, 1.1525117e-08, -0.09529998, 1.4524652, 0.44683376)
+transform = Transform3D(2.30968e-07, 5.4948032e-08, 1, 1.0000001, -3.5390258e-08, -5.9604645e-08, -1.3038516e-08, 1, -9.0454705e-08, -0.095300004, 1.4508686, 0.45131797)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=109027543]
 visible = false
@@ -316,7 +360,7 @@ visible = false
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=732596823]
-transform = Transform3D(-0.013331801, 0.17838252, 0.983871, 0.8898124, -0.44673824, 0.09305393, 0.45613194, 0.876701, -0.15277109, -0.19529998, 1.5844331, -0.025137767)
+transform = Transform3D(-0.015462041, 0.1779486, 0.9839182, 0.889919, -0.4461835, 0.09468044, 0.45585632, 0.8770715, -0.15146098, -0.19529998, 1.582899, -0.020808525)
 
 [node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=490446608]
 visible = false
@@ -334,7 +378,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.9999963, -0.002718662, 0, 0.002718662, 0.9999963, 3.9013474e-15, 1.2926626, 0.00036915764)
+transform = Transform3D(1, 0, 0, 0, 0.9999474, -0.010254131, 0, 0.010254131, 0.9999474, 3.9013474e-15, 1.2909447, 0.0024990216)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -404,7 +448,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5844651, -0.025166221)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.582899, -0.020808525)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -423,11 +467,11 @@ libraries/ = SubResource("AnimationLibrary_0cgij")
 speed_scale = 2.0
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -8.3807193e-32, 0.99999636, -0.002669026, 3.139954e-29, 0.002669026, 0.9999963, 9.6707895e-15, 1.7810271, 0.026758548)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -3.2197343e-31, 0.99994737, -0.010254022, 3.1398e-29, 0.010254022, 0.9999473, 9.6707895e-15, 1.7790613, 0.032605696)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.9999964, -0.0026691342, 0, 0.0026691342, 0.9999964, 3.9013474e-15, 1.292696, 0.0003551524)
+transform = Transform3D(1, 0, 0, 0, 0.9999474, -0.010254131, 0, 0.010254131, 0.9999474, 3.9013474e-15, 1.2909447, 0.0024990216)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]
@@ -490,5 +534,8 @@ parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 0
 parameters/TimeScale/scale = 3.0
+parameters/death_state/current_state = "alive"
+parameters/death_state/transition_request = ""
+parameters/death_state/current_index = 0
 
 [connection signal="damaged" from="Stats" to="ApplyDamageVfx" method="play_hit_fx"]

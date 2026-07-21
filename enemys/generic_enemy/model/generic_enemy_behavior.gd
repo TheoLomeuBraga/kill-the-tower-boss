@@ -14,6 +14,9 @@ var cool_down : float = 2.0
 var reload_time : float = 0.0
 var ammon_on_mag : int = -1
 
+func off_state(delta:float) -> void:
+	pass
+
 func calculate_target_future_point(target_pos:Vector3,target_vel:Vector3,target_dist:float,projectile_speed:float) -> Vector3:
 	return target_pos + target_vel * (target_dist/projectile_speed)
 
@@ -66,7 +69,11 @@ func shot() -> void:
 			reload_time = info.reload_time
 			
 
-var state : Callable = process_idle
+var block_state : bool = false
+var state : Callable = process_idle :
+	set(value):
+		if not block_state:
+			state = value
 @onready var visualizer : RayCast3D = $"../muzle/player_visualizer"
 var is_player_visible : bool = false
 func check_player_visibility() -> bool:
@@ -81,7 +88,29 @@ func check_player_visibility() -> bool:
 	return is_player_visible
 
 func on_death() -> void:
-	state = func(delta:float):return
+	state = off_state
+	block_state = true
+	animation_tree.set("parameters/death_state/transition_request","death")
+	
+	
+	var death_timer : Timer = Timer.new()
+	add_child(death_timer)
+	death_timer.autostart = true
+	death_timer.one_shot = false
+	death_timer.start()
+	death_timer.wait_time = 1.0
+	
+	body.velocity = Vector3.ZERO
+	
+	
+	'''
+	$"../headCol".disabled = true
+	$"../bodyCol".disabled = true
+	$"../legCol".disabled = true
+	'''
+	
+	await death_timer.timeout
+	
 	body.queue_free()
 
 @onready var stats : Stats = $"../Stats"
@@ -105,6 +134,8 @@ func _ready() -> void:
 	add_child(sniper_timer)
 	
 	stats.dead.connect(on_death)
+	
+	animation_tree.set("parameters/death_state/transition_request","alive")
 	
 
 func process_folow_player(delta:float) -> void:

@@ -1,8 +1,8 @@
+improve drone death animations
+
 add big robot enemy
 
 add robot sfx
-
-improve enemys death animations
 
 improve ui
 
