@@ -56,8 +56,18 @@ var state : Callable = idle_state
 func get_player_distance() -> float:
 	return body.global_position.distance_to(Player.player.global_position)
 
-func die_state() -> void:
-	state = func(delta:float): return
+func death_state(delta:float) -> void:
+	pass
+
+const death_explosion_scene : PackedScene = preload("res://vfx/spark_explosion/spark_explosion.tscn")
+
+func die() -> void:
+	state = death_state
+	
+	var death_explosion : Node3D = death_explosion_scene.instantiate()
+	body.get_parent().add_child(death_explosion)
+	death_explosion.global_position = body.global_position
+	
 	body.queue_free()
 
 func idle_state(delta:float) -> void:
@@ -178,7 +188,7 @@ func _ready() -> void:
 	view_timer.wait_time = rng.randf_range(0.4,0.8)
 	view_timer.timeout.connect(check_player_visibility)
 	
-	stats.dead.connect(die_state)
+	stats.dead.connect(die)
 	
 	if body.gun_type == DroneModel.GunType.SHOTGUN:
 		apply_shotgun_material_overwrride(body)

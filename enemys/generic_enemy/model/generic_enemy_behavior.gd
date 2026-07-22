@@ -39,7 +39,7 @@ func shot() -> void:
 	
 	var spwn_effect : Node3D = info.projectile_info.spawn_effect.instantiate()
 	muzle.add_child(spwn_effect)
-	spwn_effect.transform = muzle.transform
+	spwn_effect.global_position = muzle.global_position
 	
 	for i : int in info.bullets_per_shot:
 		

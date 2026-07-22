@@ -33,16 +33,17 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg4nr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6utx4"]
 shading_mode = 0
-albedo_color = Color(0.8784314, 0.7764706, 0, 1)
+albedo_color = Color(1, 1, 0, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_xe5s8"]
-material = SubResource("StandardMaterial3D_dg4nr")
-radius = 0.05
-height = 0.1
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjfsi"]
+material = SubResource("StandardMaterial3D_6utx4")
+top_radius = 0.02
+bottom_radius = 0.0
+height = 0.2
 radial_segments = 4
-rings = 1
+rings = 0
 
 [node name="GenericBulletHole" type="MeshInstance3D" unique_id=1314646712]
 mesh = SubResource("QuadMesh_u1x1c")
@@ -53,8 +54,9 @@ emitting = false
 amount = 4
 one_shot = true
 explosiveness = 1.0
+transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_hlnc1")
-draw_pass_1 = SubResource("SphereMesh_xe5s8")
+draw_pass_1 = SubResource("CylinderMesh_vjfsi")
 script = ExtResource("2_6utx4")
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=319384567]

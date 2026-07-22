@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ftyuspkbcfxo"]
+
+[ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_08kne"]
+[ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="2_q5did"]
+
+[sub_resource type="Curve" id="Curve_32r4v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hmyvt"]
+curve = SubResource("Curve_32r4v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b2jhj"]
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_hmyvt")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4skoa"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qxkbx"]
+material = SubResource("StandardMaterial3D_4skoa")
+top_radius = 0.02
+bottom_radius = 0.0
+height = 0.2
+radial_segments = 4
+rings = 0
+
+[node name="SparkExplosion" type="GPUParticles3D" unique_id=1441859592]
+top_level = true
+emitting = false
+amount = 32
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_b2jhj")
+draw_pass_1 = SubResource("CylinderMesh_qxkbx")
+script = ExtResource("1_08kne")
+metadata/_custom_type_script = "uid://htqnd5ug1tb"
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=788727714]
+wait_time = 10.0
+autostart = true
+script = ExtResource("2_q5did")
+metadata/_custom_type_script = "uid://dsdgjeae30hcj"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=761723150]
