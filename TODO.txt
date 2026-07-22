@@ -1,10 +1,14 @@
+add damage_full_data signal to Stats
+
 add big robot enemy
 
 add robot sfx
 
-improve ui
+add apider robot
 
-add mobile controls
+add apider robot sfx
+
+improve ui
 
 create lazy menu 3
 
@@ -23,3 +27,5 @@ add button system
 add fail state
 
 add big robot boss enemy
+
+add mobile controls
