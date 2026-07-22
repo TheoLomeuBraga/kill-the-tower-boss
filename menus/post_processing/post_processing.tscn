@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6v8h"]
 shader = ExtResource("1_xrcle")
-shader_parameter/enabled = 0.30000001425
+shader_parameter/enabled = 0.2000000095
 shader_parameter/colors = 12
 shader_parameter/dither_size = 1
 

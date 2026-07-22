@@ -14,8 +14,11 @@ var cool_down : float = 2.0
 var reload_time : float = 0.0
 var ammon_on_mag : int = -1
 
-func off_state(delta:float) -> void:
-	pass
+func death_state(delta:float) -> void:
+	body.velocity = Vector3.ZERO
+	navegator.is_navegating = false
+	navegator.gravity = 0.0
+	block_state = true
 
 func calculate_target_future_point(target_pos:Vector3,target_vel:Vector3,target_dist:float,projectile_speed:float) -> Vector3:
 	return target_pos + target_vel * (target_dist/projectile_speed)
@@ -88,8 +91,7 @@ func check_player_visibility() -> bool:
 	return is_player_visible
 
 func on_death() -> void:
-	state = off_state
-	block_state = true
+	state = death_state
 	animation_tree.set("parameters/death_state/transition_request","death")
 	
 	
@@ -100,14 +102,14 @@ func on_death() -> void:
 	death_timer.start()
 	death_timer.wait_time = 1.0
 	
-	body.velocity = Vector3.ZERO
 	
 	
-	'''
+	
+	
 	$"../headCol".disabled = true
 	$"../bodyCol".disabled = true
 	$"../legCol".disabled = true
-	'''
+	
 	
 	await death_timer.timeout
 	
