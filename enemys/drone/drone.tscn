@@ -109,16 +109,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
-bones/0/position = Vector3(0, 0.052170034, 0)
+bones/0/position = Vector3(0, 0.033396725, 0)
 
 [node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.19782996, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.21660328, 0)
 
 [node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.19782996, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.21660328, 0)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052170034, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033396725, 0)
 
 [node name="DroneBehavior" type="Node" parent="." index="6" unique_id=1726034422]
 script = ExtResource("2_ytvpm")

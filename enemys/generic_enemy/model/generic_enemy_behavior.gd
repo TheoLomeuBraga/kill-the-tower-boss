@@ -18,7 +18,9 @@ func death_state(delta:float) -> void:
 	body.velocity = Vector3.ZERO
 	navegator.is_navegating = false
 	navegator.gravity = 0.0
+	navegator.look_target = Navegator.LookTarget.NONE
 	block_state = true
+	$"../muzle/lazer".visible = false
 
 func calculate_target_future_point(target_pos:Vector3,target_vel:Vector3,target_dist:float,projectile_speed:float) -> Vector3:
 	return target_pos + target_vel * (target_dist/projectile_speed)
@@ -184,6 +186,9 @@ func process_sniper(delta:float) -> void:
 	
 	sniper_timer.start(1.0)
 	await sniper_timer.timeout
+	
+	if stats.health == 0:
+		return
 	
 	shot()
 	

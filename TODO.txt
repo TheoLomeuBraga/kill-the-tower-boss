@@ -1,5 +1,3 @@
-improve drone death animations
-
 add big robot enemy
 
 add robot sfx
