@@ -1,10 +1,12 @@
-add damage_full_data signal to Stats
+add no damage particle and sfx
 
 add big robot enemy
 
 add robot sfx
 
-add apider robot
+test combat fun
+
+add spider robot
 
 add apider robot sfx
 
@@ -27,5 +29,3 @@ add button system
 add fail state
 
 add big robot boss enemy
-
-add mobile controls
