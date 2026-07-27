@@ -28,7 +28,12 @@ func start() -> void:
 		
 		if stats:
 			if stats.faction != GlobalEnums.Faction.FRIENDLY:
-				var hit_particle : Node3D = Stats.enemy_hit_particle.instantiate()
+				var hit_particle : Node3D
+				if stats.calculate_damage_multplyer(data.damage_type) >= 1.0:
+					hit_particle = stats.enemy_hit_particle.instantiate()
+				else:
+					hit_particle = stats.no_damage_hit_particle.instantiate()
+				
 				get_parent().add_child(hit_particle)
 				hit_particle.global_position = shape.get_collision_point(i)
 			

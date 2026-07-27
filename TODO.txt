@@ -1,8 +1,10 @@
-add no damage particle and sfx
+put wepons on dedicated view port
 
 add big robot enemy
 
 add robot sfx
+
+add gun overheat
 
 test combat fun
 

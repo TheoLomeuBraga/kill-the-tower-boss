@@ -1,8 +1,10 @@
 extends Node
 class_name Stats
 
-const enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
-const player_hit_particle : PackedScene = preload("res://particles/hit_particle/player_hit_particle.tscn")
+var enemy_hit_particle : PackedScene = preload("res://particles/hit_particle/hit_particle.tscn")
+var no_damage_hit_particle : PackedScene = preload("res://particles/hit_particle/no_damage_hit_particle.tscn")
+var player_hit_particle : PackedScene = preload("res://particles/hit_particle/player_hit_particle.tscn")
+
 
 signal healed(int)
 signal damaged(int)
@@ -55,7 +57,17 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	health -= _damage
 	health = max(0,health)
 	damaged.emit(_damage)
+
+func calculate_damage_multplyer(damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> float:
+	var ret : float = 1.0
 	
+	if multplyer_areas.has(area):
+		ret = ret * multplyer_areas[area]
+	
+	if damage_type_multplyer.has(damage_type):
+		ret = ret * damage_type_multplyer[damage_type]
+	
+	return ret
 
 func heal(amount:int) -> void:
 	

@@ -184,11 +184,14 @@ func check_collision_ray() -> void:
 						o.global_position = ray.get_collision_point()
 					
 					if stats.faction != GlobalEnums.Faction.FRIENDLY:
-						o = Stats.enemy_hit_particle.instantiate()
+						if stats.calculate_damage_multplyer(data.damage_type,col_shape) >= 1.0:
+							o = stats.enemy_hit_particle.instantiate()
+						else:
+							o = stats.no_damage_hit_particle.instantiate()
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
 					elif stats.faction == GlobalEnums.Faction.FRIENDLY:
-						o = Stats.player_hit_particle.instantiate()
+						o = stats.player_hit_particle.instantiate()
 						get_parent().add_child(o)
 						o.global_position = ray.get_collision_point()
 					
@@ -235,11 +238,14 @@ func check_collision_shape() -> void:
 					o.global_position = shape.get_collision_point(i)
 				
 				if stats.faction != GlobalEnums.Faction.FRIENDLY:
-					o = Stats.enemy_hit_particle.instantiate()
+					if stats.calculate_damage_multplyer(data.damage_type,col_shape) >= 1.0:
+						o = stats.enemy_hit_particle.instantiate()
+					else:
+						o = stats.no_damage_hit_particle.instantiate()
 					get_parent().add_child(o)
 					o.global_position = shape.get_collision_point(i)
 				elif stats.faction == GlobalEnums.Faction.FRIENDLY:
-					o = Stats.player_hit_particle.instantiate()
+					o = stats.player_hit_particle.instantiate()
 					get_parent().add_child(o)
 					o.global_position = shape.get_collision_point(i)
 				
