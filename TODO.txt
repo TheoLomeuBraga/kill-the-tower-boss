@@ -1,5 +1,3 @@
-put wepons on dedicated view port
-
 add big robot enemy
 
 add robot sfx

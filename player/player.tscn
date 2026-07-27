@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="25_jd2rm"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="26_q28gw"]
 [ext_resource type="Texture2D" uid="uid://bpiw64vn88lr" path="res://player/guns/sniper/scope.png" id="27_ge24q"]
+[ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -385,10 +386,13 @@ shape = SubResource("CapsuleShape3D_kqu6x")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2057433009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-cull_mask = 1047553
+cull_mask = 1
 doppler_tracking = 2
 fov = 90.0
 near = 0.001
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D" unique_id=2147351980]
+remote_path = NodePath("../../HUD/SubViewportContainer/SubViewport/Camera3D")
 
 [node name="PlayerModel" parent="Camera3D" unique_id=83597824 instance=ExtResource("1_rkbax")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.23062402, 0)
@@ -438,6 +442,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_bjvpn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1508226697]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("32_5ejfk")
+
+[node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer" unique_id=1330509499]
+transparent_bg = true
+handle_input_locally = false
+scaling_3d_mode = 5
+size = Vector2i(600, 300)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="HUD/SubViewportContainer/SubViewport" unique_id=2132762123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+cull_mask = 2
+fov = 90.0
 
 [node name="health_display" type="Label" parent="HUD" unique_id=1631080697]
 layout_mode = 1
