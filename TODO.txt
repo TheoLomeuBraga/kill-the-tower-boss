@@ -2,7 +2,7 @@ add big robot enemy
 
 add robot sfx
 
-add gun overheat
+add gun overheat charge mode
 
 test combat fun
 
