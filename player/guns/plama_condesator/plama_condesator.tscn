@@ -113,29 +113,29 @@ charge_objects = [NodePath("Armature/Skeleton3D/Bone/charge")]
 charging_material = SubResource("StandardMaterial3D_itpqw")
 charged_material = SubResource("StandardMaterial3D_mg5x2")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1848622093) index="0" unique_id=1873225781]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(430814992) index="0" unique_id=1485407285]
 bones/0/position = Vector3(-0.25, -0.0032043755, -0.22105676)
 bones/1/position = Vector3(-1.7862597e-08, 0.103352115, 0.1474708)
 
-[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=87197613]
+[node name="Bone_001" parent="Armature/Skeleton3D" index="0" unique_id=74053512]
 transform = Transform3D(1, 0, -1.2795159e-06, -1.2795159e-06, 0, -1, 0, 1, 0, -0.25000003, 0.10014774, -0.07358596)
 
-[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1289606386]
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1527660714]
 cast_shadow = 0
 
-[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=585915360]
+[node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=994345780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.0032043755, -0.22105676)
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=247913361]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" index="0" unique_id=450827866]
 cast_shadow = 0
 
-[node name="Cube_002" parent="Armature/Skeleton3D/Bone" index="1" unique_id=1350365136]
+[node name="Cube_002" parent="Armature/Skeleton3D/Bone" index="1" unique_id=821350466]
 cast_shadow = 0
 
-[node name="Cube_003" parent="Armature/Skeleton3D/Bone" index="2" unique_id=1897693822]
+[node name="Cube_003" parent="Armature/Skeleton3D/Bone" index="2" unique_id=2126221013]
 cast_shadow = 0
 
-[node name="Cube_004" parent="Armature/Skeleton3D/Bone" index="3" unique_id=1769696015]
+[node name="Cube_004" parent="Armature/Skeleton3D/Bone" index="3" unique_id=590130896]
 cast_shadow = 0
 
 [node name="charge" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" index="6" unique_id=1624911061]

@@ -6,11 +6,11 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07yyr"]
 shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
+albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hq45f"]
 shading_mode = 0
-albedo_color = Color(0, 1, 1, 1)
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07yyr"]
 emission_shape = 2
@@ -51,7 +51,7 @@ fadeout_time = 0.1
 fadein_time = 0.1
 fadeout_time = 0.1
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_07yyr"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lvgvb"]
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -87,15 +87,15 @@ charge_objects = [NodePath("Armature/Skeleton3D/Bone/Cube_001"), NodePath("Armat
 charging_material = SubResource("StandardMaterial3D_07yyr")
 charged_material = SubResource("StandardMaterial3D_hq45f")
 
-[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="0" unique_id=1807410180]
+[node name="Cube" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1481195157) index="0" unique_id=1995771601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013040036, 0)
 cast_shadow = 0
 
-[node name="Cube_001" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="1" unique_id=954099281]
+[node name="Cube_001" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1481195157) index="1" unique_id=1313611315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012983993, 0)
 cast_shadow = 0
 
-[node name="charge" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(482721965) index="2" unique_id=648140938]
+[node name="charge" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1481195157) index="2" unique_id=648140938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2796031, 0)
 cast_shadow = 0
 amount = 16
@@ -104,7 +104,7 @@ process_material = SubResource("ParticleProcessMaterial_07yyr")
 draw_pass_1 = SubResource("BoxMesh_hq45f")
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="7" unique_id=2062389126]
-tree_root = SubResource("AnimationNodeBlendTree_07yyr")
+tree_root = SubResource("AnimationNodeBlendTree_lvgvb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/shot_1/active = false
 parameters/shot_1/internal_active = false

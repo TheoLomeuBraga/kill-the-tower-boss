@@ -272,40 +272,6 @@ func manage_wepon_change() -> void:
 	elif Input.is_action_just_pressed("wepon_9") and inventory.size() > 8:
 		set_gun(8)
 
-
-func manage_charging_shot(delta:float,can_shot:bool,has_ammon:bool) -> void:
-	
-	player_model.gun.charge_estate = 0
-	
-	if Input.is_action_pressed("shot") and current_gun.charge_shot_info and can_shot and has_ammon:
-		charge_shot_time += delta
-		
-		var start_play_chargin : bool = charge_shot_time < current_gun.charge_shot_info.charge_time and charge_shot_time > 0.2
-		if start_play_chargin:
-			start_play_chargin = start_play_chargin and current_gun.charge_shot_info.charge_sound
-			start_play_chargin = start_play_chargin and charge_audio_player.stream != current_gun.charge_shot_info.charge_sound
-			player_model.gun.charge_estate = 1
-			if  start_play_chargin:
-				charge_audio_player.stream = current_gun.charge_shot_info.charge_sound
-				charge_audio_player.play()
-		
-		var start_play_charged : bool = charge_shot_time > current_gun.charge_shot_info.charge_time
-		if start_play_charged:
-			start_play_charged = start_play_charged and current_gun.charge_shot_info.charged_sound
-			start_play_charged = start_play_charged and charge_audio_player.stream != current_gun.charge_shot_info.charged_sound
-			player_model.gun.charge_estate = 2
-			if  start_play_charged:
-				charge_audio_player.stream = current_gun.charge_shot_info.charged_sound
-				charge_audio_player.play()
-		
-	else:
-		charge_shot_time = 0.0
-		charge_audio_player.stop()
-		charge_audio_player.stream = null
-		return
-	
-	
-
 func process_aim() -> void:
 	
 	if not current_gun.aim_info:
@@ -330,41 +296,70 @@ func process_aim() -> void:
 		player_movement.sensitivity_multplyer = 1.0
 
 func process_shot(delta: float) -> void:
-	if not current_gun or not player_model or not player_model.gun:
+	if is_reloading or not current_gun or not player_model or not player_model.gun:
 		return
 	
 	process_aim()
 	
+	#input
 	var input_shot : bool = false
 	if current_gun.is_automatic:
 		input_shot = Input.is_action_pressed("shot")
-	elif current_gun.charge_shot_info:
+	elif not current_gun.is_automatic and current_gun.charge_shot_info:
 		input_shot = Input.is_action_just_released("shot")
 	else:
 		input_shot = Input.is_action_just_pressed("shot")
 	
 	time_last_shot -= delta
 	
-	var can_shot : bool = player_model.gun and time_last_shot < 0.0 and not is_reloading
-	var has_ammon : bool = false
-	if current_gun.ammon_capacity > 0:
-		has_ammon = get_ammon_on_mag(current_gun) >= current_gun.ammon_consumption
-	else:
-		has_ammon = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
 	
-	var has_alt_ammon : bool = false
+	#get normal ammon info
+	var has_ammon_normal : bool = false
+	if current_gun.ammon_capacity > 0:
+		has_ammon_normal = get_ammon_on_mag(current_gun) >= current_gun.ammon_consumption
+	else:
+		has_ammon_normal = ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_consumption
+	
+	#get alt ammon info
+	var has_ammon_alt : bool = false
 	if current_gun.charge_shot_info:
 		if current_gun.ammon_capacity > 0:
-			has_alt_ammon = get_ammon_on_mag(current_gun) >= current_gun.charge_shot_info.ammon_consumption
+			has_ammon_alt = get_ammon_on_mag(current_gun) >= current_gun.charge_shot_info.ammon_consumption
 		else:
-			has_alt_ammon = ammon_inventory[current_gun.charge_shot_info.ammon_type] >= current_gun.charge_shot_info.ammon_consumption
+			has_ammon_alt = ammon_inventory[current_gun.charge_shot_info.ammon_type] >= current_gun.charge_shot_info.ammon_consumption
+		
+		if ammon_inventory[current_gun.charge_shot_info.ammon_type] <= 0:
+			ammon_inventory[current_gun.charge_shot_info.ammon_type] = 0
 	
-	if (current_gun.is_automatic and (not input_shot or not has_ammon)):
+	
+	#end automatc animation
+	if (current_gun.is_automatic and (not input_shot or not has_ammon_normal)):
 		player_model.gun.shot = false
 	
-	if input_shot and can_shot and (has_ammon or has_alt_ammon):
+	#reload
+	if (Input.is_action_just_pressed("reload") or not has_ammon_normal) and current_gun.ammon_capacity > 0:
+		reload()
+		return
+	
+	#charge shot
+	
+	if current_gun.charge_shot_info:
+		var input_charge_shot : bool = Input.is_action_pressed("shot")
 		
-		if has_alt_ammon and current_gun.charge_shot_info and charge_shot_time > current_gun.charge_shot_info.charge_time:
+		
+		if charge_shot_time <= 0.2:
+			player_model.gun.charge_estate = 0
+		elif charge_shot_time > 0.2 and charge_shot_time < current_gun.charge_shot_info.charge_time :
+			player_model.gun.charge_estate = 1
+		else:
+			player_model.gun.charge_estate = 2
+		if not has_ammon_alt:
+			player_model.gun.charge_estate = 0
+		
+		
+		if has_ammon_alt and time_last_shot <= 0 and input_shot and charge_shot_time >= current_gun.charge_shot_info.charge_time:
+			
+			alt_shot()
 			
 			if current_gun.charge_shot_info.ammon_type != GlobalEnums.AmmonType.NONE:
 				if current_gun.ammon_capacity > 0:
@@ -372,30 +367,50 @@ func process_shot(delta: float) -> void:
 				else:
 					ammon_inventory[current_gun.charge_shot_info.ammon_type] -= current_gun.charge_shot_info.ammon_consumption
 			
+			if ammon_inventory[current_gun.charge_shot_info.ammon_type] <= 0:
+				ammon_inventory[current_gun.charge_shot_info.ammon_type] = 0
+			
 			time_last_shot = current_gun.charge_shot_info.fire_rate
-			alt_shot()
 			
-		elif has_ammon:
-			
-			if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
-				if current_gun.ammon_capacity > 0:
-					set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.ammon_consumption)
-				else:
-					ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
-			
-			time_last_shot = current_gun.fire_rate
-			shot()
+			if not current_gun.is_automatic:
+				charge_shot_time = 0.0
+				return
+		
+		if not input_charge_shot:
+			charge_shot_time = 0
+		else:
+			charge_shot_time += delta
+	
+	#charge shot sfx
+	
+	match player_model.gun.charge_estate:
+		0:
+			charge_audio_player.stop()
+		1:
+			if charge_audio_player.stream != current_gun.charge_shot_info.charge_sound:
+				charge_audio_player.stream = current_gun.charge_shot_info.charge_sound
+			if not charge_audio_player.playing:
+				charge_audio_player.play()
+		2:
+			if charge_audio_player.stream != current_gun.charge_shot_info.charged_sound:
+				charge_audio_player.stream = current_gun.charge_shot_info.charged_sound
+			if not charge_audio_player.playing:
+				charge_audio_player.play()
 	
 	
-	
-	
-	if input_shot and can_shot and not has_ammon:
-		reload()
-	
-	if Input.is_action_just_pressed("reload") or Input.is_action_just_released("shot") and not has_ammon:
-		reload()
-	
-	manage_charging_shot(delta,can_shot,has_ammon)
+	#normal shot
+	if input_shot and has_ammon_normal and time_last_shot <= 0:
+		shot()
+		
+		time_last_shot = current_gun.fire_rate
+		
+		if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+			if current_gun.ammon_capacity > 0:
+				set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.ammon_consumption)
+			else:
+				ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
+		
+		return
 
 func _process(delta: float) -> void:
 	

@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="25_jd2rm"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="26_q28gw"]
 [ext_resource type="Texture2D" uid="uid://bpiw64vn88lr" path="res://player/guns/sniper/scope.png" id="27_ge24q"]
+[ext_resource type="PackedScene" uid="uid://dtjaipbsa5iph" path="res://player/projectiles/generic_red_bullet.tscn" id="28_jd2rm"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
@@ -369,21 +370,21 @@ metadata/_custom_type_script = "uid://5ihhl4vr45q5"
 
 [sub_resource type="Resource" id="Resource_ge24q"]
 script = ExtResource("4_qjkh3")
-damage = 100
+damage = 20
 speed = 20.0
-model = ExtResource("4_2ieo8")
+model = ExtResource("28_jd2rm")
 collision_shape = SubResource("SphereShape3D_7pqkx")
-penetrations = 4
+ricochet = 1
 hit_wall_effect = ExtResource("6_g4c7l")
-knock_back = 10.0
-enemy_knock_back = 15.0
+knock_back = 1.5
+enemy_knock_back = 5.0
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [sub_resource type="Resource" id="Resource_pnw6m"]
 script = ExtResource("18_knn7v")
 ammon_type = 4
-ammon_consumption = 5
+ammon_consumption = 4
 spread = 0.01
 charge_time = 0.5
 projectile_info = SubResource("Resource_ge24q")
@@ -394,11 +395,10 @@ metadata/_custom_type_script = "uid://dc35ml5h2smv7"
 
 [sub_resource type="Resource" id="Resource_1so5t"]
 script = ExtResource("4_qjkh3")
-damage = 20
+damage = 5
 speed = 20.0
 model = ExtResource("4_2ieo8")
 collision_shape = SubResource("SphereShape3D_g4c7l")
-ricochet = 2
 hit_wall_effect = ExtResource("6_g4c7l")
 spawn_effect = ExtResource("5_rgyib")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
