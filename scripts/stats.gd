@@ -18,6 +18,8 @@ signal dead()
 @export var multplyer_areas : Dictionary[CollisionShape3D,float]
 @export var damage_type_multplyer : Dictionary[GlobalEnums.DamageTypes,float]
 
+@export var knock_back_multiplier : float = 1.0
+
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
 	
 	

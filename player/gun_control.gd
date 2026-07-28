@@ -296,10 +296,13 @@ func process_aim() -> void:
 		player_movement.sensitivity_multplyer = 1.0
 
 func process_shot(delta: float) -> void:
+	
+	process_aim()
+	
 	if is_reloading or not current_gun or not player_model or not player_model.gun:
 		return
 	
-	process_aim()
+	
 	
 	#input
 	var input_shot : bool = false
@@ -345,7 +348,6 @@ func process_shot(delta: float) -> void:
 	
 	if current_gun.charge_shot_info:
 		var input_charge_shot : bool = Input.is_action_pressed("shot")
-		
 		
 		if charge_shot_time <= 0.2:
 			player_model.gun.charge_estate = 0

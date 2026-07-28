@@ -125,7 +125,11 @@ func add_knock_back(o:Object) -> void:
 		rb.linear_velocity -= global_basis.z * data.enemy_knock_back
 	if o is CharacterBody3D:
 		var cb : CharacterBody3D = o
-		cb.velocity -= global_basis.z * data.enemy_knock_back
+		var stats : Stats = Stats.get_stats_from_node(cb)
+		if stats:
+			cb.velocity -= global_basis.z * data.enemy_knock_back * stats.knock_back_multiplier
+		else:
+			cb.velocity -= global_basis.z * data.enemy_knock_back
 
 func check_collision_ray() -> void:
 	while true:
