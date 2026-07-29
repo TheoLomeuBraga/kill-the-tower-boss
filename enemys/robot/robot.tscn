@@ -37,6 +37,9 @@ animation = &"shoot_l"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r7nsq"]
 animation = &"shoot_r"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0s5fp"]
+animation = &"stomp"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tn8ol"]
 animation = &"idle"
 
@@ -90,9 +93,13 @@ input_4/name = "death"
 input_4/auto_advance = false
 input_4/break_loop_at_end = false
 input_4/reset = true
+input_5/name = "stomp"
+input_5/auto_advance = false
+input_5/break_loop_at_end = false
+input_5/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tn8ol"]
-graph_offset = Vector2(-375.2805, -88.709694)
+graph_offset = Vector2(-500.1007, 394.47366)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_tn8ol")
 nodes/Animation/position = Vector2(-380, -100)
 nodes/states/node = SubResource("AnimationNodeTransition_tn8ol")
@@ -113,14 +120,16 @@ nodes/rocket_launcher/node = SubResource("AnimationNodeOneShot_0wcit")
 nodes/rocket_launcher/position = Vector2(-680, 240)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_r7nsq")
 "nodes/Animation 6/position" = Vector2(-874.7329, 495.90674)
-node_connections = [&"output", 0, &"states", &"states", 0, &"Animation", &"states", 1, &"Animation 2", &"states", 2, &"rocket_launcher", &"states", 3, &"StateMachine", &"states", 4, &"Animation 3", &"minigun", 0, &"Animation 4", &"minigun", 1, &"Animation 5", &"rocket_launcher", 0, &"minigun", &"rocket_launcher", 1, &"Animation 6"]
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_0s5fp")
+"nodes/Animation 7/position" = Vector2(-120, 760)
+node_connections = [&"output", 0, &"states", &"states", 0, &"Animation", &"states", 1, &"Animation 2", &"states", 2, &"rocket_launcher", &"states", 3, &"StateMachine", &"states", 4, &"Animation 3", &"states", 5, &"Animation 7", &"minigun", 0, &"Animation 4", &"minigun", 1, &"Animation 5", &"rocket_launcher", 0, &"minigun", &"rocket_launcher", 1, &"Animation 6"]
 
 [node name="robot" unique_id=1970358405 instance=ExtResource("1_oisd7")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2051271455) index="0" unique_id=755820642]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1388419364) index="0" unique_id=1157339895]
 bones/1/position = Vector3(-2.2185712e-07, 0.3, -1.4692932)
 bones/1/rotation = Quaternion(-0.7071068, -3.6808345e-07, 4.7485364e-07, 0.7071068)
-bones/2/rotation = Quaternion(7.0826764e-17, 0.009969172, -7.105075e-15, 0.9999504)
+bones/2/rotation = Quaternion(-8.470313e-21, 8.100092e-29, -7.1054274e-15, 1)
 bones/4/rotation = Quaternion(0.7071068, -5.8157804e-07, -1.3347006e-06, 0.7071068)
 bones/5/rotation = Quaternion(-2.8342733e-08, -0.44628122, -5.6833102e-08, 0.8948928)
 bones/6/position = Vector3(0.10964003, 0.563822, 3.0890476e-08)
@@ -136,32 +145,38 @@ bones/17/rotation = Quaternion(-0.042168524, 2.8401619e-09, 0.004211886, 0.99910
 bones/18/position = Vector3(0.5160247, 0.4265015, 0.06576106)
 bones/19/position = Vector3(-0.5160247, 0.4265015, 0.06576106)
 
-[node name="cannon_l_001" parent="Armature/Skeleton3D" index="0" unique_id=1629973839]
-transform = Transform3D(0.60154444, 0.01993735, -0.7985904, -0.7987492, 1.590435e-13, -0.60166407, -0.011995587, 0.9998012, 0.015924942, 0.7670749, 2.5802429, 0.707047)
+[node name="cannon_l_001" parent="Armature/Skeleton3D" index="0" unique_id=485187895]
+transform = Transform3D(0.60166407, -1.4210767e-13, -0.7987492, -0.7987492, 1.5907928e-13, -0.60166407, -2.2393769e-12, 1, -1.8584802e-12, 0.75880694, 2.5802429, 0.7222595)
 
-[node name="cannon_l" parent="Armature/Skeleton3D" index="1" unique_id=69923117]
-transform = Transform3D(0.9998012, 0.019937223, -2.7094886e-06, -2.7100273e-06, 1.799653e-13, -1, -0.019937223, 0.9998012, 5.402753e-08, 0.7592647, 2.5802429, 0.31538522)
+[node name="cannon_l" parent="Armature/Skeleton3D" index="1" unique_id=382906137]
+transform = Transform3D(1, -1.2701685e-07, -2.7100273e-06, -2.7100273e-06, 1.8000107e-13, -1, 1.2701685e-07, 1, -3.2306042e-12, 0.75880706, 2.5802429, 0.33051988)
 
-[node name="hear_sink_l" parent="Armature/Skeleton3D" index="2" unique_id=1745106581]
-transform = Transform3D(0.6517402, 0.7581802, 0.019936707, -0.75833094, 0.6518698, 8.3463596e-07, -0.012995503, -0.015119165, 0.9998012, 0.10961824, 2.8221295, 0.29781425)
+[node name="minigun_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_l" index="1" unique_id=1533061670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703, -0.092)
+
+[node name="hear_sink_l" parent="Armature/Skeleton3D" index="2" unique_id=1898238539]
+transform = Transform3D(0.6518698, 0.75833094, -6.434345e-07, -0.75833094, 0.6518698, 8.3463596e-07, 1.0523656e-06, -5.6137537e-08, 1, 0.10964003, 2.8221295, 0.30000016)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_l" index="1" unique_id=1835808622]
 remote_path = NodePath("../../../../heat_sinc_1")
 
-[node name="hear_sink_r" parent="Armature/Skeleton3D" index="3" unique_id=695711513]
-transform = Transform3D(0.65174013, -0.7581802, 0.019937992, 0.75833094, 0.6518698, 8.346362e-07, -0.012997608, 0.0151190525, 0.99980116, -0.10961823, 2.8221295, 0.3021861)
+[node name="hear_sink_r" parent="Armature/Skeleton3D" index="3" unique_id=1022782721]
+transform = Transform3D(0.6518698, -0.75833094, 6.434343e-07, 0.75833094, 0.6518698, 8.346362e-07, -1.0523656e-06, -5.613788e-08, 1, -0.10964003, 2.8221295, 0.30000016)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_r" index="1" unique_id=948268512]
 remote_path = NodePath("../../../../heat_sinc_2")
 
-[node name="cannon_r_001" parent="Armature/Skeleton3D" index="4" unique_id=197240380]
-transform = Transform3D(0.9998012, 0.019937348, 2.5346776e-06, 2.5351815e-06, 1.5716554e-13, -1, -0.01993735, 0.99980116, -5.0541935e-08, -0.7502375, 2.5802429, 0.7373042)
+[node name="cannon_r_001" parent="Armature/Skeleton3D" index="4" unique_id=155639734]
+transform = Transform3D(1, -1.1368584e-13, 2.5351815e-06, 2.5351815e-06, 1.5720132e-13, -1, 1.1368741e-13, 0.99999994, 2.8635857e-12, -0.7588071, 2.5802429, 0.7222595)
 
-[node name="cannon_r" parent="Armature/Skeleton3D" index="5" unique_id=1252220860]
-transform = Transform3D(0.9998012, 0.019937223, 2.7094886e-06, 2.7100273e-06, 1.799653e-13, -1, -0.019937223, 0.9998012, -5.402753e-08, -0.7580477, 2.5802429, 0.34564242)
+[node name="cannon_r" parent="Armature/Skeleton3D" index="5" unique_id=1243922526]
+transform = Transform3D(1, -1.2701685e-07, 2.7100273e-06, 2.7100273e-06, 1.8000107e-13, -1, 1.2701685e-07, 1, 3.2306042e-12, -0.75880706, 2.5802429, 0.33051988)
 
-[node name="body" parent="Armature/Skeleton3D" index="6" unique_id=1187163605]
-transform = Transform3D(0.9998012, -8.4703264e-22, 0.019936157, -3.588744e-15, 1, 1.799653e-13, -0.019936157, 1.498386e-26, 0.9998012, 2.9559324e-15, 2.2583075, 0.3)
+[node name="rocket_launcher_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_r" index="1" unique_id=960287249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635, 0)
+
+[node name="body" parent="Armature/Skeleton3D" index="6" unique_id=236253450]
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, 2.954151e-15, 2.2583075, 0.3)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/body" index="1" unique_id=1279801940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505, 0)
@@ -175,44 +190,72 @@ remote_path = NodePath("../../../../CollisionShape3D3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0.18)
 remote_path = NodePath("../../../../CollisionShape3D4")
 
-[node name="spine_001" parent="Armature/Skeleton3D" index="7" unique_id=218529264]
-transform = Transform3D(0.9998012, -8.4701275e-22, 0.019936157, -3.588744e-15, 1, 1.799653e-13, -0.019936157, -1.6155871e-27, 0.9998012, 1.1917032e-14, 2.1, 0.3)
+[node name="spine_001" parent="Armature/Skeleton3D" index="7" unique_id=382838691]
+transform = Transform3D(1, 2.01948e-26, -1.1920929e-06, -2.9161e-41, 1, 1.8000107e-13, 1.1920929e-06, 3.2311743e-26, 1, 1.1917032e-14, 2.1, 0.3)
 
-[node name="leg_l_003" parent="Armature/Skeleton3D" index="8" unique_id=751733881]
+[node name="leg_l_003" parent="Armature/Skeleton3D" index="8" unique_id=1346666938]
 transform = Transform3D(-0.9950487, -2.3376197e-07, -0.09938768, 2.5477493e-07, -0.99999976, -6.556511e-07, -0.09938768, -6.183982e-07, 0.99504876, 0.5160245, 0.42650157, 0.065761045)
 
-[node name="leg_l_002" parent="Armature/Skeleton3D" index="9" unique_id=1686489340]
+[node name="leg_l_002" parent="Armature/Skeleton3D" index="9" unique_id=749542734]
 transform = Transform3D(-0.9950487, -2.3469329e-07, -0.099387676, -0.008415948, -0.996408, 0.08426061, -0.0990307, 0.08467993, 0.99147475, 0.51602465, 0.993198, 0.017600238)
 
-[node name="leg_l_001" parent="Armature/Skeleton3D" index="10" unique_id=1923837639]
+[node name="leg_l_001" parent="Armature/Skeleton3D" index="10" unique_id=779911750]
 transform = Transform3D(-0.99504876, -2.3850546e-07, -0.09938771, 0.036285162, -0.930974, -0.36327767, -0.09252729, -0.36508527, 0.9263646, 0.5160248, 1.6651652, 0.28111494)
 
-[node name="leg_r_003" parent="Armature/Skeleton3D" index="11" unique_id=1941318181]
+[node name="leg_r_003" parent="Armature/Skeleton3D" index="11" unique_id=910149147]
 transform = Transform3D(-0.9950487, -1.0617077e-07, 0.09938773, 2.6499038e-08, -0.99999976, -6.854534e-07, 0.09938773, -5.9604645e-07, 0.99504876, -0.51602477, 0.42650157, 0.06576106)
 
-[node name="leg_r_002" parent="Armature/Skeleton3D" index="12" unique_id=2016214417]
+[node name="leg_r_002" parent="Armature/Skeleton3D" index="12" unique_id=1828306830]
 transform = Transform3D(-0.9950487, -1.0058284e-07, 0.09938774, 0.008416229, -0.996408, 0.08426058, 0.09903075, 0.08467996, 0.99147475, -0.5160247, 0.993198, 0.017600238)
 
-[node name="leg_r_001" parent="Armature/Skeleton3D" index="13" unique_id=656374682]
+[node name="leg_r_001" parent="Armature/Skeleton3D" index="13" unique_id=570027742]
 transform = Transform3D(-0.99504876, -5.969158e-08, 0.09938764, -0.036284924, -0.930974, -0.3632777, 0.09252734, -0.36508527, 0.9263646, -0.5160247, 1.6651652, 0.28111494)
 
-[node name="spine" parent="Armature/Skeleton3D" index="14" unique_id=2054648862]
+[node name="spine" parent="Armature/Skeleton3D" index="14" unique_id=364627558]
 transform = Transform3D(1, -1.4210855e-14, -1.1920929e-06, 1.4210855e-14, 1, 1.8000106e-13, 1.1920929e-06, 0, 1, 2.842171e-14, 1.4692932, 0.3)
+
+[node name="BodyLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="15" unique_id=1378632751]
+influence = 0.0
+target_node = NodePath("../../../look_target")
+bone_name = "spine.001"
+bone = 2
+use_secondary_rotation = false
+duration = 0.2
+
+[node name="CannonLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="16" unique_id=749057245]
+influence = 0.0
+target_node = NodePath("../../../look_target")
+bone_name = "cannon.r"
+bone = 8
+forward_axis = 2
+primary_rotation_axis = 0
+use_secondary_rotation = false
+duration = 0.2
+
+[node name="MiniGunLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="17" unique_id=975451132]
+influence = 0.0
+target_node = NodePath("../../../look_target")
+bone_name = "cannon.l"
+bone = 4
+forward_axis = 2
+primary_rotation_axis = 0
+use_secondary_rotation = false
+duration = 0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=418224678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0817871, 0)
 shape = SubResource("CylinderShape3D_b2jhj")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2" unique_id=504366089]
-transform = Transform3D(0.9998012, -8.4703264e-22, 0.019936157, -3.588744e-15, 1, 1.799653e-13, -0.019936157, 1.498386e-26, 0.9998012, 2.955932e-15, 2.7633076, 0.3)
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, 2.954151e-15, 2.7633076, 0.3)
 shape = SubResource("BoxShape3D_b2jhj")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3" unique_id=1895899285]
-transform = Transform3D(0.9998012, -0.01879265, 0.006654827, -3.588744e-15, 0.3338069, 0.9426415, -0.019936157, -0.9424541, 0.33374056, 0.013357226, 2.7583075, 0.9698669)
+transform = Transform3D(1, 1.1237162e-06, -3.9792883e-07, 2.019484e-26, 0.3338069, 0.9426415, 1.1920929e-06, -0.9426415, 0.3338069, -7.987023e-07, 2.7583075, 0.97)
 shape = SubResource("BoxShape3D_oisd7")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="4" unique_id=694486543]
-transform = Transform3D(0.9998012, -8.4703264e-22, 0.019936157, -3.588744e-15, 1, 1.799653e-13, -0.019936157, 1.498386e-26, 0.9998012, 0.0035885086, 2.5783074, 0.47996426)
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, -2.1457673e-07, 2.5783074, 0.48000002)
 shape = SubResource("BoxShape3D_tn8ol")
 
 [node name="machinegun_muzle" type="Node3D" parent="CollisionShape3D4" index="0" unique_id=668656354]
@@ -222,22 +265,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.7)
 
 [node name="heat_sinc_1" type="CollisionShape3D" parent="." index="5" unique_id=1438787852]
-transform = Transform3D(0.6517402, 0.7581802, 0.019936707, -0.75833094, 0.6518698, 8.3463596e-07, -0.012995503, -0.015119165, 0.9998012, 0.10961824, 2.8221295, 0.29781425)
+transform = Transform3D(0.6518698, 0.75833094, -6.434345e-07, -0.75833094, 0.6518698, 8.3463596e-07, 1.0523656e-06, -5.6137537e-08, 1, 0.10964003, 2.8221295, 0.30000016)
 shape = SubResource("BoxShape3D_qxkbx")
 
 [node name="heat_sinc_2" type="CollisionShape3D" parent="." index="6" unique_id=1873630124]
-transform = Transform3D(0.65174013, -0.7581802, 0.019937992, 0.75833094, 0.6518698, 8.346362e-07, -0.012997608, 0.0151190525, 0.99980116, -0.10961823, 2.8221295, 0.3021861)
+transform = Transform3D(0.6518698, -0.75833094, 6.434343e-07, 0.75833094, 0.6518698, 8.346362e-07, -1.0523656e-06, -5.613788e-08, 1, -0.10964003, 2.8221295, 0.30000016)
 shape = SubResource("BoxShape3D_qxkbx")
 
 [node name="player_visualizer" type="RayCast3D" parent="." index="7" unique_id=419533359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 target_position = Vector3(0, 0, -100)
 
 [node name="RobotAnimationSimplefier" type="AnimationTree" parent="." index="9" unique_id=929489176]
 tree_root = SubResource("AnimationNodeBlendTree_tn8ol")
 anim_player = NodePath("../AnimationPlayer")
-parameters/states/current_state = "idle"
+parameters/states/current_state = "shot"
 parameters/states/transition_request = ""
-parameters/states/current_index = 0
+parameters/states/current_index = 2
 parameters/StateMachine/conditions/can_recover = false
 parameters/minigun/active = false
 parameters/minigun/internal_active = false
@@ -266,12 +310,16 @@ damage_type_multplyer = Dictionary[int, float]({
 knock_back_multiplier = 0.0
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
-[node name="RobotBehaveour" type="Node" parent="." index="11" unique_id=461550258]
+[node name="RobotBehaveour" type="Node" parent="." index="11" unique_id=461550258 node_paths=PackedStringArray("muzle_minigun", "muzle_rocket_aluncher")]
 script = ExtResource("3_tn8ol")
+muzle_minigun = NodePath("../Armature/Skeleton3D/cannon_l/minigun_muzle")
+muzle_rocket_aluncher = NodePath("../Armature/Skeleton3D/cannon_r/rocket_launcher_muzle")
 
 [node name="Navegator" type="NavigationAgent3D" parent="." index="12" unique_id=1354827301]
 script = ExtResource("5_3eecq")
 look_target = 0
 rotation_speed = 2.0
-speed = 6.0
 metadata/_custom_type_script = "uid://8eq3m6bfvh5g"
+
+[node name="look_target" type="Marker3D" parent="." index="13" unique_id=2104060300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

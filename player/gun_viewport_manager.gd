@@ -18,6 +18,7 @@ func set_render_flag(target:Node) -> void:
 		if n is GeometryInstance3D:
 			var gi : GeometryInstance3D = n
 			gi.layers = traget_wepon_flag
+		set_render_flag(n)
 
 func _process(delta: float) -> void:
-	set_render_flag($"../../Camera3D/PlayerModel")
+	set_render_flag(player_model)

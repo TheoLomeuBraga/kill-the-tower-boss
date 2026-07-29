@@ -1,20 +1,20 @@
 add big robot enemy
 
-add robot sfx
+add wepon overheat
 
 add wepon pickups
 
-test combat fun
+add generic enemy sfx
+
+add robot sfx
+
+create simple test level
+
+playtest
 
 add spider robot
 
 add apider robot sfx
-
-improve ui
-
-create lazy menu 3
-
-settings menu
 
 add triger system
 
@@ -26,6 +26,18 @@ add elevator system
 
 add button system
 
+more playtest
+
+add icons to ammon on ui
+
+add animated crosshair on sniper aim
+
+create settings global system
+
+create settings menu
+
 add fail state
+
+even more playtest
 
 add big robot boss enemy

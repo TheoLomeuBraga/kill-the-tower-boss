@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://c88dvsbpk87vj"]
+
+[ext_resource type="AudioStream" uid="uid://h6dgmyc0irwr" path="res://sfx/charge_shot-loop.wav" id="1_q3v7y"]
+[ext_resource type="AudioStream" uid="uid://hh1qkfxdwwl3" path="res://sfx/charged_shot-loop.wav" id="2_fvp5h"]
+[ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="3_43ejl"]
+[ext_resource type="PackedScene" uid="uid://dtjaipbsa5iph" path="res://player/projectiles/generic_red_bullet.tscn" id="4_7rrui"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="5_7psdx"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="6_q5kn6"]
+[ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="7_2p5l5"]
+[ext_resource type="PackedScene" uid="uid://cvcvnti6hb0bw" path="res://player/guns/plama_condesator/plama_condesator.tscn" id="8_nlm6n"]
+[ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="9_0v418"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="10_5rdet"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="11_h2evv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_ge24q"]
+script = ExtResource("5_7psdx")
+damage = 20
+speed = 20.0
+model = ExtResource("4_7rrui")
+collision_shape = SubResource("SphereShape3D_7pqkx")
+ricochet = 1
+hit_wall_effect = ExtResource("3_43ejl")
+knock_back = 1.5
+enemy_knock_back = 5.0
+spawn_effect = ExtResource("6_q5kn6")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_pnw6m"]
+script = ExtResource("7_2p5l5")
+ammon_type = 4
+ammon_consumption = 4
+spread = 0.01
+charge_time = 0.5
+projectile_info = SubResource("Resource_ge24q")
+fire_rate = 0.2
+charge_sound = ExtResource("1_q3v7y")
+charged_sound = ExtResource("2_fvp5h")
+metadata/_custom_type_script = "uid://dc35ml5h2smv7"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_1so5t"]
+script = ExtResource("5_7psdx")
+damage = 5
+speed = 20.0
+model = ExtResource("9_0v418")
+collision_shape = SubResource("SphereShape3D_g4c7l")
+hit_wall_effect = ExtResource("3_43ejl")
+spawn_effect = ExtResource("6_q5kn6")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[resource]
+script = ExtResource("11_h2evv")
+model = ExtResource("8_nlm6n")
+ammon_type = 4
+ammon_capacity = -1
+reload_time = 0.8
+reload_audio = ExtResource("10_5rdet")
+fire_rate = 0.1
+spread = 0.05
+is_automatic = true
+projectile_info = SubResource("Resource_1so5t")
+charge_shot_info = SubResource("Resource_pnw6m")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"

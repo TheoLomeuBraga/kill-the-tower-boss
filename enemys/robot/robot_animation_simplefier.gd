@@ -3,7 +3,7 @@
 extends AnimationTree
 class_name RobotAnimationSimplefier
 
-enum States {IDLE,WALK,SHOT,VUNERABLE,DEATH}
+enum States {IDLE,WALK,SHOT,VUNERABLE,DEATH,STOMP}
 
 const state_strings : Dictionary[States,String] = {
 	States.IDLE: "idle",
@@ -11,7 +11,15 @@ const state_strings : Dictionary[States,String] = {
 	States.SHOT: "shot",
 	States.VUNERABLE: "vunerable",
 	States.DEATH: "death",
+	States.STOMP: "stomp",
 }
+
+var look_modfyers : float :
+	set(value):
+		look_modfyers = value
+		$"../Armature/Skeleton3D/BodyLookAtModifier3D".influence = value
+		$"../Armature/Skeleton3D/CannonLookAtModifier3D".influence = value
+		$"../Armature/Skeleton3D/MiniGunLookAtModifier3D".influence = value
 
 @export var state : States :
 	set(value):
@@ -35,3 +43,9 @@ const state_strings : Dictionary[States,String] = {
 			set("parameters/minigun/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		else:
 			set("parameters/minigun/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+
+func _process(delta: float) -> void:
+	if state == States.SHOT:
+		look_modfyers = move_toward(look_modfyers,1.0,delta*2.0)
+	else:
+		look_modfyers = move_toward(look_modfyers,0.0,delta*2.0)

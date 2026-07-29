@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://dem71dr1rlwrg"]
+
+[ext_resource type="PackedScene" uid="uid://doeh3jwlr13lx" path="res://player/guns/shotgun/shotgun.tscn" id="1_ckcgb"]
+[ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="2_kx753"]
+[ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_sp17m"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_cw3rp"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_wstcg"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="6_pufis"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="7_7ti7s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uw77l"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_r7pn3"]
+script = ExtResource("4_cw3rp")
+damage = 20
+model = ExtResource("3_sp17m")
+collision_shape = SubResource("SphereShape3D_uw77l")
+hit_wall_effect = ExtResource("2_kx753")
+knock_back = 5.0
+enemy_knock_back = 2.0
+spawn_effect = ExtResource("5_wstcg")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[resource]
+script = ExtResource("7_7ti7s")
+model = ExtResource("1_ckcgb")
+ammon_type = 3
+ammon_capacity = 2
+inventory_reload_time = 0.0
+reload_audio = ExtResource("6_pufis")
+bullets_per_shot = 10
+fire_rate = 0.1
+spread = 0.1
+projectile_info = SubResource("Resource_r7pn3")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"

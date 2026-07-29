@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://30nuv77dfkrw"]
+
+[ext_resource type="PackedScene" uid="uid://bpnd5h1twb3i1" path="res://player/guns/akimbo_granade_launcers/granade_launcers_akimbo.tscn" id="1_eeq2k"]
+[ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="2_uivn4"]
+[ext_resource type="Script" uid="uid://dy1nyorfgrxi1" path="res://scripts/explosion_info.gd" id="3_ps8a5"]
+[ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="4_c16c3"]
+[ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="5_fvvds"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="6_4cblj"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="7_6b7d3"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="8_w5r3p"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="9_q3yth"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kb6p2"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_x7c3f"]
+script = ExtResource("3_ps8a5")
+damage_type = 1
+damage = 60
+friendly_damage = 20
+model = ExtResource("2_uivn4")
+knock_back = 10.0
+metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
+
+[sub_resource type="Resource" id="Resource_8t03j"]
+script = ExtResource("6_4cblj")
+damage = 0
+damage_type = 1
+speed = 15.0
+distance = 20.0
+model = ExtResource("5_fvvds")
+collision_shape = SubResource("SphereShape3D_kb6p2")
+rise_and_drop = Vector2(0.02, 0.1)
+explosion_info = SubResource("Resource_x7c3f")
+hit_wall_effect = ExtResource("4_c16c3")
+spawn_effect = ExtResource("7_6b7d3")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[resource]
+script = ExtResource("9_q3yth")
+model = ExtResource("1_eeq2k")
+ammon_type = 5
+ammon_capacity = 12
+reload_time = 0.8
+reload_audio = ExtResource("8_w5r3p")
+fire_rate = 0.1
+spread = 0.05
+projectile_info = SubResource("Resource_8t03j")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"

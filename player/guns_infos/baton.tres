@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://jwojm6qxkp58"]
+
+[ext_resource type="AudioStream" uid="uid://h6dgmyc0irwr" path="res://sfx/charge_shot-loop.wav" id="1_4r1s5"]
+[ext_resource type="AudioStream" uid="uid://hh1qkfxdwwl3" path="res://sfx/charged_shot-loop.wav" id="2_l4tt8"]
+[ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="3_72pfc"]
+[ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_daayl"]
+[ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="5_38oac"]
+[ext_resource type="PackedScene" uid="uid://ffgnenf7m0at" path="res://player/guns/baton/baton.tscn" id="6_klhou"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="7_s06ng"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_gdarx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7pn3"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="Resource" id="Resource_1s1yo"]
+script = ExtResource("4_daayl")
+damage = 60
+speed = 10.0
+distance = 2.0
+collision_shape = SubResource("BoxShape3D_r7pn3")
+ricochet = 1
+penetrations = 20
+hit_wall_effect = ExtResource("3_72pfc")
+enemy_knock_back = 20.0
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[sub_resource type="Resource" id="Resource_5ejfk"]
+script = ExtResource("5_38oac")
+charge_time = 2.0
+projectile_info = SubResource("Resource_1s1yo")
+fire_rate = 0.0
+charge_sound = ExtResource("1_4r1s5")
+charged_sound = ExtResource("2_l4tt8")
+metadata/_custom_type_script = "uid://dc35ml5h2smv7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rptt4"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="Resource" id="Resource_b8hi5"]
+script = ExtResource("4_daayl")
+damage = 20
+speed = 10.0
+distance = 2.0
+collision_shape = SubResource("BoxShape3D_rptt4")
+ricochet = 1
+penetrations = 20
+hit_wall_effect = ExtResource("3_72pfc")
+enemy_knock_back = 15.0
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
+[resource]
+script = ExtResource("8_gdarx")
+model = ExtResource("6_klhou")
+reload_time = 0.8
+reload_audio = ExtResource("7_s06ng")
+fire_rate = 0.5
+spread = 0.01
+projectile_info = SubResource("Resource_b8hi5")
+charge_shot_info = SubResource("Resource_5ejfk")
+metadata/_custom_type_script = "uid://5ihhl4vr45q5"
