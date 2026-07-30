@@ -76,6 +76,10 @@ func reload_ammon() -> void:
 	
 	player_model.gun.abort_shot()
 	
+	if current_gun.ammon_type == GlobalEnums.AmmonType.NONE:
+		set_ammon_on_mag(current_gun,current_gun.ammon_capacity)
+		return
+	
 	if ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_capacity:
 		ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_capacity - get_ammon_on_mag(current_gun)
 		set_ammon_on_mag(current_gun,current_gun.ammon_capacity)
@@ -242,6 +246,8 @@ func reload() -> void:
 	can_reload = can_reload and get_ammon_on_mag(current_gun) < current_gun.ammon_capacity
 	can_reload = can_reload and ammon_inventory[current_gun.ammon_type] > 0
 	
+	if current_gun.ammon_type == GlobalEnums.AmmonType.NONE:
+		can_reload = true
 	
 	if not can_reload:
 		return
@@ -363,11 +369,11 @@ func process_shot(delta: float) -> void:
 			
 			alt_shot()
 			
-			if current_gun.charge_shot_info.ammon_type != GlobalEnums.AmmonType.NONE:
-				if current_gun.ammon_capacity > 0:
-					set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.charge_shot_info.ammon_consumption)
-				else:
-					ammon_inventory[current_gun.charge_shot_info.ammon_type] -= current_gun.charge_shot_info.ammon_consumption
+			
+			if current_gun.ammon_capacity > 0:
+				set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.charge_shot_info.ammon_consumption)
+			elif current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+				ammon_inventory[current_gun.charge_shot_info.ammon_type] -= current_gun.charge_shot_info.ammon_consumption
 			
 			if ammon_inventory[current_gun.charge_shot_info.ammon_type] <= 0:
 				ammon_inventory[current_gun.charge_shot_info.ammon_type] = 0
@@ -406,11 +412,11 @@ func process_shot(delta: float) -> void:
 		
 		time_last_shot = current_gun.fire_rate
 		
-		if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
-			if current_gun.ammon_capacity > 0:
-				set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.ammon_consumption)
-			else:
-				ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
+		
+		if current_gun.ammon_capacity > 0:
+			set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun)-current_gun.ammon_consumption)
+		elif current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+			ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_consumption
 		
 		return
 

@@ -19,6 +19,7 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 @export var minigun_info : GunInfo
 @export var rocket_aluncher_info : GunInfo
+@export var explosion_info : ExplosionInfo
 
 var gun_timer : Timer
 

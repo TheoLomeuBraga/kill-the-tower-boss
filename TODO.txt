@@ -1,3 +1,11 @@
+simplyfy reload logic
+
+add big robot stomp explosion
+
+add big robot projectiles
+
+add big robot enemy
+
 add big robot enemy
 
 add wepon overheat

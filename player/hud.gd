@@ -10,11 +10,19 @@ class_name PlayerHud
 @onready var player_model : PlayerModel = $"../Camera3D/PlayerModel"
 
 func _process(delta: float) -> void:
-	ammon_display.visible = gun_control.current_gun.ammon_type != GlobalEnums.AmmonType.NONE
-	if gun_control.current_gun.ammon_capacity > 0:
-		ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type]) + "/" + str(gun_control.get_ammon_on_mag(gun_control.current_gun))
-	else:
-		ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
+	
+	ammon_display.visible = gun_control.current_gun.ammon_type != GlobalEnums.AmmonType.NONE or gun_control.current_gun.ammon_capacity > 0
+	
+	var ammon_mag:int = gun_control.get_ammon_on_mag(gun_control.current_gun)
+	var ammon_inventory:int = gun_control.ammon_inventory[gun_control.current_gun.ammon_type]
+	
+	if gun_control.current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+		if gun_control.current_gun.ammon_capacity > 0:
+			ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type]) + "/" + str(gun_control.get_ammon_on_mag(gun_control.current_gun))
+		else:
+			ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
+	elif gun_control.current_gun.ammon_capacity > 0:
+		ammon_display.text = str(gun_control.get_ammon_on_mag(gun_control.current_gun))
 	
 	if gun_control.current_gun.ammon_capacity > 0:
 		player_model.gun.display_text = str(gun_control.get_ammon_on_mag(gun_control.current_gun))

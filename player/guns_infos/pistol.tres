@@ -25,7 +25,6 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [resource]
 script = ExtResource("7_oly01")
 model = ExtResource("1_r4nrw")
-ammon_type = 1
 reload_time = 0.8
 reload_audio = ExtResource("6_j7o7f")
 fire_rate = 0.1
