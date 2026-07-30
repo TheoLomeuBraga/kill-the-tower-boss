@@ -19,9 +19,15 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @export var muzle_minigun : Node3D
 @export var muzle_rocket_aluncher : Node3D
 
+const death_explosion : PackedScene = preload("res://vfx/particles/generic_explosion.tscn")
+
 @export var minigun_info : GunInfo
 @export var rocket_aluncher_info : GunInfo
 @export var explosion_info : ExplosionInfo
+
+@export var max_stamina : float = 100.0
+@export var stamina_degradation_speed : float = 5.0
+var stamina : float = max_stamina
 
 var gun_timer : Timer
 
@@ -51,7 +57,9 @@ func decide_state(delta:float) -> void:
 	
 	var dist_player : float = body.global_position.distance_to(Player.player.global_position)
 	
-	if dist_player < desired_distances.x:
+	if stamina <= 0:
+		state = vunerable_state
+	elif dist_player < desired_distances.x:
 		state = stomp_state
 	elif dist_player > desired_distances.x and dist_player < desired_distances.z:
 		state = shot_state
@@ -117,6 +125,7 @@ func shot_state(delta:float) -> void:
 	navegator.target_position = Player.player.global_position
 	navegator.is_navegating = false
 	robot_animation_simplefier.state = RobotAnimationSimplefier.States.SHOT
+	robot_animation_simplefier.can_recover = false
 	
 	var wepon_selection : int = rng.randi_range(0,1)
 	match wepon_selection:
@@ -126,16 +135,45 @@ func shot_state(delta:float) -> void:
 			state = rocket_launcher_state
 
 func vunerable_state(delta:float) -> void:
-	pass
+	navegator.look_target = Navegator.LookTarget.NONE
+	navegator.target_position = Player.player.global_position
+	navegator.is_navegating = false
+	robot_animation_simplefier.state = RobotAnimationSimplefier.States.VUNERABLE
+	
+	state = none_state
+	
+	for c : CollisionShape3D in weak_spots:
+		c.disabled = false
+	
+	
+	gun_timer.start(5.0)
+	await gun_timer.timeout
+	
+	robot_animation_simplefier.can_recover = true
+	
+	for c : CollisionShape3D in weak_spots:
+		c.disabled = true
+	
+	await get_tree().process_frame
+	robot_animation_simplefier.can_recover = true
+	
+	stamina = max_stamina
+	state = decide_state
 
 func die() -> void:
 	state = none_state
 	
-	queue_free()
+	var explosion : Node3D = death_explosion.instantiate()
+	body.get_parent().add_child(explosion)
+	explosion.global_position = body.global_position
+	explosion.global_position.y += 2.0
+	
+	get_parent().queue_free()
 
 
 
-
+func subtract_stamina(damage:int)  -> void:
+	stamina -= damage
 
 func _ready() -> void:
 	view_timer = Timer.new()
@@ -156,8 +194,12 @@ func _ready() -> void:
 	for c : CollisionShape3D in weak_spots:
 		c.disabled = true
 	
+	stamina = max_stamina
+	
+	stats.damaged.connect(subtract_stamina)
 
 func _physics_process(delta: float) -> void:
+	stamina -= delta * stamina_degradation_speed
 	state.call(delta)
 
 func _process(delta: float) -> void:
