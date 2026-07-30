@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="11_c35mf"]
 [ext_resource type="Resource" uid="uid://c88dvsbpk87vj" path="res://player/guns_infos/overheat.tres" id="12_65viv"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
+[ext_resource type="PackedScene" uid="uid://bgj5iinfg2d3o" path="res://player/wepon_wheel/wepon_wheel.tscn" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
@@ -158,3 +159,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
+
+[node name="WeponWheel" parent="." unique_id=819414874 instance=ExtResource("19_c35mf")]
+visible = false

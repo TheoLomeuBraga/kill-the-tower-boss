@@ -21,9 +21,9 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 const death_explosion : PackedScene = preload("res://vfx/particles/generic_explosion.tscn")
 
-@export var minigun_info : GunInfo
-@export var rocket_aluncher_info : GunInfo
-@export var explosion_info : ExplosionInfo
+@export var minigun_info : ProjectileInfo
+@export var rocket_aluncher_info : ProjectileInfo
+@export var stomp_info : ExplosionInfo
 
 @export var max_stamina : float = 100.0
 @export var stamina_degradation_speed : float = 5.0
@@ -91,7 +91,7 @@ func stomp_state(delta:float) -> void:
 	await gun_timer.timeout
 	
 	var explosion : ExplosionBehavior = ExplosionBehavior.new()
-	explosion.data = explosion_info
+	explosion.data = stomp_info
 	add_child(explosion)
 	explosion.global_position = body.global_position
 	
@@ -100,18 +100,43 @@ func stomp_state(delta:float) -> void:
 	
 	state = decide_state
 
+func shot_minigun() -> void:
+	
+	muzle_minigun.look_at(Player.player.global_position)
+	
+	var bullet : ProjectBehavior = ProjectBehavior.new()
+	bullet.data = minigun_info
+	body.get_parent().add_child(bullet)
+	bullet.global_transform = muzle_minigun.global_transform
+	bullet.start()
+	
+
 func minigun_state(delta:float) -> void:
+	
 	state = none_state
-	robot_animation_simplefier.minigun = true
 	
 	gun_timer.start(1.0)
-	
 	await gun_timer.timeout
+	
+	robot_animation_simplefier.minigun = true
+	
+	#gun_timer.start(1.0)
+	#await gun_timer.timeout
+	
+	for i : int in 12:
+		shot_minigun()
+		gun_timer.start(1.0/12.0)
+		await gun_timer.timeout
 	
 	state = decide_state
 
 func rocket_launcher_state(delta:float) -> void:
+	
 	state = none_state
+	
+	gun_timer.start(1.0)
+	await gun_timer.timeout
+	
 	robot_animation_simplefier.shot_rocket = true
 	
 	gun_timer.start(2.0)
@@ -127,11 +152,13 @@ func shot_state(delta:float) -> void:
 	robot_animation_simplefier.state = RobotAnimationSimplefier.States.SHOT
 	robot_animation_simplefier.can_recover = false
 	
-	var wepon_selection : int = rng.randi_range(0,1)
+	var wepon_selection : int = rng.randi_range(0,2)
 	match wepon_selection:
 		0:
 			state = minigun_state
 		1:
+			state = minigun_state
+		2:
 			state = rocket_launcher_state
 
 func vunerable_state(delta:float) -> void:
@@ -199,7 +226,8 @@ func _ready() -> void:
 	stats.damaged.connect(subtract_stamina)
 
 func _physics_process(delta: float) -> void:
-	stamina -= delta * stamina_degradation_speed
+	if state != idle_state:
+		stamina -= delta * stamina_degradation_speed
 	state.call(delta)
 
 func _process(delta: float) -> void:

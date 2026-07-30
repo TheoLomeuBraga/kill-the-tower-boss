@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bgj5iinfg2d3o"]
+
+[ext_resource type="Script" uid="uid://cxfv185lorh56" path="res://player/wepon_wheel/wepon_wheel.gd" id="1_o6rol"]
+[ext_resource type="Texture2D" uid="uid://b1dxr84rd6ppy" path="res://player/wepon_wheel/arow.png" id="2_oqry6"]
+[ext_resource type="Texture2D" uid="uid://8gp1smk075n2" path="res://player/wepon_wheel/select_frame.png" id="3_ewa0c"]
+
+[node name="WeponWheel" type="CenterContainer" unique_id=819414874]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o6rol")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=158126144]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=224378739]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(600, 300)
+render_target_update_mode = 4
+
+[node name="cursor" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=103241698]
+position = Vector2(292, 211.5)
+texture = ExtResource("2_oqry6")
+
+[node name="select_frame" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=57542097]
+texture = ExtResource("3_ewa0c")

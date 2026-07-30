@@ -1,5 +1,3 @@
-add big robot explosion on death
-
 add big robot projectiles
 
 add big robot enemy
@@ -9,6 +7,8 @@ add big robot enemy
 improve projectiles and explosions vfx
 
 add wepon overheat
+
+add weapon wheel
 
 add wepon pickups
 

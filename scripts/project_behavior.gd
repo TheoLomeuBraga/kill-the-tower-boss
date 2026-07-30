@@ -222,8 +222,6 @@ func check_collision_shape() -> void:
 		if not stats or data.faction != stats.faction:
 			add_knock_back(shape.get_collider(i))
 		
-		
-		
 		if stats:
 			if data.faction != stats.faction:
 				

@@ -46,7 +46,7 @@ func shot() -> void:
 	for i : int in info.bullets_per_shot:
 		
 		var projectile : ProjectBehavior = ProjectBehavior.new()
-		add_child(projectile)
+		body.get_parent().add_child(projectile)
 		projectile.global_position = muzle.global_position
 		projectile.muzle_position = muzle.global_position
 		
