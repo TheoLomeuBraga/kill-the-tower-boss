@@ -5,7 +5,9 @@ class_name ExplosionBehavior
 
 var shape : ShapeCast3D
 
-func start() -> void:
+func _ready() -> void:
+	await get_tree().process_frame
+	
 	shape = ShapeCast3D.new()
 	shape.target_position = Vector3.ZERO
 	var sphere_shape : SphereShape3D = SphereShape3D.new()

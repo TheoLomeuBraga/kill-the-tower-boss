@@ -1,6 +1,6 @@
-simplyfy reload logic
+add big robot stamina system
 
-add big robot stomp explosion
+improve projectiles and explosions vfx
 
 add big robot projectiles
 

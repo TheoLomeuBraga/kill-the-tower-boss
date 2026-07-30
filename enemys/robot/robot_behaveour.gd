@@ -5,6 +5,8 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var robot_animation_simplefier : RobotAnimationSimplefier = $"../RobotAnimationSimplefier"
 @onready var navegator : Navegator = $"../Navegator"
 
+@onready var weak_spots : Array[CollisionShape3D] = [$"../heat_sinc_1",$"../heat_sinc_2"]
+
 @onready var visualizer : RayCast3D = $"../player_visualizer"
 @onready var stats : Stats = $"../Stats"
 
@@ -77,12 +79,15 @@ func stomp_state(delta:float) -> void:
 	robot_animation_simplefier.state = RobotAnimationSimplefier.States.STOMP
 	
 	
-	gun_timer.start(1.0)
+	gun_timer.start(0.5)
 	await gun_timer.timeout
 	
-	#TODO: add explosion
+	var explosion : ExplosionBehavior = ExplosionBehavior.new()
+	explosion.data = explosion_info
+	add_child(explosion)
+	explosion.global_position = body.global_position
 	
-	gun_timer.start(0.5)
+	gun_timer.start(1.0)
 	await gun_timer.timeout
 	
 	state = decide_state
@@ -147,6 +152,9 @@ func _ready() -> void:
 	
 	gun_timer = Timer.new()
 	add_child(gun_timer)
+	
+	for c : CollisionShape3D in weak_spots:
+		c.disabled = true
 	
 
 func _physics_process(delta: float) -> void:

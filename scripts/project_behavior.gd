@@ -100,7 +100,6 @@ func self_destruct() -> void:
 			
 			eb.global_position = shape.global_position
 			
-			eb.start()
 	
 	
 	queue_free()
