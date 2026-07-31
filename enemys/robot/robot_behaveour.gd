@@ -111,6 +111,8 @@ func shot_minigun() -> void:
 	bullet.data = minigun_info
 	body.get_parent().add_child(bullet)
 	bullet.global_transform = muzle_minigun.global_transform
+	bullet.muzle_position = muzle_minigun.global_position
+	bullet.global_rotation = muzle_minigun.global_rotation
 	bullet.start()
 	
 	var fx : Node3D = minigun_spawn_fx.instantiate()
@@ -127,9 +129,6 @@ func minigun_state(delta:float) -> void:
 	
 	robot_animation_simplefier.minigun = true
 	
-	#gun_timer.start(1.0)
-	#await gun_timer.timeout
-	
 	for i : int in 12:
 		shot_minigun()
 		gun_timer.start(1.0/12.0)
@@ -145,6 +144,8 @@ func shot_rocket() -> void:
 	bullet.data = rocket_aluncher_info
 	body.get_parent().add_child(bullet)
 	bullet.global_transform = muzle_rocket_aluncher.global_transform
+	bullet.muzle_position = muzle_rocket_aluncher.global_position
+	bullet.global_rotation = muzle_rocket_aluncher.global_rotation
 	bullet.start()
 	
 	var fx : Node3D = rocket_aluncher_spawn_fx.instantiate()
@@ -180,8 +181,6 @@ func shot_state(delta:float) -> void:
 		0:
 			state = minigun_state
 		1:
-			state = minigun_state
-		2:
 			state = rocket_launcher_state
 
 func vunerable_state(delta:float) -> void:

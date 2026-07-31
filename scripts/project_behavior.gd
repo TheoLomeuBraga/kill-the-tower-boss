@@ -33,6 +33,7 @@ func start_ray() -> void:
 		model.top_level = true
 		model.global_position = muzle_position
 		model.look_at(global_position + (global_basis.z * -data.distance))
+		
 
 func start_shape() -> void:
 	shape = ShapeCast3D.new()
@@ -44,6 +45,7 @@ func start_shape() -> void:
 	if data.model:
 		model = data.model.instantiate()
 		add_child(model)
+		
 	
 	velocity_y = data.rise_and_drop.x
 

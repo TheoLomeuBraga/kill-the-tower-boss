@@ -11,6 +11,7 @@ var node_placer : Node2D
 
 var test_wepon_image : Texture2D = load("res://player/wepon_wheel/test_gun.png")
 
+var change_mouse : bool = false
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mm : InputEventMouseMotion = event
@@ -20,6 +21,16 @@ func _input(event: InputEvent) -> void:
 		var mouse_relative_pos : Vector2 = (Vector2(subviewport.size) * mouse_pos) / Vector2(get_viewport().get_visible_rect().size)
 		cursor.look_at(mouse_relative_pos)
 		cursor.rotation += PI/2
+	
+	
+	if not change_mouse:
+		return
+	change_mouse = false
+	
+	if visible:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
 var wepons_sprites : Dictionary[float,Sprite2D]
 var wepons_ids : Dictionary[Sprite2D,int]
@@ -104,6 +115,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("wepon_select"):
 		visible = true
+		change_mouse = true
 	
 	if not visible:
 		return
@@ -111,11 +123,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("wepon_select"):
 		gun_control.set_gun(curent_selected_wepon)
 		visible = false
+		change_mouse = true
 	
-	if visible:
-		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
+	
 	
 	find_selected_wepon()
 	
