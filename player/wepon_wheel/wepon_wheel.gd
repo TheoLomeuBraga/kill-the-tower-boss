@@ -100,7 +100,7 @@ func get_wepon_info(id:int) -> String:
 	
 	if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
 		if current_gun.ammon_capacity > 0:
-			var mag_ammon : int = max(0,gun_control.get_ammon_on_mag(gun_control.current_gun))
+			var mag_ammon : int = max(0,gun_control.get_ammon_on_mag(current_gun))
 			ret = str(gun_control.ammon_inventory[current_gun.ammon_type]) + "/" + str(mag_ammon)
 		else:
 			ret = str(gun_control.ammon_inventory[current_gun.ammon_type])

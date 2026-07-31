@@ -59,6 +59,9 @@ func process_inventory_reload_time(delta:float) -> void:
 		else:
 			inventory_reload_time[gi] = 0.0
 		
+		if gi != current_gun and inventory_reload_time[gi] >= gi.inventory_reload_time:
+			reload_ammon(gi)
+			inventory_reload_time[gi] = 0.0
 
 func get_inventory_reload_time(gun:GunInfo) -> float:
 	if not inventory_reload_time.has(gun):
@@ -70,22 +73,22 @@ func set_inventory_reload_time(gun:GunInfo,value:float) -> void:
 		inventory_reload_time[gun] = 0.0
 	inventory_reload_time[gun] = value
 
-func reload_ammon() -> void:
+func reload_ammon(gun:GunInfo=current_gun) -> void:
 	
-	is_reloading = false
+	if gun == current_gun:
+		is_reloading = false
+		player_model.gun.abort_shot()
 	
-	player_model.gun.abort_shot()
-	
-	if current_gun.ammon_type == GlobalEnums.AmmonType.NONE:
-		set_ammon_on_mag(current_gun,current_gun.ammon_capacity)
+	if gun.ammon_type == GlobalEnums.AmmonType.NONE:
+		set_ammon_on_mag(gun,gun.ammon_capacity)
 		return
 	
-	if ammon_inventory[current_gun.ammon_type] >= current_gun.ammon_capacity:
-		ammon_inventory[current_gun.ammon_type] -= current_gun.ammon_capacity - get_ammon_on_mag(current_gun)
-		set_ammon_on_mag(current_gun,current_gun.ammon_capacity)
+	if ammon_inventory[gun.ammon_type] >= gun.ammon_capacity:
+		ammon_inventory[gun.ammon_type] -= gun.ammon_capacity - get_ammon_on_mag(gun)
+		set_ammon_on_mag(gun,gun.ammon_capacity)
 	else:
-		set_ammon_on_mag(current_gun,get_ammon_on_mag(current_gun) + ammon_inventory[current_gun.ammon_type])
-		ammon_inventory[current_gun.ammon_type] = 0
+		set_ammon_on_mag(gun,get_ammon_on_mag(gun) + ammon_inventory[gun.ammon_type])
+		ammon_inventory[gun.ammon_type] = 0
 
 var is_reloading : bool = false
 var is_reloading_timer : Timer
@@ -107,8 +110,8 @@ func set_gun(no : int) -> void:
 	player_model.visible = false
 	
 	
-	if get_inventory_reload_time(current_gun) >= current_gun.inventory_reload_time:
-		reload_ammon()
+	#if get_inventory_reload_time(current_gun) >= current_gun.inventory_reload_time:
+	#	reload_ammon()
 	
 	await get_tree().process_frame
 	
