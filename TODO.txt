@@ -1,4 +1,6 @@
-add icons to weapon wheel
+add icons to weapon wheel wepons and ammon
+
+add colors to weapon wheel ammon display
 
 add big robot enemy sfx
 
