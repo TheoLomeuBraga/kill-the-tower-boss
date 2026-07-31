@@ -1,16 +1,12 @@
-add big robot enemy
-
 add icons to weapon wheel
 
-improve projectiles and explosions vfx
+add big robot enemy sfx
+
+add generic enemy sfx
 
 add wepon overheat
 
 add wepon pickups
-
-add generic enemy sfx
-
-add robot sfx
 
 create simple test level
 
