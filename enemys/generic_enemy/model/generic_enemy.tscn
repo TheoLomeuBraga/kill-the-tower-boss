@@ -322,32 +322,32 @@ node_connections = [&"output", 0, &"death_state", &"Transition", 0, &"Animation"
 script = ExtResource("2_sq4vr")
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(826584716) index="0" unique_id=16005913]
-bones/1/position = Vector3(0, 1.0086133, -0.055199984)
-bones/1/rotation = Quaternion(0.0046882275, 0, 0, 0.99998903)
+bones/1/position = Vector3(0, 1.0089976, -0.055199984)
+bones/1/rotation = Quaternion(0.0024654448, 0, 0, 0.99999696)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.083053574, 0.74028766, -0.6653541, 0.048789203)
-bones/10/rotation = Quaternion(-0.081913196, -0.7020037, -0.052498072, 0.7054963)
+bones/9/rotation = Quaternion(0.07631551, 0.74183464, -0.6649437, 0.041319087)
+bones/10/rotation = Quaternion(-0.071290806, -0.7030459, -0.04569017, 0.7060855)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.08305366, 0.7402875, -0.66535425, -0.048789207)
-bones/14/rotation = Quaternion(-0.08191319, 0.7020037, 0.05249806, 0.7054963)
+bones/13/rotation = Quaternion(-0.07631551, 0.74183476, -0.6649436, -0.04131912)
+bones/14/rotation = Quaternion(-0.07129078, 0.7030458, 0.04569017, 0.7060855)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.506111e-08, 0.013140918, 0.9999137, -3.9875956e-09)
-bones/19/rotation = Quaternion(-4.2199903e-17, 0.9998178, -0.019089906, -7.5278116e-16)
+bones/18/rotation = Quaternion(2.1926157e-08, 0.0070772017, 0.999975, -1.3877566e-10)
+bones/19/rotation = Quaternion(-1.5121273e-16, 0.99994576, -0.010422923, 9.977969e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(1.879061e-08, 0.013140918, 0.9999137, 3.6282093e-09)
-bones/24/rotation = Quaternion(-4.2199903e-17, 0.9998178, -0.019089906, -7.5278116e-16)
+bones/23/rotation = Quaternion(2.1926157e-08, 0.0070772017, 0.999975, -1.3877566e-10)
+bones/24/rotation = Quaternion(2.0518927e-16, 0.99994576, -0.010422923, 2.3192599e-15)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=1989641506]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -2.9441152e-31, 0.99995595, -0.009376244, 3.139827e-29, 0.009376244, 0.9999559, 9.6707895e-15, 1.77923, 0.031929266)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.5482505e-31, 0.9999878, -0.0049307663, 3.139927e-29, 0.0049307663, 0.9999877, 9.6707895e-15, 1.779994, 0.028502569)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=973354077]
-transform = Transform3D(-1.5646219e-07, 6.9849193e-09, 1.0000001, 1.0000001, -1.6391277e-07, 1.2665987e-07, 5.122274e-08, 1, -4.400499e-08, -0.09529996, 1.4509934, 0.4508006)
+transform = Transform3D(3.7252903e-08, 5.599577e-08, 1.0000001, 0.99999994, -9.9651515e-08, -6.7055225e-08, 4.9360096e-08, 1, -1.7601997e-07, -0.09529996, 1.4515904, 0.4479655)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=1438315029]
 visible = false
@@ -359,7 +359,7 @@ visible = false
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=1814487658]
-transform = Transform3D(-0.015301645, 0.17798126, 0.98391485, 0.88990766, -0.44623193, 0.09455897, 0.4558839, 0.87704027, -0.15155883, -0.19529998, 1.5830207, -0.021312743)
+transform = Transform3D(-0.014324576, 0.17813134, 0.98390245, 0.8894504, -0.44727594, 0.09392692, 0.45680714, 0.8764779, -0.15203205, -0.19529998, 1.58355, -0.023866646)
 
 [node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=221805752]
 visible = false
@@ -377,7 +377,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.999956, -0.009376353, 0, 0.009376353, 0.999956, 3.9013474e-15, 1.291087, 0.0022510793)
+transform = Transform3D(1, 0, 0, 0, 0.99998784, -0.004930875, 0, 0.004930875, 0.99998784, 3.9013474e-15, 1.291724, 0.000994755)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -447,7 +447,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5830207, -0.021312743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.58355, -0.023866646)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -466,11 +466,11 @@ libraries/ = SubResource("AnimationLibrary_0cgij")
 speed_scale = 2.0
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -2.9441152e-31, 0.99995595, -0.009376244, 3.139827e-29, 0.009376244, 0.9999559, 9.6707895e-15, 1.77923, 0.031929266)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.5482505e-31, 0.9999878, -0.0049307663, 3.139927e-29, 0.0049307663, 0.9999877, 9.6707895e-15, 1.779994, 0.028502569)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.999956, -0.009376353, 0, 0.009376353, 0.999956, 3.9013474e-15, 1.291087, 0.0022510793)
+transform = Transform3D(1, 0, 0, 0, 0.99998784, -0.004930875, 0, 0.004930875, 0.99998784, 3.9013474e-15, 1.291724, 0.000994755)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]

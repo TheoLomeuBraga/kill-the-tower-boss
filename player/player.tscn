@@ -160,5 +160,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
 
-[node name="WeponWheel" parent="." unique_id=819414874 instance=ExtResource("19_c35mf")]
+[node name="WeponWheel" parent="." unique_id=819414874 node_paths=PackedStringArray("gun_control", "player_movement") instance=ExtResource("19_c35mf")]
 visible = false
+gun_control = NodePath("../Camera3D/GunControl")
+player_movement = NodePath("../PlayerMovement")

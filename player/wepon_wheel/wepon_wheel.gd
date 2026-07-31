@@ -4,6 +4,8 @@ class_name WeaponWheel
 @onready var subviewport : SubViewport = $SubViewportContainer/SubViewport
 @onready var cursor : Sprite2D = $SubViewportContainer/SubViewport/cursor
 @onready var select_frame : Sprite2D = $SubViewportContainer/SubViewport/select_frame
+@export var gun_control : GunControl
+@export var player_movement : PlayerMovement
 
 var node_placer : Node2D
 
@@ -37,13 +39,15 @@ func place_node_rot(rot:float) -> void:
 	last_weapon_id+=1
 
 
-@export var weapon_count : int = 8
+var weapon_count : int = 8
 
 var curent_selected_wepon : int = 0
 
 func reset() -> void:
 	
-	if not visible:
+	weapon_count = gun_control.inventory.size()
+	
+	if not visible or weapon_count == 0:
 		return
 	
 	for s : Sprite2D in wepons_ids:
@@ -95,7 +99,23 @@ func find_selected_wepon() -> void:
 	curent_selected_wepon = wepons_ids[selected_sprite]
 
 func _process(delta: float) -> void:
+	
+	player_movement.block_camera_rotetion = visible
+	
+	if Input.is_action_just_pressed("wepon_select"):
+		visible = true
+	
 	if not visible:
 		return
+	
+	if Input.is_action_just_released("wepon_select"):
+		gun_control.set_gun(curent_selected_wepon)
+		visible = false
+	
+	if visible:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
+	
 	find_selected_wepon()
 	

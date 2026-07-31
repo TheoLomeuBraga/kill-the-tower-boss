@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="6_0wcit"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="7_4xy2x"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="8_p8rdg"]
+[ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="9_4xy2x"]
+[ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="11_p8rdg"]
+[ext_resource type="PackedScene" uid="uid://buehu5ok5xvw7" path="res://player/projectiles/generic_misile.tscn" id="12_p8rdg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b2jhj"]
 height = 2.1635742
@@ -145,6 +148,33 @@ hit_wall_effect = ExtResource("5_0s5fp")
 spawn_effect = ExtResource("8_p8rdg")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6y4w1"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_mdmf5"]
+script = ExtResource("5_gmf0c")
+damage_type = 1
+faction = 1
+damage = 25
+friendly_damage = 0
+model = ExtResource("9_4xy2x")
+knock_back = 10.0
+metadata/_custom_type_script = "uid://dy1nyorfgrxi1"
+
+[sub_resource type="Resource" id="Resource_khshw"]
+script = ExtResource("7_4xy2x")
+faction = 1
+damage = 0
+damage_type = 1
+speed = 15.0
+distance = 100.0
+model = ExtResource("12_p8rdg")
+collision_shape = SubResource("SphereShape3D_6y4w1")
+explosion_info = SubResource("Resource_mdmf5")
+hit_wall_effect = ExtResource("11_p8rdg")
+spawn_effect = ExtResource("8_p8rdg")
+metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
+
 [sub_resource type="Resource" id="Resource_r23pr"]
 script = ExtResource("5_gmf0c")
 faction = 1
@@ -158,7 +188,7 @@ platform_on_leave = 2
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2134243847) index="0" unique_id=344284760]
 bones/1/position = Vector3(-2.2185712e-07, 0.3, -1.4692932)
 bones/1/rotation = Quaternion(-0.7071068, -3.6808345e-07, 4.7485364e-07, 0.7071068)
-bones/2/rotation = Quaternion(1.1310198e-15, 0.15917805, -7.014834e-15, 0.9872499)
+bones/2/rotation = Quaternion(-1.7352275e-16, -0.024420006, -7.103309e-15, 0.9997018)
 bones/4/rotation = Quaternion(0.7071068, -5.8157804e-07, -1.3347006e-06, 0.7071068)
 bones/5/rotation = Quaternion(-2.8342733e-08, -0.44628122, -5.6833102e-08, 0.8948928)
 bones/6/position = Vector3(0.10964003, 0.563822, 3.0890476e-08)
@@ -175,37 +205,37 @@ bones/18/position = Vector3(0.5160247, 0.4265015, 0.06576106)
 bones/19/position = Vector3(-0.5160247, 0.4265015, 0.06576106)
 
 [node name="cannon_l_001" parent="Armature/Skeleton3D" index="0" unique_id=1319934437]
-transform = Transform3D(0.57117456, 0.31429702, -0.75827235, -0.7987492, 1.4995763e-13, -0.60166407, -0.18910122, 0.94932467, 0.25104448, 0.8530691, 2.5802429, 0.4623706)
+transform = Transform3D(0.6009465, -0.04882544, -0.79779655, -0.7987492, 1.5886461e-13, -0.60166407, 0.02937651, 0.9988073, -0.03899928, 0.737285, 2.5802429, 0.75880504)
 
 [node name="cannon_l" parent="Armature/Skeleton3D" index="1" unique_id=587602365]
-transform = Transform3D(0.9493247, 0.3142969, -2.572697e-06, -2.7100273e-06, 1.7087942e-13, -1, -0.3142969, 0.9493247, 8.517504e-07, 0.7299466, 2.5802429, 0.09048247)
+transform = Transform3D(0.9988073, -0.048825566, -2.706795e-06, -2.7100273e-06, 1.797864e-13, -1, 0.048825566, 0.9988073, -1.323215e-07, 0.75641197, 2.5802429, 0.36753258)
 
 [node name="minigun_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_l" index="1" unique_id=1533061670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703, -0.092)
 
 [node name="hear_sink_l" parent="Armature/Skeleton3D" index="2" unique_id=378002061]
-transform = Transform3D(0.6188364, 0.7199023, 0.3142964, -0.75833094, 0.6518698, 8.3463596e-07, -0.20487972, -0.23834121, 0.9493249, 0.10408404, 2.8221295, 0.26554063)
+transform = Transform3D(0.65109223, 0.7574265, -0.048826084, -0.75833094, 0.6518698, 8.3463596e-07, 0.03182888, 0.037025787, 0.99880725, 0.10950926, 2.8221295, 0.3053534)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_l" index="1" unique_id=1835808622]
 remote_path = NodePath("../../../../heat_sinc_1")
 
 [node name="hear_sink_r" parent="Armature/Skeleton3D" index="3" unique_id=207692011]
-transform = Transform3D(0.61883575, -0.71990234, 0.31429762, 0.75833094, 0.6518698, 8.346362e-07, -0.20488173, 0.23834111, 0.9493245, -0.10408394, 2.8221295, 0.3344597)
+transform = Transform3D(0.6510923, -0.7574265, -0.0488248, 0.75833094, 0.6518698, 8.346362e-07, 0.031826776, -0.0370259, 0.9988074, -0.109509274, 2.8221295, 0.29464695)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_r" index="1" unique_id=948268512]
 remote_path = NodePath("../../../../heat_sinc_2")
 
 [node name="cannon_r_001" parent="Armature/Skeleton3D" index="4" unique_id=1235305080]
-transform = Transform3D(0.94932467, 0.314297, 2.4067115e-06, 2.5351815e-06, 1.4807966e-13, -1, -0.31429702, 0.9493246, -7.967973e-07, -0.58763945, 2.5802429, 0.9393523)
+transform = Transform3D(0.9988073, -0.048825435, 2.5321576e-06, 2.5351815e-06, 1.5698665e-13, -1, 0.04882544, 0.99880725, 1.2378422e-07, -0.77851915, 2.5802429, 0.6847068)
 
 [node name="cannon_r" parent="Armature/Skeleton3D" index="5" unique_id=1454144332]
-transform = Transform3D(0.9493247, 0.3142969, 2.572697e-06, 2.7100273e-06, 1.7087942e-13, -1, -0.3142969, 0.9493247, -8.517504e-07, -0.71076196, 2.5802429, 0.5674641)
+transform = Transform3D(0.9988073, -0.048825566, 2.706795e-06, 2.7100273e-06, 1.797864e-13, -1, 0.048825566, 0.9988073, 1.323215e-07, -0.7593922, 2.5802429, 0.29343438)
 
 [node name="rocket_launcher_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_r" index="1" unique_id=960287249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635, 0)
 
 [node name="body" parent="Armature/Skeleton3D" index="6" unique_id=1535463379]
-transform = Transform3D(0.9493251, 5.610111e-27, 0.3142959, -5.6573805e-14, 1, 1.7087948e-13, -0.3142959, 4.2353823e-22, 0.9493251, 3.4083445e-15, 2.2583075, 0.3)
+transform = Transform3D(0.99880725, -8.470345e-22, -0.04882663, 8.788632e-15, 1, 1.7978639e-13, 0.04882663, 6.3528824e-22, 0.99880725, 2.9648415e-15, 2.2583075, 0.3)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/body" index="1" unique_id=1279801940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505, 0)
@@ -220,7 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0.18)
 remote_path = NodePath("../../../../CollisionShape3D4")
 
 [node name="spine_001" parent="Armature/Skeleton3D" index="7" unique_id=1096119712]
-transform = Transform3D(0.9493251, 1.9689968e-26, 0.3142959, -5.6573805e-14, 1, 1.7087948e-13, -0.3142959, 4.2351647e-22, 0.9493251, 1.1917032e-14, 2.1, 0.3)
+transform = Transform3D(0.99880725, -8.470135e-22, -0.04882663, 8.788632e-15, 1, 1.7978639e-13, 0.04882663, 6.352731e-22, 0.99880725, 1.1917032e-14, 2.1, 0.3)
 
 [node name="leg_l_003" parent="Armature/Skeleton3D" index="8" unique_id=806806764]
 transform = Transform3D(-0.9950487, -2.3376197e-07, -0.09938768, 2.5477493e-07, -0.99999976, -6.556511e-07, -0.09938768, -6.183982e-07, 0.99504876, 0.5160245, 0.42650157, 0.065761045)
@@ -276,15 +306,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0817871, 0)
 shape = SubResource("CylinderShape3D_b2jhj")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2" unique_id=504366089]
-transform = Transform3D(0.9493251, 5.610111e-27, 0.3142959, -5.6573805e-14, 1, 1.7087948e-13, -0.3142959, 4.2353823e-22, 0.9493251, 3.4083445e-15, 2.7633076, 0.3)
+transform = Transform3D(0.99880725, -8.470345e-22, -0.04882663, 8.788632e-15, 1, 1.7978639e-13, 0.04882663, 6.3528824e-22, 0.99880725, 2.964841e-15, 2.7633076, 0.3)
 shape = SubResource("BoxShape3D_b2jhj")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3" unique_id=1895899285]
-transform = Transform3D(0.9493251, -0.29626834, 0.104914136, -5.6573805e-14, 0.3338069, 0.9426415, -0.3142959, -0.8948732, 0.31689125, 0.21057825, 2.7583075, 0.93604785)
+transform = Transform3D(0.99880725, 0.04602601, -0.016298667, 8.788632e-15, 0.3338069, 0.9426415, 0.04882663, -0.9415172, 0.33340874, -0.032713845, 2.7583075, 0.9692009)
 shape = SubResource("BoxShape3D_oisd7")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="4" unique_id=694486543]
-transform = Transform3D(0.9493251, 5.610111e-27, 0.3142959, -5.6573805e-14, 1, 1.7087948e-13, -0.3142959, 4.2353823e-22, 0.9493251, 0.05657326, 2.5783074, 0.47087854)
+transform = Transform3D(0.99880725, -8.470345e-22, -0.04882663, 8.788632e-15, 1, 1.7978639e-13, 0.04882663, 6.3528824e-22, 0.99880725, -0.008788794, 2.5783074, 0.47978532)
 shape = SubResource("BoxShape3D_tn8ol")
 
 [node name="machinegun_muzle" type="Node3D" parent="CollisionShape3D4" index="0" unique_id=668656354]
@@ -294,12 +324,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.7)
 
 [node name="heat_sinc_1" type="CollisionShape3D" parent="." index="5" unique_id=1438787852]
-transform = Transform3D(0.6188364, 0.7199023, 0.3142964, -0.75833094, 0.6518698, 8.3463596e-07, -0.20487972, -0.23834121, 0.9493249, 0.10408404, 2.8221295, 0.26554063)
+transform = Transform3D(0.65109223, 0.7574265, -0.048826084, -0.75833094, 0.6518698, 8.3463596e-07, 0.03182888, 0.037025787, 0.99880725, 0.10950926, 2.8221295, 0.3053534)
 shape = SubResource("BoxShape3D_qxkbx")
 disabled = true
 
 [node name="heat_sinc_2" type="CollisionShape3D" parent="." index="6" unique_id=1873630124]
-transform = Transform3D(0.61883575, -0.71990234, 0.31429762, 0.75833094, 0.6518698, 8.346362e-07, -0.20488173, 0.23834111, 0.9493245, -0.10408394, 2.8221295, 0.3344597)
+transform = Transform3D(0.6510923, -0.7574265, -0.0488248, 0.75833094, 0.6518698, 8.346362e-07, 0.031826776, -0.0370259, 0.9988074, -0.109509274, 2.8221295, 0.29464695)
 shape = SubResource("BoxShape3D_qxkbx")
 disabled = true
 
@@ -324,8 +354,8 @@ script = ExtResource("2_2tgvq")
 
 [node name="Stats" type="Node" parent="." index="10" unique_id=313767597 node_paths=PackedStringArray("multplyer_areas")]
 script = ExtResource("2_3xmqp")
-max_health = 500
-health = 500
+max_health = 1000
+health = 1000
 multplyer_areas = {
 NodePath("../CollisionShape3D"): 0.1,
 NodePath("../CollisionShape3D2"): 0.1,
@@ -345,7 +375,10 @@ metadata/_custom_type_script = "uid://u7trxdlheisb"
 script = ExtResource("3_tn8ol")
 muzle_minigun = NodePath("../Armature/Skeleton3D/cannon_l/minigun_muzle")
 muzle_rocket_aluncher = NodePath("../Armature/Skeleton3D/cannon_r/rocket_launcher_muzle")
+minigun_spawn_fx = ExtResource("8_p8rdg")
 minigun_info = SubResource("Resource_6y4w1")
+rocket_aluncher_spawn_fx = ExtResource("8_p8rdg")
+rocket_aluncher_info = SubResource("Resource_khshw")
 stomp_info = SubResource("Resource_r23pr")
 
 [node name="Navegator" type="NavigationAgent3D" parent="." index="12" unique_id=1354827301]

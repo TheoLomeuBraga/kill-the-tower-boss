@@ -1,14 +1,10 @@
-add big robot projectiles
-
 add big robot enemy
 
-add big robot enemy
+add icons to weapon wheel
 
 improve projectiles and explosions vfx
 
 add wepon overheat
-
-add weapon wheel
 
 add wepon pickups
 

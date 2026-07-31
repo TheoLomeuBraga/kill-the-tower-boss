@@ -32,6 +32,8 @@ func try_jump() -> void:
 @export var grapple_hope : Node3D
 var grapple_place : Vector3
 
+@export var block_camera_rotetion : bool = false
+
 func launch_grapple() -> void:
 	if grapple_raycast.is_colliding() and grapple_raycast.get_collision_point().distance_to(body.global_position) < grapple_range:
 		grapple_place = grapple_raycast.get_collision_point()
@@ -121,12 +123,19 @@ func floor_estate(delta : float) -> void:
 @export var sensitivity_multplyer : float = 1.0
 
 func _input(event: InputEvent) -> void:
+	
+	if block_camera_rotetion:
+		return
+	
 	if event is InputEventMouseMotion:
 		var mm : InputEventMouseMotion = event
 		body.rotation.y -= mouse_sensitivity * sensitivity_multplyer * mm.screen_relative.x
 		camera.rotation.x -= mouse_sensitivity * sensitivity_multplyer * mm.screen_relative.y
 
 func camera_process(delta : float) -> void:
+	
+	if block_camera_rotetion:
+		return
 	
 	body.rotation.y += delta * Input.get_axis("look_right","look_left") * joystick_sensitivity * sensitivity_multplyer
 	camera.rotation.x += delta * Input.get_axis("look_down","look_up") * joystick_sensitivity * sensitivity_multplyer

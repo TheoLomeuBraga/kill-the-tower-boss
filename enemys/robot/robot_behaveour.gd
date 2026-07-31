@@ -21,7 +21,10 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 const death_explosion : PackedScene = preload("res://vfx/particles/generic_explosion.tscn")
 
+@export var minigun_spawn_fx : PackedScene
 @export var minigun_info : ProjectileInfo
+
+@export var rocket_aluncher_spawn_fx : PackedScene
 @export var rocket_aluncher_info : ProjectileInfo
 @export var stomp_info : ExplosionInfo
 
@@ -110,6 +113,10 @@ func shot_minigun() -> void:
 	bullet.global_transform = muzle_minigun.global_transform
 	bullet.start()
 	
+	var fx : Node3D = minigun_spawn_fx.instantiate()
+	body.get_parent().add_child(fx)
+	fx.global_transform = muzle_minigun.global_transform
+	
 
 func minigun_state(delta:float) -> void:
 	
@@ -130,6 +137,20 @@ func minigun_state(delta:float) -> void:
 	
 	state = decide_state
 
+func shot_rocket() -> void:
+	
+	muzle_rocket_aluncher.look_at(Player.player.global_position)
+	
+	var bullet : ProjectBehavior = ProjectBehavior.new()
+	bullet.data = rocket_aluncher_info
+	body.get_parent().add_child(bullet)
+	bullet.global_transform = muzle_rocket_aluncher.global_transform
+	bullet.start()
+	
+	var fx : Node3D = rocket_aluncher_spawn_fx.instantiate()
+	body.get_parent().add_child(fx)
+	fx.global_transform = muzle_rocket_aluncher.global_transform
+
 func rocket_launcher_state(delta:float) -> void:
 	
 	state = none_state
@@ -138,6 +159,8 @@ func rocket_launcher_state(delta:float) -> void:
 	await gun_timer.timeout
 	
 	robot_animation_simplefier.shot_rocket = true
+	
+	shot_rocket()
 	
 	gun_timer.start(2.0)
 	

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://buehu5ok5xvw7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8at3u"]
+albedo_color = Color(0.52194464, 0.52194464, 0.52194464, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rvoyk"]
+material = SubResource("StandardMaterial3D_8at3u")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 4
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujulv"]
+albedo_color = Color(0.97150534, 0, 0.18343991, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w3b3y"]
+material = SubResource("StandardMaterial3D_ujulv")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.1
+radial_segments = 4
+rings = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ix1ds"]
+material = SubResource("StandardMaterial3D_ujulv")
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.1
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Gradient" id="Gradient_ujulv"]
+offsets = PackedFloat32Array(0, 0.77384096)
+colors = PackedColorArray(0.8392157, 1, 0, 1, 0.215466, 0.215466, 0.215466, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oysl6"]
+gradient = SubResource("Gradient_ujulv")
+
+[sub_resource type="Curve" id="Curve_pa0au"]
+
+[sub_resource type="Curve" id="Curve_1hn64"]
+
+[sub_resource type="Curve" id="Curve_ovmhp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hmyvt"]
+curve_x = SubResource("Curve_pa0au")
+curve_y = SubResource("Curve_1hn64")
+curve_z = SubResource("Curve_ovmhp")
+
+[sub_resource type="Curve" id="Curve_w3b3y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057024717, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r07op"]
+curve = SubResource("Curve_w3b3y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b2jhj"]
+directional_velocity_min = -1.0000161
+directional_velocity_max = -1.0000161
+directional_velocity_curve = SubResource("CurveXYZTexture_hmyvt")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_r07op")
+color_ramp = SubResource("GradientTexture1D_oysl6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4skoa"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_qxkbx"]
+material = SubResource("StandardMaterial3D_4skoa")
+radius = 0.1
+height = 0.2
+radial_segments = 5
+rings = 2
+
+[node name="GenericBullet" type="Node3D" unique_id=881148961]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1696321159]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -1.3385852e-09, 0, -0.03062326)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_rvoyk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1107132569]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -1.8823139e-08, -7.450581e-09, -0.23062325)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_w3b3y")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=924587222]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 3.3171825e-09, 0, 0.022632515)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_ix1ds")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=506909435]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.6844542e-08, 0, 0.17736748)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_b2jhj")
+draw_pass_1 = SubResource("SphereMesh_qxkbx")

@@ -43,8 +43,11 @@ colors = PackedColorArray(0, 0.007843138, 0.047058824, 1, 0.1317595, 0.17607293,
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_p6j8j"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3l36l"]
+width = 128
+height = 128
 noise = SubResource("FastNoiseLite_p6j8j")
 color_ramp = SubResource("Gradient_r23pr")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuspp"]
 albedo_texture = SubResource("NoiseTexture2D_3l36l")
@@ -332,30 +335,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.98843426, 0, -0.15160206, 0, 1, 0, 0.15160206, 0, -0.98843426, -3, 1, 3)
+transform = Transform3D(0.61696684, 0, -0.7869798, 0, 1, 0, 0.7869798, 0, 0.61696684, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.79716873, 0, 0.6037467, 0, 1, 0, -0.6037467, 0, 0.79716873, -3, 1, 4)
+transform = Transform3D(-0.9181074, 0, 0.3963162, 0, 1, 0, -0.3963162, 0, -0.9181074, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.26887375, 0, -0.96317, 0, 1, 0, 0.96317, 0, -0.26887375, -3, 1, 5)
+transform = Transform3D(0.9708545, 0, 0.23964666, 0, 1, 0, -0.23964666, 0, 0.9708545, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.73684615, 0, 0.67604923, 0, 1, 0, -0.67604923, 0, -0.73684615, -3, 1, 6)
+transform = Transform3D(-0.22773193, 0, -0.9737159, 0, 1, 0, 0.9737159, 0, -0.22773193, -3, 1, 6)
 ammon = 4
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.98213905, 0, 0.18812603, 0, 1, 0, -0.18812603, 0, 0.98213905, -3, 1, 7)
+transform = Transform3D(-0.6474536, 0, 0.7620971, 0, 1, 0, -0.7620971, 0, -0.6474536, -3, 1, 7)
 ammon = 50
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.30692515, 0, -0.9517267, 0, 1, 0, 0.9517267, 0, -0.30692515, -3, 1, 8)
+transform = Transform3D(0.9796066, 0, 0.20089158, 0, 1, 0, -0.20089158, 0, 0.9796066, -3, 1, 8)
 ammon = 3
 type = 5
 
