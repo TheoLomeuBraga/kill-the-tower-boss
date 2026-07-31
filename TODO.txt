@@ -1,3 +1,5 @@
+add weapon info to weapon wheel
+
 add icons to weapon wheel
 
 add big robot enemy sfx
