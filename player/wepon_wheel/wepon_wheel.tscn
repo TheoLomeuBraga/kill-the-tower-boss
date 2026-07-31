@@ -30,3 +30,11 @@ texture = ExtResource("2_oqry6")
 
 [node name="select_frame" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=57542097]
 texture = ExtResource("3_ewa0c")
+
+[node name="Label" type="Label" parent="." unique_id=1519958891]
+layout_mode = 2
+text = "
+
+
+100/100"
+horizontal_alignment = 1

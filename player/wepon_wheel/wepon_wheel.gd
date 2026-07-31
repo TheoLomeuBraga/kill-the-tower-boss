@@ -7,6 +7,12 @@ class_name WeaponWheel
 @export var gun_control : GunControl
 @export var player_movement : PlayerMovement
 
+@export var weapon_ammon_info : String = "100/100" :
+	set(value):
+		weapon_ammon_info = value
+		if $Label:
+			$Label.text = "\n\n\n\n"+weapon_ammon_info
+
 var node_placer : Node2D
 
 var test_wepon_image : Texture2D = load("res://player/wepon_wheel/test_gun.png")
@@ -86,6 +92,23 @@ func sort_coser_zero(a, b):
 		return true
 	return false
 
+func get_wepon_info(id:int) -> String:
+	var ret : String = ""
+	
+	var current_gun : GunInfo = gun_control.inventory[id]
+	var ammon_inventory:int = gun_control.ammon_inventory[current_gun.ammon_type]
+	
+	if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+		if current_gun.ammon_capacity > 0:
+			var mag_ammon : int = max(0,gun_control.get_ammon_on_mag(gun_control.current_gun))
+			ret = str(gun_control.ammon_inventory[current_gun.ammon_type]) + "/" + str(mag_ammon)
+		else:
+			ret = str(gun_control.ammon_inventory[current_gun.ammon_type])
+	elif current_gun.ammon_capacity > 0:
+		ret = str(gun_control.get_ammon_on_mag(current_gun))
+	
+	return ret
+
 func find_selected_wepon() -> void:
 	
 	var joy_vec : Vector2 = Input.get_vector("look_down","look_up","look_left","look_right")
@@ -108,6 +131,8 @@ func find_selected_wepon() -> void:
 	select_frame.global_transform = selected_sprite.global_transform
 	
 	curent_selected_wepon = wepons_ids[selected_sprite]
+	
+	weapon_ammon_info = get_wepon_info(curent_selected_wepon)
 
 func _process(delta: float) -> void:
 	
