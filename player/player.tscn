@@ -139,24 +139,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ammon_display" type="Label" parent="HUD" unique_id=1709144416]
+[node name="ammon_display" type="RichTextLabel" parent="HUD" unique_id=1475917363]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79300004
-anchor_top = 0.85600007
+anchor_left = 0.794
+anchor_top = 0.85700005
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.46392822
-offset_top = 0.31195068
+offset_left = -0.4000244
+offset_top = -0.1000061
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0.18573517, 0.53868854, 5.7756904e-07, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 16
+bbcode_enabled = true
 text = "999/999"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
 

@@ -7,14 +7,7 @@ class_name WeaponWheel
 @export var gun_control : GunControl
 @export var player_movement : PlayerMovement
 
-const wepons_icons : Dictionary[GlobalEnums.AmmonType,String] = {
-	GlobalEnums.AmmonType.NONE: "",
-	GlobalEnums.AmmonType.PISTOL: "res://icons/bullet.png",
-	GlobalEnums.AmmonType.RIFLE: "res://icons/rifle.png",
-	GlobalEnums.AmmonType.SHOTGUN: "res://icons/shell.png",
-	GlobalEnums.AmmonType.ENERGY: "res://icons/energy.png",
-	GlobalEnums.AmmonType.EXPLOSIVE: "res://icons/explosive.png",
-}
+
 @export var weapon_ammon_info_color : String = "[color=white]"
 @export var weapon_ammon_info_icon : String = "res://icon.svg"
 @export var weapon_ammon_info : String = "100/100" :
@@ -181,7 +174,7 @@ func find_selected_wepon() -> void:
 		weapon_ammon_info_color = "[color=black]"
 	
 	var current_gun : GunInfo = gun_control.inventory[curent_selected_wepon]
-	weapon_ammon_info_icon = wepons_icons[current_gun.ammon_type]
+	weapon_ammon_info_icon = GlobalEnums.wepons_icons[current_gun.ammon_type]
 	
 	weapon_ammon_info = get_wepon_info(curent_selected_wepon)
 

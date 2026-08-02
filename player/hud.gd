@@ -5,7 +5,7 @@ class_name PlayerHud
 @onready var gun_control : GunControl = $"../Camera3D/GunControl"
 
 @onready var health_display : Label = $health_display
-@onready var ammon_display : Label = $ammon_display
+@onready var ammon_display : RichTextLabel = $ammon_display
 
 @onready var player_model : PlayerModel = $"../Camera3D/PlayerModel"
 
@@ -16,17 +16,25 @@ func _process(delta: float) -> void:
 	var ammon_mag:int = gun_control.get_ammon_on_mag(gun_control.current_gun)
 	var ammon_inventory:int = gun_control.ammon_inventory[gun_control.current_gun.ammon_type]
 	
+	ammon_display.text = "[img height=1em]"
+	ammon_display.text += GlobalEnums.wepons_icons[gun_control.current_gun.ammon_type]
+	ammon_display.text += "[/img]"
+	
+	ammon_display.text += "[color=black]"
+	
 	if gun_control.current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
 		if gun_control.current_gun.ammon_capacity > 0:
-			ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type]) + "/" + str(gun_control.get_ammon_on_mag(gun_control.current_gun))
+			ammon_display.text += str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type]) + "/" + str(gun_control.get_ammon_on_mag(gun_control.current_gun))
 		else:
-			ammon_display.text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
+			ammon_display.text += str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
 	elif gun_control.current_gun.ammon_capacity > 0:
-		ammon_display.text = str(gun_control.get_ammon_on_mag(gun_control.current_gun))
+		ammon_display.text += str(gun_control.get_ammon_on_mag(gun_control.current_gun))
 	
 	if gun_control.current_gun.ammon_capacity > 0:
 		player_model.gun.display_text = str(gun_control.get_ammon_on_mag(gun_control.current_gun))
 	else:
 		player_model.gun.display_text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
+	
+	ammon_display.text += "[/color]"
 	
 	health_display.text = str(stats.health)

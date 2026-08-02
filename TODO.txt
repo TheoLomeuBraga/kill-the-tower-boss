@@ -4,8 +4,6 @@ add wepon pickups
 
 add generic enemy sfx
 
-add icons to weapon wheel wepons
-
 create simple test level
 
 playtest
