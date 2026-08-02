@@ -44,8 +44,24 @@ var look_modfyers : float :
 		else:
 			set("parameters/minigun/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
+var time_betwen_steps_sfx : float = 1.2
+var time_last_steps_sfx : float = 1.2
+
 func _process(delta: float) -> void:
 	if state == States.SHOT:
 		look_modfyers = move_toward(look_modfyers,1.0,delta*2.0)
 	else:
 		look_modfyers = move_toward(look_modfyers,0.0,delta*2.0)
+	
+	
+	if OS.has_feature("editor") and Engine.is_editor_hint():
+		return
+	
+	if state == States.WALK:
+		time_last_steps_sfx -= delta
+	else:
+		time_last_steps_sfx = time_betwen_steps_sfx
+	
+	if time_last_steps_sfx <= 0.0:
+		$"../Node3D/step".play()
+		time_last_steps_sfx = time_betwen_steps_sfx

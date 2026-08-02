@@ -178,8 +178,3 @@ func _physics_process(delta: float) -> void:
 	floor_recently -= delta
 	
 	
-	#debug
-	'''
-	if Input.is_action_just_pressed("shot"):
-		launch_grapple()
-	'''

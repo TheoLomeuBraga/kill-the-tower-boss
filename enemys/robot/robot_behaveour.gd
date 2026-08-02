@@ -14,7 +14,7 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var look_target : Node3D = $"../look_target"
 
-@export var desired_distances : Vector3 = Vector3(3.0,15,20)
+@export var desired_distances : Vector3 = Vector3(4.0,10,20)
 
 @export var muzle_minigun : Node3D
 @export var muzle_rocket_aluncher : Node3D
