@@ -32,9 +32,20 @@ texture = ExtResource("2_oqry6")
 texture = ExtResource("3_ewa0c")
 
 [node name="Label" type="Label" parent="." unique_id=1519958891]
+visible = false
 layout_mode = 2
 text = "
 
 
 100/100"
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1397464174]
+layout_mode = 2
+bbcode_enabled = true
+text = "
+
+
+[color=dark_orange]100/100[/color]"
+fit_content = true
+autowrap_mode = 0

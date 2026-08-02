@@ -1,7 +1,3 @@
-add icons to weapon wheel wepons and ammon
-
-add colors to weapon wheel ammon display
-
 add big robot enemy sfx
 
 add generic enemy sfx
@@ -10,15 +6,15 @@ add wepon overheat
 
 add wepon pickups
 
+add icons to weapon wheel wepons
+
 create simple test level
 
 playtest
 
-add spider robot
-
-add apider robot sfx
-
 add triger system
+
+add level transition system
 
 add enemy spawn system
 
@@ -27,6 +23,10 @@ add key card system
 add elevator system
 
 add button system
+
+add melee robot
+
+add melee robot sfx
 
 more playtest
 

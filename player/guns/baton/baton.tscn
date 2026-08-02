@@ -51,7 +51,7 @@ fadeout_time = 0.1
 fadein_time = 0.1
 fadeout_time = 0.1
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lvgvb"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_07yyr"]
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -104,7 +104,7 @@ process_material = SubResource("ParticleProcessMaterial_07yyr")
 draw_pass_1 = SubResource("BoxMesh_hq45f")
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="7" unique_id=2062389126]
-tree_root = SubResource("AnimationNodeBlendTree_lvgvb")
+tree_root = SubResource("AnimationNodeBlendTree_07yyr")
 anim_player = NodePath("../AnimationPlayer")
 parameters/shot_1/active = false
 parameters/shot_1/internal_active = false

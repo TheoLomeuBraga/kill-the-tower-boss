@@ -7,11 +7,28 @@ class_name WeaponWheel
 @export var gun_control : GunControl
 @export var player_movement : PlayerMovement
 
+const wepons_icons : Dictionary[GlobalEnums.AmmonType,String] = {
+	GlobalEnums.AmmonType.NONE: "",
+	GlobalEnums.AmmonType.PISTOL: "res://icons/bullet.png",
+	GlobalEnums.AmmonType.RIFLE: "res://icons/rifle.png",
+	GlobalEnums.AmmonType.SHOTGUN: "res://icons/shell.png",
+	GlobalEnums.AmmonType.ENERGY: "res://icons/energy.png",
+	GlobalEnums.AmmonType.EXPLOSIVE: "res://icons/explosive.png",
+}
+@export var weapon_ammon_info_color : String = "[color=white]"
+@export var weapon_ammon_info_icon : String = "res://icon.svg"
 @export var weapon_ammon_info : String = "100/100" :
 	set(value):
 		weapon_ammon_info = value
-		if $Label:
-			$Label.text = "\n\n\n\n"+weapon_ammon_info
+		if $RichTextLabel:
+			$RichTextLabel.text = "\n\n\n\n"
+			$RichTextLabel.text += "[img height=1em]"
+			$RichTextLabel.text += weapon_ammon_info_icon
+			$RichTextLabel.text += "[/img]"
+			$RichTextLabel.text += weapon_ammon_info_color
+			$RichTextLabel.text += weapon_ammon_info
+			$RichTextLabel.text += "[/color]"
+			
 
 var node_placer : Node2D
 
@@ -109,6 +126,27 @@ func get_wepon_info(id:int) -> String:
 	
 	return ret
 
+func get_max_and_mag_ammons(id:int) -> Vector2i:
+	var ret : Vector2i
+	
+	var current_gun : GunInfo = gun_control.inventory[id]
+	var ammon_inventory:int = gun_control.ammon_inventory[current_gun.ammon_type]
+	
+	ret.x = current_gun.ammon_capacity
+	
+	
+	if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
+		if current_gun.ammon_capacity > 0:
+			var mag_ammon : int = max(0,gun_control.get_ammon_on_mag(current_gun))
+			
+			ret.y = mag_ammon
+		else:
+			ret.y = gun_control.ammon_inventory[current_gun.ammon_type]
+	elif current_gun.ammon_capacity > 0:
+		ret.y = gun_control.get_ammon_on_mag(current_gun)
+	
+	return ret
+
 func find_selected_wepon() -> void:
 	
 	var joy_vec : Vector2 = Input.get_vector("look_down","look_up","look_left","look_right")
@@ -131,6 +169,19 @@ func find_selected_wepon() -> void:
 	select_frame.global_transform = selected_sprite.global_transform
 	
 	curent_selected_wepon = wepons_ids[selected_sprite]
+	
+	var max_mag : Vector2i = get_max_and_mag_ammons(curent_selected_wepon)
+	
+	
+	if max_mag.y == 0:
+		weapon_ammon_info_color = "[color=red]"
+	elif max_mag.y < max_mag.x:
+		weapon_ammon_info_color = "[color=dark_orange]"
+	else:
+		weapon_ammon_info_color = "[color=black]"
+	
+	var current_gun : GunInfo = gun_control.inventory[curent_selected_wepon]
+	weapon_ammon_info_icon = wepons_icons[current_gun.ammon_type]
 	
 	weapon_ammon_info = get_wepon_info(curent_selected_wepon)
 
