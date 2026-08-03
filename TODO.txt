@@ -2,9 +2,7 @@ add wepon overheat
 
 add damage feedback
 
-add health icon
-
-add wepon icons
+add custom health bar 
 
 add wepon icons to well
 
@@ -24,13 +22,15 @@ add level transition system
 
 add fail state
 
+add respawn system
+
 add enemy spawn system
+
+add button system
 
 add key card system
 
-add elevator system
-
-add button system
+add plataform system
 
 add melee robot
 
