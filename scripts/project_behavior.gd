@@ -19,7 +19,7 @@ var velocity_y : float = 0.0
 
 static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
-
+var start_pos : Vector3
 
 func start_ray() -> void:
 	
@@ -50,6 +50,8 @@ func start_shape() -> void:
 	velocity_y = data.rise_and_drop.x
 
 func start() -> void:
+	
+	start_pos = global_position
 	
 	ricochetes_left = data.ricochet
 	penetrations_left = data.penetrations
@@ -180,7 +182,7 @@ func check_collision_ray() -> void:
 					var owner_id : int = target.shape_find_owner(shape_id)
 					var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 					
-					stats.last_damage_direction = (global_position - target.global_position).normalized()
+					stats.last_damage_origen = start_pos
 					stats.damage(data.damage,data.damage_type,col_shape)
 					
 					if data.spaw_on_colision:
@@ -232,7 +234,7 @@ func check_collision_shape() -> void:
 				var owner_id : int = target.shape_find_owner(shape_id)
 				var col_shape : CollisionShape3D = target.shape_owner_get_owner(owner_id)
 				
-				stats.last_damage_direction = (shape.global_position - target.global_position).normalized()
+				stats.last_damage_origen = start_pos
 				stats.damage(data.damage,data.damage_type,col_shape)
 				
 				if data.spaw_on_colision:
