@@ -56,6 +56,7 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
 var wepons_sprites : Dictionary[float,Sprite2D]
+var wepons_angles : Array[float]
 var wepons_ids : Dictionary[Sprite2D,int]
 var last_weapon_id : int = 0
 
@@ -68,7 +69,7 @@ func place_node_rot(rot:float) -> void:
 	n.global_position = node_placer.to_global(Vector2(0,64+32))
 	
 	wepons_sprites[rot] = n
-	
+	wepons_angles.push_back(rot)
 	wepons_ids[wepons_sprites[rot]] = last_weapon_id
 	last_weapon_id+=1
 
@@ -88,6 +89,7 @@ func reset() -> void:
 		s.queue_free()
 	
 	wepons_sprites = {}
+	wepons_angles = []
 	wepons_ids = {}
 	last_weapon_id = 0
 	
@@ -104,8 +106,8 @@ func _ready() -> void:
 	reset()
 	visibility_changed.connect(reset)
 
-func sort_coser_zero(a, b):	
-	if abs(a) > abs(b):
+func angle_sort(a, b):
+	if abs(angle_difference(a,cursor.rotation)) > abs(angle_difference(b,cursor.rotation)):
 		return true
 	return false
 
@@ -153,19 +155,11 @@ func find_selected_wepon() -> void:
 	if joy_vec.length() > 0.25:
 		cursor.look_at(cursor.global_position + (joy_vec*100))
 	
-	var angle_difs : Array[float]
-	var angle_difs_sprites : Dictionary[float,Sprite2D]
+	var local_wepons_angles = wepons_angles
 	
-	for f : float in wepons_sprites:
-		
-		var wepon_sprite : Sprite2D = wepons_sprites[f]
-		var dif : float = angle_difference(cursor.rotation,f)
-		angle_difs.push_back(dif)
-		angle_difs_sprites[dif] = wepon_sprite
+	local_wepons_angles.sort_custom(angle_sort)
 	
-	angle_difs.sort_custom(sort_coser_zero)
-	
-	var selected_sprite : Sprite2D = angle_difs_sprites[angle_difs[0]]
+	var selected_sprite : Sprite2D = wepons_sprites[local_wepons_angles[0]]
 	select_frame.global_transform = selected_sprite.global_transform
 	
 	curent_selected_wepon = wepons_ids[selected_sprite]

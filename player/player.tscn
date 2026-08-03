@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://r6noy65ufg7w" path="res://player/guns_infos/charge_rifle.tres" id="10_e7oew"]
 [ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="11_c35mf"]
 [ext_resource type="Resource" uid="uid://c88dvsbpk87vj" path="res://player/guns_infos/overheat.tres" id="12_65viv"]
+[ext_resource type="PackedScene" uid="uid://dorjo8ltyx0xu" path="res://player/feedback/damage_feedback.tscn" id="18_65viv"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
 [ext_resource type="PackedScene" uid="uid://bgj5iinfg2d3o" path="res://player/wepon_wheel/wepon_wheel.tscn" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
@@ -152,9 +153,12 @@ text = "999/999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
+[node name="DamageFeedback" parent="." unique_id=2126208292 node_paths=PackedStringArray("stats") instance=ExtResource("18_65viv")]
+stats = NodePath("../Stats")
 
 [node name="WeponWheel" parent="." unique_id=819414874 node_paths=PackedStringArray("gun_control", "player_movement") instance=ExtResource("19_c35mf")]
 visible = false
 gun_control = NodePath("../Camera3D/GunControl")
 player_movement = NodePath("../PlayerMovement")
+
+[node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]

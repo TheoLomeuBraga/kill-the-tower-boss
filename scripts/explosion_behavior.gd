@@ -39,6 +39,7 @@ func _ready() -> void:
 				get_parent().add_child(hit_particle)
 				hit_particle.global_position = shape.get_collision_point(i)
 			
+			stats.last_damage_direction = Vector3.ZERO
 			if stats.faction != data.faction:
 				stats.damage(data.damage,data.damage_type)
 			else:

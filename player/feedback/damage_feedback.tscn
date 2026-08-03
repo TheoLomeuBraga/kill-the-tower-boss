@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dorjo8ltyx0xu"]
+
+[ext_resource type="Script" uid="uid://un754g7gswuv" path="res://player/feedback/damage_feedback.gd" id="1_7ajis"]
+
+[node name="DamageFeedback" type="CenterContainer" unique_id=2126208292]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_right = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ajis")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1828621154]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2007655830]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(300, 300)
+render_target_update_mode = 4

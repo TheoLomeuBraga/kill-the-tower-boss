@@ -20,6 +20,8 @@ signal dead()
 
 @export var knock_back_multiplier : float = 1.0
 
+@export var last_damage_direction : Vector3
+
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
 	
 	
