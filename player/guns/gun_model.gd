@@ -85,6 +85,7 @@ func abort_shot() -> void:
 @export var alt_shot : bool : 
 	set(value):
 		gun_animation_tree.shot_2()
+		muzle_id = (muzle_id + 1) % muzles.size()
 
 @export var labels : Array[Label3D]
 

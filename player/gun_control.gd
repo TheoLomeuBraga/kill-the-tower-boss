@@ -154,9 +154,11 @@ func shot() -> void:
 	
 	body.velocity += camera.global_basis.z * current_gun.projectile_info.knock_back
 	
+	var muzle : Node3D = player_model.gun.get_muzle()
+	
 	if inventory[current_gun_id].projectile_info.spawn_effect:
 		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
-		player_model.gun.get_muzle().add_child(particle)
+		muzle.add_child(particle)
 	
 	player_model.gun.shot = true
 	
@@ -166,7 +168,7 @@ func shot() -> void:
 		var projectile : ProjectBehavior = ProjectBehavior.new()
 		add_child(projectile)
 		projectile.global_position = camera.global_position
-		projectile.muzle_position = player_model.gun.get_muzle().global_position
+		projectile.muzle_position = muzle.global_position
 		
 		projectile.target_position = target_raycast.global_basis.z * -100.0
 		

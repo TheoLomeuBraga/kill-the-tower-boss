@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rnkex4y1hdrd"
-path.s3tc="res://.godot/imported/overheat_overheat.png-9e80061995cfec284ef0cfc092ff951d.s3tc.ctex"
+path="res://.godot/imported/overheat_overheat.png-9e80061995cfec284ef0cfc092ff951d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "80b57ef533c6193e1de7a9e1d0980f50"
+"md5": "7eaec3e6f3fb4d1e336445d77653a95e"
 }
 
 [deps]
 
 source_file="res://player/guns/overheat/overheat_overheat.png"
-dest_files=["res://.godot/imported/overheat_overheat.png-9e80061995cfec284ef0cfc092ff951d.s3tc.ctex"]
+dest_files=["res://.godot/imported/overheat_overheat.png-9e80061995cfec284ef0cfc092ff951d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

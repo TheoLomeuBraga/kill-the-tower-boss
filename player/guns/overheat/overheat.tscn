@@ -1,8 +1,90 @@
-[gd_scene format=3 uid="uid://co138k4jhuvra"]
+[gd_scene format=4 uid="uid://co138k4jhuvra"]
 
 [ext_resource type="PackedScene" uid="uid://dpaoo04eb7v6j" path="res://player/guns/overheat/overheat.glb" id="1_3baw0"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_g632w"]
+[ext_resource type="Script" uid="uid://b3844fpfhquj5" path="res://player/guns/overheat/chargeheat_sing.gd" id="3_jpr2s"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="3_xhflv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhflv"]
+shading_mode = 0
+albedo_color = Color(1, 0.9166666, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o06n7"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0krd4"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1v4gk"]
+_surfaces = [{
+"aabb": AABB(-0.44935414, -0.23579533, 0.5032626, 1e-05, 0.09841922, 0.13293493),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD/////AAAAAEFdksAAAAAAAAD//wAAAAD//5LAAAAAAP//tZ8AAAAAQV1JYAAAAAAAALWfAAAAAP//SWAAAAAA//9sPwAAAABBXQAAAAAAAAAAbD8AAAAA//8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_drfag"]
+resource_name = "overheat_Cube"
+_surfaces = [{
+"aabb": AABB(-0.44935414, -0.23579533, 0.5032626, 1e-05, 0.09841922, 0.13293493),
+"attribute_data": PackedByteArray("/1//f/+f/z//n/9//1//P/9f/3//n/8//5//f/9f/z//X/9//5//P/+f/3//X/8/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_0krd4"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD/////VNUAAEFdksBU1QAAAAD//1TVAAD//5LAVNUAAP//tZ9U1QAAQV1JYFTVAAAAALWfVNUAAP//SWBU1QAA//9sP1TVAABBXQAAVNUAAAAAbD9U1QAA//8AAFTVqqpUVaqqVFWqqlRVqqpUVaqqVFWqqlRVqqpUVaqqVFWqqlRVqqpUVaqqVFWqqlRV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1v4gk")
+
+[sub_resource type="Gradient" id="Gradient_jpr2s"]
+colors = PackedColorArray(1, 1, 1, 1, 0.56, 0.56, 0.56, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jpr2s"]
+gradient = SubResource("Gradient_jpr2s")
+
+[sub_resource type="Curve" id="Curve_o06n7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.040974766, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xhflv"]
+curve = SubResource("Curve_o06n7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ovmhp"]
+emission_shape_scale = Vector3(-0.01, 0.05, 0.02)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_xhflv")
+color_ramp = SubResource("GradientTexture1D_jpr2s")
+color_initial_ramp = SubResource("GradientTexture1D_jpr2s")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xhflv"]
+radius = 0.025
+height = 0.05
+radial_segments = 4
+rings = 1
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
 
@@ -33,7 +115,8 @@ fadeout_time = 0.1
 fadein_time = 0.1
 fadeout_time = 0.1
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xhflv"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jpr2s"]
+graph_offset = Vector2(-690.7378, 119.92285)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -54,10 +137,10 @@ nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
 nodes/play_reload/position = Vector2(40, 180)
 node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
-[node name="overheat" unique_id=2033315752 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree") instance=ExtResource("1_3baw0")]
+[node name="overheat" unique_id=2033315752 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "charge_objects") instance=ExtResource("1_3baw0")]
 script = ExtResource("2_g632w")
 gun = NodePath("Armature/Skeleton3D")
-muzles = [NodePath("Armature/Skeleton3D/Bone/muzle")]
+muzles = [NodePath("Armature/Skeleton3D/Bone/muzle"), NodePath("Armature/Skeleton3D/Bone/muzle_001")]
 arm_l = NodePath("arm_l")
 pole_l = NodePath("pole_l")
 hand_l = NodePath("Armature/Skeleton3D/Bone/hand_l")
@@ -65,14 +148,38 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
+is_auto = true
+charge_objects = [NodePath("Armature/Skeleton3D/Bone/Cube/chargeheat_sing"), NodePath("Armature/Skeleton3D/Bone/GPUParticles3D")]
+charging_material = SubResource("StandardMaterial3D_xhflv")
+charged_material = SubResource("StandardMaterial3D_o06n7")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(540855015) index="0" unique_id=1060551957]
+bones/0/rotation = Quaternion(0.7071068, -3.905599e-07, -3.905599e-07, 0.7071068)
+
+[node name="Bone" parent="Armature/Skeleton3D" index="0" unique_id=2142990148]
+transform = Transform3D(1, 0, -1.1046701e-06, -1.1046701e-06, 0, -1, 0, 1, 0, -0.5, -0.2, 0)
+
+[node name="chargeheat_sing" type="MeshInstance3D" parent="Armature/Skeleton3D/Bone/Cube" parent_id_path=PackedInt32Array(1291996733) index="1" unique_id=1557845751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999982, 0.20000048, -0.25417194)
+mesh = SubResource("ArrayMesh_drfag")
+script = ExtResource("3_jpr2s")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" index="5" unique_id=1086363289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046478182, 0.3093319, -0.017853469)
+visible = false
+material_override = SubResource("StandardMaterial3D_xhflv")
+cast_shadow = 0
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_ovmhp")
+draw_pass_1 = SubResource("SphereMesh_xhflv")
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=1130197246]
-tree_root = SubResource("AnimationNodeBlendTree_xhflv")
+tree_root = SubResource("AnimationNodeBlendTree_jpr2s")
 anim_player = NodePath("../AnimationPlayer")
 parameters/shot_1/active = false
 parameters/shot_1/internal_active = false
 parameters/shot_1/request = 0
-parameters/Add2/add_amount = 0.0
+parameters/Add2/add_amount = 1.0
 parameters/shot_2/active = false
 parameters/shot_2/internal_active = false
 parameters/shot_2/request = 0
