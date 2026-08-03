@@ -168,8 +168,8 @@ player_movement = NodePath("../PlayerMovement")
 script = ExtResource("21_x7c3f")
 
 [node name="a" type="RayCast3D" parent="stair_ajust" unique_id=929068960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -0.562)
-target_position = Vector3(0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -0.562)
+target_position = Vector3(0, -0.3, 0)
 
 [node name="b" type="RayCast3D" parent="stair_ajust" unique_id=465938391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84150493, 0)

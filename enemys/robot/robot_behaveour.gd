@@ -60,6 +60,10 @@ func decide_state(delta:float) -> void:
 	
 	var dist_player : float = body.global_position.distance_to(Player.player.global_position)
 	
+	if not is_player_visible:
+		state = folow_state
+		return
+	
 	if stamina <= 0:
 		state = vunerable_state
 	elif dist_player < desired_distances.x:
@@ -75,6 +79,8 @@ func folow_state(delta:float) -> void:
 	navegator.is_navegating = true
 	robot_animation_simplefier.state = RobotAnimationSimplefier.States.WALK
 	
+	if not is_player_visible:
+		return
 	
 	if body.global_position.distance_to(Player.player.global_position) < desired_distances.y:
 		state = decide_state
