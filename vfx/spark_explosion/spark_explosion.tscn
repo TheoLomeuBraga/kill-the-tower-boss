@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ftyuspkbcfxo"]
 
 [ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_08kne"]
+[ext_resource type="AudioStream" uid="uid://bot80f0pkeg13" path="res://sfx/explosion.wav" id="2_32r4v"]
 [ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="2_q5did"]
 
 [sub_resource type="Curve" id="Curve_q5did"]
@@ -32,6 +33,43 @@ height = 0.2
 radial_segments = 4
 rings = 0
 
+[sub_resource type="Gradient" id="Gradient_q5did"]
+offsets = PackedFloat32Array(0.31860694, 0.98807955)
+colors = PackedColorArray(0.08611498, 0.08611501, 0.086114995, 1, 0.27450982, 0.27450982, 0.27450982, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_co5r4"]
+gradient = SubResource("Gradient_q5did")
+
+[sub_resource type="Curve" id="Curve_32r4v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.08462997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_svaj3"]
+curve = SubResource("Curve_32r4v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1j1oj"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 9.8, 0)
+scale_curve = SubResource("CurveTexture_svaj3")
+color_ramp = SubResource("GradientTexture1D_co5r4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svaj3"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7sl8r"]
+material = SubResource("StandardMaterial3D_svaj3")
+radius = 0.25
+height = 0.5
+radial_segments = 8
+rings = 3
+
 [node name="SparkExplosion" type="GPUParticles3D" unique_id=1441859592]
 top_level = true
 cast_shadow = 0
@@ -45,6 +83,20 @@ process_material = SubResource("ParticleProcessMaterial_q5did")
 draw_pass_1 = SubResource("CylinderMesh_qxkbx")
 script = ExtResource("1_08kne")
 metadata/_custom_type_script = "uid://htqnd5ug1tb"
+
+[node name="smoke" type="GPUParticles3D" parent="." unique_id=1162488013]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1j1oj")
+draw_pass_1 = SubResource("SphereMesh_7sl8r")
+script = ExtResource("1_08kne")
+metadata/_custom_type_script = "uid://htqnd5ug1tb"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1844104891]
+stream = ExtResource("2_32r4v")
+pitch_scale = 2.0
+autoplay = true
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=788727714]
 wait_time = 5.0

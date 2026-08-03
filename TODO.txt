@@ -1,6 +1,14 @@
 add wepon overheat
 
+add wepon names to well
+
+add wepon icons
+
+add wepon icons to well
+
 add wepon pickups
+
+add drone enemy sfx
 
 add generic enemy sfx
 
@@ -11,6 +19,8 @@ playtest
 add triger system
 
 add level transition system
+
+add fail state
 
 add enemy spawn system
 
@@ -26,16 +36,8 @@ add melee robot sfx
 
 more playtest
 
-add icons to ammon on ui
-
-add animated crosshair on sniper aim
-
 create settings global system
 
 create settings menu
 
-add fail state
-
 even more playtest
-
-add big robot boss enemy

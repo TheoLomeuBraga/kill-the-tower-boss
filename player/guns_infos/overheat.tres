@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="5_7psdx"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="6_q5kn6"]
 [ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="7_2p5l5"]
-[ext_resource type="PackedScene" uid="uid://cvcvnti6hb0bw" path="res://player/guns/plama_condesator/plama_condesator.tscn" id="8_nlm6n"]
+[ext_resource type="PackedScene" uid="uid://co138k4jhuvra" path="res://player/guns/overheat/overheat.tscn" id="8_q3v7y"]
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="9_0v418"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="10_5rdet"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="11_h2evv"]
@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("11_h2evv")
-model = ExtResource("8_nlm6n")
+model = ExtResource("8_q3v7y")
 ammon_type = 4
 ammon_capacity = -1
 reload_time = 0.8

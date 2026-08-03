@@ -44,8 +44,8 @@ var look_modfyers : float :
 		else:
 			set("parameters/minigun/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
-var time_betwen_steps_sfx : float = 1.2
-var time_last_steps_sfx : float = 1.2
+var time_betwen_steps_sfx : float = 1.0
+var time_last_steps_sfx : float = 1.0
 
 func _process(delta: float) -> void:
 	if state == States.SHOT:

@@ -1,6 +1,9 @@
 extends Resource
 class_name GunInfo
 
+@export var name : String
+@export var icon : Texture2D
+
 @export var model : PackedScene
 
 @export var ammon_type : GlobalEnums.AmmonType = GlobalEnums.AmmonType.NONE
