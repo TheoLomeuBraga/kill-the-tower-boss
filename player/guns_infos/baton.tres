@@ -50,6 +50,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("8_gdarx")
+name = "baton"
 model = ExtResource("6_klhou")
 ammon_consumption = -1
 ammon_capacity = -1

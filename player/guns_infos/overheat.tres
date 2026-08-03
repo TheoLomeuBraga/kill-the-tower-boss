@@ -55,6 +55,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("11_h2evv")
+name = "overheat"
 model = ExtResource("8_q3v7y")
 ammon_type = 4
 ammon_capacity = -1

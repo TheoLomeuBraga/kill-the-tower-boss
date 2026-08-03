@@ -8,19 +8,26 @@ class_name WeaponWheel
 @export var player_movement : PlayerMovement
 
 
+
+@export var weapon_name : String
 @export var weapon_ammon_info_color : String = "[color=white]"
 @export var weapon_ammon_info_icon : String = "res://icon.svg"
 @export var weapon_ammon_info : String = "100/100" :
 	set(value):
 		weapon_ammon_info = value
 		if $RichTextLabel:
-			$RichTextLabel.text = "\n\n\n\n"
+			$RichTextLabel.text = "\n\n\n[center]"
+			$RichTextLabel.text += "[color=black]"
+			$RichTextLabel.text += weapon_name
+			$RichTextLabel.text += "[/color]\n"
 			$RichTextLabel.text += "[img height=1em]"
 			$RichTextLabel.text += weapon_ammon_info_icon
 			$RichTextLabel.text += "[/img]"
 			$RichTextLabel.text += weapon_ammon_info_color
 			$RichTextLabel.text += weapon_ammon_info
 			$RichTextLabel.text += "[/color]"
+			
+			$RichTextLabel.text += "[/center]"
 			
 
 var node_placer : Node2D
@@ -175,6 +182,8 @@ func find_selected_wepon() -> void:
 	
 	var current_gun : GunInfo = gun_control.inventory[curent_selected_wepon]
 	weapon_ammon_info_icon = GlobalEnums.wepons_icons[current_gun.ammon_type]
+	
+	weapon_name = current_gun.name
 	
 	weapon_ammon_info = get_wepon_info(curent_selected_wepon)
 

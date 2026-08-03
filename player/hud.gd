@@ -4,7 +4,7 @@ class_name PlayerHud
 @onready var stats : Stats = $"../Stats"
 @onready var gun_control : GunControl = $"../Camera3D/GunControl"
 
-@onready var health_display : Label = $health_display
+@onready var health_display : RichTextLabel = $health_display
 @onready var ammon_display : RichTextLabel = $ammon_display
 
 @onready var player_model : PlayerModel = $"../Camera3D/PlayerModel"
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	ammon_display.text += GlobalEnums.wepons_icons[gun_control.current_gun.ammon_type]
 	ammon_display.text += "[/img]"
 	
-	ammon_display.text += "[color=black]"
+	ammon_display.text += "[color=white]"
 	
 	if gun_control.current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
 		if gun_control.current_gun.ammon_capacity > 0:
@@ -34,7 +34,14 @@ func _process(delta: float) -> void:
 		player_model.gun.display_text = str(gun_control.get_ammon_on_mag(gun_control.current_gun))
 	else:
 		player_model.gun.display_text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
-	
 	ammon_display.text += "[/color]"
 	
-	health_display.text = str(stats.health)
+	health_display.text = "[color=green]"
+	
+	if stats.health <= 25.0:
+		health_display.text = "[color=red]"
+	elif stats.health <= 50.0:
+		health_display.text = "[color=yellow]"
+	
+	health_display.text += str(stats.health)
+	health_display.text += "[/color]"

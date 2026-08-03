@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="2_0qgn1"]
 [ext_resource type="AudioStream" uid="uid://bot80f0pkeg13" path="res://sfx/explosion.wav" id="2_svaj3"]
 
+[sub_resource type="Gradient" id="Gradient_b8oox"]
+colors = PackedColorArray(0.4738385, 0.47383857, 0.4738384, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b8oox"]
+gradient = SubResource("Gradient_b8oox")
+
+[sub_resource type="Gradient" id="Gradient_305tb"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.29411766, 0, 0.7372549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eyywi"]
+gradient = SubResource("Gradient_305tb")
+
 [sub_resource type="Curve" id="Curve_svaj3"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05325444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7679194, 0.0, 0, 0]
 point_count = 3
@@ -16,9 +28,13 @@ emission_shape = 1
 emission_sphere_radius = 0.5
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_co5r4")
+color_ramp = SubResource("GradientTexture1D_eyywi")
+color_initial_ramp = SubResource("GradientTexture1D_b8oox")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8oox"]
+transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.5529412, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_0qgn1"]

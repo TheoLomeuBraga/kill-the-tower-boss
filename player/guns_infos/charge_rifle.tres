@@ -53,6 +53,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("10_lo3to")
+name = "charge rifle"
 model = ExtResource("8_rbwd5")
 ammon_type = 4
 ammon_capacity = -1

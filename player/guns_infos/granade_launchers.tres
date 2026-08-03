@@ -38,6 +38,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("9_q3yth")
+name = "granade launcher"
 model = ExtResource("1_eeq2k")
 ammon_type = 5
 ammon_capacity = 12

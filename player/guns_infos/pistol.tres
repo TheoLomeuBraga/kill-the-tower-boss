@@ -24,6 +24,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("7_oly01")
+name = "pistol"
 model = ExtResource("1_r4nrw")
 reload_time = 0.8
 reload_audio = ExtResource("6_j7o7f")

@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("7_jtrlh")
+name = "smg"
 model = ExtResource("1_d1yvr")
 ammon_type = 1
 ammon_capacity = 40

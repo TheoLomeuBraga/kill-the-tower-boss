@@ -119,6 +119,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
 [resource]
 script = ExtResource("11_sfx4p")
+name = "sniper rifle"
 model = SubResource("PackedScene_pnw6m")
 ammon_type = 2
 ammon_capacity = 5

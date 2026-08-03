@@ -1,6 +1,6 @@
 add wepon overheat
 
-add wepon names to well
+add health icons
 
 add wepon icons
 
