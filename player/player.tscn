@@ -64,7 +64,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([ExtResource("5_jd2rm"), ExtResource("6_q28gw"), ExtResource("7_2uvqg"), ExtResource("8_1s1yo"), ExtResource("9_5ejfk"), ExtResource("10_e7oew"), ExtResource("11_c35mf"), ExtResource("12_65viv")])
+inventory = Array[ExtResource("3_qjkh3")]([ExtResource("5_jd2rm"), ExtResource("6_q28gw"), ExtResource("7_2uvqg"), ExtResource("8_1s1yo"), ExtResource("10_e7oew"), ExtResource("12_65viv"), ExtResource("11_c35mf"), ExtResource("9_5ejfk")])
 target_raycast = NodePath("../RayCast3D")
 
 [node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast", "grapple_hope")]

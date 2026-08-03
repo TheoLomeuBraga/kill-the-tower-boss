@@ -116,7 +116,6 @@ fadein_time = 0.1
 fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jpr2s"]
-graph_offset = Vector2(-690.7378, 119.92285)
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -161,6 +160,7 @@ transform = Transform3D(1, 0, -1.1046701e-06, -1.1046701e-06, 0, -1, 0, 1, 0, -0
 
 [node name="chargeheat_sing" type="MeshInstance3D" parent="Armature/Skeleton3D/Bone/Cube" parent_id_path=PackedInt32Array(1291996733) index="1" unique_id=1557845751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999982, 0.20000048, -0.25417194)
+visible = false
 mesh = SubResource("ArrayMesh_drfag")
 script = ExtResource("3_jpr2s")
 

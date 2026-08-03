@@ -1,8 +1,6 @@
-add custom health bar 
+add wepon pickups
 
 add wepon icons to well
-
-add wepon pickups
 
 add drone enemy sfx
 
@@ -11,6 +9,8 @@ add generic enemy sfx
 create simple test level
 
 playtest
+
+add vignnet feedback
 
 add triger system
 
