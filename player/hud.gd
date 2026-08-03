@@ -36,12 +36,14 @@ func _process(delta: float) -> void:
 		player_model.gun.display_text = str(gun_control.ammon_inventory[gun_control.current_gun.ammon_type])
 	ammon_display.text += "[/color]"
 	
-	health_display.text = "[color=green]"
+	
+	health_display.text = "[img height=1em]res://icons/green_cros.png[/img] "
+	health_display.text += "[color=green]"
 	
 	if stats.health <= 25.0:
-		health_display.text = "[color=red]"
+		health_display.text += "[color=red]"
 	elif stats.health <= 50.0:
-		health_display.text = "[color=yellow]"
+		health_display.text += "[color=yellow]"
 	
 	health_display.text += str(stats.health)
 	health_display.text += "[/color]"

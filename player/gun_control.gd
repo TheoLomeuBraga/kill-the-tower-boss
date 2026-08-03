@@ -109,10 +109,6 @@ func set_gun(no : int) -> void:
 	
 	player_model.visible = false
 	
-	
-	#if get_inventory_reload_time(current_gun) >= current_gun.inventory_reload_time:
-	#	reload_ammon()
-	
 	await get_tree().process_frame
 	
 	player_model.visible = true
@@ -121,9 +117,16 @@ func set_gun(no : int) -> void:
 	
 	time_last_shot = 0.0
 	
+	if player_model.gun.cross:
+		player_model.gun.cross.visible = true
 	
-	
-	
+
+func add_gun(gun:GunInfo) -> void:
+	if not inventory.has(gun):
+		inventory.push_back(gun)
+		set_gun(inventory.size()-1)
+		
+
 
 var reload_audio_player : AudioStreamPlayer
 

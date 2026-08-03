@@ -134,3 +134,7 @@ func set_materials_override(n:Node,m:Material) -> void:
 			scope.visible =  is_scoping
 		if cross:
 			cross.visible =  not is_scoping
+
+func _ready() -> void:
+	if cross:
+		cross.visible = false

@@ -41,7 +41,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "animations": {
-"idle": {
+"none": {
 "save_to_file/enabled": false,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",
@@ -6212,12 +6212,16 @@ _subresources={
 },
 "nodes": {
 "PATH:Armature/Skeleton3D/Bone/Cube": {
-"mesh_instance/cast_shadow": 0,
-"mesh_instance/layers": 2
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone/Cube/Cube_001": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone/Cube/Cube_002": {
+"mesh_instance/cast_shadow": 0
 },
 "PATH:Armature/Skeleton3D/Bone/Cube/Cylinder": {
-"mesh_instance/cast_shadow": 0,
-"mesh_instance/layers": 2
+"mesh_instance/cast_shadow": 0
 }
 }
 }

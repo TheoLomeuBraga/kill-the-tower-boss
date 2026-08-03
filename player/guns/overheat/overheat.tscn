@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b3844fpfhquj5" path="res://player/guns/overheat/chargeheat_sing.gd" id="3_jpr2s"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="3_xhflv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhflv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpr2s"]
 shading_mode = 0
 albedo_color = Color(1, 0.9166666, 0, 1)
 
@@ -51,6 +51,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1v4gk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhflv"]
+shading_mode = 0
+albedo_color = Color(1, 0.9166666, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_jpr2s"]
 colors = PackedColorArray(1, 1, 1, 1, 0.56, 0.56, 0.56, 1)
@@ -136,7 +140,7 @@ nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
 nodes/play_reload/position = Vector2(40, 180)
 node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
-[node name="overheat" unique_id=2033315752 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "charge_objects") instance=ExtResource("1_3baw0")]
+[node name="overheat" unique_id=2033315752 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "charge_objects", "cross") instance=ExtResource("1_3baw0")]
 script = ExtResource("2_g632w")
 gun = NodePath("Armature/Skeleton3D")
 muzles = [NodePath("Armature/Skeleton3D/Bone/muzle"), NodePath("Armature/Skeleton3D/Bone/muzle_001")]
@@ -148,17 +152,18 @@ pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
 is_auto = true
-charge_objects = [NodePath("Armature/Skeleton3D/Bone/Cube/chargeheat_sing"), NodePath("Armature/Skeleton3D/Bone/GPUParticles3D")]
-charging_material = SubResource("StandardMaterial3D_xhflv")
+charge_objects = [NodePath("Armature/Skeleton3D/Bone/Cube/chargeheat_sink"), NodePath("Armature/Skeleton3D/Bone/GPUParticles3D")]
+charging_material = SubResource("StandardMaterial3D_jpr2s")
 charged_material = SubResource("StandardMaterial3D_o06n7")
+cross = NodePath("CenterContainer")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(540855015) index="0" unique_id=1060551957]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1696073699) index="0" unique_id=1228486857]
 bones/0/rotation = Quaternion(0.7071068, -3.905599e-07, -3.905599e-07, 0.7071068)
 
-[node name="Bone" parent="Armature/Skeleton3D" index="0" unique_id=2142990148]
+[node name="Bone" parent="Armature/Skeleton3D" index="0" unique_id=823545080]
 transform = Transform3D(1, 0, -1.1046701e-06, -1.1046701e-06, 0, -1, 0, 1, 0, -0.5, -0.2, 0)
 
-[node name="chargeheat_sing" type="MeshInstance3D" parent="Armature/Skeleton3D/Bone/Cube" parent_id_path=PackedInt32Array(1291996733) index="1" unique_id=1557845751]
+[node name="chargeheat_sink" type="MeshInstance3D" parent="Armature/Skeleton3D/Bone/Cube" parent_id_path=PackedInt32Array(1598253673) index="1" unique_id=1557845751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999982, 0.20000048, -0.25417194)
 visible = false
 mesh = SubResource("ArrayMesh_drfag")
@@ -190,6 +195,7 @@ script = ExtResource("3_xhflv")
 metadata/_custom_type_script = "uid://ckec3yq1gbw7l"
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="7" unique_id=407605299]
+visible = false
 z_index = 10
 texture_filter = 1
 anchors_preset = 15

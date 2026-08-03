@@ -1,6 +1,6 @@
-add wepon pickups
-
 add wepon icons to well
+
+add robot critical point hit sfx
 
 add drone enemy sfx
 

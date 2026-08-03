@@ -8,14 +8,8 @@
 [ext_resource type="Resource" uid="uid://jwojm6qxkp58" path="res://player/guns_infos/baton.tres" id="5_jd2rm"]
 [ext_resource type="Script" uid="uid://u7trxdlheisb" path="res://scripts/stats.gd" id="6_g6k8r"]
 [ext_resource type="Resource" uid="uid://dj35b63agox77" path="res://player/guns_infos/pistol.tres" id="6_q28gw"]
-[ext_resource type="Resource" uid="uid://sjs512xc2p86" path="res://player/guns_infos/smg.tres" id="7_2uvqg"]
 [ext_resource type="PackedScene" uid="uid://wkjhrg6pd3om" path="res://menus/pause_menu/pause_menu.tscn" id="7_boad6"]
-[ext_resource type="Resource" uid="uid://dem71dr1rlwrg" path="res://player/guns_infos/shotgun.tres" id="8_1s1yo"]
-[ext_resource type="Resource" uid="uid://30nuv77dfkrw" path="res://player/guns_infos/granade_launchers.tres" id="9_5ejfk"]
 [ext_resource type="Script" uid="uid://bfyobwpw3ksw6" path="res://player/interaction_manager.gd" id="9_8t03j"]
-[ext_resource type="Resource" uid="uid://r6noy65ufg7w" path="res://player/guns_infos/charge_rifle.tres" id="10_e7oew"]
-[ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="11_c35mf"]
-[ext_resource type="Resource" uid="uid://c88dvsbpk87vj" path="res://player/guns_infos/overheat.tres" id="12_65viv"]
 [ext_resource type="PackedScene" uid="uid://dorjo8ltyx0xu" path="res://player/feedback/damage_feedback.tscn" id="18_65viv"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
 [ext_resource type="PackedScene" uid="uid://bgj5iinfg2d3o" path="res://player/wepon_wheel/wepon_wheel.tscn" id="19_c35mf"]
@@ -64,7 +58,7 @@ body = NodePath("../..")
 player_movement = NodePath("../../PlayerMovement")
 player_model = NodePath("../PlayerModel")
 camera = NodePath("..")
-inventory = Array[ExtResource("3_qjkh3")]([ExtResource("5_jd2rm"), ExtResource("6_q28gw"), ExtResource("7_2uvqg"), ExtResource("8_1s1yo"), ExtResource("10_e7oew"), ExtResource("12_65viv"), ExtResource("11_c35mf"), ExtResource("9_5ejfk")])
+inventory = Array[ExtResource("3_qjkh3")]([ExtResource("5_jd2rm"), ExtResource("6_q28gw")])
 target_raycast = NodePath("../RayCast3D")
 
 [node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast", "grapple_hope")]

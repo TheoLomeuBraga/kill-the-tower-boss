@@ -54,7 +54,7 @@ nodes/play_reload/node = SubResource("AnimationNodeOneShot_8g1my")
 nodes/play_reload/position = Vector2(40, 180)
 node_connections = [&"output", 0, &"play_reload", &"shot_1", 0, &"idle", &"shot_1", 1, &"animation_shot_1", &"Add2", 0, &"shot_1", &"Add2", 1, &"shot_2", &"shot_2", 0, &"idle_2", &"shot_2", 1, &"animation_shot_2", &"play_reload", 0, &"Add2", &"play_reload", 1, &"reload"]
 
-[node name="shotgun" unique_id=1813414232 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree") instance=ExtResource("1_fcbnd")]
+[node name="shotgun" unique_id=1813414232 node_paths=PackedStringArray("gun", "muzles", "arm_l", "pole_l", "hand_l", "arm_r", "pole_r", "hand_r", "gun_animation_tree", "cross") instance=ExtResource("1_fcbnd")]
 script = ExtResource("2_dv8k5")
 gun = NodePath("Armature/Skeleton3D")
 muzles = [NodePath("Armature/Skeleton3D/Bone/muzle_r"), NodePath("Armature/Skeleton3D/Bone/muzle_l")]
@@ -65,6 +65,7 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
+cross = NodePath("CenterContainer")
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(383122945) index="0" unique_id=1329438295]
 bones/0/rotation = Quaternion(0.7071068, -8.9632215e-07, -8.9632215e-07, 0.7071068)
