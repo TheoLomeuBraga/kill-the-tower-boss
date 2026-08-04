@@ -17,16 +17,16 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.RIFLE: 20,
 	GlobalEnums.AmmonType.SHOTGUN: 24,
 	GlobalEnums.AmmonType.ENERGY: 100,
-	GlobalEnums.AmmonType.EXPLOSIVE: 20,
+	GlobalEnums.AmmonType.EXPLOSIVE: 12,
 }
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.NONE: 0,
 	GlobalEnums.AmmonType.PISTOL: 100,
-	GlobalEnums.AmmonType.RIFLE: 20,
+	GlobalEnums.AmmonType.RIFLE: 12,
 	GlobalEnums.AmmonType.SHOTGUN: 24,
 	GlobalEnums.AmmonType.ENERGY: 100,
-	GlobalEnums.AmmonType.EXPLOSIVE: 20,
+	GlobalEnums.AmmonType.EXPLOSIVE: 12,
 }
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
@@ -83,7 +83,7 @@ func reload_ammon(gun:GunInfo=current_gun) -> void:
 		set_ammon_on_mag(gun,gun.ammon_capacity)
 		return
 	
-	if ammon_inventory[gun.ammon_type] >= gun.ammon_capacity:
+	if ammon_inventory[gun.ammon_type] >= gun.ammon_capacity - get_ammon_on_mag(gun):
 		ammon_inventory[gun.ammon_type] -= gun.ammon_capacity - get_ammon_on_mag(gun)
 		set_ammon_on_mag(gun,gun.ammon_capacity)
 	else:

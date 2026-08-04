@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wewetnf5jx2c"
-path="res://.godot/imported/energy.png-9846ad5e2e5d483a97012f7e8508ac7a.ctex"
+uid="uid://cbw1226qkbb5a"
+path="res://.godot/imported/rifle.png-aacecabf00e8fc1ee7d09f7dc494edfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/energy.png"
-dest_files=["res://.godot/imported/energy.png-9846ad5e2e5d483a97012f7e8508ac7a.ctex"]
+source_file="res://icons/consumables/rifle.png"
+dest_files=["res://.godot/imported/rifle.png-aacecabf00e8fc1ee7d09f7dc494edfe.ctex"]
 
 [params]
 

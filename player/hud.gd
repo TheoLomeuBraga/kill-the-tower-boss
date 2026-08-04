@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	ammon_display.text += "[/color]"
 	
 	
-	health_display.text = "[img height=1em]res://icons/green_cros.png[/img] "
+	health_display.text = "[img height=1em]res://icons/consumables/green_cros.png[/img] "
 	health_display.text += "[color=green]"
 	
 	if stats.health <= 25.0:

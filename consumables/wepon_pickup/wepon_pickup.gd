@@ -30,6 +30,7 @@ func _ready() -> void:
 	add_child(model_display) 
 	weapon = weapon
 	offset = offset
+	model_display.scale *= 2.0
 
 var time : float = 0.0
 func _process(delta: float) -> void:
@@ -46,7 +47,6 @@ func _physics_process(delta: float) -> void:
 				
 				var p : Player = get_collider(i)
 				p.gun_control.add_gun(weapon)
-				
 				
 				var audio : AudioStreamPlayer = AudioStreamPlayer.new()
 				get_parent().add_child(audio)
