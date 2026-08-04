@@ -55,6 +55,17 @@ func _physics_process(delta: float) -> void:
 					p.gun_control.add_gun(weapon)
 				
 				p.gun_control.ammon_inventory[weapon.ammon_type] += weapon.ammon_capacity
+				match weapon.ammon_type:
+					GlobalEnums.AmmonType.PISTOL:
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 10
+					GlobalEnums.AmmonType.RIFLE:
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 5
+					GlobalEnums.AmmonType.SHOTGUN:
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 8
+					GlobalEnums.AmmonType.ENERGY:
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 20
+					GlobalEnums.AmmonType.EXPLOSIVE:
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 3
 				
 				var audio : AudioStreamPlayer = AudioStreamPlayer.new()
 				get_parent().add_child(audio)

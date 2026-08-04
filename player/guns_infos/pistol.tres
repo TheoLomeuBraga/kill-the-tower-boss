@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://dj35b63agox77"]
 
+[ext_resource type="Texture2D" uid="uid://djbh0xc8k3gri" path="res://icons/wepons/pistol.png" id="1_2g1w0"]
 [ext_resource type="PackedScene" uid="uid://1uip5jk8ugjy" path="res://player/guns/pistol/pistol.tscn" id="1_r4nrw"]
 [ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="2_2g1w0"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_ajuqy"]
@@ -25,6 +26,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [resource]
 script = ExtResource("7_oly01")
 name = "pistol"
+icon = ExtResource("1_2g1w0")
 model = ExtResource("1_r4nrw")
 reload_time = 0.8
 reload_audio = ExtResource("6_j7o7f")

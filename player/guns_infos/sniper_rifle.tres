@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://cpba80l67eqi7"]
 
 [ext_resource type="Script" uid="uid://b7xuc41onhf0" path="res://scripts/aim_info.gd" id="1_nvq4d"]
+[ext_resource type="Texture2D" uid="uid://dxcuklmxfw725" path="res://icons/wepons/sniper.png" id="2_cmw5f"]
 [ext_resource type="PackedScene" uid="uid://bjogfc6pm7su4" path="res://player/guns/sniper/sniper.glb" id="2_dec4k"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="3_cmw5f"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="4_fbw84"]
@@ -120,6 +121,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [resource]
 script = ExtResource("11_sfx4p")
 name = "sniper rifle"
+icon = ExtResource("2_cmw5f")
 model = SubResource("PackedScene_pnw6m")
 ammon_type = 2
 ammon_capacity = 5

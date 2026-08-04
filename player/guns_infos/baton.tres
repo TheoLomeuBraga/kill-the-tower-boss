@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_daayl"]
 [ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="5_38oac"]
 [ext_resource type="PackedScene" uid="uid://ffgnenf7m0at" path="res://player/guns/baton/baton.tscn" id="6_klhou"]
+[ext_resource type="Texture2D" uid="uid://cosmey3nnely7" path="res://icons/wepons/baton.png" id="6_l4tt8"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="7_s06ng"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_gdarx"]
 
@@ -52,6 +53,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [resource]
 script = ExtResource("8_gdarx")
 name = "baton"
+icon = ExtResource("6_l4tt8")
 model = ExtResource("6_klhou")
 ammon_consumption = -1
 ammon_capacity = -1

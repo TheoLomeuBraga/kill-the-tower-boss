@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="GunInfo" format=3 uid="uid://sjs512xc2p86"]
 
+[ext_resource type="Texture2D" uid="uid://cffhfxshx8hg4" path="res://icons/wepons/smg.png" id="1_8tmbe"]
 [ext_resource type="PackedScene" uid="uid://dy2g56k0j5aq4" path="res://player/guns/akimbo_smg/smg.tscn" id="1_d1yvr"]
 [ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="2_8tmbe"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_ihjv6"]
@@ -20,6 +21,7 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [resource]
 script = ExtResource("7_jtrlh")
 name = "smg"
+icon = ExtResource("1_8tmbe")
 model = ExtResource("1_d1yvr")
 ammon_type = 1
 ammon_capacity = 40

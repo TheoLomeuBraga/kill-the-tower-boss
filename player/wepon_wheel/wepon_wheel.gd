@@ -32,7 +32,7 @@ class_name WeaponWheel
 
 var node_placer : Node2D
 
-var test_wepon_image : Texture2D = load("res://player/wepon_wheel/test_gun.png")
+static var test_wepon_image : Texture2D = load("res://player/wepon_wheel/test_gun.png")
 
 var change_mouse : bool = false
 func _input(event: InputEvent) -> void:
@@ -60,10 +60,14 @@ var wepons_angles : Array[float]
 var wepons_ids : Dictionary[Sprite2D,int]
 var last_weapon_id : int = 0
 
-func place_node_rot(rot:float) -> void:
+func place_node_rot(rot:float,gun:GunInfo) -> void:
 	var n : Sprite2D = Sprite2D.new()
 	subviewport.add_child(n)
-	n.texture = test_wepon_image
+	
+	if gun:
+		n.texture = gun.icon
+	else:
+		n.texture = test_wepon_image
 	
 	node_placer.rotation = rot
 	n.global_position = node_placer.to_global(Vector2(0,64+32))
@@ -100,7 +104,7 @@ func reset() -> void:
 	
 	for i : int in weapon_count:
 		var rot : float = (((PI*2.0)/ float(weapon_count))*float(i)) + PI
-		place_node_rot(rot)
+		place_node_rot(rot,gun_control.inventory[i])
 
 func _ready() -> void:
 	reset()
