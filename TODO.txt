@@ -1,16 +1,14 @@
-add wepon icons to well
-
-add robot critical point hit sfx
+add wepon icons to whell
 
 add drone enemy sfx
 
 add generic enemy sfx
 
+add vignnet feedback
+
 create simple test level
 
 playtest
-
-add vignnet feedback
 
 add triger system
 
@@ -37,5 +35,9 @@ more playtest
 create settings global system
 
 create settings menu
+
+add save system
+
+add main menu
 
 even more playtest
