@@ -89,6 +89,7 @@ func interract_body(n:Node3D) -> void:
 			
 			if player.stats.health < player.stats.max_health:
 				player.stats.heal(health)
+				player.vignette.vignette_color = Color.GREEN
 				self_destruct()
 			
 			return
@@ -96,6 +97,7 @@ func interract_body(n:Node3D) -> void:
 		if player.gun_control.can_add_ammon(type):
 			
 			player.gun_control.add_ammon(type,ammon)
+			player.vignette.vignette_color = Color.YELLOW
 			
 			self_destruct()
 			

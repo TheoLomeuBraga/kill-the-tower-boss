@@ -22,11 +22,11 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.NONE: 0,
-	GlobalEnums.AmmonType.PISTOL: 100,
-	GlobalEnums.AmmonType.RIFLE: 12,
-	GlobalEnums.AmmonType.SHOTGUN: 24,
-	GlobalEnums.AmmonType.ENERGY: 100,
-	GlobalEnums.AmmonType.EXPLOSIVE: 12,
+	GlobalEnums.AmmonType.PISTOL: 0,
+	GlobalEnums.AmmonType.RIFLE: 0,
+	GlobalEnums.AmmonType.SHOTGUN: 0,
+	GlobalEnums.AmmonType.ENERGY: 0,
+	GlobalEnums.AmmonType.EXPLOSIVE: 0,
 }
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
@@ -127,6 +127,15 @@ func add_gun(gun:GunInfo) -> void:
 		set_gun(inventory.size()-1)
 		
 
+func upgrade_gun(upgrade_of:GunInfo,gun:GunInfo) -> void:
+	if inventory.has(upgrade_of):
+		for i : int in inventory.size():
+			if inventory[i] == upgrade_of:
+				inventory[i] = gun
+				set_gun(i)
+				break
+	else:
+		add_gun(gun) 
 
 var reload_audio_player : AudioStreamPlayer
 

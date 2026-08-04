@@ -6,6 +6,8 @@ class_name WeponPickup
 var model_display : Node3D
 var model : Node3D
 
+@export var upgrade_of : GunInfo
+
 @export var weapon : GunInfo :
 	set(value):
 		weapon = value
@@ -46,7 +48,13 @@ func _physics_process(delta: float) -> void:
 			if get_collider(i) is Player:
 				
 				var p : Player = get_collider(i)
-				p.gun_control.add_gun(weapon)
+				
+				if upgrade_of:
+					p.gun_control.upgrade_gun(upgrade_of,weapon)
+				else:
+					p.gun_control.add_gun(weapon)
+				
+				p.gun_control.ammon_inventory[weapon.ammon_type] += weapon.ammon_capacity
 				
 				var audio : AudioStreamPlayer = AudioStreamPlayer.new()
 				get_parent().add_child(audio)

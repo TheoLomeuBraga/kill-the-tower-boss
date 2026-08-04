@@ -206,6 +206,6 @@ grow_vertical = 2
 
 [node name="cross" type="Label" parent="CenterContainer" index="0" unique_id=1848792886]
 layout_mode = 2
-text = "[ + ]"
+text = "[  +  ]"
 horizontal_alignment = 1
 vertical_alignment = 1

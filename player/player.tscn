@@ -85,6 +85,9 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_qjkh3")
 
+[node name="Vignette" parent="." unique_id=697527882 instance=ExtResource("20_bjvpn")]
+vignette_color = Color(0, 0, 0, 0)
+
 [node name="HUD" type="Control" parent="." unique_id=627942019]
 texture_filter = 1
 layout_mode = 3
@@ -156,9 +159,6 @@ stats = NodePath("../Stats")
 visible = false
 gun_control = NodePath("../Camera3D/GunControl")
 player_movement = NodePath("../PlayerMovement")
-
-[node name="Vignette" parent="." unique_id=697527882 instance=ExtResource("20_bjvpn")]
-visible = false
 
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
 

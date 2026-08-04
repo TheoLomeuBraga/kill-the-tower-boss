@@ -4,8 +4,6 @@ add drone enemy sfx
 
 add generic enemy sfx
 
-add vignnet feedback
-
 create simple test level
 
 playtest
