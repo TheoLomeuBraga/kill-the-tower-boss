@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bvkqahfu1dx5h"]
+
+[ext_resource type="PackedScene" uid="uid://cmfrvu7y6nm2y" path="res://levels/test_2/test_2.glb" id="1_75ml3"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bh6oj1hm2unfc" path="res://levels/test_2/test_2_model.occ" id="2_h0xvp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h0xvp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bdepj"]
+sky_material = SubResource("ProceduralSkyMaterial_h0xvp")
+
+[sub_resource type="Environment" id="Environment_qr8r6"]
+background_mode = 2
+sky = SubResource("Sky_bdepj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_pa0au"]
+offsets = PackedFloat32Array(0.44541484, 0.6681223)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hmyvt"]
+frequency = 0.0164
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h0xvp"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_hmyvt")
+color_ramp = SubResource("Gradient_pa0au")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r23pr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bdepj"]
+noise = SubResource("FastNoiseLite_r23pr")
+color_ramp = SubResource("Gradient_pa0au")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxkbx"]
+transparency = 1
+albedo_texture = SubResource("NoiseTexture2D_h0xvp")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.3
+normal_scale = 0.1
+normal_texture = SubResource("NoiseTexture2D_bdepj")
+uv1_scale = Vector3(0.005, 0.005, 0.005)
+uv1_triplanar = true
+texture_filter = 0
+distance_fade_mode = 1
+distance_fade_min_distance = 400.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qr8r6"]
+material = SubResource("StandardMaterial3D_qxkbx")
+size = Vector2(1000, 1000)
+
+[node name="test_2" unique_id=651653134 instance=ExtResource("1_75ml3")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=761480516]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=1671404413]
+environment = SubResource("Environment_qr8r6")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="4" unique_id=728044990]
+occluder = ExtResource("2_h0xvp")
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="5" unique_id=778960208]
+size = Vector3(20, 2, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6" unique_id=374457913]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 67, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_qr8r6")

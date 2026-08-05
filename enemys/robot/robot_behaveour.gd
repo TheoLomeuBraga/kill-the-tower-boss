@@ -14,7 +14,7 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var look_target : Node3D = $"../look_target"
 
-@export var desired_distances : Vector3 = Vector3(4.0,10,20)
+@export var desired_distances : Vector3 = Vector3(5.0,10,20)
 
 @export var muzle_minigun : Node3D
 @export var muzle_rocket_aluncher : Node3D
@@ -169,7 +169,7 @@ func rocket_launcher_state(delta:float) -> void:
 	
 	shot_rocket()
 	
-	gun_timer.start(2.0)
+	gun_timer.start(0.5)
 	
 	await gun_timer.timeout
 	

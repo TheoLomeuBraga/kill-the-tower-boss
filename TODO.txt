@@ -4,6 +4,8 @@ create simple test level
 
 playtest
 
+add custom fonts
+
 possible Tweaks: enemy agresivity and speed, player speed, enemy stun state
 
 add scene manager
