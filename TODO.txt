@@ -2,21 +2,31 @@ add drone enemy sfx
 
 add generic enemy sfx
 
+create simple placeholder textures
+
 create simple test level
 
 playtest
+
+possible Tweaks: enemy agresivity and speed, player speed, enemy stun state
+
+add persistency system
+
+add chekinpoint system
+
+add death triger
+
+add fail state
 
 add triger system
 
 add level transition system
 
-add fail state
-
-add respawn system
-
-add enemy spawn system
+add enemy spawn/respawn system
 
 add button system
+
+add lever system
 
 add key card system
 

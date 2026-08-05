@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://w0xraitu5agu"]
+
+[ext_resource type="Script" uid="uid://bjudck3qhnk28" path="res://global/persistence_manager.gd" id="1_26v4a"]
+
+[node name="PersistenceManager" type="Node" unique_id=1360074242]
+script = ExtResource("1_26v4a")
