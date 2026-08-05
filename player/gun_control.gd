@@ -121,8 +121,10 @@ func set_gun(gun:GunInfo) -> void:
 	
 
 func add_gun(gun:GunInfo) -> void:
+	if inventory.has(gun) and inventory[gun]:
+		return
 	inventory[gun] = true
-		
+	set_gun(gun)
 
 func upgrade_gun(upgrade_of:GunInfo,gun:GunInfo) -> void:
 	if inventory.has(upgrade_of):

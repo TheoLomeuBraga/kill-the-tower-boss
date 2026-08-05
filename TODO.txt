@@ -1,5 +1,3 @@
-add drone enemy sfx
-
 add generic enemy sfx
 
 create simple placeholder textures

@@ -156,6 +156,7 @@ func atack_state(delta:float) -> void:
 		state = dash_state
 		time_to_dash = time_betwen_dashes
 		time_to_stop_dash = time_wile_dashes
+		$"../sfx/dash".play()
 		
 		var dash_desired_position : Vector3 = Vector3(rng.randf_range(-1.0,1.0),0.0,rng.randf_range(-1.0,1.0))
 		dash_desired_position = dash_desired_position.normalized() * 10
