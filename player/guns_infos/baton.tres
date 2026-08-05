@@ -22,6 +22,7 @@ collision_shape = SubResource("BoxShape3D_r7pn3")
 ricochet = 1
 penetrations = 20
 hit_wall_effect = ExtResource("3_72pfc")
+knock_back = -10.0
 enemy_knock_back = 20.0
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -47,6 +48,7 @@ collision_shape = SubResource("BoxShape3D_rptt4")
 ricochet = 1
 penetrations = 20
 hit_wall_effect = ExtResource("3_72pfc")
+knock_back = -5.0
 enemy_knock_back = 15.0
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
