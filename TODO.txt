@@ -1,3 +1,5 @@
+create numpad wepons target positions
+
 add drone enemy sfx
 
 add generic enemy sfx
