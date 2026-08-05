@@ -1,5 +1,3 @@
-add generic enemy sfx
-
 create simple placeholder textures
 
 create simple test level
@@ -7,6 +5,8 @@ create simple test level
 playtest
 
 possible Tweaks: enemy agresivity and speed, player speed, enemy stun state
+
+add scene manager
 
 add persistency system
 

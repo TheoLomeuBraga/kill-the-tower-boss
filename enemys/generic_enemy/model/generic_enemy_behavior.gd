@@ -213,10 +213,18 @@ func process_shot(delta:float) -> void:
 	navegator.look_target =  Navegator.LookTarget.TARGET
 	animation_tree.set("parameters/Transition/transition_request","idle")
 	
+	state = calculate_next_state()
+	
 	if cool_down <= 0 and reload_time <= 0:
 		shot()
-	
-	state = calculate_next_state()
+		
+		if not is_some_one_playing_audio and rng.randi_range(0,20)==5:
+			$"../sfx/open_fire".play()
+			is_some_one_playing_audio = true
+			await $"../sfx/open_fire".finished
+			is_some_one_playing_audio = false
+
+static var is_some_one_playing_audio : bool = false
 
 func process_idle(delta:float) -> void:
 	
@@ -226,6 +234,11 @@ func process_idle(delta:float) -> void:
 	
 	if is_player_visible:
 		state = calculate_next_state()
+		if not is_some_one_playing_audio:
+			$"../sfx/target".play()
+			is_some_one_playing_audio = true
+			await $"../sfx/target".finished
+			is_some_one_playing_audio = false
 
 func calculate_next_state() -> Callable:
 	
@@ -259,4 +272,7 @@ func _physics_process(delta: float) -> void:
 		
 		state.call(delta)
 		
-		
+
+
+func _exit_tree() -> void:
+	is_some_one_playing_audio = false
