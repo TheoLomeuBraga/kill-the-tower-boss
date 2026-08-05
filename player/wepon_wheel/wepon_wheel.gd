@@ -57,10 +57,15 @@ func _input(event: InputEvent) -> void:
 
 var wepons_sprites : Dictionary[float,Sprite2D]
 var wepons_angles : Array[float]
-var wepons_ids : Dictionary[Sprite2D,int]
+var wepons : Dictionary[Sprite2D,GunInfo]
 var last_weapon_id : int = 0
 
 func place_node_rot(rot:float,gun:GunInfo) -> void:
+	
+	if not gun_control.inventory[gun]:
+		last_weapon_id+=1
+		return
+	
 	var n : Sprite2D = Sprite2D.new()
 	subviewport.add_child(n)
 	
@@ -74,13 +79,13 @@ func place_node_rot(rot:float,gun:GunInfo) -> void:
 	
 	wepons_sprites[rot] = n
 	wepons_angles.push_back(rot)
-	wepons_ids[wepons_sprites[rot]] = last_weapon_id
+	wepons[wepons_sprites[rot]] = gun_control.inventory_order[last_weapon_id]
 	last_weapon_id+=1
 
 
 var weapon_count : int = 8
 
-var curent_selected_wepon : int = 0
+var curent_selected_wepon : GunInfo
 
 func reset() -> void:
 	
@@ -89,12 +94,12 @@ func reset() -> void:
 	if not visible or weapon_count == 0:
 		return
 	
-	for s : Sprite2D in wepons_ids:
+	for s : Sprite2D in wepons:
 		s.queue_free()
 	
 	wepons_sprites = {}
 	wepons_angles = []
-	wepons_ids = {}
+	wepons = {}
 	last_weapon_id = 0
 	
 	cursor.global_position = subviewport.size / 2
@@ -104,9 +109,10 @@ func reset() -> void:
 	
 	for i : int in weapon_count:
 		var rot : float = (((PI*2.0)/ float(weapon_count))*float(i)) + PI
-		place_node_rot(rot,gun_control.inventory[i])
+		place_node_rot(rot,gun_control.inventory_order[i])
 
 func _ready() -> void:
+	
 	reset()
 	visibility_changed.connect(reset)
 
@@ -115,10 +121,9 @@ func angle_sort(a, b):
 		return true
 	return false
 
-func get_wepon_info(id:int) -> String:
+func get_wepon_info(current_gun : GunInfo) -> String:
 	var ret : String = ""
 	
-	var current_gun : GunInfo = gun_control.inventory[id]
 	var ammon_inventory:int = gun_control.ammon_inventory[current_gun.ammon_type]
 	
 	if current_gun.ammon_type != GlobalEnums.AmmonType.NONE:
@@ -132,10 +137,8 @@ func get_wepon_info(id:int) -> String:
 	
 	return ret
 
-func get_max_and_mag_ammons(id:int) -> Vector2i:
+func get_max_and_mag_ammons(current_gun:GunInfo) -> Vector2i:
 	var ret : Vector2i
-	
-	var current_gun : GunInfo = gun_control.inventory[id]
 	var ammon_inventory:int = gun_control.ammon_inventory[current_gun.ammon_type]
 	
 	ret.x = current_gun.ammon_capacity
@@ -166,7 +169,7 @@ func find_selected_wepon() -> void:
 	var selected_sprite : Sprite2D = wepons_sprites[local_wepons_angles[0]]
 	select_frame.global_transform = selected_sprite.global_transform
 	
-	curent_selected_wepon = wepons_ids[selected_sprite]
+	curent_selected_wepon = wepons[selected_sprite]
 	
 	var max_mag : Vector2i = get_max_and_mag_ammons(curent_selected_wepon)
 	
@@ -178,12 +181,14 @@ func find_selected_wepon() -> void:
 	else:
 		weapon_ammon_info_color = "[color=black]"
 	
-	var current_gun : GunInfo = gun_control.inventory[curent_selected_wepon]
-	weapon_ammon_info_icon = GlobalEnums.wepons_icons[current_gun.ammon_type]
 	
-	weapon_name = current_gun.name
+	weapon_ammon_info_icon = GlobalEnums.wepons_icons[curent_selected_wepon.ammon_type]
+	
+	weapon_name = curent_selected_wepon.name
 	
 	weapon_ammon_info = get_wepon_info(curent_selected_wepon)
+
+
 
 func _process(delta: float) -> void:
 	
@@ -197,6 +202,7 @@ func _process(delta: float) -> void:
 		return
 	
 	if Input.is_action_just_released("wepon_select"):
+		
 		gun_control.set_gun(curent_selected_wepon)
 		visible = false
 		change_mouse = true

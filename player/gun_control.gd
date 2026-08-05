@@ -6,9 +6,9 @@ class_name GunControl
 @export var player_model : PlayerModel
 @export var camera : Camera3D
 
-@export var inventory : Array[GunInfo]
-var current_gun_id : int = -1
-var current_gun : GunInfo
+@export var inventory_order : Array[GunInfo]
+@export var inventory : Dictionary[GunInfo,bool]
+var current_gun : GunInfo = null
 
 @export var target_raycast : RayCast3D
 
@@ -92,17 +92,16 @@ func reload_ammon(gun:GunInfo=current_gun) -> void:
 
 var is_reloading : bool = false
 var is_reloading_timer : Timer
-func set_gun(no : int) -> void:
+func set_gun(gun:GunInfo) -> void:
 	
-	if not no >= 0 or not no < inventory.size() or no == current_gun_id:
+	if  not (gun and inventory.has(gun) and inventory[gun] and gun != current_gun):
 		return
 	
 	is_reloading = false
 	is_reloading_timer.stop()
 	
-	current_gun_id = min(no,inventory.size() -1)
-	current_gun = inventory[current_gun_id]
-		
+	current_gun = gun
+	
 	
 	reload_audio_player.stop()
 	reload_audio_player.stream = current_gun.reload_audio
@@ -122,18 +121,18 @@ func set_gun(no : int) -> void:
 	
 
 func add_gun(gun:GunInfo) -> void:
-	if not inventory.has(gun):
-		inventory.push_back(gun)
-		set_gun(inventory.size()-1)
+	inventory[gun] = true
 		
 
 func upgrade_gun(upgrade_of:GunInfo,gun:GunInfo) -> void:
 	if inventory.has(upgrade_of):
-		for i : int in inventory.size():
-			if inventory[i] == upgrade_of:
-				inventory[i] = gun
-				set_gun(i)
-				break
+		inventory.erase(upgrade_of)
+		inventory[gun] = true
+		
+		for i:int in inventory_order.size():
+			if inventory_order[i] == upgrade_of:
+				inventory_order[i] = gun 
+			
 	else:
 		add_gun(gun) 
 
@@ -143,6 +142,10 @@ var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
 func _ready() -> void:
+	
+	for g:GunInfo in inventory_order:
+		if not inventory.has(g):
+			inventory[g] = false
 	
 	reload_audio_player = AudioStreamPlayer.new()
 	add_child(reload_audio_player)
@@ -158,7 +161,7 @@ func _ready() -> void:
 	is_reloading_timer.timeout.connect(reload_ammon)
 	is_reloading_timer.one_shot = true
 	
-	set_gun(0)
+	set_gun(inventory_order[0])
 
 
 
@@ -168,13 +171,13 @@ func shot() -> void:
 	
 	var muzle : Node3D = player_model.gun.get_muzle()
 	
-	if inventory[current_gun_id].projectile_info.spawn_effect:
-		var particle : Node = inventory[current_gun_id].projectile_info.spawn_effect.instantiate()
+	if current_gun.projectile_info.spawn_effect:
+		var particle : Node = current_gun.projectile_info.spawn_effect.instantiate()
 		muzle.add_child(particle)
 	
 	player_model.gun.shot = true
 	
-	for i : int in inventory[current_gun_id].bullets_per_shot:
+	for i : int in current_gun.bullets_per_shot:
 		
 		
 		var projectile : ProjectBehavior = ProjectBehavior.new()
@@ -189,7 +192,7 @@ func shot() -> void:
 		else:
 			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
 		
-		var spread : float = inventory[current_gun_id].spread
+		var spread : float = current_gun.spread
 		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
 		if vec_spread.length() > 1.0:
 			vec_spread = vec_spread.normalized()
@@ -199,19 +202,19 @@ func shot() -> void:
 		projectile.rotate_y(aditional_rot.y)
 		projectile.rotate_z(aditional_rot.z)
 		
-		projectile.data = inventory[current_gun_id].projectile_info
+		projectile.data = current_gun.projectile_info
 		projectile.start()
 		
 
 func alt_shot() -> void:
 	
-	body.velocity += camera.global_basis.z * inventory[current_gun_id].charge_shot_info.projectile_info.knock_back
+	body.velocity += camera.global_basis.z * current_gun.charge_shot_info.projectile_info.knock_back
 	
-	if inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect:
-		var particle : Node = inventory[current_gun_id].charge_shot_info.projectile_info.spawn_effect.instantiate()
+	if current_gun.charge_shot_info.projectile_info.spawn_effect:
+		var particle : Node = current_gun.charge_shot_info.projectile_info.spawn_effect.instantiate()
 		player_model.gun.get_muzle().add_child(particle)
 	
-	for i : int in inventory[current_gun_id].charge_shot_info.bullets_per_shot:
+	for i : int in current_gun.charge_shot_info.bullets_per_shot:
 		var projectile : ProjectBehavior = ProjectBehavior.new()
 		add_child(projectile)
 		projectile.global_position = camera.global_position
@@ -224,7 +227,7 @@ func alt_shot() -> void:
 		else:
 			projectile.look_at(camera.global_position - (camera.global_basis.z * 100.0))
 		
-		var spread : float = inventory[current_gun_id].charge_shot_info.spread
+		var spread : float = current_gun.charge_shot_info.spread
 		var vec_spread : Vector3 = Vector3(rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0),rng.randf_range(-1.0,1.0))
 		if vec_spread.length() > 1.0:
 			vec_spread = vec_spread.normalized()
@@ -234,7 +237,7 @@ func alt_shot() -> void:
 		projectile.rotate_y(aditional_rot.y)
 		projectile.rotate_z(aditional_rot.z)
 		
-		projectile.data = inventory[current_gun_id].charge_shot_info.projectile_info
+		projectile.data = current_gun.charge_shot_info.projectile_info
 		projectile.start()
 		
 	player_model.gun.alt_shot = true
@@ -275,25 +278,59 @@ func reload() -> void:
 	is_reloading = true
 	is_reloading_timer.start(current_gun.reload_time)
 
+func get_next_gun_id() -> int:
+	var ret : int = inventory_order.find(current_gun)
+	
+	while true:
+		ret = wrap(ret+1,0,inventory_order.size()-1)
+		if inventory[inventory_order[ret]]:
+			break
+	
+	return ret
+
+func get_previous_gun_id() -> int:
+	var ret : int = inventory_order.find(current_gun)
+	
+	while true:
+		ret = wrap(ret-1,0,inventory_order.size()-1)
+		if inventory[inventory_order[ret]]:
+			break
+	
+	return ret
+
 func manage_wepon_change() -> void:
-	if Input.is_action_just_pressed("wepon_1") and inventory.size() > 0:
-		set_gun(0)
-	elif Input.is_action_just_pressed("wepon_2") and inventory.size() > 1:
-		set_gun(1)
-	elif Input.is_action_just_pressed("wepon_3") and inventory.size() > 2: 
-		set_gun(2)
-	elif Input.is_action_just_pressed("wepon_4") and inventory.size() > 3:
-		set_gun(3)
-	elif Input.is_action_just_pressed("wepon_5") and inventory.size() > 4:
-		set_gun(4)
-	elif Input.is_action_just_pressed("wepon_6") and inventory.size() > 5:
-		set_gun(5)
-	elif Input.is_action_just_pressed("wepon_7") and inventory.size() > 6:
-		set_gun(6)
-	elif Input.is_action_just_pressed("wepon_8") and inventory.size() > 7:
-		set_gun(7)
-	elif Input.is_action_just_pressed("wepon_9") and inventory.size() > 8:
-		set_gun(8)
+	var can_continue : bool = false
+	for w : GunInfo in inventory:
+		if inventory[w]:
+			can_continue = true
+			break
+	if not can_continue:
+		return
+	
+	if Input.is_action_just_pressed("wepon_1") and inventory_order.size() > 0:
+		set_gun(inventory_order[0])
+	elif Input.is_action_just_pressed("wepon_2") and inventory_order.size() > 1:
+		set_gun(inventory_order[1])
+	elif Input.is_action_just_pressed("wepon_3") and inventory_order.size() > 2: 
+		set_gun(inventory_order[2])
+	elif Input.is_action_just_pressed("wepon_4") and inventory_order.size() > 3:
+		set_gun(inventory_order[3])
+	elif Input.is_action_just_pressed("wepon_5") and inventory_order.size() > 4:
+		set_gun(inventory_order[4])
+	elif Input.is_action_just_pressed("wepon_6") and inventory_order.size() > 5:
+		set_gun(inventory_order[5])
+	elif Input.is_action_just_pressed("wepon_7") and inventory_order.size() > 6:
+		set_gun(inventory_order[6])
+	elif Input.is_action_just_pressed("wepon_8") and inventory_order.size() > 7:
+		set_gun(inventory_order[7])
+	elif Input.is_action_just_pressed("wepon_9") and inventory_order.size() > 8:
+		set_gun(inventory_order[8])
+	
+	if Input.is_action_just_released("next_wepon"):
+		set_gun(inventory_order[get_next_gun_id()])
+	elif Input.is_action_just_released("previous_wepon"):
+		set_gun(inventory_order[get_previous_gun_id()])
+	
 
 func process_aim() -> void:
 	
@@ -437,14 +474,11 @@ func process_shot(delta: float) -> void:
 		
 		return
 
+
+
 func _process(delta: float) -> void:
 	
 	manage_wepon_change()
-	
-	if Input.is_action_just_released("next_wepon"):
-		set_gun(wrap(current_gun_id+1,0,inventory.size()))
-	elif Input.is_action_just_released("previous_wepon"):
-		set_gun(wrap(current_gun_id-1,0,inventory.size()))
 	
 	process_inventory_reload_time(delta)
 	
