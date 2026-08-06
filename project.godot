@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PostProcessing="*uid://l0s57321gcc5"
-PersistenceManager="*uid://w0xraitu5agu"
+Triger="*uid://csg5erhs7506c"
+PersistenceManager="*uid://bjudck3qhnk28"
 
 [display]
 
