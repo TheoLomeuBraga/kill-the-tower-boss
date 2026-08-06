@@ -3,6 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://bvkqahfu1dx5h" path="res://levels/test_2/test_2_model.tscn" id="1_mni44"]
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="2_4vk4w"]
 [ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="3_4vk4w"]
+[ext_resource type="PackedScene" uid="uid://cphjkxcxek3bc" path="res://enemys/generic_enemy/model/generic_enemy.tscn" id="4_28l4a"]
+[ext_resource type="PackedScene" uid="uid://eg6xpltvknpa" path="res://consumables/consumable.tscn" id="5_saky1"]
+[ext_resource type="Script" uid="uid://3qgv8esjmnut" path="res://consumables/wepon_pickup/wepon_pickup.gd" id="6_bwj1f"]
+[ext_resource type="Resource" uid="uid://dem71dr1rlwrg" path="res://player/guns_infos/shotgun.tres" id="7_dnmaj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2jhj"]
 
 [node name="Test2" type="Node3D" unique_id=344355715]
 
@@ -16,3 +22,33 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2
 
 [node name="drone2" parent="." unique_id=1787921550 instance=ExtResource("3_4vk4w")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2, -15)
+
+[node name="generic_enemy" parent="." unique_id=2136028321 instance=ExtResource("4_28l4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8)
+
+[node name="generic_enemy4" parent="." unique_id=1565549848 instance=ExtResource("4_28l4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -11)
+
+[node name="consumable" parent="." unique_id=1597481904 instance=ExtResource("5_saky1")]
+transform = Transform3D(-0.99951196, 0, 0.031237565, 0, 1, 0, -0.031237565, 0, -0.99951196, 21, 1, 48)
+
+[node name="consumable2" parent="." unique_id=917838878 instance=ExtResource("5_saky1")]
+transform = Transform3D(0.044985805, 0, 0.99898756, 0, 1, 0, -0.99898756, 0, 0.044985805, 23, 1, 48)
+
+[node name="consumable3" parent="." unique_id=1747113478 instance=ExtResource("5_saky1")]
+transform = Transform3D(0.99990016, 0, -0.014127213, 0, 1, 0, 0.014127213, 0, 0.99990016, 25, 1, 48)
+
+[node name="consumable4" parent="." unique_id=44253804 instance=ExtResource("5_saky1")]
+transform = Transform3D(0.38086283, 0, -0.9246315, 0, 1, 0, 0.9246315, 0, 0.38086283, 27, 1, 48)
+
+[node name="consumable5" parent="." unique_id=281365813 instance=ExtResource("5_saky1")]
+transform = Transform3D(0.99816227, 0, -0.060593594, 0, 1, 0, 0.060593594, 0, 0.99816227, 29, 1, 48)
+
+[node name="WeponPickup" type="ShapeCast3D" parent="." unique_id=1128257413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 48)
+shape = SubResource("SphereShape3D_b2jhj")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("6_bwj1f")
+weapon = ExtResource("7_dnmaj")
+offset = Vector3(0.13, 0, -0.801)
+metadata/_custom_type_script = "uid://3qgv8esjmnut"
