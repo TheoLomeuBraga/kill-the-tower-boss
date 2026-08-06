@@ -70,6 +70,7 @@ ExtResource("5_jd2rm"): true,
 ExtResource("6_q28gw"): true
 })
 target_raycast = NodePath("../RayCast3D")
+start_gun = 1
 
 [node name="PlayerMovement" type="Node" parent="." unique_id=494941887 node_paths=PackedStringArray("camera", "model", "grapple_raycast", "grapple_hope")]
 script = ExtResource("1_oul6g")

@@ -16,6 +16,9 @@ func _physics_process(delta: float) -> void:
 	if not input_dir.length() > 0.0:
 		return
 	
+	if a.get_collision_normal().dot(b.get_collision_normal()) > 0.2:
+		return
+	
 	var a_dist : float = a.global_position.distance_to(a.get_collision_point())
 	body.global_position.y += a.target_position.length() - a_dist
 	

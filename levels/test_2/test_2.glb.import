@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/test_2.glb-684e01850c1d5ee74bec026dc37bdbfb.s
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="NavigationRegion3D"
 nodes/root_name=""
 nodes/root_script=null
 mesh_library/use_node_names_as_mesh_names=false
@@ -26,7 +26,7 @@ nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
+meshes/light_baking=2
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true

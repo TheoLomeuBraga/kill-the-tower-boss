@@ -2,6 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://cmfrvu7y6nm2y" path="res://levels/test_2/test_2.glb" id="1_75ml3"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bh6oj1hm2unfc" path="res://levels/test_2/test_2_model.occ" id="2_h0xvp"]
+[ext_resource type="CompressedTexture3D" uid="uid://igrvlbml7xrv" path="res://levels/test_2/test_2_model.GPUParticlesCollisionSDF3D_data.exr" id="3_bdepj"]
+[ext_resource type="LightmapGIData" uid="uid://crr51odya7c3y" path="res://levels/test_2/test_2_model.lmbake" id="4_qr8r6"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tr10d"]
+vertices = PackedVector3Array(11.5, 8.5, -13.5, 11.5, 8.5, -24.5, -16.5, 8.5, -24.5, -16.5, 8.5, -13.5, 13.75, 8.5, -13.25, 40.5, 8.5, -24.5, 13.75, 8.5, 0.5, 40.5, 8.5, 0.5, 39.5, 0.5, -23.5, 39.75, 0.5, 0.5, 40.5, 0.5, 0.5, 40.5, 0.5, -24.25, 13.75, 0.5, -24.25, 13.75, 0.5, -23.5, 39.25, 6.5, -23.5, 39.5, 6.5, 0.5, 40.5, 6.5, 0.5, 40.5, 6.5, -24.25, 13.75, 6.5, -24.25, 13.75, 6.5, -23.5, -16.25, 0.5, -22.25, -16.25, 0.5, -13.5, -15.5, 0.5, -13.5, -15.5, 0.5, -22.25, -16.25, 6.5, -22.25, -16.25, 6.5, -13.5, -15.5, 6.5, -13.5, -15.5, 6.5, -22.25, -14.25, 0.5, -11.75, -11.5, 0.5, -11.75, -11.25, 0.5, -13.5, -14.25, 0.5, -22.25, 12, 0.5, -13.5, 12.25, 0.5, -22.25, 22.5, 0.5, -15.25, 24.25, 0.5, -15.5, 24, 0.5, -22.25, 13.5, 0.5, -13.5, 13.75, 0.5, -11.75, 22.5, 0.5, -12, 28, 0.5, -15.5, 28.25, 0.5, -22.25, 29.5, 0.5, -15.5, 29.75, 0.5, -13.75, 38.5, 0.5, -14, 38.5, 0.5, -22.25, 23.5, 6.5, -14.5, 23.5, 6.5, -9.5, 28.5, 6.5, -9.5, 28.5, 6.5, -14.5, 23.75, 0.5, -14.25, 23.75, 0.5, -9.5, 28.5, 0.5, -9.5, 28.5, 0.5, -14.25, 29.75, 0.5, -10.25, 38.5, 0.5, -10, 12.5, 14.5, 12.5, 12.75, 14.5, 0.75, 12.75, 14.5, -12.5, -16.5, 14.5, -12.5, -16.5, 14.5, 12.5, -16.25, 4.5, -12.25, -16.25, 4.5, -11.5, -15.25, 4.5, -11.5, -15.25, 4.5, -12.25, 24, 0.5, -1.5, 24.25, 0.5, -8.25, 22.5, 0.5, -8.5, 13.75, 0.5, -1.5, -11.25, 0.5, -10.25, -14.25, 0.5, 10.5, 10.5, 0.5, 10.5, 10.5, 0.5, -10.25, -16.25, 0.5, -10.25, -16.25, 0.5, 10.5, -15.5, 0.5, 10.5, -15.5, 0.5, -10.25, -16.25, 12.5, -10.25, -16.25, 12.5, 10.5, -15.5, 12.5, 10.5, -15.5, 12.5, -10.25, 11.5, 12.5, -10.25, 11.5, 12.5, 10.5, 12.5, 12.5, 10.5, 12.5, 12.5, -10.25, 35.5, 0.5, -1.5, 35.75, 0.5, 0.5, 38.5, 0.5, 0.5, 29.25, 0.5, -8.25, 27.75, 0.5, -8.25, 28, 0.5, -1.5, 29.75, 0.5, -8.75, 13.75, 6.5, -0.5, 13.75, 6.5, 0.5, 34.5, 6.5, 0.5, 34.5, 6.5, -0.5, 13.75, 0.5, -0.25, 13.75, 0.5, 0.5, 34.5, 0.5, 0.5, 34.5, 0.5, -0.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(0, 1, 4), PackedInt32Array(4, 1, 5), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 8), PackedInt32Array(8, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(32, 30, 33), PackedInt32Array(33, 30, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(32, 33, 37), PackedInt32Array(37, 33, 34), PackedInt32Array(34, 33, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 34), PackedInt32Array(35, 36, 40), PackedInt32Array(40, 36, 41), PackedInt32Array(42, 40, 41), PackedInt32Array(44, 43, 42), PackedInt32Array(41, 45, 42), PackedInt32Array(42, 45, 44), PackedInt32Array(49, 48, 46), PackedInt32Array(46, 48, 47), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(43, 44, 54), PackedInt32Array(54, 44, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 60), PackedInt32Array(58, 60, 59), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(67, 66, 65), PackedInt32Array(38, 39, 67), PackedInt32Array(65, 68, 67), PackedInt32Array(67, 68, 38), PackedInt32Array(29, 69, 28), PackedInt32Array(28, 69, 70), PackedInt32Array(72, 71, 69), PackedInt32Array(69, 71, 70), PackedInt32Array(76, 75, 73), PackedInt32Array(73, 75, 74), PackedInt32Array(80, 79, 77), PackedInt32Array(77, 79, 78), PackedInt32Array(84, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 55), PackedInt32Array(90, 89, 88), PackedInt32Array(88, 91, 90), PackedInt32Array(90, 91, 85), PackedInt32Array(85, 91, 55), PackedInt32Array(91, 54, 55), PackedInt32Array(66, 89, 65), PackedInt32Array(65, 89, 90), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(99, 98, 96), PackedInt32Array(96, 98, 97)]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_b2jhj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h0xvp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,22 +65,71 @@ material = SubResource("StandardMaterial3D_qxkbx")
 size = Vector2(1000, 1000)
 
 [node name="test_2" unique_id=651653134 instance=ExtResource("1_75ml3")]
+navigation_mesh = SubResource("NavigationMesh_tr10d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=761480516]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 layers = 3
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=1671404413]
-environment = SubResource("Environment_qr8r6")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="4" unique_id=728044990]
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1" unique_id=728044990]
+transform = Transform3D(1, -1.4901161e-08, -1.4901161e-08, -1.4901161e-08, 1, -2.9802322e-08, -1.4901161e-08, 0, 1, 0, 0, 0)
 occluder = ExtResource("2_h0xvp")
 
-[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="5" unique_id=778960208]
-size = Vector3(20, 2, 20)
+[node name="LightmapGI" type="LightmapGI" parent="." index="2" unique_id=1281183259]
+camera_attributes = SubResource("CameraAttributesPractical_b2jhj")
+light_data = ExtResource("4_qr8r6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6" unique_id=374457913]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3" unique_id=1671404413]
+environment = SubResource("Environment_qr8r6")
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="6" unique_id=778960208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 8.5, -22)
+size = Vector3(68, 27, 64)
+texture = ExtResource("3_bdepj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="7" unique_id=374457913]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 67, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_qr8r6")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="21" unique_id=1872258709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 5, -2)
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 30.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." index="22" unique_id=1972840888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 5, -22)
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 30.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="23" unique_id=884698664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.067402, 4, -9)
+layers = 3
+light_color = Color(1, 1, 0, 1)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="24" unique_id=3536383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+layers = 3
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 100.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="25" unique_id=1273849013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -18)
+layers = 3
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 100.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="." index="26" unique_id=702110335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 5, -2)
+light_color = Color(1, 1, 0, 1)
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 30.0

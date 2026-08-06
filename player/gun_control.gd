@@ -12,6 +12,8 @@ var current_gun : GunInfo = null
 
 @export var target_raycast : RayCast3D
 
+@export var start_gun : int
+
 const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
@@ -163,7 +165,7 @@ func _ready() -> void:
 	is_reloading_timer.timeout.connect(reload_ammon)
 	is_reloading_timer.one_shot = true
 	
-	set_gun(inventory_order[0])
+	set_gun(inventory_order[wrapf(start_gun,0,inventory_order.size()-1)])
 
 
 
@@ -402,7 +404,7 @@ func process_shot(delta: float) -> void:
 		player_model.gun.shot = false
 	
 	#reload
-	if (Input.is_action_just_pressed("reload") or not has_ammon_normal) and current_gun.ammon_capacity > 0:
+	if (Input.is_action_just_pressed("reload") or not has_ammon_normal) and current_gun.ammon_capacity > 0 and get_ammon_on_mag(current_gun) < current_gun.ammon_capacity:
 		reload()
 		return
 	

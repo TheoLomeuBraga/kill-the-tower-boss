@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvkqahfu1dx5h" path="res://levels/test_2/test_2_model.tscn" id="1_mni44"]
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="2_4vk4w"]
+[ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="3_4vk4w"]
 
 [node name="Test2" type="Node3D" unique_id=344355715]
 
@@ -9,3 +10,9 @@
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("2_4vk4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="drone" parent="." unique_id=647379188 instance=ExtResource("3_4vk4w")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2, -21)
+
+[node name="drone2" parent="." unique_id=1787921550 instance=ExtResource("3_4vk4w")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2, -15)
