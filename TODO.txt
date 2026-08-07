@@ -8,8 +8,6 @@ add custom fonts
 
 possible Tweaks: enemy agresivity and speed, player speed, enemy stun state
 
-add ladder suport
-
 add scene manager
 
 add persistency system
@@ -37,6 +35,8 @@ add plataform system
 add melee robot
 
 add melee robot sfx
+
+create textures
 
 more playtest
 

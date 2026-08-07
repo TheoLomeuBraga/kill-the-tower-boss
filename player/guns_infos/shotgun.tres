@@ -15,7 +15,7 @@ radius = 0.2
 [sub_resource type="Resource" id="Resource_r7pn3"]
 script = ExtResource("4_cw3rp")
 damage = 20
-distance = 15.0
+distance = 20.0
 model = ExtResource("3_sp17m")
 collision_shape = SubResource("SphereShape3D_uw77l")
 hit_wall_effect = ExtResource("2_kx753")
