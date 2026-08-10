@@ -248,6 +248,7 @@ func calculate_next_state() -> Callable:
 	var distance : float = body.global_position.distance_to(Player.player.global_position)
 	
 	if not is_player_visible or state == process_folow_player and distance > desired_distances[body.current_gun_type].y:
+		print("process_folow_player")
 		return process_folow_player
 	elif distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].z:
 		if body.current_gun_type != GenericEnemyModel.GunType.SNIPER:

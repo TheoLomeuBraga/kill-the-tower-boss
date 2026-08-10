@@ -147,7 +147,7 @@ script = ExtResource("3_70rjn")
 metadata/_custom_type_script = "uid://ckec3yq1gbw7l"
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="7" unique_id=262969854]
-z_index = 10
+visible = false
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0

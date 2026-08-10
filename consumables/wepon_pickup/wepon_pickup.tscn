@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cl6xaug2fg26x"]
+
+[ext_resource type="Script" uid="uid://3qgv8esjmnut" path="res://consumables/wepon_pickup/wepon_pickup.gd" id="1_ovetv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xq72q"]
+
+[node name="WeponPickup" type="ShapeCast3D" unique_id=1997913648]
+shape = SubResource("SphereShape3D_xq72q")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("1_ovetv")

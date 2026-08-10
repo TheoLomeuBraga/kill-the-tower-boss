@@ -32,7 +32,7 @@ func try_jump() -> void:
 @export var grapple_hope : Node3D
 var grapple_place : Vector3
 
-@export var block_camera_rotetion : bool = false
+var block_camera_rotetion : bool = true
 
 func launch_grapple() -> void:
 	if grapple_raycast.is_colliding() and grapple_raycast.get_collision_point().distance_to(body.global_position) < grapple_range:
@@ -149,6 +149,8 @@ func _ready() -> void:
 	model.set_gun(null)
 	if grapple_raycast:
 		grapple_raycast.add_exception(body)
+	
+	block_camera_rotetion = true
 
 @export_group("rigdbody_collision")
 @export var rigdbody_collision_power : float = 5.0
