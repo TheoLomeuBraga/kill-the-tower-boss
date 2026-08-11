@@ -163,7 +163,7 @@ grow_vertical = 2
 
 [node name="cross" type="Label" parent="CenterContainer" index="0" unique_id=1344335555]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "(   )"
 horizontal_alignment = 1
 vertical_alignment = 1
