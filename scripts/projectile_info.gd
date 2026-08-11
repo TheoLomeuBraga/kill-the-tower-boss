@@ -19,4 +19,6 @@ class_name ProjectileInfo
 @export var knock_back : float = 0
 @export var enemy_knock_back : float = 0
 
+@export var sound : AudioStream = null
+
 @export var spawn_effect : PackedScene

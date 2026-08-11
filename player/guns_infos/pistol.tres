@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_ajuqy"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_yvjab"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_hjbc3"]
+[ext_resource type="AudioStream" uid="uid://dhqkd551hs46n" path="res://sfx/guns/gun_pistol_shot_silenced_03.wav" id="6_ajuqy"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="6_j7o7f"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="7_oly01"]
 
@@ -20,6 +21,7 @@ model = ExtResource("3_ajuqy")
 collision_shape = SubResource("SphereShape3D_yllr7")
 ricochet = 1
 hit_wall_effect = ExtResource("2_2g1w0")
+sound = ExtResource("6_ajuqy")
 spawn_effect = ExtResource("5_hjbc3")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 

@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_sp17m"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_cw3rp"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_wstcg"]
-[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="6_pufis"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="7_7ti7s"]
+[ext_resource type="AudioStream" uid="uid://sd4v5su486fp" path="res://sfx/guns/gun_shotgun_shot_03.wav" id="7_kx753"]
+[ext_resource type="AudioStream" uid="uid://s340ctcp7ovw" path="res://sfx/guns/gun_shotgun_cock_04.wav" id="8_sp17m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uw77l"]
 radius = 0.2
@@ -21,6 +22,7 @@ collision_shape = SubResource("SphereShape3D_uw77l")
 hit_wall_effect = ExtResource("2_kx753")
 knock_back = 5.0
 enemy_knock_back = 2.0
+sound = ExtResource("7_kx753")
 spawn_effect = ExtResource("5_wstcg")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -32,7 +34,7 @@ model = ExtResource("1_ckcgb")
 ammon_type = 3
 ammon_capacity = 2
 inventory_reload_time = 0.0
-reload_audio = ExtResource("6_pufis")
+reload_audio = ExtResource("8_sp17m")
 bullets_per_shot = 10
 fire_rate = 0.1
 spread = 0.15

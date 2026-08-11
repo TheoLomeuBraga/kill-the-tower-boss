@@ -171,6 +171,13 @@ func _ready() -> void:
 
 func shot() -> void:
 	
+	var audio : AudioStreamPlayer = AudioStreamPlayer.new()
+	audio.stream = current_gun.projectile_info.sound
+	audio.bus = "SFX"
+	audio.finished.connect(audio.queue_free)
+	add_child(audio)
+	audio.play()
+	
 	body.velocity += camera.global_basis.z * current_gun.projectile_info.knock_back
 	
 	var muzle : Node3D = player_model.gun.get_muzle()
@@ -211,6 +218,13 @@ func shot() -> void:
 		
 
 func alt_shot() -> void:
+	
+	var audio : AudioStreamPlayer = AudioStreamPlayer.new()
+	audio.stream = current_gun.charge_shot_info.projectile_info.sound
+	audio.bus = "SFX"
+	audio.finished.connect(audio.queue_free)
+	add_child(audio)
+	audio.play()
 	
 	body.velocity += camera.global_basis.z * current_gun.charge_shot_info.projectile_info.knock_back
 	

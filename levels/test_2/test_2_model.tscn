@@ -118,18 +118,19 @@ cast_shadow = 2
 visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="invisible_shadow_casters" index="0" unique_id=947066256]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.45912, 13, 8.718795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.45912, 14, 8.718795)
 mesh = SubResource("BoxMesh_c5grs")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="invisible_shadow_casters" index="1" unique_id=391698123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.45912, 19, -179.80232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.45912, 20, -179.80232)
 mesh = SubResource("BoxMesh_qr8r6")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="16" unique_id=1375230987]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12, 0)
 layers = 3
-light_energy = 2.0
+light_energy = 4.0
 spot_range = 19.0
+spot_angle = 89.99
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="17" unique_id=131134356]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 13)

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="8_f6vrr"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="9_va3ao"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="10_e8a7t"]
+[ext_resource type="AudioStream" uid="uid://c3pwe7782tqyd" path="res://sfx/guns/gun_rifle_sniper_shot_04.wav" id="11_dec4k"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="11_sfx4p"]
 
 [sub_resource type="Resource" id="Resource_jwhgt"]
@@ -105,7 +106,7 @@ _bundled = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_yllr7"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_jd2rm"]
+[sub_resource type="Resource" id="Resource_cmw5f"]
 script = ExtResource("8_f6vrr")
 damage = 100
 distance = 100.0
@@ -115,6 +116,7 @@ penetrations = 5
 hit_wall_effect = ExtResource("6_jf5qi")
 knock_back = 10.0
 enemy_knock_back = 15.0
+sound = ExtResource("11_dec4k")
 spawn_effect = ExtResource("9_va3ao")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -130,6 +132,6 @@ inventory_reload_time = 4.0
 reload_audio = ExtResource("10_e8a7t")
 fire_rate = 0.5
 spread = 0.0
-projectile_info = SubResource("Resource_jd2rm")
+projectile_info = SubResource("Resource_cmw5f")
 aim_info = SubResource("Resource_jwhgt")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"

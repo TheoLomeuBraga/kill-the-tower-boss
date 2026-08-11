@@ -18,6 +18,8 @@ add death triger
 
 add fail state
 
+fix enemy shots sfx
+
 add triger system
 
 add level transition system
@@ -27,6 +29,8 @@ add enemy spawn/respawn system
 add button system
 
 add lever system
+
+improve sfx
 
 add key card system
 
