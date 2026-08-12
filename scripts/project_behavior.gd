@@ -77,7 +77,7 @@ func reset_bullet_position() -> void:
 		get_parent().add_child(model)
 		if ray.is_colliding():
 			model.position = ray.get_collision_point()
-		model.look_at(global_basis.z * -100.0)
+		model.look_at(global_position + (global_basis.z * -100.0))
 	
 	velocity_y = 0.0
 	
@@ -156,7 +156,6 @@ func check_collision_ray() -> void:
 					
 					
 					var recochet_dir : Vector3 = (-global_basis.z).bounce(surface_normal)
-					
 					global_position = new_pos + (recochet_dir * 0.1)
 					look_at(global_position+recochet_dir)
 					

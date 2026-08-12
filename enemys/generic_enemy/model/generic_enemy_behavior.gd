@@ -6,6 +6,7 @@ static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var navegator : Navegator = $"../Navegator"
 @onready var animation_tree : AnimationTree = $"../AnimationTree"
 @export var guns : Dictionary[GenericEnemyModel.GunType,GunInfo]
+@export var guns_sfx : Dictionary[GenericEnemyModel.GunType,AudioStream]
 @export var desired_distances : Dictionary[GenericEnemyModel.GunType,Vector3]
 @onready var muzle : Node3D = $"../muzle"
 
@@ -27,6 +28,14 @@ func calculate_target_future_point(target_pos:Vector3,target_vel:Vector3,target_
 
 func shot() -> void:
 	
+	var audio : AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	audio.stream = guns_sfx[body.current_gun_type]
+	audio.pitch_scale = 2.0
+	audio.bus = "SFX"
+	audio.finished.connect(audio.queue_free)
+	get_parent().add_child(audio)
+	audio.play()
+	
 	var info:GunInfo=guns[body.current_gun_type]
 	
 	if not info:
@@ -42,6 +51,8 @@ func shot() -> void:
 	var spwn_effect : Node3D = info.projectile_info.spawn_effect.instantiate()
 	muzle.add_child(spwn_effect)
 	spwn_effect.global_position = muzle.global_position
+	
+	
 	
 	for i : int in info.bullets_per_shot:
 		
@@ -248,7 +259,6 @@ func calculate_next_state() -> Callable:
 	var distance : float = body.global_position.distance_to(Player.player.global_position)
 	
 	if not is_player_visible or state == process_folow_player and distance > desired_distances[body.current_gun_type].y:
-		print("process_folow_player")
 		return process_folow_player
 	elif distance > desired_distances[body.current_gun_type].x and distance < desired_distances[body.current_gun_type].z:
 		if body.current_gun_type != GenericEnemyModel.GunType.SNIPER:

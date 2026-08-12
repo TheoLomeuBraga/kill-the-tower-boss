@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="7_b34jr"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_06nsb"]
 [ext_resource type="Texture2D" uid="uid://c1bkck7l0kfda" path="res://enemys/drone/model/drone_texture_shotgun.png" id="10_tc4l4"]
+[ext_resource type="AudioStream" uid="uid://es1tnacthf54" path="res://sfx/scifi_shot.wav" id="11_06nsb"]
 [ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="11_c0ans"]
 [ext_resource type="AudioStream" uid="uid://v4mftnja0pnp" path="res://sfx/dash.wav" id="14_b34jr"]
 
@@ -110,16 +111,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
-bones/0/position = Vector3(0, 0.0042468756, 0)
+bones/0/position = Vector3(0, 0.06050762, 0)
 
 [node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.24575312, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.18949237, 0)
 
 [node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.24575312, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.18949237, 0)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0042468756, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06050762, 0)
 
 [node name="DroneBehavior" type="Node" parent="." index="6" unique_id=1726034422]
 script = ExtResource("2_ytvpm")
@@ -128,6 +129,7 @@ gun_info = SubResource("Resource_c0ans")
 shot_gun_info = SubResource("Resource_b34jr")
 time_betwen_dashes = 1.5
 shotgun_drone_material = SubResource("StandardMaterial3D_c0ans")
+shot_sfx = ExtResource("11_06nsb")
 
 [node name="Stats" type="Node" parent="." index="7" unique_id=103828021]
 script = ExtResource("3_fj1pu")

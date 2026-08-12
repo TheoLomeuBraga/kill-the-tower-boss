@@ -109,7 +109,16 @@ func stomp_state(delta:float) -> void:
 	
 	state = decide_state
 
+@export var minigun_shot_sfx : AudioStream
 func shot_minigun() -> void:
+	
+	var audio : AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	audio.stream = minigun_shot_sfx
+	audio.pitch_scale = 2.0
+	audio.bus = "SFX"
+	audio.finished.connect(audio.queue_free)
+	get_parent().add_child(audio)
+	audio.play()
 	
 	muzle_minigun.look_at(Player.player.global_position)
 	
@@ -142,7 +151,17 @@ func minigun_state(delta:float) -> void:
 	
 	state = decide_state
 
+
+@export var rocket_shot_sfx : AudioStream
 func shot_rocket() -> void:
+	
+	var audio : AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	audio.stream = rocket_shot_sfx
+	audio.bus = "SFX"
+	audio.pitch_scale = 0.75
+	audio.finished.connect(audio.queue_free)
+	get_parent().add_child(audio)
+	audio.play()
 	
 	muzle_rocket_aluncher.look_at(Player.player.global_position)
 	

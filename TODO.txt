@@ -1,6 +1,6 @@
-playtest
-
 add custom fonts
+
+playtest
 
 add scene manager
 
@@ -12,7 +12,11 @@ add death triger
 
 add fail state
 
-fix enemy shots sfx
+add batton sfx
+
+add explosion sfx
+
+add plasma guns sfx
 
 add triger system
 

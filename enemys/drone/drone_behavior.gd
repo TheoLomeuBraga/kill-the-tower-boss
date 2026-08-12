@@ -89,7 +89,16 @@ func folow_state(delta:float) -> void:
 var current_muzle : int = 0
 var cool_down : float = 0.0
 
+@export var shot_sfx : AudioStream
+
 func shot() -> void:
+	
+	var audio : AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	audio.stream = shot_sfx
+	audio.bus = "SFX"
+	audio.finished.connect(audio.queue_free)
+	get_parent().add_child(audio)
+	audio.play()
 	
 	current_muzle = (current_muzle+1) % 2
 	var muzle : Node3D = muzles[current_muzle]
