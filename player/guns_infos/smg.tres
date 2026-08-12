@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="3_ihjv6"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="4_ypoci"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_fh2y1"]
-[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="6_5rci4"]
-[ext_resource type="AudioStream" uid="uid://bfk6du6n42xpq" path="res://sfx/guns/gun_submachine_auto_shot_09.wav" id="7_8tmbe"]
+[ext_resource type="AudioStream" uid="uid://bxj377qfpj65g" path="res://sfx/guns/gun_revolver_pistol_shot_04.wav" id="6_ihjv6"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="7_jtrlh"]
+[ext_resource type="AudioStream" uid="uid://bbrqi45d5fnle" path="res://sfx/guns/pistol_reload.wav" id="8_ihjv6"]
 
 [sub_resource type="Resource" id="Resource_ihjv6"]
 script = ExtResource("4_ypoci")
@@ -16,7 +16,7 @@ damage = 20
 distance = 20.0
 model = ExtResource("3_ihjv6")
 hit_wall_effect = ExtResource("2_8tmbe")
-sound = ExtResource("7_8tmbe")
+sound = ExtResource("6_ihjv6")
 spawn_effect = ExtResource("5_fh2y1")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
@@ -28,7 +28,7 @@ model = ExtResource("1_d1yvr")
 ammon_type = 1
 ammon_capacity = 40
 reload_time = 2.0
-reload_audio = ExtResource("6_5rci4")
+reload_audio = ExtResource("8_ihjv6")
 fire_rate = 0.05
 spread = 0.075
 is_automatic = true

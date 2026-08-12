@@ -18,6 +18,8 @@ add death triger
 
 add fail state
 
+fix sniper and granade launcher reloads
+
 fix enemy shots sfx
 
 add triger system
