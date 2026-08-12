@@ -1,12 +1,6 @@
-create simple placeholder textures
-
-create simple test level
-
 playtest
 
 add custom fonts
-
-possible Tweaks: enemy agresivity and speed, player speed, enemy stun state
 
 add scene manager
 
@@ -17,8 +11,6 @@ add chekinpoint system
 add death triger
 
 add fail state
-
-fix sniper and granade launcher reloads
 
 fix enemy shots sfx
 

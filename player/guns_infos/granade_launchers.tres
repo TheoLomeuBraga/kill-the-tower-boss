@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="5_fvvds"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="6_4cblj"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="7_6b7d3"]
-[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="8_w5r3p"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="9_q3yth"]
 [ext_resource type="AudioStream" uid="uid://8v1t5o3yxkw8" path="res://sfx/guns/weapon_cannon_shot_02.wav" id="9_uivn4"]
+[ext_resource type="AudioStream" uid="uid://boo2264e2pw8t" path="res://sfx/guns/granade_launcher_reload.wav" id="10_ps8a5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6p2"]
 radius = 0.2
@@ -47,7 +47,7 @@ model = ExtResource("1_eeq2k")
 ammon_type = 5
 ammon_capacity = 12
 reload_time = 0.8
-reload_audio = ExtResource("8_w5r3p")
+reload_audio = ExtResource("10_ps8a5")
 fire_rate = 0.1
 spread = 0.05
 projectile_info = SubResource("Resource_8t03j")

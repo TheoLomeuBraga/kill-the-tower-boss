@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="7_erb6f"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="8_f6vrr"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="9_va3ao"]
-[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="10_e8a7t"]
 [ext_resource type="AudioStream" uid="uid://c3pwe7782tqyd" path="res://sfx/guns/gun_rifle_sniper_shot_04.wav" id="11_dec4k"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="11_sfx4p"]
+[ext_resource type="AudioStream" uid="uid://bhsj88etg2n8v" path="res://sfx/guns/sniper_reload.wav" id="12_cmw5f"]
 
 [sub_resource type="Resource" id="Resource_jwhgt"]
 script = ExtResource("1_nvq4d")
@@ -129,7 +129,7 @@ ammon_type = 2
 ammon_capacity = 5
 reload_time = 2.0
 inventory_reload_time = 4.0
-reload_audio = ExtResource("10_e8a7t")
+reload_audio = ExtResource("12_cmw5f")
 fire_rate = 0.5
 spread = 0.0
 projectile_info = SubResource("Resource_cmw5f")
