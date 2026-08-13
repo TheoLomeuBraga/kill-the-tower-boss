@@ -1,3 +1,5 @@
+test vertex color light
+
 playtest
 
 add scene manager
