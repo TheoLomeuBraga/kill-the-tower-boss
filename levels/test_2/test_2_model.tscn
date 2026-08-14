@@ -59,13 +59,13 @@ background_mode = 2
 sky = SubResource("Sky_bdepj")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.4
+ambient_light_energy = 0.6
 tonemap_mode = 2
 
 [node name="test_2" unique_id=651653134 instance=ExtResource("1_75ml3")]
 navigation_mesh = SubResource("NavigationMesh_tr10d")
 
-[node name="Cube-col" parent="." index="0" unique_id=201985649]
+[node name="Cube-col" parent="." index="0" unique_id=1332089230]
 cast_shadow = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=374457913]
@@ -80,5 +80,5 @@ occluder = ExtResource("2_h0xvp")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3" unique_id=738757226]
 environment = SubResource("Environment_qr8r6")
 
-[node name="Cube_001_002" parent="." index="8" unique_id=920929782]
+[node name="Cube_001_002" parent="." index="8" unique_id=956097287]
 cast_shadow = 2
