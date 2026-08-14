@@ -39,7 +39,30 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"concrete": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/test_2/materials/concrete.tres",
+"use_external/path": "uid://c5p51kvkrwq8a"
+},
+"concrete_bricks": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/test_2/materials/concrete_bricks.tres",
+"use_external/path": "uid://bf4luc081ceii"
+},
+"steel": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/test_2/materials/steel.tres",
+"use_external/path": "uid://djpy8geldo5u3"
+},
+"test": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/test_2/materials/test.tres",
+"use_external/path": "uid://ccqsci3xxd82i"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1
