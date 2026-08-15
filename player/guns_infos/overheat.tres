@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="9_0v418"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="10_5rdet"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="11_h2evv"]
+[ext_resource type="AudioStream" uid="uid://ypuv07xruqqs" path="res://sfx/guns/plasma_weak_shot.wav" id="12_7rrui"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
 radius = 0.2
@@ -53,7 +54,7 @@ speed = 20.0
 model = ExtResource("9_0v418")
 collision_shape = SubResource("SphereShape3D_g4c7l")
 hit_wall_effect = ExtResource("3_43ejl")
-sound = ExtResource("6_43ejl")
+sound = ExtResource("12_7rrui")
 spawn_effect = ExtResource("6_q5kn6")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
