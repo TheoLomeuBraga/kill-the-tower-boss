@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://okrdeqixteo"
 path.s3tc="res://.godot/imported/test_2_concrete_2.png-08a66c681096b7d6fb54cc05b71ba372.s3tc.ctex"
+path.etc2="res://.godot/imported/test_2_concrete_2.png-08a66c681096b7d6fb54cc05b71ba372.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://levels/test_2/test_2_concrete_2.png"
-dest_files=["res://.godot/imported/test_2_concrete_2.png-08a66c681096b7d6fb54cc05b71ba372.s3tc.ctex"]
+dest_files=["res://.godot/imported/test_2_concrete_2.png-08a66c681096b7d6fb54cc05b71ba372.s3tc.ctex", "res://.godot/imported/test_2_concrete_2.png-08a66c681096b7d6fb54cc05b71ba372.etc2.ctex"]
 
 [params]
 

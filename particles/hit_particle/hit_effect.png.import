@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpx1ptt8i0ybh"
 path.s3tc="res://.godot/imported/hit_effect.png-6aba7273deb60a4857465c367250aed4.s3tc.ctex"
+path.etc2="res://.godot/imported/hit_effect.png-6aba7273deb60a4857465c367250aed4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://particles/hit_particle/hit_effect.png"
-dest_files=["res://.godot/imported/hit_effect.png-6aba7273deb60a4857465c367250aed4.s3tc.ctex"]
+dest_files=["res://.godot/imported/hit_effect.png-6aba7273deb60a4857465c367250aed4.s3tc.ctex", "res://.godot/imported/hit_effect.png-6aba7273deb60a4857465c367250aed4.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf7g1di3h8sfb"
 path.s3tc="res://.godot/imported/granade_launcher.png-cda0fb5dda876864404af6227793ea70.s3tc.ctex"
+path.etc2="res://.godot/imported/granade_launcher.png-cda0fb5dda876864404af6227793ea70.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://icons/wepons/granade_launcher.png"
-dest_files=["res://.godot/imported/granade_launcher.png-cda0fb5dda876864404af6227793ea70.s3tc.ctex"]
+dest_files=["res://.godot/imported/granade_launcher.png-cda0fb5dda876864404af6227793ea70.s3tc.ctex", "res://.godot/imported/granade_launcher.png-cda0fb5dda876864404af6227793ea70.etc2.ctex"]
 
 [params]
 

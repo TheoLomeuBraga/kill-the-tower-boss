@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwbk885y3l4v5"
 path.s3tc="res://.godot/imported/grapple_hook.png-213f0b992e0590b20751086dccf05538.s3tc.ctex"
+path.etc2="res://.godot/imported/grapple_hook.png-213f0b992e0590b20751086dccf05538.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://player/guns/grapple/grapple_hook.png"
-dest_files=["res://.godot/imported/grapple_hook.png-213f0b992e0590b20751086dccf05538.s3tc.ctex"]
+dest_files=["res://.godot/imported/grapple_hook.png-213f0b992e0590b20751086dccf05538.s3tc.ctex", "res://.godot/imported/grapple_hook.png-213f0b992e0590b20751086dccf05538.etc2.ctex"]
 
 [params]
 

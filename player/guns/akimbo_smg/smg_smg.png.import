@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://df0cdxxcexxr3"
 path.s3tc="res://.godot/imported/smg_smg.png-0244e6791c434dc8b80f35ee94575db9.s3tc.ctex"
+path.etc2="res://.godot/imported/smg_smg.png-0244e6791c434dc8b80f35ee94575db9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://player/guns/akimbo_smg/smg_smg.png"
-dest_files=["res://.godot/imported/smg_smg.png-0244e6791c434dc8b80f35ee94575db9.s3tc.ctex"]
+dest_files=["res://.godot/imported/smg_smg.png-0244e6791c434dc8b80f35ee94575db9.s3tc.ctex", "res://.godot/imported/smg_smg.png-0244e6791c434dc8b80f35ee94575db9.etc2.ctex"]
 
 [params]
 

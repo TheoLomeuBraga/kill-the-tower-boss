@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1bkck7l0kfda"
 path.s3tc="res://.godot/imported/drone_texture_shotgun.png-ac32c66da29724e06c6c8465cb2d40e9.s3tc.ctex"
+path.etc2="res://.godot/imported/drone_texture_shotgun.png-ac32c66da29724e06c6c8465cb2d40e9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://enemys/drone/model/drone_texture_shotgun.png"
-dest_files=["res://.godot/imported/drone_texture_shotgun.png-ac32c66da29724e06c6c8465cb2d40e9.s3tc.ctex"]
+dest_files=["res://.godot/imported/drone_texture_shotgun.png-ac32c66da29724e06c6c8465cb2d40e9.s3tc.ctex", "res://.godot/imported/drone_texture_shotgun.png-ac32c66da29724e06c6c8465cb2d40e9.etc2.ctex"]
 
 [params]
 

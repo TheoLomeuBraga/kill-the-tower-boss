@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxcuklmxfw725"
 path.s3tc="res://.godot/imported/sniper.png-ace9b17f9f78c81c6127d984f8df3b0c.s3tc.ctex"
+path.etc2="res://.godot/imported/sniper.png-ace9b17f9f78c81c6127d984f8df3b0c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://icons/wepons/sniper.png"
-dest_files=["res://.godot/imported/sniper.png-ace9b17f9f78c81c6127d984f8df3b0c.s3tc.ctex"]
+dest_files=["res://.godot/imported/sniper.png-ace9b17f9f78c81c6127d984f8df3b0c.s3tc.ctex", "res://.godot/imported/sniper.png-ace9b17f9f78c81c6127d984f8df3b0c.etc2.ctex"]
 
 [params]
 
