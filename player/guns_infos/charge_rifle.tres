@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://crso5fe0i24ix" path="res://player/projectiles/generic_bullet.tscn" id="4_s4r1f"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="5_gss7y"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="6_cumbn"]
-[ext_resource type="AudioStream" uid="uid://es1tnacthf54" path="res://sfx/scifi_shot.wav" id="6_qhaoj"]
-[ext_resource type="AudioStream" uid="uid://bdsiu0m0oovxn" path="res://sfx/charged_scifi_shot.wav" id="6_s4r1f"]
+[ext_resource type="AudioStream" uid="uid://bh4mo7tj7bhhc" path="res://sfx/guns/plasma_shot.wav" id="6_s4r1f"]
 [ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="7_4iqbq"]
 [ext_resource type="Texture2D" uid="uid://d2g4lox2bxih" path="res://icons/wepons/charge_rifle.png" id="8_oeh6r"]
 [ext_resource type="PackedScene" uid="uid://cvcvnti6hb0bw" path="res://player/guns/plama_condesator/plama_condesator.tscn" id="8_rbwd5"]
 [ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="9_6ff4e"]
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="10_lo3to"]
+[ext_resource type="AudioStream" uid="uid://ypuv07xruqqs" path="res://sfx/guns/plasma_weak_shot.wav" id="11_s4r1f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
 radius = 0.2
@@ -54,7 +54,7 @@ model = ExtResource("4_s4r1f")
 collision_shape = SubResource("SphereShape3D_g4c7l")
 ricochet = 2
 hit_wall_effect = ExtResource("3_qhaoj")
-sound = ExtResource("6_qhaoj")
+sound = ExtResource("11_s4r1f")
 spawn_effect = ExtResource("6_cumbn")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 

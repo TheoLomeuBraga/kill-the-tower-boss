@@ -1,7 +1,5 @@
 playtest
 
-add plasma guns sfx
-
 add change scene triger
 
 add death triger
