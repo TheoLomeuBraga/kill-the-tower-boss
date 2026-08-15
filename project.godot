@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="kill_the_tower_boss"
-run/main_scene="uid://dnkl3qr068ix6"
+run/main_scene="uid://yg7pqfhtal1v"
 config/features=PackedStringArray("4.7", "Mobile")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 PostProcessing="*uid://l0s57321gcc5"
 Triger="*uid://csg5erhs7506c"
 PersistenceManager="*uid://bjudck3qhnk28"
+SceneManager="*uid://joxvxvjt8r8s"
 
 [display]
 

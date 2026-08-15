@@ -1,0 +1,49 @@
+extends Node
+
+@export var load_image : Texture
+
+var loaded_map : Node
+var load_progress : float = 0.0
+var loading : bool = false
+signal loaded()
+
+func load_map(map_name:String) -> void:
+	
+	$Control/TextureRect.texture = load_image
+	
+	if loading:
+		return
+	loading = true
+	$Control.visible = true
+	
+	ResourceLoader.load_threaded_request(map_name)
+	
+	await get_tree().process_frame
+	
+	while true:
+		await get_tree().process_frame
+		var progress : Array[float] = []
+		var status : ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(map_name,progress)
+		load_progress = progress[0]
+		
+		if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+			
+			if loaded_map != null:
+				loaded_map.queue_free()
+			
+			loaded_map = ResourceLoader.load_threaded_get(map_name).instantiate()
+			add_child(loaded_map)
+			loading = false
+			loaded.emit()
+			$Control.visible = false
+			
+			break
+
+
+
+@export_file("*.tscn") var main_scene : String
+func _ready() -> void:
+	print(get_tree().current_scene.scene_file_path)
+	if get_tree().current_scene.scene_file_path == "res://main.tscn":
+		load_map(main_scene)
+	

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://yv6fu5f1ggef" path="res://vfx/particles/generic_bullet_hole.tscn" id="3_43ejl"]
 [ext_resource type="PackedScene" uid="uid://dtjaipbsa5iph" path="res://player/projectiles/generic_red_bullet.tscn" id="4_7rrui"]
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="5_7psdx"]
-[ext_resource type="AudioStream" uid="uid://es1tnacthf54" path="res://sfx/scifi_shot.wav" id="6_43ejl"]
+[ext_resource type="AudioStream" uid="uid://bh4mo7tj7bhhc" path="res://sfx/guns/plasma_shot.wav" id="6_43ejl"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="6_q5kn6"]
 [ext_resource type="Script" uid="uid://dc35ml5h2smv7" path="res://scripts/charge_shot_info.gd" id="7_2p5l5"]
 [ext_resource type="Texture2D" uid="uid://ce4kkww5jxydu" path="res://icons/wepons/over_heat.png" id="8_fvp5h"]

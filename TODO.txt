@@ -1,20 +1,16 @@
 playtest
 
-add scene manager
+add plasma guns sfx
 
-add persistency system
-
-add chekinpoint system
+add change scene triger
 
 add death triger
 
+add chekinpoint triger
+
+add persistency triger
+
 add fail state
-
-add batton sfx
-
-add explosion sfx
-
-add plasma guns sfx
 
 add triger system
 

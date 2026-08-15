@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://joxvxvjt8r8s"]
+
+[ext_resource type="Script" uid="uid://bpwa6gw33gstc" path="res://global/scene_manager.gd" id="1_vlahm"]
+[ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="2_g063o"]
+[ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="3_f2jf4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g063o"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.18789247, 0.0002917686, 0.49856192, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="SceneManager" type="Node" unique_id=678979235]
+script = ExtResource("1_vlahm")
+load_image = ExtResource("2_g063o")
+main_scene = "uid://dnkl3qr068ix6"
+
+[node name="Control" type="Control" parent="." unique_id=2016798287]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=714404028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g063o")
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1569549260]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372
+anchor_top = 0.41700003
+anchor_right = 0.628
+anchor_bottom = 0.583
+offset_left = -0.2000122
+offset_top = -0.1000061
+offset_right = 0.19998169
+offset_bottom = 0.1000061
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g063o")
+
+[node name="Label" type="Label" parent="Control/Panel" unique_id=25481952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f2jf4")
+theme_override_font_sizes/font_size = 32
+text = "LOADING"
+horizontal_alignment = 1
+vertical_alignment = 1
