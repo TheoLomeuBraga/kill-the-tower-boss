@@ -39,11 +39,15 @@ func load_map(map_name:String) -> void:
 			
 			break
 
-
+const main_scene_file : String = "res://main.tscn"
 
 @export_file("*.tscn") var main_scene : String
 func _ready() -> void:
-	print(get_tree().current_scene.scene_file_path)
-	if get_tree().current_scene.scene_file_path == "res://main.tscn":
-		load_map(main_scene)
+	
+	if get_tree().current_scene.scene_file_path != main_scene_file:
+		main_scene = get_tree().current_scene.scene_file_path
+		get_tree().change_scene_to_file(main_scene_file)
+	
+	
+	load_map(main_scene)
 	
