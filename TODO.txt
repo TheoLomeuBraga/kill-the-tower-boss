@@ -1,7 +1,5 @@
 playtest
 
-optimize checkpoint dictionary reference system
-
 remove existence sync from Stats
 
 add syncronization node for: existence, position, rotation

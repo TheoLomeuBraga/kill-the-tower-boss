@@ -30,19 +30,12 @@ func _ready() -> void:
 	
 	if sync_stats:
 		
-		PersistenceManager.load_state()
-		
 		sync_data["health"] = health
-		
-		if get_parent() is Player and PersistenceManager.has(self):
-			print("start")
-			print(PersistenceManager.read(self)["health"])
-			print(sync_data["health"])
 		
 		if not PersistenceManager.has(self):
 			PersistenceManager.register(self,sync_data)
 		else:
-			sync_data = PersistenceManager.read(self)
+			sync_data = PersistenceManager.get_ref(self)
 		
 		
 		health = sync_data["health"]
@@ -85,7 +78,6 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 		
 		if sync_stats:
 			sync_data["health"] = 0
-		PersistenceManager.write(self,sync_data)
 		
 		dead.emit()
 		return
@@ -95,7 +87,6 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	
 	if sync_stats:
 		sync_data["health"] = health
-	PersistenceManager.write(self,sync_data)
 	
 	damaged.emit(_damage)
 
