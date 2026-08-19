@@ -2,15 +2,17 @@ playtest
 
 optimize checkpoint dictionary reference system
 
-add syncronization nodes
+remove existence sync from Stats
+
+add syncronization node for: existence, position, rotation
 
 add checkpoint feedback
+
+add death zone
 
 add triger area
 
 add change scene triger
-
-add death triger
 
 add chekinpoint triger
 
