@@ -18,7 +18,8 @@ func damage_vignette(damage:int) -> void:
 func _ready() -> void:
 	player = self
 	stats.damaged.connect(damage_vignette)
-	
+	stats.dead.connect(SceneManager.reload)
+	stats.dead.connect(PersistenceManager.load_state)
 
 func _exit_tree() -> void:
 	player = null

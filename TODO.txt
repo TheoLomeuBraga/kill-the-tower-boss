@@ -1,5 +1,13 @@
 playtest
 
+optimize checkpoint dictionary reference system
+
+add syncronization nodes
+
+add checkpoint feedback
+
+add triger area
+
 add change scene triger
 
 add death triger

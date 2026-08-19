@@ -38,6 +38,9 @@ var is_player_visible : bool = false
 func check_player_visibility() -> bool:
 	is_player_visible = false
 	
+	if not Player.player:
+		return false
+	
 	visualizer.look_at(Player.player.global_position)
 	visualizer.force_raycast_update()
 	if visualizer.is_colliding() and visualizer.get_collider() == Player.player:
@@ -278,4 +281,5 @@ func _physics_process(delta: float) -> void:
 	state.call(delta)
 
 func _process(delta: float) -> void:
-	look_target.global_position = Player.player.global_position
+	if Player.player:
+		look_target.global_position = Player.player.global_position

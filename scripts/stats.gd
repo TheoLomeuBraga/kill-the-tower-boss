@@ -22,6 +22,34 @@ signal dead()
 
 @export var last_damage_origen : Vector3
 
+@export_category("syncronization")
+var sync_data : Dictionary
+@export var sync_stats : bool = true
+
+func _ready() -> void:
+	
+	if sync_stats:
+		
+		PersistenceManager.load_state()
+		
+		sync_data["health"] = health
+		
+		if get_parent() is Player and PersistenceManager.has(self):
+			print("start")
+			print(PersistenceManager.read(self)["health"])
+			print(sync_data["health"])
+		
+		if not PersistenceManager.has(self):
+			PersistenceManager.register(self,sync_data)
+		else:
+			sync_data = PersistenceManager.read(self)
+		
+		
+		health = sync_data["health"]
+		
+		if  health <= 0:
+			get_parent().queue_free()
+
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
 	
 	var ret : int = damage
@@ -51,13 +79,24 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	if _damage <= 0:
 		return
 	
+	
 	if (health - _damage) <= 0:
 		health = 0
+		
+		if sync_stats:
+			sync_data["health"] = 0
+		PersistenceManager.write(self,sync_data)
+		
 		dead.emit()
 		return
 	
 	health -= _damage
 	health = max(0,health)
+	
+	if sync_stats:
+		sync_data["health"] = health
+	PersistenceManager.write(self,sync_data)
+	
 	damaged.emit(_damage)
 
 func calculate_damage_multplyer(damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> float:
