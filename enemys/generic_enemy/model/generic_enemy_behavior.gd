@@ -152,6 +152,7 @@ func _ready() -> void:
 	
 	animation_tree.set("parameters/death_state/transition_request","alive")
 	
+	$"../muzle/lazer".visible = false
 
 func process_folow_player(delta:float) -> void:
 	

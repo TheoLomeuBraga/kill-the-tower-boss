@@ -470,13 +470,13 @@ func process_shot(delta: float) -> void:
 		var input_charge_shot : bool = Input.is_action_pressed("shot")
 		
 		if charge_shot_time <= 0.2:
-			player_model.gun.charge_estate = 0
+			player_model.gun.charge_state = 0
 		elif charge_shot_time > 0.2 and charge_shot_time < current_gun.charge_shot_info.charge_time :
-			player_model.gun.charge_estate = 1
+			player_model.gun.charge_state = 1
 		else:
-			player_model.gun.charge_estate = 2
+			player_model.gun.charge_state = 2
 		if not has_ammon_alt:
-			player_model.gun.charge_estate = 0
+			player_model.gun.charge_state = 0
 		
 		
 		if has_ammon_alt and time_last_shot <= 0 and input_shot and charge_shot_time >= current_gun.charge_shot_info.charge_time:
@@ -505,7 +505,7 @@ func process_shot(delta: float) -> void:
 	
 	#charge shot sfx
 	
-	match player_model.gun.charge_estate:
+	match player_model.gun.charge_state:
 		0:
 			charge_audio_player.stop()
 		1:

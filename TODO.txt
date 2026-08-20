@@ -1,6 +1,6 @@
 playtest
 
-swith estate do state
+improve gameover
 
 add checkpoint feedback
 

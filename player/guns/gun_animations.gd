@@ -18,11 +18,11 @@ class_name GunAnimations
 		if animation_tree:
 			animation_tree.set("parameters/walk_speed/scale",value)
 
-@export_range(0.0,1.0) var drop_wepon_estate : float = 1.0:
+@export_range(0.0,1.0) var drop_wepon_state : float = 1.0:
 	set(value):
-		drop_wepon_estate = value
+		drop_wepon_state = value
 		if animation_tree:
-			animation_tree.set("parameters/drop_wepon_estate/blend_amount",value)
+			animation_tree.set("parameters/drop_wepon_state/blend_amount",value)
 
 func _ready() -> void:
 	walk_speed = walk_speed

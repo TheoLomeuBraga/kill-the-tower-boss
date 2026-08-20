@@ -29,7 +29,7 @@ func set_gun( model : PackedScene ) -> void:
 		if drop_wepon_tween:
 			drop_wepon_tween.stop()
 		
-		gun_animations.drop_wepon_estate = 1.0
+		gun_animations.drop_wepon_state = 1.0
 		
 		gun.queue_free()
 		gun = model.instantiate()
@@ -38,7 +38,7 @@ func set_gun( model : PackedScene ) -> void:
 		add_child(gun)
 		
 		drop_wepon_tween = create_tween()
-		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 0.0, 0.5)
+		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_state", 0.0, 0.5)
 		
 		await get_tree().process_frame
 		gun.visible = true
@@ -47,7 +47,7 @@ func set_gun( model : PackedScene ) -> void:
 		
 	else:
 		drop_wepon_tween = create_tween()
-		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_estate", 1.0, 0.5)
+		drop_wepon_tween.tween_property(gun_animations, "drop_wepon_state", 1.0, 0.5)
 	
 
 func reload() -> void:

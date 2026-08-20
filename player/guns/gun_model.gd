@@ -107,18 +107,18 @@ func set_materials_override(n:Node,m:Material) -> void:
 	for c : Node in n.get_children():
 		set_materials_override(c,m)
 
-@export var charge_estate : int = 0 : 
+@export var charge_state : int = 0 : 
 	set(value):
-		charge_estate = value
+		charge_state = value
 		
 		if not charging_material or not charged_material:
 			return
 		
 		for charge_object : Node3D in charge_objects:
 			
-			charge_object.visible = charge_estate > 0
+			charge_object.visible = charge_state > 0
 			
-			match charge_estate:
+			match charge_state:
 				1:
 					set_materials_override(charge_object,charging_material)
 				2:
