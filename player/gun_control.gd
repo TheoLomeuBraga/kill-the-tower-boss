@@ -42,11 +42,24 @@ func get_ammon_on_mag(gun_info : GunInfo) -> int:
 
 var sync_data:Dictionary = {}
 
+func on_checkin_point() -> void:
+	var cg : int = 0
+	
+	if current_gun:
+		for i : int in inventory_order.size():
+			if current_gun == inventory_order[i]:
+				cg = i
+				break
+	
+	sync_data["start_gun"] = cg
+	
+
 func sync_inventory() -> void:
 	
 	sync_data["ammon_inventory"] = ammon_inventory
 	sync_data["inventory"] = inventory
 	sync_data["ammon_on_mag"] = ammon_on_mag
+	sync_data["start_gun"] = start_gun
 	
 	if not PersistenceManager.has(self):
 		PersistenceManager.register(self,sync_data)
@@ -56,6 +69,9 @@ func sync_inventory() -> void:
 	ammon_inventory = sync_data["ammon_inventory"]
 	inventory = sync_data["inventory"]
 	ammon_on_mag = sync_data["ammon_on_mag"]
+	start_gun = sync_data["start_gun"]
+	
+	PersistenceManager.on_save.connect(on_checkin_point)
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]

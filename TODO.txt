@@ -1,7 +1,5 @@
 playtest
 
-make wepon persistent betwen chackin points
-
 add way to recover health on respawn
 
 add checkpoint feedback
