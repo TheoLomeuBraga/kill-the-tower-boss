@@ -26,6 +26,8 @@ var model : Node3D
 		if model:
 			model.position = offset
 
+var sync_data : Dictionary
+
 func _ready() -> void:
 	target_position = Vector3.ZERO
 	model_display = Node3D.new()
@@ -33,6 +35,18 @@ func _ready() -> void:
 	weapon = weapon
 	offset = offset
 	model_display.scale *= 2.0
+	
+	await get_tree().process_frame
+	
+	sync_data["existence"] = true
+	
+	if not PersistenceManager.has(self):
+		PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	if not sync_data["existence"]:
+		queue_free()
 
 var time : float = 0.0
 func _process(delta: float) -> void:
@@ -46,6 +60,8 @@ func _physics_process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		for i : int in get_collision_count():
 			if get_collider(i) is Player:
+				
+				sync_data["existence"] = false
 				
 				var p : Player = get_collider(i)
 				

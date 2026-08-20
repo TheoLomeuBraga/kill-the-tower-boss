@@ -90,6 +90,14 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	
 	damaged.emit(_damage)
 
+func instakill() -> void:
+	
+	health = 0
+	if sync_stats:
+		sync_data["health"] = 0
+	
+	dead.emit()
+
 func calculate_damage_multplyer(damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> float:
 	var ret : float = 1.0
 	

@@ -66,6 +66,8 @@ static var ammon_audio : AudioStream = load("res://sfx/ammon.wav")
 
 func self_destruct() -> void:
 	
+	sync_data["existence"] = false
+	
 	var audio : AudioStreamPlayer = AudioStreamPlayer.new()
 	get_parent().add_child(audio)
 	audio.finished.connect(audio.queue_free)
@@ -102,9 +104,22 @@ func interract_body(n:Node3D) -> void:
 			self_destruct()
 			
 
+var sync_data : Dictionary
 func _ready() -> void:
 	update_model()
 	triger.body_entered.connect(interract_body)
+	
+	await get_tree().process_frame
+	
+	sync_data["existence"] = true
+	
+	if not PersistenceManager.has(self):
+		PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	if not sync_data["existence"]:
+		queue_free()
 
 func _process(delta: float) -> void:
 	rotation.y += delta * 2.0

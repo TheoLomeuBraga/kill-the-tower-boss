@@ -1,12 +1,12 @@
 playtest
 
-remove existence sync from Stats
+add syncronization for player gun data
 
-add syncronization node for: existence, position, rotation
+add way to recover health on respawn
 
 add checkpoint feedback
 
-add death zone
+add gameover screen
 
 add triger area
 
