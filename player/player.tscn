@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dlnyg5l63jrh3" path="res://player/vignette/vignette.tscn" id="20_bjvpn"]
 [ext_resource type="Script" uid="uid://culmdi2hkb2q7" path="res://player/stair_ajust.gd" id="21_x7c3f"]
 [ext_resource type="Script" uid="uid://dbsumlu675d1h" path="res://player/time_display.gd" id="22_s7qer"]
+[ext_resource type="PackedScene" uid="uid://dkoy4ochougw" path="res://menus/game_over/game_over.tscn" id="24_7pqkx"]
 [ext_resource type="Script" uid="uid://c2u3ml5220gl8" path="res://scripts/persistence_syncronizers/transform_sync.gd" id="25_knn7v"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
@@ -191,6 +192,8 @@ player_movement = NodePath("../PlayerMovement")
 
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
 
+[node name="GameOver" parent="." unique_id=462071331 instance=ExtResource("24_7pqkx")]
+
 [node name="time_display" type="Label" parent="." unique_id=437701589]
 anchors_preset = -1
 anchor_right = 0.10300001
@@ -209,3 +212,6 @@ target_position = Vector3(0, -0.4, 0)
 [node name="b" type="RayCast3D" parent="stair_ajust" unique_id=465938391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84150493, 0)
 target_position = Vector3(0, 0, -0.6)
+
+[connection signal="dead" from="Stats" to="PlayerMovement" method="die"]
+[connection signal="dead" from="Stats" to="GameOver" method="gameover"]

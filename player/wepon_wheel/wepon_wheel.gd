@@ -7,7 +7,7 @@ class_name WeaponWheel
 @export var gun_control : GunControl
 @export var player_movement : PlayerMovement
 
-
+@onready var stats : Stats = $"../Stats"
 
 @export var weapon_name : String
 @export var weapon_ammon_info_color : String = "[color=white]"
@@ -191,6 +191,9 @@ func find_selected_wepon() -> void:
 
 
 func _process(delta: float) -> void:
+	
+	if not stats.is_alive():
+		return
 	
 	player_movement.block_camera_rotetion = visible
 	

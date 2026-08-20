@@ -1,6 +1,6 @@
 playtest
 
-add gameover screen
+swith estate do state
 
 add checkpoint feedback
 

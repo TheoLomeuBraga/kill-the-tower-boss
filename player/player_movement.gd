@@ -4,7 +4,7 @@ class_name PlayerMovement
 @onready var body : CharacterBody3D = $".."
 
 
-var estate : Callable = air_estate
+var state : Callable = air_state
 
 var jump_recently : float = 0.0
 var floor_recently : float = 0.0
@@ -22,7 +22,7 @@ func try_jump() -> void:
 	if jump_recently > 0.0 and floor_recently > 0.0:
 		body.velocity.y = jump_power
 
-@export_group("grapple estate")
+@export_group("grapple state")
 
 @export var grapple_length : float = 2.0
 @export var grapple_range : float = 20.0
@@ -37,12 +37,12 @@ var block_camera_rotetion : bool = true
 func launch_grapple() -> void:
 	if grapple_raycast.is_colliding() and grapple_raycast.get_collision_point().distance_to(body.global_position) < grapple_range:
 		grapple_place = grapple_raycast.get_collision_point()
-		estate = grapple_estate
+		state = grapple_state
 		grapple_hope.visible = true
 		
 		body.motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
 
-func grapple_estate(delta : float) -> void:
+func grapple_state(delta : float) -> void:
 	
 	body.velocity.y -= gravity * delta
 	
@@ -72,17 +72,17 @@ func grapple_estate(delta : float) -> void:
 	body.velocity += force * delta
 	
 	if not Input.is_action_pressed("interact"):
-		estate = air_estate
+		state = air_state
 		grapple_hope.visible = false
 		body.motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED
 
-@export_group("air estate")
+@export_group("air state")
 
 @export var gravity : float = 12.0
 
 @export var air_friction : float = 5.0
 
-func air_estate(delta : float) -> void:
+func air_state(delta : float) -> void:
 	
 	body.velocity.y -= gravity * delta
 	
@@ -94,16 +94,16 @@ func air_estate(delta : float) -> void:
 	body.velocity.z = velocity.z
 	
 	if body.is_on_floor():
-		estate = floor_estate
+		state = floor_state
 	
 	try_jump()
 
-@export_group("floor estate")
+@export_group("floor state")
 
 @export var speed : float = 5.0
 @export var floor_friction : float = 100.0
 
-func floor_estate(delta : float) -> void:
+func floor_state(delta : float) -> void:
 	
 	var input_dir : Vector3 = body.basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
 	var vec_speed : Vector3 = input_dir * speed
@@ -111,7 +111,7 @@ func floor_estate(delta : float) -> void:
 	body.velocity = body.velocity.move_toward(vec_speed,delta * floor_friction)
 	
 	if not body.is_on_floor():
-		estate = air_estate
+		state = air_state
 	
 	try_jump()
 	
@@ -145,7 +145,6 @@ func camera_process(delta : float) -> void:
 
 
 func _ready() -> void:
-	#model.set_gun(load("res://player/guns/pistol/pistol.tscn"))
 	model.set_gun(null)
 	if grapple_raycast:
 		grapple_raycast.add_exception(body)
@@ -163,6 +162,15 @@ func process_rigdbody_collision(delta:float)->void:
 		if collider is RigidBody3D:
 			collider.apply_central_impulse(-collision.get_normal() * rigdbody_collision_power)
 
+func death_state(delta : float) -> void:
+	camera.position.y = -0.2
+	camera.rotation.z= PI/2.0
+	block_camera_rotetion = true
+
+func die() -> void:
+	state = death_state
+
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
@@ -172,7 +180,7 @@ func _physics_process(delta: float) -> void:
 		floor_recently = forgiveness_time
 	
 	camera_process(delta)
-	estate.call(delta)
+	state.call(delta)
 	body.move_and_slide()
 	process_rigdbody_collision(delta)
 	

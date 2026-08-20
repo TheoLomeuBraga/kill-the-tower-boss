@@ -121,3 +121,6 @@ func heal(amount:int) -> void:
 	health += amount
 	health = min(max_health,health)
 	healed.emit(amount)
+
+func is_alive() -> bool:
+	return health > 0

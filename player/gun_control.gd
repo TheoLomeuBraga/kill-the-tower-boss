@@ -1,6 +1,8 @@
 extends Node
 class_name GunControl
 
+@onready var stats : Stats = $"../../Stats"
+
 @export var body : CharacterBody3D
 @export var player_movement : PlayerMovement
 @export var player_model : PlayerModel
@@ -52,14 +54,18 @@ func on_checkin_point() -> void:
 				break
 	
 	sync_data["start_gun"] = cg
+	ammon_inventory = sync_data["ammon_inventory"].duplicate()
+	inventory = sync_data["inventory"].duplicate()
+	ammon_on_mag = sync_data["ammon_on_mag"].duplicate()
 	
 
 func sync_inventory() -> void:
 	
-	sync_data["ammon_inventory"] = ammon_inventory
-	sync_data["inventory"] = inventory
-	sync_data["ammon_on_mag"] = ammon_on_mag
 	sync_data["start_gun"] = start_gun
+	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
+	sync_data["inventory"] = inventory.duplicate()
+	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
+	
 	
 	if not PersistenceManager.has(self):
 		PersistenceManager.register(self,sync_data)
@@ -531,6 +537,10 @@ func process_shot(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	
+	if not stats.is_alive():
+		player_model.visible = false
+		return
 	
 	manage_wepon_change()
 	
