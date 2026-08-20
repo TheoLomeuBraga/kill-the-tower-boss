@@ -91,6 +91,10 @@ metadata/_custom_type_script = "uid://u7trxdlheisb"
 script = ExtResource("9_8t03j")
 interaction_ray = NodePath("../Camera3D/RayCast3D")
 
+[node name="TransformPersistenceSync" type="Node" parent="." unique_id=1944443529]
+script = ExtResource("25_knn7v")
+metadata/_custom_type_script = "uid://c2u3ml5220gl8"
+
 [node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
 visible = false
 
@@ -204,7 +208,3 @@ target_position = Vector3(0, -0.4, 0)
 [node name="b" type="RayCast3D" parent="stair_ajust" unique_id=465938391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84150493, 0)
 target_position = Vector3(0, 0, -0.6)
-
-[node name="TransformPersistenceSync" type="Node" parent="." unique_id=1944443529]
-script = ExtResource("25_knn7v")
-metadata/_custom_type_script = "uid://c2u3ml5220gl8"

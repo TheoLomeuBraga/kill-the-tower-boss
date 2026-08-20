@@ -1,6 +1,6 @@
 playtest
 
-add syncronization for player gun data
+add syncronization for player gun mag ammon
 
 add way to recover health on respawn
 

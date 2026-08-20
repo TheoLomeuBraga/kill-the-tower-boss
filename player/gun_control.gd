@@ -31,6 +31,22 @@ var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.EXPLOSIVE: 0,
 }
 
+var sync_data:Dictionary = {}
+
+func sync_inventory() -> void:
+	
+	sync_data["ammon_inventory"] = ammon_inventory
+	sync_data["inventory"] = inventory
+	
+	if not PersistenceManager.has(self):
+		PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	
+	ammon_inventory = sync_data["ammon_inventory"]
+	inventory = sync_data["inventory"]
+
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]
 
@@ -146,6 +162,8 @@ var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
 func _ready() -> void:
+	
+	sync_inventory()
 	
 	for g:GunInfo in inventory_order:
 		if not inventory.has(g):
