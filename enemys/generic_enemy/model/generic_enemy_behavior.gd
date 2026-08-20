@@ -273,6 +273,15 @@ func calculate_next_state() -> Callable:
 	
 	return process_idle
 
+func _process(delta: float) -> void:
+	
+	if $"../muzle/sniper_ray_ajust".is_colliding():
+		var dist : float = $"../muzle/sniper_ray_ajust".global_position.distance_to($"../muzle/sniper_ray_ajust".get_collision_point())
+		$"../muzle/lazer".scale.z = dist
+		$"../muzle/lazer".position.z = -dist/2.0
+	else:
+		$"../muzle/lazer".scale.z = 100
+		$"../muzle/lazer".position.z = -50
 
 func _physics_process(delta: float) -> void:
 	if in_combat and Player.player:

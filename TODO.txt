@@ -1,6 +1,6 @@
 playtest
 
-add syncronization for player gun mag ammon
+make wepon persistent betwen chackin points
 
 add way to recover health on respawn
 

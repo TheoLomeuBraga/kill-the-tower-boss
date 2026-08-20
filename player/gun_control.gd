@@ -31,36 +31,37 @@ var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.EXPLOSIVE: 0,
 }
 
+var ammon_on_mag : Dictionary[String,int]
+func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
+	ammon_on_mag[gun_info.name] = amount
+
+func get_ammon_on_mag(gun_info : GunInfo) -> int:
+	if not ammon_on_mag.has(gun_info.name):
+		set_ammon_on_mag(gun_info,gun_info.ammon_capacity)
+	return ammon_on_mag[gun_info.name]
+
 var sync_data:Dictionary = {}
 
 func sync_inventory() -> void:
 	
 	sync_data["ammon_inventory"] = ammon_inventory
 	sync_data["inventory"] = inventory
+	sync_data["ammon_on_mag"] = ammon_on_mag
 	
 	if not PersistenceManager.has(self):
 		PersistenceManager.register(self,sync_data)
 	else:
 		sync_data = PersistenceManager.get_ref(self)
 	
-	
 	ammon_inventory = sync_data["ammon_inventory"]
 	inventory = sync_data["inventory"]
+	ammon_on_mag = sync_data["ammon_on_mag"]
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]
 
 func add_ammon(type:GlobalEnums.AmmonType , amount:int) -> void:
 	ammon_inventory[type] = min(ammon_inventory[type]+amount,max_ammon[type])
-
-var ammon_on_mag : Dictionary[GunInfo,int]
-func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
-	ammon_on_mag[gun_info] = amount
-
-func get_ammon_on_mag(gun_info : GunInfo) -> int:
-	if not ammon_on_mag.has(gun_info):
-		set_ammon_on_mag(gun_info,gun_info.ammon_capacity)
-	return ammon_on_mag[gun_info]
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
