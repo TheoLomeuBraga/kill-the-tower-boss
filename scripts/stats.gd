@@ -22,6 +22,8 @@ signal dead()
 
 @export var last_damage_origen : Vector3
 
+@export var full_heal_on_ready : bool = false
+
 @export_category("syncronization")
 var sync_data : Dictionary
 @export var sync_stats : bool = true
@@ -37,8 +39,10 @@ func _ready() -> void:
 		else:
 			sync_data = PersistenceManager.get_ref(self)
 		
-		
-		health = sync_data["health"]
+		if full_heal_on_ready:
+			health = max_health
+		else:
+			health = sync_data["health"]
 		
 		if  health <= 0:
 			get_parent().queue_free()

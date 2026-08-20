@@ -1,10 +1,8 @@
 playtest
 
-add way to recover health on respawn
+add gameover screen
 
 add checkpoint feedback
-
-add gameover screen
 
 add triger area
 

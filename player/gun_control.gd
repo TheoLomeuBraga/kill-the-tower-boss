@@ -72,6 +72,7 @@ func sync_inventory() -> void:
 	start_gun = sync_data["start_gun"]
 	
 	PersistenceManager.on_save.connect(on_checkin_point)
+	
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]
