@@ -27,7 +27,7 @@ Settings="*uid://svve2g47lpb6"
 [display]
 
 window/size/viewport_width=600
-window/size/viewport_height=300
+window/size/viewport_height=400
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 

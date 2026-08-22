@@ -6,52 +6,42 @@
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_b2jhj"]
 color = Color(0, 0, 0, 0)
 
-[node name="Option" type="Control" unique_id=1170592585]
-layout_mode = 3
+[node name="Option" type="HBoxContainer" unique_id=447831479]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.09
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("1_csvir")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=447831479]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.2590001
-offset_bottom = 0.0069999695
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_csvir")
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1346273972]
+[node name="VSeparator" type="VSeparator" parent="." unique_id=1346273972]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_b2jhj")
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=1285712197]
+[node name="Button" type="Button" parent="." unique_id=1285712197]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_kgrdm")
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=1431802695]
+[node name="Label" type="Label" parent="." unique_id=1431802695]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_kgrdm")
 text = "aaaaa"
 vertical_alignment = 1
 
-[node name="slider_info" type="Label" parent="HBoxContainer" unique_id=794781119]
+[node name="slider_info" type="Label" parent="." unique_id=794781119]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kgrdm")
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1640238497]
+[node name="Control" type="Control" parent="." unique_id=1640238497]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckBox" type="CenterContainer" parent="HBoxContainer/Control" unique_id=1024615208]
+[node name="CheckBox" type="CenterContainer" parent="Control" unique_id=1024615208]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,11 +49,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CheckBox" type="CheckBox" parent="HBoxContainer/Control/CheckBox" unique_id=210844538]
+[node name="CheckBox" type="CheckBox" parent="Control/CheckBox" unique_id=210844538]
 layout_mode = 2
 alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Control" unique_id=958750063]
+[node name="OptionButton" type="OptionButton" parent="Control" unique_id=958750063]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kgrdm")
 
-[node name="HSlider" type="HSlider" parent="HBoxContainer/Control" unique_id=813970565]
+[node name="HSlider" type="HSlider" parent="Control" unique_id=813970565]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,6 +71,6 @@ grow_horizontal = 2
 grow_vertical = 2
 step = 0.1
 
-[node name="VSeparator3" type="VSeparator" parent="HBoxContainer" unique_id=157971390]
+[node name="VSeparator3" type="VSeparator" parent="." unique_id=157971390]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_b2jhj")
