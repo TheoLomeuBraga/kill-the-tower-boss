@@ -1,7 +1,6 @@
 extends Node
 
-signal on_save()
-signal on_change()
+signal on_setting_change(String,Variant)
 
 const mouse_sensitivity_correction : float = 600.0
 
@@ -16,15 +15,27 @@ var settings : Dictionary = {
 	"fov": 90,
 }
 
+var input_map : Dictionary[String,InputEvent]
+
+
+
 func load_state() -> void:
 	pass
 
-func save_state() -> void:
-	on_save.emit()
+func _ready() -> void:
 	
-	#do thing
+	load_state()
+	for key in settings:
+		on_setting_change.emit(key,settings[key])
+	
+	
 
-func change_state(data:Dictionary) -> void:
-	#do thing
+func save_state() -> void:
+	pass
+
+func change_setting(name:String,value:Variant) -> void:
 	
-	on_change.emit(settings)
+	settings[name] = value
+	on_setting_change.emit(name,value)
+	
+	

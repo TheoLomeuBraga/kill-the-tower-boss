@@ -1,9 +1,102 @@
 [gd_scene format=3 uid="uid://c6maixkr7kd8f"]
 
+[ext_resource type="Script" uid="uid://es7qfy4n7t4n" path="res://menus/settings/settings_menu.gd" id="1_vauo1"]
+[ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="2_od2kw"]
+[ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="3_od2kw"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b2jhj"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qxkbx"]
+color = Color(0, 0, 0, 0)
+
 [node name="SettingsMenu" type="Control" unique_id=1210625486]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vauo1")
+title = "Settings"
+
+[node name="Panel" type="Panel" parent="." unique_id=1233084758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=11196756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1179390604]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_b2jhj")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2116610156]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_od2kw")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1994452141]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control" unique_id=564068711]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.043
+anchor_right = 0.97400004
+anchor_bottom = 0.97400004
+offset_left = 0.052160263
+offset_top = -0.062000275
+offset_right = -0.05218506
+offset_bottom = 0.083984375
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/PanelContainer" unique_id=823670546]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=506074655]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1958679931]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qxkbx")
+
+[node name="close" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1828116570]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_od2kw")
+text = "close"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1211110023]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qxkbx")
+
+[node name="reset" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1729314520]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_od2kw")
+text = "reset
+"
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1745677653]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qxkbx")
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=1822341992]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_b2jhj")

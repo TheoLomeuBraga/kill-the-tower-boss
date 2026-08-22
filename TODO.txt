@@ -8,6 +8,10 @@ improve gameover
 
 add checkpoint feedback
 
+improve settings visual
+
+send demo to someone
+
 add triger area
 
 add change scene triger

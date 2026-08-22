@@ -115,10 +115,6 @@ func on_death() -> void:
 	death_timer.start()
 	death_timer.wait_time = 1.0
 	
-	
-	
-	
-	
 	$"../headCol".disabled = true
 	$"../bodyCol".disabled = true
 	$"../legCol".disabled = true
