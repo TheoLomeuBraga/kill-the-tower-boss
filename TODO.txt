@@ -1,5 +1,9 @@
 playtest
 
+create settings menu
+
+rebind menu
+
 improve gameover
 
 add checkpoint feedback
@@ -37,10 +41,6 @@ add melee robot sfx
 create textures
 
 more playtest
-
-create settings global system
-
-create settings menu
 
 add save system
 

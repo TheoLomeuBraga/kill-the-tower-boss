@@ -166,6 +166,11 @@ func death_state(delta : float) -> void:
 	camera.position.y = -0.2
 	camera.rotation.z= PI/2.0
 	block_camera_rotetion = true
+	
+	if body.is_on_floor():
+		body.velocity = body.velocity.move_toward(Vector3.ZERO,delta*50)
+	else:
+		body.velocity.y -= gravity * delta
 
 func die() -> void:
 	state = death_state

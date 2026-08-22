@@ -3,6 +3,8 @@ class_name GameOver
 
 var change_mouse : bool = true
 
+var gameover_vfx_progress : float = 0.0
+
 func _input(event: InputEvent) -> void:
 	
 	if not change_mouse:
@@ -15,8 +17,20 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
 func gameover() -> void:
+	
+	if visible:
+		return
+	
 	visible = true
 	change_mouse = true
+	
+	gameover_vfx_progress = 0.0
+	
+
+func _process(delta: float) -> void:
+	var sm : ShaderMaterial = $ColorRect.material
+	gameover_vfx_progress += delta / 2.0
+	sm.set_shader_parameter("gameover_progres",gameover_vfx_progress)
 
 func respawn() -> void:
 	SceneManager.reload()
