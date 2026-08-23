@@ -18,29 +18,15 @@ add change scene triger
 
 add chekinpoint triger
 
-add persistency triger
+add button triger system
 
-add fail state
-
-add triger system
-
-add level transition system
-
-add enemy spawn/respawn system
-
-add button system
-
-add lever system
-
-improve sfx
+add lever triger system
 
 add key card system
 
 add plataform system
 
-add melee robot
-
-add melee robot sfx
+add persistency to trigers
 
 create textures
 
