@@ -1,7 +1,25 @@
 extends Control
 class_name PauseMenu
 
+var pausable : bool = true
+
+var change_mouse : bool = true
+func _input(event: InputEvent) -> void:
+	
+	if not change_mouse:
+		return
+	change_mouse = false
+	
+	if visible:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
+
 func pause_unpause() -> void:
+	
+	if not pausable:
+		return
+	
 	change_mouse = true
 	visible = not visible
 	get_tree().paused = not get_tree().paused
@@ -22,19 +40,11 @@ func _ready() -> void:
 	$SettingsMenu.on_close.connect(func():$Panel/VBoxContainer/continue.grab_focus())
 	
 	$Panel/VBoxContainer/quit_game.pressed.connect(get_tree().quit)
-
-var change_mouse : bool = true
-
-func _input(event: InputEvent) -> void:
 	
-	if not change_mouse:
-		return
-	change_mouse = false
-	
-	if visible:
-		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
+	$"../Stats".dead.connect(func():pausable=false)
+
+
+
 
 func _process(delta: float) -> void:
 	$Panel.visible = not $SettingsMenu.visible

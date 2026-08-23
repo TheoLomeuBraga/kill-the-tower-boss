@@ -33,10 +33,6 @@ func gameover() -> void:
 	change_mouse = true
 	gameover_vfx_progress = 0.0
 	
-	#print(master_volume)
-	#master_volume = Settings.settings["audio_volume"]
-	#print(master_volume)
-	
 
 func _process(delta: float) -> void:
 	var sm : ShaderMaterial = $ColorRect.material
@@ -50,7 +46,8 @@ func respawn() -> void:
 	SceneManager.reload()
 	PersistenceManager.load_state()
 	
-	#master_volume = Settings.settings["audio_volume"]
+	var idx : int = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_linear(idx,float(Settings.settings["audio_volume"])/100.0)
 
 func _ready() -> void:
 	visible = false
