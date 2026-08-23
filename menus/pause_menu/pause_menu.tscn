@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cst6wjhs5nufi" path="res://menus/pause_menu/pause_menu.gd" id="1_5ndmu"]
 [ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="2_jwttc"]
+[ext_resource type="PackedScene" uid="uid://c6maixkr7kd8f" path="res://menus/settings/settings_menu.tscn" id="3_qd56w"]
 
 [node name="PauseMenu" type="Control" unique_id=242854174]
 process_mode = 3
@@ -16,19 +17,51 @@ grow_vertical = 2
 script = ExtResource("1_5ndmu")
 metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1346927165]
+[node name="Panel" type="Panel" parent="." unique_id=1399788978]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30200002
+anchor_top = 0.37
+anchor_right = 0.67200005
+anchor_bottom = 0.95000005
+offset_left = -0.2000122
+offset_right = -0.20004272
+offset_bottom = -3.0517578e-05
+
+[node name="Label" type="Label" parent="Panel" unique_id=1515177138]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.40500003
+anchor_right = 1.072
+anchor_bottom = -0.125
+offset_top = -0.039993286
+offset_right = 0.015991211
+theme_override_fonts/font = ExtResource("2_jwttc")
+theme_override_font_sizes/font_size = 64
+text = "[PAUSE]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2033093165]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CenterContainer" unique_id=1515177138]
+[node name="continue" type="Button" parent="Panel/VBoxContainer" unique_id=772802498]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_jwttc")
-theme_override_font_sizes/font_size = 64
-text = "[PAUSE]"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Continue"
+
+[node name="settings" type="Button" parent="Panel/VBoxContainer" unique_id=491010044]
+layout_mode = 2
+text = "settings"
+
+[node name="quit_game" type="Button" parent="Panel/VBoxContainer" unique_id=237807483]
+layout_mode = 2
+text = "quit game"
+
+[node name="SettingsMenu" parent="." unique_id=1210625486 instance=ExtResource("3_qd56w")]
+visible = false
+layout_mode = 1

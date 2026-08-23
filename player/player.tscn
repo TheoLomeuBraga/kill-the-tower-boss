@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://dbsumlu675d1h" path="res://player/time_display.gd" id="22_s7qer"]
 [ext_resource type="PackedScene" uid="uid://dkoy4ochougw" path="res://menus/game_over/game_over.tscn" id="24_7pqkx"]
 [ext_resource type="Script" uid="uid://c2u3ml5220gl8" path="res://scripts/persistence_syncronizers/transform_sync.gd" id="25_knn7v"]
+[ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
@@ -97,6 +98,10 @@ interaction_ray = NodePath("../Camera3D/RayCast3D")
 script = ExtResource("25_knn7v")
 metadata/_custom_type_script = "uid://c2u3ml5220gl8"
 
+[node name="PlayerSettingsSync" type="Node" parent="." unique_id=1532792228]
+script = ExtResource("27_uw77l")
+metadata/_custom_type_script = "uid://bg6qpmgiv5ory"
+
 [node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
 visible = false
 
@@ -133,7 +138,7 @@ player_model = NodePath("../../Camera3D/PlayerModel")
 transparent_bg = true
 handle_input_locally = false
 scaling_3d_mode = 5
-size = Vector2i(600, 300)
+size = Vector2i(600, 400)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="HUD/SubViewportContainer/SubViewport" unique_id=2132762123]

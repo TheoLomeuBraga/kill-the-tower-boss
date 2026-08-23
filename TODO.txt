@@ -1,6 +1,12 @@
 playtest
 
-create settings menu
+fix ammon consuption bug
+
+add full screen option to settings
+
+make sound options have effect
+
+make the settings menus controller compatible
 
 rebind menu
 
