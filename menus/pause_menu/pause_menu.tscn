@@ -69,4 +69,3 @@ text = "quit game"
 [node name="SettingsMenu" parent="." unique_id=1210625486 instance=ExtResource("3_qd56w")]
 visible = false
 layout_mode = 1
-type = 0

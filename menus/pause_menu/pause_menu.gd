@@ -7,6 +7,7 @@ func pause_unpause() -> void:
 	get_tree().paused = not get_tree().paused
 	if not get_tree().paused:
 		$SettingsMenu.on_close.emit()
+		$SettingsMenu.change_type(SettingsMenu.SettingsTypes.MENU)
 	else:
 		$Panel/VBoxContainer/continue.grab_focus()
 
@@ -16,8 +17,10 @@ func _ready() -> void:
 	$Panel/VBoxContainer/continue.pressed.connect(pause_unpause)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.visible=true)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.focus())
+	
 	$SettingsMenu.on_close.connect(func():$SettingsMenu.visible=false)
 	$SettingsMenu.on_close.connect(func():$Panel/VBoxContainer/continue.grab_focus())
+	
 	$Panel/VBoxContainer/quit_game.pressed.connect(get_tree().quit)
 
 var change_mouse : bool = true

@@ -16,6 +16,14 @@ func _input(event: InputEvent) -> void:
 	else:
 		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
+var master_volume : float = 0.0 :
+	set(value):
+		var idx : int = AudioServer.get_bus_index("Master")
+		AudioServer.set_bus_volume_linear(idx,value)
+	get():
+		var idx : int = AudioServer.get_bus_index("Master")
+		return AudioServer.get_bus_volume_linear(idx)
+
 func gameover() -> void:
 	
 	if visible:
@@ -23,18 +31,26 @@ func gameover() -> void:
 	
 	visible = true
 	change_mouse = true
-	
 	gameover_vfx_progress = 0.0
+	
+	#print(master_volume)
+	#master_volume = Settings.settings["audio_volume"]
+	#print(master_volume)
 	
 
 func _process(delta: float) -> void:
 	var sm : ShaderMaterial = $ColorRect.material
 	gameover_vfx_progress += delta / 2.0
 	sm.set_shader_parameter("gameover_progres",gameover_vfx_progress)
+	
+	if visible:
+		master_volume = move_toward(master_volume,0.0,delta/2.0)
 
 func respawn() -> void:
 	SceneManager.reload()
 	PersistenceManager.load_state()
+	
+	#master_volume = Settings.settings["audio_volume"]
 
 func _ready() -> void:
 	visible = false

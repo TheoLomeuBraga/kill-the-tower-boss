@@ -1,4 +1,6 @@
-improve gameover to decrease volume
+make unpausable during gameover
+
+fix setings menu title display
 
 add save and load to settings
 

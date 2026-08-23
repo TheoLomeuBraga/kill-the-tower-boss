@@ -1,7 +1,7 @@
 extends Control
 class_name SettingsMenu
 
-@export var title : String
+@onready var title : Label = $VBoxContainer/Label
 
 @onready var options_container : Node = $VBoxContainer/Control/PanelContainer/ScrollContainer/VBoxContainer
 @onready var close_button : Button = $VBoxContainer/HBoxContainer/close
@@ -51,8 +51,10 @@ func change_type(new_type : SettingsTypes) -> void:
 	match type:
 		SettingsTypes.MENU:
 			
+			title.text = "settings"
+			
 			option = create_option()
-			option.setup_as_button("keyboard",change_type.bind(SettingsTypes.KEYBOARD))
+			option.setup_as_button("mouse & keyboard",change_type.bind(SettingsTypes.KEYBOARD))
 			option.focus()
 			
 			option = create_option()
@@ -68,6 +70,8 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 		SettingsTypes.KEYBOARD:
 			
+			title.text = "mouse & keyboard"
+			
 			option = create_option()
 			option.setup_as_slider("sensitivity mouse","keyboard_sensitivity_mouse",6,0,18,0.1)
 			option.focus()
@@ -77,6 +81,8 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 		SettingsTypes.CONTROLLER:
 			
+			title.text = "controller"
+			
 			option = create_option()
 			option.setup_as_slider("sensitivity controller","controller_sensitivity_controller",6,0,18,0.1)
 			option.focus()
@@ -85,6 +91,8 @@ func change_type(new_type : SettingsTypes) -> void:
 			set_reset_func(Settings.reset_settings.bind("controller"))
 			
 		SettingsTypes.VIDEO:
+			
+			title.text = "video"
 			
 			option = create_option()
 			option.setup_as_slider("fov","video_fov",90,1,160,1)
@@ -100,6 +108,8 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 		
 		SettingsTypes.AUDIO:
+			
+			title.text = "audio"
 			
 			option = create_option()
 			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
@@ -118,8 +128,6 @@ func change_type(new_type : SettingsTypes) -> void:
 			set_reset_func(Settings.reset_settings.bind("audio"))
 
 func _ready() -> void:
-	
-	$VBoxContainer/Label.text = title
 	
 	
 	change_type(SettingsTypes.MENU)
