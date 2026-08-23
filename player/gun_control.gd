@@ -398,7 +398,7 @@ func process_aim() -> void:
 		return
 	
 	if is_reloading:
-		camera.fov = Settings.settings["fov"]
+		camera.fov = Settings.settings["video_fov"]
 		player_model.visible = true
 		player_model.gun.is_scoping = false
 		player_movement.sensitivity_multplyer = 1.0

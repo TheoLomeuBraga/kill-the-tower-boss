@@ -1,7 +1,3 @@
-playtest
-
-add checkpoint feedback
-
 improve gameover to decrease volume
 
 add save and load to settings
@@ -16,7 +12,7 @@ add save and load to rebind
 
 improve rebind menu style
 
-send demo to someone
+send demo to someone and playtest
 
 add triger area
 
