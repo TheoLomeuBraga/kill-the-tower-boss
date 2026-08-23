@@ -27,7 +27,20 @@ func on_change_setting(name:String,new_value:Variant) -> void:
 				$Control/OptionButton.selected = value
 			OptionTypes.SLIDER:
 				$Control/HSlider.value = value
-				
+
+
+
+func focus() -> void:
+	
+	match option_type:
+		OptionTypes.BUTTON:
+			$Button.grab_focus()
+		OptionTypes.CHECK_BOX:
+			$Control/CheckBox/CheckBox.grab_focus()
+		OptionTypes.ENUM:
+			$Control/OptionButton.grab_focus()
+		OptionTypes.SLIDER:
+			$Control/HSlider.grab_focus()
 
 func update_visual_option() -> void:
 	for key:String in Settings.settings:

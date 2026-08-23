@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vauo1")
 title = "Settings"
+type = null
 
 [node name="Panel" type="Panel" parent="." unique_id=1233084758]
 layout_mode = 1

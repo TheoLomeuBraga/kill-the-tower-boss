@@ -14,6 +14,10 @@ func create_option() -> SettingOption:
 	options.push_back(ret)
 	return ret
 
+func focus() -> void:
+	if options.size() > 0:
+		options[0].focus()
+
 enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO,AUDIO}
 @export var type : SettingsTypes
 
@@ -49,6 +53,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_button("keyboard",change_type.bind(SettingsTypes.KEYBOARD))
+			option.focus()
 			
 			option = create_option()
 			option.setup_as_button("conreoller",change_type.bind(SettingsTypes.CONTROLLER))
@@ -65,6 +70,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_slider("sensitivity mouse","keyboard_sensitivity_mouse",6,0,18,0.1)
+			option.focus()
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("keyboard"))
@@ -73,6 +79,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_slider("sensitivity controller","controller_sensitivity_controller",6,0,18,0.1)
+			option.focus()
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("controller"))
@@ -81,8 +88,10 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_slider("fov","video_fov",90,1,160,1)
+			option.focus()
 			
 			option = create_option()
+			option.focus()
 			option.setup_as_check_box("full screen","video_full_screen",false)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
@@ -94,6 +103,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
+			option.focus()
 			
 			option = create_option()
 			option.setup_as_slider("SFX","audio_volume_sfx",100,0,100,1)

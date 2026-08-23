@@ -1,6 +1,8 @@
 playtest
 
-make the settings menu controller compatible
+add checkpoint feedback
+
+improve gameover to decrease volume
 
 add save and load to settings
 
@@ -13,12 +15,6 @@ make the rebind menu controller compatible
 add save and load to rebind
 
 improve rebind menu style
-
-improve gameover
-
-add checkpoint feedback
-
-improve settings visual
 
 send demo to someone
 

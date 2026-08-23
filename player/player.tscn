@@ -200,6 +200,7 @@ player_movement = NodePath("../PlayerMovement")
 [node name="GameOver" parent="." unique_id=462071331 instance=ExtResource("24_7pqkx")]
 
 [node name="time_display" type="Label" parent="." unique_id=437701589]
+visible = false
 anchors_preset = -1
 anchor_right = 0.10300001
 anchor_bottom = 0.07700001
