@@ -4,6 +4,10 @@ class_name SettingOption
 var setting_target : String
 var value : Variant
 
+var input_action_name : String
+var input_device_type : GlobalEnums.InputDeviceTypes
+
+
 func change_bool(value:bool,name:String) -> void:
 	Settings.change_setting(name,value)
 
@@ -58,6 +62,7 @@ func disable_visibilitys() -> void:
 	$Control/CheckBox.visible = false
 	$Control/OptionButton.visible = false
 	$Control/HSlider.visible = false
+	$input_getter.visible = false
 
 func setup_as_button(name:String,callable:Callable) -> void:
 	disable_visibilitys()

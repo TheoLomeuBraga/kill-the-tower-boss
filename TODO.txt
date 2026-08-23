@@ -1,14 +1,10 @@
-add save and load to settings
-
-improve settings menu style
-
-rebind menu
+add rebind menu
 
 make the rebind menu controller compatible
 
 add save and load to rebind
 
-improve rebind menu style
+improve menu ui style
 
 send demo to someone and playtest
 

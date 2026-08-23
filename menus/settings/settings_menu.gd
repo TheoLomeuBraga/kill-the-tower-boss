@@ -18,7 +18,7 @@ func focus() -> void:
 	if options.size() > 0:
 		options[0].focus()
 
-enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO,AUDIO}
+enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO,AUDIO,KEYBOARD_BINDS,CONTROLLER_BINDS}
 @export var type : SettingsTypes
 
 func set_close_func(f:Callable)->void:
@@ -76,6 +76,9 @@ func change_type(new_type : SettingsTypes) -> void:
 			option.setup_as_slider("sensitivity mouse","keyboard_sensitivity_mouse",6,0,18,0.1)
 			option.focus()
 			
+			option = create_option()
+			option.setup_as_button("input map",change_type.bind(SettingsTypes.KEYBOARD_BINDS))
+			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("keyboard"))
 			
@@ -86,6 +89,19 @@ func change_type(new_type : SettingsTypes) -> void:
 			option = create_option()
 			option.setup_as_slider("sensitivity controller","controller_sensitivity_controller",6,0,18,0.1)
 			option.focus()
+			
+			option = create_option()
+			option.setup_as_slider("deadzone left","controller_deadzone_left",6,0,1,0.1)
+			option.focus()
+			
+			option = create_option()
+			option.setup_as_slider("deadzone right","controller_deadzone_right",6,0,1,0.1)
+			option.focus()
+			
+			
+			
+			option = create_option()
+			option.setup_as_button("input map",change_type.bind(SettingsTypes.CONTROLLER_BINDS))
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("controller"))
@@ -106,7 +122,6 @@ func change_type(new_type : SettingsTypes) -> void:
 			set_reset_func(Settings.reset_settings.bind("video"))
 			
 			
-		
 		SettingsTypes.AUDIO:
 			
 			title.text = "audio"
@@ -126,10 +141,28 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("audio"))
+		
+		SettingsTypes.KEYBOARD_BINDS:
+			
+			
+			
+			set_close_func(change_type.bind(SettingsTypes.MENU))
+			set_reset_func(Settings.reset_settings.bind("controller"))
+			
+		SettingsTypes.CONTROLLER_BINDS:
+			
+			
+			
+			set_close_func(change_type.bind(SettingsTypes.MENU))
+			set_reset_func(Settings.reset_settings.bind("controller"))
+			
 
 func _ready() -> void:
 	
-	
 	change_type(SettingsTypes.MENU)
 	
-	
+	on_close.connect(Settings.save_state)
+
+func _process(delta: float) -> void:
+	if visible and Input.is_action_just_pressed("ui_cancel"):
+		close_button.pressed.emit()

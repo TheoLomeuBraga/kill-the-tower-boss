@@ -15,6 +15,10 @@ func _input(event: InputEvent) -> void:
 	else:
 		Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
+func focus() -> void:
+	await get_tree().process_frame
+	$Panel/VBoxContainer/continue.grab_focus()
+
 func pause_unpause() -> void:
 	
 	if not pausable:
@@ -27,7 +31,7 @@ func pause_unpause() -> void:
 		$SettingsMenu.on_close.emit()
 		$SettingsMenu.change_type(SettingsMenu.SettingsTypes.MENU)
 	else:
-		$Panel/VBoxContainer/continue.grab_focus()
+		focus()
 
 func _ready() -> void:
 	visible = false
@@ -37,7 +41,7 @@ func _ready() -> void:
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.focus())
 	
 	$SettingsMenu.on_close.connect(func():$SettingsMenu.visible=false)
-	$SettingsMenu.on_close.connect(func():$Panel/VBoxContainer/continue.grab_focus())
+	$SettingsMenu.on_close.connect(focus)
 	
 	$Panel/VBoxContainer/quit_game.pressed.connect(get_tree().quit)
 	
@@ -48,9 +52,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Panel.visible = not $SettingsMenu.visible
+	
+	if get_tree().paused and $Panel.visible and Input.is_action_just_pressed("ui_cancel"):
+		pause_unpause()
+	
 	if Input.is_action_just_pressed("pause"):
 		pause_unpause()
 		
 		if get_tree().paused:
 			$SettingsMenu.on_close.emit()
-			$Panel/VBoxContainer/continue.grab_focus()
+			focus()

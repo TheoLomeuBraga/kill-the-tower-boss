@@ -19,6 +19,12 @@ func on_setting_change(name:String,value:Variant) -> void:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			else:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		"controller_deadzone_left":
+			for key:String in ["foward","back","left","right"]:
+				InputMap.action_set_deadzone(key,value)
+		"controller_deadzone_right":
+			for key:String in ["look_up","look_down","look_left","look_right"]:
+				InputMap.action_set_deadzone(key,value)
 
 func _ready() -> void:
 	Settings.on_setting_change.connect(on_setting_change) 

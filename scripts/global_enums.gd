@@ -1,7 +1,7 @@
 extends Node
 class_name GlobalEnums
 
-enum Faction {FRIENDLY,ENEMY,NONE}
+enum InputDeviceTypes {KEYBOARD_MOUSE,CONTROLLER}
 
 enum AmmonType {NONE,PISTOL,RIFLE,SHOTGUN,ENERGY,EXPLOSIVE}
 const wepons_icons : Dictionary[GlobalEnums.AmmonType,String] = {
@@ -13,4 +13,5 @@ const wepons_icons : Dictionary[GlobalEnums.AmmonType,String] = {
 	GlobalEnums.AmmonType.EXPLOSIVE: "res://icons/consumables/explosive.png",
 }
 
+enum Faction {FRIENDLY,ENEMY,NONE}
 enum DamageTypes {NORMAL,EXPLOSIVE}
