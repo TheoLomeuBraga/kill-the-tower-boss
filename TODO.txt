@@ -1,18 +1,16 @@
 playtest
 
-
-
-add full screen option to settings
-
-make sound options have effect
-
 make the settings menu controller compatible
+
+add save and load to settings
 
 improve settings menu style
 
 rebind menu
 
 make the rebind menu controller compatible
+
+add save and load to rebind
 
 improve rebind menu style
 

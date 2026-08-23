@@ -14,7 +14,7 @@ func create_option() -> SettingOption:
 	options.push_back(ret)
 	return ret
 
-enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO}
+enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO,AUDIO}
 @export var type : SettingsTypes
 
 func set_close_func(f:Callable)->void:
@@ -56,12 +56,15 @@ func change_type(new_type : SettingsTypes) -> void:
 			option = create_option()
 			option.setup_as_button("video",change_type.bind(SettingsTypes.VIDEO))
 			
+			option = create_option()
+			option.setup_as_button("audio",change_type.bind(SettingsTypes.AUDIO))
+			
 			set_close_func(on_close.emit)
 			
 		SettingsTypes.KEYBOARD:
 			
 			option = create_option()
-			option.setup_as_slider("sensitivity mouse","keyboard_sensitivity_mouse",6,0,18,0.1,3)
+			option.setup_as_slider("sensitivity mouse","keyboard_sensitivity_mouse",6,0,18,0.1)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("keyboard"))
@@ -69,7 +72,7 @@ func change_type(new_type : SettingsTypes) -> void:
 		SettingsTypes.CONTROLLER:
 			
 			option = create_option()
-			option.setup_as_slider("sensitivity controller","controller_sensitivity_controller",6,0,18,0.1,3)
+			option.setup_as_slider("sensitivity controller","controller_sensitivity_controller",6,0,18,0.1)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("controller"))
@@ -77,10 +80,32 @@ func change_type(new_type : SettingsTypes) -> void:
 		SettingsTypes.VIDEO:
 			
 			option = create_option()
-			option.setup_as_slider("fov","video_fov",90,1,160,1,3)
+			option.setup_as_slider("fov","video_fov",90,1,160,1)
+			
+			option = create_option()
+			option.setup_as_check_box("full screen","video_full_screen",false)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(Settings.reset_settings.bind("video"))
+			
+			
+		
+		SettingsTypes.AUDIO:
+			
+			option = create_option()
+			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
+			
+			option = create_option()
+			option.setup_as_slider("SFX","audio_volume_sfx",100,0,100,1)
+			
+			option = create_option()
+			option.setup_as_slider("Music","audio_volume_music",100,0,100,1)
+			
+			#option = create_option()
+			#option.setup_as_slider("Dialogue","audio_volume_dialogue",100,0,100,1,3)
+			
+			set_close_func(change_type.bind(SettingsTypes.MENU))
+			set_reset_func(Settings.reset_settings.bind("audio"))
 
 func _ready() -> void:
 	

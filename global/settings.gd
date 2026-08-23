@@ -5,10 +5,6 @@ signal on_setting_change(String,Variant)
 const mouse_sensitivity_correction : float = 600.0
 
 const base_settings : Dictionary = {
-	"volume": 80,
-	"volume_sfx": 100,
-	"volume_music": 100,
-	"volume_dialogue": 100,
 	
 	"keyboard_sensitivity_mouse": 6.0,
 	
@@ -16,6 +12,12 @@ const base_settings : Dictionary = {
 	
 	"video_fov": 90,
 	"video_gun_fov": 90,
+	"video_full_screen": false,
+	
+	"audio_volume": 80,
+	"audio_volume_sfx": 100,
+	"audio_volume_music": 100,
+	"audio_volume_dialogue": 100,
 }
 
 var settings : Dictionary

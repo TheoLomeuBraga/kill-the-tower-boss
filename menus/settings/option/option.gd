@@ -29,6 +29,11 @@ func on_change_setting(name:String,new_value:Variant) -> void:
 				$Control/HSlider.value = value
 				
 
+func update_visual_option() -> void:
+	for key:String in Settings.settings:
+		if setting_target == key:
+			on_change_setting(key,Settings.settings[key])
+
 func _ready() -> void:
 	Settings.on_setting_change.connect(on_change_setting)
 
@@ -49,6 +54,8 @@ func setup_as_button(name:String,callable:Callable) -> void:
 	
 	setting_target = ""
 	option_type = OptionTypes.BUTTON
+	
+	update_visual_option()
 
 func setup_as_check_box(name:String,setting_name:String,base_value:bool) -> void:
 	disable_visibilitys()
@@ -62,6 +69,8 @@ func setup_as_check_box(name:String,setting_name:String,base_value:bool) -> void
 	
 	setting_target = setting_name
 	option_type = OptionTypes.CHECK_BOX
+	
+	update_visual_option()
 
 func setup_as_enum(name:String,setting_name:String,base_value:int,options:Array[String]) -> void:
 	disable_visibilitys()
@@ -80,9 +89,10 @@ func setup_as_enum(name:String,setting_name:String,base_value:int,options:Array[
 	
 	setting_target = setting_name
 	option_type = OptionTypes.ENUM
+	
+	update_visual_option()
 
-var minimun_slider_chars : int = 0
-func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,max:float,step:float,minimun_chars:int) -> void:
+func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,max:float,step:float) -> void:
 	disable_visibilitys()
 	$Label.visible = true
 	$Label.text = name
@@ -97,19 +107,14 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 	$Control/HSlider.step = step
 	$Control/HSlider.value = base_value
 	
-	minimun_slider_chars = minimun_chars
-	
 	$Control/HSlider.value_changed.connect(change_float.bind(setting_name))
 	
 	setting_target = setting_name
 	option_type = OptionTypes.SLIDER
+	
+	update_visual_option()
 
 func _process(delta: float) -> void:
 	if $slider_info.visible:
 		$slider_info.text = str($Control/HSlider.value)
 		
-		while $slider_info.text.length() < minimun_slider_chars:
-			$slider_info.text = "0"+$slider_info.text
-		
-		if $Control/HSlider.step == floor($Control/HSlider.step):
-			$slider_info.text = $slider_info.text.split(".")[0]
