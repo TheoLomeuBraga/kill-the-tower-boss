@@ -54,9 +54,9 @@ func on_checkin_point() -> void:
 				break
 	
 	sync_data["start_gun"] = cg
-	ammon_inventory = sync_data["ammon_inventory"].duplicate()
-	inventory = sync_data["inventory"].duplicate()
-	ammon_on_mag = sync_data["ammon_on_mag"].duplicate()
+	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
+	sync_data["inventory"] = inventory.duplicate()
+	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
 	
 
 func sync_inventory() -> void:
