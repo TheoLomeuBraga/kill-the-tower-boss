@@ -146,7 +146,7 @@ func load_state() -> void:
 		if key.begins_with("ui_"):
 			continue
 		for event : InputEvent in InputMap.action_get_events(key):
-			if event is InputEventAction and event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			if event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
 				InputMap.action_erase_event(key,event)
 	
 	#load

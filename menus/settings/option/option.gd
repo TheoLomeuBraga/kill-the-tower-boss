@@ -87,6 +87,10 @@ func disable_visibilitys() -> void:
 	$Control/OptionButton.visible = false
 	$Control/HSlider.visible = false
 
+func setup_label(name:String) -> void:
+	$Label.visible = true
+	$Label.text = name
+
 func setup_as_button(name:String,callable:Callable) -> void:
 	disable_visibilitys()
 	$Button.visible = true
@@ -100,8 +104,7 @@ func setup_as_button(name:String,callable:Callable) -> void:
 
 func setup_as_check_box(name:String,setting_name:String,base_value:bool) -> void:
 	disable_visibilitys()
-	$Label.visible = true
-	$Label.text = name
+	setup_label(name)
 	
 	$Control.visible = true
 	$Control/CheckBox.visible = true
@@ -115,8 +118,7 @@ func setup_as_check_box(name:String,setting_name:String,base_value:bool) -> void
 
 func setup_as_enum(name:String,setting_name:String,base_value:int,options:Array[String]) -> void:
 	disable_visibilitys()
-	$Label.visible = true
-	$Label.text = name
+	setup_label(name)
 	
 	$Control.visible = true
 	$Control/OptionButton.visible = true
@@ -135,8 +137,7 @@ func setup_as_enum(name:String,setting_name:String,base_value:int,options:Array[
 
 func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,max:float,step:float) -> void:
 	disable_visibilitys()
-	$Label.visible = true
-	$Label.text = name
+	setup_label(name)
 	
 	$slider_info.visible = true
 	$slider_info.text = str(base_value)
@@ -201,8 +202,8 @@ func _input(event: InputEvent) -> void:
 				
 				is_rebinding_locked = 0.1
 				
-				await get_tree().process_frame
-				await get_tree().process_frame
+				for i:int in 2:
+					await get_tree().process_frame
 				
 				Settings.is_curently_rebinding = false
 			
@@ -225,8 +226,9 @@ func _input(event: InputEvent) -> void:
 				
 				is_rebinding_locked = 0.1
 				
-				await get_tree().process_frame
-				await get_tree().process_frame
+				for i:int in 2:
+					await get_tree().process_frame
+				
 				Settings.is_curently_rebinding = false
 	
 
@@ -237,8 +239,7 @@ func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceT
 	input_device_type = type
 	
 	disable_visibilitys()
-	$Label.visible = true
-	$Label.text = name
+	setup_label(name)
 	
 	$Button.visible = true
 	$Button.text = ""
