@@ -1,6 +1,6 @@
 extends Node
 
-signal on_change_binds(String,InputEvent) 
+signal on_binds_change() 
 signal on_setting_change(String,Variant)
 
 const mouse_sensitivity_correction : float = 600.0
@@ -53,7 +53,6 @@ func setup_original_inputmap() -> void:
 					original_inputs_controller[action_name].push_back(input_action)
 
 func reset_input_binds(type:GlobalEnums.InputDeviceTypes) -> void:
-	
 	for action_name : String in InputMap.get_actions():
 		if not action_name.begins_with("ui_"):
 			for input_action : InputEvent in InputMap.action_get_events(action_name):
@@ -71,6 +70,8 @@ func reset_input_binds(type:GlobalEnums.InputDeviceTypes) -> void:
 			for key:String in original_inputs_controller:
 				for ie : InputEvent in original_inputs_controller[key]:
 					InputMap.action_add_event(key,ie)
+	
+	on_binds_change.emit()
 
 func reset_settings(type:String="") -> void:
 	
@@ -85,7 +86,7 @@ func reset_settings(type:String="") -> void:
 	
 	for key in settings:
 		change_setting(key,settings[key])
-
+	
 
 
 
@@ -104,6 +105,7 @@ func try_settings_load(name:String) -> Dictionary:
 	return {}
 
 func load_state() -> void:
+	
 	var new_settings : Dictionary = try_settings_load("user://settings/settings.settings")
 	if new_settings.size() == 0:
 		new_settings = try_settings_load("user://settings/settings.settings1")
@@ -111,7 +113,7 @@ func load_state() -> void:
 	for key in new_settings:
 		change_setting(key,new_settings[key])
 	
-	on_change_binds.emit()
+	on_binds_change.emit()
 
 func save_state() -> void:
 	DirAccess.make_dir_absolute("user://settings")

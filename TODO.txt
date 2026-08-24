@@ -1,5 +1,3 @@
-add rebind menu
-
 check death zone after rebind
 
 make the rebind menu controller compatible

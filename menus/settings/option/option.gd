@@ -6,6 +6,7 @@ var value : Variant
 
 var input_action_name : String
 var input_device_type : GlobalEnums.InputDeviceTypes
+var my_input_event : InputEvent
 
 
 func change_bool(value:bool,name:String) -> void:
@@ -131,6 +132,66 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 	
 	update_visual_option()
 
+var is_rebinding : bool = false
+var is_rebinding_locked : float = 0.0
+func start_key_rebind() -> void:
+	if not is_rebinding:
+		is_rebinding = true
+		$Button.text = "..."
+
+func set_button_bind() -> void:
+	for ie:InputEvent in InputMap.action_get_events(input_action_name):
+		if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
+			if ie is InputEventKey or ie is InputEventMouseButton:
+				$Button.text = ie.as_text().split(" - ")[0]
+				my_input_event = ie
+				
+		elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
+			if ie is InputEventJoypadButton or ie is InputEventJoypadMotion:
+				$Button.text = ie.as_text().split("(")[0]
+				my_input_event = ie
+
+func _input(event: InputEvent) -> void:
+	
+	if not is_rebinding:
+		return
+	
+	if is_rebinding_locked > 0.0:
+		return
+	
+	if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
+		if event is InputEventKey or event is InputEventMouseButton:
+			$Button.text = event.as_text().split(" - ")[0]
+			is_rebinding = false
+			
+			if my_input_event:
+				InputMap.action_erase_event(input_action_name,my_input_event)
+				
+				my_input_event = event
+				
+				InputMap.action_add_event(input_action_name,my_input_event)
+				set_button_bind()
+				
+				is_rebinding_locked = 0.1
+			
+	elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
+		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			$Button.text = event.as_text().split("(")[0]
+			is_rebinding = false
+			
+			if my_input_event:
+				InputMap.action_erase_event(input_action_name,my_input_event)
+				
+				my_input_event = event
+				
+				InputMap.action_add_event(input_action_name,my_input_event)
+				set_button_bind()
+				
+				is_rebinding_locked = 0.1
+	
+
+
+
 func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceTypes) -> void:
 	input_action_name = action
 	input_device_type = type
@@ -141,14 +202,11 @@ func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceT
 	
 	$Button.visible = true
 	$Button.text = ""
+	$Button.pressed.connect(start_key_rebind)
 	
-	for ie:InputEvent in InputMap.action_get_events(input_action_name):
-		if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
-			if ie is InputEventKey or ie is InputEventMouseButton:
-				$Button.text = ie.as_text().split(" - ")[0]
-		elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
-			if ie is InputEventJoypadButton or ie is InputEventJoypadMotion:
-				$Button.text = ie.as_text().split("(")[0]
+	set_button_bind()
+	
+	Settings.on_binds_change.connect(set_button_bind)
 	
 	option_type = OptionTypes.KEY_REBIND
 
