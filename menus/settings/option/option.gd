@@ -131,11 +131,24 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 	
 	update_visual_option()
 
-func setup_as_key_rebind(action:String,type:GlobalEnums.InputDeviceTypes) -> void:
+func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceTypes) -> void:
 	input_action_name = action
 	input_device_type = type
 	
-	#TODO
+	disable_visibilitys()
+	$Label.visible = true
+	$Label.text = name
+	
+	$Button.visible = true
+	$Button.text = ""
+	
+	for ie:InputEvent in InputMap.action_get_events(input_action_name):
+		if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
+			if ie is InputEventKey or ie is InputEventMouseButton:
+				$Button.text = ie.as_text().split(" - ")[0]
+		elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
+			if ie is InputEventJoypadButton or ie is InputEventJoypadMotion:
+				$Button.text = ie.as_text().split("(")[0]
 	
 	option_type = OptionTypes.KEY_REBIND
 

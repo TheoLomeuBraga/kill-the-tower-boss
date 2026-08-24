@@ -146,12 +146,42 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			
 			
+			var is_first : bool = true
+			for key:String in InputMap.get_actions():
+				
+				if key.begins_with("ui_"):
+					continue
+				
+				option = create_option()
+				option.setup_as_key_rebind(key,key,GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE)
+				
+				if is_first:
+					option.focus()
+					is_first = false
+			
+			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
+			option.focus()
+			
 			set_close_func(change_type.bind(SettingsTypes.KEYBOARD))
 			set_reset_func(Settings.reset_settings.bind("keyboard_map"))
 			
 		SettingsTypes.CONTROLLER_BINDS:
 			
+			var is_first : bool = true
+			for key:String in InputMap.get_actions():
+				
+				if key.begins_with("ui_"):
+					continue
+				
+				option = create_option()
+				option.setup_as_key_rebind(key,key,GlobalEnums.InputDeviceTypes.CONTROLLER)
+				
+				if is_first:
+					option.focus()
+					is_first = false
 			
+			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
+			option.focus()
 			
 			set_close_func(change_type.bind(SettingsTypes.CONTROLLER))
 			set_reset_func(Settings.reset_settings.bind("controller_map"))
