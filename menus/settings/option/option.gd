@@ -46,6 +46,8 @@ func focus() -> void:
 			$Control/OptionButton.grab_focus()
 		OptionTypes.SLIDER:
 			$Control/HSlider.grab_focus()
+		OptionTypes.KEY_REBIND:
+			$Button.grab_focus()
 
 func update_visual_option() -> void:
 	for key:String in Settings.settings:
@@ -136,6 +138,7 @@ var is_rebinding : bool = false
 var is_rebinding_locked : float = 0.0
 func start_key_rebind() -> void:
 	if not is_rebinding and not is_rebinding_locked > 0.0:
+		await get_tree().process_frame
 		is_rebinding = true
 		$Button.text = "..."
 
@@ -151,7 +154,7 @@ func set_button_bind() -> void:
 				$Button.text = ie.as_text().split("(")[0]
 				my_input_event = ie
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	
 	if not is_rebinding or is_rebinding_locked > 0.0:
 		return
@@ -173,6 +176,10 @@ func _input(event: InputEvent) -> void:
 			
 	elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
 		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			
+			if event is InputEventJoypadMotion and abs(event.axis_value) < 0.9:
+				return
+			
 			$Button.text = event.as_text().split("(")[0]
 			is_rebinding = false
 			

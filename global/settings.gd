@@ -91,32 +91,78 @@ func reset_settings(type:String="") -> void:
 
 
 #~/.local/share/kill_the_tower_boss/settings/
-func try_settings_load(name:String) -> Dictionary:
+func try_load_settings(name:String) -> Dictionary:
 	
-	if FileAccess.file_exists(name):
-		var cfg_file : FileAccess = FileAccess.open(name, FileAccess.READ)
-		var data : String = cfg_file.get_as_text()
-		var json = JSON.new()
-		var error = json.parse(data)
-		if error == OK:
-			return json.data
+	if not FileAccess.file_exists(name):
+		printerr("fail load: ",name)
+		return {}
 	
+	var cfg_file : FileAccess = FileAccess.open(name, FileAccess.READ)
+	var data : String = cfg_file.get_as_text()
+	var json : JSON = JSON.new()
+	var error = json.parse(data)
 	
+	if error == OK:
+		return json.data
+	
+	printerr("fail load: ",name)
 	return {}
+	
+	
+
+func try_load_binds(name:String) -> Variant:
+	
+	if not FileAccess.file_exists(name):
+		printerr("fail load: ",name)
+		return null
+	
+	var cfg_file : FileAccess = FileAccess.open(name, FileAccess.READ)
+	var ret = cfg_file.get_var(true)
+	
+	if not ret:
+		printerr("fail load: ",name)
+	return ret
 
 func load_state() -> void:
 	
-	var new_settings : Dictionary = try_settings_load("user://settings/settings.settings")
+	var new_settings : Dictionary = try_load_settings("user://settings/settings.settings")
 	if new_settings.size() == 0:
-		new_settings = try_settings_load("user://settings/settings.settings1")
+		new_settings = try_load_settings("user://settings/settings.settings1")
 	
 	for key in new_settings:
 		change_setting(key,new_settings[key])
+	
+	#binds
+	var new_binds : Variant = try_load_binds("user://settings/binds.binds")
+	if not new_binds:
+		new_binds = try_load_binds("user://settings/binds.binds1")
+	if not new_binds:
+		return
+	
+	#remove base binds
+	for key : String in InputMap.get_actions():
+		if key.begins_with("ui_"):
+			continue
+		for event : InputEvent in InputMap.action_get_events(key):
+			if event is InputEventAction and event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
+				InputMap.action_erase_event(key,event)
+	
+	#load
+	for key : String in new_binds:
+		if key.begins_with("ui_"):
+			continue
+		for event : InputEvent in new_binds[key]:
+			InputMap.action_add_event(key,event)
+			
+	
+	
 	
 	on_binds_change.emit()
 
 func save_state() -> void:
 	DirAccess.make_dir_absolute("user://settings")
+	
+	#settings
 	
 	var data : String = JSON.stringify(settings,"\t")
 	
@@ -126,6 +172,26 @@ func save_state() -> void:
 	
 	cfg_file = FileAccess.open("user://settings/settings.settings1", FileAccess.WRITE)
 	cfg_file.store_line(data)
+	cfg_file.close()
+	
+	var binds : Dictionary[String,Array]
+	for key : String in InputMap.get_actions():
+		
+		if key.begins_with("ui_"):
+			continue
+		
+		binds[key] = []
+		for event : InputEvent in InputMap.action_get_events(key):
+			binds[key].push_back(event)
+	
+	#binds
+	
+	cfg_file = FileAccess.open("user://settings/binds.binds", FileAccess.WRITE)
+	cfg_file.store_var(binds,true)
+	cfg_file.close()
+	
+	cfg_file = FileAccess.open("user://settings/binds.binds1", FileAccess.WRITE)
+	cfg_file.store_var(binds,true)
 	cfg_file.close()
 
 

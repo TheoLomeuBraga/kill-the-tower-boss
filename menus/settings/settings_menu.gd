@@ -92,11 +92,9 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			option = create_option()
 			option.setup_as_slider("deadzone left","controller_deadzone_left",6,0,1,0.1)
-			option.focus()
 			
 			option = create_option()
 			option.setup_as_slider("deadzone right","controller_deadzone_right",6,0,1,0.1)
-			option.focus()
 			
 			
 			
@@ -115,7 +113,6 @@ func change_type(new_type : SettingsTypes) -> void:
 			option.focus()
 			
 			option = create_option()
-			option.focus()
 			option.setup_as_check_box("full screen","video_full_screen",false)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
@@ -159,8 +156,6 @@ func change_type(new_type : SettingsTypes) -> void:
 					option.focus()
 					is_first = false
 			
-			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
-			option.focus()
 			
 			set_close_func(change_type.bind(SettingsTypes.KEYBOARD))
 			set_reset_func(Settings.reset_settings.bind("keyboard_map"))
@@ -180,8 +175,6 @@ func change_type(new_type : SettingsTypes) -> void:
 					option.focus()
 					is_first = false
 			
-			option.setup_as_slider("Volume","audio_volume",80,0,100,1)
-			option.focus()
 			
 			set_close_func(change_type.bind(SettingsTypes.CONTROLLER))
 			set_reset_func(Settings.reset_settings.bind("controller_map"))

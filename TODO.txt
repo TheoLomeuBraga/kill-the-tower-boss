@@ -1,10 +1,6 @@
-check death zone after rebind
+fix controller rebind bugs
 
-make the rebind menu controller compatible
-
-add save and load to rebind
-
-fix settings.gd spageti code
+fix settings.gd and option.gd spageti code
 
 improve menu ui style
 
@@ -14,7 +10,7 @@ add triger area
 
 add change scene triger
 
-add chekinpoint triger
+add atract navegator triger
 
 add button triger system
 
