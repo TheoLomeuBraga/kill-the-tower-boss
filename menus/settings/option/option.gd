@@ -135,7 +135,7 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 var is_rebinding : bool = false
 var is_rebinding_locked : float = 0.0
 func start_key_rebind() -> void:
-	if not is_rebinding:
+	if not is_rebinding and not is_rebinding_locked > 0.0:
 		is_rebinding = true
 		$Button.text = "..."
 
@@ -153,10 +153,7 @@ func set_button_bind() -> void:
 
 func _input(event: InputEvent) -> void:
 	
-	if not is_rebinding:
-		return
-	
-	if is_rebinding_locked > 0.0:
+	if not is_rebinding or is_rebinding_locked > 0.0:
 		return
 	
 	if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
@@ -213,4 +210,6 @@ func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceT
 func _process(delta: float) -> void:
 	if $slider_info.visible:
 		$slider_info.text = str($Control/HSlider.value)
+	
+	is_rebinding_locked -= delta
 		
