@@ -8,6 +8,27 @@ var input_action_name : String
 var input_device_type : GlobalEnums.InputDeviceTypes
 var my_input_event : InputEvent
 
+'''
+var ui_events : Dictionary[String,Array] = {}
+
+func disable_ui_events() -> void:
+	ui_events = {}
+	
+	for key : String in InputMap.get_actions():
+		if not key.begins_with("ui_"):
+			continue
+		
+		ui_events[key] = []
+		for event : InputEvent in InputMap.action_get_events(key):
+			ui_events.
+			InputMap.action_add_event(key,event)
+
+func enable_ui_events() -> void:
+	
+	
+	ui_events = {}
+'''
+
 
 func change_bool(value:bool,name:String) -> void:
 	Settings.change_setting(name,value)
@@ -137,12 +158,18 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 var is_rebinding : bool = false
 var is_rebinding_locked : float = 0.0
 func start_key_rebind() -> void:
+	
+	Settings.is_curently_rebinding = true
+	
 	if not is_rebinding and not is_rebinding_locked > 0.0:
 		await get_tree().process_frame
 		is_rebinding = true
 		$Button.text = "..."
+	
+	
 
 func set_button_bind() -> void:
+	
 	for ie:InputEvent in InputMap.action_get_events(input_action_name):
 		if input_device_type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
 			if ie is InputEventKey or ie is InputEventMouseButton:
@@ -154,7 +181,7 @@ func set_button_bind() -> void:
 				$Button.text = ie.as_text().split("(")[0]
 				my_input_event = ie
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	
 	if not is_rebinding or is_rebinding_locked > 0.0:
 		return
@@ -173,6 +200,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				set_button_bind()
 				
 				is_rebinding_locked = 0.1
+				
+				await get_tree().process_frame
+				await get_tree().process_frame
+				
+				Settings.is_curently_rebinding = false
 			
 	elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
 		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -192,6 +224,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				set_button_bind()
 				
 				is_rebinding_locked = 0.1
+				
+				await get_tree().process_frame
+				await get_tree().process_frame
+				Settings.is_curently_rebinding = false
 	
 
 

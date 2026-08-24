@@ -40,6 +40,8 @@ func set_reset_func(f:Callable)->void:
 signal on_close()
 
 func change_type(new_type : SettingsTypes) -> void:
+	if Settings.is_curently_rebinding:
+		return
 	type = new_type
 	for o:SettingOption in options:
 		o.queue_free()
@@ -187,5 +189,6 @@ func _ready() -> void:
 	on_close.connect(Settings.save_state)
 
 func _process(delta: float) -> void:
+	
 	if visible and Input.is_action_just_pressed("ui_cancel"):
 		close_button.pressed.emit()

@@ -1,5 +1,3 @@
-fix controller rebind bugs
-
 fix settings.gd and option.gd spageti code
 
 improve menu ui style

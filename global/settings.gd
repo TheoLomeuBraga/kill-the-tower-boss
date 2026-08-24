@@ -5,6 +5,8 @@ signal on_setting_change(String,Variant)
 
 const mouse_sensitivity_correction : float = 600.0
 
+var is_curently_rebinding:bool = false
+
 const base_settings : Dictionary = {
 	
 	"keyboard_sensitivity_mouse": 6.0,
