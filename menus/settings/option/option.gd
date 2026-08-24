@@ -18,7 +18,7 @@ func change_float(value:float,name:String) -> void:
 	Settings.change_setting(name,value)
 
 
-enum OptionTypes {NONE,BUTTON,CHECK_BOX,ENUM,SLIDER}
+enum OptionTypes {NONE,BUTTON,CHECK_BOX,ENUM,SLIDER,KEY_REBIND}
 var option_type : OptionTypes = OptionTypes.NONE
 func on_change_setting(name:String,new_value:Variant) -> void:
 	if setting_target == name:
@@ -62,7 +62,6 @@ func disable_visibilitys() -> void:
 	$Control/CheckBox.visible = false
 	$Control/OptionButton.visible = false
 	$Control/HSlider.visible = false
-	$input_getter.visible = false
 
 func setup_as_button(name:String,callable:Callable) -> void:
 	disable_visibilitys()
@@ -131,6 +130,14 @@ func setup_as_slider(name:String,setting_name:String,base_value:float,min:float,
 	option_type = OptionTypes.SLIDER
 	
 	update_visual_option()
+
+func setup_as_key_rebind(action:String,type:GlobalEnums.InputDeviceTypes) -> void:
+	input_action_name = action
+	input_device_type = type
+	
+	#TODO
+	
+	option_type = OptionTypes.KEY_REBIND
 
 func _process(delta: float) -> void:
 	if $slider_info.visible:

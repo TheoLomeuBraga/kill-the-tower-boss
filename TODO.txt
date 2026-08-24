@@ -1,8 +1,12 @@
 add rebind menu
 
+check death zone after rebind
+
 make the rebind menu controller compatible
 
 add save and load to rebind
+
+fix settings.gd spageti code
 
 improve menu ui style
 

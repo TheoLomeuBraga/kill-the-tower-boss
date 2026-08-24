@@ -1,5 +1,6 @@
 extends Node
 
+signal on_change_binds(String,InputEvent) 
 signal on_setting_change(String,Variant)
 
 const mouse_sensitivity_correction : float = 600.0
@@ -32,17 +33,6 @@ func change_setting(name:String,value:Variant) -> void:
 	on_setting_change.emit(name,value)
 	
 
-func reset_settings(type:String="") -> void:
-	if type == "":
-		settings = base_settings.duplicate()
-	else:
-		for k:String in base_settings:
-			if k.begins_with(type):
-				settings[k] = base_settings[k]
-	
-	for key in settings:
-		change_setting(key,settings[key])
-
 var original_inputs_keyboard : Dictionary[String,Array]
 var original_inputs_controller : Dictionary[String,Array]
 func setup_original_inputmap() -> void:
@@ -51,17 +41,52 @@ func setup_original_inputmap() -> void:
 	original_inputs_controller = {}
 	
 	for action_name : String in InputMap.get_actions():
+		
+		original_inputs_keyboard[action_name] = []
+		original_inputs_controller[action_name] = []
+		
 		if not action_name.begins_with("ui_"):
 			for input_action : InputEvent in InputMap.action_get_events(action_name):
-				pass
+				if input_action is InputEventKey or input_action is InputEventMouseButton:
+					original_inputs_keyboard[action_name].push_back(input_action)
+				elif input_action is InputEventJoypadButton or input_action is InputEventJoypadMotion:
+					original_inputs_controller[action_name].push_back(input_action)
 
 func reset_input_binds(type:GlobalEnums.InputDeviceTypes) -> void:
 	
+	for action_name : String in InputMap.get_actions():
+		if not action_name.begins_with("ui_"):
+			for input_action : InputEvent in InputMap.action_get_events(action_name):
+				if type == GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE and (input_action is InputEventKey or input_action is InputEventMouseButton):
+					InputMap.action_erase_event(action_name,input_action)
+				elif type == GlobalEnums.InputDeviceTypes.CONTROLLER and (input_action is InputEventJoypadButton or input_action is InputEventJoypadMotion):
+					InputMap.action_erase_event(action_name,input_action)
+	
 	match type:
 		GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE:
-			pass
+			for key:String in original_inputs_keyboard:
+				for ie : InputEvent in original_inputs_keyboard[key]:
+					InputMap.action_add_event(key,ie)
 		GlobalEnums.InputDeviceTypes.CONTROLLER:
-			pass
+			for key:String in original_inputs_controller:
+				for ie : InputEvent in original_inputs_controller[key]:
+					InputMap.action_add_event(key,ie)
+
+func reset_settings(type:String="") -> void:
+	
+	if type == "keyboard_map":
+		reset_input_binds(GlobalEnums.InputDeviceTypes.KEYBOARD_MOUSE)
+	elif type == "controller_map":
+		reset_input_binds(GlobalEnums.InputDeviceTypes.CONTROLLER)
+	
+	for k:String in base_settings:
+		if k.begins_with(type):
+			settings[k] = base_settings[k]
+	
+	for key in settings:
+		change_setting(key,settings[key])
+
+
 
 
 #~/.local/share/kill_the_tower_boss/settings/
@@ -85,6 +110,8 @@ func load_state() -> void:
 	
 	for key in new_settings:
 		change_setting(key,new_settings[key])
+	
+	on_change_binds.emit()
 
 func save_state() -> void:
 	DirAccess.make_dir_absolute("user://settings")
@@ -108,5 +135,3 @@ func _ready() -> void:
 	
 	for key in settings:
 		on_setting_change.emit(key,settings[key])
-	
-	

@@ -146,15 +146,15 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			
 			
-			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("controller"))
+			set_close_func(change_type.bind(SettingsTypes.KEYBOARD))
+			set_reset_func(Settings.reset_settings.bind("keyboard_map"))
 			
 		SettingsTypes.CONTROLLER_BINDS:
 			
 			
 			
-			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("controller"))
+			set_close_func(change_type.bind(SettingsTypes.CONTROLLER))
+			set_reset_func(Settings.reset_settings.bind("controller_map"))
 			
 
 func _ready() -> void:

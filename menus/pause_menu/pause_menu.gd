@@ -53,12 +53,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$Panel.visible = not $SettingsMenu.visible
 	
-	if get_tree().paused and $Panel.visible and Input.is_action_just_pressed("ui_cancel"):
+	if not get_tree().paused and Input.is_action_just_pressed("pause"):
 		pause_unpause()
+		return
+	elif $Panel.visible and get_tree().paused and Input.is_action_just_pressed("ui_cancel"):
+		pause_unpause()
+		return
 	
-	if Input.is_action_just_pressed("pause"):
-		pause_unpause()
-		
-		if get_tree().paused:
-			$SettingsMenu.on_close.emit()
-			focus()
