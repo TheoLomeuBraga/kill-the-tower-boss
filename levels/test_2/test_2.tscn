@@ -127,16 +127,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 23)
 
 [node name="consumable" parent="." unique_id=1597481904 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.8443018, 0, 0.5358669, 0, 1, 0, -0.5358669, 0, -0.8443018, -35, 1, 11)
+transform = Transform3D(0.0967254, 0, -0.9953105, 0, 1, 0, 0.9953105, 0, 0.0967254, -35, 1, 11)
 
 [node name="consumable2" parent="." unique_id=1272060900 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.9570888, 0, 0.28979185, 0, 1, 0, -0.28979185, 0, 0.9570888, -35, 1, 5)
+transform = Transform3D(-0.8170935, 0, 0.5765038, 0, 1, 0, -0.5765038, 0, -0.8170935, -35, 1, 5)
 
 [node name="consumable3" parent="." unique_id=1309773703 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.5081045, 0, -0.8612945, 0, 1, 0, 0.8612945, 0, -0.5081045, -35, 3, 1)
+transform = Transform3D(0.9916528, 0, 0.12893103, 0, 1, 0, -0.12893103, 0, 0.9916528, -35, 3, 1)
 
 [node name="consumable4" parent="." unique_id=115903690 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.47597286, 0, 0.87945914, 0, 1, 0, -0.87945914, 0, -0.47597286, -35, 3, -4)
+transform = Transform3D(-0.40052974, 0, -0.91628295, 0, 1, 0, 0.91628295, 0, -0.40052974, -35, 3, -4)
 
 [node name="WeponPickup" parent="." unique_id=1997913648 instance=ExtResource("6_wa7ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 1, -10)
@@ -144,12 +144,12 @@ weapon = ExtResource("7_saky1")
 offset = Vector3(0.315, 0, -0.685)
 
 [node name="consumable5" parent="." unique_id=75106953 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.9405264, 0, -0.33971795, 0, 1, 0, 0.33971795, 0, 0.9405264, -40, 1, -11)
+transform = Transform3D(-0.3105947, 0, 0.95054144, 0, 1, 0, -0.95054144, 0, -0.3105947, -40, 1, -11)
 ammon = 8
 type = 3
 
 [node name="consumable6" parent="." unique_id=2143924060 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.31413808, 0, -0.94937664, 0, 1, 0, 0.94937664, 0, -0.31413808, -42, 1, -11)
+transform = Transform3D(0.9418193, 0, 0.33611777, 0, 1, 0, -0.33611777, 0, 0.9418193, -42, 1, -11)
 ammon = 8
 type = 3
 
@@ -169,38 +169,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -21)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -25)
 
 [node name="consumable8" parent="." unique_id=279488600 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.9474644, 0, 0.3198586, 0, 1, 0, -0.3198586, 0, -0.9474644, -42, 5, -55)
+transform = Transform3D(0.3304165, 0, -0.9438345, 0, 1, 0, 0.9438345, 0, 0.3304165, -42, 5, -55)
 
 [node name="consumable9" parent="." unique_id=965746158 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.008259287, 0, 0.9999651, 0, 1, 0, -0.9999651, 0, 0.008259287, -40, 5, -55)
+transform = Transform3D(-0.79379284, 0, -0.6081868, 0, 1, 0, 0.6081868, 0, -0.79379284, -40, 5, -55)
 
 [node name="consumable10" parent="." unique_id=147094798 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.9918152, 0, 0.12767303, 0, 1, 0, -0.12767303, 0, 0.9918152, -38, 5, -55)
+transform = Transform3D(-0.7106538, 0, 0.7035401, 0, 1, 0, -0.7035401, 0, -0.7106538, -38, 5, -55)
 
 [node name="consumable11" parent="." unique_id=117267543 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.027471174, 0, -0.99962205, 0, 1, 0, 0.99962205, 0, -0.027471174, -36, 5, -55)
+transform = Transform3D(0.8051268, 0, 0.5931017, 0, 1, 0, -0.5931017, 0, 0.8051268, -36, 5, -55)
 
 [node name="consumable12" parent="." unique_id=475518003 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.9039017, 0, 0.42773807, 0, 1, 0, -0.42773807, 0, 0.9039017, -42, 5, -59)
+transform = Transform3D(-0.89313567, 0, 0.4497851, 0, 1, 0, -0.4497851, 0, -0.89313567, -42, 5, -59)
 
 [node name="consumable13" parent="." unique_id=40796209 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.689458, 0, -0.7243249, 0, 1, 0, 0.7243249, 0, 0.689458, -40, 5, -59)
+transform = Transform3D(0.14708534, 0, 0.9891232, 0, 1, 0, -0.9891232, 0, 0.14708534, -40, 5, -59)
 
 [node name="consumable14" parent="." unique_id=65278874 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.62292373, 0, -0.7822817, 0, 1, 0, 0.7822817, 0, -0.62292373, -38, 5, -59)
+transform = Transform3D(0.99994785, 0, -0.010143591, 0, 1, 0, 0.010143591, 0, 0.99994785, -38, 5, -59)
 
 [node name="consumable16" parent="." unique_id=1607115286 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.6231146, 0, -0.7821296, 0, 1, 0, 0.7821296, 0, -0.6231146, -40, 5, -61)
+transform = Transform3D(0.9999453, 0, -0.010387718, 0, 1, 0, 0.010387718, 0, 0.9999453, -40, 5, -61)
 ammon = 8
 type = 3
 
 [node name="consumable17" parent="." unique_id=1623293731 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.8591995, 0, 0.51163936, 0, 1, 0, -0.51163936, 0, -0.8591995, -38, 5, -61)
+transform = Transform3D(0.12499146, 0, -0.9921572, 0, 1, 0, 0.9921572, 0, 0.12499146, -38, 5, -61)
 ammon = 8
 type = 3
 
 [node name="consumable15" parent="." unique_id=636831175 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.6727062, 0, 0.7399084, 0, 1, 0, -0.7399084, 0, -0.6727062, -36, 5, -59)
+transform = Transform3D(-0.16957247, 0, -0.9855166, 0, 1, 0, 0.9855166, 0, -0.16957247, -36, 5, -59)
 
 [node name="drone3" parent="." unique_id=1638888865 instance=ExtResource("3_3fw0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 6, -58)
@@ -226,82 +226,82 @@ gun_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 4, -182)
 
 [node name="consumable7" parent="." unique_id=520213467 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.8815164, 0, 0.47215235, 0, 1, 0, -0.47215235, 0, 0.8815164, -60, 5, -118)
+transform = Transform3D(-0.91438377, 0, 0.40484738, 0, 1, 0, -0.40484738, 0, -0.91438377, -60, 5, -118)
 
 [node name="consumable25" parent="." unique_id=340845400 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.7065889, 0, -0.7076233, 0, 1, 0, 0.7076233, 0, 0.7065889, -56, 5, -123)
+transform = Transform3D(0.12337995, 0, 0.99235886, 0, 1, 0, -0.99235886, 0, 0.12337995, -56, 5, -123)
 ammon = 10
 type = 1
 
 [node name="consumable27" parent="." unique_id=195445037 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.998169, 0, 0.06047884, 0, 1, 0, -0.06047884, 0, 0.998169, -56, 5, -121)
+transform = Transform3D(-0.66157943, 0, 0.7498745, 0, 1, 0, -0.7498745, 0, -0.66157943, -56, 5, -121)
 ammon = 10
 type = 1
 
 [node name="consumable26" parent="." unique_id=1966424529 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.5373421, 0, -0.8433633, 0, 1, 0, 0.8433633, 0, -0.5373421, -56, 5, -119)
+transform = Transform3D(0.99548805, 0, 0.09487679, 0, 1, 0, -0.09487679, 0, 0.99548805, -56, 5, -119)
 ammon = 10
 type = 1
 
 [node name="consumable18" parent="." unique_id=908559736 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.82018304, 0, -0.5721002, 0, 1, 0, 0.5721002, 0, 0.82018304, -60, 5, -120)
+transform = Transform3D(-0.053342406, 0, 0.9985758, 0, 1, 0, -0.9985758, 0, -0.053342406, -60, 5, -120)
 
 [node name="consumable19" parent="." unique_id=1850307831 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.2938162, 0, -0.95586115, 0, 1, 0, 0.95586115, 0, -0.2938162, -60, 5, -122)
+transform = Transform3D(0.9344246, 0, 0.35615894, 0, 1, 0, -0.35615894, 0, 0.9344246, -60, 5, -122)
 
 [node name="consumable20" parent="." unique_id=2062661801 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.99979216, 0, 0.020351825, 0, 1, 0, -0.020351825, 0, -0.99979216, -60, 5, -124)
+transform = Transform3D(0.59875906, 0, -0.8009283, 0, 1, 0, 0.8009283, 0, 0.59875906, -60, 5, -124)
 
 [node name="consumable21" parent="." unique_id=1242468906 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.2604031, 0, -0.96549916, 0, 1, 0, 0.96549916, 0, 0.2604031, -53, 5, -118)
+transform = Transform3D(0.6010975, 0, 0.79917455, 0, 1, 0, -0.79917455, 0, 0.6010975, -53, 5, -118)
 
 [node name="consumable22" parent="." unique_id=1887189274 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.7432633, 0, -0.6689983, 0, 1, 0, 0.6689983, 0, -0.7432633, -53, 5, -120)
+transform = Transform3D(0.984625, 0, -0.17467873, 0, 1, 0, 0.17467873, 0, 0.984625, -53, 5, -120)
 
 [node name="consumable23" parent="." unique_id=1381125958 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.8635243, 0, 0.5043051, 0, 1, 0, -0.5043051, 0, -0.8635243, -53, 5, -122)
+transform = Transform3D(0.13343439, 0, -0.99105656, 0, 1, 0, 0.99105656, 0, 0.13343439, -53, 5, -122)
 
 [node name="consumable24" parent="." unique_id=2029829382 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.24955106, 0, 0.9683605, 0, 1, 0, -0.9683605, 0, 0.24955106, -53, 5, -124)
+transform = Transform3D(-0.91716814, 0, -0.39849746, 0, 1, 0, 0.39849746, 0, -0.91716814, -53, 5, -124)
 
 [node name="consumable28" parent="." unique_id=1484567809 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.6426519, 0, -0.76615703, 0, 1, 0, 0.76615703, 0, -0.6426519, -60, 5, -151)
+transform = Transform3D(0.9993645, 0, -0.03561838, 0, 1, 0, 0.03561838, 0, 0.9993645, -60, 5, -151)
 
 [node name="consumable29" parent="." unique_id=1005801216 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.9205801, 0, 0.39055228, 0, 1, 0, -0.39055228, 0, -0.9205801, -56, 5, -156)
+transform = Transform3D(0.25816503, 0, -0.9661002, 0, 1, 0, 0.9661002, 0, 0.25816503, -56, 5, -156)
 ammon = 8
 type = 3
 
 [node name="consumable30" parent="." unique_id=1522373976 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.8987267, 0, -0.43850744, 0, 1, 0, 0.43850744, 0, -0.8987267, -56, 5, -154)
+transform = Transform3D(0.8984754, 0, -0.43902194, 0, 1, 0, 0.43902194, 0, 0.8984754, -56, 5, -154)
 ammon = 10
 type = 1
 
 [node name="consumable31" parent="." unique_id=148684564 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.17805067, 0, 0.98402053, 0, 1, 0, -0.98402053, 0, 0.17805067, -56, 5, -152)
+transform = Transform3D(-0.88556296, 0, -0.46451762, 0, 1, 0, 0.46451762, 0, -0.88556296, -56, 5, -152)
 ammon = 8
 type = 3
 
 [node name="consumable32" parent="." unique_id=500608844 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.974108, 0, 0.22607836, 0, 1, 0, -0.22607836, 0, -0.974108, -60, 5, -153)
+transform = Transform3D(0.4207285, 0, -0.9071854, 0, 1, 0, 0.9071854, 0, 0.4207285, -60, 5, -153)
 
 [node name="consumable33" parent="." unique_id=995059814 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.0812505, 0, 0.99669313, 0, 1, 0, -0.99669313, 0, -0.0812505, -60, 5, -155)
+transform = Transform3D(-0.73620903, 0, -0.6767533, 0, 1, 0, 0.6767533, 0, -0.73620903, -60, 5, -155)
 
 [node name="consumable34" parent="." unique_id=1495806986 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.9367894, 0, 0.34989157, 0, 1, 0, -0.34989157, 0, 0.9367894, -60, 5, -157)
+transform = Transform3D(-0.8519858, 0, 0.52356327, 0, 1, 0, -0.52356327, 0, -0.8519858, -60, 5, -157)
 
 [node name="consumable35" parent="." unique_id=1990712032 instance=ExtResource("5_saky1")]
-transform = Transform3D(-0.59833795, 0, 0.8012432, 0, 1, 0, -0.8012432, 0, -0.59833795, -53, 5, -151)
+transform = Transform3D(-0.26361743, 0, -0.9646266, 0, 1, 0, 0.9646266, 0, -0.26361743, -53, 5, -151)
 
 [node name="consumable36" parent="." unique_id=1270522102 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.44300038, 0, 0.8965206, 0, 1, 0, -0.8965206, 0, 0.44300038, -53, 5, -153)
+transform = Transform3D(-0.9794224, 0, -0.20181762, 0, 1, 0, 0.20181762, 0, -0.9794224, -53, 5, -153)
 
 [node name="consumable37" parent="." unique_id=1438730278 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.98894346, 0, -0.14828767, 0, 1, 0, 0.14828767, 0, 0.98894346, -53, 5, -155)
+transform = Transform3D(-0.49131843, 0, 0.870979, 0, 1, 0, -0.870979, 0, -0.49131843, -53, 5, -155)
 
 [node name="consumable38" parent="." unique_id=1430169013 instance=ExtResource("5_saky1")]
-transform = Transform3D(0.1299876, 0, -0.99151504, 0, 1, 0, 0.99151504, 0, 0.1299876, -53, 5, -157)
+transform = Transform3D(0.70185006, 0, 0.71232367, 0, 1, 0, -0.71232367, 0, 0.70185006, -53, 5, -157)
 
 [node name="WeponPickup2" parent="." unique_id=1083106043 instance=ExtResource("6_wa7ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 5.6534133, -114)

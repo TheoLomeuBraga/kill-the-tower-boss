@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var a_dist : float = a.global_position.distance_to(a.get_collision_point())
-	body.global_position.y += a.target_position.length() - a_dist
+	body.global_position.y += a_dist
+	body.velocity.y = 0.0
 	
 	
