@@ -16,11 +16,17 @@ var floor_recently : float = 0.0
 
 @export var forgiveness_time : float = 0.2
 
-@export var jump_power : float = 4.0
+@export_group("jump")
+@export var jump_power : float = 8.0
+@export var jump_foward_impulse : float = 4.0
 
-func try_jump() -> void:
+func try_jump(input_dir:Vector3=Vector3.ZERO) -> void:
 	if jump_recently > 0.0 and floor_recently > 0.0:
+		body.velocity += input_dir * jump_foward_impulse
 		body.velocity.y = jump_power
+		
+		floor_recently = 0.0
+		jump_recently = 0.0
 
 @export_group("grapple state")
 
@@ -96,12 +102,13 @@ func air_state(delta : float) -> void:
 	if body.is_on_floor():
 		state = floor_state
 	
-	try_jump()
+	try_jump(input_dir)
 
 @export_group("floor state")
 
 @export var speed : float = 5.0
 @export var floor_friction : float = 100.0
+
 
 func floor_state(delta : float) -> void:
 	
@@ -113,7 +120,7 @@ func floor_state(delta : float) -> void:
 	if not body.is_on_floor():
 		state = air_state
 	
-	try_jump()
+	try_jump(input_dir)
 	
 @export_group("camera")
 
