@@ -33,6 +33,8 @@ func gameover() -> void:
 	change_mouse = true
 	gameover_vfx_progress = 0.0
 	
+	$respawn.grab_focus()
+	
 
 func _process(delta: float) -> void:
 	var sm : ShaderMaterial = $ColorRect.material

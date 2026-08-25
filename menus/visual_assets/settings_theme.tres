@@ -1,0 +1,119 @@
+[gd_resource type="Theme" format=3 uid="uid://i5imjmvu0okg"]
+
+[ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="1_cwaky"]
+[ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="2_eurhk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7fes"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+skew = Vector2(0.4, 0)
+border_color = Color(0, 1, 0, 0)
+shadow_color = Color(0, 1, 0, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eurhk"]
+bg_color = Color(0, 0.46666667, 0, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywr7u"]
+bg_color = Color(0, 0.46666667, 0, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.2901961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwaky"]
+bg_color = Color(0, 0.46666667, 0, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.70041007, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nssow"]
+bg_color = Color(0, 0.46666667, 0, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.70041007, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_cwaky"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3, 0.7)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cwaky"]
+gradient = SubResource("Gradient_cwaky")
+width = 16
+height = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eurhk"]
+gradient = SubResource("Gradient_cwaky")
+width = 16
+height = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3sw5x"]
+gradient = SubResource("Gradient_cwaky")
+width = 8
+height = 8
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4w8d"]
+bg_color = Color(0, 0.36862746, 0, 1)
+border_color = Color(0.7194732, 0.71947324, 0.71947294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns012"]
+bg_color = Color(0, 1, 0, 1)
+border_color = Color(0.7194732, 0.71947324, 0.71947294, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0croj"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sw5x"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0croj"]
+bg_color = Color(0, 0.627451, 0, 1)
+border_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vyp7"]
+bg_color = Color(0, 1, 0, 1)
+border_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+Button/fonts/font = ExtResource("1_cwaky")
+Button/styles/focus = SubResource("StyleBoxFlat_p7fes")
+Button/styles/hover = SubResource("StyleBoxFlat_eurhk")
+Button/styles/normal = SubResource("StyleBoxFlat_ywr7u")
+Button/styles/pressed = SubResource("StyleBoxFlat_cwaky")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_nssow")
+HSlider/icons/grabber = SubResource("GradientTexture2D_cwaky")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_eurhk")
+HSlider/icons/tick = SubResource("GradientTexture2D_3sw5x")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_u4w8d")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ns012")
+HSlider/styles/slider = SubResource("StyleBoxLine_0croj")
+Label/fonts/font = ExtResource("2_eurhk")
+Panel/styles/panel = SubResource("StyleBoxFlat_3sw5x")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_0croj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_2vyp7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_2vyp7")

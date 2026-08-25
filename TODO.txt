@@ -1,5 +1,3 @@
-improve menu ui style
-
 send demo to someone and playtest
 
 add triger area

@@ -15,6 +15,20 @@ shader_parameter/lod = 5.0
 shader_parameter/gameover_progres = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_a0plv")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0plv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0.6431373, 0, 0, 0.6)
+shadow_size = 16
+
 [node name="GameOver" type="Control" unique_id=462071331]
 texture_filter = 1
 layout_mode = 3
@@ -58,6 +72,10 @@ anchor_bottom = 0.69200003
 offset_left = -0.19999695
 offset_right = 0.19995117
 offset_bottom = 0.19998169
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0plv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0plv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a0plv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a0plv")
 text = "Respawn"
 
 [connection signal="pressed" from="respawn" to="." method="respawn"]

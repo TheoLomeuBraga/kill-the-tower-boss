@@ -37,6 +37,6 @@ inventory_reload_time = 0.0
 reload_audio = ExtResource("8_sp17m")
 bullets_per_shot = 10
 fire_rate = 0.1
-spread = 0.15
+spread = 0.1
 projectile_info = SubResource("Resource_r7pn3")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"

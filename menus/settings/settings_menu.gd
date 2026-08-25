@@ -3,7 +3,7 @@ class_name SettingsMenu
 
 @onready var title : Label = $VBoxContainer/Label
 
-@onready var options_container : Node = $VBoxContainer/Control/PanelContainer/ScrollContainer/VBoxContainer
+@onready var options_container : Node = $VBoxContainer/Control/Panel/ScrollContainer/VBoxContainer
 @onready var close_button : Button = $VBoxContainer/HBoxContainer/close
 @onready var reset_button : Button = $VBoxContainer/HBoxContainer/reset
 

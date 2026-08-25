@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 					GlobalEnums.AmmonType.SHOTGUN:
 						p.gun_control.ammon_inventory[weapon.ammon_type] += 8
 					GlobalEnums.AmmonType.ENERGY:
-						p.gun_control.ammon_inventory[weapon.ammon_type] += 20
+						p.gun_control.ammon_inventory[weapon.ammon_type] += 50
 					GlobalEnums.AmmonType.EXPLOSIVE:
 						p.gun_control.ammon_inventory[weapon.ammon_type] += 3
 				
