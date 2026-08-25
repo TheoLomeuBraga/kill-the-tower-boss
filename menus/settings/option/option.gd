@@ -8,27 +8,6 @@ var input_action_name : String
 var input_device_type : GlobalEnums.InputDeviceTypes
 var my_input_event : InputEvent
 
-'''
-var ui_events : Dictionary[String,Array] = {}
-
-func disable_ui_events() -> void:
-	ui_events = {}
-	
-	for key : String in InputMap.get_actions():
-		if not key.begins_with("ui_"):
-			continue
-		
-		ui_events[key] = []
-		for event : InputEvent in InputMap.action_get_events(key):
-			ui_events.
-			InputMap.action_add_event(key,event)
-
-func enable_ui_events() -> void:
-	
-	
-	ui_events = {}
-'''
-
 
 func change_bool(value:bool,name:String) -> void:
 	Settings.change_setting(name,value)

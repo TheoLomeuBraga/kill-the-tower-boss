@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://wkjhrg6pd3om"]
 
 [ext_resource type="Script" uid="uid://cst6wjhs5nufi" path="res://menus/pause_menu/pause_menu.gd" id="1_5ndmu"]
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_vpjwo"]
 [ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="2_jwttc"]
 [ext_resource type="StyleBox" uid="uid://cm71orfag8gix" path="res://menus/visual_assets/os_window_frame.tres" id="2_l3nas"]
-[ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="3_4s7ec"]
 [ext_resource type="PackedScene" uid="uid://c6maixkr7kd8f" path="res://menus/settings/settings_menu.tscn" id="3_qd56w"]
 
 [node name="PauseMenu" type="Control" unique_id=242854174]
@@ -16,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vpjwo")
 script = ExtResource("1_5ndmu")
 metadata/_edit_use_anchors_ = true
 
@@ -57,17 +58,18 @@ grow_vertical = 2
 
 [node name="continue" type="Button" parent="Panel/VBoxContainer" unique_id=772802498]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4s7ec")
 text = "Continue"
 
 [node name="settings" type="Button" parent="Panel/VBoxContainer" unique_id=491010044]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4s7ec")
 text = "settings"
+
+[node name="load_chekpoint" type="Button" parent="Panel/VBoxContainer" unique_id=1768427634]
+layout_mode = 2
+text = "load chekpoint"
 
 [node name="quit_game" type="Button" parent="Panel/VBoxContainer" unique_id=237807483]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4s7ec")
 text = "quit game"
 
 [node name="SettingsMenu" parent="." unique_id=1210625486 instance=ExtResource("3_qd56w")]

@@ -33,15 +33,24 @@ func pause_unpause() -> void:
 	else:
 		focus()
 
+func load_chekpoint() -> void:
+	get_tree().paused = false
+	SceneManager.reload()
+	PersistenceManager.load_state()
+
 func _ready() -> void:
 	visible = false
 	
 	$Panel/VBoxContainer/continue.pressed.connect(pause_unpause)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.visible=true)
+	$Panel/VBoxContainer/load_chekpoint.pressed.connect(load_chekpoint)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.focus())
 	
 	$SettingsMenu.on_close.connect(func():$SettingsMenu.visible=false)
 	$SettingsMenu.on_close.connect(focus)
+	
+	
+	
 	
 	$Panel/VBoxContainer/quit_game.pressed.connect(get_tree().quit)
 	
