@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://dsfbwvui8fvt4" path="res://scripts/projectile_info.gd" id="10_0cgij"]
 [ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="11_b1tst"]
 [ext_resource type="PackedScene" uid="uid://1w3803e0ftg4" path="res://player/projectiles/generic_ray.tscn" id="12_1koiy"]
-[ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="13_a23fe"]
 [ext_resource type="AudioStream" uid="uid://bxj377qfpj65g" path="res://sfx/guns/gun_revolver_pistol_shot_04.wav" id="13_p33kv"]
 [ext_resource type="AudioStream" uid="uid://sd4v5su486fp" path="res://sfx/guns/gun_shotgun_shot_03.wav" id="14_yu61i"]
 [ext_resource type="AudioStream" uid="uid://c3pwe7782tqyd" path="res://sfx/guns/gun_rifle_sniper_shot_04.wav" id="15_26xxa"]
@@ -327,32 +326,32 @@ node_connections = [&"output", 0, &"death_state", &"Transition", 0, &"Animation"
 script = ExtResource("2_sq4vr")
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(826584716) index="0" unique_id=16005913]
-bones/1/position = Vector3(0, 1.0091398, -0.055199984)
-bones/1/rotation = Quaternion(0.0019066673, 0, 0, 0.9999982)
+bones/1/position = Vector3(0, 1.0098677, -0.05519999)
+bones/1/rotation = Quaternion(0.0012657404, 0, 0, 0.9999992)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.074481905, 0.7422371, -0.66482764, 0.039253805)
-bones/10/rotation = Quaternion(-0.06846857, -0.7033036, -0.04388141, 0.7062229)
+bones/9/rotation = Quaternion(0.069915086, 0.74320537, -0.6645287, 0.0340475)
+bones/10/rotation = Quaternion(-0.06111636, -0.70393705, -0.039169364, 0.7065431)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.07447851, 0.74223804, -0.6648272, -0.039250176)
-bones/14/rotation = Quaternion(-0.06846857, 0.7033036, 0.04388141, 0.7062229)
+bones/13/rotation = Quaternion(-0.069915175, 0.7432054, -0.6645288, -0.034047503)
+bones/14/rotation = Quaternion(-0.061116375, 0.70393705, 0.039169386, 0.7065431)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.1926231e-08, 0.005265175, 0.9999862, -1.2558536e-10)
-bones/19/rotation = Quaternion(2.746854e-16, 0.99996966, -0.007792632, -9.259454e-16)
+bones/18/rotation = Quaternion(2.4535675e-08, 0.0004713409, 0.9999999, -3.2338456e-09)
+bones/19/rotation = Quaternion(-3.3484684e-16, 0.9999999, -0.0006545926, 4.6093844e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(2.1926231e-08, 0.005265175, 0.9999862, -1.2558536e-10)
-bones/24/rotation = Quaternion(3.108992e-16, 0.99996966, -0.007792632, -1.2191591e-15)
+bones/23/rotation = Quaternion(1.9317168e-08, 0.0004713409, 0.9999999, 3.0573177e-09)
+bones/24/rotation = Quaternion(3.762158e-16, 0.9999999, -0.0006545926, -1.6801641e-17)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=1989641506]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.1973447e-31, 0.99999267, -0.0038132193, 3.1399423e-29, 0.0038132195, 0.9999926, 9.6707895e-15, 1.7802293, 0.027640887)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -7.9484865e-32, 0.9999967, -0.0025313706, 3.139955e-29, 0.0025313706, 0.99999666, 9.6707895e-15, 1.7810628, 0.026652385)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=973354077]
-transform = Transform3D(6.7055225e-08, 2.1304004e-08, 1, 1.0000001, 2.7939677e-08, -1.4901161e-07, 1.21071935e-08, 0.9999998, 1.8440187e-07, -0.09529999, 1.451747, 0.44747376)
+transform = Transform3D(-5.2154064e-08, 3.958121e-08, 1, 1, -2.02097e-07, 2.0861626e-07, 4.8428774e-08, 1, -1.4086254e-08, -0.09529997, 1.4524722, 0.44673395)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=1438315029]
 visible = false
@@ -364,7 +363,7 @@ visible = false
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=1814487658]
-transform = Transform3D(-0.014071077, 0.17822242, 0.9838897, 0.8897673, -0.44670534, 0.09364131, 0.45619777, 0.87675047, -0.15229072, -0.19529998, 1.5837269, -0.02450876)
+transform = Transform3D(-0.013295025, 0.17838693, 0.98387057, 0.8898099, -0.4467489, 0.093024746, 0.4561374, 0.8766946, -0.15279089, -0.19529998, 1.5844938, -0.025245324)
 
 [node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=221805752]
 visible = false
@@ -382,7 +381,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.9999927, -0.0038133278, 0, 0.0038133278, 0.9999927, 3.9013474e-15, 1.2919288, 0.00067875907)
+transform = Transform3D(1, 0, 0, 0, 0.9999968, -0.0025314789, 0, 0.0025314789, 0.9999968, 3.9013474e-15, 1.2927281, 0.00031621195)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -452,7 +451,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5837269, -0.02450876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5844938, -0.025245324)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -471,11 +470,11 @@ libraries/ = SubResource("AnimationLibrary_0cgij")
 speed_scale = 2.0
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.1973447e-31, 0.99999267, -0.0038132193, 3.1399423e-29, 0.0038132195, 0.9999926, 9.6707895e-15, 1.7802293, 0.027640887)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -7.9484865e-32, 0.9999967, -0.0025313706, 3.139955e-29, 0.0025313706, 0.99999666, 9.6707895e-15, 1.7810628, 0.026652385)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.9999927, -0.0038133278, 0, 0.0038133278, 0.9999927, 3.9013474e-15, 1.2919288, 0.00067875907)
+transform = Transform3D(1, 0, 0, 0, 0.9999968, -0.0025314789, 0, 0.0025314789, 0.9999968, 3.9013474e-15, 1.2927281, 0.00031621195)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]
@@ -532,14 +531,10 @@ desired_distances = Dictionary[int, Vector3]({
 3: Vector3(5, 25, 30)
 })
 
-[node name="ApplyDamageVfx" type="Node" parent="." index="10" unique_id=1169690843]
-script = ExtResource("13_a23fe")
-metadata/_custom_type_script = "uid://b0dwxhhrp7gf"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11" unique_id=828244533]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10" unique_id=828244533]
 libraries/template_psx_charter = ExtResource("2_g4v7r")
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="12" unique_id=111687981]
+[node name="AnimationTree" type="AnimationTree" parent="." index="11" unique_id=111687981]
 tree_root = SubResource("AnimationNodeBlendTree_nuspp")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Transition/current_state = "idle"
@@ -550,12 +545,10 @@ parameters/death_state/current_state = "alive"
 parameters/death_state/transition_request = ""
 parameters/death_state/current_index = 0
 
-[node name="sfx" type="Node3D" parent="." index="13" unique_id=459965787]
+[node name="sfx" type="Node3D" parent="." index="12" unique_id=459965787]
 
 [node name="target" type="AudioStreamPlayer3D" parent="sfx" index="0" unique_id=1516917272]
 stream = ExtResource("15_b1tst")
 
 [node name="open_fire" type="AudioStreamPlayer3D" parent="sfx" index="1" unique_id=1815173519]
 stream = ExtResource("16_tgt1f")
-
-[connection signal="damaged" from="Stats" to="ApplyDamageVfx" method="play_hit_fx"]

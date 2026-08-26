@@ -1,8 +1,11 @@
 extends Node
 class_name ApplyDamageVfx
 
-static var base_material : ShaderMaterial = load("res://vfx/damage/damage_material.tres")
-var material : ShaderMaterial
+const base_material : ShaderMaterial = preload("res://vfx/damage/damage_material.tres")
+var material : ShaderMaterial : 
+	set(value):
+		material = value
+
 
 func apply_overlay(n : Node) -> void:
 	if n is GeometryInstance3D:
@@ -12,19 +15,20 @@ func apply_overlay(n : Node) -> void:
 	for c : Node in n.get_children():
 		apply_overlay(c)
 
+
 func _ready() -> void:
 	material = base_material.duplicate()
 	
-	for c : Node in get_parent().get_children():
-		if c is Stats:
-			var s : Stats = c
-			if s.damaged.is_connected(play_hit_fx):
-				continue
-			s.damaged.connect(play_hit_fx)
-	
 	apply_overlay(get_parent())
+	
+	
+	
 
-func play_hit_fx(i:int=0) -> void:
+func play_hit_fx(color:Color) -> void:
+	if not material:
+		return
+	
+	material.set_shader_parameter("color",color)
 	material.set_shader_parameter("fresnel_power",1.0)
 
 func _process(delta: float) -> void:

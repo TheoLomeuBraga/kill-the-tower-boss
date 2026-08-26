@@ -10,6 +10,9 @@ signal healed(int)
 signal damaged(int)
 signal dead()
 
+@export var use_damage_vfx : bool = true
+var vfx : ApplyDamageVfx
+
 @export var faction : GlobalEnums.Faction = GlobalEnums.Faction.ENEMY
 
 @export var max_health : int = 100
@@ -30,6 +33,12 @@ var sync_data : Dictionary
 
 func _ready() -> void:
 	
+	await get_tree().process_frame
+	
+	if use_damage_vfx:
+		vfx = ApplyDamageVfx.new()
+		get_parent().add_child(vfx)
+	
 	if sync_stats:
 		
 		sync_data["health"] = health
@@ -46,6 +55,10 @@ func _ready() -> void:
 		
 		if  health <= 0:
 			get_parent().queue_free()
+		
+	
+	
+	
 
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
 	
@@ -71,6 +84,7 @@ static func get_stats_from_node(node : Node) -> Stats:
 	return null
 
 func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> void:
+	var damage_mult : int = calculate_damage(100,damage_type,area)
 	var _damage : int = calculate_damage(amount,damage_type,area)
 	
 	if _damage <= 0:
@@ -91,6 +105,16 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	
 	if sync_stats:
 		sync_data["health"] = health
+	
+	if use_damage_vfx:
+		
+		var damage_color:Color = Color.RED
+		if damage_mult < 99:
+			damage_color = Color(0.2,0.2,0.2,1.0)
+		else:
+			damage_color = Color.RED
+		
+		vfx.play_hit_fx(damage_color)
 	
 	damaged.emit(_damage)
 

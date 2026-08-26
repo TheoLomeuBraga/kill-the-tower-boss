@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="8_06nsb"]
 [ext_resource type="Texture2D" uid="uid://c1bkck7l0kfda" path="res://enemys/drone/model/drone_texture_shotgun.png" id="10_tc4l4"]
 [ext_resource type="AudioStream" uid="uid://es1tnacthf54" path="res://sfx/scifi_shot.wav" id="11_06nsb"]
-[ext_resource type="Script" uid="uid://b0dwxhhrp7gf" path="res://vfx/damage/aply_damage_vfx.gd" id="11_c0ans"]
 [ext_resource type="AudioStream" uid="uid://v4mftnja0pnp" path="res://sfx/dash.wav" id="14_b34jr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxkbx"]
@@ -111,16 +110,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
-bones/0/position = Vector3(0, 0.06050762, 0)
+bones/0/position = Vector3(0, 0.06479635, 0)
 
 [node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.18949237, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.18520364, 0)
 
 [node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.18949237, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.18520364, 0)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06050762, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06479635, 0)
 
 [node name="DroneBehavior" type="Node" parent="." index="6" unique_id=1726034422]
 script = ExtResource("2_ytvpm")
@@ -140,11 +139,7 @@ damage_type_multplyer = Dictionary[int, float]({
 })
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
-[node name="ApplyDamageVfx" type="Node" parent="." index="8" unique_id=1096697393]
-script = ExtResource("11_c0ans")
-metadata/_custom_type_script = "uid://b0dwxhhrp7gf"
-
-[node name="Navegator" type="NavigationAgent3D" parent="." index="9" unique_id=1024561993]
+[node name="Navegator" type="NavigationAgent3D" parent="." index="8" unique_id=1024561993]
 path_height_offset = -3.0
 script = ExtResource("4_6ljkj")
 look_target = 0
@@ -152,16 +147,14 @@ speed = 6.0
 gravity = 0.0
 metadata/_custom_type_script = "uid://8eq3m6bfvh5g"
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="11" unique_id=1932160045]
+[node name="AnimationTree" type="AnimationTree" parent="." index="10" unique_id=1932160045]
 tree_root = SubResource("AnimationNodeBlendTree_b2jhj")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
 
-[node name="sfx" type="Node3D" parent="." index="12" unique_id=1905104150]
+[node name="sfx" type="Node3D" parent="." index="11" unique_id=1905104150]
 
 [node name="dash" type="AudioStreamPlayer3D" parent="sfx" index="0" unique_id=1043966811]
 stream = ExtResource("14_b34jr")
 volume_db = -10.0
 doppler_tracking = 2
-
-[connection signal="damaged" from="Stats" to="ApplyDamageVfx" method="play_hit_fx"]

@@ -1,10 +1,14 @@
 send demo to someone and playtest
 
-add triger area
+add proximity triger
 
 add change scene triger
 
 add atract navegator triger
+
+add spawn triger
+
+add door system
 
 add button triger system
 
