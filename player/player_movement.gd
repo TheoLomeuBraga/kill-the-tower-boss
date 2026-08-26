@@ -18,7 +18,7 @@ var floor_recently : float = 0.0
 
 @export_group("jump")
 @export var jump_power : float = 8.0
-@export var jump_foward_impulse : float = 4.0
+@export var jump_foward_impulse : float = 8.0
 
 func try_jump(input_dir:Vector3=Vector3.ZERO) -> void:
 	if jump_recently > 0.0 and floor_recently > 0.0:
