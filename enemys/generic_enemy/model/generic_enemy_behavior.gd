@@ -290,6 +290,8 @@ func _physics_process(delta: float) -> void:
 		
 		state.call(delta)
 		
+		if navegator.alt_is_navegating:
+			print("alt")
 
 
 func _exit_tree() -> void:

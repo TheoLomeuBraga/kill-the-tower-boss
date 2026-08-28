@@ -4,7 +4,7 @@ var door : DoorManager
 var target_pos_x : float = 0.0
 
 func _physics_process(delta: float) -> void:
-	position.x = move_toward(position.x,target_pos_x,delta*2)
+	position.x = move_toward(position.x,target_pos_x,delta*4)
 
 func on_state_change(value:bool) -> void:
 	if value:
