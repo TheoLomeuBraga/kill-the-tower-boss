@@ -31,7 +31,6 @@ metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 [sub_resource type="Resource" id="Resource_5ejfk"]
 script = ExtResource("5_38oac")
 ammon_consumption = -1
-charge_time = 2.0
 projectile_info = SubResource("Resource_1s1yo")
 fire_rate = 0.5
 charge_sound = ExtResource("1_4r1s5")

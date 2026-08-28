@@ -72,6 +72,7 @@ amount = 3
 lifetime = 0.1
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_b2jhj")
 draw_pass_1 = SubResource("SphereMesh_4xu3i")
 script = ExtResource("1_gs63p")

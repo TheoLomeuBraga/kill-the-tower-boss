@@ -191,7 +191,7 @@ platform_on_leave = 2
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2134243847) index="0" unique_id=344284760]
 bones/1/position = Vector3(-2.2185712e-07, 0.3, -1.4692932)
 bones/1/rotation = Quaternion(-0.7071068, -3.6808345e-07, 4.7485364e-07, 0.7071068)
-bones/2/rotation = Quaternion(1.2298759e-15, 0.17309079, -6.9981786e-15, 0.98490596)
+bones/2/rotation = Quaternion(-8.470313e-21, 8.100092e-29, -7.1054274e-15, 1)
 bones/4/rotation = Quaternion(0.7071068, -5.8157804e-07, -1.3347006e-06, 0.7071068)
 bones/5/rotation = Quaternion(-2.8342733e-08, -0.44628122, -5.6833102e-08, 0.8948928)
 bones/6/position = Vector3(0.10964003, 0.563822, 3.0890476e-08)
@@ -208,37 +208,37 @@ bones/18/position = Vector3(0.5160247, 0.4265015, 0.06576106)
 bones/19/position = Vector3(-0.5160247, 0.4265015, 0.06576106)
 
 [node name="cannon_l_001" parent="Armature/Skeleton3D" index="0" unique_id=1319934437]
-transform = Transform3D(0.5656119, 0.34095627, -0.7508875, -0.7987492, 1.4829339e-13, -0.60166407, -0.20514113, 0.94007915, 0.27233857, 0.85731065, 2.5802429, 0.43823743)
+transform = Transform3D(0.60166407, -1.4210767e-13, -0.7987492, -0.7987492, 1.5907928e-13, -0.60166407, -2.2393769e-12, 1, -1.8584802e-12, 0.75880694, 2.5802429, 0.7222595)
 
 [node name="cannon_l" parent="Armature/Skeleton3D" index="1" unique_id=587602365]
-transform = Transform3D(0.9400792, 0.34095615, -2.5476413e-06, -2.7100273e-06, 1.6921519e-13, -1, -0.34095615, 0.9400792, 9.2399773e-07, 0.7237447, 2.5802429, 0.0699711)
+transform = Transform3D(1, -1.2701685e-07, -2.7100273e-06, -2.7100273e-06, 1.8000107e-13, -1, 1.2701685e-07, 1, -3.2306042e-12, 0.75880706, 2.5802429, 0.33051988)
 
 [node name="minigun_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_l" index="1" unique_id=1533061670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703, -0.092)
 
 [node name="hear_sink_l" parent="Armature/Skeleton3D" index="2" unique_id=378002061]
-transform = Transform3D(0.6128096, 0.7128911, 0.34095564, -0.75833094, 0.6518698, 8.3463596e-07, -0.22225809, -0.25855774, 0.9400794, 0.10307036, 2.8221295, 0.2626177)
+transform = Transform3D(0.6518698, 0.75833094, -6.434345e-07, -0.75833094, 0.6518698, 8.3463596e-07, 1.0523656e-06, -5.6137537e-08, 1, 0.10964003, 2.8221295, 0.30000016)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_l" index="1" unique_id=1835808622]
 remote_path = NodePath("../../../../heat_sinc_1")
 
 [node name="hear_sink_r" parent="Armature/Skeleton3D" index="3" unique_id=207692011]
-transform = Transform3D(0.6128089, -0.7128911, 0.34095687, 0.75833094, 0.6518698, 8.346362e-07, -0.22226006, 0.25855765, 0.940079, -0.10307026, 2.8221295, 0.3373826)
+transform = Transform3D(0.6518698, -0.75833094, 6.434343e-07, 0.75833094, 0.6518698, 8.346362e-07, -1.0523656e-06, -5.613788e-08, 1, -0.10964003, 2.8221295, 0.30000016)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/hear_sink_r" index="1" unique_id=948268512]
 remote_path = NodePath("../../../../heat_sinc_2")
 
 [node name="cannon_r_001" parent="Armature/Skeleton3D" index="4" unique_id=1235305080]
-transform = Transform3D(0.94007915, 0.34095624, 2.3832722e-06, 2.5351815e-06, 1.464154e-13, -1, -0.34095627, 0.9400791, -8.643833e-07, -0.56936675, 2.5802429, 0.9556774)
+transform = Transform3D(1, -1.1368584e-13, 2.5351815e-06, 2.5351815e-06, 1.5720132e-13, -1, 1.1368741e-13, 0.99999994, 2.8635857e-12, -0.7588071, 2.5802429, 0.7222595)
 
 [node name="cannon_r" parent="Armature/Skeleton3D" index="5" unique_id=1454144332]
-transform = Transform3D(0.9400792, 0.34095615, 2.5476413e-06, 2.7100273e-06, 1.6921519e-13, -1, -0.34095615, 0.9400792, -9.2399773e-07, -0.7029328, 2.5802429, 0.5874111)
+transform = Transform3D(1, -1.2701685e-07, 2.7100273e-06, 2.7100273e-06, 1.8000107e-13, -1, 1.2701685e-07, 1, 3.2306042e-12, -0.75880706, 2.5802429, 0.33051988)
 
 [node name="rocket_launcher_muzle" type="Marker3D" parent="Armature/Skeleton3D/cannon_r" index="1" unique_id=960287249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635, 0)
 
 [node name="body" parent="Armature/Skeleton3D" index="6" unique_id=1535463379]
-transform = Transform3D(0.94007957, -8.47027e-22, 0.34095514, -6.13725e-14, 1, 1.6921525e-13, -0.34095514, 6.352952e-22, 0.94007957, 3.4912106e-15, 2.2583075, 0.3)
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, 2.954151e-15, 2.2583075, 0.3)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Armature/Skeleton3D/body" index="1" unique_id=1279801940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505, 0)
@@ -253,7 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0.18)
 remote_path = NodePath("../../../../CollisionShape3D4")
 
 [node name="spine_001" parent="Armature/Skeleton3D" index="7" unique_id=1096119712]
-transform = Transform3D(0.94007957, -8.470135e-22, 0.34095514, -6.13725e-14, 1, 1.6921525e-13, -0.34095514, 6.352731e-22, 0.94007957, 1.1917032e-14, 2.1, 0.3)
+transform = Transform3D(1, 2.01948e-26, -1.1920929e-06, 0, 1, 1.8000107e-13, 1.1920929e-06, 3.2311743e-26, 1, 1.1917032e-14, 2.1, 0.3)
 
 [node name="leg_l_003" parent="Armature/Skeleton3D" index="8" unique_id=806806764]
 transform = Transform3D(-0.9950487, -2.3376197e-07, -0.09938768, 2.5477493e-07, -0.99999976, -6.556511e-07, -0.09938768, -6.183982e-07, 0.99504876, 0.5160245, 0.42650157, 0.065761045)
@@ -309,15 +309,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0817871, 0)
 shape = SubResource("CylinderShape3D_b2jhj")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2" unique_id=504366089]
-transform = Transform3D(0.94007957, -8.47027e-22, 0.34095514, -6.13725e-14, 1, 1.6921525e-13, -0.34095514, 6.352952e-22, 0.94007957, 3.4912102e-15, 2.7633076, 0.3)
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, 2.954151e-15, 2.7633076, 0.3)
 shape = SubResource("BoxShape3D_b2jhj")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3" unique_id=1895899285]
-transform = Transform3D(0.94007957, -0.32139847, 0.11381318, -6.13725e-14, 0.3338069, 0.9426415, -0.34095514, -0.886158, 0.31380504, 0.22843994, 2.7583075, 0.9298533)
+transform = Transform3D(1, 1.1237162e-06, -3.9792883e-07, 2.019484e-26, 0.3338069, 0.9426415, 1.1920929e-06, -0.9426415, 0.3338069, -7.987023e-07, 2.7583075, 0.97)
 shape = SubResource("BoxShape3D_oisd7")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="4" unique_id=694486543]
-transform = Transform3D(0.94007957, -8.47027e-22, 0.34095514, -6.13725e-14, 1, 1.6921525e-13, -0.34095514, 6.352952e-22, 0.94007957, 0.061371926, 2.5783074, 0.46921432)
+transform = Transform3D(1, -5.9371316e-32, -1.1920929e-06, 2.019484e-26, 1, 1.8000107e-13, 1.1920929e-06, 4.8511778e-26, 1, -2.1457673e-07, 2.5783074, 0.48000002)
 shape = SubResource("BoxShape3D_tn8ol")
 
 [node name="machinegun_muzle" type="Node3D" parent="CollisionShape3D4" index="0" unique_id=668656354]
@@ -327,12 +327,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.7)
 
 [node name="heat_sinc_1" type="CollisionShape3D" parent="." index="5" unique_id=1438787852]
-transform = Transform3D(0.6128096, 0.7128911, 0.34095564, -0.75833094, 0.6518698, 8.3463596e-07, -0.22225809, -0.25855774, 0.9400794, 0.10307036, 2.8221295, 0.2626177)
+transform = Transform3D(0.6518698, 0.75833094, -6.434345e-07, -0.75833094, 0.6518698, 8.3463596e-07, 1.0523656e-06, -5.6137537e-08, 1, 0.10964003, 2.8221295, 0.30000016)
 shape = SubResource("BoxShape3D_qxkbx")
 disabled = true
 
 [node name="heat_sinc_2" type="CollisionShape3D" parent="." index="6" unique_id=1873630124]
-transform = Transform3D(0.6128089, -0.7128911, 0.34095687, 0.75833094, 0.6518698, 8.346362e-07, -0.22226006, 0.25855765, 0.940079, -0.10307026, 2.8221295, 0.3373826)
+transform = Transform3D(0.6518698, -0.75833094, 6.434343e-07, 0.75833094, 0.6518698, 8.346362e-07, -1.0523656e-06, -5.613788e-08, 1, -0.10964003, 2.8221295, 0.30000016)
 shape = SubResource("BoxShape3D_qxkbx")
 disabled = true
 

@@ -51,6 +51,7 @@ func shot() -> void:
 	var spwn_effect : Node3D = info.projectile_info.spawn_effect.instantiate()
 	muzle.add_child(spwn_effect)
 	spwn_effect.global_position = muzle.global_position
+	spwn_effect.look_at(spwn_effect.global_position + spwn_effect.global_basis.z)
 	
 	
 	

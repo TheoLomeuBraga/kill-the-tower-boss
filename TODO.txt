@@ -1,7 +1,5 @@
 add atract navegator triger
 
-add door system
-
 add spawn triger
 
 add button triger system

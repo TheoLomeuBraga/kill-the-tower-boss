@@ -136,6 +136,8 @@ func shot_minigun() -> void:
 	var fx : Node3D = minigun_spawn_fx.instantiate()
 	body.get_parent().add_child(fx)
 	fx.global_transform = muzle_minigun.global_transform
+	fx.look_at(fx.global_position + fx.global_basis.z)
+	
 	
 
 func minigun_state(delta:float) -> void:
@@ -179,6 +181,7 @@ func shot_rocket() -> void:
 	var fx : Node3D = rocket_aluncher_spawn_fx.instantiate()
 	body.get_parent().add_child(fx)
 	fx.global_transform = muzle_rocket_aluncher.global_transform
+	fx.look_at(fx.global_position + fx.global_basis.z)
 
 func rocket_launcher_state(delta:float) -> void:
 	

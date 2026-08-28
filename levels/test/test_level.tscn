@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://cctefpnn8r8q0" path="res://scripts/trigers/checkpoint_triger.gd" id="17_fla0m"]
 [ext_resource type="Script" uid="uid://dpbe5lmucvghq" path="res://scripts/trigers/death_zone_triger.gd" id="18_8epti"]
 [ext_resource type="Script" uid="uid://drnx3c1p1uule" path="res://scripts/trigers/change_cene_triger.gd" id="19_taahg"]
+[ext_resource type="PackedScene" uid="uid://s3e0d051ul80" path="res://props/basic_door/basic_door.tscn" id="20_gjjb6"]
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="21_74hkv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -260,6 +262,18 @@ radius = 3.179
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4skoa"]
 size = Vector3(500, 1, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjjb6"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0.5819706, 0.6953116, 0.0627451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_74hkv"]
+material = SubResource("StandardMaterial3D_gjjb6")
+size = Vector3(2, 5, 2)
 
 [node name="TestLevel" type="Node3D" unique_id=1204845559]
 
@@ -521,30 +535,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.46441287, 0, -0.8856063, 0, 1, 0, 0.8856063, 0, 0.46441287, -3, 1, 3)
+transform = Transform3D(0.9387775, 0, 0.34449118, 0, 1, 0, -0.34449118, 0, 0.9387775, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.83644646, 0, 0.54803175, 0, 1, 0, -0.54803175, 0, -0.83644646, -3, 1, 4)
+transform = Transform3D(-0.6517891, 0, -0.75838804, 0, 1, 0, 0.75838804, 0, -0.6517891, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9976979, 0, 0.06768945, 0, 1, 0, -0.06768945, 0, 0.9976979, -3, 1, 5)
+transform = Transform3D(0.062316194, 0, 0.9980476, 0, 1, 0, -0.9980476, 0, 0.062316194, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.39667058, 0, -0.917949, 0, 1, 0, 0.917949, 0, -0.39667058, -3, 1, 6)
+transform = Transform3D(0.85812646, 0, -0.51341677, 0, 1, 0, 0.51341677, 0, 0.85812646, -3, 1, 6)
 ammon = 8
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.5066309, 0, 0.86215276, 0, 1, 0, -0.86215276, 0, -0.5066309, -3, 1, 7)
+transform = Transform3D(-0.9203735, 0, -0.39101768, 0, 1, 0, 0.39101768, 0, -0.9203735, -3, 1, 7)
 ammon = 20
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9995782, 0, 0.028736148, 0, 1, 0, -0.028736148, 0, 0.9995782, -3, 1, 8)
+transform = Transform3D(0.10112353, 0, 0.99486494, 0, 1, 0, -0.99486494, 0, 0.10112353, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -687,4 +701,21 @@ shape = SubResource("BoxShape3D_qxkbx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChangeCeneTriger" unique_id=695017643]
 cast_shadow = 0
-mesh = SubResource("BoxMesh_qxkbx")
+mesh = SubResource("BoxMesh_74hkv")
+
+[node name="BasicDoor" parent="." unique_id=969533348 instance=ExtResource("20_gjjb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
+states = Array[int]([0, 1, 2])
+
+[node name="AreaTriger" type="Area3D" parent="." unique_id=839043678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 27)
+script = ExtResource("21_74hkv")
+targets = Array[NodePath]([NodePath("../BasicDoor")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaTriger" unique_id=2069713823]
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AreaTriger" unique_id=1994132182]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_74hkv")
