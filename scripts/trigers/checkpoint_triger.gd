@@ -1,5 +1,5 @@
 extends Area3D
-class_name CheckPoint
+class_name CheckPointTriger
 
 var sync_data : Dictionary
 var is_mult_use : bool = false

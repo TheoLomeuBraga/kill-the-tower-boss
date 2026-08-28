@@ -1,11 +1,11 @@
 extends Area3D
-class_name DeathZone
+class_name ChangeCeneTriger
+
+@export_file("*.tscn") var next_scene : String
 
 func on_body_entered(n:Node3D) -> void:
-	for c : Node in n.get_children():
-		if c is Stats:
-			c.instakill()
-		
+	SceneManager.load_map(next_scene)
 
 func _ready() -> void:
+	
 	body_entered.connect(on_body_entered)
