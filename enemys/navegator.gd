@@ -3,6 +3,7 @@ class_name Navegator
 
 static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
+
 var body : CharacterBody3D
 var timer : Timer = Timer.new()
 
@@ -32,11 +33,20 @@ func remove_y(value:Vector3) -> Vector3:
 	return Vector3(value.x,0.0,value.z)
 
 func recalculate_route() -> void:
+	
+	
 	timer.start(rng.randf_range(0.5,1.0))
 	next_path_position = get_next_path_position()
-	next_path_direction = remove_y(next_path_position - body.global_position).normalized()
+	
+	if body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_GROUNDED:
+		next_path_direction = remove_y(next_path_position - body.global_position).normalized()
+	else:
+		next_path_direction = (next_path_position - body.global_position).normalized()
+		
 
 func _ready() -> void:
+	
+	
 	
 	body = get_parent()
 	add_child(timer)
@@ -47,6 +57,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	body.add_child(look_reference)
+	
 	
 
 func process_look_dir(delta: float) -> void:
@@ -66,10 +77,14 @@ func process_look_dir(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	
+	
 	if is_navegating:
 		desired_velocity = next_path_direction
 	else:
 		desired_velocity = Vector3.ZERO
+	
+		
 	
 	desired_velocity *= speed
 	
@@ -81,18 +96,20 @@ func _physics_process(delta: float) -> void:
 		body.velocity.x = move_toward(body.velocity.x,desired_velocity.x,delta*friction)
 		body.velocity.z = move_toward(body.velocity.z,desired_velocity.z,delta*friction)
 		
+		
 	elif body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_FLOATING:
 		if not body.is_on_floor():
 			body.velocity.y += gravity * delta
 		
 		
 		body.velocity = body.velocity.move_toward(desired_velocity,delta*friction)
-	
+		
+		body.velocity.x = move_toward(body.velocity.x,desired_velocity.x,delta*friction)
+		body.velocity.y = move_toward(body.velocity.y,desired_velocity.y,delta*friction)
+		body.velocity.z = move_toward(body.velocity.z,desired_velocity.z,delta*friction)
+		
+		
 	body.move_and_slide()
 	
 	process_look_dir(delta)
 	
-	#var gpos : Vector2 = Vector2(body.global_position.x,body.global_position.z)
-	#var tpos : Vector2 = Vector2(next_path_position.x,next_path_position.z)
-	#if is_navegating and gpos.distance_to(tpos) < 0.2:
-	#	node_reached.emit()

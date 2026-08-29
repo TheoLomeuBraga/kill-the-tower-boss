@@ -79,7 +79,9 @@ func idle_state(delta:float) -> void:
 		state = folow_state
 
 func folow_state(delta:float) -> void:
+	
 	navegator.target_position = Player.player.global_position + (Vector3.UP * 2.0)
+	
 	navegator.is_navegating = true
 	
 	navegator.speed = speed
@@ -88,6 +90,26 @@ func folow_state(delta:float) -> void:
 		state = atack_state
 	
 	atack_animation_progresion = move_toward(atack_animation_progresion,0.0,delta+2.0)
+
+func process_folow_triger(delta:float) -> void:
+	
+	navegator.target_position = navegator.alt_target_position
+	
+	navegator.is_navegating = true
+	
+	navegator.speed = speed
+	
+	if get_player_distance() < desired_distances.y:
+		state = atack_state
+	
+	atack_animation_progresion = move_toward(atack_animation_progresion,0.0,delta+2.0)
+	
+	var gpos : Vector2 = Vector2(body.global_position.x,body.global_position.z)
+	var tpos : Vector2 = Vector2(navegator.alt_target_position.x,navegator.alt_target_position.z)
+	if gpos.distance_to(tpos) < 0.2:
+		navegator.alt_is_navegating = false
+		navegator.is_navegating = false
+		state = idle_state
 
 var current_muzle : int = 0
 var cool_down : float = 0.0
@@ -157,7 +179,7 @@ func atack_state(delta:float) -> void:
 	
 	atack_animation_progresion = move_toward(atack_animation_progresion,1.0,delta+2.0)
 	
-	if get_player_distance() > desired_distances.z:
+	if get_player_distance() > desired_distances.z or not is_player_visible:
 		state = folow_state
 	
 	if cool_down < 0.0:
@@ -207,9 +229,13 @@ func _ready() -> void:
 		apply_shotgun_material_overwrride(body)
 
 func _physics_process(delta: float) -> void:
+	
 	if Player.player:
 		
 		cool_down -= delta
+		
+		if navegator.alt_is_navegating:
+			state = process_folow_triger
 		
 		state.call(delta)
 		

@@ -110,16 +110,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2133693243) index="0" unique_id=441960432]
-bones/0/position = Vector3(0, 0.016720805, 0)
+bones/0/position = Vector3(0, 0.026757399, 0)
 
 [node name="wing_l" parent="Armature/Skeleton3D" index="0" unique_id=751936507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.2332792, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, -0.2232426, 0)
 
 [node name="wing_r" parent="Armature/Skeleton3D" index="1" unique_id=1340010691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.2332792, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.2232426, 0)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="2" unique_id=1080867335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016720805, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026757399, 0)
 
 [node name="DroneBehavior" type="Node" parent="." index="6" unique_id=1726034422]
 script = ExtResource("2_ytvpm")
@@ -140,6 +140,7 @@ damage_type_multplyer = Dictionary[int, float]({
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [node name="Navegator" type="NavigationAgent3D" parent="." index="8" unique_id=1024561993]
+path_desired_distance = 3.0
 path_height_offset = -3.0
 script = ExtResource("4_6ljkj")
 look_target = 0

@@ -1,5 +1,3 @@
-add atract navegator triger behaveour for drone
-
 add atract navegator triger behaveour for robot
 
 add spawn triger
@@ -13,6 +11,8 @@ add key card system
 add plataform system
 
 add persistency to trigers
+
+add overkill(value:int) signal to stats
 
 create textures
 
