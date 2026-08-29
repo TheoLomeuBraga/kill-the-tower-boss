@@ -166,6 +166,30 @@ func process_folow_player(delta:float) -> void:
 	
 	state = calculate_next_state()
 
+func process_folow_triger(delta:float) -> void:
+	
+	navegator.alt_is_navegating = true
+	navegator.is_navegating = true
+	
+	navegator.target_position = navegator.alt_target_position
+	
+	if navegator.alt_is_navegating:
+		navegator.look_target =  Navegator.LookTarget.DIRECTION
+		animation_tree.set("parameters/Transition/transition_request","walk")
+	else:
+		navegator.look_target =  Navegator.LookTarget.TARGET
+		animation_tree.set("parameters/Transition/transition_request","idle")
+	
+	
+	var gpos : Vector2 = Vector2(body.global_position.x,body.global_position.z)
+	var tpos : Vector2 = Vector2(navegator.alt_target_position.x,navegator.alt_target_position.z)
+	if gpos.distance_to(tpos) < 0.2:
+		navegator.alt_is_navegating = false
+		navegator.is_navegating = false
+		
+	
+	state = calculate_next_state()
+
 func process_run_away_from_player(delta:float) -> void:
 	
 	navegator.is_navegating = true
@@ -241,6 +265,8 @@ func process_idle(delta:float) -> void:
 	animation_tree.set("parameters/Transition/transition_request","idle")
 	navegator.is_navegating = false
 	
+	
+	
 	if is_player_visible:
 		state = calculate_next_state()
 		if not is_some_one_playing_audio:
@@ -248,8 +274,14 @@ func process_idle(delta:float) -> void:
 			is_some_one_playing_audio = true
 			await $"../sfx/target".finished
 			is_some_one_playing_audio = false
+	
+	if navegator.alt_is_navegating:
+		state = process_folow_triger
 
 func calculate_next_state() -> Callable:
+	
+	if navegator.alt_is_navegating:
+		return process_folow_triger
 	
 	if not Player.player:
 		return process_idle
@@ -290,8 +322,6 @@ func _physics_process(delta: float) -> void:
 		
 		state.call(delta)
 		
-		if navegator.alt_is_navegating:
-			print("alt")
 
 
 func _exit_tree() -> void:

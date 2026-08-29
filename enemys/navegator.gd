@@ -9,6 +9,7 @@ var timer : Timer = Timer.new()
 var is_navegating : bool = false
 var desired_velocity : Vector3 = Vector3.ZERO
 var next_path_position : Vector3 = Vector3.ZERO
+var next_path_direction : Vector3 = Vector3.ZERO
 
 var look_reference : Node3D = Node3D.new()
 
@@ -27,9 +28,13 @@ enum LookTarget {NONE,DIRECTION,TARGET}
 @export_category("air")
 @export var gravity : float = -9.0
 
+func remove_y(value:Vector3) -> Vector3:
+	return Vector3(value.x,0.0,value.z)
+
 func recalculate_route() -> void:
 	timer.start(rng.randf_range(0.5,1.0))
 	next_path_position = get_next_path_position()
+	next_path_direction = remove_y(next_path_position - body.global_position).normalized()
 
 func _ready() -> void:
 	
@@ -44,10 +49,10 @@ func _ready() -> void:
 	body.add_child(look_reference)
 	
 
-func process_look_dir(delta: float) -> void: #TODO
+func process_look_dir(delta: float) -> void:
 	match look_target:
 		LookTarget.DIRECTION:
-			look_reference.look_at(next_path_position)
+			look_reference.look_at(body.global_position + next_path_direction)
 		LookTarget.TARGET:
 			look_reference.look_at(target_position)
 	
@@ -58,12 +63,15 @@ func process_look_dir(delta: float) -> void: #TODO
 		
 
 
+
 func _physics_process(delta: float) -> void:
 	
 	if is_navegating:
-		desired_velocity = (next_path_position - body.global_position).normalized() * speed
+		desired_velocity = next_path_direction
 	else:
 		desired_velocity = Vector3.ZERO
+	
+	desired_velocity *= speed
 	
 	if body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_GROUNDED:
 		
@@ -72,7 +80,6 @@ func _physics_process(delta: float) -> void:
 		
 		body.velocity.x = move_toward(body.velocity.x,desired_velocity.x,delta*friction)
 		body.velocity.z = move_toward(body.velocity.z,desired_velocity.z,delta*friction)
-		
 		
 	elif body.motion_mode == CharacterBody3D.MotionMode.MOTION_MODE_FLOATING:
 		if not body.is_on_floor():
@@ -84,3 +91,8 @@ func _physics_process(delta: float) -> void:
 	body.move_and_slide()
 	
 	process_look_dir(delta)
+	
+	#var gpos : Vector2 = Vector2(body.global_position.x,body.global_position.z)
+	#var tpos : Vector2 = Vector2(next_path_position.x,next_path_position.z)
+	#if is_navegating and gpos.distance_to(tpos) < 0.2:
+	#	node_reached.emit()

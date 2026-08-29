@@ -1,4 +1,6 @@
-add atract navegator triger
+add atract navegator triger behaveour for drone
+
+add atract navegator triger behaveour for robot
 
 add spawn triger
 

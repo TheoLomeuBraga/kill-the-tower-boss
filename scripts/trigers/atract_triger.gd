@@ -11,3 +11,4 @@ func triger() -> void:
 				var nav : Navegator = n
 				nav.alt_is_navegating = true
 				nav.alt_target_position = global_position
+				break
