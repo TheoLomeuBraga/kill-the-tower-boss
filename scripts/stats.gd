@@ -8,6 +8,7 @@ var player_hit_particle : PackedScene = preload("res://particles/hit_particle/pl
 
 signal healed(int)
 signal damaged(int)
+signal overkill(int)
 signal dead()
 
 @export var use_damage_vfx : bool = true
@@ -57,7 +58,7 @@ func _ready() -> void:
 			get_parent().queue_free()
 		
 	
-	
+	overkill.connect(print)
 	
 
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
@@ -92,12 +93,17 @@ func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTyp
 	
 	
 	if (health - _damage) <= 0:
+		
+		
+		overkill.emit(abs(health - _damage))
+		dead.emit()
+		
+		
 		health = 0
 		
 		if sync_stats:
 			sync_data["health"] = 0
 		
-		dead.emit()
 		return
 	
 	health -= _damage

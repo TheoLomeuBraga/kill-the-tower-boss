@@ -1,5 +1,3 @@
-add overkill(value:int) signal to stats
-
 add spawn triger
 
 add button triger system
