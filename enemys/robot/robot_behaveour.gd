@@ -191,7 +191,8 @@ func shot_rocket() -> void:
 	get_parent().add_child(audio)
 	audio.play()
 	
-	muzle_rocket_aluncher.look_at(Player.player.global_position)
+	var player_dist : float = body.global_position.distance_to(Player.player.global_position)
+	muzle_rocket_aluncher.look_at(Player.player.global_position + Player.player.velocity * (player_dist/rocket_aluncher_info.speed))
 	
 	var bullet : ProjectBehavior = ProjectBehavior.new()
 	bullet.data = rocket_aluncher_info
