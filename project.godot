@@ -21,11 +21,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 PostProcessing="*uid://l0s57321gcc5"
+SaveManager="*uid://diqb0gu534v10"
 PersistenceManager="*uid://bjudck3qhnk28"
 SceneManager="*uid://joxvxvjt8r8s"
 SettingsApplyer="*uid://bdmmd538cia6i"
 SettingsManager="*uid://svve2g47lpb6"
-SaveManager="*uid://diqb0gu534v10"
 
 [display]
 

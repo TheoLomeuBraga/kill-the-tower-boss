@@ -78,6 +78,40 @@ func sync_inventory() -> void:
 	start_gun = sync_data["start_gun"]
 	
 	PersistenceManager.on_save.connect(on_checkin_point)
+
+
+func on_save() -> void:
+	
+	var cg : int = 0
+	if current_gun:
+		for i : int in inventory_order.size():
+			if current_gun == inventory_order[i]:
+				cg = i
+				break
+	
+	var player_data : Dictionary = {}
+	player_data["ammon_inventory"] = ammon_inventory.duplicate()
+	
+	player_data["inventory"] = []
+	for i:int in range(0,inventory_order.size()):
+		player_data["inventory"].push_back(inventory[inventory_order[i]])
+	
+	SaveManager.set_save_data("player_data",player_data)
+	
+
+func on_load() -> void:
+	if not SaveManager.has("player_data"):
+		return
+	var player_data : Dictionary = SaveManager.get_save_data("player_data")
+	
+	if player_data.has("ammon_inventory"):
+		for k in player_data["ammon_inventory"]:
+			ammon_inventory[k] = player_data["ammon_inventory"][k]
+	
+	
+	if player_data.has("inventory"):
+		for i : int in range(0,player_data["inventory"].size()):
+			inventory[inventory_order[i]] = player_data["inventory"][i]
 	
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
@@ -85,6 +119,11 @@ func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 
 func add_ammon(type:GlobalEnums.AmmonType , amount:int) -> void:
 	ammon_inventory[type] = min(ammon_inventory[type]+amount,max_ammon[type])
+
+func fix_ammon_amount() -> void:
+	for i : GlobalEnums.AmmonType in ammon_inventory:
+		if ammon_inventory.has(i) and max_ammon.has(i):
+			ammon_inventory[i] = min(ammon_inventory[i],max_ammon[i])
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -187,6 +226,10 @@ var charge_audio_player : AudioStreamPlayer
 
 func _ready() -> void:
 	
+	on_load()
+	SaveManager.on_load.connect(on_load)
+	SaveManager.on_save.connect(on_save)
+	
 	sync_inventory()
 	
 	for g:GunInfo in inventory_order:
@@ -208,6 +251,9 @@ func _ready() -> void:
 	is_reloading_timer.one_shot = true
 	
 	set_gun(inventory_order[wrapf(start_gun,0,inventory_order.size()-1)])
+	
+	fix_ammon_amount()
+	
 
 
 

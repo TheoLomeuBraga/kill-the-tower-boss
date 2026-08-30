@@ -5,17 +5,17 @@ signal on_load()
 
 var save_name : String = "save_1"
 
-var data : Dictionary[String,Dictionary] = {}
+var data : Dictionary = {}
 
 func try_load_data(path:String) -> Variant:
-	if not FileAccess.file_exists(name):
-		printerr("fail load: ",name)
+	if not FileAccess.file_exists(path):
+		printerr("fail load: ",path)
 		return {}
 	
-	var save_file : FileAccess = FileAccess.open(name, FileAccess.READ)
+	var save_file : FileAccess = FileAccess.open(path, FileAccess.READ)
 	var ret = save_file.get_var(true)
 	if not ret:
-		printerr("fail load: ",name)
+		printerr("fail load: ",path)
 	
 	return ret
 
@@ -47,13 +47,16 @@ func delete_save() -> void:
 	DirAccess.remove_absolute("user://saves/"+save_name+".save")
 	DirAccess.remove_absolute("user://saves/"+save_name+".save1")
 
-func set_save_data(name:String,dictionary:Dictionary) -> void:
-	data[name] = dictionary.duplicate()
+func set_save_data(name:String,dictionary:Variant) -> void:
+	data[name] = dictionary
 
 func has(name:String) -> bool:
 	return data.has(name)
 
-func get_ref(name:String) -> Dictionary:
+func get_save_data(name:String) -> Variant:
 	if data.has(name):
-		return data[name].duplicate()
+		return data[name]
 	return {}
+
+func _ready() -> void:
+	load_data()
