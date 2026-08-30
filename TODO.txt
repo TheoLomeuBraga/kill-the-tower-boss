@@ -1,5 +1,9 @@
 add spawn triger
 
+make persistence system that persist betwen levels
+
+add hint system
+
 add button triger system
 
 add lever triger system

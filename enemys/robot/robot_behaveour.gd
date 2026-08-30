@@ -66,12 +66,15 @@ func idle_state(delta:float) -> void:
 
 func decide_state(delta:float) -> void:
 	
+	if navegator.alt_is_navegating:
+		print("ns")
+		state = process_folow_triger
+		return
+	
 	var dist_player : float = body.global_position.distance_to(Player.player.global_position)
 	
 	
-	if navegator.alt_is_navegating:
-		state = process_folow_triger
-		return
+	
 	
 	if not is_player_visible:
 		state = folow_state
@@ -87,6 +90,12 @@ func decide_state(delta:float) -> void:
 		state = folow_state
 
 func folow_state(delta:float) -> void:
+	
+	if navegator.alt_is_navegating:
+		print("ns")
+		state = process_folow_triger
+		return
+	
 	navegator.look_target = Navegator.LookTarget.DIRECTION
 	navegator.target_position = Player.player.global_position
 	navegator.is_navegating = true

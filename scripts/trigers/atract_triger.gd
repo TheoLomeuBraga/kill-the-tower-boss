@@ -6,6 +6,8 @@ class_name AtractionTriger
 func triger() -> void:
 	
 	for t: NodePath in targets:
+		if not get_node(t):
+			return
 		for n:Node in get_node(t).get_children():
 			if n is Navegator:
 				var nav : Navegator = n

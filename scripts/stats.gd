@@ -56,9 +56,7 @@ func _ready() -> void:
 		
 		if  health <= 0:
 			get_parent().queue_free()
-		
 	
-	overkill.connect(print)
 	
 
 func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:

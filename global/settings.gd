@@ -11,7 +11,7 @@ const base_settings : Dictionary = {
 	
 	"keyboard_sensitivity_mouse": 3.0,
 	
-	"controller_sensitivity_controller": 6.0,
+	"controller_sensitivity_controller": 3.0,
 	"controller_deadzone_left": 0.2,
 	"controller_deadzone_right": 0.2,
 	
