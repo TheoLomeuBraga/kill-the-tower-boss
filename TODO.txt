@@ -1,6 +1,6 @@
-add hint system
+make player save data
 
-make save data system
+add hint system
 
 add spawn triger
 

@@ -116,7 +116,7 @@ func try_load_binds(name:String) -> Variant:
 	
 	if not FileAccess.file_exists(name):
 		printerr("fail load: ",name)
-		return null
+		return {}
 	
 	var cfg_file : FileAccess = FileAccess.open(name, FileAccess.READ)
 	var ret = cfg_file.get_var(true)

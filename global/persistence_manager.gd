@@ -28,7 +28,7 @@ func clean():
 
 func register(node:Node,dictionary:Dictionary) -> void:
 	var p : NodePath = node.get_path()
-	state[p] = dictionary#.duplicate()
+	state[p] = dictionary
 	state_backup[p] = dictionary.duplicate()
 
 func has(node:Node) -> bool:
