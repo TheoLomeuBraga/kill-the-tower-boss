@@ -1,4 +1,6 @@
-add atract navegator triger behaveour for robot
+make robot misiles aim in the future point
+
+add overkill(value:int) signal to stats
 
 add spawn triger
 
@@ -11,8 +13,6 @@ add key card system
 add plataform system
 
 add persistency to trigers
-
-add overkill(value:int) signal to stats
 
 create textures
 

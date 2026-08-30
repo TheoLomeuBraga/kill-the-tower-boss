@@ -56,12 +56,22 @@ func none_state(delta:float) -> void:
 
 func idle_state(delta:float) -> void:
 	navegator.is_navegating = false
+	
+	if navegator.alt_is_navegating:
+		state = process_folow_triger
+		return
+	
 	if is_player_visible:
 		state = folow_state
 
 func decide_state(delta:float) -> void:
 	
 	var dist_player : float = body.global_position.distance_to(Player.player.global_position)
+	
+	
+	if navegator.alt_is_navegating:
+		state = process_folow_triger
+		return
 	
 	if not is_player_visible:
 		state = folow_state
@@ -88,7 +98,20 @@ func folow_state(delta:float) -> void:
 	if body.global_position.distance_to(Player.player.global_position) < desired_distances.y:
 		state = decide_state
 
-
+func process_folow_triger(delta:float) -> void:
+	
+	navegator.target_position = navegator.alt_target_position
+	
+	navegator.is_navegating = true
+	navegator.look_target = Navegator.LookTarget.DIRECTION
+	robot_animation_simplefier.state = RobotAnimationSimplefier.States.WALK
+	
+	var gpos : Vector2 = Vector2(body.global_position.x,body.global_position.z)
+	var tpos : Vector2 = Vector2(navegator.alt_target_position.x,navegator.alt_target_position.z)
+	if gpos.distance_to(tpos) < 0.2:
+		navegator.alt_is_navegating = false
+		navegator.is_navegating = false
+		state = idle_state
 
 func stomp_state(delta:float) -> void:
 	state = none_state

@@ -74,11 +74,14 @@ func die() -> void:
 	body.queue_free()
 
 func idle_state(delta:float) -> void:
+	navegator.look_target = Navegator.LookTarget.NONE
 	navegator.is_navegating = false
 	if is_player_visible:
 		state = folow_state
 
 func folow_state(delta:float) -> void:
+	
+	navegator.look_target = Navegator.LookTarget.TARGET
 	
 	navegator.target_position = Player.player.global_position + (Vector3.UP * 2.0)
 	
@@ -93,14 +96,13 @@ func folow_state(delta:float) -> void:
 
 func process_folow_triger(delta:float) -> void:
 	
+	navegator.look_target = Navegator.LookTarget.DIRECTION
+	
 	navegator.target_position = navegator.alt_target_position
 	
 	navegator.is_navegating = true
 	
 	navegator.speed = speed
-	
-	if get_player_distance() < desired_distances.y:
-		state = atack_state
 	
 	atack_animation_progresion = move_toward(atack_animation_progresion,0.0,delta+2.0)
 	
@@ -115,7 +117,6 @@ var current_muzle : int = 0
 var cool_down : float = 0.0
 
 @export var shot_sfx : AudioStream
-
 func shot() -> void:
 	
 	var audio : AudioStreamPlayer3D = AudioStreamPlayer3D.new()
@@ -175,6 +176,9 @@ var time_to_stop_dash : float = 0.2
 var dash_desired_direction : Vector3
 
 func atack_state(delta:float) -> void:
+	
+	navegator.look_target = Navegator.LookTarget.TARGET
+	
 	navegator.is_navegating = false
 	
 	atack_animation_progresion = move_toward(atack_animation_progresion,1.0,delta+2.0)
@@ -199,7 +203,10 @@ func atack_state(delta:float) -> void:
 		dash_desired_direction = (dash_desired_position - body.global_position)
 		dash_desired_direction.y = 0
 		dash_desired_direction = dash_desired_direction.normalized()
-		
+	
+	rotation_reference.look_at(Player.player.global_position)
+	body.global_rotation.x = rotate_toward(body.global_rotation.x,-rotation_reference.global_rotation.x,5.0*delta)
+	body.global_rotation.y = rotate_toward(body.global_rotation.y,rotation_reference.global_rotation.y + PI,5.0*delta)
 
 func dash_state(delta:float) -> void:
 	navegator.is_navegating = false
@@ -239,6 +246,4 @@ func _physics_process(delta: float) -> void:
 		
 		state.call(delta)
 		
-		rotation_reference.look_at(Player.player.global_position)
-		body.global_rotation.x = rotate_toward(body.global_rotation.x,-rotation_reference.global_rotation.x,5.0*delta)
-		body.global_rotation.y = rotate_toward(body.global_rotation.y,rotation_reference.global_rotation.y + PI,5.0*delta)
+		
