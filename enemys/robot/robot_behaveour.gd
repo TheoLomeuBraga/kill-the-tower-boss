@@ -72,9 +72,6 @@ func decide_state(delta:float) -> void:
 	
 	var dist_player : float = body.global_position.distance_to(Player.player.global_position)
 	
-	
-	
-	
 	if not is_player_visible:
 		state = folow_state
 		return

@@ -398,7 +398,7 @@ func process_aim() -> void:
 		return
 	
 	if is_reloading:
-		camera.fov = Settings.settings["video_fov"]
+		camera.fov = SettingsManager.settings["video_fov"]
 		player_model.visible = true
 		player_model.gun.is_scoping = false
 		player_movement.sensitivity_multplyer = 1.0
@@ -410,7 +410,7 @@ func process_aim() -> void:
 		player_model.gun.is_scoping = true
 		player_movement.sensitivity_multplyer = current_gun.aim_info.sensitivity_multplyer
 	else:
-		camera.fov = Settings.settings["video_fov"]
+		camera.fov = SettingsManager.settings["video_fov"]
 		player_model.visible = true
 		player_model.gun.is_scoping = false
 		player_movement.sensitivity_multplyer = 1.0

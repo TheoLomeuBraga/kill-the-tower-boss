@@ -27,4 +27,4 @@ func on_setting_change(name:String,value:Variant) -> void:
 				InputMap.action_set_deadzone(key,value)
 
 func _ready() -> void:
-	Settings.on_setting_change.connect(on_setting_change) 
+	SettingsManager.on_setting_change.connect(on_setting_change) 

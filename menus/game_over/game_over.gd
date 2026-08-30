@@ -49,7 +49,7 @@ func respawn() -> void:
 	PersistenceManager.load_state()
 	
 	var idx : int = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_linear(idx,float(Settings.settings["audio_volume"])/100.0)
+	AudioServer.set_bus_volume_linear(idx,float(SettingsManager.settings["audio_volume"])/100.0)
 
 func _ready() -> void:
 	visible = false

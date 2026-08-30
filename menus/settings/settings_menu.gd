@@ -40,7 +40,7 @@ func set_reset_func(f:Callable)->void:
 signal on_close()
 
 func change_type(new_type : SettingsTypes) -> void:
-	if Settings.is_curently_rebinding:
+	if SettingsManager.is_curently_rebinding:
 		return
 	type = new_type
 	for o:SettingOption in options:
@@ -82,7 +82,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			option.setup_as_button("input map",change_type.bind(SettingsTypes.KEYBOARD_BINDS))
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("keyboard"))
+			set_reset_func(SettingsManager.reset_settings.bind("keyboard"))
 			
 		SettingsTypes.CONTROLLER:
 			
@@ -104,7 +104,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			option.setup_as_button("input map",change_type.bind(SettingsTypes.CONTROLLER_BINDS))
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("controller"))
+			set_reset_func(SettingsManager.reset_settings.bind("controller"))
 			
 		SettingsTypes.VIDEO:
 			
@@ -118,7 +118,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			option.setup_as_check_box("full screen","video_full_screen",false)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("video"))
+			set_reset_func(SettingsManager.reset_settings.bind("video"))
 			
 			
 		SettingsTypes.AUDIO:
@@ -139,7 +139,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			#option.setup_as_slider("Dialogue","audio_volume_dialogue",100,0,100,1,3)
 			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
-			set_reset_func(Settings.reset_settings.bind("audio"))
+			set_reset_func(SettingsManager.reset_settings.bind("audio"))
 		
 		SettingsTypes.KEYBOARD_BINDS:
 			
@@ -160,7 +160,7 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			
 			set_close_func(change_type.bind(SettingsTypes.KEYBOARD))
-			set_reset_func(Settings.reset_settings.bind("keyboard_map"))
+			set_reset_func(SettingsManager.reset_settings.bind("keyboard_map"))
 			
 		SettingsTypes.CONTROLLER_BINDS:
 			
@@ -179,14 +179,14 @@ func change_type(new_type : SettingsTypes) -> void:
 			
 			
 			set_close_func(change_type.bind(SettingsTypes.CONTROLLER))
-			set_reset_func(Settings.reset_settings.bind("controller_map"))
+			set_reset_func(SettingsManager.reset_settings.bind("controller_map"))
 			
 
 func _ready() -> void:
 	
 	change_type(SettingsTypes.MENU)
 	
-	on_close.connect(Settings.save_state)
+	on_close.connect(SettingsManager.save_state)
 
 func _process(delta: float) -> void:
 	

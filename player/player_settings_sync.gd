@@ -11,13 +11,13 @@ func on_settings_change(name:String,value:Variant) -> void:
 	elif name == "video_gun_fov":
 		gun_camera.fov = value
 	elif name == "keyboard_sensitivity_mouse":
-		player_movement.mouse_sensitivity = value / Settings.mouse_sensitivity_correction
+		player_movement.mouse_sensitivity = value / SettingsManager.mouse_sensitivity_correction
 	elif name == "controller_sensitivity_controller":
 		player_movement.joystick_sensitivity = value
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	Settings.on_setting_change.connect(on_settings_change)
+	SettingsManager.on_setting_change.connect(on_settings_change)
 	
-	for key in Settings.settings:
-		on_settings_change(key,Settings.settings[key])
+	for key in SettingsManager.settings:
+		on_settings_change(key,SettingsManager.settings[key])

@@ -1,8 +1,8 @@
-add spawn triger
-
-make persistence system that persist betwen levels
-
 add hint system
+
+make save data system
+
+add spawn triger
 
 add button triger system
 

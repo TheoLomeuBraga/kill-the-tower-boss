@@ -10,13 +10,13 @@ var my_input_event : InputEvent
 
 
 func change_bool(value:bool,name:String) -> void:
-	Settings.change_setting(name,value)
+	SettingsManager.change_setting(name,value)
 
 func change_int(value:int,name:String) -> void:
-	Settings.change_setting(name,value)
+	SettingsManager.change_setting(name,value)
 
 func change_float(value:float,name:String) -> void:
-	Settings.change_setting(name,value)
+	SettingsManager.change_setting(name,value)
 
 
 enum OptionTypes {NONE,BUTTON,CHECK_BOX,ENUM,SLIDER,KEY_REBIND}
@@ -50,12 +50,12 @@ func focus() -> void:
 			$Button.grab_focus()
 
 func update_visual_option() -> void:
-	for key:String in Settings.settings:
+	for key:String in SettingsManager.settings:
 		if setting_target == key:
-			on_change_setting(key,Settings.settings[key])
+			on_change_setting(key,SettingsManager.settings[key])
 
 func _ready() -> void:
-	Settings.on_setting_change.connect(on_change_setting)
+	SettingsManager.on_setting_change.connect(on_change_setting)
 
 func disable_visibilitys() -> void:
 	$Button.visible = false
@@ -139,7 +139,7 @@ var is_rebinding : bool = false
 var is_rebinding_locked : float = 0.0
 func start_key_rebind() -> void:
 	
-	Settings.is_curently_rebinding = true
+	SettingsManager.is_curently_rebinding = true
 	
 	if not is_rebinding and not is_rebinding_locked > 0.0:
 		await get_tree().process_frame
@@ -184,7 +184,7 @@ func _input(event: InputEvent) -> void:
 				for i:int in 2:
 					await get_tree().process_frame
 				
-				Settings.is_curently_rebinding = false
+				SettingsManager.is_curently_rebinding = false
 			
 	elif input_device_type == GlobalEnums.InputDeviceTypes.CONTROLLER:
 		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -208,7 +208,7 @@ func _input(event: InputEvent) -> void:
 				for i:int in 2:
 					await get_tree().process_frame
 				
-				Settings.is_curently_rebinding = false
+				SettingsManager.is_curently_rebinding = false
 	
 
 
@@ -226,7 +226,7 @@ func setup_as_key_rebind(name:String,action:String,type:GlobalEnums.InputDeviceT
 	
 	set_button_bind()
 	
-	Settings.on_binds_change.connect(set_button_bind)
+	SettingsManager.on_binds_change.connect(set_button_bind)
 	
 	option_type = OptionTypes.KEY_REBIND
 

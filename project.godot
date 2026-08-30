@@ -24,7 +24,8 @@ PostProcessing="*uid://l0s57321gcc5"
 PersistenceManager="*uid://bjudck3qhnk28"
 SceneManager="*uid://joxvxvjt8r8s"
 SettingsApplyer="*uid://bdmmd538cia6i"
-Settings="*uid://svve2g47lpb6"
+SettingsManager="*uid://svve2g47lpb6"
+SaveManager="*uid://diqb0gu534v10"
 
 [display]
 
