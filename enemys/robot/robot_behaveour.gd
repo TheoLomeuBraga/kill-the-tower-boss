@@ -67,7 +67,6 @@ func idle_state(delta:float) -> void:
 func decide_state(delta:float) -> void:
 	
 	if navegator.alt_is_navegating:
-		print("ns")
 		state = process_folow_triger
 		return
 	
@@ -92,7 +91,6 @@ func decide_state(delta:float) -> void:
 func folow_state(delta:float) -> void:
 	
 	if navegator.alt_is_navegating:
-		print("ns")
 		state = process_folow_triger
 		return
 	
