@@ -1,12 +1,10 @@
 add spawn triger
 
-add sound trigers
-
 add key card system
 
-add persistency to trigers
-
 add button and keycard terminals for trigers
+
+add persistency to trigers
 
 create textures
 

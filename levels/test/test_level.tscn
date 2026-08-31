@@ -23,6 +23,10 @@
 [ext_resource type="Script" uid="uid://cwyd3kbs7nsf0" path="res://scripts/trigers/atract_triger.gd" id="22_asdby"]
 [ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="22_f6wb7"]
 [ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="23_wbgfv"]
+[ext_resource type="AudioStream" uid="uid://dlgp237s5uome" path="res://sfx/reload_place_holder.wav" id="24_21v3p"]
+[ext_resource type="Script" uid="uid://owsjumklu00k" path="res://scripts/trigers/sound/play_sound_3d_triger.gd" id="25_xlpsn"]
+[ext_resource type="AudioStream" uid="uid://d4cbqvvtyrvav" path="res://sfx/explosion.wav" id="26_qxjhm"]
+[ext_resource type="Script" uid="uid://btwsh8oe0upkp" path="res://scripts/trigers/sound/play_sound_triger.gd" id="27_8cnwj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -587,30 +591,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.63998395, 0, 0.7683729, 0, 1, 0, -0.7683729, 0, -0.63998395, -3, 1, 3)
+transform = Transform3D(-0.5833104, 0, -0.8122348, 0, 1, 0, 0.8122348, 0, -0.5833104, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.9298423, 0, -0.36793268, 0, 1, 0, 0.36793268, 0, 0.9298423, -3, 1, 4)
+transform = Transform3D(0.122384876, 0, 0.99247324, 0, 1, 0, -0.99247324, 0, 0.122384876, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.9550505, 0, -0.29641253, 0, 1, 0, 0.29641253, 0, -0.9550505, -3, 1, 5)
+transform = Transform3D(0.527173, 0, -0.84974724, 0, 1, 0, 0.84974724, 0, 0.527173, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.18383585, 0, 0.9829455, 0, 1, 0, -0.9829455, 0, 0.18383585, -3, 1, 6)
+transform = Transform3D(-0.9976286, 0, -0.06866223, 0, 1, 0, 0.06866223, 0, -0.9976286, -3, 1, 6)
 ammon = 8
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.6934487, 0, -0.7204932, 0, 1, 0, 0.7204932, 0, 0.6934487, -3, 1, 7)
+transform = Transform3D(0.5230472, 0, 0.85229284, 0, 1, 0, -0.85229284, 0, 0.5230472, -3, 1, 7)
 ammon = 20
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.9662754, 0, -0.25747395, 0, 1, 0, 0.25747395, 0, -0.9662754, -3, 1, 8)
+transform = Transform3D(0.4923114, 0, -0.8704083, 0, 1, 0, 0.8704083, 0, 0.4923114, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -846,3 +850,29 @@ metadata/_custom_type_script = "uid://13anebs8k206"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -9)
 script = ExtResource("23_wbgfv")
 metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="sound_area" type="Node3D" parent="." unique_id=1421652764]
+
+[node name="SoundTriger" type="Area3D" parent="sound_area" unique_id=1448916020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -4)
+script = ExtResource("21_74hkv")
+targets = Array[NodePath]([NodePath("../../PlaySound3DTriger"), NodePath("../../PlaySoundTriger")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sound_area/SoundTriger" unique_id=1864261168]
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sound_area/SoundTriger" unique_id=1450460584]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_c3n8y")
+
+[node name="PlaySound3DTriger" type="AudioStreamPlayer3D" parent="." unique_id=1712183690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -2)
+stream = ExtResource("24_21v3p")
+script = ExtResource("25_xlpsn")
+metadata/_custom_type_script = "uid://owsjumklu00k"
+
+[node name="PlaySoundTriger" type="AudioStreamPlayer" parent="." unique_id=1624282378]
+stream = ExtResource("26_qxjhm")
+script = ExtResource("27_8cnwj")
+metadata/_custom_type_script = "uid://btwsh8oe0upkp"

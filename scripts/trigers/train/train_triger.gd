@@ -9,7 +9,6 @@ enum MovementModes {LINEAR,LOOP,PING_PONG}
 @export var speed : float = 5.0
 @export var rotation_speed : float = 4.0
 
-
 var rails : Array[TrainRail]
 var target_rail : int = 0
 
