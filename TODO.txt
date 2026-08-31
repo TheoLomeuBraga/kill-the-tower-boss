@@ -1,14 +1,16 @@
-create shader compiler scene
+make save current selected gun ???
 
-add hint system
+add visual feedback to basic door
+
+add hint system and hint triger
 
 add spawn triger
 
 add button triger system
 
-add lever triger system
-
 add key card system
+
+add keycard terminals
 
 add plataform system
 

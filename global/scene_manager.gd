@@ -47,6 +47,12 @@ func reload()-> void:
 @export_file("*.tscn") var main_scene : String
 func _ready() -> void:
 	
+	
+	var sc : ShaderCompiler = load("res://shader_compiler/shader_compiler.tscn").instantiate()
+	add_child(sc)
+	await sc.fineshed
+	
+	
 	if get_tree().current_scene.scene_file_path != main_scene_file:
 		main_scene = get_tree().current_scene.scene_file_path
 		get_tree().change_scene_to_file(main_scene_file)

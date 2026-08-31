@@ -82,12 +82,6 @@ func sync_inventory() -> void:
 
 func on_save() -> void:
 	
-	var cg : int = 0
-	if current_gun:
-		for i : int in inventory_order.size():
-			if current_gun == inventory_order[i]:
-				cg = i
-				break
 	
 	var player_data : Dictionary = {}
 	player_data["ammon_inventory"] = ammon_inventory.duplicate()
@@ -103,6 +97,7 @@ func on_load() -> void:
 	if not SaveManager.has("player_data"):
 		return
 	var player_data : Dictionary = SaveManager.get_save_data("player_data")
+	
 	
 	if player_data.has("ammon_inventory"):
 		for k in player_data["ammon_inventory"]:

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://6apuju6bu745"]
+
+[ext_resource type="Script" uid="uid://584e7phlwui1" path="res://shader_compiler/shader_compiler.gd" id="1_467d0"]
+[ext_resource type="PackedScene" uid="uid://ftyuspkbcfxo" path="res://vfx/spark_explosion/spark_explosion.tscn" id="2_q5aek"]
+[ext_resource type="PackedScene" uid="uid://dktmyei1ager7" path="res://vfx/particles/stomp_explosion.tscn" id="3_q84ji"]
+[ext_resource type="PackedScene" uid="uid://bu0wypuyjrdwr" path="res://vfx/particles/generic_explosion.tscn" id="4_yrxyp"]
+[ext_resource type="PackedScene" uid="uid://ba1mcyj3x0ipw" path="res://vfx/particles/generic_muzle_flash.tscn" id="5_5opjo"]
+[ext_resource type="PackedScene" uid="uid://dqn4ykn8ndihk" path="res://vfx/guns/pistol_case_eject.tscn" id="6_q84ji"]
+[ext_resource type="PackedScene" uid="uid://58h511wky8ts" path="res://vfx/particles/generic_bullet_hole_big.tscn" id="7_yrxyp"]
+[ext_resource type="PackedScene" uid="uid://c1ivuvusoyjnl" path="res://vfx/guns/smg_case_ejector.tscn" id="8_5opjo"]
+
+[node name="ShaderCompiler" type="Node3D" unique_id=1535085583]
+script = ExtResource("1_467d0")
+to_compile = Array[PackedScene]([ExtResource("2_q5aek"), ExtResource("3_q84ji"), ExtResource("4_yrxyp"), ExtResource("5_5opjo"), ExtResource("6_q84ji"), ExtResource("7_yrxyp"), ExtResource("8_5opjo")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1288440666]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="display" type="Node" parent="." unique_id=1136556945]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2012501821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+fov = 179.0

@@ -2,25 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c1b4qw8vqyrgy" path="res://player/guns/akimbo_smg/smg.glb" id="1_qsg63"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_psmbu"]
+[ext_resource type="PackedScene" uid="uid://c1ivuvusoyjnl" path="res://vfx/guns/smg_case_ejector.tscn" id="3_oj3yb"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="4_yrlok"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oj3yb"]
-inherit_velocity_ratio = 1.0
-direction = Vector3(-1, 0, -1)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70rjn"]
-albedo_color = Color(1, 0.72156864, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_yrlok"]
-material = SubResource("StandardMaterial3D_70rjn")
-top_radius = 0.01
-bottom_radius = 0.01
-height = 0.04
-radial_segments = 4
-rings = 0
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
 
@@ -85,7 +68,7 @@ hand_r = NodePath("Armature/Skeleton3D/gun_r/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
 is_akimbo = true
 is_auto = true
-case_ejectors = [NodePath("Armature/Skeleton3D/gun_r/GPUParticles3D"), NodePath("Armature/Skeleton3D/gun_l/GPUParticles3D")]
+case_ejectors = [NodePath("Armature/Skeleton3D/gun_r/smg_case_ejector"), NodePath("Armature/Skeleton3D/gun_l/smg_case_ejector")]
 cross = NodePath("CenterContainer")
 
 [node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1164289718) index="0" unique_id=1024495217]
@@ -106,13 +89,8 @@ cast_shadow = 0
 [node name="Plane" parent="Armature/Skeleton3D/gun_r/Cube" index="0" unique_id=1632999520]
 cast_shadow = 0
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/gun_r" parent_id_path=PackedInt32Array(1366428329) index="3" unique_id=497847376]
-transform = Transform3D(1, 4.2351647e-22, 0, 2.3716923e-20, 0.9999997, 1.4210855e-14, 5.684342e-14, -1.4210855e-14, 0.9999997, -0.028920412, 0.023000002, -0.009999983)
-emitting = false
-amount = 10
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_oj3yb")
-draw_pass_1 = SubResource("CylinderMesh_yrlok")
+[node name="smg_case_ejector" parent="Armature/Skeleton3D/gun_r" parent_id_path=PackedInt32Array(1366428329) index="3" unique_id=572747767 instance=ExtResource("3_oj3yb")]
+transform = Transform3D(1, -2.3716914e-20, -5.6843402e-14, 2.3716923e-20, 0.9999997, 1.4210855e-14, 5.684342e-14, -1.4210855e-14, 0.9999997, -0.028920412, 0.023000002, -0.009999983)
 
 [node name="gun_cocking_handle_l" parent="Armature/Skeleton3D" index="2" unique_id=908523586]
 transform = Transform3D(-3.576288e-07, -0.9999999, -4.5474735e-13, 1.5179342e-06, 0, -1, 0.9999999, -3.5762784e-07, 1.5179343e-06, 0.50000006, 0.099999994, 0.09999998)
@@ -129,13 +107,8 @@ cast_shadow = 0
 [node name="Plane_001" parent="Armature/Skeleton3D/gun_l/Cube_002" index="0" unique_id=1927654000]
 cast_shadow = 0
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/gun_l" index="3" unique_id=944900423]
-transform = Transform3D(1, 4.2351647e-22, 0, 2.3716923e-20, 0.9999997, 1.4210855e-14, 5.684342e-14, -1.4210855e-14, 0.9999997, -0.028920412, 0.023000002, -0.009999983)
-emitting = false
-amount = 10
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_oj3yb")
-draw_pass_1 = SubResource("CylinderMesh_yrlok")
+[node name="smg_case_ejector" parent="Armature/Skeleton3D/gun_l" index="3" unique_id=319602588 instance=ExtResource("3_oj3yb")]
+transform = Transform3D(1, -2.3293398e-20, 0, 4.743384e-20, 0.9999994, 2.8421701e-14, 1.1368684e-13, -2.8421701e-14, 0.9999994, -0.057840794, 0.046000004, -0.019999966)
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=463612459]
 tree_root = SubResource("AnimationNodeBlendTree_qi5sv")

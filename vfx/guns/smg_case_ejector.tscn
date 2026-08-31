@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c1ivuvusoyjnl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oj3yb"]
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 0, -1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70rjn"]
+albedo_color = Color(1, 0.72156864, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yrlok"]
+material = SubResource("StandardMaterial3D_70rjn")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.04
+radial_segments = 4
+rings = 0
+
+[node name="smg_case_ejector" type="GPUParticles3D" unique_id=572747767]
+transform = Transform3D(1, 4.2351647e-22, 0, 2.3716923e-20, 0.9999997, 1.4210855e-14, 5.684342e-14, -1.4210855e-14, 0.9999997, 0, 0, 0)
+emitting = false
+amount = 10
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_oj3yb")
+draw_pass_1 = SubResource("CylinderMesh_yrlok")

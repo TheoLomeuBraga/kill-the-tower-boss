@@ -3,24 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cr8fgn04t3eey" path="res://player/guns/pistol/pistol.glb" id="1_6becj"]
 [ext_resource type="Script" uid="uid://uyx3n3xxv01s" path="res://player/guns/gun_model.gd" id="2_xco6c"]
 [ext_resource type="Script" uid="uid://ckec3yq1gbw7l" path="res://player/guns/gun_animation_tree/guns_animation_tree.gd" id="3_70rjn"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xco6c"]
-inherit_velocity_ratio = 1.0
-direction = Vector3(-1, 0, -1)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg4nr"]
-albedo_color = Color(1, 0.72156864, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_dg4nr"]
-material = SubResource("StandardMaterial3D_dg4nr")
-top_radius = 0.01
-bottom_radius = 0.01
-height = 0.04
-radial_segments = 4
-rings = 0
+[ext_resource type="PackedScene" uid="uid://dqn4ykn8ndihk" path="res://vfx/guns/pistol_case_eject.tscn" id="3_dg4nr"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_70rjn"]
 
@@ -51,7 +34,7 @@ fadeout_time = 0.1
 fadein_time = 0.1
 fadeout_time = 0.1
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_70rjn"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5i0yt"]
 nodes/idle/node = SubResource("AnimationNodeAnimation_8dn23")
 nodes/idle/position = Vector2(-1240, 100)
 nodes/shot_1/node = SubResource("AnimationNodeOneShot_4m1l7")
@@ -83,7 +66,7 @@ arm_r = NodePath("arm_r")
 pole_r = NodePath("pole_r")
 hand_r = NodePath("Armature/Skeleton3D/Bone/hand_r")
 gun_animation_tree = NodePath("GunsAnimationTree")
-case_ejectors = [NodePath("Armature/Skeleton3D/Bone_001/GPUParticles3D")]
+case_ejectors = [NodePath("Armature/Skeleton3D/Bone_001/pistol_case_eject")]
 display_text = "22"
 cross = NodePath("CenterContainer")
 
@@ -101,13 +84,8 @@ transform = Transform3D(1, 1.4210855e-14, 1.5099573e-07, 1.5099572e-07, -5.96046
 [node name="Cube_001" parent="Armature/Skeleton3D/Bone_001" index="0" unique_id=1355000978]
 cast_shadow = 0
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone_001" index="1" unique_id=1415065494]
-transform = Transform3D(1, 4.2351647e-22, -1.4210855e-14, 2.3716923e-20, 0.9999997, 1.4210855e-14, 7.1054274e-14, -1.4210855e-14, 0.9999997, 8.881784e-16, 0.023, -0.010000005)
-emitting = false
-amount = 10
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_xco6c")
-draw_pass_1 = SubResource("CylinderMesh_dg4nr")
+[node name="pistol_case_eject" parent="Armature/Skeleton3D/Bone_001" index="1" unique_id=1102110700 instance=ExtResource("3_dg4nr")]
+transform = Transform3D(1, -2.3716914e-20, -7.105425e-14, 2.3716923e-20, 0.9999997, 1.4210855e-14, 7.1054274e-14, -1.4210855e-14, 0.9999997, 8.881784e-16, 0.023, -0.010000005)
 
 [node name="Bone" parent="Armature/Skeleton3D" index="1" unique_id=1036934953]
 transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841856e-07, -5.9604645e-08, 0.99999994, 0, 0, 0)
@@ -131,7 +109,7 @@ transform = Transform3D(1, -7.105427e-15, 2.3841855e-07, -7.1054274e-15, 0.99999
 playback_default_blend_time = 0.1
 
 [node name="GunsAnimationTree" type="AnimationTree" parent="." index="6" unique_id=597042579]
-tree_root = SubResource("AnimationNodeBlendTree_70rjn")
+tree_root = SubResource("AnimationNodeBlendTree_5i0yt")
 anim_player = NodePath("../AnimationPlayer")
 parameters/shot_1/active = false
 parameters/shot_1/internal_active = false
