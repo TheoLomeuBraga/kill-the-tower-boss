@@ -1,7 +1,7 @@
 extends Area3D
 class_name AreaTriger
 
-
+@export var triger_on_enter : bool = true
 @export var triger_on_exit : bool = false
 @export var targets : Array[NodePath]
 
@@ -24,7 +24,7 @@ func on_body_entered(body:Node3D) -> void:
 			used = true
 
 func _ready() -> void:
-	if not triger_on_exit:
+	if triger_on_enter:
 		body_entered.connect(on_body_entered)
-	else:
+	if triger_on_exit:
 		body_exited.connect(on_body_entered)

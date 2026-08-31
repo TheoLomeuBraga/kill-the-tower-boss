@@ -1,20 +1,12 @@
-make save current selected gun ???
-
-add visual feedback to basic door
-
-add hint system and hint triger
-
 add spawn triger
 
-add button triger system
+add sound trigers
 
 add key card system
 
-add keycard terminals
-
-add plataform system
-
 add persistency to trigers
+
+add button and keycard terminals for trigers
 
 create textures
 
