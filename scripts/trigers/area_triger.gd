@@ -8,6 +8,8 @@ class_name AreaTriger
 @export var one_use : bool = false
 var used : bool = false
 
+var sync_data : Dictionary
+
 func on_body_entered(body:Node3D) -> void:
 	
 	if not body is Player:
@@ -22,8 +24,19 @@ func on_body_entered(body:Node3D) -> void:
 		
 		if one_use:
 			used = true
+			sync_data["used"] = true
 
 func _ready() -> void:
+	
+	sync_data["used"] = false
+	if not PersistenceManager.has(self):
+			PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	if sync_data["used"]:
+		used = true
+	
 	if triger_on_enter:
 		body_entered.connect(on_body_entered)
 	if triger_on_exit:
