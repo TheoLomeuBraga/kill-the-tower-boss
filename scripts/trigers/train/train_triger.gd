@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name TrainTriger
 
+var sync_data : Dictionary
+
 @export var active : bool = false
 
 enum MovementModes {LINEAR,LOOP,PING_PONG}
@@ -27,10 +29,28 @@ func _ready() -> void:
 	global_position = rails[target_rail].global_position
 	global_rotation = rails[target_rail].global_rotation
 	
+	sync_data["global_position"] = rails[target_rail].global_position
+	sync_data["global_rotation"] = rails[target_rail].global_rotation
+	sync_data["active"] = active
+	sync_data["target_rail"] = target_rail
+	
+	if not PersistenceManager.has(self):
+			PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	rails[target_rail].global_position = sync_data["global_position"]
+	rails[target_rail].global_rotation = sync_data["global_rotation"]
+	active = sync_data["active"]
+	target_rail = sync_data["target_rail"]
+	
 
 func mt_next(delta: float) -> void:
 	global_position = global_position.move_toward(rails[target_rail].global_position,delta*speed)
 	global_rotation = global_rotation.move_toward(rails[target_rail].global_rotation,delta*rotation_speed)
+	
+	sync_data["global_position"] = rails[target_rail].global_position
+	sync_data["global_rotation"] = rails[target_rail].global_rotation
 
 var ping_pong_reversed:bool = false
 
@@ -81,7 +101,10 @@ func _physics_process(delta: float) -> void:
 						if target_rail==0:
 							ping_pong_reversed=false
 		
+		sync_data["target_rail"] = target_rail
+		
 	
 
 func triger() -> void:
 	active = not active
+	sync_data["active"] = active
