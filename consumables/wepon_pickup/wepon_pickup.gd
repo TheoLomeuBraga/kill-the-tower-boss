@@ -83,6 +83,8 @@ func _physics_process(delta: float) -> void:
 					GlobalEnums.AmmonType.EXPLOSIVE:
 						p.gun_control.ammon_inventory[weapon.ammon_type] += 3
 				
+				p.gun_control.fix_ammon_amount()
+				
 				var audio : AudioStreamPlayer = AudioStreamPlayer.new()
 				get_parent().add_child(audio)
 				audio.finished.connect(audio.queue_free)

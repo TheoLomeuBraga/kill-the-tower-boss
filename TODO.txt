@@ -1,10 +1,8 @@
-add spawn triger
-
 add key card system
 
 add button and keycard terminals for trigers
 
-add persistency to trigers
+add persistency to keycard trigers
 
 create textures
 
