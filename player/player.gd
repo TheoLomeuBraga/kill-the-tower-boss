@@ -7,6 +7,7 @@ static var player : Player = null
 @onready var player_movement : PlayerMovement = $PlayerMovement
 @onready var stats : Stats = $Stats
 @onready var vignette : VignetteEffect = $Vignette
+@onready var keys : KeyCardInventory = $KeyCardInventory
 
 signal damage_enemy
 signal kill_enemy

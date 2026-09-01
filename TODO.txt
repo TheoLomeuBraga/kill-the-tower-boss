@@ -1,15 +1,15 @@
-add key card system
+add button and keycard terminals for trigers with persistence
 
-add button and keycard terminals for trigers
-
-add persistency to keycard trigers
+add main menu
 
 create textures
 
+create 1 level
+
 more playtest
 
-add save system
+create 2 more levels
 
-add main menu
+add level select to add main menu
 
 even more playtest

@@ -15,3 +15,4 @@ const wepons_icons : Dictionary[GlobalEnums.AmmonType,String] = {
 
 enum Faction {FRIENDLY,ENEMY,NONE}
 enum DamageTypes {NORMAL,EXPLOSIVE}
+enum KeyCards {RED,YELLOW,BLUE}

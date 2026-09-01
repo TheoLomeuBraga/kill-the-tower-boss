@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="11_7pqkx"]
 [ext_resource type="Resource" uid="uid://30nuv77dfkrw" path="res://player/guns_infos/granade_launchers.tres" id="12_uw77l"]
 [ext_resource type="PackedScene" uid="uid://dorjo8ltyx0xu" path="res://player/feedback/damage_feedback.tscn" id="18_65viv"]
+[ext_resource type="Script" uid="uid://brp5cu6cliq7y" path="res://player/key_card_inventory.gd" id="18_b8hi5"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
 [ext_resource type="PackedScene" uid="uid://bgj5iinfg2d3o" path="res://player/wepon_wheel/wepon_wheel.tscn" id="19_c35mf"]
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="19_g4c7l"]
@@ -24,8 +25,12 @@
 [ext_resource type="Script" uid="uid://culmdi2hkb2q7" path="res://player/stair_ajust.gd" id="21_x7c3f"]
 [ext_resource type="Shader" uid="uid://cydyhc2fwua5y" path="res://player/chekpoint_ui_indicator.gdshader" id="22_r7pn3"]
 [ext_resource type="Script" uid="uid://dbsumlu675d1h" path="res://player/time_display.gd" id="22_s7qer"]
+[ext_resource type="Texture2D" uid="uid://jbvmkoc8ckg2" path="res://icons/key_cards/red.png" id="23_2uvqg"]
 [ext_resource type="Script" uid="uid://b1scge6qir6b0" path="res://player/checkpoint_indicator.gd" id="23_b8hi5"]
+[ext_resource type="Script" uid="uid://35kdvchxyl1e" path="res://player/keys_display.gd" id="23_jd2rm"]
+[ext_resource type="Texture2D" uid="uid://bbbpaoir27y73" path="res://icons/key_cards/yellow.png" id="24_5ejfk"]
 [ext_resource type="PackedScene" uid="uid://dkoy4ochougw" path="res://menus/game_over/game_over.tscn" id="24_7pqkx"]
+[ext_resource type="Texture2D" uid="uid://fut03nmxiku2" path="res://icons/key_cards/blue.png" id="25_jd2rm"]
 [ext_resource type="Script" uid="uid://c2u3ml5220gl8" path="res://scripts/persistence_syncronizers/transform_sync.gd" id="25_knn7v"]
 [ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
@@ -125,6 +130,9 @@ metadata/_custom_type_script = "uid://c2u3ml5220gl8"
 script = ExtResource("27_uw77l")
 metadata/_custom_type_script = "uid://bg6qpmgiv5ory"
 
+[node name="KeyCardInventory" type="Node" parent="." unique_id=1881607180]
+script = ExtResource("18_b8hi5")
+
 [node name="grapple_hope" type="Node3D" parent="." unique_id=626555924]
 visible = false
 
@@ -209,6 +217,32 @@ bbcode_enabled = true
 text = "999/999"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="keys_display" type="HBoxContainer" parent="HUD" unique_id=561625643]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.040000003
+anchor_top = 0.795
+anchor_right = 0.15300001
+anchor_bottom = 0.85700005
+offset_right = 0.19998932
+offset_bottom = 0.19998169
+script = ExtResource("23_jd2rm")
+
+[node name="red" type="TextureRect" parent="HUD/keys_display" unique_id=1896634011]
+layout_mode = 2
+texture = ExtResource("23_2uvqg")
+expand_mode = 3
+
+[node name="yellow" type="TextureRect" parent="HUD/keys_display" unique_id=1745084329]
+layout_mode = 2
+texture = ExtResource("24_5ejfk")
+expand_mode = 3
+
+[node name="blue" type="TextureRect" parent="HUD/keys_display" unique_id=1141558033]
+layout_mode = 2
+texture = ExtResource("25_jd2rm")
+expand_mode = 3
 
 [node name="checkpoint_indicator" type="Panel" parent="." unique_id=1202397280]
 texture_filter = 1

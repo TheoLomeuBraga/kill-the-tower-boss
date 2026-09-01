@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ciogwps7wuov6"]
+
+[ext_resource type="PackedScene" uid="uid://b5inialhdrno4" path="res://consumables/keycards/keycards_models.glb" id="1_rfx5g"]
+[ext_resource type="Script" uid="uid://bb8llj6byybqa" path="res://consumables/keycards/key_card_colectable.gd" id="2_qpgfi"]
+[ext_resource type="AudioStream" uid="uid://c3xn18syuvbom" path="res://sfx/keycard.wav" id="3_hsqnv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2jhj"]
+
+[node name="keycards_models" unique_id=617621304 instance=ExtResource("1_rfx5g")]
+script = ExtResource("2_qpgfi")
+
+[node name="Area3D" type="Area3D" parent="." index="3" unique_id=1125368498]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1253137051]
+shape = SubResource("SphereShape3D_b2jhj")
+
+[node name="sfx" type="AudioStreamPlayer" parent="." index="4" unique_id=952288308]
+stream = ExtResource("3_hsqnv")

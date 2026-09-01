@@ -34,7 +34,7 @@ func _ready() -> void:
 			targets_remaining+=1
 		
 	
-	print(targets_remaining)
+	
 
 func triger() -> void:
 	for n:Node in nodes:

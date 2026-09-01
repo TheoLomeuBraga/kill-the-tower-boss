@@ -29,6 +29,8 @@
 [ext_resource type="Script" uid="uid://btwsh8oe0upkp" path="res://scripts/trigers/sound/play_sound_triger.gd" id="27_8cnwj"]
 [ext_resource type="Script" uid="uid://byyo2adu8xon3" path="res://scripts/trigers/spawn_triger.gd" id="28_xlpsn"]
 [ext_resource type="AudioStream" uid="uid://bnmagtdv1tgh0" path="res://sfx/heal.wav" id="29_qxjhm"]
+[ext_resource type="PackedScene" uid="uid://ciogwps7wuov6" path="res://consumables/keycards/keycards_models.tscn" id="30_8cnwj"]
+[ext_resource type="Script" uid="uid://barypxg6l267o" path="res://scripts/trigers/key_card_triger.gd" id="31_1cbqj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ala8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -40,11 +42,10 @@ sky_material = SubResource("ProceduralSkyMaterial_3ala8")
 [sub_resource type="Environment" id="Environment_b2evb"]
 background_mode = 2
 sky = SubResource("Sky_jwhgt")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
 tonemap_mode = 2
-glow_enabled = true
-glow_strength = 1.2
-glow_bloom = 0.2
-adjustment_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b2jhj"]
 vertices = PackedVector3Array(-11, 0.5, -16.25, -9.25, 0.5, -17.5, -9.25, 0.5, -49, -49, 0.5, -49, -49, 0.5, -15.5, -11, 0.5, -15.5, -7.75, 0.5, -16.5, -2.25, 0.5, -6.5, 9.25, 0.5, -6.5, 14.75, 0.5, -16.5, 16.25, 0.5, -17.5, 16.25, 0.5, -49, 18, 0.5, -16.25, 18, 0.5, -15.5, 49, 0.5, -15.5, 49, 0.5, -49, 6, 0.5, 2.75, 7, 1, 2, 6, 0.5, 1.5, 6.25, 0.5, 13.5, 6.25, 0.5, 11.25, 5.5, 0.5, 11.25, 8, 0.5, 6.75, 8.75, 0.5, 6.25, 8.75, 0.5, 4.25, 6.5, 0.5, 4.25, 5.25, 0.5, 6.5, 4.75, 0.5, 7, 6, 0.5, 0.5, -3.75, 0.5, -3.25, -0.5, 0.5, 13.5, 4.75, 0.5, 10.5, 6, 0.5, 3.75, 6.5, 0.5, 0, 8, 0.5, 0, 8, 0.5, -3.25, -1, 0.5, 14.5, -5.75, 0.5, -5.75, -49, 0.5, 14.5, 10, 0.5, 1.5, 9.25, 1, 2, 10, 0.5, 2.75, 10, 0.5, 6.25, 10, 0.5, 3.75, 10.75, 0.5, 7, 9.5, 0.5, 0, 11, 0.5, -3.25, 11.75, 0.5, -4, 10.75, 0.5, 8, 49, 0.5, 8, 10, 0.5, 0.5, 9.75, 0.5, 10, 8, 0.5, 9.75, 8, 0.5, 10.5, 7.25, 0.5, 11.25, 10, 0.5, 13.5, 10.75, 0.5, 14.25, 10.75, 0.5, 15.75, 49, 0.5, 15.5, 10.75, 0.5, 9, -0.25, 1, 18.5, -0.25, 1, 15.5, -49, 0.5, 19.75, -1.25, 0.5, 19.75, 6.75, 4.5, 15.5, 6.25, 4.5, 15, 6, 4.5, 15.5, 8.5, 4.5, 18.5, 8.5, 4.5, 15.5, 2.6666565, 3.75, 18.5, 4.125, 4.5, 18.5, 3.5, 4.5, 15.5, 2.5100098, 3.75, 17.485962, 10.75, 0.5, 18.25, 49, 0.5, 18.5, 11, 0.5, 41.5, 10.25, 0.5, 41.5, 10.25, 0.5, 49, 11.75, 0.5, 40.75, 49, 0.5, 49, 9.75, 0.5, 20.75, 7.75, 0.5, 20.75, 7.75, 0.5, 33.25, 11, 0.5, 33.25, 10.75, 0.5, 19.75, 11.75, 0.5, 34, -2, 0.5, 49, -2, 0.5, 41.5, -2.75, 0.5, 41.5, -3.5, 0.5, 40.75, -49, 0.5, 49, 1.5, 0.5, 33.25, 1.5, 0.5, 20.75, -0.5, 0.5, 20.75, -2.75, 0.5, 33.25, -3.5, 0.5, 34, -13.25, -1.5, 22.25, -13.25, -2.75, 26.75, -6.5, -2.75, 26.75, -6.5, -1.5, 22.25, 9.25, 0.5, 41.5, -1, 0.5, 41.5, 8.5, 0.5, 40.75, -0.25, 0.5, 40.75, 8.5, 0.5, 36.5, -0.25, 0.5, 36.5)
@@ -311,6 +312,42 @@ size = Vector3(2, 0.2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_f6wb7"]
 material = SubResource("StandardMaterial3D_pa0au")
 size = Vector3(2, 0.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13f7m"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.15686275)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75pa7"]
+material = SubResource("StandardMaterial3D_13f7m")
+size = Vector3(2, 5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cbqj"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.15686275)
+
+[sub_resource type="BoxMesh" id="BoxMesh_13f7m"]
+material = SubResource("StandardMaterial3D_1cbqj")
+size = Vector3(2, 5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75pa7"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 0.15686275)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hvila"]
+material = SubResource("StandardMaterial3D_75pa7")
+size = Vector3(2, 5, 2)
 
 [node name="TestLevel" type="Node3D" unique_id=1204845559]
 
@@ -593,30 +630,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 0.5, 4.357735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.330832, 1.6942503, 3.7319226)
 
 [node name="ammon" parent="." unique_id=927646226 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.82951856, 0, -0.55845803, 0, 1, 0, 0.55845803, 0, -0.82951856, -3, 1, 3)
+transform = Transform3D(0.99998367, 0, -0.0029982307, 0, 1, 0, 0.0029982307, 0, 0.99998367, -3, 1, 3)
 
 [node name="ammon2" parent="." unique_id=802086888 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.43843153, 0, 0.8987541, 0, 1, 0, -0.8987541, 0, 0.43843153, -3, 1, 4)
+transform = Transform3D(-0.8668677, 0, -0.49851915, 0, 1, 0, 0.49851915, 0, -0.8668677, -3, 1, 4)
 ammon = 10
 type = 1
 
 [node name="ammon3" parent="." unique_id=1068165948 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.22390473, 0, -0.9746017, 0, 1, 0, 0.9746017, 0, 0.22390473, -3, 1, 5)
+transform = Transform3D(0.36075673, 0, 0.9326501, 0, 1, 0, -0.9326501, 0, 0.36075673, -3, 1, 5)
 ammon = 5
 type = 2
 
 [node name="ammon4" parent="." unique_id=869286553 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(-0.96103776, 0, 0.27637643, 0, 1, 0, -0.27637643, 0, -0.96103776, -3, 1, 6)
+transform = Transform3D(0.6411243, 0, -0.76742226, 0, 1, 0, 0.76742226, 0, 0.6411243, -3, 1, 6)
 ammon = 8
 type = 3
 
 [node name="ammon5" parent="." unique_id=854399149 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.7705015, 0, 0.6374237, 0, 1, 0, -0.6374237, 0, 0.7705015, -3, 1, 7)
+transform = Transform3D(-0.99532825, 0, -0.0964511, 0, 1, 0, 0.0964511, 0, -0.99532825, -3, 1, 7)
 ammon = 20
 type = 4
 
 [node name="ammon6" parent="." unique_id=1353426231 instance=ExtResource("4_jwhgt")]
-transform = Transform3D(0.1842336, 0, -0.98287284, 0, 1, 0, 0.98287284, 0, 0.1842336, -3, 1, 8)
+transform = Transform3D(0.3982479, 0, 0.91726756, 0, 1, 0, -0.91726756, 0, 0.3982479, -3, 1, 8)
 ammon = 3
 type = 5
 
@@ -863,7 +900,7 @@ metadata/_custom_type_script = "uid://13anebs8k206"
 [node name="sound_area" type="Node3D" parent="." unique_id=1421652764]
 
 [node name="SoundTriger" type="Area3D" parent="sound_area" unique_id=1448916020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 6)
 script = ExtResource("21_74hkv")
 targets = Array[NodePath]([NodePath("../../PlaySound3DTriger"), NodePath("../../PlaySoundTriger")])
 one_use = true
@@ -877,7 +914,7 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_c3n8y")
 
 [node name="PlaySound3DTriger" type="AudioStreamPlayer3D" parent="." unique_id=1712183690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 8)
 stream = ExtResource("24_21v3p")
 script = ExtResource("25_xlpsn")
 metadata/_custom_type_script = "uid://owsjumklu00k"
@@ -937,3 +974,116 @@ stream = ExtResource("29_qxjhm")
 volume_db = 2.0
 script = ExtResource("27_8cnwj")
 metadata/_custom_type_script = "uid://btwsh8oe0upkp"
+
+[node name="keycards_models" parent="." unique_id=617621304 instance=ExtResource("30_8cnwj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 1, -9)
+
+[node name="keycards_models2" parent="." unique_id=1141949642 instance=ExtResource("30_8cnwj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 1, -13)
+key_type = 1
+
+[node name="keycards_models3" parent="." unique_id=1431997380 instance=ExtResource("30_8cnwj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 1, -17)
+key_type = 2
+
+[node name="triger_tests" type="Node3D" parent="." unique_id=605870902]
+
+[node name="red" type="Node3D" parent="triger_tests" unique_id=746096894]
+
+[node name="KeyCardTriger" type="Area3D" parent="triger_tests/red" unique_id=1354567680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -9)
+script = ExtResource("31_1cbqj")
+targets = Array[NodePath]([NodePath("../TrainTriger")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triger_tests/red/KeyCardTriger" unique_id=2138525390]
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/red/KeyCardTriger" unique_id=1955049594]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_75pa7")
+
+[node name="TrainTriger" type="CharacterBody3D" parent="triger_tests/red" unique_id=351211486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, -10)
+script = ExtResource("22_f6wb7")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/red/TrainTriger" unique_id=233717122]
+mesh = SubResource("BoxMesh_4skoa")
+
+[node name="TrainRail" type="Marker3D" parent="triger_tests/red/TrainTriger" unique_id=763095490]
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="triger_tests/red/TrainTriger" unique_id=1749061419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="yellow" type="Node3D" parent="triger_tests" unique_id=193160818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="KeyCardTriger" type="Area3D" parent="triger_tests/yellow" unique_id=1805328872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -9)
+script = ExtResource("31_1cbqj")
+key_type = 1
+targets = Array[NodePath]([NodePath("../TrainTriger")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triger_tests/yellow/KeyCardTriger" unique_id=708544279]
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/yellow/KeyCardTriger" unique_id=393792254]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_13f7m")
+
+[node name="TrainTriger" type="CharacterBody3D" parent="triger_tests/yellow" unique_id=1652376656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, -10)
+script = ExtResource("22_f6wb7")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/yellow/TrainTriger" unique_id=2015515186]
+mesh = SubResource("BoxMesh_4skoa")
+
+[node name="TrainRail" type="Marker3D" parent="triger_tests/yellow/TrainTriger" unique_id=943630454]
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="triger_tests/yellow/TrainTriger" unique_id=834264452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="blue" type="Node3D" parent="triger_tests" unique_id=1036517396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="KeyCardTriger" type="Area3D" parent="triger_tests/blue" unique_id=1085510365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -9)
+script = ExtResource("31_1cbqj")
+key_type = 2
+targets = Array[NodePath]([NodePath("../TrainTriger")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="triger_tests/blue/KeyCardTriger" unique_id=454327717]
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/blue/KeyCardTriger" unique_id=1469165522]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_hvila")
+
+[node name="TrainTriger" type="CharacterBody3D" parent="triger_tests/blue" unique_id=812229970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4, -10)
+script = ExtResource("22_f6wb7")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="triger_tests/blue/TrainTriger" unique_id=1690425765]
+mesh = SubResource("BoxMesh_4skoa")
+
+[node name="TrainRail" type="Marker3D" parent="triger_tests/blue/TrainTriger" unique_id=600733070]
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="triger_tests/blue/TrainTriger" unique_id=1032602474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+script = ExtResource("23_wbgfv")
+metadata/_custom_type_script = "uid://13anebs8k206"
