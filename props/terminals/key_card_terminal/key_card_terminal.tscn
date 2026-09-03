@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ds7s8hueic2ai"]
+
+[ext_resource type="PackedScene" uid="uid://dlevmyyxovrdl" path="res://props/terminals/key_card_terminal/key_card_terminal.glb" id="1_wuko1"]
+
+[node name="key_card_terminal" unique_id=815402997 instance=ExtResource("1_wuko1")]

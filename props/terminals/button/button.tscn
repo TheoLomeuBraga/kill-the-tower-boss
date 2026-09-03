@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://816l7ahwk2cu"]
+
+[ext_resource type="PackedScene" uid="uid://bha3wpnmssosc" path="res://props/terminals/button/button.glb" id="1_8gqoa"]
+[ext_resource type="Script" uid="uid://cnh7plgnt8nnk" path="res://props/terminals/button/button.gd" id="2_3qank"]
+[ext_resource type="AudioStream" uid="uid://3xvshypu2rkh" path="res://props/terminals/button/button_pressed.wav" id="3_10qx3"]
+[ext_resource type="AudioStream" uid="uid://cheudxv6bcts5" path="res://props/terminals/button/button_unpressed.wav" id="4_duhp4"]
+
+[node name="button" unique_id=1081899944 instance=ExtResource("1_8gqoa")]
+script = ExtResource("2_3qank")
+
+[node name="pressed_audio" type="AudioStreamPlayer3D" parent="." index="3" unique_id=1907556222]
+stream = ExtResource("3_10qx3")
+
+[node name="unpressed_audio" type="AudioStreamPlayer3D" parent="." index="4" unique_id=1895246495]
+stream = ExtResource("4_duhp4")

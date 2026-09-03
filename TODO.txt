@@ -1,10 +1,16 @@
-add button and keycard terminals for trigers with persistence
+test spawn triger persistence
 
-add main menu
+add keycard terminals for trigers with persistence
 
 create textures
 
-create 1 level
+create 1 level (entrance)
+
+add main menu
+
+add main menu save manager
+
+add main menu credits
 
 more playtest
 
