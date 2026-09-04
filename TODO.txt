@@ -1,4 +1,6 @@
-test spawn triger persistence
+add hint system
+
+make keycard systems give hint
 
 add keycard terminals for trigers with persistence
 

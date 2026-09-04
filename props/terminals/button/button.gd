@@ -5,13 +5,17 @@ enum ButtonMode {ONE_USE,ON_OFF,MULT_USE}
 
 var sync_data : Dictionary
 
+
+var can_paly_sound:bool=false
 var active : bool:
 	set(value):
 		active = value
-		if active and $pressed_audio:
-			$pressed_audio.play()
-		if not active and $unpressed_audio and mode != ButtonMode.MULT_USE:
-			$unpressed_audio.play()
+		
+		if can_paly_sound:
+			if active and $pressed_audio:
+				$pressed_audio.play()
+			if not active and $unpressed_audio and mode != ButtonMode.MULT_USE:
+				$unpressed_audio.play()
 		
 		if $Cube_001:
 			$Cube_001.visible = not value
@@ -30,6 +34,9 @@ func _ready() -> void:
 	else:
 		sync_data = PersistenceManager.get_ref(self)
 	active = sync_data["active"]
+	
+	await get_tree().process_frame
+	can_paly_sound = true
 
 var block : bool = false
 func triger() -> void:

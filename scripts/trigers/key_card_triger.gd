@@ -22,7 +22,6 @@ func on_body_entered(body:Node3D) -> void:
 	
 	sync_data["used"] = true
 	
-	#TODO
 
 func _ready() -> void:
 	sync_data["used"] = false
