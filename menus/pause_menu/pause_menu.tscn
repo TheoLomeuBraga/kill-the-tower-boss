@@ -42,6 +42,7 @@ anchor_bottom = -0.407
 offset_top = 0.055999756
 offset_right = 0.015991211
 offset_bottom = -0.006996155
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_jwttc")
 theme_override_font_sizes/font_size = 64
 text = "[PAUSE]"
@@ -60,13 +61,13 @@ grow_vertical = 2
 layout_mode = 2
 text = "Continue"
 
-[node name="settings" type="Button" parent="Panel/VBoxContainer" unique_id=491010044]
-layout_mode = 2
-text = "settings"
-
 [node name="load_chekpoint" type="Button" parent="Panel/VBoxContainer" unique_id=1768427634]
 layout_mode = 2
 text = "load chekpoint"
+
+[node name="settings" type="Button" parent="Panel/VBoxContainer" unique_id=491010044]
+layout_mode = 2
+text = "settings"
 
 [node name="quit_game" type="Button" parent="Panel/VBoxContainer" unique_id=237807483]
 layout_mode = 2

@@ -1,14 +1,10 @@
-add hint system
-
-make keycard systems give hint
-
-add keycard terminals for trigers with persistence
-
 create textures
 
 create 1 level (entrance)
 
 add main menu
+
+add level select to add main menu
 
 add main menu save manager
 
@@ -17,7 +13,5 @@ add main menu credits
 more playtest
 
 create 2 more levels
-
-add level select to add main menu
 
 even more playtest

@@ -23,7 +23,6 @@
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="19_g4c7l"]
 [ext_resource type="PackedScene" uid="uid://dlnyg5l63jrh3" path="res://player/vignette/vignette.tscn" id="20_bjvpn"]
 [ext_resource type="Script" uid="uid://culmdi2hkb2q7" path="res://player/stair_ajust.gd" id="21_x7c3f"]
-[ext_resource type="Shader" uid="uid://cydyhc2fwua5y" path="res://player/chekpoint_ui_indicator.gdshader" id="22_r7pn3"]
 [ext_resource type="Script" uid="uid://dbsumlu675d1h" path="res://player/time_display.gd" id="22_s7qer"]
 [ext_resource type="Texture2D" uid="uid://jbvmkoc8ckg2" path="res://icons/key_cards/red.png" id="23_2uvqg"]
 [ext_resource type="Script" uid="uid://b1scge6qir6b0" path="res://player/checkpoint_indicator.gd" id="23_b8hi5"]
@@ -32,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dkoy4ochougw" path="res://menus/game_over/game_over.tscn" id="24_7pqkx"]
 [ext_resource type="Texture2D" uid="uid://fut03nmxiku2" path="res://icons/key_cards/blue.png" id="25_jd2rm"]
 [ext_resource type="Script" uid="uid://c2u3ml5220gl8" path="res://scripts/persistence_syncronizers/transform_sync.gd" id="25_knn7v"]
+[ext_resource type="PackedScene" uid="uid://s8a5gxxvg64q" path="res://menus/hint/hint.tscn" id="27_q28gw"]
 [ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 
@@ -47,26 +47,6 @@ bottom_radius = 0.01
 height = 1.0
 radial_segments = 4
 rings = 0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2jhj"]
-shader = ExtResource("22_r7pn3")
-shader_parameter/transparency = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7pn3"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.8980392, 0.7294118, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
 
 [node name="Player" type="CharacterBody3D" unique_id=696039800]
 script = ExtResource("1_65viv")
@@ -244,32 +224,10 @@ layout_mode = 2
 texture = ExtResource("25_jd2rm")
 expand_mode = 3
 
-[node name="checkpoint_indicator" type="Panel" parent="." unique_id=1202397280]
-texture_filter = 1
-material = SubResource("ShaderMaterial_b2jhj")
-anchors_preset = -1
-anchor_left = 0.42700002
-anchor_top = 0.135
-anchor_right = 0.587
-anchor_bottom = 0.23
-offset_left = -0.2000122
-offset_right = -0.2000122
-theme_override_styles/panel = SubResource("StyleBoxFlat_r7pn3")
-script = ExtResource("23_b8hi5")
+[node name="Hint" parent="." unique_id=1916195400 instance=ExtResource("27_q28gw")]
 
-[node name="Label" type="Label" parent="checkpoint_indicator" unique_id=911826132]
-material = SubResource("ShaderMaterial_b2jhj")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("19_g4c7l")
-theme_override_font_sizes/font_size = 16
-text = "chekpoint"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="checkpoint_indicator" type="Node" parent="." unique_id=1966268061]
+script = ExtResource("23_b8hi5")
 
 [node name="DamageFeedback" parent="." unique_id=2126208292 node_paths=PackedStringArray("stats") instance=ExtResource("18_65viv")]
 visible = false

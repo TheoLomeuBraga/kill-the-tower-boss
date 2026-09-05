@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://s8a5gxxvg64q"]
+
+[ext_resource type="Script" uid="uid://bdwnfqbxorhvo" path="res://menus/hint/hint.gd" id="1_501c8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvs5r"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Hint" type="Control" unique_id=1916195400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_501c8")
+
+[node name="Panel" type="Panel" parent="." unique_id=1669455932]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21700001
+anchor_top = 0.080000006
+anchor_right = 0.78300005
+anchor_bottom = 0.28
+offset_left = -0.2000122
+offset_right = 0.19998169
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvs5r")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=814462482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[color=red]color[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
