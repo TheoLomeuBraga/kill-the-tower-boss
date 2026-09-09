@@ -1,6 +1,10 @@
+create 1 level (entrance)
+
+add camera sway
+
 create textures
 
-create 1 level (entrance)
+create music
 
 add main menu
 
@@ -12,6 +16,10 @@ add main menu credits
 
 more playtest
 
+add swim mechanics
+
 create 2 more levels
+
+create textures
 
 even more playtest
