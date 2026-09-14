@@ -117,6 +117,10 @@ func change_type(new_type : SettingsTypes) -> void:
 			option = create_option()
 			option.setup_as_check_box("full screen","video_full_screen",false)
 			
+			option = create_option()
+			option.setup_as_slider("camera sway","video_camera_sway",1.0,0.0,1.0,0.1)
+			
+			
 			set_close_func(change_type.bind(SettingsTypes.MENU))
 			set_reset_func(SettingsManager.reset_settings.bind("video"))
 			

@@ -204,6 +204,12 @@ func toogle_noclip() -> void:
 		$"../CollisionShape3D".disabled = true
 		
 
+@export var sway_multiplyer : float = 1.0
+func sway_camera_process(delta: float) -> void:
+	var sway_progress : float = -body.global_basis.x.dot(body.velocity.normalized())
+	sway_progress *= sway_multiplyer / 32.0
+	camera.rotation.z = move_toward(camera.rotation.z,sway_progress,(sway_multiplyer/2.0)*delta)
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
@@ -216,6 +222,8 @@ func _physics_process(delta: float) -> void:
 	state.call(delta)
 	body.move_and_slide()
 	process_rigdbody_collision(delta)
+	
+	sway_camera_process(delta)
 	
 	jump_recently -= delta
 	floor_recently -= delta

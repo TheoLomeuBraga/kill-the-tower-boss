@@ -1,7 +1,5 @@
 create 1 level (entrance)
 
-add camera sway
-
 create textures
 
 create music
@@ -9,6 +7,8 @@ create music
 add main menu
 
 add level select to add main menu
+
+join persistence and save
 
 add main menu save manager
 

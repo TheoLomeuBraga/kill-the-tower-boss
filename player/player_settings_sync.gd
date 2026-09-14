@@ -6,14 +6,17 @@ class_name PlayerSettingsSync
 @onready var player_movement : PlayerMovement = $"../PlayerMovement"
 
 func on_settings_change(name:String,value:Variant) -> void:
-	if name == "video_fov":
-		camera.fov = value
-	elif name == "video_gun_fov":
-		gun_camera.fov = value
-	elif name == "keyboard_sensitivity_mouse":
-		player_movement.mouse_sensitivity = value / SettingsManager.mouse_sensitivity_correction
-	elif name == "controller_sensitivity_controller":
-		player_movement.joystick_sensitivity = value
+	match name:
+		"video_fov":
+			camera.fov = value
+		"video_gun_fov":
+			gun_camera.fov = value
+		"keyboard_sensitivity_mouse":
+			player_movement.mouse_sensitivity = value / SettingsManager.mouse_sensitivity_correction
+		"controller_sensitivity_controller":
+			player_movement.joystick_sensitivity = value
+		"video_camera_sway":
+			player_movement.sway_multiplyer = value
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

@@ -9,6 +9,8 @@ var is_curently_rebinding:bool = false
 
 const base_settings : Dictionary = {
 	
+	
+	
 	"keyboard_sensitivity_mouse": 3.0,
 	
 	"controller_sensitivity_controller": 3.0,
@@ -18,6 +20,7 @@ const base_settings : Dictionary = {
 	"video_fov": 90,
 	"video_gun_fov": 90,
 	"video_full_screen": false,
+	"video_camera_sway": 1.0,
 	
 	"audio_volume": 80,
 	"audio_volume_sfx": 100,
@@ -142,14 +145,6 @@ func load_state() -> void:
 		return
 	
 	#remove base binds
-	'''
-	for key : String in InputMap.get_actions():
-		if key.begins_with("ui_"):
-			continue
-		for event : InputEvent in InputMap.action_get_events(key):
-			if event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
-				InputMap.action_erase_event(key,event)
-	'''
 	for key : String in new_binds:
 		
 		if key.begins_with("ui_"):
