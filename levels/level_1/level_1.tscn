@@ -3,8 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_45440"]
 [ext_resource type="PackedScene" uid="uid://nrl0oyw5mis5" path="res://levels/level_1/level_1_model.tscn" id="1_k1ttk"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_45440"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bdepj"]
+sky_material = SubResource("ProceduralSkyMaterial_45440")
+
+[sub_resource type="Environment" id="Environment_epb64"]
+background_mode = 2
+sky = SubResource("Sky_bdepj")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+tonemap_mode = 2
+
 [node name="Level1" type="Node3D" unique_id=1966234962]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=388610996]
+environment = SubResource("Environment_epb64")
 
 [node name="level_1_model" parent="." unique_id=1770411912 instance=ExtResource("1_k1ttk")]
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_45440")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0675802, -2)

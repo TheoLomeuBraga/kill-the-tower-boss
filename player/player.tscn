@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://s8a5gxxvg64q" path="res://menus/hint/hint.tscn" id="27_q28gw"]
 [ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
+[ext_resource type="PackedScene" uid="uid://be0qprkejsf2x" path="res://menus/debug_menu/debug_menu.tscn" id="35_q28gw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -244,8 +245,9 @@ visible = false
 [node name="GameOver" parent="." unique_id=462071331 instance=ExtResource("24_7pqkx")]
 visible = false
 
+[node name="DebugMenu" parent="." unique_id=455788738 instance=ExtResource("35_q28gw")]
+
 [node name="time_display" type="Label" parent="." unique_id=437701589]
-visible = false
 anchors_preset = -1
 anchor_right = 0.10300001
 anchor_bottom = 0.07700001

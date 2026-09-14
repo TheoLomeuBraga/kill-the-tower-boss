@@ -142,9 +142,22 @@ func load_state() -> void:
 		return
 	
 	#remove base binds
+	'''
 	for key : String in InputMap.get_actions():
 		if key.begins_with("ui_"):
 			continue
+		for event : InputEvent in InputMap.action_get_events(key):
+			if event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
+				InputMap.action_erase_event(key,event)
+	'''
+	for key : String in new_binds:
+		
+		if key.begins_with("ui_"):
+			continue
+		
+		if new_binds[key].size() == 0:
+			continue
+		
 		for event : InputEvent in InputMap.action_get_events(key):
 			if event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventJoypadMotion:
 				InputMap.action_erase_event(key,event)

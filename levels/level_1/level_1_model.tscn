@@ -3,25 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bltk1x23mrjef" path="res://levels/level_1/level_1_model.glb" id="1_6aajv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dt7tvre512am1" path="res://levels/level_1/level_1_model.occ" id="2_00sav"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_00sav"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_bdepj"]
-sky_material = SubResource("ProceduralSkyMaterial_00sav")
-
-[sub_resource type="Environment" id="Environment_hkcpy"]
-background_mode = 2
-sky = SubResource("Sky_bdepj")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.6
-tonemap_mode = 2
-
 [node name="level_1_model" unique_id=1770411912 instance=ExtResource("1_6aajv")]
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1" unique_id=1084666183]
+visible = false
 occluder = ExtResource("2_00sav")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2" unique_id=82493456]
-environment = SubResource("Environment_hkcpy")

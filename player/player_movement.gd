@@ -37,6 +37,10 @@ func try_jump(input_dir:Vector3=Vector3.ZERO) -> void:
 @export var grapple_hope : Node3D
 var grapple_place : Vector3
 
+@export_group("noclip speed")
+
+@export var noclip_speed:float = 10.0
+
 var block_camera_rotetion : bool = true
 
 func launch_grapple() -> void:
@@ -181,6 +185,24 @@ func death_state(delta : float) -> void:
 func die() -> void:
 	state = death_state
 
+func noclip_state(delta : float) -> void:
+	body.velocity = Vector3.ZERO
+	var input_dir : Vector3 = camera.global_basis * Vector3(Input.get_axis("left","right"),0.0,Input.get_axis("foward","back")).normalized()
+	var vec_speed : Vector3 = input_dir * noclip_speed
+	
+	body.global_position = body.global_position + (vec_speed*delta)
+	
+	
+	
+
+func toogle_noclip() -> void:
+	if state == noclip_state:
+		state = air_state
+		$"../CollisionShape3D".disabled = false
+	else:
+		state = noclip_state
+		$"../CollisionShape3D".disabled = true
+		
 
 func _physics_process(delta: float) -> void:
 	

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://be0qprkejsf2x"]
+
+[ext_resource type="Script" uid="uid://ceub6apsknmrc" path="res://menus/debug_menu/debug_menu.gd" id="1_x02gv"]
+
+[node name="DebugMenu" type="Control" unique_id=455788738]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x02gv")
+
+[node name="Panel" type="Panel" parent="." unique_id=1357681471]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.040000003
+anchor_right = 0.762
+anchor_bottom = 0.96000004
+offset_left = 0.19999695
+offset_right = -0.2000122
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1565998393]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer" unique_id=510906964]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="noclip" type="Button" parent="Panel/ScrollContainer/VBoxContainer" unique_id=989163077]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "noclip"
+
+[node name="nohud" type="Button" parent="Panel/ScrollContainer/VBoxContainer" unique_id=419651225]
+layout_mode = 2
+text = "nohud"

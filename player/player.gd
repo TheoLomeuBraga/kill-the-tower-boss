@@ -4,7 +4,9 @@ class_name Player
 static var player : Player = null
 
 @onready var gun_control : GunControl = $Camera3D/GunControl
-@onready var player_movement : PlayerMovement = $PlayerMovement
+@onready var movement : PlayerMovement = $PlayerMovement
+@onready var model : PlayerModel = $Camera3D/PlayerModel
+@onready var hud : PlayerHud = $HUD
 @onready var stats : Stats = $Stats
 @onready var vignette : VignetteEffect = $Vignette
 @onready var keys : KeyCardInventory = $KeyCardInventory
