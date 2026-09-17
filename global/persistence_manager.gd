@@ -5,9 +5,6 @@ var save_data : Dictionary
 var state_backup : Dictionary[NodePath,Dictionary] = {}
 var state : Dictionary[NodePath,Dictionary] = {}
 
-signal on_save_game()
-signal on_load_game()
-
 signal on_save_state()
 signal on_load_state()
 signal on_clean_state()
@@ -45,20 +42,3 @@ func get_ref(node:Node) -> Dictionary:
 
 func name_to_save_path(id:int) -> String: 
 	return "user://save/" + save_name + ".save" + str(id)
-
-func save_game() -> void:
-	
-	on_save_game.emit()
-	
-	#TODO
-
-func try_load_game() -> Variant:
-	var ret : Variant
-	#TODO
-	return ret
-
-func load_game() -> void:
-	
-	#TODO
-	
-	on_load_game.emit()

@@ -6,9 +6,7 @@ create music
 
 add main menu
 
-add new game button
-
-add save game on PersistenceManager
+add level select menu
 
 add continue button
 

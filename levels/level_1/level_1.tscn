@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://byyo2adu8xon3" path="res://scripts/trigers/spawn_triger.gd" id="10_1ow6f"]
 [ext_resource type="PackedScene" uid="uid://ds7s8hueic2ai" path="res://props/terminals/key_card_terminal/key_card_terminal.tscn" id="10_qbdb0"]
 [ext_resource type="PackedScene" uid="uid://ciogwps7wuov6" path="res://consumables/keycards/keycards_models.tscn" id="11_qbdb0"]
+[ext_resource type="PackedScene" uid="uid://cphjkxcxek3bc" path="res://enemys/generic_enemy/model/generic_enemy.tscn" id="14_7rikf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_45440"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -290,3 +291,8 @@ shape = SubResource("BoxShape3D_4skoa")
 [node name="keycards_models" parent="." unique_id=1763377817 instance=ExtResource("11_qbdb0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.504353, 15.306014, 137.71124)
 key_type = 1
+
+[node name="enemys_1" type="Node3D" parent="." unique_id=1875915512]
+
+[node name="generic_enemy" parent="enemys_1" unique_id=2136028321 instance=ExtResource("14_7rikf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0, 6)
