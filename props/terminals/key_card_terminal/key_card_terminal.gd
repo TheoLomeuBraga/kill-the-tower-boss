@@ -9,11 +9,11 @@ var sync_data : Dictionary
 
 func set_right_color() -> void:
 	match type:
-		GlobalEnums.KeyCards.RED:
+		GlobalEnums.KeyCards.BLUE:
 			material.uv1_offset.y = -(1.0/3.0)*1.0
 		GlobalEnums.KeyCards.YELLOW:
 			material.uv1_offset.y = -(1.0/3.0)*2.0
-		GlobalEnums.KeyCards.BLUE:
+		GlobalEnums.KeyCards.RED:
 			material.uv1_offset.y = -(1.0/3.0)*3.0
 
 func _ready() -> void:

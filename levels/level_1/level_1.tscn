@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="3_mxc8w"]
 [ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="4_e6u7d"]
 [ext_resource type="PackedScene" uid="uid://816l7ahwk2cu" path="res://props/terminals/button/button.tscn" id="5_mxc8w"]
+[ext_resource type="PackedScene" uid="uid://bil2juror2lkv" path="res://props/button/one_use_button.tscn" id="6_hyp3v"]
 [ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="6_j48du"]
 [ext_resource type="AudioStream" uid="uid://b57cvdw17ygav" path="res://sfx/scifi_door.wav" id="8_j48du"]
+[ext_resource type="Script" uid="uid://barypxg6l267o" path="res://scripts/trigers/key_card_triger.gd" id="9_la5aw"]
+[ext_resource type="PackedScene" uid="uid://ds7s8hueic2ai" path="res://props/terminals/key_card_terminal/key_card_terminal.tscn" id="10_qbdb0"]
+[ext_resource type="PackedScene" uid="uid://ciogwps7wuov6" path="res://consumables/keycards/keycards_models.tscn" id="11_qbdb0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_45440"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,6 +36,26 @@ size = Vector3(2, 5, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_qxkbx"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="BoxMesh" id="BoxMesh_j48du"]
+size = Vector3(0.5, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j48du"]
+size = Vector3(6.2, 24, 6.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jbay"]
+size = Vector3(6.2, 0.1, 6.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_la5aw"]
+size = Vector3(3, 24, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
+size = Vector3(2, 4, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2jhj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4skoa"]
+size = Vector3(3, 3, 2)
+
 [node name="Level1" type="Node3D" unique_id=1966234962]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=388610996]
@@ -42,54 +66,210 @@ environment = SubResource("Environment_epb64")
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_45440")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0675802, -2)
 
-[node name="doors" type="Node3D" parent="." unique_id=924205412]
+[node name="door" type="Node3D" parent="." unique_id=924205412]
 
-[node name="door_1" type="Node3D" parent="doors" unique_id=935076221]
+[node name="door_1" type="Node3D" parent="door" unique_id=935076221]
 
-[node name="door" parent="doors/door_1" unique_id=424647415 instance=ExtResource("3_mxc8w")]
+[node name="door" parent="door/door_1" unique_id=424647415 instance=ExtResource("3_mxc8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 21)
 
-[node name="button" parent="doors/door_1" unique_id=1081899944 instance=ExtResource("5_mxc8w")]
+[node name="button" parent="door/door_1" unique_id=1081899944 instance=ExtResource("5_mxc8w")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.2347233, 1.7656369, 18.096344)
 
-[node name="AreaTriger" type="Area3D" parent="doors/door_1/button" unique_id=1639944259]
+[node name="AreaTriger" type="Area3D" parent="door/door_1/button" unique_id=1639944259]
 script = ExtResource("6_j48du")
 targets = Array[NodePath]([NodePath("../../door"), NodePath("..")])
+one_use = true
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="doors/door_1/button/AreaTriger" unique_id=482589926]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/door_1/button/AreaTriger" unique_id=482589926]
 shape = SubResource("BoxShape3D_hmyvt")
 
-[node name="plataform_1" type="Node3D" parent="doors" unique_id=7941991]
+[node name="door_2" type="Node3D" parent="." unique_id=1492947367]
 
-[node name="train" type="CharacterBody3D" parent="doors/plataform_1" unique_id=1506168128 node_paths=PackedStringArray("movement_sound")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8747, -2.9196222, 52.2817)
+[node name="door2" parent="door_2" unique_id=1315666663 instance=ExtResource("3_mxc8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93822, 0.104174614, 34.699486)
+
+[node name="button" parent="door_2" unique_id=1507977984 instance=ExtResource("6_hyp3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.63161, 1.4574908, 24.977797)
+targets = Array[NodePath]([NodePath("button"), NodePath("../door2")])
+
+[node name="plataform_1" type="Node3D" parent="." unique_id=7941991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8747, 0.06400013, 52.2817)
+
+[node name="train" type="CharacterBody3D" parent="plataform_1" unique_id=1506168128 node_paths=PackedStringArray("movement_sound")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.92, 0)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("3_epb64")
 active = true
 movement_mode = 2
 speed = 2.5
 movement_sound = NodePath("AudioStreamPlayer3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="doors/plataform_1/train" unique_id=1023573197]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataform_1/train" unique_id=1023573197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45, 0)
 shape = SubResource("BoxShape3D_b2jhj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="doors/plataform_1/train" unique_id=895225729]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plataform_1/train" unique_id=895225729]
 mesh = SubResource("BoxMesh_qxkbx")
 
-[node name="TrainRail" type="Marker3D" parent="doors/plataform_1/train" unique_id=1589625094]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plataform_1/train" unique_id=1958500074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5000002, 0)
+mesh = SubResource("BoxMesh_j48du")
+
+[node name="TrainRail" type="Marker3D" parent="plataform_1/train" unique_id=1589625094]
 script = ExtResource("4_e6u7d")
 interuption_time = 2.0
 metadata/_custom_type_script = "uid://13anebs8k206"
 
-[node name="TrainRail2" type="Marker3D" parent="doors/plataform_1/train" unique_id=335039341]
+[node name="TrainRail2" type="Marker3D" parent="plataform_1/train" unique_id=335039341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("4_e6u7d")
 interuption_time = 2.0
 metadata/_custom_type_script = "uid://13anebs8k206"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="doors/plataform_1/train" unique_id=1464911092]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="plataform_1/train" unique_id=1464911092]
 stream = ExtResource("8_j48du")
 pitch_scale = 0.8
 max_distance = 20.0
 bus = &"SFX"
+
+[node name="plataform_2" type="Node3D" parent="." unique_id=1722909391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3715, 3.0637002, 70.0396)
+
+[node name="train" type="CharacterBody3D" parent="plataform_2" unique_id=457676011 node_paths=PackedStringArray("movement_sound")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.92, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("3_epb64")
+active = true
+movement_mode = 2
+speed = 2.5
+movement_sound = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataform_2/train" unique_id=2124017728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45, 0)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plataform_2/train" unique_id=1457286404]
+mesh = SubResource("BoxMesh_qxkbx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plataform_2/train" unique_id=614732371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5000002, 0)
+mesh = SubResource("BoxMesh_j48du")
+
+[node name="TrainRail" type="Marker3D" parent="plataform_2/train" unique_id=1634008220]
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="plataform_2/train" unique_id=19475830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5656943, 0)
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="plataform_2/train" unique_id=1901639714]
+stream = ExtResource("8_j48du")
+pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
+
+[node name="plataform_3" type="Node3D" parent="." unique_id=803894895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3715, 9.0637, 66.0396)
+
+[node name="train" type="CharacterBody3D" parent="plataform_3" unique_id=1720913921 node_paths=PackedStringArray("movement_sound")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0993977, -8.92, -0.23010254)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("3_epb64")
+active = true
+movement_mode = 2
+speed = 2.5
+movement_sound = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataform_3/train" unique_id=53697074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.95, 0)
+shape = SubResource("BoxShape3D_j48du")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plataform_3/train" unique_id=279877374]
+mesh = SubResource("BoxMesh_8jbay")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plataform_3/train" unique_id=2083302303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+mesh = SubResource("BoxMesh_la5aw")
+
+[node name="TrainRail" type="Marker3D" parent="plataform_3/train" unique_id=788128739]
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="plataform_3/train" unique_id=1839733744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.565695, 0)
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="plataform_3/train" unique_id=1773417747]
+stream = ExtResource("8_j48du")
+pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
+
+[node name="keycard_zone_1" type="Node3D" parent="." unique_id=242226165]
+
+[node name="door" parent="keycard_zone_1" unique_id=1599259356 instance=ExtResource("3_mxc8w")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 24, 0, 65.760735)
+
+[node name="KeyCardTriger" type="Area3D" parent="keycard_zone_1" unique_id=772330867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.546778, 2.3841858e-07, 64.560036)
+script = ExtResource("9_la5aw")
+targets = Array[NodePath]([NodePath("../door"), NodePath("../key_card_terminal")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keycard_zone_1/KeyCardTriger" unique_id=737579228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="key_card_terminal" parent="keycard_zone_1" unique_id=815402997 instance=ExtResource("10_qbdb0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.8715, 0.34489998, 64.471596)
+
+[node name="keycards_models" parent="keycard_zone_1" unique_id=617621304 instance=ExtResource("11_qbdb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1969795, 5.1925497, 76.90514)
+
+[node name="door2" parent="keycard_zone_1" unique_id=150774427 instance=ExtResource("3_mxc8w")]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 13.264837, 3.6948771, 76.75068)
+
+[node name="AreaTriger" type="Area3D" parent="keycard_zone_1" unique_id=996535958]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 11.264837, 5.0093284, 76.912224)
+script = ExtResource("6_j48du")
+targets = Array[NodePath]([NodePath("../door2")])
+one_use = true
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keycard_zone_1/AreaTriger" unique_id=876230093]
+shape = SubResource("SphereShape3D_b2jhj")
+
+[node name="outside_area_door" type="Node3D" parent="." unique_id=983916387]
+
+[node name="door2" parent="outside_area_door" unique_id=362699922 instance=ExtResource("3_mxc8w")]
+transform = Transform3D(1.5, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -12.173885, 14, 98)
+
+[node name="key_card_terminal" parent="outside_area_door" unique_id=375224346 instance=ExtResource("10_qbdb0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.5038395, 14.159756, 97.03057)
+type = 1
+
+[node name="AreaTriger" type="Area3D" parent="outside_area_door/key_card_terminal" unique_id=2101892855]
+script = ExtResource("9_la5aw")
+key_type = 1
+targets = Array[NodePath]([NodePath(".."), NodePath("../../door2")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="outside_area_door/key_card_terminal/AreaTriger" unique_id=1285522954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+shape = SubResource("BoxShape3D_4skoa")
+
+[node name="keycards_models" parent="." unique_id=1763377817 instance=ExtResource("11_qbdb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.504353, 15.306014, 137.71124)
+key_type = 1

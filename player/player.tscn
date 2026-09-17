@@ -174,7 +174,7 @@ theme_override_fonts/bold_italics_font = ExtResource("19_g4c7l")
 theme_override_fonts/italics_font = ExtResource("19_g4c7l")
 theme_override_fonts/mono_font = ExtResource("19_g4c7l")
 bbcode_enabled = true
-text = "999/999"
+text = "9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -203,11 +203,11 @@ vertical_alignment = 1
 [node name="keys_display" type="HBoxContainer" parent="HUD" unique_id=561625643]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.040000003
+anchor_left = 0.032
 anchor_top = 0.795
-anchor_right = 0.15300001
+anchor_right = 0.17
 anchor_bottom = 0.85700005
-offset_right = 0.19998932
+offset_left = -0.20000076
 offset_bottom = 0.19998169
 script = ExtResource("23_jd2rm")
 

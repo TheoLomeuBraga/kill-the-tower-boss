@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bil2juror2lkv"]
+
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="1_du14w"]
+[ext_resource type="PackedScene" uid="uid://816l7ahwk2cu" path="res://props/terminals/button/button.tscn" id="2_6cxep"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4skoa"]
+
+[node name="button" type="Area3D" unique_id=1507977984]
+script = ExtResource("1_du14w")
+targets = Array[NodePath]([NodePath("button")])
+one_use = true
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="button" parent="." unique_id=1081899944 instance=ExtResource("2_6cxep")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79294978]
+shape = SubResource("BoxShape3D_4skoa")
