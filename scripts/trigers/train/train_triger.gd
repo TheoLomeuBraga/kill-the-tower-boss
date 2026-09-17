@@ -17,7 +17,6 @@ var target_rail : int = 0
 var time_to_next : float = 0.0
 
 @export var movement_sound : AudioStreamPlayer3D
-@export var stop_sound : AudioStreamPlayer3D
 
 func _ready() -> void:
 	motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
@@ -66,8 +65,6 @@ func mt_next(delta: float) -> void:
 			if movement_sound.playing:
 				movement_sound.stop()
 	
-	if stop_sound and p_changed:
-		stop_sound.play()
 
 var ping_pong_reversed:bool = false
 
@@ -81,8 +78,6 @@ func _physics_process(delta: float) -> void:
 	if time_to_next > 0:
 		if movement_sound:
 			movement_sound.stop()
-		if stop_sound:
-			stop_sound.play()
 		return
 	
 	

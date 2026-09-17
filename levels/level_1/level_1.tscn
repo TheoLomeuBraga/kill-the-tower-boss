@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="6_j48du"]
 [ext_resource type="AudioStream" uid="uid://b57cvdw17ygav" path="res://sfx/scifi_door.wav" id="8_j48du"]
 [ext_resource type="Script" uid="uid://barypxg6l267o" path="res://scripts/trigers/key_card_triger.gd" id="9_la5aw"]
+[ext_resource type="Script" uid="uid://byyo2adu8xon3" path="res://scripts/trigers/spawn_triger.gd" id="10_1ow6f"]
 [ext_resource type="PackedScene" uid="uid://ds7s8hueic2ai" path="res://props/terminals/key_card_terminal/key_card_terminal.tscn" id="10_qbdb0"]
 [ext_resource type="PackedScene" uid="uid://ciogwps7wuov6" path="res://consumables/keycards/keycards_models.tscn" id="11_qbdb0"]
 
@@ -47,6 +48,9 @@ size = Vector3(6.2, 0.1, 6.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_la5aw"]
 size = Vector3(3, 24, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa0au"]
+size = Vector3(1, 5, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
 size = Vector3(2, 4, 2)
@@ -184,8 +188,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0993977, -8.92, -0.2301025
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("3_epb64")
-active = true
-movement_mode = 2
 speed = 2.5
 movement_sound = NodePath("AudioStreamPlayer3D")
 
@@ -216,6 +218,21 @@ stream = ExtResource("8_j48du")
 pitch_scale = 0.8
 max_distance = 20.0
 bus = &"SFX"
+
+[node name="button" parent="plataform_3" unique_id=168811072 instance=ExtResource("6_hyp3v")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.9961948, -7.532407, -0.24648285)
+targets = Array[NodePath]([NodePath("button"), NodePath("../train"), NodePath("../SpawnTriger")])
+
+[node name="SpawnTriger" type="Node3D" parent="plataform_3" unique_id=1612446426]
+script = ExtResource("10_1ow6f")
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataform_3/SpawnTriger" unique_id=1158523270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -7, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataform_3/SpawnTriger/StaticBody3D" unique_id=1006317926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4835434, 0, 0)
+shape = SubResource("BoxShape3D_pa0au")
 
 [node name="keycard_zone_1" type="Node3D" parent="." unique_id=242226165]
 
