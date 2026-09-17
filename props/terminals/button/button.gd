@@ -41,8 +41,6 @@ func _ready() -> void:
 var block : bool = false
 func triger() -> void:
 	
-	
-	
 	match mode:
 		ButtonMode.ONE_USE:
 			if not active:

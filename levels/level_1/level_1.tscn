@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_45440"]
 [ext_resource type="PackedScene" uid="uid://nrl0oyw5mis5" path="res://levels/level_1/level_1_model.tscn" id="1_k1ttk"]
+[ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="3_epb64"]
+[ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="3_mxc8w"]
+[ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="4_e6u7d"]
+[ext_resource type="PackedScene" uid="uid://816l7ahwk2cu" path="res://props/terminals/button/button.tscn" id="5_mxc8w"]
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="6_j48du"]
+[ext_resource type="AudioStream" uid="uid://b57cvdw17ygav" path="res://sfx/scifi_door.wav" id="8_j48du"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_45440"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,6 +24,14 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.6
 tonemap_mode = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hmyvt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
+size = Vector3(2, 5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxkbx"]
+size = Vector3(2, 0.1, 2)
+
 [node name="Level1" type="Node3D" unique_id=1966234962]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=388610996]
@@ -27,3 +41,55 @@ environment = SubResource("Environment_epb64")
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_45440")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0675802, -2)
+
+[node name="doors" type="Node3D" parent="." unique_id=924205412]
+
+[node name="door_1" type="Node3D" parent="doors" unique_id=935076221]
+
+[node name="door" parent="doors/door_1" unique_id=424647415 instance=ExtResource("3_mxc8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 21)
+
+[node name="button" parent="doors/door_1" unique_id=1081899944 instance=ExtResource("5_mxc8w")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.2347233, 1.7656369, 18.096344)
+
+[node name="AreaTriger" type="Area3D" parent="doors/door_1/button" unique_id=1639944259]
+script = ExtResource("6_j48du")
+targets = Array[NodePath]([NodePath("../../door"), NodePath("..")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors/door_1/button/AreaTriger" unique_id=482589926]
+shape = SubResource("BoxShape3D_hmyvt")
+
+[node name="plataform_1" type="Node3D" parent="doors" unique_id=7941991]
+
+[node name="train" type="CharacterBody3D" parent="doors/plataform_1" unique_id=1506168128 node_paths=PackedStringArray("movement_sound")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8747, -2.9196222, 52.2817)
+script = ExtResource("3_epb64")
+active = true
+movement_mode = 2
+speed = 2.5
+movement_sound = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors/plataform_1/train" unique_id=1023573197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45, 0)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="doors/plataform_1/train" unique_id=895225729]
+mesh = SubResource("BoxMesh_qxkbx")
+
+[node name="TrainRail" type="Marker3D" parent="doors/plataform_1/train" unique_id=1589625094]
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="doors/plataform_1/train" unique_id=335039341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("4_e6u7d")
+interuption_time = 2.0
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="doors/plataform_1/train" unique_id=1464911092]
+stream = ExtResource("8_j48du")
+pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dtdepb6poofyt"]
+
+[ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="1_d5n3v"]
+[ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="2_jhqbn"]
+[ext_resource type="AudioStream" uid="uid://b57cvdw17ygav" path="res://sfx/scifi_door.wav" id="3_jhqbn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2jhj"]
+size = Vector3(1.879, 2.842, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
+size = Vector3(1.879, 2.842, 0.25)
+
+[node name="door" type="CharacterBody3D" unique_id=424647415 node_paths=PackedStringArray("movement_sound")]
+script = ExtResource("1_d5n3v")
+movement_sound = NodePath("AudioStreamPlayer3D")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1667448858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09741211, 1.4107971, 0)
+mesh = SubResource("BoxMesh_b2jhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=334384572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09741211, 1.4107971, 0)
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="TrainRail" type="Marker3D" parent="." unique_id=1726830440]
+script = ExtResource("2_jhqbn")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="." unique_id=794265725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5410395, 0, 0)
+script = ExtResource("2_jhqbn")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=920434640]
+stream = ExtResource("3_jhqbn")
+bus = &"SFX"

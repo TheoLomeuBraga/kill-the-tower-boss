@@ -16,6 +16,8 @@ var target_rail : int = 0
 
 var time_to_next : float = 0.0
 
+@export var movement_sound : AudioStreamPlayer3D
+
 func _ready() -> void:
 	motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
 	slide_on_ceiling = false
@@ -46,11 +48,22 @@ func _ready() -> void:
 	
 
 func mt_next(delta: float) -> void:
+	
+	var p_changed : bool = global_position != global_position.move_toward(rails[target_rail].global_position,delta*speed)
+	
 	global_position = global_position.move_toward(rails[target_rail].global_position,delta*speed)
 	global_rotation = global_rotation.move_toward(rails[target_rail].global_rotation,delta*rotation_speed)
 	
 	sync_data["global_position"] = rails[target_rail].global_position
 	sync_data["global_rotation"] = rails[target_rail].global_rotation
+	
+	if movement_sound:
+		if p_changed:
+			if not movement_sound.playing:
+				movement_sound.play()
+		else:
+			if movement_sound.playing:
+				movement_sound.stop()
 
 var ping_pong_reversed:bool = false
 
@@ -62,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	time_to_next -= delta
 	
 	if time_to_next > 0:
+		movement_sound.stop()
 		return
 	
 	

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ceq3wentgd514"]
+
+[ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="1_eht1w"]
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="2_t7y5u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
+size = Vector3(5, 4, 5)
+
+[node name="AutomaticDoor" type="Node3D" unique_id=321128549]
+
+[node name="door" parent="." unique_id=424647415 instance=ExtResource("1_eht1w")]
+
+[node name="AreaTriger" type="Area3D" parent="." unique_id=898171220]
+script = ExtResource("2_t7y5u")
+triger_on_exit = true
+targets = Array[NodePath]([NodePath("../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaTriger" unique_id=749843447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_b2jhj")

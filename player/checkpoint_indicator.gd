@@ -5,5 +5,5 @@ func _ready() -> void:
 		return
 	while not Player.player:
 		await get_tree().process_frame
-	PersistenceManager.on_save.connect(Player.player.hint.notfy.bind("[color=yellow]chekpoint[/color]",1.0,Color.YELLOW))
+	PersistenceManager.on_save_state.connect(Player.player.hint.notfy.bind("[color=yellow]chekpoint[/color]",1.0,Color.YELLOW))
 	
