@@ -6,9 +6,9 @@ func togle_noclip() -> void:
 
 func no_hud() -> void:
 	if Player.player:
-		Player.player.hud.visible = not Player.player.hud.visible
+		Player.player.wepon_layer.visible = not Player.player.wepon_layer.visible
 		if Player.player.model.gun.cross:
-			Player.player.model.gun.cross.visible = Player.player.hud.visible
+			Player.player.model.gun.cross.visible = Player.player.wepon_layer.visible
 		
 
 func give_all() -> void:

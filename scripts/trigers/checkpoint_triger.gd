@@ -11,6 +11,8 @@ func on_body_entered(n:Node3D) -> void:
 	if n is Player:
 		PersistenceManager.save_state()
 		
+		await get_tree().process_frame
+		
 		if not is_mult_use:
 			sync_data["used"] = true
 			queue_free()
@@ -22,6 +24,7 @@ func _ready() -> void:
 				PersistenceManager.register(self,sync_data)
 		else:
 			sync_data = PersistenceManager.get_ref(self)
+		
 		if sync_data["used"]:
 			queue_free()
 			return

@@ -2,7 +2,7 @@ extends Node
 class_name PlayerSettingsSync
 
 @onready var camera : Camera3D = $"../Camera3D"
-@onready var gun_camera : Camera3D = $"../HUD/SubViewportContainer/SubViewport/Camera3D"
+@onready var gun_camera : Camera3D = $"../wepon_layer/SubViewportContainer/SubViewport/Camera3D"
 @onready var player_movement : PlayerMovement = $"../PlayerMovement"
 
 func on_settings_change(name:String,value:Variant) -> void:

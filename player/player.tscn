@@ -23,7 +23,6 @@
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="19_g4c7l"]
 [ext_resource type="PackedScene" uid="uid://dlnyg5l63jrh3" path="res://player/vignette/vignette.tscn" id="20_bjvpn"]
 [ext_resource type="Script" uid="uid://culmdi2hkb2q7" path="res://player/stair_ajust.gd" id="21_x7c3f"]
-[ext_resource type="Script" uid="uid://dbsumlu675d1h" path="res://player/time_display.gd" id="22_s7qer"]
 [ext_resource type="Texture2D" uid="uid://jbvmkoc8ckg2" path="res://icons/key_cards/red.png" id="23_2uvqg"]
 [ext_resource type="Script" uid="uid://b1scge6qir6b0" path="res://player/checkpoint_indicator.gd" id="23_b8hi5"]
 [ext_resource type="Script" uid="uid://35kdvchxyl1e" path="res://player/keys_display.gd" id="23_jd2rm"]
@@ -33,6 +32,7 @@
 [ext_resource type="Script" uid="uid://c2u3ml5220gl8" path="res://scripts/persistence_syncronizers/transform_sync.gd" id="25_knn7v"]
 [ext_resource type="PackedScene" uid="uid://s8a5gxxvg64q" path="res://menus/hint/hint.tscn" id="27_q28gw"]
 [ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
+[ext_resource type="Script" uid="uid://5noypvxw54ta" path="res://player/level_info.gd" id="31_ge24q"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 [ext_resource type="PackedScene" uid="uid://be0qprkejsf2x" path="res://menus/debug_menu/debug_menu.tscn" id="35_q28gw"]
 
@@ -49,6 +49,18 @@ height = 1.0
 radial_segments = 4
 rings = 0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2jhj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.6745098, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
 [node name="Player" type="CharacterBody3D" unique_id=696039800]
 collision_mask = 3
 script = ExtResource("1_65viv")
@@ -64,7 +76,7 @@ fov = 90.0
 near = 0.001
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D" unique_id=2147351980]
-remote_path = NodePath("../../HUD/SubViewportContainer/SubViewport/Camera3D")
+remote_path = NodePath("../../wepon_layer/SubViewportContainer/SubViewport/Camera3D")
 
 [node name="PlayerModel" parent="Camera3D" unique_id=83597824 instance=ExtResource("1_rkbax")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.23062402, 0)
@@ -126,7 +138,7 @@ mesh = SubResource("CylinderMesh_qjkh3")
 [node name="Vignette" parent="." unique_id=697527882 instance=ExtResource("20_bjvpn")]
 vignette_color = Color(0, 0, 0, 0)
 
-[node name="HUD" type="Control" parent="." unique_id=627942019]
+[node name="wepon_layer" type="Control" parent="." unique_id=627942019]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -136,7 +148,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_bjvpn")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1508226697 node_paths=PackedStringArray("player_model")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="wepon_layer" unique_id=1508226697 node_paths=PackedStringArray("player_model")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,19 +159,19 @@ stretch = true
 script = ExtResource("32_5ejfk")
 player_model = NodePath("../../Camera3D/PlayerModel")
 
-[node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer" unique_id=1330509499]
+[node name="SubViewport" type="SubViewport" parent="wepon_layer/SubViewportContainer" unique_id=1330509499]
 transparent_bg = true
 handle_input_locally = false
 scaling_3d_mode = 5
 size = Vector2i(600, 400)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="HUD/SubViewportContainer/SubViewport" unique_id=2132762123]
+[node name="Camera3D" type="Camera3D" parent="wepon_layer/SubViewportContainer/SubViewport" unique_id=2132762123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 cull_mask = 2
 fov = 90.0
 
-[node name="health_display" type="RichTextLabel" parent="HUD" unique_id=738843361]
+[node name="health_display" type="RichTextLabel" parent="wepon_layer" unique_id=738843361]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.85700005
@@ -178,7 +190,7 @@ text = "9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ammon_display" type="RichTextLabel" parent="HUD" unique_id=1475917363]
+[node name="ammon_display" type="RichTextLabel" parent="wepon_layer" unique_id=1475917363]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.794
@@ -200,7 +212,7 @@ text = "999/999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="keys_display" type="HBoxContainer" parent="HUD" unique_id=561625643]
+[node name="keys_display" type="HBoxContainer" parent="wepon_layer" unique_id=561625643]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032
@@ -211,17 +223,17 @@ offset_left = -0.20000076
 offset_bottom = 0.19998169
 script = ExtResource("23_jd2rm")
 
-[node name="red" type="TextureRect" parent="HUD/keys_display" unique_id=1896634011]
+[node name="red" type="TextureRect" parent="wepon_layer/keys_display" unique_id=1896634011]
 layout_mode = 2
 texture = ExtResource("23_2uvqg")
 expand_mode = 3
 
-[node name="yellow" type="TextureRect" parent="HUD/keys_display" unique_id=1745084329]
+[node name="yellow" type="TextureRect" parent="wepon_layer/keys_display" unique_id=1745084329]
 layout_mode = 2
 texture = ExtResource("24_5ejfk")
 expand_mode = 3
 
-[node name="blue" type="TextureRect" parent="HUD/keys_display" unique_id=1141558033]
+[node name="blue" type="TextureRect" parent="wepon_layer/keys_display" unique_id=1141558033]
 layout_mode = 2
 texture = ExtResource("25_jd2rm")
 expand_mode = 3
@@ -240,6 +252,30 @@ visible = false
 gun_control = NodePath("../Camera3D/GunControl")
 player_movement = NodePath("../PlayerMovement")
 
+[node name="level_info" type="Panel" parent="." unique_id=913773273]
+visible = false
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 0.020000001
+anchor_right = 0.30200002
+anchor_bottom = 0.28
+offset_left = 0.19999981
+offset_right = -0.2000122
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2jhj")
+script = ExtResource("31_ge24q")
+
+[node name="Label" type="Label" parent="level_info" unique_id=1525478498]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.006
+anchor_bottom = 1.0
+offset_right = -1.026001
+offset_bottom = -1.0
+text = "abc
+abc
+abc
+abc"
+
 [node name="PauseMenu" parent="." unique_id=242854174 instance=ExtResource("7_boad6")]
 visible = false
 
@@ -247,14 +283,7 @@ visible = false
 visible = false
 
 [node name="DebugMenu" parent="." unique_id=455788738 instance=ExtResource("35_q28gw")]
-
-[node name="time_display" type="Label" parent="." unique_id=437701589]
-anchors_preset = -1
-anchor_right = 0.10300001
-anchor_bottom = 0.07700001
-offset_right = 0.19999695
-offset_bottom = -0.10000229
-script = ExtResource("22_s7qer")
+visible = false
 
 [node name="stair_ajust" type="Node3D" parent="." unique_id=1886815830]
 script = ExtResource("21_x7c3f")

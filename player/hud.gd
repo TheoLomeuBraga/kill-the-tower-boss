@@ -1,5 +1,5 @@
 extends Control
-class_name PlayerHud
+class_name PlayerWeponLayer
 
 @onready var stats : Stats = $"../Stats"
 @onready var gun_control : GunControl = $"../Camera3D/GunControl"
