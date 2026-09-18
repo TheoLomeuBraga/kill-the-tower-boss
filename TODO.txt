@@ -1,8 +1,14 @@
+add give all consol comand
+
+add end level screen
+
 create 1 level (entrance)
+
+create door models
 
 create textures
 
-create music
+playtest
 
 add main menu
 
@@ -25,3 +31,5 @@ create 2 more levels
 create textures
 
 even more playtest
+
+create music
