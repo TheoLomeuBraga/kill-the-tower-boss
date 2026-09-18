@@ -33,6 +33,9 @@ var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.EXPLOSIVE: 0,
 }
 
+
+		
+
 var ammon_on_mag : Dictionary[String,int]
 func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
 	ammon_on_mag[gun_info.name] = amount
@@ -80,34 +83,8 @@ func sync_inventory() -> void:
 	PersistenceManager.on_save_state.connect(on_checkin_point)
 
 
-func on_save() -> void:
-	
-	
-	var player_data : Dictionary = {}
-	player_data["ammon_inventory"] = ammon_inventory.duplicate()
-	
-	player_data["inventory"] = []
-	for i:int in range(0,inventory_order.size()):
-		player_data["inventory"].push_back(inventory[inventory_order[i]])
-	
-	#SaveManager.set_save_data("player_data",player_data)
-	
 
-func on_load() -> void:
-	#if not SaveManager.has("player_data"):
-	#	return
-	#var player_data : Dictionary = SaveManager.get_save_data("player_data")
-	
-	
-	#if player_data.has("ammon_inventory"):
-	#	for k in player_data["ammon_inventory"]:
-	#		ammon_inventory[k] = player_data["ammon_inventory"][k]
-	
-	
-	#if player_data.has("inventory"):
-	#	for i : int in range(0,player_data["inventory"].size()):
-	#		inventory[inventory_order[i]] = player_data["inventory"][i]
-	pass
+
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]
@@ -119,6 +96,16 @@ func fix_ammon_amount() -> void:
 	for i : GlobalEnums.AmmonType in ammon_inventory:
 		if ammon_inventory.has(i) and max_ammon.has(i):
 			ammon_inventory[i] = min(ammon_inventory[i],max_ammon[i])
+
+func give_all() -> void:
+	
+	for at : GlobalEnums.AmmonType in ammon_inventory:
+		ammon_inventory[at] = 9999
+	
+	fix_ammon_amount()
+	
+	for gi : GunInfo in inventory:
+		inventory[gi] = true
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -220,10 +207,6 @@ var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
 func _ready() -> void:
-	
-	on_load()
-	#SaveManager.on_load.connect(on_load)
-	#SaveManager.on_save.connect(on_save)
 	
 	sync_inventory()
 	

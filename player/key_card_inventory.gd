@@ -7,6 +7,10 @@ class_name KeyCardInventory
 	GlobalEnums.KeyCards.BLUE: false,
 }
 
+func give_all() -> void:
+	for k : GlobalEnums.KeyCards in keys:
+		keys[k] = true
+
 func _ready() -> void:
 	if not PersistenceManager.has(self):
 			PersistenceManager.register(self,keys)

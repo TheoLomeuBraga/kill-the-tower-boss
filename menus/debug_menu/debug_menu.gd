@@ -11,12 +11,18 @@ func no_hud() -> void:
 			Player.player.model.gun.cross.visible = Player.player.hud.visible
 		
 
+func give_all() -> void:
+	if Player.player:
+		Player.player.gun_control.give_all()
+		Player.player.keys.give_all()
+		Player.player.stats.health = Player.player.stats.max_health
+
 func _ready() -> void:
 	visible = false
 	
 	$Panel/ScrollContainer/VBoxContainer/noclip.pressed.connect(togle_noclip)
 	$Panel/ScrollContainer/VBoxContainer/nohud.pressed.connect(no_hud)
-
+	$Panel/ScrollContainer/VBoxContainer/give_all.pressed.connect(give_all)
 
 
 func _process(delta: float) -> void:

@@ -18,7 +18,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_ge24q"]
+[sub_resource type="Resource" id="Resource_7rrui"]
 script = ExtResource("5_7psdx")
 damage = 20
 speed = 20.0
@@ -33,13 +33,13 @@ sound = ExtResource("6_43ejl")
 spawn_effect = ExtResource("6_q5kn6")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
-[sub_resource type="Resource" id="Resource_pnw6m"]
+[sub_resource type="Resource" id="Resource_7psdx"]
 script = ExtResource("7_2p5l5")
 ammon_type = 4
 ammon_consumption = 1
 spread = 0.01
 charge_time = 2.0
-projectile_info = SubResource("Resource_ge24q")
+projectile_info = SubResource("Resource_7rrui")
 fire_rate = 0.1
 charge_sound = ExtResource("1_q3v7y")
 charged_sound = ExtResource("2_fvp5h")
@@ -48,9 +48,9 @@ metadata/_custom_type_script = "uid://dc35ml5h2smv7"
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_q3v7y"]
+[sub_resource type="Resource" id="Resource_q5kn6"]
 script = ExtResource("5_7psdx")
-damage = 20
+damage = 10
 speed = 20.0
 distance = 20.0
 model = ExtResource("9_0v418")
@@ -71,6 +71,6 @@ reload_time = 0.8
 reload_audio = ExtResource("10_5rdet")
 spread = 0.05
 is_automatic = true
-projectile_info = SubResource("Resource_q3v7y")
-charge_shot_info = SubResource("Resource_pnw6m")
+projectile_info = SubResource("Resource_q5kn6")
+charge_shot_info = SubResource("Resource_7psdx")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"

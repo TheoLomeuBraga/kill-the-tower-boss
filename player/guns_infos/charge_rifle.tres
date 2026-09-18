@@ -17,7 +17,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7pqkx"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_uw77l"]
+[sub_resource type="Resource" id="Resource_s4r1f"]
 script = ExtResource("5_gss7y")
 damage = 100
 speed = 20.0
@@ -32,12 +32,11 @@ sound = ExtResource("6_s4r1f")
 spawn_effect = ExtResource("6_cumbn")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 
-[sub_resource type="Resource" id="Resource_rptt4"]
+[sub_resource type="Resource" id="Resource_gss7y"]
 script = ExtResource("7_4iqbq")
 ammon_type = 4
-ammon_consumption = 5
 spread = 0.01
-projectile_info = SubResource("Resource_uw77l")
+projectile_info = SubResource("Resource_s4r1f")
 charge_sound = ExtResource("1_m0qeu")
 charged_sound = ExtResource("2_oeh6r")
 metadata/_custom_type_script = "uid://dc35ml5h2smv7"
@@ -45,7 +44,7 @@ metadata/_custom_type_script = "uid://dc35ml5h2smv7"
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4c7l"]
 radius = 0.2
 
-[sub_resource type="Resource" id="Resource_knn7v"]
+[sub_resource type="Resource" id="Resource_cumbn"]
 script = ExtResource("5_gss7y")
 damage = 20
 speed = 20.0
@@ -64,11 +63,12 @@ name = "charge rifle"
 icon = ExtResource("8_oeh6r")
 model = ExtResource("8_rbwd5")
 ammon_type = 4
+ammon_consumption = 5
 ammon_capacity = -1
 reload_time = 0.8
 reload_audio = ExtResource("9_6ff4e")
 fire_rate = 0.1
 spread = 0.05
-projectile_info = SubResource("Resource_knn7v")
-charge_shot_info = SubResource("Resource_rptt4")
+projectile_info = SubResource("Resource_cumbn")
+charge_shot_info = SubResource("Resource_gss7y")
 metadata/_custom_type_script = "uid://5ihhl4vr45q5"

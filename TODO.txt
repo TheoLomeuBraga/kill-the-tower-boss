@@ -1,5 +1,3 @@
-add give all consol comand
-
 add end level screen
 
 create 1 level (entrance)

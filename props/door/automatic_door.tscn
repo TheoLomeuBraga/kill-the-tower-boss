@@ -14,6 +14,7 @@ size = Vector3(5, 4, 5)
 script = ExtResource("2_t7y5u")
 triger_on_exit = true
 targets = Array[NodePath]([NodePath("../door")])
+detect_stats_entities = true
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaTriger" unique_id=749843447]
