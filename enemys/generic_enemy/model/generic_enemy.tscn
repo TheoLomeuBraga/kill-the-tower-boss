@@ -327,32 +327,32 @@ collision_layer = 3
 script = ExtResource("2_sq4vr")
 
 [node name="GeneralSkeleton" parent="metarig" parent_id_path=PackedInt32Array(638617318) index="0" unique_id=1288108791]
-bones/1/position = Vector3(0, 1.0090551, -0.055199984)
-bones/1/rotation = Quaternion(0.0021959024, 0, 0, 0.9999976)
+bones/1/position = Vector3(0, 1.0082682, -0.055199984)
+bones/1/rotation = Quaternion(0.0058908113, 0, 0, 0.9999827)
 bones/5/rotation = Quaternion(-1.6763806e-08, 0, 0, 1)
 bones/6/rotation = Quaternion(-1.4901161e-08, 0, 0, 1)
 bones/7/rotation = Quaternion(-2.2351744e-08, -1.5699826e-29, 0, 1)
-bones/9/rotation = Quaternion(0.075549394, 0.7420038, -0.66489536, 0.040458184)
-bones/10/rotation = Quaternion(-0.07010798, -0.70315474, -0.044932086, 0.70614403)
+bones/9/rotation = Quaternion(0.087002166, 0.7393291, -0.66558665, 0.053080127)
+bones/10/rotation = Quaternion(-0.08834137, -0.70131767, -0.056617886, 0.7050843)
 bones/11/rotation = Quaternion(2.3283059e-10, 0.70710677, 2.3283059e-10, 0.70710677)
-bones/13/rotation = Quaternion(-0.07555245, 0.74200314, -0.66489553, -0.040461414)
-bones/14/rotation = Quaternion(-0.070107944, 0.70315474, 0.044932093, 0.70614403)
+bones/13/rotation = Quaternion(-0.08700228, 0.73932904, -0.6655868, -0.053080104)
+bones/14/rotation = Quaternion(-0.088341385, 0.7013176, 0.056617875, 0.70508426)
 bones/15/rotation = Quaternion(-7.2177504e-09, -0.70710677, 7.2177504e-09, 0.70710677)
-bones/18/rotation = Quaternion(2.1926185e-08, 0.006331453, 0.99998, -1.3341399e-10)
-bones/19/rotation = Quaternion(-3.8452381e-16, 0.99995637, -0.009344256, 4.0295988e-16)
+bones/18/rotation = Quaternion(1.8791324e-08, 0.016310284, 0.9998671, 3.6133785e-09)
+bones/19/rotation = Quaternion(-2.5831651e-16, 0.9997236, -0.0235133, 2.4898867e-16)
 bones/20/rotation = Quaternion(-7.322891e-16, 0.70710677, -0.70710677, -2.829312e-16)
-bones/23/rotation = Quaternion(2.1926185e-08, 0.006331453, 0.99998, -1.3341399e-10)
-bones/24/rotation = Quaternion(-7.999935e-17, 0.99995637, -0.009344256, -9.339648e-16)
+bones/23/rotation = Quaternion(2.5060062e-08, 0.016310284, 0.9998671, -4.0116688e-09)
+bones/24/rotation = Quaternion(-5.6961086e-16, 0.9997236, -0.0235133, -2.4598377e-16)
 bones/25/rotation = Quaternion(-1.522828e-15, 0.70710677, -0.70710677, -8.07185e-16)
 
 [node name="spine_006" parent="metarig/GeneralSkeleton" index="0" unique_id=1653540270]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.3789812e-31, 0.9999903, -0.004391686, 3.1399348e-29, 0.004391686, 0.9999902, 9.6707895e-15, 1.7800965, 0.028086925)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -3.699297e-31, 0.99993056, -0.011781307, 3.1397473e-29, 0.011781308, 0.9999305, 9.6707895e-15, 1.778673, 0.0337825)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="metarig/GeneralSkeleton/spine_006" index="1" unique_id=961889202]
 remote_path = NodePath("../../../../headCol")
 
 [node name="hand_R" parent="metarig/GeneralSkeleton" index="1" unique_id=669927605]
-transform = Transform3D(0, 4.726462e-08, 0.99999994, 1, 2.142042e-08, 2.9802322e-08, 3.1664968e-08, 1, 4.284084e-08, -0.09529996, 1.4516516, 0.44771037)
+transform = Transform3D(1.5646219e-07, 5.4598786e-08, 1, 0.9999999, -9.033829e-08, -4.4703484e-08, 2.3283064e-08, 1, -2.1071173e-08, -0.0953, 1.4506267, 0.4519423)
 
 [node name="Cube_002" parent="metarig/GeneralSkeleton/hand_R" index="0" unique_id=974386258]
 visible = false
@@ -364,7 +364,7 @@ visible = false
 visible = false
 
 [node name="upper_arm_R" parent="metarig/GeneralSkeleton" index="2" unique_id=1710436471]
-transform = Transform3D(-0.014218062, 0.17816687, 0.9838977, 0.8895642, -0.44707385, 0.09381209, 0.45658913, 0.87657386, -0.15213425, -0.19529998, 1.5836245, -0.024176382)
+transform = Transform3D(-0.01568678, 0.17784297, 0.9839338, 0.8894148, -0.44712102, 0.09499557, 0.4568319, 0.8766155, -0.15116228, -0.19529998, 1.5825925, -0.019931264)
 
 [node name="Cube_008" parent="metarig/GeneralSkeleton/upper_arm_R" index="1" unique_id=1211982380]
 visible = false
@@ -382,7 +382,7 @@ update_rotation = false
 update_scale = false
 
 [node name="torso" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="4" unique_id=1525469665]
-transform = Transform3D(1, 0, 0, 0, 0.99999034, -0.0043917946, 0, 0.0043917946, 0.99999034, 3.9013474e-15, 1.2918118, 0.0008423347)
+transform = Transform3D(1, 0, 0, 0, 0.9999306, -0.011781417, 0, 0.011781417, 0.9999306, 3.9013474e-15, 1.2906029, 0.0029303208)
 bone_name = "Chest"
 bone_idx = 3
 
@@ -452,7 +452,7 @@ settings/0/invert = 0
 settings/0/additive = false
 
 [node name="ik_targets" type="Node3D" parent="." index="2" unique_id=507026232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5836245, -0.024176382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19529998, 1.5825925, -0.019931264)
 
 [node name="pole_r" type="Node3D" parent="ik_targets" index="0" unique_id=1711970916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.632, 0.1)
@@ -471,11 +471,11 @@ libraries/ = SubResource("AnimationLibrary_0cgij")
 speed_scale = 2.0
 
 [node name="headCol" type="CollisionShape3D" parent="." index="3" unique_id=636685667]
-transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -1.3789812e-31, 0.9999903, -0.004391686, 3.1399348e-29, 0.004391686, 0.9999902, 9.6707895e-15, 1.7800965, 0.028086925)
+transform = Transform3D(1, 7.018369e-37, -3.139965e-29, -3.699297e-31, 0.99993056, -0.011781307, 3.1397473e-29, 0.011781308, 0.9999305, 9.6707895e-15, 1.778673, 0.0337825)
 shape = SubResource("SphereShape3D_qxkbx")
 
 [node name="bodyCol" type="CollisionShape3D" parent="." index="4" unique_id=2102293165]
-transform = Transform3D(1, 0, 0, 0, 0.99999034, -0.0043917946, 0, 0.0043917946, 0.99999034, 3.9013474e-15, 1.2918118, 0.0008423347)
+transform = Transform3D(1, 0, 0, 0, 0.9999306, -0.011781417, 0, 0.011781417, 0.9999306, 3.9013474e-15, 1.2906029, 0.0029303208)
 shape = SubResource("CapsuleShape3D_4skoa")
 
 [node name="legCol" type="CollisionShape3D" parent="." index="5" unique_id=1214016759]

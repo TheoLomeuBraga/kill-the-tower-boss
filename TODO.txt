@@ -1,18 +1,16 @@
-add chekinpoints
-
-create 1 level (entrance)
-
-add end level screen
+make tab show level data
 
 create door models
 
 create textures
 
-polish level 1
+create 1 level (entrance)
 
 playtest
 
 add main menu
+
+implement save system
 
 add level select menu
 
@@ -30,8 +28,8 @@ add swim mechanics
 
 create 2 more levels
 
-create textures
-
-even more playtest
+create textures and models
 
 create music
+
+even more playtest

@@ -2,7 +2,7 @@ extends Area3D
 class_name CheckPointTriger
 
 var sync_data : Dictionary
-var is_mult_use : bool = false
+@export var is_mult_use : bool = false
 
 func on_body_entered(n:Node3D) -> void:
 	

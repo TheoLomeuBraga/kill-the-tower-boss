@@ -44,6 +44,8 @@ const main_scene_file : String = "res://main.tscn"
 func reload()-> void:
 	load_map(loaded_map.scene_file_path)
 
+var time_since_map_loaded : float = 0.0
+
 @export_file("*.tscn") var main_scene : String
 func _ready() -> void:
 	
@@ -59,3 +61,8 @@ func _ready() -> void:
 	
 	load_map(main_scene)
 	
+	time_since_map_loaded=0.0
+	
+
+func _process(delta: float) -> void:
+	time_since_map_loaded+=delta
