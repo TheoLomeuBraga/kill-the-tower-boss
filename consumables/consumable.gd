@@ -9,7 +9,7 @@ class_name Consumable
 		health = value
 		update_model()
 
-@export var ammon : int = 0
+var ammon : int = 0
 
 @export var type : GlobalEnums.AmmonType :
 	set(value):
@@ -17,7 +17,7 @@ class_name Consumable
 		
 		match type:
 			GlobalEnums.AmmonType.PISTOL:
-				ammon = 10
+				ammon = 20
 			GlobalEnums.AmmonType.RIFLE:
 				ammon = 5
 			GlobalEnums.AmmonType.SHOTGUN:

@@ -26,7 +26,7 @@ func use() -> void:
 		used = true
 		sync_data["used"] = true
 
-@export var bodys_in : Array[Node3D]
+var bodys_in : Array[Node3D]
 
 func on_body_entered(body:Node3D) -> void:
 	
