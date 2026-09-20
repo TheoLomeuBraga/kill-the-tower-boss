@@ -208,7 +208,7 @@ func toogle_noclip() -> void:
 func sway_camera_process(delta: float) -> void:
 	var sway_progress : float = -body.global_basis.x.dot(body.velocity.normalized())
 	sway_progress *= sway_multiplyer / 32.0
-	camera.rotation.z = move_toward(camera.rotation.z,sway_progress,(sway_multiplyer/2.0)*delta)
+	camera.rotation.z = move_toward(camera.rotation.z,sway_progress*sway_multiplyer,0.5*delta)
 
 func _physics_process(delta: float) -> void:
 	

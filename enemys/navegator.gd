@@ -17,6 +17,8 @@ var look_reference : Node3D = Node3D.new()
 var alt_is_navegating : bool = false
 var alt_target_position : Vector3
 
+
+
 @export_category("navegator")
 enum LookTarget {NONE,DIRECTION,TARGET}
 @export var look_target : LookTarget = LookTarget.DIRECTION
@@ -76,7 +78,6 @@ func process_look_dir(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	
 	
 	
 	if is_navegating:

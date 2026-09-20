@@ -20,11 +20,12 @@ func end() -> void:
 	$time.text = tr("time: ") + str(get_time())
 	 
 
+var was_pressed : bool = true
 func _process(delta: float) -> void:
 	if not visible:
 		return
 	
-	if Input.is_anything_pressed():
+	if not was_pressed and Input.is_anything_pressed():
 		ended.emit()
 		visible = false
-	
+	was_pressed = Input.is_anything_pressed()

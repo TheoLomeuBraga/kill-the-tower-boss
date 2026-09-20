@@ -1,4 +1,6 @@
-create door models
+implement save system
+
+create alot of models
 
 create textures
 
@@ -6,19 +8,7 @@ create 1 level (entrance)
 
 playtest
 
-add main menu
-
-implement save system
-
-add level select menu
-
-add continue button
-
-add level select to add main menu
-
-add main menu save manager
-
-add main menu credits
+add main menu with: level select menu , continue button , credits
 
 more playtest
 

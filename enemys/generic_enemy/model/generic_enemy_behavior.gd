@@ -93,6 +93,7 @@ var state : Callable = process_idle :
 			state = value
 @onready var visualizer : RayCast3D = $"../muzle/player_visualizer"
 var is_player_visible : bool = false
+var is_active : bool = false
 func check_player_visibility() -> bool:
 	is_player_visible = false
 	
@@ -101,6 +102,7 @@ func check_player_visibility() -> bool:
 		visualizer.force_raycast_update()
 		if visualizer.is_colliding() and visualizer.get_collider() == Player.player:
 			is_player_visible = true
+			is_active=true
 	
 	return is_player_visible
 
@@ -127,7 +129,7 @@ func on_death() -> void:
 
 @onready var stats : Stats = $"../Stats"
 
-var sniper_timer : Timer
+var shot_timer : Timer
 var view_timer : Timer
 func _ready() -> void:
 	ammon_on_mag = guns[body.current_gun_type].ammon_capacity
@@ -142,8 +144,8 @@ func _ready() -> void:
 	view_timer.wait_time = rng.randf_range(0.4,0.8)
 	view_timer.timeout.connect(check_player_visibility)
 	
-	sniper_timer = Timer.new()
-	add_child(sniper_timer)
+	shot_timer = Timer.new()
+	add_child(shot_timer)
 	
 	stats.dead.connect(on_death)
 	
@@ -165,6 +167,48 @@ func process_folow_player(delta:float) -> void:
 		animation_tree.set("parameters/Transition/transition_request","idle")
 	
 	state = calculate_next_state()
+
+const zigzag_time : float = 1.0
+var zigzag_time_left : float = 0.0
+var zigzag_dir : Vector3
+
+func process_start_zigzag(delta:float) -> void:
+	zigzag_time_left = zigzag_time
+	state = process_folow_player_zigzag
+	navegator.set_physics_process(false)
+	
+	animation_tree.set("parameters/Transition/transition_request","walk")
+	
+	var player_distance : float = body.global_position.distance_squared_to(Player.player.global_position)
+	var player_basis : Basis = Basis().looking_at(-Player.player.global_position.direction_to(body.global_position) ,Vector3.UP,true)
+	var player_relative_pos : Vector3 = (player_basis.x * rng.randf_range(-1,1) * clamp(player_distance/4.0,-10,10)) + Player.player.global_position
+	
+	zigzag_dir = body.global_position.direction_to(player_relative_pos)
+	zigzag_dir.y=0.0
+	zigzag_dir=zigzag_dir.normalized()
+
+func process_folow_player_zigzag(delta:float) -> void:
+	
+	navegator.target_position = body.global_position + zigzag_dir
+	navegator.process_look_dir(delta)
+	
+	
+	if body.is_on_wall():
+		zigzag_dir = zigzag_dir.bounce(body.get_wall_normal())
+		zigzag_dir.y=0.0
+		zigzag_dir=zigzag_dir.normalized()
+	
+	body.velocity = zigzag_dir * navegator.speed
+	body.move_and_slide()
+	
+	
+	
+	if zigzag_time_left<=0.0:
+		animation_tree.set("parameters/Transition/transition_request","idle")
+		navegator.set_physics_process(true)
+		state = calculate_next_state()
+	
+	zigzag_time_left -= delta
 
 func process_folow_triger(delta:float) -> void:
 	
@@ -217,8 +261,8 @@ func process_sniper(delta:float) -> void:
 	
 	$"../muzle/lazer".visible = true
 	
-	sniper_timer.start(1.0)
-	await sniper_timer.timeout
+	shot_timer.start(1.0)
+	await shot_timer.timeout
 	
 	if stats.health == 0:
 		return
@@ -227,10 +271,25 @@ func process_sniper(delta:float) -> void:
 	
 	$"../muzle/lazer".visible = false
 	
-	sniper_timer.start(1.0)
-	await sniper_timer.timeout
+	shot_timer.start(1.0)
+	await shot_timer.timeout
 	
 	sniping = false
+	
+	state = calculate_next_state()
+	
+	
+
+func start_process_shot(delta:float) -> void:
+	state = process_shot
+	
+	shot_timer.start(3.0)
+	await shot_timer.timeout
+	
+	if state == death_state:
+		return
+	
+	cool_down = guns[body.current_gun_type].fire_rate
 	
 	state = calculate_next_state()
 	
@@ -246,7 +305,7 @@ func process_shot(delta:float) -> void:
 	navegator.look_target =  Navegator.LookTarget.TARGET
 	animation_tree.set("parameters/Transition/transition_request","idle")
 	
-	state = calculate_next_state()
+	#state = calculate_next_state()
 	
 	if cool_down <= 0 and reload_time <= 0:
 		shot()
@@ -267,7 +326,7 @@ func process_idle(delta:float) -> void:
 	
 	
 	
-	if is_player_visible:
+	if is_active:
 		state = calculate_next_state()
 		if not is_some_one_playing_audio:
 			$"../sfx/target".play()
@@ -286,7 +345,23 @@ func calculate_next_state() -> Callable:
 	if not Player.player:
 		return process_idle
 	
+	if not is_active:
+		return process_idle
+	
 	var distance : float = body.global_position.distance_to(Player.player.global_position)
+	
+	if not is_player_visible:
+		return process_folow_player
+	elif is_player_visible or distance > desired_distances[body.current_gun_type].y:
+		if state == process_shot or state == process_sniper:
+			return process_start_zigzag
+		else:
+			if body.current_gun_type != GenericEnemyModel.GunType.SNIPER:
+				return start_process_shot
+			else:
+				return process_sniper
+	
+	return process_idle
 	
 	if not is_player_visible or state == process_folow_player and distance > desired_distances[body.current_gun_type].y:
 		return process_folow_player

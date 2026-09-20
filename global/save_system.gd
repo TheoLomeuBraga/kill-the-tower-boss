@@ -5,7 +5,13 @@ signal on_load_game()
 
 var save_name : String = "save1"
 
-var game_data : Dictionary = {}
+var game_data : Dictionary = {
+	"current_level": "",
+	"inventory": [],
+	"ammon": {},
+	"unlocked_levels": [],
+	
+}
 
 func get_save_name(id:int) -> String:
 	return "user://saves/" + save_name + ".save" + str(id)
