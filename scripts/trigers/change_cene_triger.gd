@@ -8,6 +8,9 @@ func on_body_entered(n:Node3D) -> void:
 	if not n is Player:
 		return
 	
+	SaveSystem.save_game()
+	SaveSystem.game_data["current_level"] = next_scene
+	
 	EndMissionScreen.end()
 	await EndMissionScreen.ended
 	

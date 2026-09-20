@@ -26,11 +26,11 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.NONE: 0,
-	GlobalEnums.AmmonType.PISTOL: 0,
-	GlobalEnums.AmmonType.RIFLE: 0,
-	GlobalEnums.AmmonType.SHOTGUN: 0,
-	GlobalEnums.AmmonType.ENERGY: 0,
-	GlobalEnums.AmmonType.EXPLOSIVE: 0,
+	GlobalEnums.AmmonType.PISTOL: 40,
+	GlobalEnums.AmmonType.RIFLE: 5,
+	GlobalEnums.AmmonType.SHOTGUN: 6,
+	GlobalEnums.AmmonType.ENERGY: 20,
+	GlobalEnums.AmmonType.EXPLOSIVE: 3,
 }
 
 
@@ -206,7 +206,25 @@ var reload_audio_player : AudioStreamPlayer
 var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
+func save_data() -> void:
+	SaveSystem.game_data["inventory"] = inventory.duplicate()
+	SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
+
+func load_player() -> void:
+	if SaveSystem.game_data.has("inventory"):
+		for k in SaveSystem.game_data["inventory"]:
+			inventory[k] = SaveSystem.game_data["inventory"][k]
+	
+	if SaveSystem.game_data.has("ammon"):
+		for k in SaveSystem.game_data["ammon"]:
+			ammon_inventory[k] = max(SaveSystem.game_data["ammon"][k],ammon_inventory[k])
+	
+
 func _ready() -> void:
+	
+	SaveSystem.on_save_game.connect(save_data)
+	
+	load_player() 
 	
 	sync_inventory()
 	

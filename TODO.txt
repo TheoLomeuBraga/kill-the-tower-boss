@@ -1,4 +1,4 @@
-implement save system
+add main menu with: level select menu , continue button , credits
 
 create alot of models
 
@@ -7,8 +7,6 @@ create textures
 create 1 level (entrance)
 
 playtest
-
-add main menu with: level select menu , continue button , credits
 
 more playtest
 
