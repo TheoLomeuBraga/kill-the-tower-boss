@@ -12,9 +12,7 @@ create 1 level (entrance)
 
 playtest
 
-more playtest
-
-add swim mechanics
+improve main menu background
 
 create 2 more levels
 
@@ -22,4 +20,4 @@ create textures and models
 
 create music
 
-even more playtest
+more playtest
