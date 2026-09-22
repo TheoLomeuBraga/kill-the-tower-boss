@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://2gwvf7fn5urb"]
+
+[ext_resource type="Script" uid="uid://umwfstclhk46" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
+[ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="2_vu5tu"]
+[ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="3_ml8bw"]
+[ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="4_ml8bw"]
+[ext_resource type="PackedScene" uid="uid://c6maixkr7kd8f" path="res://menus/settings/settings_menu.tscn" id="5_oic2i"]
+
+[sub_resource type="Environment" id="Environment_er5qh"]
+background_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+tonemap_mode = 2
+
+[node name="MainMenu" type="Control" unique_id=1154467597]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbn2l")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=461550356]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vu5tu")
+
+[node name="Label" type="Label" parent="." unique_id=1736111217]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022000002
+anchor_top = 0.032
+anchor_right = 0.97800004
+anchor_bottom = 0.32200003
+offset_left = -0.20000076
+offset_top = 0.19999981
+offset_right = 0.19995117
+offset_bottom = 0.19998169
+theme_override_fonts/font = ExtResource("3_ml8bw")
+theme_override_font_sizes/font_size = 50
+text = "kill the tower boss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=17388009]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252
+anchor_top = 0.43500003
+anchor_right = 0.748
+anchor_bottom = 0.85
+offset_left = -0.19999695
+offset_top = -26.000015
+offset_right = 0.19998169
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="continue" type="Button" parent="VBoxContainer" unique_id=1527000639]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+disabled = true
+text = "continue"
+
+[node name="new_game" type="Button" parent="VBoxContainer" unique_id=1528597533]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+text = "new game"
+
+[node name="load_game" type="Button" parent="VBoxContainer" unique_id=1160650335]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+disabled = true
+text = "load game"
+
+[node name="settings" type="Button" parent="VBoxContainer" unique_id=607863354]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+text = "settings"
+
+[node name="credits" type="Button" parent="VBoxContainer" unique_id=695031490]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+disabled = true
+text = "credits"
+
+[node name="quit_game" type="Button" parent="VBoxContainer" unique_id=1151506907]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+text = "quit game"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=193087075]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9254902, 0.5647059, 0, 1)
+
+[node name="SettingsMenu" parent="ColorRect" unique_id=1210625486 instance=ExtResource("5_oic2i")]
+layout_mode = 1
+
+[node name="Node3D" type="Node3D" parent="." unique_id=238357987]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=875913750]
+environment = SubResource("Environment_er5qh")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1464157455]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, -1, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D" unique_id=2000481125]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D" unique_id=1439147678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4)
+size = Vector3(2, 4, 2)

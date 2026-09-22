@@ -23,7 +23,7 @@ expand_margin_bottom = 8.0
 [node name="SceneManager" type="Node" unique_id=678979235]
 script = ExtResource("1_vlahm")
 load_image = ExtResource("2_g063o")
-main_scene = "uid://dnkl3qr068ix6"
+main_scene = "uid://2gwvf7fn5urb"
 
 [node name="Control" type="Control" parent="." unique_id=2016798287]
 visible = false

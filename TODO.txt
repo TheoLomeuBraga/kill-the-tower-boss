@@ -1,8 +1,12 @@
-add main menu with: level select menu , continue button , credits
+add main menu creditis
 
-create alot of models
+add main menu continue
+
+add main menu load (save select)
 
 create textures
+
+create alot of models
 
 create 1 level (entrance)
 
