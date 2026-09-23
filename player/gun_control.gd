@@ -27,14 +27,11 @@ const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 var ammon_inventory : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.NONE: 0,
 	GlobalEnums.AmmonType.PISTOL: 40,
-	GlobalEnums.AmmonType.RIFLE: 5,
+	GlobalEnums.AmmonType.RIFLE: 0,
 	GlobalEnums.AmmonType.SHOTGUN: 6,
 	GlobalEnums.AmmonType.ENERGY: 20,
-	GlobalEnums.AmmonType.EXPLOSIVE: 3,
+	GlobalEnums.AmmonType.EXPLOSIVE: 0,
 }
-
-
-		
 
 var ammon_on_mag : Dictionary[String,int]
 func set_ammon_on_mag(gun_info : GunInfo,amount:int) -> void:
@@ -44,56 +41,6 @@ func get_ammon_on_mag(gun_info : GunInfo) -> int:
 	if not ammon_on_mag.has(gun_info.name):
 		set_ammon_on_mag(gun_info,gun_info.ammon_capacity)
 	return ammon_on_mag[gun_info.name]
-
-var sync_data:Dictionary = {}
-
-func on_checkin_point() -> void:
-	var cg : int = 0
-	
-	if current_gun:
-		for i : int in inventory_order.size():
-			if current_gun == inventory_order[i]:
-				cg = i
-				break
-	
-	sync_data["start_gun"] = cg
-	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
-	#sync_data["inventory"] = inventory.duplicate()
-	sync_data["inventory"] = {}
-	for g:GunInfo in inventory:
-		sync_data["inventory"][g.name] = inventory[g]
-	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
-	
-
-func sync_inventory() -> void:
-	
-	sync_data["start_gun"] = start_gun
-	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
-	
-	sync_data["inventory"] = {}
-	for g:GunInfo in inventory:
-		sync_data["inventory"][g.name] = inventory[g]
-	
-	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
-	
-	
-	if not PersistenceManager.has(self):
-		PersistenceManager.register(self,sync_data)
-	else:
-		sync_data = PersistenceManager.get_ref(self)
-	
-	ammon_inventory = sync_data["ammon_inventory"]
-	
-	var new_inventory : Dictionary = sync_data["inventory"]
-	for g:GunInfo in inventory:
-		if new_inventory.has(g.name):
-			inventory[g] = new_inventory[g.name]
-	
-	PersistenceManager.on_save_state.connect(on_checkin_point)
-
-
-
-
 
 func can_add_ammon(type:GlobalEnums.AmmonType) -> bool:
 	return ammon_inventory[type] < max_ammon[type]
@@ -245,8 +192,6 @@ func _ready() -> void:
 	
 	SaveSystem.on_save_game.connect(save_data)
 	load_player() 
-	
-	sync_inventory()
 	
 	for g:GunInfo in inventory_order:
 		if not inventory.has(g):

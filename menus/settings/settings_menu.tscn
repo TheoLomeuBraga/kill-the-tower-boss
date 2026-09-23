@@ -85,10 +85,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_qxkbx")
 
-[node name="close" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1828116570]
+[node name="done" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1828116570]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "close"
+text = "done"
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1211110023]
 layout_mode = 2

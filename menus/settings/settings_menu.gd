@@ -4,7 +4,7 @@ class_name SettingsMenu
 @onready var title : Label = $VBoxContainer/Label
 
 @onready var options_container : Node = $VBoxContainer/Control/Panel/ScrollContainer/VBoxContainer
-@onready var close_button : Button = $VBoxContainer/HBoxContainer/close
+@onready var done_button : Button = $VBoxContainer/HBoxContainer/done
 @onready var reset_button : Button = $VBoxContainer/HBoxContainer/reset
 
 var options : Array[SettingOption]
@@ -24,10 +24,10 @@ enum SettingsTypes {MENU,KEYBOARD,CONTROLLER,VIDEO,AUDIO,KEYBOARD_BINDS,CONTROLL
 func set_close_func(f:Callable)->void:
 	focus_exited.get_connections()
 	
-	for c:Dictionary in close_button.pressed.get_connections():
-		close_button.pressed.disconnect(c["callable"])
+	for c:Dictionary in done_button.pressed.get_connections():
+		done_button.pressed.disconnect(c["callable"])
 	
-	close_button.pressed.connect(f)
+	done_button.pressed.connect(f)
 
 func set_reset_func(f:Callable)->void:
 	focus_exited.get_connections()
@@ -195,4 +195,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if visible and Input.is_action_just_pressed("ui_cancel"):
-		close_button.pressed.emit()
+		done_button.pressed.emit()

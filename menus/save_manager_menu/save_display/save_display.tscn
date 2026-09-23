@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://iw2cmtwd5c4w"]
+
+[ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="1_lvka5"]
+
+[node name="SaveDisplay" type="HBoxContainer" unique_id=291119143]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1944539625]
+layout_mode = 2
+texture = ExtResource("1_lvka5")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=204577182]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=618306475]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "save1"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1118887979]
+layout_mode = 2
+text = "12-02-2002"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1965793588]
+layout_mode = 2
+
+[node name="load" type="Button" parent="HBoxContainer" unique_id=381557351]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "load"
+
+[node name="delete" type="Button" parent="HBoxContainer" unique_id=27779559]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"

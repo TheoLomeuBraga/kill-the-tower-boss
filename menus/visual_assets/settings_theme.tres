@@ -3,6 +3,11 @@
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="1_cwaky"]
 [ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="2_eurhk"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ktba"]
+bg_color = Color(0.1764706, 0.1764706, 0.1764706, 0.37254903)
+skew = Vector2(0.4, 0)
+border_color = Color(0, 1, 0, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7fes"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 skew = Vector2(0.4, 0)
@@ -101,6 +106,7 @@ corner_radius_bottom_left = 2
 
 [resource]
 Button/fonts/font = ExtResource("1_cwaky")
+Button/styles/disabled = SubResource("StyleBoxFlat_5ktba")
 Button/styles/focus = SubResource("StyleBoxFlat_p7fes")
 Button/styles/hover = SubResource("StyleBoxFlat_eurhk")
 Button/styles/normal = SubResource("StyleBoxFlat_ywr7u")

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://b3wethnl3u8j3"]
+
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_33uwb"]
+[ext_resource type="PackedScene" uid="uid://iw2cmtwd5c4w" path="res://menus/save_manager_menu/save_display/save_display.tscn" id="2_e7dwk"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_33uwb"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_e7dwk"]
+color = Color(0, 0, 0, 0)
+
+[node name="SaveManagerMenu" type="Control" unique_id=151196667]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_33uwb")
+
+[node name="Panel" type="Panel" parent="." unique_id=547392582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=904849800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1028857956]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_33uwb")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=559724923]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "saves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1799839838]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Control" unique_id=141672319]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.043
+anchor_right = 0.97400004
+anchor_bottom = 0.97400004
+offset_left = 0.052160263
+offset_top = -0.062000275
+offset_right = -0.05218506
+offset_bottom = 0.083984375
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Control/Panel" unique_id=1735948290]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/Panel/ScrollContainer" unique_id=1112391060]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SaveDisplay" parent="VBoxContainer/Control/Panel/ScrollContainer/VBoxContainer" unique_id=291119143 instance=ExtResource("2_e7dwk")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1620419111]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=2127629585]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_e7dwk")
+
+[node name="back" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1424270866]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "back"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=460856864]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_e7dwk")
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=148347409]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_33uwb")

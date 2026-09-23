@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://2gwvf7fn5urb"]
 
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_er5qh"]
 [ext_resource type="Script" uid="uid://umwfstclhk46" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
 [ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="2_vu5tu"]
 [ext_resource type="FontFile" uid="uid://dibdffhvfs4xp" path="res://fonts/Big Bangs Italic.ttf" id="3_ml8bw"]
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="4_ml8bw"]
 [ext_resource type="PackedScene" uid="uid://c6maixkr7kd8f" path="res://menus/settings/settings_menu.tscn" id="5_oic2i"]
+[ext_resource type="PackedScene" uid="uid://b3wethnl3u8j3" path="res://menus/save_manager_menu/save_manager_menu.tscn" id="7_f7ts8"]
 
 [sub_resource type="Environment" id="Environment_er5qh"]
 background_mode = 2
@@ -21,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_er5qh")
 script = ExtResource("1_xbn2l")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=461550356]
@@ -105,6 +108,19 @@ grow_vertical = 2
 color = Color(0.9254902, 0.5647059, 0, 1)
 
 [node name="SettingsMenu" parent="ColorRect" unique_id=1210625486 instance=ExtResource("5_oic2i")]
+layout_mode = 1
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=976277609]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27132577, 0.095799096, 0.6621804, 1)
+
+[node name="SaveManagerMenu" parent="ColorRect2" unique_id=151196667 instance=ExtResource("7_f7ts8")]
 layout_mode = 1
 
 [node name="Node3D" type="Node3D" parent="." unique_id=238357987]
