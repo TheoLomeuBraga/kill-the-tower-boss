@@ -1,6 +1,11 @@
 extends Control
 
 func new_game() -> void:
+	
+	#TODO: update to suport multiple saves
+	PersistenceManager.clean()
+	SaveSystem.clean()
+	
 	SceneManager.load_map("res://levels/level_1/level_1.tscn")
 
 func open_settings() -> void:

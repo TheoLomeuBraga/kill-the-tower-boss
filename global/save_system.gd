@@ -9,6 +9,7 @@ var game_data : Dictionary = {
 	"current_level": "",
 	"inventory": {},
 	"ammon": {},
+	"persistence_data": {},
 	"unlocked_levels": [],
 	"unix_time_creation": null,
 	"unix_time_last_save": null,
@@ -19,10 +20,11 @@ func get_save_name(file_name:String,id:int) -> String:
 
 func save_game() -> void:
 	
-	if not game_data["unix_time_creation"]:
+	if not game_data.has("unix_time_creation"):
 		game_data["unix_time_creation"] = Time.get_unix_time_from_system()
 	game_data["unix_time_last_save"] = Time.get_unix_time_from_system()
 	
+	game_data["persistence_data"] = PersistenceManager.state_backup.duplicate()
 	
 	on_save_game.emit()
 	
@@ -58,8 +60,10 @@ func load_save(file_name:String) -> Variant:
 	if not save:
 		save = {}
 	
-	
 	if save:
+		if save.has("persistence_data"):
+			PersistenceManager.state = save["persistence_data"].duplicate()
+			PersistenceManager.state_backup = save["persistence_data"].duplicate()
 		return save
 	
 	return null

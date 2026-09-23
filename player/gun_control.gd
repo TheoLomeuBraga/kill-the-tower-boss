@@ -58,7 +58,10 @@ func on_checkin_point() -> void:
 	
 	sync_data["start_gun"] = cg
 	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
-	sync_data["inventory"] = inventory.duplicate()
+	#sync_data["inventory"] = inventory.duplicate()
+	sync_data["inventory"] = {}
+	for g:GunInfo in inventory:
+		sync_data["inventory"][g.name] = inventory[g]
 	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
 	
 
@@ -66,7 +69,11 @@ func sync_inventory() -> void:
 	
 	sync_data["start_gun"] = start_gun
 	sync_data["ammon_inventory"] = ammon_inventory.duplicate()
-	sync_data["inventory"] = inventory.duplicate()
+	
+	sync_data["inventory"] = {}
+	for g:GunInfo in inventory:
+		sync_data["inventory"][g.name] = inventory[g]
+	
 	sync_data["ammon_on_mag"] = ammon_on_mag.duplicate()
 	
 	
@@ -76,9 +83,11 @@ func sync_inventory() -> void:
 		sync_data = PersistenceManager.get_ref(self)
 	
 	ammon_inventory = sync_data["ammon_inventory"]
-	inventory = sync_data["inventory"]
-	ammon_on_mag = sync_data["ammon_on_mag"]
-	start_gun = sync_data["start_gun"]
+	
+	var new_inventory : Dictionary = sync_data["inventory"]
+	for g:GunInfo in inventory:
+		if new_inventory.has(g.name):
+			inventory[g] = new_inventory[g.name]
 	
 	PersistenceManager.on_save_state.connect(on_checkin_point)
 
@@ -206,6 +215,7 @@ var reload_audio_player : AudioStreamPlayer
 var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
+
 func save_data() -> void:
 	
 	SaveSystem.game_data["inventory"] = {}
@@ -218,8 +228,6 @@ func save_data() -> void:
 func load_player() -> void:
 	if SaveSystem.game_data.has("inventory"):
 		var new_inventory : Dictionary = SaveSystem.game_data["inventory"]
-		
-		
 		for g:GunInfo in inventory:
 			if new_inventory.has(g.name):
 				inventory[g] = new_inventory[g.name]
@@ -227,7 +235,7 @@ func load_player() -> void:
 	if SaveSystem.game_data.has("ammon"):
 		for k in SaveSystem.game_data["ammon"]:
 			ammon_inventory[k] = max(SaveSystem.game_data["ammon"][k],ammon_inventory[k])
-	
+
 
 func _ready() -> void:
 	
@@ -236,7 +244,6 @@ func _ready() -> void:
 			inventory[gi] = false
 	
 	SaveSystem.on_save_game.connect(save_data)
-	
 	load_player() 
 	
 	sync_inventory()
