@@ -207,14 +207,23 @@ var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
 func save_data() -> void:
-	#SaveSystem.game_data["inventory"] = inventory.duplicate()
-	#SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
-	pass
+	
+	SaveSystem.game_data["inventory"] = {}
+	for g:GunInfo in inventory:
+		SaveSystem.game_data["inventory"][g.name] = inventory[g]
+	
+	SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
+	
 
 func load_player() -> void:
 	if SaveSystem.game_data.has("inventory"):
-		for k in SaveSystem.game_data["inventory"]:
-			inventory[k] = SaveSystem.game_data["inventory"][k]
+		var new_inventory : Dictionary = SaveSystem.game_data["inventory"]
+		
+		
+		for g:GunInfo in inventory:
+			print(g.name)
+			if new_inventory.has(g.name):
+				inventory[g] = new_inventory[g.name]
 	
 	if SaveSystem.game_data.has("ammon"):
 		for k in SaveSystem.game_data["ammon"]:
@@ -222,6 +231,10 @@ func load_player() -> void:
 	
 
 func _ready() -> void:
+	
+	for gi:GunInfo in inventory_order:
+		if not inventory.has(gi):
+			inventory[gi] = false
 	
 	SaveSystem.on_save_game.connect(save_data)
 	

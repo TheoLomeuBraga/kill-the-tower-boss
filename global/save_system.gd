@@ -7,7 +7,7 @@ var save_name : String = "save1"
 
 var game_data : Dictionary = {
 	"current_level": "",
-	"inventory": [],
+	"inventory": {},
 	"ammon": {},
 	"unlocked_levels": [],
 	"unix_time_creation": null,

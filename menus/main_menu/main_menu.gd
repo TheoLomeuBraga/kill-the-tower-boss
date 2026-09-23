@@ -25,9 +25,6 @@ func continue_game() -> void:
 	
 	
 	
-	if SaveSystem.game_data.has("current_level"):
-		print("A: ",SaveSystem.game_data["current_level"])
-	
 	if SaveSystem.game_data.has("current_level") and SaveSystem.game_data["current_level"] != "":
 		SceneManager.load_map(SaveSystem.game_data["current_level"])
 	

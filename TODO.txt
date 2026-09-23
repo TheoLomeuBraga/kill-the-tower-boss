@@ -1,5 +1,9 @@
 fix player save and load
 
+add back to main menu on pause and on gameover
+
+add quit game on gameover
+
 add main menu load (save select)
 
 create textures
