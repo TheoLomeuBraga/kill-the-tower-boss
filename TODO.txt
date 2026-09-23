@@ -1,23 +1,25 @@
-add main menu creditis
-
-add main menu continue
+fix player save and load
 
 add main menu load (save select)
 
 create textures
 
-create alot of models
+create alot of props
 
 create 1 level (entrance)
 
 playtest
 
-improve main menu background
-
 create 2 more levels
+
+add main menu level select
 
 create textures and models
 
 create music
+
+add main menu creditis
+
+improve main menu background
 
 more playtest

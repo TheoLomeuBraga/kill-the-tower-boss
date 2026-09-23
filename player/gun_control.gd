@@ -207,8 +207,9 @@ var charge_shot_time : float = 0.0
 var charge_audio_player : AudioStreamPlayer
 
 func save_data() -> void:
-	SaveSystem.game_data["inventory"] = inventory.duplicate()
-	SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
+	#SaveSystem.game_data["inventory"] = inventory.duplicate()
+	#SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
+	pass
 
 func load_player() -> void:
 	if SaveSystem.game_data.has("inventory"):

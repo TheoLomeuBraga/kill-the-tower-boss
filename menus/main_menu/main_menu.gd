@@ -16,14 +16,40 @@ func on_close_settings() -> void:
 	
 	$ColorRect.visible = false
 	$VBoxContainer/continue.grab_focus()
+
+var save_list : Array[String]
+
+func continue_game() -> void:
+	SaveSystem.save_name = save_list[0]
+	SaveSystem.load_game()
+	
+	
+	
+	if SaveSystem.game_data.has("current_level"):
+		print("A: ",SaveSystem.game_data["current_level"])
+	
+	if SaveSystem.game_data.has("current_level") and SaveSystem.game_data["current_level"] != "":
+		SceneManager.load_map(SaveSystem.game_data["current_level"])
 	
 
 func _ready() -> void:
 	
-	$VBoxContainer/continue.grab_focus()
+	save_list = SaveSystem.get_save_list()
+	
+	$VBoxContainer/continue.pressed.connect(continue_game)
+	
+	if save_list.size() > 0:
+		$VBoxContainer/continue.grab_focus()
+	else:
+		$VBoxContainer/continue.disabled = true
+		$VBoxContainer/new_game.grab_focus()
+	
 	
 	
 	$VBoxContainer/new_game.pressed.connect(new_game)
+	
+	
+	
 	
 	$VBoxContainer/settings.pressed.connect(open_settings)
 	$ColorRect/SettingsMenu.on_close.connect(on_close_settings)

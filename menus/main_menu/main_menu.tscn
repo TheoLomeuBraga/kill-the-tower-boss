@@ -35,14 +35,8 @@ texture = ExtResource("2_vu5tu")
 [node name="Label" type="Label" parent="." unique_id=1736111217]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.022000002
-anchor_top = 0.032
-anchor_right = 0.97800004
-anchor_bottom = 0.32200003
-offset_left = -0.20000076
-offset_top = 0.19999981
-offset_right = 0.19995117
-offset_bottom = 0.19998169
+anchor_right = 1.0
+anchor_bottom = 0.23500001
 theme_override_fonts/font = ExtResource("3_ml8bw")
 theme_override_font_sizes/font_size = 50
 text = "kill the tower boss"
@@ -53,20 +47,18 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
-anchor_top = 0.43500003
+anchor_top = 0.23500001
 anchor_right = 0.748
-anchor_bottom = 0.85
+anchor_bottom = 0.961
 offset_left = -0.19999695
-offset_top = -26.000015
 offset_right = 0.19998169
-offset_bottom = 26.0
+offset_bottom = 0.099975586
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="continue" type="Button" parent="VBoxContainer" unique_id=1527000639]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ml8bw")
-disabled = true
 text = "continue"
 
 [node name="new_game" type="Button" parent="VBoxContainer" unique_id=1528597533]
@@ -79,6 +71,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ml8bw")
 disabled = true
 text = "load game"
+
+[node name="level_select" type="Button" parent="VBoxContainer" unique_id=165980223]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ml8bw")
+disabled = true
+text = "level select"
 
 [node name="settings" type="Button" parent="VBoxContainer" unique_id=607863354]
 layout_mode = 2
@@ -110,6 +108,7 @@ color = Color(0.9254902, 0.5647059, 0, 1)
 layout_mode = 1
 
 [node name="Node3D" type="Node3D" parent="." unique_id=238357987]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=875913750]
 environment = SubResource("Environment_er5qh")
