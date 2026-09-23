@@ -69,6 +69,10 @@ text = "load chekpoint"
 layout_mode = 2
 text = "settings"
 
+[node name="main_menu" type="Button" parent="Panel/VBoxContainer" unique_id=658197274]
+layout_mode = 2
+text = "main menu"
+
 [node name="quit_game" type="Button" parent="Panel/VBoxContainer" unique_id=237807483]
 layout_mode = 2
 text = "quit game"

@@ -41,6 +41,11 @@ func load_map(map_name:String) -> void:
 
 const main_scene_file : String = "res://main.tscn"
 
+func go_to_main_menu() -> void:
+	get_tree().paused = false
+	SceneManager.load_map("res://menus/main_menu/main_menu.tscn")
+	PersistenceManager.clean()
+
 func reload()-> void:
 	load_map(loaded_map.scene_file_path)
 

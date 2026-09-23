@@ -38,6 +38,9 @@ func load_chekpoint() -> void:
 	SceneManager.reload()
 	PersistenceManager.load_state()
 
+
+
+
 func _ready() -> void:
 	visible = false
 	
@@ -45,6 +48,8 @@ func _ready() -> void:
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.visible=true)
 	$Panel/VBoxContainer/load_chekpoint.pressed.connect(load_chekpoint)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.focus())
+	
+	$Panel/VBoxContainer/main_menu.pressed.connect(SceneManager.go_to_main_menu)
 	
 	$SettingsMenu.on_close.connect(func():$SettingsMenu.visible=false)
 	$SettingsMenu.on_close.connect(focus)

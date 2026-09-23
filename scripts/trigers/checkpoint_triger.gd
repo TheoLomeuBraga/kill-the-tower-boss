@@ -13,6 +13,8 @@ func on_body_entered(n:Node3D) -> void:
 		
 		await get_tree().process_frame
 		
+		#TODO: save progress
+		
 		if not is_mult_use:
 			sync_data["used"] = true
 			queue_free()

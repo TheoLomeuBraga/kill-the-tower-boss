@@ -221,7 +221,6 @@ func load_player() -> void:
 		
 		
 		for g:GunInfo in inventory:
-			print(g.name)
 			if new_inventory.has(g.name):
 				inventory[g] = new_inventory[g.name]
 	

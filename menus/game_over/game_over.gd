@@ -33,7 +33,7 @@ func gameover() -> void:
 	change_mouse = true
 	gameover_vfx_progress = 0.0
 	
-	$respawn.grab_focus()
+	$VBoxContainer/respawn.grab_focus()
 	
 
 func _process(delta: float) -> void:
@@ -51,5 +51,13 @@ func respawn() -> void:
 	var idx : int = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_linear(idx,float(SettingsManager.settings["audio_volume"])/100.0)
 
+
+func go_to_main_menu() -> void:
+	SceneManager.load_map("res://menus/main_menu/main_menu.tscn")
+
 func _ready() -> void:
 	visible = false
+	
+	$VBoxContainer/respawn.pressed.connect(respawn)
+	$VBoxContainer/main_menu.pressed.connect(SceneManager.go_to_main_menu)
+	$VBoxContainer/quit_game.pressed.connect(get_tree().quit)
