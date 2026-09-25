@@ -6,6 +6,7 @@ func new_game() -> void:
 	PersistenceManager.clean()
 	SaveSystem.clean()
 	
+	SaveSystem.game_data["current_level"] = "res://levels/level_1/level_1.tscn"
 	SceneManager.load_map("res://levels/level_1/level_1.tscn")
 
 func open_settings() -> void:

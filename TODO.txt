@@ -1,3 +1,5 @@
+change SaveSystem to SaveManager
+
 make chekinpoint save life
 
 create textures
