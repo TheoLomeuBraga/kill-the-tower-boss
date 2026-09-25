@@ -40,6 +40,8 @@ func delete_game(save:String) -> void:
 	confirm_save_deletion = false
 	sdcs.confirmation.connect(func(v):confirm_save_deletion=v)
 	
+	sdcs.save_name = save
+	
 	await sdcs.confirmation
 	
 	visible = true
