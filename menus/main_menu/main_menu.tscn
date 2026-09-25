@@ -72,7 +72,6 @@ text = "new game"
 [node name="load_game" type="Button" parent="VBoxContainer" unique_id=1160650335]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ml8bw")
-disabled = true
 text = "load game"
 
 [node name="level_select" type="Button" parent="VBoxContainer" unique_id=165980223]

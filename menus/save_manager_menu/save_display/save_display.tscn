@@ -1,14 +1,61 @@
 [gd_scene format=3 uid="uid://iw2cmtwd5c4w"]
 
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_8we7p"]
+[ext_resource type="Script" uid="uid://dejs3q0m3p0fl" path="res://menus/save_manager_menu/save_display/save_display.gd" id="1_cjrsp"]
 [ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="1_lvka5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8we7p"]
+bg_color = Color(0.7227703, 0, 0.09518748, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4498148, 0.044220775, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0psc"]
+bg_color = Color(0.7227703, 0, 0.09518748, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4498148, 0.044220775, 0, 1)
+shadow_color = Color(1, 0, 0, 0.6)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j1dy"]
+bg_color = Color(0.7227703, 0, 0.09518748, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4498148, 0.044220775, 0, 1)
+shadow_color = Color(1, 0, 0, 0.6)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s3pc"]
+bg_color = Color(0.7227703, 0, 0.09518748, 1)
+skew = Vector2(0.4, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.043137256, 0, 1)
+shadow_color = Color(1, 0, 0, 0.6)
+shadow_size = 8
+
 [node name="SaveDisplay" type="HBoxContainer" unique_id=291119143]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -304.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8we7p")
+script = ExtResource("1_cjrsp")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1944539625]
 layout_mode = 2
@@ -19,12 +66,17 @@ expand_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=618306475]
+[node name="name" type="Label" parent="VBoxContainer" unique_id=618306475]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "save1"
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1118887979]
+[node name="map_name" type="Label" parent="VBoxContainer" unique_id=950817893]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "map name"
+
+[node name="time" type="Label" parent="VBoxContainer" unique_id=1118887979]
 layout_mode = 2
 text = "12-02-2002"
 
@@ -39,4 +91,8 @@ text = "load"
 [node name="delete" type="Button" parent="HBoxContainer" unique_id=27779559]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8we7p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x0psc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0j1dy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6s3pc")
 text = "X"

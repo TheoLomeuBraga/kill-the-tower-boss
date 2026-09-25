@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3wethnl3u8j3"]
 
 [ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_33uwb"]
-[ext_resource type="PackedScene" uid="uid://iw2cmtwd5c4w" path="res://menus/save_manager_menu/save_display/save_display.tscn" id="2_e7dwk"]
+[ext_resource type="Script" uid="uid://doeaq2moyu5sk" path="res://menus/save_manager_menu/save_manager_menu.gd" id="2_iqn4q"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_33uwb"]
 color = Color(0, 0, 0, 0)
@@ -18,6 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_33uwb")
+script = ExtResource("2_iqn4q")
 
 [node name="Panel" type="Panel" parent="." unique_id=547392582]
 layout_mode = 1
@@ -76,9 +77,6 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="SaveDisplay" parent="VBoxContainer/Control/Panel/ScrollContainer/VBoxContainer" unique_id=291119143 instance=ExtResource("2_e7dwk")]
-layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1620419111]
 layout_mode = 2

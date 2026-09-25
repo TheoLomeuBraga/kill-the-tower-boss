@@ -68,7 +68,9 @@ func load_save(file_name:String) -> Variant:
 	
 	return null
 
-func load_game() -> void:
+func load_game(_save_name:String=save_name) -> void:
+	save_name = _save_name
+	
 	var save : Variant = load_save(save_name)
 	
 	if save:
@@ -76,7 +78,8 @@ func load_game() -> void:
 	
 	on_load_game.emit()
 
-func erase_game() -> void:
+func erase_game(_save_name:String=save_name) -> void:
+	save_name = _save_name
 	DirAccess.remove_absolute(get_save_name(save_name,0))
 	DirAccess.remove_absolute(get_save_name(save_name,1))
 

@@ -1,4 +1,8 @@
-add main menu load (save select)
+fix bug where continue and load game still enable after delete last save
+
+make new game create a new save name
+
+make chekinpoint save life
 
 create textures
 

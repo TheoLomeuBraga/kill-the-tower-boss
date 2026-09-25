@@ -34,6 +34,22 @@ func continue_game() -> void:
 		SceneManager.load_map(SaveSystem.game_data["current_level"])
 	
 
+func load_game() -> void:
+	$ColorRect2.visible = true
+	
+	$ColorRect2/SaveManagerMenu.reprocess_saves()
+	
+	await $ColorRect2/SaveManagerMenu.on_close
+	
+	$ColorRect2.visible = false
+	
+	if save_list.size() > 0:
+		$VBoxContainer/continue.grab_focus()
+	else:
+		$VBoxContainer/continue.disabled = true
+		$VBoxContainer/load_game.disabled = true
+		$VBoxContainer/new_game.grab_focus()
+
 func _ready() -> void:
 	
 	save_list = SaveSystem.get_save_list()
@@ -44,16 +60,16 @@ func _ready() -> void:
 		$VBoxContainer/continue.grab_focus()
 	else:
 		$VBoxContainer/continue.disabled = true
+		$VBoxContainer/load_game.disabled = true
 		$VBoxContainer/new_game.grab_focus()
-	
-	
 	
 	$VBoxContainer/new_game.pressed.connect(new_game)
 	
-	
-	
+	$VBoxContainer/load_game.pressed.connect(load_game)
 	
 	$VBoxContainer/settings.pressed.connect(open_settings)
 	$ColorRect/SettingsMenu.on_close.connect(on_close_settings)
 	
 	$VBoxContainer/quit_game.pressed.connect(get_tree().quit)
+	
+	
