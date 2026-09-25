@@ -99,7 +99,7 @@ func get_ref(d_name:String) -> Dictionary:
 
 var saves_last_unix_times : Dictionary[String,float] = {}
 func custom_sort(a:String,b:String) -> bool:
-	return saves_last_unix_times[a] < saves_last_unix_times[b]
+	return saves_last_unix_times[a] > saves_last_unix_times[b]
 
 func get_save_list() -> Array[String]:
 	
@@ -133,3 +133,14 @@ func get_save_list() -> Array[String]:
 	
 	
 	return []
+
+func get_avaliable_save_name() -> String:
+	var ret:String="save"
+	var i : int = 0
+	while true:
+		ret = "save"+str(i+1)
+		if not FileAccess.file_exists(get_save_name(ret,0)) and not FileAccess.file_exists(get_save_name(ret,1)):
+			return ret
+		
+		i+=1
+	return ret

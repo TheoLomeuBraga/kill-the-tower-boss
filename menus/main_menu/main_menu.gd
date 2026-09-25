@@ -2,7 +2,7 @@ extends Control
 
 func new_game() -> void:
 	
-	#TODO: update to suport multiple saves
+	SaveSystem.save_name = SaveSystem.get_avaliable_save_name()
 	PersistenceManager.clean()
 	SaveSystem.clean()
 	
@@ -43,6 +43,7 @@ func load_game() -> void:
 	
 	$ColorRect2.visible = false
 	
+	save_list = SaveSystem.get_save_list()
 	if save_list.size() > 0:
 		$VBoxContainer/continue.grab_focus()
 	else:

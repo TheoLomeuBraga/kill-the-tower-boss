@@ -47,5 +47,4 @@ func _ready() -> void:
 	
 	
 	fineshed.emit()
-	print("resources compiled")
 	queue_free()
