@@ -25,7 +25,7 @@ PersistenceManager="*uid://bjudck3qhnk28"
 SceneManager="*uid://joxvxvjt8r8s"
 SettingsApplyer="*uid://bdmmd538cia6i"
 SettingsManager="*uid://svve2g47lpb6"
-SaveSystem="*uid://diqb0gu534v10"
+SaveManager="*uid://diqb0gu534v10"
 EndMissionScreen="*uid://cbaglgsyf415n"
 
 [display]

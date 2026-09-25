@@ -7,8 +7,8 @@ var save_display_scene : PackedScene = load("res://menus/save_manager_menu/save_
 var save_delete_confirmation_scene : PackedScene = load("res://menus/save_manager_menu/save_delete_confirmation/save_delete_confirmation.tscn")
 
 func load_game(save:String) -> void:
-	SaveSystem.load_game(save)
-	SceneManager.load_map(SaveSystem.game_data["current_level"])
+	SaveManager.load_game(save)
+	SceneManager.load_map(SaveManager.game_data["current_level"])
 
 var confirm_save_deletion : bool = false
 
@@ -17,7 +17,7 @@ var map_display_info:Dictionary={
 	"res://levels/level_1/level_1.tscn":{"name":"entrance","image":base_image},
 }
 func get_map_name_and_image(save:String) -> Dictionary:
-	var save_data:Dictionary=SaveSystem.load_save(save)
+	var save_data:Dictionary=SaveManager.load_save(save)
 	if not save_data.has("current_level"):
 		return {"name":"","image":base_image}
 	
@@ -42,9 +42,9 @@ func reprocess_saves() -> void:
 		n.queue_free()
 	
 	var i : int = 0
-	for save_name:String in SaveSystem.get_save_list():
+	for save_name:String in SaveManager.get_save_list():
 		
-		var save_data : Dictionary = SaveSystem.load_save(save_name)
+		var save_data : Dictionary = SaveManager.load_save(save_name)
 		
 		if not save_data.has("unix_time_last_save"):
 			continue
@@ -72,7 +72,7 @@ func delete_game(save:String) -> void:
 	sdcs.queue_free()
 	
 	if confirm_save_deletion:
-		SaveSystem.erase_game(save)
+		SaveManager.erase_game(save)
 	
 	reprocess_saves()
 

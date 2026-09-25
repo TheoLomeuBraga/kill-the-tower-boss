@@ -2,11 +2,11 @@ extends Control
 
 func new_game() -> void:
 	
-	SaveSystem.save_name = SaveSystem.get_avaliable_save_name()
+	SaveManager.save_name = SaveManager.get_avaliable_save_name()
 	PersistenceManager.clean()
-	SaveSystem.clean()
+	SaveManager.clean()
 	
-	SaveSystem.game_data["current_level"] = "res://levels/level_1/level_1.tscn"
+	SaveManager.game_data["current_level"] = "res://levels/level_1/level_1.tscn"
 	SceneManager.load_map("res://levels/level_1/level_1.tscn")
 
 func open_settings() -> void:
@@ -26,13 +26,13 @@ func on_close_settings() -> void:
 var save_list : Array[String]
 
 func continue_game() -> void:
-	SaveSystem.save_name = save_list[0]
-	SaveSystem.load_game()
+	SaveManager.save_name = save_list[0]
+	SaveManager.load_game()
 	
 	
 	
-	if SaveSystem.game_data.has("current_level") and SaveSystem.game_data["current_level"] != "":
-		SceneManager.load_map(SaveSystem.game_data["current_level"])
+	if SaveManager.game_data.has("current_level") and SaveManager.game_data["current_level"] != "":
+		SceneManager.load_map(SaveManager.game_data["current_level"])
 	
 
 func load_game() -> void:
@@ -44,7 +44,7 @@ func load_game() -> void:
 	
 	$ColorRect2.visible = false
 	
-	save_list = SaveSystem.get_save_list()
+	save_list = SaveManager.get_save_list()
 	if save_list.size() > 0:
 		$VBoxContainer/continue.grab_focus()
 	else:
@@ -54,7 +54,7 @@ func load_game() -> void:
 
 func _ready() -> void:
 	
-	save_list = SaveSystem.get_save_list()
+	save_list = SaveManager.get_save_list()
 	
 	$VBoxContainer/continue.pressed.connect(continue_game)
 	

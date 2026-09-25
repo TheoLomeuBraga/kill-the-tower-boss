@@ -165,23 +165,23 @@ var charge_audio_player : AudioStreamPlayer
 
 func save_data() -> void:
 	
-	SaveSystem.game_data["inventory"] = {}
+	SaveManager.game_data["inventory"] = {}
 	for g:GunInfo in inventory:
-		SaveSystem.game_data["inventory"][g.name] = inventory[g]
+		SaveManager.game_data["inventory"][g.name] = inventory[g]
 	
-	SaveSystem.game_data["ammon"] = ammon_inventory.duplicate()
+	SaveManager.game_data["ammon"] = ammon_inventory.duplicate()
 	
 
 func load_player() -> void:
-	if SaveSystem.game_data.has("inventory"):
-		var new_inventory : Dictionary = SaveSystem.game_data["inventory"]
+	if SaveManager.game_data.has("inventory"):
+		var new_inventory : Dictionary = SaveManager.game_data["inventory"]
 		for g:GunInfo in inventory:
 			if new_inventory.has(g.name):
 				inventory[g] = new_inventory[g.name]
 	
-	if SaveSystem.game_data.has("ammon"):
-		for k in SaveSystem.game_data["ammon"]:
-			ammon_inventory[k] = max(SaveSystem.game_data["ammon"][k],ammon_inventory[k])
+	if SaveManager.game_data.has("ammon"):
+		for k in SaveManager.game_data["ammon"]:
+			ammon_inventory[k] = max(SaveManager.game_data["ammon"][k],ammon_inventory[k])
 
 
 func _ready() -> void:
@@ -190,7 +190,7 @@ func _ready() -> void:
 		if not inventory.has(gi):
 			inventory[gi] = false
 	
-	SaveSystem.on_save_game.connect(save_data)
+	SaveManager.on_save_game.connect(save_data)
 	load_player() 
 	
 	for g:GunInfo in inventory_order:

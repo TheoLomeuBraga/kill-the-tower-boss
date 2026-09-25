@@ -8,7 +8,7 @@ func on_body_entered(n:Node3D) -> void:
 	
 	if n is Player:
 		PersistenceManager.save_state()
-		SaveSystem.save_game()
+		SaveManager.save_game()
 		
 		await get_tree().process_frame
 		
