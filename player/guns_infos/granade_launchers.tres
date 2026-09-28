@@ -17,7 +17,6 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_x7c3f"]
 script = ExtResource("3_ps8a5")
-damage_type = 1
 damage = 60
 friendly_damage = 20
 model = ExtResource("2_uivn4")

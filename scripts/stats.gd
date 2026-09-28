@@ -21,6 +21,7 @@ var vfx : ApplyDamageVfx
 
 @export var multplyer_areas : Dictionary[CollisionShape3D,float]
 @export var damage_type_multplyer : Dictionary[GlobalEnums.DamageTypes,float]
+@export var explosion_damage_multplyer : float = 1.0 
 
 @export var knock_back_multiplier : float = 1.0
 
@@ -59,7 +60,7 @@ func _ready() -> void:
 	
 	
 
-func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> int:
+func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null,is_explosion:bool=false) -> int:
 	
 	var ret : int = damage
 	
@@ -68,6 +69,9 @@ func calculate_damage(damage:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums
 	
 	if damage_type_multplyer.has(damage_type):
 		ret = int(float(ret) * damage_type_multplyer[damage_type])
+	
+	if is_explosion:
+		ret = int(float(ret) * explosion_damage_multplyer)
 	
 	return ret
 
@@ -82,9 +86,9 @@ static func get_stats_from_node(node : Node) -> Stats:
 	
 	return null
 
-func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> void:
-	var damage_mult : int = calculate_damage(100,damage_type,area)
-	var _damage : int = calculate_damage(amount,damage_type,area)
+func damage(amount:int,damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null,is_explosion:bool=false) -> void:
+	var damage_mult : int = calculate_damage(100,damage_type,area,is_explosion)
+	var _damage : int = calculate_damage(amount,damage_type,area,is_explosion)
 	
 	if _damage <= 0:
 		return
@@ -130,14 +134,17 @@ func instakill() -> void:
 	
 	dead.emit()
 
-func calculate_damage_multplyer(damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null) -> float:
+func calculate_damage_multplyer(damage_type:GlobalEnums.DamageTypes=GlobalEnums.DamageTypes.NORMAL,area:CollisionShape3D=null,is_explosion:bool=false) -> float:
 	var ret : float = 1.0
 	
 	if multplyer_areas.has(area):
-		ret = ret * multplyer_areas[area]
+		ret *= multplyer_areas[area]
 	
 	if damage_type_multplyer.has(damage_type):
-		ret = ret * damage_type_multplyer[damage_type]
+		ret *= damage_type_multplyer[damage_type]
+	
+	if is_explosion:
+		ret *= explosion_damage_multplyer
 	
 	return ret
 

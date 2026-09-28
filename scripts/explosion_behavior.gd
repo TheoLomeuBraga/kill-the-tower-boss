@@ -31,7 +31,7 @@ func _ready() -> void:
 		if stats:
 			if stats.faction != GlobalEnums.Faction.FRIENDLY:
 				var hit_particle : Node3D
-				if stats.calculate_damage_multplyer(data.damage_type) >= 1.0:
+				if stats.calculate_damage_multplyer(data.damage_type,null,true) >= 1.0:
 					hit_particle = stats.enemy_hit_particle.instantiate()
 				else:
 					hit_particle = stats.no_damage_hit_particle.instantiate()
@@ -42,9 +42,9 @@ func _ready() -> void:
 			
 			stats.last_damage_origen = global_position
 			if stats.faction != data.faction:
-				stats.damage(data.damage,data.damage_type)
+				stats.damage(data.damage,data.damage_type,null,true)
 			else:
-				stats.damage(data.friendly_damage,data.damage_type)
+				stats.damage(data.friendly_damage,data.damage_type,null,true)
 			
 		
 		if shape.get_collider(i) is RigidBody3D:

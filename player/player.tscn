@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://r6noy65ufg7w" path="res://player/guns_infos/charge_rifle.tres" id="10_knn7v"]
 [ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="11_7pqkx"]
 [ext_resource type="Resource" uid="uid://30nuv77dfkrw" path="res://player/guns_infos/granade_launchers.tres" id="12_uw77l"]
+[ext_resource type="Script" uid="uid://dpd01jqjejiah" path="res://player/health_save_ajust.gd" id="15_ge24q"]
 [ext_resource type="PackedScene" uid="uid://dorjo8ltyx0xu" path="res://player/feedback/damage_feedback.tscn" id="18_65viv"]
 [ext_resource type="Script" uid="uid://brp5cu6cliq7y" path="res://player/key_card_inventory.gd" id="18_b8hi5"]
 [ext_resource type="Script" uid="uid://22jtt45ukdq3" path="res://player/hud.gd" id="18_bjvpn"]
@@ -110,6 +111,9 @@ script = ExtResource("6_g6k8r")
 faction = 0
 full_heal_on_ready = true
 metadata/_custom_type_script = "uid://u7trxdlheisb"
+
+[node name="health_save_ajust" type="Node" parent="Stats" unique_id=1127287469]
+script = ExtResource("15_ge24q")
 
 [node name="InteractionManager" type="Node" parent="." unique_id=1023676887 node_paths=PackedStringArray("interaction_ray")]
 process_mode = 4

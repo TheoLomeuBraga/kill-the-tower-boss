@@ -16,6 +16,8 @@ var current_gun : GunInfo = null
 
 @export var start_gun : int
 
+
+
 const max_ammon : Dictionary[GlobalEnums.AmmonType,int] = {
 	GlobalEnums.AmmonType.PISTOL: 100,
 	GlobalEnums.AmmonType.RIFLE: 20,
