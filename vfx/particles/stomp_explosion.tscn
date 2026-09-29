@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dktmyei1ager7"]
 
 [ext_resource type="Script" uid="uid://htqnd5ug1tb" path="res://vfx/particles/start_particles.gd" id="1_4oyc0"]
-[ext_resource type="AudioStream" uid="uid://bot80f0pkeg13" path="res://sfx/explosion.wav" id="2_4w3y6"]
+[ext_resource type="AudioStream" uid="uid://d4cbqvvtyrvav" path="res://sfx/explosion.wav" id="2_4w3y6"]
 [ext_resource type="Script" uid="uid://dsdgjeae30hcj" path="res://scripts/death_timer.gd" id="3_iqvqr"]
 
 [sub_resource type="Curve" id="Curve_iqvqr"]
@@ -45,8 +45,8 @@ texture_filter = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_aavbt"]
 material = SubResource("StandardMaterial3D_16xde")
-top_radius = 3.0
-bottom_radius = 2.0
+top_radius = 5.0
+bottom_radius = 3.0
 height = 1.0
 radial_segments = 8
 cap_top = false
