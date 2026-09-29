@@ -1,5 +1,4 @@
-create textures: bricks, concrete, metal, grass, leafes, wood, 
-dirt, window, glass, red carpet, wood planks, tiles, metal door,
+create textures: window, glass, red carpet, wood planks, tiles, metal door,
 scifi door, scifi hydraulic plataform, scifi monitor frame, scifi monitor code
 
 create 1 level (entrance)
