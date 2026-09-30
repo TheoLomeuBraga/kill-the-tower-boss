@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="1_d5n3v"]
 [ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="2_jhqbn"]
+[ext_resource type="Texture2D" uid="uid://b2y1eje07rkxq" path="res://levels/textures/metal_door.png" id="2_osfg6"]
 [ext_resource type="AudioStream" uid="uid://b57cvdw17ygav" path="res://sfx/scifi_door.wav" id="3_jhqbn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b2jhj"]
 size = Vector3(1.879, 2.842, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q88f"]
+albedo_texture = ExtResource("2_osfg6")
+uv1_scale = Vector3(0.326, 0.5, 0.5)
+uv1_offset = Vector3(0.5, 0.5, 0)
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
 size = Vector3(1.879, 2.842, 0.25)
@@ -18,6 +26,7 @@ metadata/_custom_type_script = "uid://p4xndlppfcoc"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1667448858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09741211, 1.4107971, 0)
 mesh = SubResource("BoxMesh_b2jhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_8q88f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=334384572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09741211, 1.4107971, 0)

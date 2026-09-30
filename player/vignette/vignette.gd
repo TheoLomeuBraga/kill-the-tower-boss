@@ -14,7 +14,8 @@ class_name VignetteEffect
 		var mat : ShaderMaterial = material
 		mat.set_shader_parameter("outer_radius",value)
 
+@export var decipate_speed : float = 1.0
 
 func _process(delta: float) -> void:
-	vignette_color.a = move_toward(vignette_color.a,0.0,delta*2)
-	outer_radius = move_toward(outer_radius,1.5,delta*2)
+	vignette_color.a = move_toward(vignette_color.a,0.0,delta*2*decipate_speed)
+	outer_radius = move_toward(outer_radius,1.5,delta*2*decipate_speed)
