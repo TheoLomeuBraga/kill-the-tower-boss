@@ -1,6 +1,4 @@
-create textures: roll up door
-
-create 1 level (entrance)
+blecreate 1 level (entrance)
 
 playtest
 
