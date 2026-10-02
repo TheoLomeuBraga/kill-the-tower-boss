@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3egujiibnimg"]
+
+[ext_resource type="Texture2D" uid="uid://cnl0jirmauqe1" path="res://levels/level_1/level_1_model_concrete_2.png" id="1_kpiia"]
+
+[resource]
+resource_name = "concrete_bricks"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_kpiia")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0

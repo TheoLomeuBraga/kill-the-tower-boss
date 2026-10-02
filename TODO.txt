@@ -1,9 +1,9 @@
-blecreate 1 level (entrance)
+create 1 level (entrance)
 
 playtest
 
-create textures: window, glass, red carpet, wood planks, tiles,
-scifi door, scifi hydraulic plataform, scifi monitor frame, scifi monitor code
+create textures: glass, red carpet, wood planks, tiles,
+scifi door, scifi monitor frame, scifi monitor code
 
 create 2 more levels
 

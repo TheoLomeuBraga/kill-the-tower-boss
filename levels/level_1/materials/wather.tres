@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c8tgniyqh0rbj"]
+
+[ext_resource type="Texture2D" uid="uid://cffqm5q7u4r84" path="res://levels/level_1/level_1_model_water.png" id="1_xoj65"]
+
+[resource]
+resource_name = "wather"
+albedo_texture = ExtResource("1_xoj65")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0

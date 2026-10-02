@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0muyftle7m71"]
+
+[ext_resource type="Texture2D" uid="uid://beo7h0mtnovw6" path="res://levels/level_1/level_1_model_grass.png" id="1_ultud"]
+
+[resource]
+resource_name = "grass"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_ultud")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
