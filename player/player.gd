@@ -19,8 +19,6 @@ func damage_vignette(damage:int) -> void:
 	
 	var effect_multplyer : float = clamp(remap(damage,5,20,0.0,2.0),0.25,2.0)
 	
-	print(effect_multplyer)
-	
 	vignette.vignette_color = Color.RED
 	vignette.outer_radius = 1.5-(effect_multplyer/3.0)
 

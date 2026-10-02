@@ -9,6 +9,7 @@ signal loaded()
 
 func load_map(map_name:String) -> void:
 	
+	
 	$Control/TextureRect.texture = load_image
 	
 	if loading:

@@ -183,6 +183,19 @@ shadow_mesh = SubResource("ArrayMesh_j7l1y")
 [sub_resource type="BoxShape3D" id="BoxShape3D_j48du"]
 size = Vector3(6.2, 24, 6.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqb7"]
+resource_name = "plataform"
+albedo_texture = ExtResource("9_plqb7")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6dmr"]
+resource_name = "metal"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_e6dmr")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_q46wq"]
 _surfaces = [{
 "aabb": AABB(-4, -0.3499999, -4, 8, 0.4499998, 8),
@@ -195,7 +208,7 @@ _surfaces = [{
 "vertex_count": 8,
 "vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
 }, {
-"aabb": AABB(-2, -9.1569, -2, 4, 9.200001, 4),
+"aabb": AABB(-2, -19.1569, -2, 4, 19.2, 4),
 "format": 34896613377,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUABwAEAAYABwAGAAUA"),
@@ -215,24 +228,24 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_oceqi"),
+"material": SubResource("StandardMaterial3D_plqb7"),
 "name": "plataform",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
 "vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAP//AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIAAAAAAAAD/P///AAD///8///8AAAAA/z8AAAAA////P/////8AAP+/AAD//////78AAP//AAD/v/////////+//z//f/8//3//P/9//z//f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/3////9/////f////3///wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }, {
-"aabb": AABB(-2, -9.1569, -2, 4, 9.200001, 4),
-"attribute_data": PackedByteArray("/////1RV//////////8OjP////9VVQ6M//////7//v//////VFX//////////w6M/////1VVDoz//////v/+///////+/////////1VVDoz///////8OjP////9UVf7///////7/////////VVUOjP///////w6M/////1RV/v8="),
+"aabb": AABB(-2, -19.1569, -2, 4, 19.2, 4),
+"attribute_data": PackedByteArray("/////1RV//////////8Thv////9VVROG//////7//v//////VFX//////////xOG/////1VVE4b//////v/+///////+/////////1VVE4b///////8Thv////9UVf7///////7/////////VVUThv///////xOG/////1RV/v8="),
 "format": 34896613407,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
-"material": SubResource("StandardMaterial3D_urc77"),
+"material": SubResource("StandardMaterial3D_e6dmr"),
 "name": "metal",
 "primitive": 3,
-"uv_scale": Vector4(2.9999995, 10.156899, 0, 0),
+"uv_scale": Vector4(2.9999995, 20.156897, 0, 0),
 "vertex_count": 16,
-"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAP//AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AID/P/9//z//f/8//3//P/9//v//f/7//3/+//9//v//f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAP//AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AID/P/9//z//f/8//3//P/9//v//f/7//3////9//v//f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q46wq")
@@ -630,21 +643,21 @@ weapon = ExtResource("17_drths")
 offset = Vector3(0.137, 0, -0.437)
 
 [node name="consumable6" parent="." unique_id=840568130 instance=ExtResource("18_drths")]
-transform = Transform3D(0.429287, 0, -0.90316707, 0, 1, 0, 0.90316707, 0, 0.429287, -9.521725, -1.749326, 46.075172)
+transform = Transform3D(-0.698113, 0, -0.7159863, 0, 1, 0, 0.7159863, 0, -0.698113, -9.521725, -1.749326, 46.075172)
 type = 3
 
 [node name="consumable7" parent="." unique_id=114884709 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.68972874, 0, -0.7240668, 0, 1, 0, 0.7240668, 0, -0.68972874, -9.521725, -1.749326, 45.075172)
+transform = Transform3D(-0.92211777, 0, 0.38690734, 0, 1, 0, -0.38690734, 0, -0.92211777, -9.521725, -1.749326, 45.075172)
 type = 3
 
 [node name="consumable3" parent="." unique_id=546712620 instance=ExtResource("18_drths")]
-transform = Transform3D(0.1567311, 0, -0.98764044, 0, 1, 0, 0.98764044, 0, 0.1567311, -6.5217247, -1.749326, 48.075172)
+transform = Transform3D(-0.8708543, 0, -0.49153948, 0, 1, 0, 0.49153948, 0, -0.8708543, -6.5217247, -1.749326, 48.075172)
 
 [node name="consumable4" parent="." unique_id=1236800481 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.7941643, 0, -0.60770196, 0, 1, 0, 0.60770196, 0, -0.7941643, -6.5217247, -1.749326, 49.075172)
+transform = Transform3D(-0.8511888, 0, 0.52485836, 0, 1, 0, -0.52485836, 0, -0.8511888, -6.5217247, -1.749326, 49.075172)
 
 [node name="consumable5" parent="." unique_id=1261301376 instance=ExtResource("18_drths")]
-transform = Transform3D(0.8169601, 0, 0.57669264, 0, 1, 0, -0.57669264, 0, 0.8169601, -6.5217247, -1.749326, 50.075172)
+transform = Transform3D(0.81703115, 0, -0.57659197, 0, 1, 0, 0.57659197, 0, 0.81703115, -6.5217247, -1.749326, 50.075172)
 
 [node name="generic_enemy" parent="." unique_id=85329929 instance=ExtResource("14_7rikf")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 0, 63)
@@ -758,80 +771,80 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 7.32
 current_gun_type = 1
 
 [node name="consumable8" parent="." unique_id=1597481904 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.2772184, 0, -0.96080595, 0, 1, 0, 0.96080595, 0, -0.2772184, 17.478275, 1.250674, 70.07517)
+transform = Transform3D(-0.9968574, 0, -0.079203695, 0, 1, 0, 0.079203695, 0, -0.9968574, 17.478275, 1.250674, 70.07517)
 type = 3
 
 [node name="consumable9" parent="." unique_id=1865650520 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.56636417, 0, 0.82415324, 0, 1, 0, -0.82415324, 0, -0.56636417, 18.478275, 1.250674, 70.07517)
+transform = Transform3D(0.55932236, 0, 0.8289483, 0, 1, 0, -0.8289483, 0, 0.55932236, 18.478275, 1.250674, 70.07517)
 type = 3
 
 [node name="consumable10" parent="." unique_id=1465650800 instance=ExtResource("18_drths")]
-transform = Transform3D(0.47036102, 0, 0.8824724, 0, 1, 0, -0.8824724, 0, 0.47036102, 19.478275, 1.250674, 70.07517)
+transform = Transform3D(0.98881316, 0, -0.14914936, 0, 1, 0, 0.14914936, 0, 0.98881316, 19.478275, 1.250674, 70.07517)
 type = 3
 
 [node name="consumable11" parent="." unique_id=1180949708 instance=ExtResource("18_drths")]
-transform = Transform3D(0.9045843, 0, 0.42629096, 0, 1, 0, -0.42629096, 0, 0.9045843, 20.478275, 1.250674, 70.07517)
+transform = Transform3D(0.70534015, 0, -0.7088666, 0, 1, 0, 0.7088666, 0, 0.70534015, 20.478275, 1.250674, 70.07517)
 type = 3
 
 [node name="consumable12" parent="." unique_id=690296919 instance=ExtResource("18_drths")]
-transform = Transform3D(0.6978122, 0, -0.716279, 0, 1, 0, 0.716279, 0, 0.6978122, 17.478275, 15.250674, 66.07517)
+transform = Transform3D(-0.4318898, 0, -0.90192497, 0, 1, 0, 0.90192497, 0, -0.4318898, 17.478275, 15.250674, 66.07517)
 
 [node name="consumable13" parent="." unique_id=332064410 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.9999137, 0, -0.013027114, 0, 1, 0, 0.013027114, 0, -0.9999137, 18.478275, 15.250674, 66.07517)
+transform = Transform3D(-0.37188572, 0, 0.928277, 0, 1, 0, -0.928277, 0, -0.37188572, 18.478275, 15.250674, 66.07517)
 
 [node name="consumable16" parent="." unique_id=327053490 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.98820823, 0, 0.15310813, 0, 1, 0, -0.15310813, 0, -0.98820823, 15.478275, 15.250674, 66.07517)
+transform = Transform3D(-0.21384817, 0, 0.97686565, 0, 1, 0, -0.97686565, 0, -0.21384817, 15.478275, 15.250674, 66.07517)
 
 [node name="consumable17" parent="." unique_id=366725794 instance=ExtResource("18_drths")]
-transform = Transform3D(0.8089632, 0, 0.5878569, 0, 1, 0, -0.5878569, 0, 0.8089632, 16.478275, 15.250674, 66.07517)
+transform = Transform3D(0.8248372, 0, -0.56536776, 0, 1, 0, 0.56536776, 0, 0.8248372, 16.478275, 15.250674, 66.07517)
 
 [node name="consumable14" parent="." unique_id=657140002 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.5783756, 0, 0.81576884, 0, 1, 0, -0.81576884, 0, -0.5783756, 19.478275, 15.250674, 66.07517)
+transform = Transform3D(0.5471201, 0, 0.8370524, 0, 1, 0, -0.8370524, 0, 0.5471201, 19.478275, 15.250674, 66.07517)
 type = 3
 
 [node name="consumable15" parent="." unique_id=564605368 instance=ExtResource("18_drths")]
-transform = Transform3D(0.8988035, 0, -0.4383478, 0, 1, 0, 0.4383478, 0, 0.8988035, 14.478275, 15.250674, 66.07517)
+transform = Transform3D(-0.10411326, 0, -0.9945636, 0, 1, 0, 0.9945636, 0, -0.10411326, 14.478275, 15.250674, 66.07517)
 type = 3
 
 [node name="consumable18" parent="." unique_id=475508106 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.6000777, 0, -0.7999396, 0, 1, 0, 0.7999396, 0, -0.6000777, -47.521725, 15.250674, 71.07517)
+transform = Transform3D(-0.9608942, 0, 0.2769091, 0, 1, 0, -0.2769091, 0, -0.9608942, -47.521725, 15.250674, 71.07517)
 type = 3
 
 [node name="consumable19" parent="." unique_id=1637937376 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.96037084, 0, 0.27871737, 0, 1, 0, -0.27871737, 0, -0.96037084, -47.521725, 15.250674, 70.07517)
+transform = Transform3D(-0.08747102, 0, 0.9961648, 0, 1, 0, -0.9961648, 0, -0.08747102, -47.521725, 15.250674, 70.07517)
 type = 3
 
 [node name="consumable20" parent="." unique_id=1718329593 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.5926248, 0, 0.805476, 0, 1, 0, -0.805476, 0, -0.5926248, -47.521725, 15.250674, 69.07517)
+transform = Transform3D(0.5323221, 0, 0.8465394, 0, 1, 0, -0.8465394, 0, 0.5323221, -47.521725, 15.250674, 69.07517)
 
 [node name="consumable28" parent="." unique_id=1173341145 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.26130396, 0, 0.96525425, 0, 1, 0, -0.96525425, 0, -0.26130396, -52.45474, 15.250674, 138.82516)
+transform = Transform3D(0.8007386, 0, 0.5990103, 0, 1, 0, -0.5990103, 0, 0.8007386, -52.45474, 15.250674, 138.82516)
 
 [node name="consumable29" parent="." unique_id=1082226166 instance=ExtResource("18_drths")]
-transform = Transform3D(0.9951644, 0, -0.09820165, 0, 1, 0, 0.09820165, 0, 0.9951644, -51.58871, 15.250674, 139.32516)
+transform = Transform3D(0.24569447, 0, -0.9693451, 0, 1, 0, 0.9693451, 0, 0.24569447, -51.58871, 15.250674, 139.32516)
 
 [node name="consumable21" parent="." unique_id=1438686465 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.88704246, 0, -0.46168333, 0, 1, 0, 0.46168333, 0, -0.88704246, -47.521725, 15.250674, 68.07517)
+transform = Transform3D(-0.7482321, 0, 0.6634339, 0, 1, 0, -0.6634339, 0, -0.7482321, -47.521725, 15.250674, 68.07517)
 
 [node name="consumable22" parent="." unique_id=1625950627 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.9725718, 0, 0.23259424, 0, 1, 0, -0.23259424, 0, -0.9725718, -47.521725, 15.250674, 67.07517)
+transform = Transform3D(-0.13453697, 0, 0.99090654, 0, 1, 0, -0.99090654, 0, -0.13453697, -47.521725, 15.250674, 67.07517)
 
 [node name="consumable23" parent="." unique_id=1025874445 instance=ExtResource("18_drths")]
-transform = Transform3D(-0.71644664, 0, 0.69763833, 0, 1, 0, -0.69763833, 0, -0.71644664, -47.521725, 15.250674, 66.07517)
+transform = Transform3D(0.3882611, 0, 0.9215467, 0, 1, 0, -0.9215467, 0, 0.3882611, -47.521725, 15.250674, 66.07517)
 
 [node name="consumable24" parent="." unique_id=1469675340 instance=ExtResource("18_drths")]
-transform = Transform3D(0.4512875, 0, 0.89237636, 0, 1, 0, -0.89237636, 0, 0.4512875, -47.521725, 15.250674, 65.07517)
+transform = Transform3D(0.99178857, 0, -0.12787247, 0, 1, 0, 0.12787247, 0, 0.99178857, -47.521725, 15.250674, 65.07517)
 
 [node name="consumable25" parent="." unique_id=1276866216 instance=ExtResource("18_drths")]
-transform = Transform3D(0.80578893, 0, 0.5921991, 0, 1, 0, -0.5921991, 0, 0.80578893, -47.521725, 15.250674, 64.07517)
+transform = Transform3D(0.8278613, 0, -0.560929, 0, 1, 0, 0.560929, 0, 0.8278613, -47.521725, 15.250674, 64.07517)
 type = 1
 
 [node name="consumable27" parent="." unique_id=1757961255 instance=ExtResource("18_drths")]
-transform = Transform3D(0.53945136, 0, -0.8420138, 0, 1, 0, 0.8420138, 0, 0.53945136, -47.521725, 15.250674, 62.075172)
+transform = Transform3D(-0.60301036, 0, -0.7977302, 0, 1, 0, 0.7977302, 0, -0.60301036, -47.521725, 15.250674, 62.075172)
 type = 1
 
 [node name="consumable26" parent="." unique_id=1367270348 instance=ExtResource("18_drths")]
-transform = Transform3D(0.9869355, 0, -0.16110091, 0, 1, 0, 0.16110091, 0, 0.9869355, -47.521725, 15.250674, 63.075172)
+transform = Transform3D(0.18419015, 0, -0.98288816, 0, 1, 0, 0.98288816, 0, 0.18419015, -47.521725, 15.250674, 63.075172)
 type = 1
 
 [node name="enemys_2" type="Node3D" parent="." unique_id=14929655]
@@ -879,14 +892,14 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -43,
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -45, 14, 141)
 
 [node name="generic_enemy12" parent="." unique_id=1438337399 instance=ExtResource("14_7rikf")]
-transform = Transform3D(-0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071067, -59, 14, 143)
+transform = Transform3D(-0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071067, -57, 14, 143)
 current_gun_type = 1
 
 [node name="generic_enemy11" parent="." unique_id=1145419439 instance=ExtResource("14_7rikf")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -43, 14, 138)
 
 [node name="generic_enemy6" parent="." unique_id=1722717663 instance=ExtResource("14_7rikf")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -44, 14, 110)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -45, 14, 110)
 
 [node name="AreaTriger" type="Area3D" parent="." unique_id=849076501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.504353, 15.306014, 137.71124)

@@ -1,5 +1,3 @@
-create 1 level (entrance)
-
 playtest
 
 create textures: glass, red carpet, wood planks, tiles,

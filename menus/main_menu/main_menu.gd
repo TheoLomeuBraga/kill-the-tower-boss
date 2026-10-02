@@ -29,7 +29,7 @@ func continue_game() -> void:
 	SaveManager.save_name = save_list[0]
 	SaveManager.load_game()
 	
-	
+	print(SaveManager.save_name,SaveManager.game_data.has("current_level") , SaveManager.game_data["current_level"] != "",SaveManager.game_data["current_level"])
 	
 	if SaveManager.game_data.has("current_level") and SaveManager.game_data["current_level"] != "":
 		SceneManager.load_map(SaveManager.game_data["current_level"])

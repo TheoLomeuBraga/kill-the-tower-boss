@@ -26,6 +26,8 @@ func save_game() -> void:
 	
 	game_data["persistence_data"] = PersistenceManager.state_backup.duplicate()
 	
+	
+	
 	on_save_game.emit()
 	
 	DirAccess.make_dir_absolute("user://saves")

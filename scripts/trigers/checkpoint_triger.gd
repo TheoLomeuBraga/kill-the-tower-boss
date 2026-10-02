@@ -8,7 +8,11 @@ func on_body_entered(n:Node3D) -> void:
 	
 	if n is Player:
 		PersistenceManager.save_state()
+		
+		SaveManager.game_data["current_level"] = SceneManager.loaded_map.scene_file_path
 		SaveManager.save_game()
+		
+		
 		
 		await get_tree().process_frame
 		
