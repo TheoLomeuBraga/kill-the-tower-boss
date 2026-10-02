@@ -105,5 +105,5 @@ shape = SubResource("BoxShape3D_qxkbx")
 visible = false
 occluder = ExtResource("2_00sav")
 
-[node name="Cube_007" parent="." index="10" unique_id=906637581]
+[node name="Cube_007" parent="." index="10" unique_id=1825779781]
 surface_material_override/0 = SubResource("ShaderMaterial_bg2c8")
