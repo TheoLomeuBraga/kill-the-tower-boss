@@ -39,6 +39,9 @@ func load_map(map_name:String) -> void:
 			$Control.visible = false
 			
 			break
+	
+	time_since_map_loaded=0.0
+
 
 const main_scene_file : String = "res://main.tscn"
 

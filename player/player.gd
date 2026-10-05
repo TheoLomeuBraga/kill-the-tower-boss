@@ -23,9 +23,12 @@ func damage_vignette(damage:int) -> void:
 	vignette.outer_radius = 1.5-(effect_multplyer/3.0)
 
 func _ready() -> void:
+	
 	player = self
 	stats.damaged.connect(damage_vignette)
 	PersistenceManager.save_state()
+
+
 
 func _exit_tree() -> void:
 	player = null
