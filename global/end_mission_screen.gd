@@ -5,8 +5,6 @@ signal ended()
 func _ready() -> void:
 	visible = false
 
-func get_time() -> String:
-	return str(floor(SceneManager.time_since_map_loaded*100)/100)
 
 func end() -> void:
 	visible = true
@@ -17,7 +15,6 @@ func end() -> void:
 	if Player.player:
 		Player.player.queue_free()
 	
-	$time.text = tr("time: ") + str(get_time())
 	 
 
 var was_pressed : bool = true
