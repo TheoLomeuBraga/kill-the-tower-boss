@@ -5,6 +5,10 @@ scifi door, scifi monitor frame, scifi monitor code
 
 create 2 more levels
 
+add end game screen
+
+add credits
+
 add main menu level select
 
 create textures and models

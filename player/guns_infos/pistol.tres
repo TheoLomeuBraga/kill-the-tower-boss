@@ -16,7 +16,7 @@ radius = 0.2
 [sub_resource type="Resource" id="Resource_boad6"]
 script = ExtResource("4_yvjab")
 damage = 10
-distance = 20.0
+distance = 50.0
 model = ExtResource("3_ajuqy")
 collision_shape = SubResource("SphereShape3D_yllr7")
 ricochet = 1

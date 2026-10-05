@@ -9,8 +9,6 @@ var is_curently_rebinding:bool = false
 
 const base_settings : Dictionary = {
 	
-	
-	
 	"keyboard_sensitivity_mouse": 1.0,
 	
 	"controller_sensitivity_controller": 3.0,
