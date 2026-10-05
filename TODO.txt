@@ -1,5 +1,3 @@
-fix level timer
-
 playtest
 
 create textures: glass, red carpet, wood planks, tiles,
