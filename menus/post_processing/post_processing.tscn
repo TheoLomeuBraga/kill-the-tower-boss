@@ -1,14 +1,51 @@
 [gd_scene format=3 uid="uid://l0s57321gcc5"]
 
+[ext_resource type="Texture2D" uid="uid://kxh3kmx72eyb" path="res://icon.png" id="1_1u03v"]
 [ext_resource type="Shader" uid="uid://bw3kxbsu4cv0e" path="res://menus/post_processing/post_processing.gdshader" id="1_xrcle"]
+[ext_resource type="Shader" uid="uid://b44x2e5p6kxyj" path="res://menus/post_processing/crt.gdshader" id="2_v6v8h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6v8h"]
 shader = ExtResource("1_xrcle")
-shader_parameter/enabled = 0.2000000095
+shader_parameter/enabled = 1.0
 shader_parameter/colors = 12
 shader_parameter/dither_size = 1
 
-[node name="PostProcessing" type="ColorRect" unique_id=1946156224]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrcle"]
+shader = ExtResource("2_v6v8h")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.010000000475
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.10000000475
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.002000000095
+shader_parameter/noise_opacity = 0.02000000095
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.0010000475475000492
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.10000000475
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.25
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Node" type="Node" unique_id=315589590]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1717212150]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1u03v")
+
+[node name="dithering" type="ColorRect" parent="." unique_id=1946156224]
+z_index = 100
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6v8h")
 anchors_preset = 15
@@ -17,4 +54,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="crt" type="ColorRect" parent="." unique_id=1132210750]
+z_index = 100
+material = SubResource("ShaderMaterial_xrcle")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

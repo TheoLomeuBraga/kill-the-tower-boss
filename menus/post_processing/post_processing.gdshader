@@ -52,9 +52,9 @@ float reduce_color(float raw, float dither, int depth) {
 	return val;
 }
 
-void fragment() {
-	vec4 raw = texture(screen_texture, SCREEN_UV);
-	ivec2 uv = ivec2(FRAGCOORD.xy / float(dither_size));
+vec3 apply_ditherring(vec2 screen_uv,vec2 frag_cord){
+	vec4 raw = texture(screen_texture, screen_uv);
+	ivec2 uv = ivec2(frag_cord / float(dither_size));
 	
 	float dithering_value = dithering_pattern(uv);
 	
@@ -63,5 +63,10 @@ void fragment() {
 	dithering_color.g = reduce_color(raw.g, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
 	dithering_color.b = reduce_color(raw.b, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
 	
-	COLOR.rgb = mix(raw.rgb,dithering_color,enabled);
+	return mix(raw.rgb,dithering_color,enabled).rgb;
+}
+
+
+void fragment() {
+	COLOR.rgb = apply_ditherring(SCREEN_UV,FRAGCOORD.xy);
 }
