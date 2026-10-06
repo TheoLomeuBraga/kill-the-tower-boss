@@ -37,6 +37,7 @@ shader_parameter/vignette_opacity = 0.5
 [node name="Node" type="Node" unique_id=315589590]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1717212150]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

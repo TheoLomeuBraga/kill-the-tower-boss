@@ -3,7 +3,7 @@ extends Node
 signal on_save_game()
 signal on_load_game()
 
-var save_name : String = "save1"
+var save_name : String = "test"
 
 var game_data : Dictionary = {
 	"current_level": "",
