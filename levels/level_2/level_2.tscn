@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://l6erlf5iqa8g" path="res://levels/level_2/level_2_model.tscn" id="1_0b444"]
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="2_jniqj"]
+[ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="3_4nbo2"]
+[ext_resource type="Texture2D" uid="uid://bf1wapn0goj15" path="res://levels/textures/rollup_door.png" id="4_8r3qo"]
+[ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="5_0butd"]
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="6_8r3qo"]
+[ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="7_0butd"]
+[ext_resource type="PackedScene" uid="uid://ceq3wentgd514" path="res://props/door/automatic_door.tscn" id="8_8y2in"]
 
 [sub_resource type="Gradient" id="Gradient_0b444"]
 interpolation_mode = 2
@@ -29,6 +35,22 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8
 tonemap_mode = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0butd"]
+size = Vector3(0.5, 4, 18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxkbx"]
+shading_mode = 0
+albedo_texture = ExtResource("4_8r3qo")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2jhj"]
+material = SubResource("StandardMaterial3D_qxkbx")
+size = Vector3(0.5, 4, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
+size = Vector3(7, 5, 8)
+
 [node name="Level2" type="Node3D" unique_id=738504918]
 
 [node name="level_2_model" parent="." unique_id=984531401 instance=ExtResource("1_0b444")]
@@ -38,3 +60,97 @@ environment = SubResource("Environment_618ip")
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("2_jniqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="room_1" type="Node" parent="." unique_id=1602557423]
+
+[node name="drone" parent="room_1" unique_id=647379188 instance=ExtResource("7_0butd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 1, -16)
+
+[node name="drone2" parent="room_1" unique_id=288352165 instance=ExtResource("7_0butd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 1, -20)
+
+[node name="drone3" parent="room_1" unique_id=49116854 instance=ExtResource("7_0butd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 1, -24)
+
+[node name="TrainTriger" type="CharacterBody3D" parent="room_1" unique_id=146144509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -19)
+script = ExtResource("3_4nbo2")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_1/TrainTriger" unique_id=2124432823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+shape = SubResource("BoxShape3D_0butd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="room_1/TrainTriger" unique_id=60441023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+mesh = SubResource("BoxMesh_b2jhj")
+
+[node name="TrainRail" type="Marker3D" parent="room_1/TrainTriger" unique_id=1166153472]
+script = ExtResource("5_0butd")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="room_1/TrainTriger" unique_id=1642191084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("5_0butd")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AreaTriger" type="Area3D" parent="room_1" unique_id=644915417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -17)
+script = ExtResource("6_8r3qo")
+targets = Array[NodePath]([NodePath("../TrainTriger")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room_1/AreaTriger" unique_id=651991719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="AutomaticDoor" parent="." unique_id=321128549 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18, 0, -39.49973)
+
+[node name="AutomaticDoor10" parent="." unique_id=1645408898 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.977715, 0, -32.08973)
+
+[node name="AutomaticDoor11" parent="." unique_id=1338898939 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -35.49973)
+
+[node name="AutomaticDoor12" parent="." unique_id=803041096 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.458363, 0, -21.49973)
+
+[node name="AutomaticDoor13" parent="." unique_id=862031799 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44.88534, 0, -17.471573)
+
+[node name="AutomaticDoor14" parent="." unique_id=1697181951 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 61.88534, 0, -18.471573)
+
+[node name="AutomaticDoor15" parent="." unique_id=953931522 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 52.88534, 0, -31.517115)
+
+[node name="AutomaticDoor16" parent="." unique_id=503924714 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 61.718838, 0, -31.517115)
+
+[node name="AutomaticDoor17" parent="." unique_id=1516740959 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 49.470993, 0, -40.048626)
+
+[node name="AutomaticDoor2" parent="." unique_id=1301869477 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0, -42.49973)
+
+[node name="AutomaticDoor3" parent="." unique_id=2057992390 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0, -48.023315)
+
+[node name="AutomaticDoor4" parent="." unique_id=1611585241 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27.536245, 0, -36.31387)
+
+[node name="AutomaticDoor8" parent="." unique_id=1488586195 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.536245, 0, -36.31387)
+
+[node name="AutomaticDoor5" parent="." unique_id=415054158 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -42.63983, 0, -29.934044)
+
+[node name="AutomaticDoor6" parent="." unique_id=2015362899 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -52.63983, 0, -29.934044)
+
+[node name="AutomaticDoor7" parent="." unique_id=1438430264 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -38.63983, 0, -39.93718)
+
+[node name="AutomaticDoor9" parent="." unique_id=1688414415 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -24.462906, 0, -22.93718)
