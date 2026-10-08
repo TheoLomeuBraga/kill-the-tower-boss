@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://bg6qpmgiv5ory" path="res://player/player_settings_sync.gd" id="27_uw77l"]
 [ext_resource type="Script" uid="uid://dvup0i08imxoq" path="res://player/gun_viewport_manager.gd" id="32_5ejfk"]
 [ext_resource type="PackedScene" uid="uid://be0qprkejsf2x" path="res://menus/debug_menu/debug_menu.tscn" id="35_q28gw"]
+[ext_resource type="Script" uid="uid://3ctjue081uod" path="res://player/clock.gd" id="36_ge24q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
@@ -262,6 +263,20 @@ target_position = Vector3(0, -0.4, 0)
 [node name="b" type="RayCast3D" parent="stair_ajust" unique_id=465938391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84150493, 0)
 target_position = Vector3(0, 0, -0.6)
+
+[node name="clock" type="Label" parent="." unique_id=408326055]
+visible = false
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.21700001
+anchor_bottom = 0.21000001
+offset_right = -0.2000122
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "10000"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("36_ge24q")
 
 [connection signal="dead" from="Stats" to="PlayerMovement" method="die"]
 [connection signal="dead" from="Stats" to="GameOver" method="gameover"]

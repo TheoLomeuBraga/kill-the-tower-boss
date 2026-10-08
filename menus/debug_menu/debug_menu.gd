@@ -17,12 +17,17 @@ func give_all() -> void:
 		Player.player.keys.give_all()
 		Player.player.stats.health = Player.player.stats.max_health
 
+func timer() -> void:
+	if Player.player:
+		Player.player.toogle_timer()
+
 func _ready() -> void:
 	visible = false
 	
 	$Panel/ScrollContainer/VBoxContainer/noclip.pressed.connect(togle_noclip)
 	$Panel/ScrollContainer/VBoxContainer/nohud.pressed.connect(no_hud)
 	$Panel/ScrollContainer/VBoxContainer/give_all.pressed.connect(give_all)
+	$Panel/ScrollContainer/VBoxContainer/timer.pressed.connect(timer)
 
 
 func _process(delta: float) -> void:

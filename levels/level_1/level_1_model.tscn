@@ -102,8 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 23, -1.3942871)
 shape = SubResource("BoxShape3D_qxkbx")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1" unique_id=1084666183]
-visible = false
 occluder = ExtResource("2_00sav")
 
-[node name="Cube_007" parent="." index="10" unique_id=1825779781]
+[node name="Cube_007" parent="." index="10" unique_id=2045285402]
 surface_material_override/0 = SubResource("ShaderMaterial_bg2c8")

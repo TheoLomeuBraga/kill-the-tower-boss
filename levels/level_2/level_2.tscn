@@ -1,5 +1,40 @@
-[gd_scene format=3 uid="uid://l6erlf5iqa8g"]
+[gd_scene format=3 uid="uid://btj3ogk4xr3el"]
 
-[ext_resource type="PackedScene" uid="uid://dmjcqui4k5ovu" path="res://levels/level_2/level_2_model.glb" id="1_0b444"]
+[ext_resource type="PackedScene" uid="uid://l6erlf5iqa8g" path="res://levels/level_2/level_2_model.tscn" id="1_0b444"]
+[ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="2_jniqj"]
 
-[node name="level_2_model" unique_id=984531401 instance=ExtResource("1_0b444")]
+[sub_resource type="Gradient" id="Gradient_0b444"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.25125495, 0.41017392, 0.73593044)
+colors = PackedColorArray(0, 0, 0, 1, 0.14915726, 0.070488684, 0.17451245, 1, 0.040299192, 0.07734602, 0.25498876, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nph4p"]
+gradient = SubResource("Gradient_0b444")
+width = 1
+height = 32
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jniqj"]
+panorama = SubResource("GradientTexture2D_nph4p")
+filter = false
+
+[sub_resource type="Sky" id="Sky_bdepj"]
+sky_material = SubResource("PanoramaSkyMaterial_jniqj")
+
+[sub_resource type="Environment" id="Environment_618ip"]
+background_mode = 2
+sky = SubResource("Sky_bdepj")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.8
+tonemap_mode = 2
+
+[node name="Level2" type="Node3D" unique_id=738504918]
+
+[node name="level_2_model" parent="." unique_id=984531401 instance=ExtResource("1_0b444")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=183746669]
+environment = SubResource("Environment_618ip")
+
+[node name="Player" parent="." unique_id=696039800 instance=ExtResource("2_jniqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

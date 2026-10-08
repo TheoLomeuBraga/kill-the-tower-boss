@@ -22,12 +22,14 @@ func damage_vignette(damage:int) -> void:
 	vignette.vignette_color = Color.RED
 	vignette.outer_radius = 1.5-(effect_multplyer/3.0)
 
+func toogle_timer()->void:
+	$clock.visible = not $clock.visible
+
 func _ready() -> void:
 	
 	player = self
 	stats.damaged.connect(damage_vignette)
 	PersistenceManager.save_state()
-
 
 
 func _exit_tree() -> void:
