@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="6_8r3qo"]
 [ext_resource type="PackedScene" uid="uid://bxfxbf18aitn8" path="res://enemys/drone/drone.tscn" id="7_0butd"]
 [ext_resource type="PackedScene" uid="uid://ceq3wentgd514" path="res://props/door/automatic_door.tscn" id="8_8y2in"]
+[ext_resource type="PackedScene" uid="uid://ds7s8hueic2ai" path="res://props/terminals/key_card_terminal/key_card_terminal.tscn" id="9_ubkp0"]
+[ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="9_un0ug"]
+[ext_resource type="Script" uid="uid://barypxg6l267o" path="res://scripts/trigers/key_card_triger.gd" id="11_25w0s"]
+[ext_resource type="PackedScene" uid="uid://816l7ahwk2cu" path="res://props/terminals/button/button.tscn" id="12_lnqnw"]
+[ext_resource type="PackedScene" uid="uid://ciogwps7wuov6" path="res://consumables/keycards/keycards_models.tscn" id="13_5ptf1"]
 
 [sub_resource type="Gradient" id="Gradient_0b444"]
 interpolation_mode = 2
@@ -50,6 +55,18 @@ size = Vector3(0.5, 4, 18)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
 size = Vector3(7, 5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ptf1"]
+size = Vector3(3, 4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
+size = Vector3(3, 4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4skoa"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2jhj"]
+radius = 0.2
 
 [node name="Level2" type="Node3D" unique_id=738504918]
 
@@ -104,53 +121,144 @@ metadata/_custom_type_script = "uid://cce2bqsye47to"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5)
 shape = SubResource("BoxShape3D_b2jhj")
 
-[node name="AutomaticDoor" parent="." unique_id=321128549 instance=ExtResource("8_8y2in")]
+[node name="doors" type="Node" parent="." unique_id=1047027531]
+
+[node name="AutomaticDoor" parent="doors" unique_id=321128549 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18, 0, -39.49973)
 
-[node name="AutomaticDoor10" parent="." unique_id=1645408898 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor10" parent="doors" unique_id=1645408898 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.977715, 0, -32.08973)
 
-[node name="AutomaticDoor11" parent="." unique_id=1338898939 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor11" parent="doors" unique_id=1338898939 instance=ExtResource("8_8y2in")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -35.49973)
 
-[node name="AutomaticDoor12" parent="." unique_id=803041096 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor12" parent="doors" unique_id=803041096 instance=ExtResource("8_8y2in")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.458363, 0, -21.49973)
 
-[node name="AutomaticDoor13" parent="." unique_id=862031799 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor13" parent="doors" unique_id=862031799 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 44.88534, 0, -17.471573)
 
-[node name="AutomaticDoor14" parent="." unique_id=1697181951 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor14" parent="doors" unique_id=1697181951 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 61.88534, 0, -18.471573)
 
-[node name="AutomaticDoor15" parent="." unique_id=953931522 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor15" parent="doors" unique_id=953931522 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 52.88534, 0, -31.517115)
 
-[node name="AutomaticDoor16" parent="." unique_id=503924714 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor16" parent="doors" unique_id=503924714 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 61.718838, 0, -31.517115)
 
-[node name="AutomaticDoor17" parent="." unique_id=1516740959 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor17" parent="doors" unique_id=1516740959 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 49.470993, 0, -40.048626)
 
-[node name="AutomaticDoor2" parent="." unique_id=1301869477 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor2" parent="doors" unique_id=1301869477 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0, -42.49973)
 
-[node name="AutomaticDoor3" parent="." unique_id=2057992390 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor3" parent="doors" unique_id=2057992390 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0, -48.023315)
 
-[node name="AutomaticDoor4" parent="." unique_id=1611585241 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor4" parent="doors" unique_id=1611585241 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27.536245, 0, -36.31387)
 
-[node name="AutomaticDoor8" parent="." unique_id=1488586195 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor8" parent="doors" unique_id=1488586195 instance=ExtResource("8_8y2in")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.536245, 0, -36.31387)
 
-[node name="AutomaticDoor5" parent="." unique_id=415054158 instance=ExtResource("8_8y2in")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -42.63983, 0, -29.934044)
+[node name="AutomaticDoor5" parent="doors" unique_id=415054158 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -42.63983, 0, -30.780708)
 
-[node name="AutomaticDoor6" parent="." unique_id=2015362899 instance=ExtResource("8_8y2in")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -52.63983, 0, -29.934044)
+[node name="AutomaticDoor6" parent="doors" unique_id=2015362899 instance=ExtResource("8_8y2in")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -52.63983, 0, -28.94549)
 
-[node name="AutomaticDoor7" parent="." unique_id=1438430264 instance=ExtResource("8_8y2in")]
+[node name="AutomaticDoor7" parent="doors" unique_id=1438430264 instance=ExtResource("8_8y2in")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -38.63983, 0, -39.93718)
 
-[node name="AutomaticDoor9" parent="." unique_id=1688414415 instance=ExtResource("8_8y2in")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -24.462906, 0, -22.93718)
+[node name="AutomaticDoor9" parent="doors" unique_id=1688414415 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -37.078857, 0, -22.13388)
+
+[node name="AutomaticDoor18" parent="doors" unique_id=1138048969 instance=ExtResource("8_8y2in")]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -27.68592, 0, -18.141493)
+
+[node name="terminals" type="Node" parent="." unique_id=1463873672]
+
+[node name="door_red" parent="terminals" unique_id=424647415 instance=ExtResource("9_un0ug")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12.485947, 0, -43.661537)
+
+[node name="door_yellow" parent="terminals" unique_id=1842289566 instance=ExtResource("9_un0ug")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12.485947, 0, -44.661537)
+
+[node name="key_card_terminal_red" parent="terminals" unique_id=815402997 instance=ExtResource("9_ubkp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1813, 0.3452, -42.9072)
+
+[node name="key_card_terminal_yellow" parent="terminals" unique_id=914191119 instance=ExtResource("9_ubkp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1813, 0.3452, -42.9072)
+type = 1
+
+[node name="KeyCardTriger_red" type="Area3D" parent="terminals" unique_id=2111309256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -42)
+script = ExtResource("11_25w0s")
+targets = Array[NodePath]([NodePath("../door_red"), NodePath("../key_card_terminal_red")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terminals/KeyCardTriger_red" unique_id=65881963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0.5)
+shape = SubResource("BoxShape3D_5ptf1")
+
+[node name="KeyCardTriger_yellow" type="Area3D" parent="terminals" unique_id=691979594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -42)
+script = ExtResource("11_25w0s")
+key_type = 1
+targets = Array[NodePath]([NodePath("../door_yellow"), NodePath("../key_card_terminal_yellow")])
+metadata/_custom_type_script = "uid://barypxg6l267o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terminals/KeyCardTriger_yellow" unique_id=597264872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 1)
+shape = SubResource("BoxShape3D_qxkbx")
+
+[node name="button_door_r" type="Node" parent="." unique_id=159842013]
+
+[node name="AreaTriger" type="Area3D" parent="button_door_r" unique_id=1181528752]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 72.362495, 1.6723751, -18.59035)
+script = ExtResource("6_8r3qo")
+targets = Array[NodePath]([NodePath("../button"), NodePath("../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_door_r/AreaTriger" unique_id=1912107766]
+shape = SubResource("BoxShape3D_4skoa")
+
+[node name="button" parent="button_door_r" unique_id=1081899944 instance=ExtResource("12_lnqnw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 72.362495, 1.6723751, -18.59035)
+
+[node name="door" parent="button_door_r" unique_id=1080009345 instance=ExtResource("9_un0ug")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 42, 0, -31.538334)
+
+[node name="key_door_r" type="Node" parent="." unique_id=663623357]
+
+[node name="AreaTriger" type="Area3D" parent="key_door_r" unique_id=1173879638]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30.642033, 1.1041713, -39.407967)
+script = ExtResource("6_8r3qo")
+targets = Array[NodePath]([NodePath("../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="keycards_models" parent="key_door_r/AreaTriger" unique_id=617621304 instance=ExtResource("13_5ptf1")]
+key_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="key_door_r/AreaTriger" unique_id=1305484734]
+shape = SubResource("SphereShape3D_b2jhj")
+
+[node name="door" parent="key_door_r" unique_id=1313630969 instance=ExtResource("9_un0ug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 28.642033, 0.104171276, -39.407967)
+
+[node name="keycard_l" type="Node" parent="." unique_id=275911210]
+
+[node name="AreaTriger" type="Area3D" parent="keycard_l" unique_id=1642285065]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.4005377, 1.1041713, -35.542736)
+script = ExtResource("6_8r3qo")
+targets = Array[NodePath]([NodePath("../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="keycards_models" parent="keycard_l/AreaTriger" unique_id=489061902 instance=ExtResource("13_5ptf1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keycard_l/AreaTriger" unique_id=693497043]
+shape = SubResource("SphereShape3D_b2jhj")
+
+[node name="door" parent="keycard_l" unique_id=2098242324 instance=ExtResource("9_un0ug")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5039165, 0.104171276, -36.740116)
