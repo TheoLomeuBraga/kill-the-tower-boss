@@ -21,6 +21,9 @@ func get_stats(node:Node) -> Stats:
 	return null
 
 func _ready() -> void:
+	
+	await get_tree().process_frame
+	
 	for n:Node in get_children():
 		
 		
