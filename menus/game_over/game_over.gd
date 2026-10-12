@@ -35,6 +35,8 @@ func gameover() -> void:
 	
 	$VBoxContainer/respawn.grab_focus()
 	
+	
+	
 
 func _process(delta: float) -> void:
 	var sm : ShaderMaterial = $ColorRect.material

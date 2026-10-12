@@ -122,4 +122,5 @@ func _ready() -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
-	rotation.y += delta * 2.0
+	if not Engine.is_editor_hint():
+		rotation.y += delta * 2.0

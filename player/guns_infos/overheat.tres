@@ -38,7 +38,6 @@ script = ExtResource("7_2p5l5")
 ammon_type = 4
 ammon_consumption = 1
 spread = 0.01
-charge_time = 2.0
 projectile_info = SubResource("Resource_7rrui")
 fire_rate = 0.1
 charge_sound = ExtResource("1_q3v7y")

@@ -6,7 +6,7 @@ class_name WeponPickup
 var model_display : Node3D
 var model : Node3D
 
-@export var upgrade_of : GunInfo
+
 
 @export var weapon : GunInfo :
 	set(value):
@@ -65,10 +65,7 @@ func _physics_process(delta: float) -> void:
 				
 				var p : Player = get_collider(i)
 				
-				if upgrade_of:
-					p.gun_control.upgrade_gun(upgrade_of,weapon)
-				else:
-					p.gun_control.add_gun(weapon)
+				p.gun_control.add_gun(weapon)
 				
 				p.gun_control.ammon_inventory[weapon.ammon_type] += weapon.ammon_capacity
 				match weapon.ammon_type:

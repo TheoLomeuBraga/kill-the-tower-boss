@@ -12,7 +12,6 @@ noise = SubResource("FastNoiseLite_so37a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8epti"]
 shader = ExtResource("2_a0plv")
-shader_parameter/lod = 5.0
 shader_parameter/gameover_progres = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_a0plv")
 
@@ -46,6 +45,7 @@ shadow_color = Color(0.23921569, 0, 0, 0.6)
 shadow_size = 16
 
 [node name="GameOver" type="Control" unique_id=462071331]
+z_index = 100
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
