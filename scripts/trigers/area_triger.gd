@@ -67,13 +67,14 @@ func on_body_exit(body:Node3D) -> void:
 func _ready() -> void:
 	
 	sync_data["used"] = false
+	
 	if not PersistenceManager.has(self):
 			PersistenceManager.register(self,sync_data)
 	else:
 		sync_data = PersistenceManager.get_ref(self)
 	
-	if sync_data["used"]:
-		used = true
+	
+	used = sync_data["used"]
 	
 	if triger_on_enter:
 		body_entered.connect(on_body_entered)

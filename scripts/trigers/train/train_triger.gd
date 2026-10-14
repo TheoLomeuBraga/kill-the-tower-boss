@@ -3,7 +3,9 @@ class_name TrainTriger
 
 var sync_data : Dictionary
 
-@export var active : bool = false
+@export var reverse : bool = false
+
+var active : bool = false
 
 enum MovementModes {LINEAR,LOOP,PING_PONG}
 @export var movement_mode : MovementModes
@@ -19,6 +21,7 @@ var time_to_next : float = 0.0
 @export var movement_sound : AudioStreamPlayer3D
 
 func _ready() -> void:
+	
 	motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
 	slide_on_ceiling = false
 	floor_stop_on_slope = false
@@ -28,6 +31,9 @@ func _ready() -> void:
 		if n is TrainRail:
 			rails.push_back(n)
 	
+	if reverse:
+		rails.reverse()
+	
 	global_position = rails[target_rail].global_position
 	global_rotation = rails[target_rail].global_rotation
 	
@@ -35,6 +41,9 @@ func _ready() -> void:
 	sync_data["global_rotation"] = rails[target_rail].global_rotation
 	sync_data["active"] = active
 	sync_data["target_rail"] = target_rail
+	
+	
+	
 	
 	if not PersistenceManager.has(self):
 			PersistenceManager.register(self,sync_data)
@@ -44,7 +53,9 @@ func _ready() -> void:
 	rails[target_rail].global_position = sync_data["global_position"]
 	rails[target_rail].global_rotation = sync_data["global_rotation"]
 	active = sync_data["active"]
+	
 	target_rail = sync_data["target_rail"]
+	
 	
 
 func mt_next(delta: float) -> void:
