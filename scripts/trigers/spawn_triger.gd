@@ -3,7 +3,6 @@ class_name SpawnTriger
 
 @export var targets : Array[NodePath]
 
-
 var nodes : Array[Node]
 
 var targets_remaining : int = 0
@@ -20,9 +19,20 @@ func get_stats(node:Node) -> Stats:
 			return n
 	return null
 
+var sync_data : Dictionary = {}
+
 func _ready() -> void:
 	
 	await get_tree().process_frame
+	
+	sync_data["spawned"] = false
+	
+	if not PersistenceManager.has(self):
+			PersistenceManager.register(self,sync_data)
+	else:
+		sync_data = PersistenceManager.get_ref(self)
+	
+	
 	
 	for n:Node in get_children():
 		
@@ -37,8 +47,12 @@ func _ready() -> void:
 			targets_remaining+=1
 		
 	
+	if sync_data["spawned"]:
+		for n:Node in nodes:
+			add_child(n)
 	
 
 func triger() -> void:
+	sync_data["spawned"] = true
 	for n:Node in nodes:
 		add_child(n)

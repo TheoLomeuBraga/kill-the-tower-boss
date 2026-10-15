@@ -66,6 +66,8 @@ func on_body_exit(body:Node3D) -> void:
 
 func _ready() -> void:
 	
+	
+	
 	sync_data["used"] = false
 	
 	if not PersistenceManager.has(self):
@@ -76,6 +78,8 @@ func _ready() -> void:
 	
 	used = sync_data["used"]
 	
+	
+	await get_tree().process_frame
 	if triger_on_enter:
 		body_entered.connect(on_body_entered)
 	if triger_on_exit:

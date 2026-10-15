@@ -1,5 +1,3 @@
-playtest myself
-
 create textures: glass, red carpet, wood planks, tiles,
 scifi door, scifi monitor frame, scifi monitor code
 

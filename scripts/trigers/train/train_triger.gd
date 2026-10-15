@@ -1,11 +1,13 @@
 extends CharacterBody3D
 class_name TrainTriger
 
+@export var debug : bool = false
+
 var sync_data : Dictionary
 
-@export var reverse : bool = false
+#@export var reverse : bool = false
 
-var active : bool = false
+@export var active : bool = false
 
 enum MovementModes {LINEAR,LOOP,PING_PONG}
 @export var movement_mode : MovementModes
@@ -31,14 +33,14 @@ func _ready() -> void:
 		if n is TrainRail:
 			rails.push_back(n)
 	
-	if reverse:
-		rails.reverse()
+	#if reverse:
+	#	rails.reverse()
 	
 	global_position = rails[target_rail].global_position
 	global_rotation = rails[target_rail].global_rotation
 	
-	sync_data["global_position"] = rails[target_rail].global_position
-	sync_data["global_rotation"] = rails[target_rail].global_rotation
+	sync_data["global_position"] = global_position
+	sync_data["global_rotation"] = global_rotation
 	sync_data["active"] = active
 	sync_data["target_rail"] = target_rail
 	
@@ -50,15 +52,19 @@ func _ready() -> void:
 	else:
 		sync_data = PersistenceManager.get_ref(self)
 	
-	rails[target_rail].global_position = sync_data["global_position"]
-	rails[target_rail].global_rotation = sync_data["global_rotation"]
+	global_position = sync_data["global_position"]
+	global_rotation = sync_data["global_rotation"]
 	active = sync_data["active"]
 	
 	target_rail = sync_data["target_rail"]
 	
 	
+	
+	
 
 func mt_next(delta: float) -> void:
+	
+	
 	
 	var p_changed : bool = global_position != global_position.move_toward(rails[target_rail].global_position,delta*speed)
 	
@@ -91,7 +97,6 @@ func _physics_process(delta: float) -> void:
 			movement_sound.stop()
 		return
 	
-	
 	match movement_mode:
 			MovementModes.LINEAR:
 				mt_next(delta)
@@ -107,6 +112,8 @@ func _physics_process(delta: float) -> void:
 	if global_position == rails[target_rail].global_position:
 		
 		time_to_next = rails[target_rail].interuption_time
+		
+		
 		
 		match movement_mode:
 			MovementModes.LINEAR:
@@ -129,9 +136,12 @@ func _physics_process(delta: float) -> void:
 							ping_pong_reversed=false
 		
 		sync_data["target_rail"] = target_rail
-		
 	
+	#if debug:
+	#	print(global_position == rails[target_rail].global_position)
+		
 
 func triger() -> void:
 	active = not active
 	sync_data["active"] = active
+	
