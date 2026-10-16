@@ -1,6 +1,3 @@
-create textures: glass, red carpet, wood planks, tiles,
-scifi door, scifi monitor frame, scifi monitor code
-
 finish level 2
 
 create level 3
