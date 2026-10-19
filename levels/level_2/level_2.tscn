@@ -225,7 +225,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1813, 0.3452, -42.9072)
 
 [node name="key_card_terminal_yellow" parent="terminals" unique_id=914191119 instance=ExtResource("9_ubkp0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1813, 0.3452, -42.9072)
-type = 1
+type = 2
 
 [node name="KeyCardTriger_red" type="Area3D" parent="terminals" unique_id=2111309256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -42)
@@ -290,7 +290,7 @@ targets = Array[NodePath]([NodePath("../door")])
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="keycards_models" parent="key_door_r/AreaTriger" unique_id=617621304 instance=ExtResource("13_5ptf1")]
-key_type = 1
+key_type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="key_door_r/AreaTriger" unique_id=1305484734]
 shape = SubResource("SphereShape3D_b2jhj")
@@ -981,3 +981,6 @@ offset = Vector3(0.289, 0, -0.777)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 weapon = ExtResource("24_ppf8r")
 offset = Vector3(0, 0, -0.691)
+
+[node name="button" parent="." unique_id=1198780054 instance=ExtResource("12_lnqnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.617466, 1.7094469, -89.16441)

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvss5nwu2y8oy"
-path.s3tc="res://.godot/imported/level_2_model_test.png-3273c13c40660f900e8bac9fef2f3465.s3tc.ctex"
-path.etc2="res://.godot/imported/level_2_model_test.png-3273c13c40660f900e8bac9fef2f3465.etc2.ctex"
+uid="uid://bcpioq3dq8xxx"
+path.s3tc="res://.godot/imported/level_2_model_interior_wall.png-ce43018a2fcce1d5b8a483da02d09f08.s3tc.ctex"
+path.etc2="res://.godot/imported/level_2_model_interior_wall.png-ce43018a2fcce1d5b8a483da02d09f08.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "442512104c7a0ea8fca9f28fe1f9f09e"
+"md5": "dcf1d3d5de640cb69fcdf3020a38d686"
 }
 
 [deps]
 
-source_file="res://levels/level_2/level_2_model_test.png"
-dest_files=["res://.godot/imported/level_2_model_test.png-3273c13c40660f900e8bac9fef2f3465.s3tc.ctex", "res://.godot/imported/level_2_model_test.png-3273c13c40660f900e8bac9fef2f3465.etc2.ctex"]
+source_file="res://levels/level_2/level_2_model_interior_wall.png"
+dest_files=["res://.godot/imported/level_2_model_interior_wall.png-ce43018a2fcce1d5b8a483da02d09f08.s3tc.ctex", "res://.godot/imported/level_2_model_interior_wall.png-ce43018a2fcce1d5b8a483da02d09f08.etc2.ctex"]
 
 [params]
 

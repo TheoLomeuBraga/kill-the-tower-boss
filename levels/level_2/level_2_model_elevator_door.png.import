@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3am2gfovb54o"
-path.s3tc="res://.godot/imported/level_2_test.png-64ffaa60f29c5474cf5dbc11d2589323.s3tc.ctex"
-path.etc2="res://.godot/imported/level_2_test.png-64ffaa60f29c5474cf5dbc11d2589323.etc2.ctex"
+uid="uid://ck25e0qrpnwkg"
+path.s3tc="res://.godot/imported/level_2_model_elevator_door.png-143c5eabb98e63f0174d345fe315a58a.s3tc.ctex"
+path.etc2="res://.godot/imported/level_2_model_elevator_door.png-143c5eabb98e63f0174d345fe315a58a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "442512104c7a0ea8fca9f28fe1f9f09e"
+"md5": "1485e283baa1d3f4b189b2423187857f"
 }
 
 [deps]
 
-source_file="res://levels/level_2/level_2_test.png"
-dest_files=["res://.godot/imported/level_2_test.png-64ffaa60f29c5474cf5dbc11d2589323.s3tc.ctex", "res://.godot/imported/level_2_test.png-64ffaa60f29c5474cf5dbc11d2589323.etc2.ctex"]
+source_file="res://levels/level_2/level_2_model_elevator_door.png"
+dest_files=["res://.godot/imported/level_2_model_elevator_door.png-143c5eabb98e63f0174d345fe315a58a.s3tc.ctex", "res://.godot/imported/level_2_model_elevator_door.png-143c5eabb98e63f0174d345fe315a58a.etc2.ctex"]
 
 [params]
 

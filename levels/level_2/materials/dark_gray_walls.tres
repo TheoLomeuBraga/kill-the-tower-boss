@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yh6rl47aq00p"]
+
+[ext_resource type="Texture2D" uid="uid://bcpioq3dq8xxx" path="res://levels/level_2/level_2_model_interior_wall.png" id="1_f5x8l"]
+
+[resource]
+resource_name = "dark_gray_walls"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.25311926, 0.25311947, 0.25311938, 1)
+albedo_texture = ExtResource("1_f5x8l")

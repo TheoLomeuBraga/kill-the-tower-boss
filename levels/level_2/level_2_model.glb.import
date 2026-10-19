@@ -39,7 +39,60 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"blue_walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/blue_walls.tres",
+"use_external/path": "uid://dm2d0v8yqky6w"
+},
+"cealing": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/cealing.tres",
+"use_external/path": "uid://bofyi2fyhw68m"
+},
+"dark_gray_walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/dark_gray_walls.tres",
+"use_external/path": "uid://yh6rl47aq00p"
+},
+"elevator_door": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/elevator_door.tres",
+"use_external/path": "uid://dr2rldq3q6n7x"
+},
+"elevator_door.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/elevator_door.001.tres",
+"use_external/path": "uid://dblnlasl1btad"
+},
+"floor_tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/floor_tiles.tres",
+"use_external/path": "uid://b3760hna8ael5"
+},
+"gray_walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/gray_walls.tres",
+"use_external/path": "uid://3mu5g2yi1vsy"
+},
+"red_walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/red_walls.tres",
+"use_external/path": "uid://b3coi3gnho7h3"
+},
+"tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/tiles.tres",
+"use_external/path": "uid://0hfj345lurlq"
+},
+"vertex": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_2/materials/vertex.tres",
+"use_external/path": "uid://cm8hn01vpwib7"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1
