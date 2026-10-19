@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpg74apemoyul"]
+
+[ext_resource type="Texture2D" uid="uid://cvss5nwu2y8oy" path="res://levels/level_2/level_2_model_test.png" id="1_usg6n"]
+
+[resource]
+resource_name = "base"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_usg6n")
+texture_filter = 2

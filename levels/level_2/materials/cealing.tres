@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bofyi2fyhw68m"]
 
-[ext_resource type="Texture2D" uid="uid://bcpioq3dq8xxx" path="res://levels/level_2/level_2_model_interior_wall.png" id="1_j1gcq"]
+[ext_resource type="Texture2D" uid="uid://bvf5d8eq1m5oc" path="res://levels/level_2/level_2_model_concrete.png" id="1_j1gcq"]
 
 [resource]
 resource_name = "cealing"

@@ -24,7 +24,7 @@ nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
@@ -41,55 +41,40 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"blue_walls": {
+"blue_concrete": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/blue_walls.tres",
-"use_external/path": "uid://dm2d0v8yqky6w"
+"use_external/fallback_path": "res://levels/level_2/materials/blue_concrete.tres",
+"use_external/path": "uid://ux8ldn4hlw8e"
 },
 "cealing": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://levels/level_2/materials/cealing.tres",
 "use_external/path": "uid://bofyi2fyhw68m"
 },
-"dark_gray_walls": {
+"dark_gray_concrete": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/dark_gray_walls.tres",
-"use_external/path": "uid://yh6rl47aq00p"
+"use_external/fallback_path": "res://levels/level_2/materials/dark_gray_concrete.tres",
+"use_external/path": "uid://dg1fbpyhkypx"
 },
 "elevator_door": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://levels/level_2/materials/elevator_door.tres",
 "use_external/path": "uid://dr2rldq3q6n7x"
 },
-"elevator_door.001": {
+"floor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/elevator_door.001.tres",
-"use_external/path": "uid://dblnlasl1btad"
+"use_external/fallback_path": "res://levels/level_2/materials/floor.tres",
+"use_external/path": "uid://w53v5tcbf61b"
 },
-"floor_tiles": {
+"gray_concrete": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/floor_tiles.tres",
-"use_external/path": "uid://b3760hna8ael5"
+"use_external/fallback_path": "res://levels/level_2/materials/gray_concrete.tres",
+"use_external/path": "uid://bfr68btej3qhr"
 },
-"gray_walls": {
+"red_concrete": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/gray_walls.tres",
-"use_external/path": "uid://3mu5g2yi1vsy"
-},
-"red_walls": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/red_walls.tres",
-"use_external/path": "uid://b3coi3gnho7h3"
-},
-"tiles": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/tiles.tres",
-"use_external/path": "uid://0hfj345lurlq"
-},
-"vertex": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://levels/level_2/materials/vertex.tres",
-"use_external/path": "uid://cm8hn01vpwib7"
+"use_external/fallback_path": "res://levels/level_2/materials/red_concrete.tres",
+"use_external/path": "uid://dph315g14lttl"
 }
 }
 }
