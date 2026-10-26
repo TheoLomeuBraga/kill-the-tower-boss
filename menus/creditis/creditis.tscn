@@ -1,9 +1,50 @@
 [gd_scene format=3 uid="uid://d2wk1121oq6ma"]
 
+[ext_resource type="Script" uid="uid://bja784vbuu4ma" path="res://menus/creditis/creditis.gd" id="1_4f0bq"]
+
 [node name="Creditis" type="Control" unique_id=280251813]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4f0bq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1051154489]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=502497316]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1148519497]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 66.0
+offset_right = 583.0
+offset_bottom = 348.0
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Théo: [color=blue][url]https://theolomeubraga.itch.io/[/url][/color]"
+scroll_following = true
+
+[node name="close" type="Button" parent="ColorRect" unique_id=873208335]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 361.5
+offset_right = 456.0
+offset_bottom = 392.5
+text = "close"

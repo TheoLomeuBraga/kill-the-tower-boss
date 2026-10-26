@@ -25,28 +25,29 @@
 [ext_resource type="Texture2D" uid="uid://cpxoooha1jihn" path="res://levels/textures/steel.png" id="22_kgdtm"]
 [ext_resource type="Resource" uid="uid://dem71dr1rlwrg" path="res://player/guns_infos/shotgun.tres" id="23_uuidd"]
 [ext_resource type="Resource" uid="uid://sjs512xc2p86" path="res://player/guns_infos/smg.tres" id="24_ppf8r"]
+[ext_resource type="Script" uid="uid://drnx3c1p1uule" path="res://scripts/trigers/change_cene_triger.gd" id="26_s4b5i"]
 
 [sub_resource type="Gradient" id="Gradient_0b444"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.25125495, 0.41017392, 0.73593044)
 colors = PackedColorArray(0, 0, 0, 1, 0.14915726, 0.070488684, 0.17451245, 1, 0.040299192, 0.07734602, 0.25498876, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nph4p"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s4b5i"]
 gradient = SubResource("Gradient_0b444")
 width = 1
 height = 32
 fill_from = Vector2(1, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jniqj"]
-panorama = SubResource("GradientTexture2D_nph4p")
+panorama = SubResource("GradientTexture2D_s4b5i")
 filter = false
 
-[sub_resource type="Sky" id="Sky_bdepj"]
+[sub_resource type="Sky" id="Sky_qfhyh"]
 sky_material = SubResource("PanoramaSkyMaterial_jniqj")
 
 [sub_resource type="Environment" id="Environment_618ip"]
 background_mode = 2
-sky = SubResource("Sky_bdepj")
+sky = SubResource("Sky_qfhyh")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8
@@ -111,6 +112,9 @@ size = Vector3(0.2, 6, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pa0au"]
 size = Vector3(20, 6, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovmhp"]
+size = Vector3(8, 5, 3)
 
 [node name="Level2" type="Node3D" unique_id=738504918]
 
@@ -472,27 +476,27 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 11, 1, -48)
 health = 25
 
 [node name="consumable34" parent="consumables" unique_id=1101497059 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -40)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -40)
 health = 20
 
 [node name="consumable35" parent="consumables" unique_id=54885683 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -39)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -39)
 health = 20
 
 [node name="consumable63" parent="consumables" unique_id=1083064946 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -38)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -38)
 health = 20
 
 [node name="consumable64" parent="consumables" unique_id=1346633084 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -37)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -37)
 health = 20
 
 [node name="consumable65" parent="consumables" unique_id=1547793733 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -36)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -36)
 health = 20
 
 [node name="consumable66" parent="consumables" unique_id=49387424 instance=ExtResource("14_2smvo")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.402864, 1, -35)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12.5, 1, -35)
 health = 20
 
 [node name="consumable22" parent="consumables" unique_id=1101575342 instance=ExtResource("14_2smvo")]
@@ -844,7 +848,8 @@ weapon = ExtResource("18_1vf62")
 offset = Vector3(0.218, 0, -0.267)
 
 [node name="EndMissionCamera" type="Camera3D" parent="." unique_id=281747263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, -34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2, -34.140236)
+fov = 80.0
 script = ExtResource("19_1vf62")
 mission_name = "second floor"
 metadata/_custom_type_script = "uid://8fc5wkuba60s"
@@ -984,3 +989,13 @@ offset = Vector3(0, 0, -0.691)
 
 [node name="button" parent="." unique_id=1198780054 instance=ExtResource("12_lnqnw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.617466, 1.7094469, -89.16441)
+
+[node name="ChangeCeneTriger" type="Area3D" parent="." unique_id=1466107162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -90)
+script = ExtResource("26_s4b5i")
+next_scene = "uid://cau4pgmekoocd"
+metadata/_custom_type_script = "uid://drnx3c1p1uule"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeCeneTriger" unique_id=1999667351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 1)
+shape = SubResource("BoxShape3D_ovmhp")

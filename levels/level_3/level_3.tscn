@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cau4pgmekoocd"]
+
+[ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_35b77"]
+[ext_resource type="PackedScene" uid="uid://f2alo1t0npvf" path="res://levels/level_3/level_3_model.tscn" id="1_fqu2u"]
+
+[sub_resource type="Shader" id="Shader_35b77"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_front, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_nearest, repeat_enable;
+
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_nearest, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	UV+=vec2(TIME/80.0);
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	ALPHA *= albedo.a * albedo_tex.a;
+
+	// Distance Fade: Pixel Alpha
+	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, length(VERTEX)), 0.0, 1.0);
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_mgcax"]
+colors = PackedColorArray(0, 0, 0, 0, 0.39568543, 0.3956851, 0.39568505, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0rvqm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_upa32"]
+width = 255
+height = 255
+noise = SubResource("FastNoiseLite_0rvqm")
+color_ramp = SubResource("Gradient_mgcax")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rvqm"]
+render_priority = 0
+shader = SubResource("Shader_35b77")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_upa32")
+shader_parameter/distance_fade_min = 1000.0
+shader_parameter/distance_fade_max = 10.0
+shader_parameter/albedo_texture_size = Vector2i(512, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(5, 5, 5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1ylvm"]
+material = SubResource("ShaderMaterial_0rvqm")
+size = Vector2(2000, 2000)
+
+[sub_resource type="Gradient" id="Gradient_fqu2u"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.25125495, 0.41017392, 0.73593044)
+colors = PackedColorArray(0, 0, 0, 1, 0.14915726, 0.070488684, 0.17451245, 1, 0.040299192, 0.07734602, 0.25498876, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nph4p"]
+gradient = SubResource("Gradient_fqu2u")
+width = 1
+height = 32
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_35b77"]
+panorama = SubResource("GradientTexture2D_nph4p")
+filter = false
+
+[sub_resource type="Sky" id="Sky_bdepj"]
+sky_material = SubResource("PanoramaSkyMaterial_35b77")
+
+[sub_resource type="Environment" id="Environment_upa32"]
+background_mode = 2
+sky = SubResource("Sky_bdepj")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 2
+
+[node name="Level3" type="Node3D" unique_id=1390084447]
+
+[node name="clonds" type="MeshInstance3D" parent="." unique_id=358526067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189, 126)
+mesh = SubResource("PlaneMesh_1ylvm")
+
+[node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_35b77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="level_3_model" parent="." unique_id=1093881667 instance=ExtResource("1_fqu2u")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1806915679]
+environment = SubResource("Environment_upa32")
