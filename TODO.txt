@@ -1,4 +1,6 @@
-add main menu creditis
+add some plands
+
+finish level 3
 
 add end game screen
 
@@ -6,7 +8,7 @@ add system that save wich level was completed
 
 add main menu level select
 
-add more levels tumpnails
+add more levels tumbnails
 
 improve main menu background
 
