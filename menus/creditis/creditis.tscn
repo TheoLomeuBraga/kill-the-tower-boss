@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bja784vbuu4ma" path="res://menus/creditis/creditis.gd" id="1_4f0bq"]
 
 [node name="Creditis" type="Control" unique_id=280251813]
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -19,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.37610224, 0.37610224, 0.37610215, 1)
 
 [node name="Label" type="Label" parent="ColorRect" unique_id=502497316]
 layout_mode = 0

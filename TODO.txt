@@ -1,17 +1,17 @@
-create level 3
+add main menu creditis
 
 add end game screen
 
-add credits
+add system that save wich level was completed
 
 add main menu level select
 
-create music
-
-add main menu creditis
+add more levels tumpnails
 
 improve main menu background
 
-more playtest
-
 add ui noises
+
+create music
+
+more playtest

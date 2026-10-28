@@ -74,4 +74,5 @@ func _ready() -> void:
 	
 	$VBoxContainer/quit_game.pressed.connect(get_tree().quit)
 	
-	
+	$VBoxContainer/credits.pressed.connect($Creditis.focus)
+	$Creditis.close.connect($VBoxContainer/continue.grab_focus)

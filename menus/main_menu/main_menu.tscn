@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://diqsycbodxyvh" path="res://fonts/Beyond The Stars.ttf" id="4_ml8bw"]
 [ext_resource type="PackedScene" uid="uid://c6maixkr7kd8f" path="res://menus/settings/settings_menu.tscn" id="5_oic2i"]
 [ext_resource type="PackedScene" uid="uid://b3wethnl3u8j3" path="res://menus/save_manager_menu/save_manager_menu.tscn" id="7_f7ts8"]
+[ext_resource type="PackedScene" uid="uid://d2wk1121oq6ma" path="res://menus/creditis/creditis.tscn" id="8_81su3"]
 
 [sub_resource type="Environment" id="Environment_er5qh"]
 background_mode = 2
@@ -88,7 +89,6 @@ text = "settings"
 [node name="credits" type="Button" parent="VBoxContainer" unique_id=695031490]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ml8bw")
-disabled = true
 text = "credits"
 
 [node name="quit_game" type="Button" parent="VBoxContainer" unique_id=1151506907]
@@ -120,6 +120,9 @@ grow_vertical = 2
 color = Color(0.27132577, 0.095799096, 0.6621804, 1)
 
 [node name="SaveManagerMenu" parent="ColorRect2" unique_id=151196667 instance=ExtResource("7_f7ts8")]
+layout_mode = 1
+
+[node name="Creditis" parent="." unique_id=280251813 instance=ExtResource("8_81su3")]
 layout_mode = 1
 
 [node name="Node3D" type="Node3D" parent="." unique_id=238357987]
