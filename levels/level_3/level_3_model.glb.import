@@ -39,7 +39,55 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"concrete": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/concrete.tres",
+"use_external/path": "uid://bpbbec20tasfi"
+},
+"dirt": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/dirt.tres",
+"use_external/path": "uid://da7iof5qlbqqf"
+},
+"elevator_door": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/elevator_door.tres",
+"use_external/path": "uid://2swfmr2gm1sp"
+},
+"leafes": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/leafes.tres",
+"use_external/path": "uid://p3g3m7mu5g7c"
+},
+"plant_pot": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/plant_pot.tres",
+"use_external/path": "uid://ygh61cy4sqms"
+},
+"tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/tiles.tres",
+"use_external/path": "uid://dbnedreplcs5r"
+},
+"walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/walls.tres",
+"use_external/path": "uid://clksg1mbypidq"
+},
+"water": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/water.tres",
+"use_external/path": "uid://b7u02lh0363e7"
+},
+"wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://levels/level_3/materials/wood.tres",
+"use_external/path": "uid://drdc6b4ue2pn5"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1

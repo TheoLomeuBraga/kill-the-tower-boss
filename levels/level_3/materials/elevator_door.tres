@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2swfmr2gm1sp"]
+
+[ext_resource type="Texture2D" uid="uid://cs7ykexx0rf2i" path="res://levels/level_3/level_3_model_elevator_door.png" id="1_fulp2"]
+
+[resource]
+resource_name = "elevator_door"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_fulp2")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0

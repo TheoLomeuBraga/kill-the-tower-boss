@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ygh61cy4sqms"]
+
+[resource]
+resource_name = "plant_pot"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.5506258, 0, 0.025945885, 1)
