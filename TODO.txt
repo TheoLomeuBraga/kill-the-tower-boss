@@ -1,5 +1,3 @@
-add some plands
-
 finish level 3
 
 add end game screen
@@ -12,8 +10,12 @@ add more levels tumbnails
 
 improve main menu background
 
-add ui noises
+more playtest
+
+#optional
 
 create music
 
-more playtest
+replace pich randomizers
+
+add ui noises

@@ -11,4 +11,5 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 navigation_mesh = SubResource("NavigationMesh_b2jhj")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="0" unique_id=665783424]
+visible = false
 occluder = ExtResource("2_j0dok")

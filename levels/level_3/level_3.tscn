@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_35b77"]
 [ext_resource type="PackedScene" uid="uid://f2alo1t0npvf" path="res://levels/level_3/level_3_model.tscn" id="1_fqu2u"]
+[ext_resource type="Script" uid="uid://3qgv8esjmnut" path="res://consumables/wepon_pickup/wepon_pickup.gd" id="3_0c4fo"]
+[ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="4_e2rvl"]
+[ext_resource type="Resource" uid="uid://30nuv77dfkrw" path="res://player/guns_infos/granade_launchers.tres" id="5_rpg41"]
+[ext_resource type="PackedScene" uid="uid://ceq3wentgd514" path="res://props/door/automatic_door.tscn" id="6_e2rvl"]
 
 [sub_resource type="Shader" id="Shader_35b77"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
@@ -115,6 +119,12 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.4
 tonemap_mode = 2
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_e2rvl"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0c4fo"]
+radius = 1.0
+
 [node name="Level3" type="Node3D" unique_id=1390084447]
 
 [node name="clonds" type="MeshInstance3D" parent="." unique_id=358526067]
@@ -122,9 +132,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189, 126)
 mesh = SubResource("PlaneMesh_1ylvm")
 
 [node name="Player" parent="." unique_id=696039800 instance=ExtResource("1_35b77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 
 [node name="level_3_model" parent="." unique_id=1093881667 instance=ExtResource("1_fqu2u")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1806915679]
 environment = SubResource("Environment_upa32")
+
+[node name="WeponPickup" type="ShapeCast3D" parent="." unique_id=3637811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.440983, 2.085174, -106.6393)
+shape = SubResource("SphereShape3D_e2rvl")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("3_0c4fo")
+weapon = ExtResource("4_e2rvl")
+offset = Vector3(0.359, 0, -0.854)
+metadata/_custom_type_script = "uid://3qgv8esjmnut"
+
+[node name="WeponPickup2" type="ShapeCast3D" parent="." unique_id=11968582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.94517, 1.3240638, -73.9544)
+shape = SubResource("SphereShape3D_0c4fo")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("3_0c4fo")
+weapon = ExtResource("5_rpg41")
+offset = Vector3(0, 0, -0.678)
+metadata/_custom_type_script = "uid://3qgv8esjmnut"
+
+[node name="doors" type="Node" parent="." unique_id=1664320804]
+
+[node name="AutomaticDoor" parent="doors" unique_id=321128549 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-1.301, 0, 8.742278e-08, 0, 1, 0, -1.1373703e-07, 0, -1, -0.09141034, 0.104171276, -3.6213603)
+
+[node name="AutomaticDoor2" parent="doors" unique_id=1246610915 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 21.035984, 0.104171276, -11.621361)
+
+[node name="AutomaticDoor3" parent="doors" unique_id=953500193 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-1.301, 0, -8.742278e-08, 0, 1, 0, 1.1373703e-07, 0, -1, 32.908707, 0.104171276, -26.62136)
+
+[node name="AutomaticDoor4" parent="doors" unique_id=93297760 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 50.035984, 0.104171276, -81.4006)
+
+[node name="AutomaticDoor5" parent="doors" unique_id=1505204595 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 30.035984, 0.104171276, -114.25794)
+
+[node name="AutomaticDoor6" parent="doors" unique_id=1477229842 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-1.301, 0, 8.742278e-08, 0, 1, 0, -1.1373703e-07, 0, -1, 41.438507, 0.104171276, -110.25794)
+
+[node name="AutomaticDoor7" parent="doors" unique_id=1793495099 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 131.4385, 0.104171276, -114.35623)
+
+[node name="AutomaticDoor8" parent="doors" unique_id=442662064 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 131.4385, 0.104171276, -101.33072)
+
+[node name="AutomaticDoor9" parent="doors" unique_id=138030479 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(1.7060555e-07, 0, 1, 0, 1, 0, -1.301, 0, 1.3113416e-07, 122.43851, 0.104171276, -87.60007)
+
+[node name="AutomaticDoor10" parent="doors" unique_id=916265475 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 127.10306, 0.104171276, -27.257942)
+
+[node name="AutomaticDoor11" parent="doors" unique_id=1647843653 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 107.58214, 0.104171276, -13.541933)
