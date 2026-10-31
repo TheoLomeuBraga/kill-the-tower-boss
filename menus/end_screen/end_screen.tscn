@@ -1,9 +1,69 @@
 [gd_scene format=3 uid="uid://rj17orlmqn0e"]
 
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_vpxfm"]
+[ext_resource type="Script" uid="uid://eoe0ev3qigj5" path="res://menus/end_screen/end_screen.gd" id="2_dkans"]
+
 [node name="EndScreen" type="Control" unique_id=1750022352]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vpxfm")
+script = ExtResource("2_dkans")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=790416192]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.119853534, 0.1847086, 0.31243572, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=541646673]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105000004
+anchor_top = 0.075
+anchor_right = 0.89500004
+anchor_bottom = 0.82000005
+offset_bottom = -3.0517578e-05
+color = Color(0.14572686, 0.14572686, 0.14572686, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ColorRect" unique_id=1192123431]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/ColorRect/VBoxContainer" unique_id=1194292376]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "thanks for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/ColorRect/VBoxContainer" unique_id=2109769863]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "this meant a lot for me ^w^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1451976690]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_top = 0.86200005
+anchor_right = 0.887
+anchor_bottom = 0.96700007
+offset_left = 0.19999695
+offset_top = 0.19998169
+offset_right = -0.2000122
+offset_bottom = 0.19998169
+text = "main menu"

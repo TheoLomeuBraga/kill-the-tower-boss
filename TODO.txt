@@ -1,7 +1,5 @@
 finish level 3
 
-add end game screen
-
 add system that save wich level was completed
 
 add main menu level select

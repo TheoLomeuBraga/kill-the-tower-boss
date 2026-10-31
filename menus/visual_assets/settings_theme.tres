@@ -8,13 +8,6 @@ bg_color = Color(0.1764706, 0.1764706, 0.1764706, 0.37254903)
 skew = Vector2(0.4, 0)
 border_color = Color(0, 1, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7fes"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-skew = Vector2(0.4, 0)
-border_color = Color(0, 1, 0, 0)
-shadow_color = Color(0, 1, 0, 0.6)
-shadow_size = 4
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eurhk"]
 bg_color = Color(0, 0.46666667, 0, 1)
 skew = Vector2(0.4, 0)
@@ -107,7 +100,7 @@ corner_radius_bottom_left = 2
 [resource]
 Button/fonts/font = ExtResource("1_cwaky")
 Button/styles/disabled = SubResource("StyleBoxFlat_5ktba")
-Button/styles/focus = SubResource("StyleBoxFlat_p7fes")
+Button/styles/focus = SubResource("StyleBoxFlat_eurhk")
 Button/styles/hover = SubResource("StyleBoxFlat_eurhk")
 Button/styles/normal = SubResource("StyleBoxFlat_ywr7u")
 Button/styles/pressed = SubResource("StyleBoxFlat_cwaky")

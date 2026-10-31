@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="10_8655v"]
 [ext_resource type="Script" uid="uid://8fc5wkuba60s" path="res://scripts/end_mission_camera.gd" id="16_qbtce"]
 [ext_resource type="AudioStream" uid="uid://c3tbljnnladav" path="res://sfx/Water-fountain-sound-effect.wav" id="17_hs747"]
+[ext_resource type="Script" uid="uid://drnx3c1p1uule" path="res://scripts/trigers/change_cene_triger.gd" id="18_ddhri"]
 
 [sub_resource type="Shader" id="Shader_35b77"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
@@ -161,6 +162,9 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_2cyna"]
 material = SubResource("StandardMaterial3D_0rvqm")
 size = Vector2(0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxkbx"]
+size = Vector3(9, 5, 5)
 
 [node name="Level3" type="Node3D" unique_id=1390084447]
 
@@ -317,7 +321,7 @@ transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.181956
 transform = Transform3D(-3.785517e-08, 0.5, -0.86602545, 2.1855692e-08, 0.86602545, 0.5, 1, -1.7763568e-15, -4.3711385e-08, 67.64334, 14, -114.93514)
 fov = 80.0
 script = ExtResource("16_qbtce")
-mission_name = "second floor"
+mission_name = "final floor"
 metadata/_custom_type_script = "uid://8fc5wkuba60s"
 
 [node name="fountain_fx" type="GPUParticles3D" parent="." unique_id=1953183937]
@@ -334,3 +338,13 @@ pitch_scale = 3.0
 autoplay = true
 max_distance = 20.0
 bus = &"SFX"
+
+[node name="ChangeCeneTriger" type="Area3D" parent="." unique_id=1474825343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.476906, 0, -48)
+script = ExtResource("18_ddhri")
+next_scene = "uid://rj17orlmqn0e"
+metadata/_custom_type_script = "uid://drnx3c1p1uule"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeCeneTriger" unique_id=1359233161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_qxkbx")
