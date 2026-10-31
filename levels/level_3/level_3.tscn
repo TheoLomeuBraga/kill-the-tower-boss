@@ -2,10 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://cmovbyta1eiev" path="res://player/player.tscn" id="1_35b77"]
 [ext_resource type="PackedScene" uid="uid://f2alo1t0npvf" path="res://levels/level_3/level_3_model.tscn" id="1_fqu2u"]
+[ext_resource type="PackedScene" uid="uid://cl6xaug2fg26x" path="res://consumables/wepon_pickup/wepon_pickup.tscn" id="1_txsvq"]
+[ext_resource type="Resource" uid="uid://dem71dr1rlwrg" path="res://player/guns_infos/shotgun.tres" id="2_qbtce"]
 [ext_resource type="Script" uid="uid://3qgv8esjmnut" path="res://consumables/wepon_pickup/wepon_pickup.gd" id="3_0c4fo"]
+[ext_resource type="Resource" uid="uid://sjs512xc2p86" path="res://player/guns_infos/smg.tres" id="3_hs747"]
+[ext_resource type="Resource" uid="uid://c88dvsbpk87vj" path="res://player/guns_infos/overheat.tres" id="4_ddhri"]
 [ext_resource type="Resource" uid="uid://cpba80l67eqi7" path="res://player/guns_infos/sniper_rifle.tres" id="4_e2rvl"]
+[ext_resource type="Resource" uid="uid://r6noy65ufg7w" path="res://player/guns_infos/charge_rifle.tres" id="5_b8fed"]
 [ext_resource type="Resource" uid="uid://30nuv77dfkrw" path="res://player/guns_infos/granade_launchers.tres" id="5_rpg41"]
 [ext_resource type="PackedScene" uid="uid://ceq3wentgd514" path="res://props/door/automatic_door.tscn" id="6_e2rvl"]
+[ext_resource type="PackedScene" uid="uid://bha3wpnmssosc" path="res://props/terminals/button/button.glb" id="7_rpg41"]
+[ext_resource type="PackedScene" uid="uid://816l7ahwk2cu" path="res://props/terminals/button/button.tscn" id="8_dq2kg"]
+[ext_resource type="Script" uid="uid://cce2bqsye47to" path="res://scripts/trigers/area_triger.gd" id="9_8fdlj"]
+[ext_resource type="PackedScene" uid="uid://dtdepb6poofyt" path="res://props/door/door.tscn" id="10_8655v"]
+[ext_resource type="Script" uid="uid://8fc5wkuba60s" path="res://scripts/end_mission_camera.gd" id="16_qbtce"]
+[ext_resource type="AudioStream" uid="uid://c3tbljnnladav" path="res://sfx/Water-fountain-sound-effect.wav" id="17_hs747"]
 
 [sub_resource type="Shader" id="Shader_35b77"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
@@ -125,7 +136,55 @@ radius = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_0c4fo"]
 radius = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2jhj"]
+
+[sub_resource type="Curve" id="Curve_ddhri"]
+_data = [Vector2(0, 0.40229988), 0.0, 0.0, 0, 0, Vector2(0.25957763, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pa0au"]
+curve = SubResource("Curve_ddhri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b8fed"]
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+scale_curve = SubResource("CurveTexture_pa0au")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rvqm"]
+shading_mode = 0
+albedo_color = Color(0, 0.5134176, 0.5150915, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2cyna"]
+material = SubResource("StandardMaterial3D_0rvqm")
+size = Vector2(0.1, 0.1)
+
 [node name="Level3" type="Node3D" unique_id=1390084447]
+
+[node name="debug" type="Node" parent="." unique_id=1403963564]
+
+[node name="WeponPickup" parent="debug" unique_id=1997913648 instance=ExtResource("1_txsvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+weapon = ExtResource("2_qbtce")
+offset = Vector3(0.289, 0, -0.777)
+
+[node name="WeponPickup2" parent="debug" unique_id=317398975 instance=ExtResource("1_txsvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+weapon = ExtResource("3_hs747")
+offset = Vector3(0, 0, -0.691)
+
+[node name="WeponPickup3" parent="debug" unique_id=882357985 instance=ExtResource("1_txsvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+weapon = ExtResource("4_ddhri")
+offset = Vector3(0.549, 0, -0.691)
+
+[node name="WeponPickup4" parent="debug" unique_id=1750766162 instance=ExtResource("1_txsvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+weapon = ExtResource("5_b8fed")
+offset = Vector3(0.414, 0, -0.691)
 
 [node name="clonds" type="MeshInstance3D" parent="." unique_id=358526067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189, 126)
@@ -169,7 +228,7 @@ transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 21.035984, 0.104171276, -
 transform = Transform3D(-1.301, 0, -8.742278e-08, 0, 1, 0, 1.1373703e-07, 0, -1, 32.908707, 0.104171276, -26.62136)
 
 [node name="AutomaticDoor4" parent="doors" unique_id=93297760 instance=ExtResource("6_e2rvl")]
-transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 50.035984, 0.104171276, -81.4006)
+transform = Transform3D(1.7060555e-07, 0, 1, 0, 1, 0, -1.301, 0, 1.3113416e-07, 50.035984, 0.104171276, -81.56006)
 
 [node name="AutomaticDoor5" parent="doors" unique_id=1505204595 instance=ExtResource("6_e2rvl")]
 transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 30.035984, 0.104171276, -114.25794)
@@ -191,3 +250,87 @@ transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 127.10306, 0.104171276, -
 
 [node name="AutomaticDoor11" parent="doors" unique_id=1647843653 instance=ExtResource("6_e2rvl")]
 transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 107.58214, 0.104171276, -13.541933)
+
+[node name="button" parent="doors" unique_id=89957251 instance=ExtResource("7_rpg41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.80294, 1.7210689, -47.993237)
+
+[node name="button_doors" type="Node" parent="." unique_id=1640147177]
+
+[node name="button" parent="button_doors" unique_id=1081899944 instance=ExtResource("8_dq2kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="AreaTriger" type="Area3D" parent="button_doors/button" unique_id=832800804]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath("..")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button/AreaTriger" unique_id=1259178807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37682152)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="button2" parent="button_doors" unique_id=356843515 instance=ExtResource("8_dq2kg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 59.825138, 1.7558103, -81)
+
+[node name="AreaTriger" type="Area3D" parent="button_doors/button2" unique_id=547619246]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath(".."), NodePath("../../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button2/AreaTriger" unique_id=1244793038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37682152)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="button3" parent="button_doors" unique_id=1842676790 instance=ExtResource("8_dq2kg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 42, 1.76701, -101.883675)
+
+[node name="AreaTriger" type="Area3D" parent="button_doors/button3" unique_id=1212049524]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath(".."), NodePath("../../door2")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button3/AreaTriger" unique_id=845885644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37682152)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="button4" parent="button_doors" unique_id=72973374 instance=ExtResource("8_dq2kg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 117, 1.2302943, -69.862526)
+
+[node name="AreaTriger" type="Area3D" parent="button_doors/button4" unique_id=206573917]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath(".."), NodePath("../../door3")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button4/AreaTriger" unique_id=83672847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37682152)
+shape = SubResource("BoxShape3D_b2jhj")
+
+[node name="door" parent="button_doors" unique_id=424647415 instance=ExtResource("10_8655v")]
+transform = Transform3D(-1.284, 0, 1.509958e-07, 0, 1, 0, -1.9387862e-07, 0, -1, 25.350044, 0.11581266, -85.32554)
+
+[node name="door2" parent="button_doors" unique_id=1038353631 instance=ExtResource("10_8655v")]
+transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 52.166897, 0.104171276, -114.60875)
+
+[node name="door3" parent="button_doors" unique_id=1579363870 instance=ExtResource("10_8655v")]
+transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 126.92651, 0.104171276, -69.60875)
+
+[node name="EndMissionCamera" type="Camera3D" parent="." unique_id=1884412570]
+transform = Transform3D(-3.785517e-08, 0.5, -0.86602545, 2.1855692e-08, 0.86602545, 0.5, 1, -1.7763568e-15, -4.3711385e-08, 67.64334, 14, -114.93514)
+fov = 80.0
+script = ExtResource("16_qbtce")
+mission_name = "second floor"
+metadata/_custom_type_script = "uid://8fc5wkuba60s"
+
+[node name="fountain_fx" type="GPUParticles3D" parent="." unique_id=1953183937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.99275, 6.1296654, -114.961044)
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_b8fed")
+draw_pass_1 = SubResource("QuadMesh_2cyna")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="fountain_fx" unique_id=1981120327]
+stream = ExtResource("17_hs747")
+unit_size = 30.0
+pitch_scale = 3.0
+autoplay = true
+max_distance = 20.0
+bus = &"SFX"
