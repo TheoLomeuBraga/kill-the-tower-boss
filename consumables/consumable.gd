@@ -106,6 +106,9 @@ func interract_body(n:Node3D) -> void:
 
 var sync_data : Dictionary
 func _ready() -> void:
+	
+	rotation=Vector3.ZERO
+	
 	update_model()
 	triger.body_entered.connect(interract_body)
 	
