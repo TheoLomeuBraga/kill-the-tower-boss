@@ -189,6 +189,12 @@ size = Vector3(0.5, 4, 22)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4skoa"]
 size = Vector3(19, 6, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hmyvt"]
+size = Vector3(2, 6, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa0au"]
+size = Vector3(12, 6, 3)
+
 [node name="Level3" type="Node3D" unique_id=1390084447]
 
 [node name="debug" type="Node" parent="." unique_id=1403963564]
@@ -338,7 +344,11 @@ transform = Transform3D(-1.284, 0, 1.509958e-07, 0, 1, 0, -1.9387862e-07, 0, -1,
 transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 52.166897, 0.104171276, -114.60875)
 
 [node name="door3" parent="button_doors" unique_id=1579363870 instance=ExtResource("10_8655v")]
-transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 126.92651, 0.104171276, -69.60875)
+transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 126.92651, 0.104171276, -85.430786)
+
+[node name="door4" parent="button_doors" unique_id=773630179 instance=ExtResource("10_8655v")]
+transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 126.92651, 0.104171276, -69.430786)
+active = true
 
 [node name="EndMissionCamera" type="Camera3D" parent="." unique_id=1884412570]
 transform = Transform3D(-3.785517e-08, 0.5, -0.86602545, 2.1855692e-08, 0.86602545, 0.5, 1, -1.7763568e-15, -4.3711385e-08, 67.64334, 14, -114.93514)
@@ -727,14 +737,6 @@ current_gun_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.060719, 0.11638129, -70.22099)
 current_gun_type = 2
 
-[node name="generic_enemy7" parent="enemys" unique_id=1185147993 instance=ExtResource("20_2cyna")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.060719, 0.11638129, -122.22099)
-current_gun_type = 3
-
-[node name="generic_enemy8" parent="enemys" unique_id=50578756 instance=ExtResource("20_2cyna")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.060719, 0.11638129, -122.22099)
-current_gun_type = 3
-
 [node name="generic_enemy9" parent="enemys" unique_id=1634977304 instance=ExtResource("20_2cyna")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50.06072, 0.11638129, -116.22099)
 current_gun_type = 3
@@ -751,6 +753,18 @@ current_gun_type = 1
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 135.06071, 0.11638129, -101.22099)
 current_gun_type = 1
 
+[node name="generic_enemy18" parent="enemys" unique_id=76751024 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 128.06071, 0.11638129, -88.22099)
+current_gun_type = 1
+
+[node name="generic_enemy19" parent="enemys" unique_id=433633688 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 125.060715, 0.11638129, -92.22099)
+current_gun_type = 1
+
+[node name="generic_enemy20" parent="enemys" unique_id=1405254121 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 128.06071, 0.11638129, -96.22099)
+current_gun_type = 1
+
 [node name="generic_enemy14" parent="enemys" unique_id=2009331747 instance=ExtResource("20_2cyna")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 123.060715, 0.11638129, -31.220993)
 current_gun_type = 3
@@ -762,6 +776,18 @@ current_gun_type = 3
 [node name="generic_enemy16" parent="enemys" unique_id=37061159 instance=ExtResource("20_2cyna")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 127.060715, 0.11638129, -32.220993)
 current_gun_type = 3
+
+[node name="generic_enemy21" parent="enemys" unique_id=1158115649 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 114.060715, 0.11638129, -10.220993)
+current_gun_type = 1
+
+[node name="generic_enemy22" parent="enemys" unique_id=1255760977 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 111.060715, 0.11638129, -15.220993)
+current_gun_type = 1
+
+[node name="generic_enemy23" parent="enemys" unique_id=740269084 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 119.060715, 0.11638129, -13.220993)
+current_gun_type = 1
 
 [node name="generic_enemy17" parent="enemys" unique_id=644726479 instance=ExtResource("20_2cyna")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 127.060715, 0.11638129, -43.220993)
@@ -874,3 +900,99 @@ metadata/_custom_type_script = "uid://cce2bqsye47to"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="arena_1/AreaTriger" unique_id=27377397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.5)
 shape = SubResource("BoxShape3D_4skoa")
+
+[node name="arena_2" type="Node" parent="." unique_id=1058364128]
+
+[node name="TrainTriger2" type="CharacterBody3D" parent="arena_2" unique_id=47075708]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46, 0, -77.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_2/TrainTriger2" unique_id=2003386861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+shape = SubResource("BoxShape3D_e36aa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_2/TrainTriger2" unique_id=1755512151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+mesh = SubResource("BoxMesh_k20uf")
+
+[node name="TrainRail" type="Marker3D" parent="arena_2/TrainTriger2" unique_id=462240834]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_2/TrainTriger2" unique_id=1461824787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="SpawnTriger" type="Node3D" parent="arena_2" unique_id=2135130117]
+script = ExtResource("22_p5b22")
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy" parent="arena_2/SpawnTriger" unique_id=609227992 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 44.70524, 0.14410436, -75.41728)
+
+[node name="generic_enemy2" parent="arena_2/SpawnTriger" unique_id=543382994 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 40.70524, 0.14410436, -75.41728)
+
+[node name="generic_enemy3" parent="arena_2/SpawnTriger" unique_id=2037204232 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 36.70524, 0.14410436, -75.41728)
+current_gun_type = 2
+
+[node name="generic_enemy4" parent="arena_2/SpawnTriger" unique_id=1091754682 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 33.70524, 0.14410436, -75.41728)
+current_gun_type = 2
+
+[node name="AreaTriger" type="Area3D" parent="arena_2" unique_id=1081610024]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath("../TrainTriger2"), NodePath("../SpawnTriger")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_2/AreaTriger" unique_id=57956602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 2.5, -81.5)
+shape = SubResource("BoxShape3D_hmyvt")
+
+[node name="arena_3" type="Node" parent="." unique_id=1251177729]
+
+[node name="SpawnTriger" type="Node3D" parent="arena_3" unique_id=1523451742]
+script = ExtResource("22_p5b22")
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy7" parent="arena_3/SpawnTriger" unique_id=229923370 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.060719, 0.11638129, -122.22099)
+current_gun_type = 3
+
+[node name="generic_enemy8" parent="arena_3/SpawnTriger" unique_id=719431304 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.060719, 0.11638129, -122.22099)
+current_gun_type = 3
+
+[node name="TrainTriger2" type="CharacterBody3D" parent="arena_3" unique_id=1387363007]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22, 0, -119.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_3/TrainTriger2" unique_id=1171511658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+shape = SubResource("BoxShape3D_e36aa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_3/TrainTriger2" unique_id=2067101842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+mesh = SubResource("BoxMesh_k20uf")
+
+[node name="TrainRail" type="Marker3D" parent="arena_3/TrainTriger2" unique_id=1369511400]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_3/TrainTriger2" unique_id=37123900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AreaTriger" type="Area3D" parent="arena_3" unique_id=1186936971]
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath("../TrainTriger2"), NodePath("../SpawnTriger")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_3/AreaTriger" unique_id=1247237586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 1.5, -90)
+shape = SubResource("BoxShape3D_pa0au")

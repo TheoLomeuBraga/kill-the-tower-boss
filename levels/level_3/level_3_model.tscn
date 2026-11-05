@@ -90,7 +90,6 @@ shader_parameter/displace = SubResource("NoiseTexture2D_00sav")
 navigation_mesh = SubResource("NavigationMesh_b2jhj")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="0" unique_id=665783424]
-visible = false
 occluder = ExtResource("2_j0dok")
 
 [node name="fountain_water" parent="." index="11" unique_id=84339392]
