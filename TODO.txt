@@ -1,7 +1,3 @@
-finish level 3 checkinpoints
-
-finish level 3
-
 add system that save wich level was completed
 
 add main menu level select

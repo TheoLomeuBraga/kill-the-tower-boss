@@ -204,8 +204,42 @@ size = Vector3(0.5, 9, 22)
 material = SubResource("StandardMaterial3D_qxkbx")
 size = Vector3(0.5, 10, 22)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1hn64"]
-size = Vector3(1, 25, 62)
+[sub_resource type="BoxShape3D" id="BoxShape3D_adulk"]
+size = Vector3(1, 25, 43)
+
+[sub_resource type="Gradient" id="Gradient_adulk"]
+colors = PackedColorArray(0.16078432, 1, 0.25490198, 1, 8.085966e-06, 0.8539196, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gsac8"]
+gradient = SubResource("Gradient_adulk")
+
+[sub_resource type="Curve" id="Curve_e36aa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.07333617, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3dcxb"]
+curve = SubResource("Curve_e36aa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k20uf"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 20.0
+emission_ring_radius = 0.0
+emission_ring_inner_radius = 33.59
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, -2, 0)
+scale_curve = SubResource("CurveTexture_3dcxb")
+color_ramp = SubResource("GradientTexture1D_gsac8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7yk7"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_k20uf"]
+material = SubResource("StandardMaterial3D_n7yk7")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovmhp"]
 size = Vector3(12, 6, 1)
@@ -349,7 +383,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 42, 
 
 [node name="AreaTriger" type="Area3D" parent="button_doors/button3" unique_id=1212049524]
 script = ExtResource("9_8fdlj")
-targets = Array[NodePath]([NodePath(".."), NodePath("../../../arena_4/door2")])
+targets = Array[NodePath]([NodePath(".."), NodePath("../../../arena_4/door4")])
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button3/AreaTriger" unique_id=845885644]
@@ -1065,7 +1099,7 @@ current_gun_type = 3
 
 [node name="wave_2" type="Node3D" parent="arena_4" unique_id=707987653]
 script = ExtResource("22_p5b22")
-targets = Array[NodePath]([NodePath("../door2"), NodePath("../door5")])
+targets = Array[NodePath]([NodePath("../door4"), NodePath("../door5")])
 
 [node name="robot" parent="arena_4/wave_2" unique_id=1970358405 instance=ExtResource("26_0vogn")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 101.06978, 0.10387777, -139.67894)
@@ -1090,7 +1124,7 @@ current_gun_type = 2
 transform = Transform3D(-0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071067, 102.66871, 0.14410281, -93.98509)
 current_gun_type = 3
 
-[node name="door2" parent="arena_4" unique_id=322128259 instance=ExtResource("10_8655v")]
+[node name="door4" parent="arena_4" unique_id=322128259 instance=ExtResource("10_8655v")]
 transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 52.166897, 0.104171276, -114.60875)
 
 [node name="door5" parent="arena_4" unique_id=72694808 instance=ExtResource("10_8655v")]
@@ -1187,12 +1221,20 @@ metadata/_custom_type_script = "uid://13anebs8k206"
 [node name="AreaTriger" type="Area3D" parent="arena_4" unique_id=1376457250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -115)
 script = ExtResource("9_8fdlj")
-targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../door2"), NodePath("../TrainTriger"), NodePath("../TrainTriger3")])
+targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../door4"), NodePath("../TrainTriger"), NodePath("../TrainTriger3")])
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/AreaTriger" unique_id=2047823117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 2.5)
-shape = SubResource("BoxShape3D_1hn64")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 6)
+shape = SubResource("BoxShape3D_adulk")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="arena_4" unique_id=608253061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 10.037227, -115)
+amount = 1024
+lifetime = 10.0
+visibility_aabb = AABB(-50, -50, -50, 100, 100, 100)
+process_material = SubResource("ParticleProcessMaterial_k20uf")
+draw_pass_1 = SubResource("QuadMesh_k20uf")
 
 [node name="arena_5" type="Node" parent="." unique_id=923369928]
 

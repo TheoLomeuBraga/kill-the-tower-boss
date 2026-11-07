@@ -7,7 +7,11 @@ var sync_data : Dictionary
 
 #@export var reverse : bool = false
 
-@export var active : bool = false
+@export var active : bool = false : 
+	set(value):
+		active = value
+		if debug:
+			print(value)
 
 enum MovementModes {LINEAR,LOOP,PING_PONG}
 @export var movement_mode : MovementModes
