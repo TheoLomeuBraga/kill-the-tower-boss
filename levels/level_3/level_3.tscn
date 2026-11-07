@@ -25,6 +25,8 @@
 [ext_resource type="Script" uid="uid://p4xndlppfcoc" path="res://scripts/trigers/train/train_triger.gd" id="23_13ljr"]
 [ext_resource type="Texture2D" uid="uid://bf1wapn0goj15" path="res://levels/textures/rollup_door.png" id="24_0vogn"]
 [ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="25_adulk"]
+[ext_resource type="PackedScene" uid="uid://cx6ocdaxw1byj" path="res://enemys/robot/robot.tscn" id="26_0vogn"]
+[ext_resource type="Script" uid="uid://cctefpnn8r8q0" path="res://scripts/trigers/checkpoint_triger.gd" id="27_adulk"]
 
 [sub_resource type="Shader" id="Shader_35b77"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
@@ -195,6 +197,32 @@ size = Vector3(2, 6, 8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pa0au"]
 size = Vector3(12, 6, 3)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_13ljr"]
+size = Vector3(0.5, 9, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vogn"]
+material = SubResource("StandardMaterial3D_qxkbx")
+size = Vector3(0.5, 10, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hn64"]
+size = Vector3(1, 25, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovmhp"]
+size = Vector3(12, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vogn"]
+size = Vector3(0.5, 5, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_adulk"]
+material = SubResource("StandardMaterial3D_qxkbx")
+size = Vector3(0.5, 5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r07op"]
+size = Vector3(9, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k20uf"]
+size = Vector3(30, 30, 1)
+
 [node name="Level3" type="Node3D" unique_id=1390084447]
 
 [node name="debug" type="Node" parent="." unique_id=1403963564]
@@ -232,7 +260,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 environment = SubResource("Environment_upa32")
 
 [node name="WeponPickup" type="ShapeCast3D" parent="." unique_id=3637811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.440983, 2.085174, -105.6393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.440983, 2.085174, -81.6393)
 shape = SubResource("SphereShape3D_e2rvl")
 target_position = Vector3(0, 0, 0)
 script = ExtResource("3_0c4fo")
@@ -281,6 +309,9 @@ transform = Transform3D(1.7060555e-07, 0, 1, 0, 1, 0, -1.301, 0, 1.3113416e-07, 
 [node name="AutomaticDoor10" parent="doors" unique_id=916265475 instance=ExtResource("6_e2rvl")]
 transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 127.10306, 0.104171276, -27.257942)
 
+[node name="AutomaticDoor12" parent="doors" unique_id=983477195 instance=ExtResource("6_e2rvl")]
+transform = Transform3D(1.301, 0, 0, 0, 1, 0, 0, 0, 1, 127.10306, 0.104171276, -47.257942)
+
 [node name="AutomaticDoor11" parent="doors" unique_id=1647843653 instance=ExtResource("6_e2rvl")]
 transform = Transform3D(-5.6868515e-08, 0, -1, 0, 1, 0, 1.301, 0, -4.371139e-08, 107.58214, 0.104171276, -13.541933)
 
@@ -318,7 +349,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 42, 
 
 [node name="AreaTriger" type="Area3D" parent="button_doors/button3" unique_id=1212049524]
 script = ExtResource("9_8fdlj")
-targets = Array[NodePath]([NodePath(".."), NodePath("../../door2")])
+targets = Array[NodePath]([NodePath(".."), NodePath("../../../arena_4/door2")])
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="button_doors/button3/AreaTriger" unique_id=845885644]
@@ -339,9 +370,6 @@ shape = SubResource("BoxShape3D_b2jhj")
 
 [node name="door" parent="button_doors" unique_id=424647415 instance=ExtResource("10_8655v")]
 transform = Transform3D(-1.284, 0, 1.509958e-07, 0, 1, 0, -1.9387862e-07, 0, -1, 25.350044, 0.11581266, -85.32554)
-
-[node name="door2" parent="button_doors" unique_id=1038353631 instance=ExtResource("10_8655v")]
-transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 52.166897, 0.104171276, -114.60875)
 
 [node name="door3" parent="button_doors" unique_id=1579363870 instance=ExtResource("10_8655v")]
 transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 126.92651, 0.104171276, -85.430786)
@@ -409,56 +437,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.1987343, -9.103029)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.1987343, -9.103029)
 
 [node name="consumable17" parent="consumables" unique_id=790585404 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 1.1987343, -80.00028)
-
-[node name="consumable45" parent="consumables" unique_id=215030584 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 1.1987343, -81.226326)
-health = 40
-type = 1
-
-[node name="consumable46" parent="consumables" unique_id=1689404902 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.1987343, -81.226326)
-health = 40
-type = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 1.1987343, -79.531425)
 
 [node name="consumable18" parent="consumables" unique_id=83908815 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.1987343, -80.00028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.1987343, -79.531425)
 
 [node name="consumable19" parent="consumables" unique_id=216784997 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 1.1987343, -82.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 1.1987343, -83.49994)
 
 [node name="consumable47" parent="consumables" unique_id=1799293962 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 1.1987343, -103.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.1987343, -79.58192)
 health = 5
 type = 2
 
 [node name="consumable48" parent="consumables" unique_id=1627905168 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.1987343, -103.58192)
-health = 5
-type = 2
-
-[node name="consumable49" parent="consumables" unique_id=572606489 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 1.1987343, -107.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 1.1987343, -79.58192)
 health = 5
 type = 2
 
 [node name="consumable50" parent="consumables" unique_id=133342021 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.1987343, -107.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 1.1987343, -83.58192)
 health = 5
 type = 2
 
 [node name="consumable51" parent="consumables" unique_id=391420790 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 1.1987343, -107.58192)
-health = 5
-type = 2
-
-[node name="consumable52" parent="consumables" unique_id=1001136928 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.1987343, -107.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.1987343, -83.58192)
 health = 5
 type = 2
 
 [node name="consumable20" parent="consumables" unique_id=1329849143 instance=ExtResource("19_b8fed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.1987343, -82.58192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.1987343, -83.49994)
 
 [node name="consumable21" parent="consumables" unique_id=1060339349 instance=ExtResource("19_b8fed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.4115, 1.1987343, -116.25742)
@@ -641,6 +649,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.62068, 1.1987343, -11.466
 [node name="consumable25" parent="consumables" unique_id=938969721 instance=ExtResource("19_b8fed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.360725, 1.1987343, -91.04619)
 
+[node name="consumable85" parent="consumables" unique_id=815809246 instance=ExtResource("19_b8fed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.57285, 1.1987343, -90.604095)
+
+[node name="consumable86" parent="consumables" unique_id=1942623862 instance=ExtResource("19_b8fed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.56648, 1.1987343, -92.66055)
+
 [node name="consumable26" parent="consumables" unique_id=1283190687 instance=ExtResource("19_b8fed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.06783, 1.1987343, -91.753296)
 
@@ -652,6 +666,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.927437, 1.1987343, -139.52
 
 [node name="consumable29" parent="consumables" unique_id=1355983631 instance=ExtResource("19_b8fed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.10234, 1.1987343, -141.34206)
+
+[node name="consumable83" parent="consumables" unique_id=977914865 instance=ExtResource("19_b8fed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.42884, 1.1987343, -141.74675)
+
+[node name="consumable84" parent="consumables" unique_id=1192411515 instance=ExtResource("19_b8fed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.418884, 1.1987345, -140.08807)
 
 [node name="consumable30" parent="consumables" unique_id=40534396 instance=ExtResource("19_b8fed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.80945, 1.1987343, -140.63493)
@@ -996,3 +1016,398 @@ metadata/_custom_type_script = "uid://cce2bqsye47to"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="arena_3/AreaTriger" unique_id=1247237586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 1.5, -90)
 shape = SubResource("BoxShape3D_pa0au")
+
+[node name="arena_4" type="Node" parent="." unique_id=1595696708]
+
+[node name="wave_1" type="Node3D" parent="arena_4" unique_id=1363676762]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../wave_2"), NodePath("../TrainTriger2"), NodePath("../TrainTriger4")])
+
+[node name="generic_enemy" parent="arena_4/wave_1" unique_id=1008846643 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.8660254, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.8660254, 63.619125, 0.14410281, -86.41969)
+current_gun_type = 1
+
+[node name="generic_enemy2" parent="arena_4/wave_1" unique_id=119106208 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, 56.619125, 0.14410281, -92.41969)
+current_gun_type = 1
+
+[node name="generic_enemy3" parent="arena_4/wave_1" unique_id=37100934 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, 59.418247, 0.14410281, -91.88677)
+current_gun_type = 2
+
+[node name="generic_enemy4" parent="arena_4/wave_1" unique_id=1273058049 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, 62.914177, 0.14410281, -89.142334)
+current_gun_type = 2
+
+[node name="generic_enemy5" parent="arena_4/wave_1" unique_id=2022138893 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, 61.32704, 0.14410281, -91.00028)
+current_gun_type = 3
+
+[node name="generic_enemy6" parent="arena_4/wave_1" unique_id=240114755 instance=ExtResource("20_2cyna")]
+transform = Transform3D(0.57328916, 0, 0.8193529, 0, 1, 0, -0.8193529, 0, 0.57328916, 54.831924, 0.14410281, -135.67563)
+current_gun_type = 1
+
+[node name="generic_enemy7" parent="arena_4/wave_1" unique_id=197073607 instance=ExtResource("20_2cyna")]
+transform = Transform3D(0.76581895, 0, 0.64305604, 0, 1, 0, -0.64305604, 0, 0.76581895, 61.41692, 0.14410281, -142.12837)
+current_gun_type = 1
+
+[node name="generic_enemy8" parent="arena_4/wave_1" unique_id=938907672 instance=ExtResource("20_2cyna")]
+transform = Transform3D(0.76581895, 0, 0.64305604, 0, 1, 0, -0.64305604, 0, 0.76581895, 60.643036, 0.14410281, -139.38608)
+current_gun_type = 2
+
+[node name="generic_enemy9" parent="arena_4/wave_1" unique_id=1157908956 instance=ExtResource("20_2cyna")]
+transform = Transform3D(0.76581895, 0, 0.64305604, 0, 1, 0, -0.64305604, 0, 0.76581895, 57.60548, 0.14410281, -136.14157)
+current_gun_type = 2
+
+[node name="generic_enemy10" parent="arena_4/wave_1" unique_id=1677631543 instance=ExtResource("20_2cyna")]
+transform = Transform3D(0.76581895, 0, 0.64305604, 0, 1, 0, -0.64305604, 0, 0.76581895, 59.59418, 0.14410281, -137.56143)
+current_gun_type = 3
+
+[node name="wave_2" type="Node3D" parent="arena_4" unique_id=707987653]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../door2"), NodePath("../door5")])
+
+[node name="robot" parent="arena_4/wave_2" unique_id=1970358405 instance=ExtResource("26_0vogn")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 101.06978, 0.10387777, -139.67894)
+
+[node name="generic_enemy11" parent="arena_4/wave_2" unique_id=901685363 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.5, 0, -0.86602527, 0, 1, 0, 0.86602527, 0, -0.5, 107.2493, 0.14410281, -96.27718)
+current_gun_type = 1
+
+[node name="generic_enemy12" parent="arena_4/wave_2" unique_id=1740391836 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071067, 101.2493, 0.14410281, -89.277176)
+current_gun_type = 1
+
+[node name="generic_enemy13" parent="arena_4/wave_2" unique_id=1105102229 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071067, 101.78222, 0.14410281, -92.076294)
+current_gun_type = 2
+
+[node name="generic_enemy14" parent="arena_4/wave_2" unique_id=1317083640 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071067, 104.52666, 0.14410281, -95.57223)
+current_gun_type = 2
+
+[node name="generic_enemy15" parent="arena_4/wave_2" unique_id=1679017854 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071067, 102.66871, 0.14410281, -93.98509)
+current_gun_type = 3
+
+[node name="door2" parent="arena_4" unique_id=322128259 instance=ExtResource("10_8655v")]
+transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 52.166897, 0.104171276, -114.60875)
+
+[node name="door5" parent="arena_4" unique_id=72694808 instance=ExtResource("10_8655v")]
+transform = Transform3D(1.7729337e-07, 0, 0.99999994, 0, 0.9999999, 0, -1.3519998, 0, 1.3113416e-07, 109.1669, 0.104171276, -114.60875)
+
+[node name="TrainTriger" type="CharacterBody3D" parent="arena_4" unique_id=1437119104]
+transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, 62, 0, -136.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/TrainTriger" unique_id=1165709164]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_13ljr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_4/TrainTriger" unique_id=611450956]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="TrainRail" type="Marker3D" parent="arena_4/TrainTriger" unique_id=1313362722]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_4/TrainTriger" unique_id=2005439099]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger2" type="CharacterBody3D" parent="arena_4" unique_id=843307348]
+transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, 101, 0, -94.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/TrainTriger2" unique_id=1782311750]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_13ljr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_4/TrainTriger2" unique_id=890847932]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="TrainRail" type="Marker3D" parent="arena_4/TrainTriger2" unique_id=428347802]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_4/TrainTriger2" unique_id=731145842]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger3" type="CharacterBody3D" parent="arena_4" unique_id=394122732]
+transform = Transform3D(-0.70710677, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.70710677, 63, 0, -92.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/TrainTriger3" unique_id=1514940439]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_13ljr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_4/TrainTriger3" unique_id=1156355334]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="TrainRail" type="Marker3D" parent="arena_4/TrainTriger3" unique_id=2026482381]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_4/TrainTriger3" unique_id=766806895]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger4" type="CharacterBody3D" parent="arena_4" unique_id=1274922878]
+transform = Transform3D(-0.70710677, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.70710677, 99, 0, -137.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/TrainTriger4" unique_id=1050273537]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_13ljr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_4/TrainTriger4" unique_id=977994316]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 4.5, 0)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="TrainRail" type="Marker3D" parent="arena_4/TrainTriger4" unique_id=38174322]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_4/TrainTriger4" unique_id=1052729000]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="AreaTriger" type="Area3D" parent="arena_4" unique_id=1376457250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -115)
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../door2"), NodePath("../TrainTriger"), NodePath("../TrainTriger3")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/AreaTriger" unique_id=2047823117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 2.5)
+shape = SubResource("BoxShape3D_1hn64")
+
+[node name="arena_5" type="Node" parent="." unique_id=923369928]
+
+[node name="AreaTriger" type="Area3D" parent="arena_5" unique_id=1092478781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.59952, 0, -21)
+script = ExtResource("9_8fdlj")
+targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../TrainTriger"), NodePath("../door")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_5/AreaTriger" unique_id=2058047576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_ovmhp")
+
+[node name="wave_1" type="Node3D" parent="arena_5" unique_id=180581140]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../wave_2"), NodePath("../TrainTriger2")])
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy" parent="arena_5/wave_1" unique_id=476667452 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -32.220993)
+current_gun_type = 1
+
+[node name="generic_enemy2" parent="arena_5/wave_1" unique_id=311238276 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -34.220993)
+current_gun_type = 1
+
+[node name="generic_enemy3" parent="arena_5/wave_1" unique_id=1992498914 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -36.220993)
+current_gun_type = 1
+
+[node name="wave_2" type="Node3D" parent="arena_5" unique_id=1758973457]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../wave_3"), NodePath("../TrainTriger3")])
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy" parent="arena_5/wave_2" unique_id=806719556 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -22.220993)
+current_gun_type = 2
+
+[node name="generic_enemy2" parent="arena_5/wave_2" unique_id=1496356984 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -24.220993)
+current_gun_type = 2
+
+[node name="generic_enemy3" parent="arena_5/wave_2" unique_id=1122337110 instance=ExtResource("20_2cyna")]
+transform = Transform3D(-9.934766e-08, 0, -1, 0, 1, 0, 1, 0, -9.934766e-08, 97.060715, 0.11638129, -26.220993)
+current_gun_type = 2
+
+[node name="wave_3" type="Node3D" parent="arena_5" unique_id=1226047706]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../wave_4"), NodePath("../TrainTriger4")])
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy" parent="arena_5/wave_3" unique_id=1254421427 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -36.220993)
+
+[node name="generic_enemy2" parent="arena_5/wave_3" unique_id=1621531521 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -34.220993)
+
+[node name="generic_enemy3" parent="arena_5/wave_3" unique_id=187970495 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -32.220993)
+
+[node name="wave_4" type="Node3D" parent="arena_5" unique_id=1250521670]
+script = ExtResource("22_p5b22")
+targets = Array[NodePath]([NodePath("../door"), NodePath("../door2")])
+metadata/_custom_type_script = "uid://byyo2adu8xon3"
+
+[node name="generic_enemy" parent="arena_5/wave_4" unique_id=1573365546 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -26.220993)
+current_gun_type = 3
+
+[node name="generic_enemy2" parent="arena_5/wave_4" unique_id=1472327543 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -24.220993)
+current_gun_type = 3
+
+[node name="generic_enemy3" parent="arena_5/wave_4" unique_id=1590770579 instance=ExtResource("20_2cyna")]
+transform = Transform3D(1.1924882e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924882e-08, 84.060715, 0.11638129, -22.220993)
+current_gun_type = 3
+
+[node name="TrainTriger" type="CharacterBody3D" parent="arena_5" unique_id=620285205]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 95.61087, 2, -34.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_5/TrainTriger" unique_id=323552580]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("BoxShape3D_0vogn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_5/TrainTriger" unique_id=1769237339]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_adulk")
+
+[node name="TrainRail" type="Marker3D" parent="arena_5/TrainTriger" unique_id=511189710]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_5/TrainTriger" unique_id=1251137738]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger2" type="CharacterBody3D" parent="arena_5" unique_id=2031208819]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 95.61087, 2, -24.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_5/TrainTriger2" unique_id=1536638197]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("BoxShape3D_0vogn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_5/TrainTriger2" unique_id=1693350495]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_adulk")
+
+[node name="TrainRail" type="Marker3D" parent="arena_5/TrainTriger2" unique_id=1903574191]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_5/TrainTriger2" unique_id=2092980728]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger3" type="CharacterBody3D" parent="arena_5" unique_id=690294919]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 85.61087, 2, -34.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_5/TrainTriger3" unique_id=367789900]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("BoxShape3D_0vogn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_5/TrainTriger3" unique_id=1547249207]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_adulk")
+
+[node name="TrainRail" type="Marker3D" parent="arena_5/TrainTriger3" unique_id=922104902]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_5/TrainTriger3" unique_id=247936560]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainTriger4" type="CharacterBody3D" parent="arena_5" unique_id=1458380976]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 85.61087, 2, -24.27803)
+script = ExtResource("23_13ljr")
+metadata/_custom_type_script = "uid://p4xndlppfcoc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="arena_5/TrainTriger4" unique_id=1176853239]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("BoxShape3D_0vogn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arena_5/TrainTriger4" unique_id=360334293]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_adulk")
+
+[node name="TrainRail" type="Marker3D" parent="arena_5/TrainTriger4" unique_id=1859202860]
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="TrainRail2" type="Marker3D" parent="arena_5/TrainTriger4" unique_id=336543538]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 7, 0)
+script = ExtResource("25_adulk")
+metadata/_custom_type_script = "uid://13anebs8k206"
+
+[node name="door" parent="arena_5" unique_id=694622380 instance=ExtResource("10_8655v")]
+transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 90.38398, 0.104171276, -17.430786)
+active = true
+
+[node name="door2" parent="arena_5" unique_id=204108134 instance=ExtResource("10_8655v")]
+transform = Transform3D(-1.3519998, 0, 8.7422755e-08, 0, 0.9999999, 0, -1.1819562e-07, 0, -0.99999994, 90.38398, 0.104171276, -39.430786)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1484101960]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 134, -1, -58)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1518162242]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 120, -1, -58)
+mesh = SubResource("BoxMesh_0vogn")
+
+[node name="chekinpoints" type="Node" parent="." unique_id=382795062]
+
+[node name="CheckPointTriger" type="Area3D" parent="chekinpoints" unique_id=1546676831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -33)
+script = ExtResource("27_adulk")
+metadata/_custom_type_script = "uid://cctefpnn8r8q0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chekinpoints/CheckPointTriger" unique_id=1249474541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_r07op")
+
+[node name="CheckPointTriger3" type="Area3D" parent="chekinpoints" unique_id=738601252]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 126, 0, -115)
+script = ExtResource("27_adulk")
+metadata/_custom_type_script = "uid://cctefpnn8r8q0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chekinpoints/CheckPointTriger3" unique_id=2009430412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_r07op")
+
+[node name="CheckPointTriger4" type="Area3D" parent="chekinpoints" unique_id=1655353128]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 93, 0, -13)
+script = ExtResource("27_adulk")
+metadata/_custom_type_script = "uid://cctefpnn8r8q0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chekinpoints/CheckPointTriger4" unique_id=1062628420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_r07op")
+
+[node name="CheckPointTriger2" type="Area3D" parent="chekinpoints" unique_id=2045308565]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55, 0, -116)
+script = ExtResource("27_adulk")
+metadata/_custom_type_script = "uid://cctefpnn8r8q0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chekinpoints/CheckPointTriger2" unique_id=2001379452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_k20uf")

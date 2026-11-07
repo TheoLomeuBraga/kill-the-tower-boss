@@ -349,7 +349,7 @@ func get_next_gun_id() -> int:
 	var ret : int = inventory_order.find(current_gun)
 	
 	while true:
-		ret = wrap(ret+1,0,inventory_order.size()-1)
+		ret = wrap(ret+1,0,inventory_order.size())
 		if inventory[inventory_order[ret]]:
 			break
 	
@@ -359,7 +359,7 @@ func get_previous_gun_id() -> int:
 	var ret : int = inventory_order.find(current_gun)
 	
 	while true:
-		ret = wrap(ret-1,0,inventory_order.size()-1)
+		ret = wrap(ret-1,0,inventory_order.size())
 		if inventory[inventory_order[ret]]:
 			break
 	

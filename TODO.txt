@@ -1,3 +1,5 @@
+finish level 3 checkinpoints
+
 finish level 3
 
 add system that save wich level was completed
@@ -5,8 +7,6 @@ add system that save wich level was completed
 add main menu level select
 
 add more levels tumbnails
-
-improve main menu background
 
 more playtest
 
