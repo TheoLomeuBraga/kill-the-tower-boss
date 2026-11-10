@@ -52,6 +52,10 @@ func load_game() -> void:
 		$VBoxContainer/load_game.disabled = true
 		$VBoxContainer/new_game.grab_focus()
 
+func open_level_select() -> void:
+	$LevelSelect.visible = true
+
+
 func _ready() -> void:
 	
 	save_list = SaveManager.get_save_list()
@@ -76,3 +80,7 @@ func _ready() -> void:
 	
 	$VBoxContainer/credits.pressed.connect($Creditis.focus)
 	$Creditis.close.connect($VBoxContainer/continue.grab_focus)
+	
+	$VBoxContainer/level_select.pressed.connect(open_level_select)
+	$LevelSelect.focus()
+	$LevelSelect.close.connect($VBoxContainer/continue.grab_focus)

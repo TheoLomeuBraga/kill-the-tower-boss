@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cx3wxlcudrcq1"]
+
+[ext_resource type="PackedScene" uid="uid://b8udrk4iam64w" path="res://menus/level_select/level_tumbnail/level_tumbnail.tscn" id="1_0i0ci"]
+[ext_resource type="Script" uid="uid://dgaj6jtjiepv7" path="res://menus/level_select/level_select.gd" id="1_7ga2p"]
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_jerg0"]
+
+[node name="LevelSelect" type="Control" unique_id=1980659891]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jerg0")
+script = ExtResource("1_7ga2p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1719583113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1758030986]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.263
+anchor_bottom = 1.0
+offset_right = 0.19999695
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42835647, 0.3307773, 0.6373045, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2" unique_id=1390722592]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1293084677]
+layout_mode = 2
+text = "a"
+
+[node name="Button2" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1428475218]
+layout_mode = 2
+text = "b"
+
+[node name="Button3" type="Button" parent="ColorRect2/VBoxContainer" unique_id=2140716016]
+layout_mode = 2
+text = "c"
+
+[node name="Button4" type="Button" parent="ColorRect2/VBoxContainer" unique_id=450610135]
+layout_mode = 2
+text = "d"
+
+[node name="Button5" type="Button" parent="ColorRect2/VBoxContainer" unique_id=427026590]
+layout_mode = 2
+text = "e"
+
+[node name="Button6" type="Button" parent="ColorRect2/VBoxContainer" unique_id=2094211193]
+layout_mode = 2
+text = "f
+"
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=166511094]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.263
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.19999695
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect3" unique_id=180307930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ColorRect3/ScrollContainer" unique_id=1705254115]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="LevelTumbnail" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1692484087 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "entrance"
+level_file = "res://levels/level_1/level_1.tscn"
+
+[node name="LevelTumbnail2" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1185213432 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "second floor"
+level_file = "res://levels/level_2/level_2.tscn"
+
+[node name="LevelTumbnail3" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=896854391 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"

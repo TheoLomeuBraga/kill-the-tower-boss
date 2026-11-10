@@ -1,5 +1,26 @@
 extends Node
 
+var scenes_visited_history : Array[String]
+const scene_history_file_path : String = "user://scenes_visited_history/scenes_visited_history.data"
+
+func load_visited_scene_history() -> void:
+	DirAccess.make_dir_absolute("user://scenes_visited_history")
+	if FileAccess.file_exists(scene_history_file_path+"0"):
+		var cfg_file : FileAccess = FileAccess.open(scene_history_file_path+"0", FileAccess.READ)
+		scenes_visited_history = cfg_file.get_var(true)
+	elif FileAccess.file_exists(scene_history_file_path+"1"):
+		var cfg_file : FileAccess = FileAccess.open(scene_history_file_path+"1", FileAccess.READ)
+		scenes_visited_history = cfg_file.get_var(true)
+
+func register_visited_scene(value:String) -> void:
+	if not scenes_visited_history.has(value) and value != "":
+		scenes_visited_history.push_back(value)
+		var cfg_file : FileAccess = FileAccess.open(scene_history_file_path+"0", FileAccess.WRITE)
+		cfg_file.store_var(scenes_visited_history,true)
+		cfg_file = FileAccess.open(scene_history_file_path+"1", FileAccess.WRITE)
+		cfg_file.store_var(scenes_visited_history,true)
+		
+
 @export var load_image : Texture
 
 var loaded_map : Node
@@ -9,6 +30,7 @@ signal loaded()
 
 func load_map(map_name:String) -> void:
 	
+	register_visited_scene(map_name)
 	
 	$Control/TextureRect.texture = load_image
 	
@@ -54,6 +76,7 @@ func reload()-> void:
 
 @export_file("*.tscn") var main_scene : String
 func _ready() -> void:
+	load_visited_scene_history()
 	
 	
 	var sc : ShaderCompiler = load("res://shader_compiler/shader_compiler.tscn").instantiate()

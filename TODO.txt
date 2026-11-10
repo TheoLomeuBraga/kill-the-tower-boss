@@ -1,4 +1,6 @@
-add system that save wich level was completed
+make level select joystick compatible
+
+integrate levelselect to main menu
 
 add main menu level select
 

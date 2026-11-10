@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b8udrk4iam64w"]
+
+[ext_resource type="Texture2D" uid="uid://c4riej7fk07yb" path="res://icon.svg" id="1_8372j"]
+[ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_iytvd"]
+[ext_resource type="Script" uid="uid://cqoek35u0ltub" path="res://menus/level_select/level_tumbnail/level_tumbnail.gd" id="2_ck0y3"]
+
+[node name="LevelTumbnail" type="HBoxContainer" unique_id=2068484470]
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.32000002
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_iytvd")
+script = ExtResource("2_ck0y3")
+texture = ExtResource("1_8372j")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1835217154]
+layout_mode = 2
+texture = ExtResource("1_8372j")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1049836051]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="map_name" type="Label" parent="VBoxContainer" unique_id=856200739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "map name"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1798793973]
+layout_mode = 2
+text = "Play"
