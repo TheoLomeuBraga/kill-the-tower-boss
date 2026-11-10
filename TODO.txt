@@ -2,9 +2,7 @@ make level select joystick compatible
 
 integrate levelselect to main menu
 
-add main menu level select
-
-add more levels tumbnails
+add levels tumbnails by screen shot
 
 more playtest
 
