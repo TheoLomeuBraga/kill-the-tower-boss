@@ -4,9 +4,18 @@ class_name SaveDisplay
 signal on_load()
 signal on_delete()
 
+func enshure_visible() -> void:
+	var parent : ScrollContainer = get_parent().get_parent()
+	if !parent:
+		return
+	parent.ensure_control_visible(self)
+
 func _ready() -> void:
 	$HBoxContainer/load.pressed.connect(on_load.emit)
 	$HBoxContainer/delete.pressed.connect(on_delete.emit)
+	
+	$HBoxContainer/load.focus_entered.connect(enshure_visible)
+	$HBoxContainer/delete.focus_entered.connect(enshure_visible)
 
 func set_display(save_name:String,unit_last_used_time:float,map_name:String="",image:Texture=load("res://icon.svg")) -> void:
 	$VBoxContainer/name.text = save_name

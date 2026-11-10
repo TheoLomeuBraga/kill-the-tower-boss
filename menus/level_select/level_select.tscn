@@ -107,3 +107,53 @@ level_file = "res://levels/level_2/level_2.tscn"
 layout_mode = 2
 level_name = "final floor"
 level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail4" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=2068484470 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail5" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1436420022 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail6" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=999778281 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail7" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1086858111 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail8" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=254866308 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail9" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=360678114 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail10" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=998165464 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail11" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=850854305 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail12" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1505448076 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"
+
+[node name="LevelTumbnail13" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1038718533 instance=ExtResource("1_0i0ci")]
+layout_mode = 2
+level_name = "final floor"
+level_file = "res://levels/level_3/level_3.tscn"

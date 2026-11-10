@@ -10,9 +10,15 @@ func load_level() -> void:
 func focus() -> void:
 	$VBoxContainer/Button.grab_focus()
 
+func enshure_visible() -> void:
+	var parent : ScrollContainer = get_parent().get_parent()
+	if !parent:
+		return
+	parent.ensure_control_visible(self)
+
 func _ready() -> void:
 	
-	await  get_tree().process_frame
+	$VBoxContainer/Button.focus_entered.connect(enshure_visible)
 	
 	
 	if SceneManager.scenes_visited_history.has(level_file):
