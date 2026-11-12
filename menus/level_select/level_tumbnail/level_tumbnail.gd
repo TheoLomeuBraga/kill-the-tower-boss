@@ -31,8 +31,6 @@ func _ready() -> void:
 	
 	$VBoxContainer/Button.focus_entered.connect(enshure_visible)
 	
-	print(SceneManager.scenes_visited_history)
-	
 	if SceneManager.scenes_visited_history.has(level_file):
 		$VBoxContainer/map_name.text = level_name
 		$VBoxContainer/Button.pressed.connect(load_level)
