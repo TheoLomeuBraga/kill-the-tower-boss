@@ -97,7 +97,6 @@ grapple_hope = NodePath("../grapple_hope")
 [node name="Stats" type="Node" parent="." unique_id=598903094]
 script = ExtResource("6_g6k8r")
 faction = 0
-full_heal_on_ready = true
 metadata/_custom_type_script = "uid://u7trxdlheisb"
 
 [node name="health_save_ajust" type="Node" parent="Stats" unique_id=1127287469]

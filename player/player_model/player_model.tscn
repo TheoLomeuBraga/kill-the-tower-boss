@@ -16,7 +16,7 @@ gun = NodePath("overheat")
 [node name="gun_animations" parent="." unique_id=1768392310 instance=ExtResource("2_qfpg1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.067, 0.394)
 walk_speed = 1.4
-drop_wepon_estate = 0.0
+drop_wepon_state = 1.0
 
 [node name="overheat" parent="." unique_id=2033315752 instance=ExtResource("4_qu0w5")]
 
