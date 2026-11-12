@@ -4,7 +4,7 @@ signal close()
 
 func _ready() -> void:
 	visible = false
-	$ColorRect/close.grab_focus()
+	#$ColorRect/close.grab_focus()
 	$ColorRect/close.pressed.connect(close.emit)
 	$ColorRect/close.pressed.connect(func():visible=not visible)
 	$ColorRect/RichTextLabel.meta_clicked.connect(OS.shell_open)
@@ -12,3 +12,8 @@ func _ready() -> void:
 func focus() -> void:
 	visible = true
 	$ColorRect/close.grab_focus()
+
+func _process(delta: float) -> void:
+	if visible and Input.is_action_just_pressed("ui_cancel"):
+		close.emit()
+		visible=false

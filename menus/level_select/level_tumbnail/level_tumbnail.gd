@@ -10,6 +10,9 @@ func load_level() -> void:
 func focus() -> void:
 	$VBoxContainer/Button.grab_focus()
 
+func this_has_focus() -> bool:
+	return $VBoxContainer/Button.has_focus()
+
 func enshure_visible() -> void:
 	var parent : ScrollContainer = get_parent().get_parent()
 	if !parent:

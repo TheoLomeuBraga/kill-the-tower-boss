@@ -1,6 +1,4 @@
-make level select joystick compatible
-
-integrate levelselect to main menu
+make levelselector give chapter wepons
 
 add levels tumbnails by screen shot
 

@@ -84,5 +84,5 @@ func _ready() -> void:
 	$VBoxContainer/HBoxContainer/back.pressed.connect(on_close.emit)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if visible and get_parent().visible and Input.is_action_just_pressed("ui_cancel"):
 		on_close.emit()

@@ -54,6 +54,7 @@ func load_game() -> void:
 
 func open_level_select() -> void:
 	$LevelSelect.visible = true
+	$LevelSelect.focus()
 
 
 func _ready() -> void:
@@ -82,5 +83,4 @@ func _ready() -> void:
 	$Creditis.close.connect($VBoxContainer/continue.grab_focus)
 	
 	$VBoxContainer/level_select.pressed.connect(open_level_select)
-	$LevelSelect.focus()
 	$LevelSelect.close.connect($VBoxContainer/continue.grab_focus)

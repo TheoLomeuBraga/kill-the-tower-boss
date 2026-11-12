@@ -3,6 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://b8udrk4iam64w" path="res://menus/level_select/level_tumbnail/level_tumbnail.tscn" id="1_0i0ci"]
 [ext_resource type="Script" uid="uid://dgaj6jtjiepv7" path="res://menus/level_select/level_select.gd" id="1_7ga2p"]
 [ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_jerg0"]
+[ext_resource type="Texture2D" uid="uid://d2ulj4l6o152q" path="res://menus/visual_assets/frame.png" id="3_i25gx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jerg0"]
+texture = ExtResource("3_i25gx")
+texture_margin_left = 2.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i25gx"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="LevelSelect" type="Control" unique_id=1980659891]
 texture_filter = 1
@@ -15,71 +26,58 @@ grow_vertical = 2
 theme = ExtResource("1_jerg0")
 script = ExtResource("1_7ga2p")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1719583113]
+[node name="Panel" type="Panel" parent="." unique_id=2113418795]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_jerg0")
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1758030986]
+[node name="ColorRect2" type="Panel" parent="Panel" unique_id=234639510]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.263
-anchor_bottom = 1.0
-offset_right = 0.19999695
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.42835647, 0.3307773, 0.6373045, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2" unique_id=1390722592]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.028
+anchor_top = 0.215
+anchor_right = 0.36200002
+anchor_bottom = 0.76000005
+offset_left = 0.19999886
+offset_right = -0.2000122
+offset_bottom = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1293084677]
-layout_mode = 2
-text = "a"
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect2" unique_id=313384066]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 218.0
+follow_focus = true
 
-[node name="Button2" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1428475218]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ColorRect2/ScrollContainer" unique_id=1390722592]
 layout_mode = 2
-text = "b"
+size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="ColorRect2/VBoxContainer" unique_id=2140716016]
+[node name="Button" type="Button" parent="Panel/ColorRect2/ScrollContainer/VBoxContainer" unique_id=1293084677]
 layout_mode = 2
-text = "c"
+text = "chapter 1"
 
-[node name="Button4" type="Button" parent="ColorRect2/VBoxContainer" unique_id=450610135]
-layout_mode = 2
-text = "d"
-
-[node name="Button5" type="Button" parent="ColorRect2/VBoxContainer" unique_id=427026590]
-layout_mode = 2
-text = "e"
-
-[node name="Button6" type="Button" parent="ColorRect2/VBoxContainer" unique_id=2094211193]
-layout_mode = 2
-text = "f
-"
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=166511094]
+[node name="ColorRect3" type="Panel" parent="Panel" unique_id=162944491]
 clip_children = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.263
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.19999695
+anchor_left = 0.37300003
+anchor_top = 0.215
+anchor_right = 0.97200006
+anchor_bottom = 0.76000005
+offset_left = 0.19998169
+offset_right = -0.2000122
+offset_bottom = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_i25gx")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect3" unique_id=180307930]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect3" unique_id=180307930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,72 +86,68 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="ColorRect3/ScrollContainer" unique_id=1705254115]
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/ColorRect3/ScrollContainer" unique_id=1705254115]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LevelTumbnail" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1692484087 instance=ExtResource("1_0i0ci")]
+[node name="LevelTumbnail" parent="Panel/ColorRect3/ScrollContainer/HBoxContainer" unique_id=1692484087 instance=ExtResource("1_0i0ci")]
 layout_mode = 2
 level_name = "entrance"
 level_file = "res://levels/level_1/level_1.tscn"
 
-[node name="LevelTumbnail2" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1185213432 instance=ExtResource("1_0i0ci")]
+[node name="LevelTumbnail2" parent="Panel/ColorRect3/ScrollContainer/HBoxContainer" unique_id=1185213432 instance=ExtResource("1_0i0ci")]
 layout_mode = 2
 level_name = "second floor"
 level_file = "res://levels/level_2/level_2.tscn"
 
-[node name="LevelTumbnail3" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=896854391 instance=ExtResource("1_0i0ci")]
+[node name="LevelTumbnail3" parent="Panel/ColorRect3/ScrollContainer/HBoxContainer" unique_id=896854391 instance=ExtResource("1_0i0ci")]
 layout_mode = 2
 level_name = "final floor"
 level_file = "res://levels/level_3/level_3.tscn"
 
-[node name="LevelTumbnail4" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=2068484470 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
+[node name="Label" type="Label" parent="Panel" unique_id=1933283372]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.037
+anchor_right = 0.36200002
+anchor_bottom = 0.192
+offset_left = 0.19999886
+offset_top = 0.19999981
+offset_right = -0.2000122
+offset_bottom = 0.19999695
+theme_override_font_sizes/font_size = 32
+text = "chapter"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LevelTumbnail5" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1436420022 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
+[node name="Label2" type="Label" parent="Panel" unique_id=2116267761]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37300003
+anchor_top = 0.037
+anchor_right = 0.95800006
+anchor_bottom = 0.192
+offset_left = 0.19998169
+offset_top = 0.19999981
+offset_right = 0.19995117
+offset_bottom = 0.19999695
+theme_override_font_sizes/font_size = 32
+text = "level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LevelTumbnail6" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=999778281 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail7" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1086858111 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail8" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=254866308 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail9" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=360678114 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail10" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=998165464 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail11" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=850854305 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail12" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1505448076 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
-
-[node name="LevelTumbnail13" parent="ColorRect3/ScrollContainer/HBoxContainer" unique_id=1038718533 instance=ExtResource("1_0i0ci")]
-layout_mode = 2
-level_name = "final floor"
-level_file = "res://levels/level_3/level_3.tscn"
+[node name="back" type="Button" parent="." unique_id=540184878]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.85200006
+anchor_right = 0.96800005
+anchor_bottom = 0.93500006
+offset_left = 0.19999886
+offset_top = 0.19998169
+offset_right = 0.19995117
+offset_bottom = -3.0517578e-05
+size_flags_horizontal = 3
+text = "back"
