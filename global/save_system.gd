@@ -18,6 +18,14 @@ var game_data : Dictionary = {
 func get_save_name(file_name:String,id:int) -> String:
 	return "user://saves/" + file_name + ".save" + str(id)
 
+var thread_screenshot_mutex:Mutex=Mutex.new()
+var thread_screenshot_string:String
+var thread_screenshot_image:Image
+func thread_screenshot(v:int)->void:
+	thread_screenshot_mutex.lock()
+	thread_screenshot_image.save_webp("user://saves/" + thread_screenshot_string +".webp",true,.2)
+	thread_screenshot_mutex.unlock()
+
 func save_game() -> void:
 	
 	if not game_data.has("unix_time_creation"):
@@ -39,6 +47,14 @@ func save_game() -> void:
 	save = FileAccess.open(get_save_name(save_name,1), FileAccess.WRITE)
 	save.store_var(game_data,true)
 	save.close()
+	
+	thread_screenshot_mutex.lock()
+	thread_screenshot_string = save_name
+	thread_screenshot_image = get_viewport().get_texture().get_image()
+	thread_screenshot_mutex.unlock()
+	
+	WorkerThreadPool.add_group_task(thread_screenshot, 1)
+	
 
 func try_load_game(file_name:String,id:int) -> Variant:
 	

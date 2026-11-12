@@ -22,6 +22,7 @@ func set_display(save_name:String,unit_last_used_time:float,map_name:String="",i
 	var dictionary : Dictionary = Time.get_datetime_dict_from_system(unit_last_used_time)
 	$VBoxContainer/time.text = "%s-%s-%s-%s:%s" % [dictionary["day"],dictionary["month"],dictionary["year"],dictionary["hour"],dictionary["minute"]]
 	$VBoxContainer/map_name.text = map_name
+	$TextureRect.texture = image
 
 func focus() -> void:
 	$HBoxContainer/load.grab_focus()

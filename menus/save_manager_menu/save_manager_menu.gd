@@ -13,17 +13,15 @@ func load_game(save:String) -> void:
 var confirm_save_deletion : bool = false
 
 var base_image : Texture2D = load("res://icon.svg")
-var map_display_info:Dictionary={
-	"res://levels/level_1/level_1.tscn":{"name":"entrance","image":base_image},
-}
+
 func get_map_name_and_image(save:String) -> Dictionary:
-	var save_data:Dictionary=SaveManager.load_save(save)
-	if not save_data.has("current_level"):
-		return {"name":"","image":base_image}
+	var image_path : String = "user://saves/" + save+".webp"
+	if FileAccess.file_exists(image_path):
+		var image: Image = Image.new()
+		image.load(image_path)
+		var texture:ImageTexture = ImageTexture.create_from_image(image)
+		return {"name":"","image":texture}
 	
-	var scene_saved_path:String = save_data["current_level"]
-	if map_display_info.has(scene_saved_path):
-		return map_display_info[scene_saved_path].duplicate()
 	return {"name":"","image":base_image}
 
 func create_save_display(save_name:String,unit_last_used_time:float) -> SaveDisplay:

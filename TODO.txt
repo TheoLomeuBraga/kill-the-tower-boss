@@ -1,5 +1,3 @@
-add levels tumbnails by screen shot
-
 more playtest
 
 #optional
