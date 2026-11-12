@@ -1,4 +1,4 @@
-make levelselector give chapter wepons
+fix levels not unlocking
 
 add levels tumbnails by screen shot
 
@@ -6,8 +6,8 @@ more playtest
 
 #optional
 
-create music
-
 replace pich randomizers
+
+create music
 
 add ui noises

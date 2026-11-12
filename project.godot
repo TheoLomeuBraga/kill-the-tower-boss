@@ -27,6 +27,7 @@ SettingsApplyer="*uid://bdmmd538cia6i"
 SettingsManager="*uid://svve2g47lpb6"
 SaveManager="*uid://diqb0gu534v10"
 EndMissionScreen="*uid://cbaglgsyf415n"
+LevelSelectGunGiver="*uid://5netctnufllg"
 
 [display]
 

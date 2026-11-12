@@ -13,6 +13,7 @@ func load_visited_scene_history() -> void:
 		scenes_visited_history = cfg_file.get_var(true)
 
 func register_visited_scene(value:String) -> void:
+	
 	if not scenes_visited_history.has(value) and value != "":
 		scenes_visited_history.push_back(value)
 		var cfg_file : FileAccess = FileAccess.open(scene_history_file_path+"0", FileAccess.WRITE)
@@ -31,6 +32,8 @@ signal loaded()
 func load_map(map_name:String) -> void:
 	
 	register_visited_scene(map_name)
+	
+	register_visited_scene(ResourceUID.id_to_text(ResourceLoader.get_resource_uid(map_name)))
 	
 	$Control/TextureRect.texture = load_image
 	

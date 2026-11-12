@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://dgaj6jtjiepv7" path="res://menus/level_select/level_select.gd" id="1_7ga2p"]
 [ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_jerg0"]
 [ext_resource type="Texture2D" uid="uid://d2ulj4l6o152q" path="res://menus/visual_assets/frame.png" id="3_i25gx"]
+[ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="5_0s0gt"]
+[ext_resource type="Resource" uid="uid://sjs512xc2p86" path="res://player/guns_infos/smg.tres" id="6_jqlp6"]
+[ext_resource type="Resource" uid="uid://dem71dr1rlwrg" path="res://player/guns_infos/shotgun.tres" id="7_jp7i8"]
+[ext_resource type="Resource" uid="uid://c88dvsbpk87vj" path="res://player/guns_infos/overheat.tres" id="8_45hre"]
+[ext_resource type="Resource" uid="uid://r6noy65ufg7w" path="res://player/guns_infos/charge_rifle.tres" id="9_vkws0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jerg0"]
 texture = ExtResource("3_i25gx")
@@ -100,11 +105,13 @@ level_file = "res://levels/level_1/level_1.tscn"
 layout_mode = 2
 level_name = "second floor"
 level_file = "res://levels/level_2/level_2.tscn"
+guns = Array[ExtResource("5_0s0gt")]([ExtResource("6_jqlp6"), ExtResource("7_jp7i8")])
 
 [node name="LevelTumbnail3" parent="Panel/ColorRect3/ScrollContainer/HBoxContainer" unique_id=896854391 instance=ExtResource("1_0i0ci")]
 layout_mode = 2
 level_name = "final floor"
 level_file = "res://levels/level_3/level_3.tscn"
+guns = Array[ExtResource("5_0s0gt")]([ExtResource("7_jp7i8"), ExtResource("6_jqlp6"), ExtResource("8_45hre"), ExtResource("9_vkws0")])
 
 [node name="Label" type="Label" parent="Panel" unique_id=1933283372]
 layout_mode = 1

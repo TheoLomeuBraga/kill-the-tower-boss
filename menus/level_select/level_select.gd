@@ -28,6 +28,7 @@ func _ready() -> void:
 		var c:Button = $Panel/ColorRect2/ScrollContainer/VBoxContainer.get_child(i)
 		c.pressed.connect(select_chapter.bind(i))
 	
+	
 
 func _process(delta: float) -> void:
 	
