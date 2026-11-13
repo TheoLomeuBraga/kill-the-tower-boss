@@ -2,8 +2,6 @@ more playtest
 
 #optional
 
-add load menu to pause button
-
 create music
 
 add ui noises

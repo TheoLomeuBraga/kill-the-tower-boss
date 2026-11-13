@@ -10,6 +10,7 @@ color = Color(0, 0, 0, 0)
 color = Color(0, 0, 0, 0)
 
 [node name="SettingsMenu" type="Control" unique_id=1210625486]
+process_mode = 3
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

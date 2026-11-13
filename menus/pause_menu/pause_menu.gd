@@ -47,7 +47,12 @@ func _ready() -> void:
 	$Panel/VBoxContainer/continue.pressed.connect(pause_unpause)
 	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.visible=true)
 	$Panel/VBoxContainer/load_chekpoint.pressed.connect(load_chekpoint)
-	$Panel/VBoxContainer/settings.pressed.connect(func():$SettingsMenu.focus())
+	$Panel/VBoxContainer/settings.pressed.connect($SettingsMenu.focus)
+	
+	$Panel/VBoxContainer/load_save.pressed.connect(func():$SaveManagerMenu.visible=true)
+	$Panel/VBoxContainer/load_save.pressed.connect($SaveManagerMenu.reprocess_saves)
+	$SaveManagerMenu.on_close.connect(func():$SaveManagerMenu.visible=false)
+	$SaveManagerMenu.on_close.connect(focus)
 	
 	$Panel/VBoxContainer/main_menu.pressed.connect(SceneManager.go_to_main_menu)
 	
@@ -65,7 +70,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	$Panel.visible = not $SettingsMenu.visible
+	$Panel.visible = not ($SettingsMenu.visible or $SaveManagerMenu.visible)
 	
 	if not get_tree().paused and Input.is_action_just_pressed("pause"):
 		pause_unpause()
