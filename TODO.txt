@@ -2,7 +2,7 @@ more playtest
 
 #optional
 
-replace pich randomizers
+add load menu to pause button
 
 create music
 

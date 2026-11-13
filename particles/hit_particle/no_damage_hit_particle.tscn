@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bpx1ptt8i0ybh" path="res://particles/hit_particle/hit_effect.png" id="1_heyji"]
 [ext_resource type="Script" uid="uid://btjwrydlhnj0y" path="res://particles/start_emiting.gd" id="2_ustjs"]
 [ext_resource type="AudioStream" uid="uid://lrql4dsb7sdh" path="res://particles/hit_particle/hit_fail.wav" id="3_heyji"]
-[ext_resource type="Script" uid="uid://d4hxc6cumbvb5" path="res://scripts/randomize_pitch.gd" id="4_deyfu"]
 
 [sub_resource type="Curve" id="Curve_sbw2j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.087837845, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -34,6 +33,11 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_cumbm"]
 material = SubResource("StandardMaterial3D_wnubv")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1vahj"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("3_heyji")
+
 [node name="HitParticle" type="GPUParticles3D" unique_id=142146666]
 emitting = false
 amount = 1
@@ -49,14 +53,9 @@ one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2077805071]
-stream = ExtResource("3_heyji")
+stream = SubResource("AudioStreamRandomizer_1vahj")
 volume_db = -5.0
 autoplay = true
 bus = &"SFX"
-
-[node name="RandomizePitch" type="Node" parent="AudioStreamPlayer" unique_id=1530637360]
-script = ExtResource("4_deyfu")
-variation_range = Vector2(1, 2)
-metadata/_custom_type_script = "uid://d4hxc6cumbvb5"
 
 [connection signal="timeout" from="DeathTimer" to="." method="queue_free"]
