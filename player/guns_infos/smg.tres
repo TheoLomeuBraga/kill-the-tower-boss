@@ -10,13 +10,18 @@
 [ext_resource type="Script" uid="uid://5ihhl4vr45q5" path="res://scripts/gun_info.gd" id="7_jtrlh"]
 [ext_resource type="AudioStream" uid="uid://bbrqi45d5fnle" path="res://sfx/guns/pistol_reload.wav" id="8_ihjv6"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vpjwo"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("6_ihjv6")
+
 [sub_resource type="Resource" id="Resource_ihjv6"]
 script = ExtResource("4_ypoci")
 damage = 10
 distance = 20.0
 model = ExtResource("3_ihjv6")
 hit_wall_effect = ExtResource("2_8tmbe")
-sound = ExtResource("6_ihjv6")
+sound = SubResource("AudioStreamRandomizer_vpjwo")
 spawn_effect = ExtResource("5_fh2y1")
 metadata/_custom_type_script = "uid://dsfbwvui8fvt4"
 

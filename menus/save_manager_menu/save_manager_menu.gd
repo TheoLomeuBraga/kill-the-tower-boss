@@ -7,6 +7,7 @@ var save_display_scene : PackedScene = load("res://menus/save_manager_menu/save_
 var save_delete_confirmation_scene : PackedScene = load("res://menus/save_manager_menu/save_delete_confirmation/save_delete_confirmation.tscn")
 
 func load_game(save:String) -> void:
+	get_tree().paused = false
 	SaveManager.load_game(save)
 	SceneManager.load_map(SaveManager.game_data["current_level"])
 
