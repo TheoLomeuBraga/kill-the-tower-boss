@@ -49,8 +49,10 @@ func save_game() -> void:
 	save.close()
 	
 	thread_screenshot_mutex.lock()
+	
 	thread_screenshot_string = save_name
 	thread_screenshot_image = get_viewport().get_texture().get_image()
+	
 	thread_screenshot_mutex.unlock()
 	
 	WorkerThreadPool.add_group_task(thread_screenshot, 1)
