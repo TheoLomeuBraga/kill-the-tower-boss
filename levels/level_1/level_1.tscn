@@ -27,6 +27,8 @@
 [ext_resource type="Script" uid="uid://cctefpnn8r8q0" path="res://scripts/trigers/checkpoint_triger.gd" id="21_1iwl3"]
 [ext_resource type="Script" uid="uid://drnx3c1p1uule" path="res://scripts/trigers/change_cene_triger.gd" id="22_xywve"]
 [ext_resource type="Script" uid="uid://8fc5wkuba60s" path="res://scripts/end_mission_camera.gd" id="23_vk63l"]
+[ext_resource type="AudioStream" uid="uid://da4rokhqmnf4g" path="res://OST/the_tower.ogg" id="26_hmxt8"]
+[ext_resource type="Script" uid="uid://btwsh8oe0upkp" path="res://scripts/trigers/sound/play_sound_triger.gd" id="27_xiq7r"]
 
 [sub_resource type="Curve" id="Curve_f313t"]
 _data = [Vector2(0, 0.40229988), 0.0, 0.0, 0, 0, Vector2(0.25957763, 1), 0.0, 0.0, 0, 0]
@@ -983,6 +985,21 @@ metadata/_custom_type_script = "uid://cctefpnn8r8q0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckPointTriger2" unique_id=233528657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0.5)
 shape = SubResource("BoxShape3D_r07op")
+
+[node name="CheckPointTriger3" type="Area3D" parent="." unique_id=790605436]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 14.810582, 65)
+script = ExtResource("6_j48du")
+targets = Array[NodePath]([NodePath("PlaySoundTriger")])
+metadata/_custom_type_script = "uid://cce2bqsye47to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckPointTriger3" unique_id=218686899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0.5)
+shape = SubResource("BoxShape3D_r07op")
+
+[node name="PlaySoundTriger" type="AudioStreamPlayer" parent="CheckPointTriger3" unique_id=1649239871]
+stream = ExtResource("26_hmxt8")
+script = ExtResource("27_xiq7r")
+metadata/_custom_type_script = "uid://btwsh8oe0upkp"
 
 [node name="ChangeCeneTriger" type="Area3D" parent="." unique_id=2142206096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 13, 117)

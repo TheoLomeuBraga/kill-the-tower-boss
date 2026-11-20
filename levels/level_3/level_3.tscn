@@ -27,6 +27,8 @@
 [ext_resource type="Script" uid="uid://13anebs8k206" path="res://scripts/trigers/train/train_rail.gd" id="25_adulk"]
 [ext_resource type="PackedScene" uid="uid://cx6ocdaxw1byj" path="res://enemys/robot/robot.tscn" id="26_0vogn"]
 [ext_resource type="Script" uid="uid://cctefpnn8r8q0" path="res://scripts/trigers/checkpoint_triger.gd" id="27_adulk"]
+[ext_resource type="AudioStream" uid="uid://dhci0ikc8rttx" path="res://OST/inprecive_garden.ogg" id="27_k20uf"]
+[ext_resource type="Script" uid="uid://btwsh8oe0upkp" path="res://scripts/trigers/sound/play_sound_triger.gd" id="28_n7yk7"]
 
 [sub_resource type="Shader" id="Shader_35b77"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
@@ -1221,7 +1223,7 @@ metadata/_custom_type_script = "uid://13anebs8k206"
 [node name="AreaTriger" type="Area3D" parent="arena_4" unique_id=1376457250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -115)
 script = ExtResource("9_8fdlj")
-targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../door4"), NodePath("../TrainTriger"), NodePath("../TrainTriger3")])
+targets = Array[NodePath]([NodePath("../wave_1"), NodePath("../door4"), NodePath("../TrainTriger"), NodePath("../TrainTriger3"), NodePath("../PlaySoundTriger")])
 metadata/_custom_type_script = "uid://cce2bqsye47to"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="arena_4/AreaTriger" unique_id=2047823117]
@@ -1235,6 +1237,11 @@ lifetime = 10.0
 visibility_aabb = AABB(-50, -50, -50, 100, 100, 100)
 process_material = SubResource("ParticleProcessMaterial_k20uf")
 draw_pass_1 = SubResource("QuadMesh_k20uf")
+
+[node name="PlaySoundTriger" type="AudioStreamPlayer" parent="arena_4" unique_id=1470227123]
+stream = ExtResource("27_k20uf")
+script = ExtResource("28_n7yk7")
+metadata/_custom_type_script = "uid://btwsh8oe0upkp"
 
 [node name="arena_5" type="Node" parent="." unique_id=923369928]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://i5imjmvu0okg" path="res://menus/visual_assets/settings_theme.tres" id="1_vpxfm"]
 [ext_resource type="Script" uid="uid://eoe0ev3qigj5" path="res://menus/end_screen/end_screen.gd" id="2_dkans"]
+[ext_resource type="AudioStream" uid="uid://dvy2i2smv8gcm" path="res://OST/a_smal_victory.ogg" id="3_jdo6h"]
 
 [node name="EndScreen" type="Control" unique_id=1750022352]
 texture_filter = 1
@@ -67,3 +68,7 @@ offset_top = 0.19998169
 offset_right = -0.2000122
 offset_bottom = 0.19998169
 text = "main menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=556173546]
+stream = ExtResource("3_jdo6h")
+autoplay = true

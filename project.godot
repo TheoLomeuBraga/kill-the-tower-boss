@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.7", "Mobile")
 run/max_fps=60
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/mix_rate=11025
+
 [autoload]
 
 PostProcessing="*uid://l0s57321gcc5"
@@ -219,6 +223,8 @@ jolt_physics_3d/simulation/position_steps=10
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 shading/overrides/force_vertex_shading=true
+shading/overrides/force_lambert_over_burley=true
 occlusion_culling/use_occlusion_culling=true
