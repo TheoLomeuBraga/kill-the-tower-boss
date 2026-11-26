@@ -24,6 +24,8 @@ const base_settings : Dictionary = {
 	"audio_volume_sfx": 100,
 	"audio_volume_music": 100,
 	"audio_volume_dialogue": 100,
+	
+	"accessibility_language": 0,
 }
 
 var settings : Dictionary

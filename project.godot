@@ -214,6 +214,12 @@ debug={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/pt_BR.mo")
+locale/translations_pot_files=PackedStringArray("res://menus/creditis/creditis.tscn", "res://menus/end_screen/end_screen.tscn", "res://menus/game_over/game_over.tscn", "res://menus/level_select/level_select.tscn", "res://menus/level_select/level_select.gd", "res://menus/main_menu/main_menu.tscn", "res://menus/main_menu/main_menu.gd", "res://menus/save_manager_menu/save_manager_menu.gd", "res://menus/save_manager_menu/save_manager_menu.tscn", "res://menus/settings/settings_menu.gd", "res://menus/settings/settings_menu.tscn", "res://menus/pause_menu/pause_menu.tscn", "res://menus/pause_menu/pause_menu.gd")
+locale/translation_add_builtin_strings_to_pot=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

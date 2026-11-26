@@ -1,0 +1,707 @@
+# LANGUAGE translation for kill_the_tower_boss for the following files:
+# res://menus/creditis/creditis.tscn
+# res://menus/end_screen/end_screen.tscn
+# res://menus/game_over/game_over.tscn
+# res://menus/level_select/level_select.tscn
+# res://menus/level_select/level_select.gd
+# res://menus/main_menu/main_menu.tscn
+# res://menus/main_menu/main_menu.gd
+# res://menus/save_manager_menu/save_manager_menu.gd
+# res://menus/save_manager_menu/save_manager_menu.tscn
+# res://menus/settings/settings_menu.gd
+# res://menus/settings/settings_menu.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kill_the_tower_boss\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#: menus/creditis/creditis.tscn
+msgid "CREDITS"
+msgstr "CREDITOS"
+
+#: menus/creditis/creditis.tscn
+msgid "Théo: [color=blue][url]https://theolomeubraga.itch.io/[/url][/color]"
+msgstr ""
+
+#: menus/creditis/creditis.tscn
+msgid "close"
+msgstr "fechar"
+
+#: menus/end_screen/end_screen.tscn
+msgid "thanks for playing"
+msgstr "obrigado por jogar"
+
+#: menus/end_screen/end_screen.tscn
+msgid "this meant a lot for me ^w^"
+msgstr "isso significou muito para mim ^W^"
+
+#: menus/end_screen/end_screen.tscn menus/game_over/game_over.tscn
+#: menus/pause_menu/pause_menu.tscn
+msgid "main menu"
+msgstr "menu principal"
+
+#: menus/game_over/game_over.tscn
+msgid "GAME OVER"
+msgstr "GAME OVER"
+
+#: menus/game_over/game_over.tscn
+msgid "Respawn"
+msgstr "Recarregar"
+
+#: menus/game_over/game_over.tscn menus/main_menu/main_menu.tscn
+#: menus/pause_menu/pause_menu.tscn
+msgid "quit game"
+msgstr "sair do jogo"
+
+#: menus/level_select/level_select.tscn
+msgid "chapter 1"
+msgstr "capitulo 1"
+
+#: menus/level_select/level_select.tscn
+msgid "chapter"
+msgstr "capitulo"
+
+#: menus/level_select/level_select.tscn
+msgid "level"
+msgstr "nivel"
+
+#: menus/level_select/level_select.tscn
+#: menus/save_manager_menu/save_manager_menu.tscn
+msgid "back"
+msgstr "voltar"
+
+#: menus/main_menu/main_menu.tscn
+msgid "kill the tower boss"
+msgstr "kill the tower boss"
+
+#: menus/main_menu/main_menu.tscn
+msgid "continue"
+msgstr "continuar"
+
+#: menus/main_menu/main_menu.tscn
+msgid "new game"
+msgstr "novo jogo"
+
+#: menus/main_menu/main_menu.tscn
+msgid "load game"
+msgstr "carregar jogo"
+
+#: menus/main_menu/main_menu.tscn
+msgid "level select"
+msgstr "selecionar nivel"
+
+#: menus/main_menu/main_menu.tscn menus/settings/settings_menu.gd:56
+#: menus/pause_menu/pause_menu.tscn
+msgid "settings"
+msgstr "sonfigurações"
+
+#: menus/main_menu/main_menu.tscn
+msgid "credits"
+msgstr "creditor"
+
+#: menus/save_manager_menu/save_manager_menu.tscn
+msgid "saves"
+msgstr "saves"
+
+#: menus/settings/settings_menu.gd:59 menus/settings/settings_menu.gd:79
+msgid "mouse & keyboard"
+msgstr "mouse e teclado"
+
+#: menus/settings/settings_menu.gd:63
+msgid "conreoller"
+msgstr "controle"
+
+#: menus/settings/settings_menu.gd:66 menus/settings/settings_menu.gd:115
+msgid "video"
+msgstr "video"
+
+#: menus/settings/settings_menu.gd:69 menus/settings/settings_menu.gd:134
+msgid "audio"
+msgstr "audio"
+
+#: menus/settings/settings_menu.gd:72 menus/settings/settings_menu.gd:195
+msgid "accessibility"
+msgstr "acessibilidade"
+
+#: menus/settings/settings_menu.gd:82
+msgid "sensitivity mouse"
+msgstr "censibilidade do mouse"
+
+#: menus/settings/settings_menu.gd:86 menus/settings/settings_menu.gd:108
+msgid "input map"
+msgstr "mapeamento"
+
+#: menus/settings/settings_menu.gd:93
+msgid "controller"
+msgstr "controle"
+
+#: menus/settings/settings_menu.gd:96
+msgid "sensitivity controller"
+msgstr "sensibilidade do controle"
+
+#: menus/settings/settings_menu.gd:100
+msgid "deadzone left"
+msgstr "zona morta esquerda"
+
+#: menus/settings/settings_menu.gd:103
+msgid "deadzone right"
+msgstr "zona morta direita"
+
+#: menus/settings/settings_menu.gd:118
+msgid "fov"
+msgstr "campo de visão"
+
+#: menus/settings/settings_menu.gd:122
+msgid "full screen"
+msgstr "tela cheia"
+
+#: menus/settings/settings_menu.gd:125
+msgid "camera sway"
+msgstr "balanço de camera"
+
+#: menus/settings/settings_menu.gd:137
+msgid "Volume"
+msgstr "Volume"
+
+#: menus/settings/settings_menu.gd:141
+msgid "SFX"
+msgstr "Efeitos Sonoros"
+
+#: menus/settings/settings_menu.gd:144
+msgid "Music"
+msgstr "Musica"
+
+#: menus/settings/settings_menu.tscn
+msgid "Settings"
+msgstr "Configurações"
+
+#: menus/settings/settings_menu.tscn
+msgid "done"
+msgstr "pronto"
+
+#: menus/settings/settings_menu.tscn
+msgid "reset\n"
+msgstr "retesar\n"
+
+#: menus/pause_menu/pause_menu.tscn
+msgid "[PAUSE]"
+msgstr "[PAUSA]"
+
+#: menus/pause_menu/pause_menu.tscn
+msgid "Continue"
+msgstr "Continuar"
+
+#: menus/pause_menu/pause_menu.tscn
+msgid "load chekpoint"
+msgstr ""
+
+#: menus/pause_menu/pause_menu.tscn
+#, fuzzy
+#| msgid "load game"
+msgid "load save"
+msgstr "carregar jogo"
+
+msgid "Open in File Manager"
+msgstr ""
+
+msgid "Show in File Manager"
+msgstr ""
+
+msgid "Open in Files"
+msgstr ""
+
+msgid "Show in Files"
+msgstr ""
+
+msgid "Open in Finder"
+msgstr ""
+
+msgid "Show in Finder"
+msgstr ""
+
+msgid "Open in File Explorer"
+msgstr ""
+
+msgid "Show in File Explorer"
+msgstr ""
+
+msgid "Code completion list:"
+msgstr ""
+
+msgid "New Code Region"
+msgstr ""
+
+msgid "Linear"
+msgstr ""
+
+msgid "Pick a color from the screen."
+msgstr ""
+
+msgid "Pick a color from the application window."
+msgstr ""
+
+msgid "Alpha"
+msgstr ""
+
+msgid "Intensity"
+msgstr ""
+
+msgid "Expr"
+msgstr ""
+
+msgid "Hex"
+msgstr ""
+
+msgid "Enter a hex code (\"#ff0000\") or named color (\"red\")."
+msgstr ""
+
+msgid "Load Color Palette"
+msgstr ""
+
+msgid "Save Color Palette"
+msgstr ""
+
+msgid "The changes to this palette have not been saved to a file."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save the current color palette to reuse later."
+msgstr ""
+
+msgid "Save As"
+msgstr ""
+
+msgid "Save the current color palette as a new to reuse later."
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load existing color palette."
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Clear the currently loaded color palettes in the picker."
+msgstr ""
+
+msgid "Pick"
+msgstr ""
+
+msgid "Select a picker shape."
+msgstr ""
+
+msgid "Select a picker mode."
+msgstr ""
+
+msgid "Colorized Sliders"
+msgstr ""
+
+msgid "Hexadecimal Values"
+msgstr ""
+
+msgid "Hex code or named color"
+msgstr ""
+
+msgid "Copy the color value."
+msgstr ""
+
+msgid "Copy Color"
+msgstr ""
+
+msgid "Swatches"
+msgstr ""
+
+msgid "Show all options available."
+msgstr ""
+
+msgid "Recent Colors"
+msgstr ""
+
+msgid "Add current color as a preset."
+msgstr ""
+
+msgid "Screen Recording permission missing!"
+msgstr ""
+
+msgid ""
+"Screen Recording permission is required to pick colors from the other "
+"application windows.\n"
+"Click here to request access..."
+msgstr ""
+
+msgid ""
+"Color: %s\n"
+"LMB: Apply color"
+msgstr ""
+
+msgid ""
+"Color: %s\n"
+"LMB: Apply color\n"
+"RMB: Remove preset"
+msgstr ""
+
+msgid "Color: %s"
+msgstr ""
+
+msgid "HSV Rectangle"
+msgstr ""
+
+msgid "OK HS Rectangle"
+msgstr ""
+
+msgid "OK HL Rectangle"
+msgstr ""
+
+msgid "HSV Wheel"
+msgstr ""
+
+msgid "VHS Circle"
+msgstr ""
+
+msgid "OKHSL Circle"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Alert!"
+msgstr ""
+
+msgid "Please Confirm..."
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid ""
+"File \"%s\" already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Select Current Folder"
+msgstr ""
+
+msgid "Select This Folder"
+msgstr ""
+
+msgid "Copy Path"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "New Folder..."
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Show Package Contents"
+msgstr ""
+
+msgid "You don't have permission to access contents of this folder."
+msgstr ""
+
+msgid "All Recognized"
+msgstr ""
+
+msgid "All Files"
+msgstr ""
+
+msgid "Open a File"
+msgstr ""
+
+msgid "Open File(s)"
+msgstr ""
+
+msgid "Open a Directory"
+msgstr ""
+
+msgid "Open a File or Directory"
+msgstr ""
+
+msgid "Save a File"
+msgstr ""
+
+msgid "Go to previous folder."
+msgstr ""
+
+msgid "Go to next folder."
+msgstr ""
+
+msgid "Go to parent folder."
+msgstr ""
+
+msgid "Path:"
+msgstr ""
+
+msgid "Drive"
+msgstr ""
+
+msgid "Refresh files."
+msgstr ""
+
+msgid "(Un)favorite current folder."
+msgstr ""
+
+msgid "Create a new folder."
+msgstr ""
+
+msgid "Favorites:"
+msgstr ""
+
+msgid "Recent:"
+msgstr ""
+
+msgid "Directories & Files:"
+msgstr ""
+
+msgid "Toggle the visibility of hidden files."
+msgstr ""
+
+msgid "View items as a grid of thumbnails."
+msgstr ""
+
+msgid "View items as a list."
+msgstr ""
+
+msgid "Toggle the visibility of the filter for file names."
+msgstr ""
+
+msgid "Sort files"
+msgstr ""
+
+msgid "Sort by Name (Ascending)"
+msgstr ""
+
+msgid "Sort by Name (Descending)"
+msgstr ""
+
+msgid "Sort by Type (Ascending)"
+msgstr ""
+
+msgid "Sort by Type (Descending)"
+msgstr ""
+
+msgid "Sort by Modified Time (Newest First)"
+msgstr ""
+
+msgid "Sort by Modified Time (Oldest First)"
+msgstr ""
+
+msgid "Filter:"
+msgstr ""
+
+msgid "Filename Filter:"
+msgstr ""
+
+msgid "File:"
+msgstr ""
+
+msgid ""
+"Delete the selected file?\n"
+"Depending on your filesystem configuration, the files will either be moved "
+"to the system trash or deleted permanently."
+msgstr ""
+
+msgid "Create Folder"
+msgstr ""
+
+msgid "Name:"
+msgstr ""
+
+msgid "Could not create folder."
+msgstr ""
+
+msgid "Invalid extension, or empty filename."
+msgstr ""
+
+msgid "connection to %s (%s) port %d"
+msgstr ""
+
+msgid "connection from %s (%s) port %d"
+msgstr ""
+
+msgid "Zoom Out"
+msgstr ""
+
+msgid "Zoom Reset"
+msgstr ""
+
+msgid "Zoom In"
+msgstr ""
+
+msgid "Toggle the visual grid."
+msgstr ""
+
+msgid "Toggle snapping to the grid."
+msgstr ""
+
+msgid "Change the snapping distance."
+msgstr ""
+
+msgid "Toggle the graph minimap."
+msgstr ""
+
+msgid "Automatically arrange selected nodes."
+msgstr ""
+
+msgid "graph node %s (%s)"
+msgstr ""
+
+msgid "slot %d of %d"
+msgstr ""
+
+msgid "input port, type: %s"
+msgstr ""
+
+msgid "input port, type: %d"
+msgstr ""
+
+msgid "no connections"
+msgstr ""
+
+msgid "output port, type: %s"
+msgstr ""
+
+msgid "output port, type: %d"
+msgstr ""
+
+msgid "currently selecting target port"
+msgstr ""
+
+msgid "has %d slots"
+msgstr ""
+
+msgid "Edit Input Port Connection"
+msgstr ""
+
+msgid "Edit Output Port Connection"
+msgstr ""
+
+msgid "Follow Input Port Connection"
+msgstr ""
+
+msgid "Follow Output Port Connection"
+msgstr ""
+
+msgid ", in slot %d of graph node %s (%s)"
+msgstr ""
+
+msgid "Same as Layout Direction"
+msgstr ""
+
+msgid "Auto-Detect Direction"
+msgstr ""
+
+msgid "Left-to-Right"
+msgstr ""
+
+msgid "Right-to-Left"
+msgstr ""
+
+msgid "Left-to-Right Mark (LRM)"
+msgstr ""
+
+msgid "Right-to-Left Mark (RLM)"
+msgstr ""
+
+msgid "Start of Left-to-Right Embedding (LRE)"
+msgstr ""
+
+msgid "Start of Right-to-Left Embedding (RLE)"
+msgstr ""
+
+msgid "Start of Left-to-Right Override (LRO)"
+msgstr ""
+
+msgid "Start of Right-to-Left Override (RLO)"
+msgstr ""
+
+msgid "Pop Direction Formatting (PDF)"
+msgstr ""
+
+msgid "Arabic Letter Mark (ALM)"
+msgstr ""
+
+msgid "Left-to-Right Isolate (LRI)"
+msgstr ""
+
+msgid "Right-to-Left Isolate (RLI)"
+msgstr ""
+
+msgid "First Strong Isolate (FSI)"
+msgstr ""
+
+msgid "Pop Direction Isolate (PDI)"
+msgstr ""
+
+msgid "Zero-Width Joiner (ZWJ)"
+msgstr ""
+
+msgid "Zero-Width Non-Joiner (ZWNJ)"
+msgstr ""
+
+msgid "Word Joiner (WJ)"
+msgstr ""
+
+msgid "Soft Hyphen (SHY)"
+msgstr ""
+
+msgid "Emoji & Symbols"
+msgstr ""
+
+msgid "Cut"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid "Select All"
+msgstr ""
+
+msgid "Undo"
+msgstr ""
+
+msgid "Redo"
+msgstr ""
+
+msgid "Text Writing Direction"
+msgstr ""
+
+msgid "Display Control Characters"
+msgstr ""
+
+msgid "Insert Control Character"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "kill_the_tower_boss"
+msgstr ""

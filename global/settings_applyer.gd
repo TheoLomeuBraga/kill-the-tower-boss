@@ -25,6 +25,9 @@ func on_setting_change(name:String,value:Variant) -> void:
 		"controller_deadzone_right":
 			for key:String in ["look_up","look_down","look_left","look_right"]:
 				InputMap.action_set_deadzone(key,value)
+		"accessibility_language":
+			var locale : String = ["en","pt_BR"][value]
+			TranslationServer.set_locale(locale)
 
 func _ready() -> void:
 	SettingsManager.on_setting_change.connect(on_setting_change) 

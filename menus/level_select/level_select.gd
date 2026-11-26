@@ -29,6 +29,21 @@ func _ready() -> void:
 		c.pressed.connect(select_chapter.bind(i))
 	
 	
+	for c : Node in $Panel/ColorRect2/ScrollContainer/VBoxContainer.get_children():
+		if not c is Button:
+			continue
+		
+		var b : Button = c
+		b.focus_neighbor_right = $Panel/ColorRect3/ScrollContainer/HBoxContainer.get_child(0).get_button().get_path()
+	
+	var last_button:Button = $Panel/ColorRect3/ScrollContainer/HBoxContainer.get_child($Panel/ColorRect3/ScrollContainer/HBoxContainer/LevelTumbnail3.get_child_count()).get_button()
+	last_button.focus_neighbor_bottom = $back.get_path()
+	
+	$back.focus_neighbor_top = $Panel/ColorRect2/ScrollContainer/VBoxContainer/Button.get_path()
+	
+	for c : Control in $Panel/ColorRect3/ScrollContainer/HBoxContainer.get_children():
+		c.get_button().focus_neighbor_left = $Panel/ColorRect2/ScrollContainer/VBoxContainer.get_child(0).get_path()
+	
 
 func _process(delta: float) -> void:
 	

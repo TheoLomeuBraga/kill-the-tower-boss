@@ -27,6 +27,9 @@ func enshure_visible() -> void:
 		return
 	parent.ensure_control_visible(self)
 
+func get_button() -> Button:
+	return $VBoxContainer/Button
+
 func _ready() -> void:
 	
 	$VBoxContainer/Button.focus_entered.connect(enshure_visible)
